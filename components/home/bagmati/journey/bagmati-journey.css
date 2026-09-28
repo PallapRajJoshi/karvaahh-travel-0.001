@@ -1,0 +1,116 @@
+.bagmati-journey {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 96px 64px;
+  background: #f7f5ef;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  align-items: flex-start;
+}
+
+.bagmati-journey__track {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  width: 100%;
+}
+
+.bagmati-journey__stop {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+
+.bagmati-journey__stop-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+
+.bagmati-journey__stop-image {
+  object-fit: cover;
+}
+
+.bagmati-journey__stop-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bagmati-journey__stop-number {
+  font-family: "Playfair Display", serif;
+  font-size: 0.9rem;
+  color: #b8954e;
+}
+
+.bagmati-journey__stop-title {
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #0d1d16;
+  margin: 0;
+}
+
+.bagmati-journey__stop-description {
+  font-family: "Inter", sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #4a5750;
+  margin: 0;
+}
+
+.bagmati-journey__connector {
+  display: none;
+}
+
+.bagmati-journey__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #f7f5ef;
+  background: #0d1d16;
+  padding: 16px 28px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.bagmati-journey__cta:hover {
+  background: #142019;
+}
+
+@media (max-width: 1024px) {
+  .bagmati-journey {
+    padding: 72px 32px;
+  }
+  .bagmati-journey__track {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .bagmati-journey {
+    padding: 56px 20px;
+  }
+  .bagmati-journey__track {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 28px;
+  }
+  .bagmati-journey__stop {
+    padding-right: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bagmati-journey__cta {
+    transition: none;
+  }
+}

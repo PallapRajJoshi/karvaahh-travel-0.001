@@ -1,0 +1,268 @@
+/* ==========================================================================
+   Journey map — Leaflet layer styling
+   Everything is namespaced under .journey-map to keep it off the rest of
+   the site. Design tokens are declared once in NepalJourneyMap.css.
+   ========================================================================== */
+
+.journey-map .jm-map {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background-color: var(--jm-mist);
+}
+
+.journey-map .jm-map__canvas {
+  position: absolute;
+  inset: 0;
+  /* Overscan so the camera can pan without exposing an edge. */
+  margin: -4%;
+  width: 108%;
+  height: 108%;
+  background-color: var(--jm-mist);
+}
+
+/* Standard OSM tiles are loud — green landcover, yellow roads, blue water.
+   Strip most of the colour and lift the whites so the brass route is the only
+   saturated thing on screen. Tuned for osm.org; if you move to a muted style
+   later, drop the saturate() down to about 0.6 and leave the rest. */
+.journey-map .jm-tiles {
+  filter: grayscale(0.82) saturate(0.55) contrast(0.86) brightness(1.09);
+}
+
+/* Soft edge vignette — stops the sticky map reading as a hard rectangle. */
+.journey-map .jm-map__veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 90% at 50% 45%, transparent 52%, rgba(22, 33, 31, 0.13) 100%),
+    linear-gradient(to bottom, rgba(245, 246, 244, 0.85), transparent 18%, transparent 82%, rgba(245, 246, 244, 0.85));
+}
+
+.journey-map .jm-map__grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: radial-gradient(var(--jm-ink) 0.5px, transparent 0.5px);
+  background-size: 3px 3px;
+}
+
+/* --- Leaflet chrome ------------------------------------------------------ */
+
+.journey-map .leaflet-container {
+  background-color: var(--jm-mist);
+  font-family: var(--font-body, "Inter", system-ui, sans-serif);
+  outline: none;
+}
+
+.journey-map .leaflet-control-attribution {
+  padding: 0.25rem 0.6rem;
+  border-radius: 2px 0 0 0;
+  background: rgba(245, 246, 244, 0.78);
+  color: var(--jm-ink-soft);
+  font-size: 0.625rem;
+  letter-spacing: 0.01em;
+}
+
+.journey-map .leaflet-control-attribution a {
+  color: var(--jm-ink-soft);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* --- Route --------------------------------------------------------------- */
+
+.journey-map .jm-route {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.journey-map .jm-route--base {
+  stroke: var(--jm-ink);
+  stroke-width: 1.25;
+  stroke-dasharray: 1 7;
+  stroke-opacity: 0.3;
+}
+
+.journey-map .jm-route--active {
+  stroke: var(--jm-brass);
+  stroke-width: 2.75;
+  stroke-opacity: 0.95;
+  filter: drop-shadow(0 1px 3px rgba(142, 84, 18, 0.28));
+  transition: opacity 240ms ease;
+}
+
+/* --- Stop markers -------------------------------------------------------- */
+
+.journey-map .jm-pin {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+.journey-map .jm-pin__dot,
+.journey-map .jm-pin__ring,
+.journey-map .jm-pin__pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.journey-map .jm-pin__dot {
+  width: 7px;
+  height: 7px;
+  background: var(--jm-paper);
+  border: 1.5px solid var(--jm-ink-soft);
+  transition:
+    width 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 320ms ease,
+    border-color 320ms ease;
+}
+
+.journey-map .jm-pin__ring {
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--jm-brass);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.6);
+  transition:
+    opacity 340ms ease,
+    transform 340ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.journey-map .jm-pin__pulse {
+  width: 18px;
+  height: 18px;
+  background: var(--jm-brass);
+  opacity: 0;
+}
+
+.journey-map .jm-pin__index,
+.journey-map .jm-pin__label {
+  position: absolute;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.journey-map .jm-pin__index {
+  top: -0.15rem;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  font-family: var(--font-body, "Inter", system-ui, sans-serif);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--jm-ink-soft);
+  opacity: 0.55;
+  transition: opacity 300ms ease;
+}
+
+.journey-map .jm-pin__label {
+  top: 50%;
+  left: calc(50% + 15px);
+  transform: translate(0, -50%) translateX(-4px);
+  padding: 0.15rem 0.45rem;
+  border-radius: 2px;
+  background: rgba(245, 246, 244, 0.9);
+  font-family: var(--font-body, "Inter", system-ui, sans-serif);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.015em;
+  color: var(--jm-ink);
+  opacity: 0;
+  transition:
+    opacity 340ms ease,
+    transform 340ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Visited: quietly filled in, no motion. */
+.journey-map .jm-pin--visited .jm-pin__dot {
+  background: var(--jm-brass);
+  border-color: var(--jm-brass);
+}
+
+.journey-map .jm-pin--visited .jm-pin__index {
+  opacity: 0.28;
+}
+
+/* Active: the only marker allowed to move. */
+.journey-map .jm-pin--active .jm-pin__dot {
+  width: 10px;
+  height: 10px;
+  background: var(--jm-brass);
+  border-color: var(--jm-paper);
+}
+
+.journey-map .jm-pin--active .jm-pin__ring {
+  opacity: 0.9;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.journey-map .jm-pin--active .jm-pin__index {
+  opacity: 0;
+}
+
+.journey-map .jm-pin--active .jm-pin__label {
+  opacity: 1;
+  transform: translate(0, -50%) translateX(0);
+}
+
+.journey-map .jm-pin--active .jm-pin__pulse {
+  animation: jm-pulse 2600ms cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+@keyframes jm-pulse {
+  0% {
+    opacity: 0.34;
+    transform: translate(-50%, -50%) scale(0.42);
+  }
+  70% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.1);
+  }
+}
+
+/* --- Traveller ----------------------------------------------------------- */
+
+.journey-map .jm-traveller {
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.journey-map .jm-traveller__core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--jm-paper);
+  border: 2px solid var(--jm-brass);
+  box-shadow: 0 0 0 4px rgba(192, 122, 34, 0.16);
+}
+
+/* --- Reduced motion ------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  .journey-map .jm-pin--active .jm-pin__pulse {
+    animation: none;
+  }
+
+  .journey-map .jm-pin__dot,
+  .journey-map .jm-pin__ring,
+  .journey-map .jm-pin__label,
+  .journey-map .jm-route--active,
+  .journey-map .jm-traveller {
+    transition-duration: 1ms;
+  }
+}

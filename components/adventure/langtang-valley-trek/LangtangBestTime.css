@@ -1,0 +1,21 @@
+.lt-season__rec { margin: 20px 0 0; display: inline-block; padding: 10px 18px; border-radius: 99px; background: rgba(42, 127, 130, 0.1); color: var(--lt-blue); font-size: 0.95rem; }
+.lt-season__rec strong { color: var(--lt-teal-ink); }
+.lt-season__grid { margin-top: 40px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.lt-season__card { background: var(--lt-white); border-radius: var(--lt-radius); padding: 26px 24px; box-shadow: var(--lt-shadow); border-top: 4px solid var(--lt-teal); display: flex; flex-direction: column; }
+.lt-season__card--good { border-top-color: var(--lt-blue); }
+.lt-season__card--caution { border-top-color: var(--lt-gold); }
+.lt-season__top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.lt-season__top h3 { margin: 0; font-family: var(--lt-serif); font-size: 1.45rem; color: var(--lt-blue); }
+.lt-season__tag { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; color: var(--lt-teal-ink); }
+.lt-season__card--caution .lt-season__tag { color: #9a6d1c; }
+.lt-season__card--good .lt-season__tag { color: var(--lt-blue); }
+.lt-season__months { margin: 4px 0 0; font-size: 0.88rem; color: var(--lt-ink-soft); }
+.lt-season__strip { list-style: none; padding: 0; margin: 16px 0 0; display: grid; grid-template-columns: repeat(12, 1fr); gap: 3px; }
+.lt-season__strip li { font-size: 0.62rem; text-align: center; padding: 4px 0; border-radius: 3px; background: var(--lt-ivory); color: var(--lt-ink-soft); }
+.lt-season__strip li.is-on { background: var(--lt-teal); color: var(--lt-white); font-weight: 600; }
+.lt-season__card--good .lt-season__strip li.is-on { background: var(--lt-blue); }
+.lt-season__card--caution .lt-season__strip li.is-on { background: var(--lt-gold); color: var(--lt-charcoal); }
+.lt-season__summary { margin: 16px 0 0; line-height: 1.6; color: var(--lt-charcoal); }
+.lt-season__points { margin: 12px 0 0; padding-left: 18px; font-size: 0.88rem; line-height: 1.7; color: var(--lt-ink-soft); }
+@media (max-width: 1024px) { .lt-season__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .lt-season__grid { grid-template-columns: 1fr; } }

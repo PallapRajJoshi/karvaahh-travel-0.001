@@ -1,0 +1,19 @@
+.cmp-east { padding-top: 0; }
+.cmp-east__banner { position: relative; height: clamp(260px, 38vw, 460px); overflow: hidden; }
+.cmp-east__banner-inner { position: absolute; inset: -12% 0; }
+.cmp-east__card {
+  position: relative;
+  margin-top: clamp(-160px, -12vw, -80px);
+  padding: clamp(1.8rem, 4vw, 3.5rem);
+  border-radius: var(--cmp-radius-lg);
+  background: var(--cmp-snow);
+  box-shadow: 0 30px 60px -40px rgba(13, 29, 22, 0.45);
+}
+.cmp-east__groups { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+.cmp-east__group h3 {
+  margin: 0 0 0.8rem; padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--cmp-moss);
+  font-family: var(--cmp-serif); font-size: 1.2rem; font-weight: 600; color: var(--cmp-forest);
+}
+@media (max-width: 1000px) { .cmp-east__groups { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .cmp-east__groups { grid-template-columns: 1fr; } }

@@ -1,0 +1,20 @@
+.km-faq {
+  max-width: calc(880px + var(--km-gutter) * 2);
+}
+
+.km-faq__confirm {
+  font-size: 0.8438rem;
+  color: var(--km-caution);
+  font-style: italic;
+}
+
+.km-faq__more {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem 1.25rem;
+  margin-top: 2.5rem;
+  text-align: center;
+  color: var(--km-ink-soft);
+}

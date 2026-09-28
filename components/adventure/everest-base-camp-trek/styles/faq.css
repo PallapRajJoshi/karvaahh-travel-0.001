@@ -1,0 +1,53 @@
+.ebc-faq__inner {
+  max-width: 900px;
+}
+
+.ebc-faq__more {
+  margin-top: 32px !important;
+  text-align: center;
+  color: var(--ebc-muted);
+}
+
+.ebc-faq__more a {
+  font-weight: 600;
+  color: var(--ebc-blue);
+  text-decoration-color: var(--ebc-gold);
+  text-underline-offset: 4px;
+}
+
+.ebc-faq__related {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px 14px;
+  margin-top: 28px;
+  font-size: 0.85rem;
+  color: var(--ebc-muted);
+}
+
+.ebc-faq__related ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ebc-faq__related a {
+  display: inline-block;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--ebc-line);
+  background: var(--ebc-white);
+  color: var(--ebc-blue);
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.ebc-faq__related a:hover {
+  border-color: var(--ebc-teal-ink);
+  color: var(--ebc-teal-ink);
+}

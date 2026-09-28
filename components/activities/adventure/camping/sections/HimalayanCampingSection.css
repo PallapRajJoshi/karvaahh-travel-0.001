@@ -1,0 +1,40 @@
+.cmp-himal {
+  --ridge-h: clamp(170px, 21vw, 300px);
+  position: relative;
+  /* ridges get their own band below the cards instead of sitting under them */
+  padding-block: var(--cmp-section) calc(var(--ridge-h) * 0.8);
+  background: var(--cmp-blue-deep);
+  color: var(--cmp-snow);
+  overflow: hidden;
+  isolation: isolate;
+}
+.cmp-himal__backdrop { position: absolute; inset: 0; z-index: -1; }
+.cmp-himal__photo { position: absolute; inset: -12% 0; opacity: 0.55; }
+.cmp-himal__veil {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(11, 27, 43, 0.85) 0%, rgba(11, 27, 43, 0.55) 40%, rgba(11, 27, 43, 0.9) 100%);
+}
+.cmp-himal__content { position: relative; }
+
+.cmp-ridges { position: absolute; left: 0; right: 0; bottom: 0; height: var(--ridge-h); pointer-events: none;
+  /* peaks fade in beneath the card row so nothing pokes through the gaps */
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 42%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 42%);
+}
+.cmp-ridges__layer { position: absolute; left: 0; bottom: -2px; width: 100%; height: 100%; }
+.cmp-ridges__layer--back path { fill: #1a3348; }
+.cmp-ridges__layer--back .cmp-ridges__snow { fill: rgba(247, 245, 239, 0.55); }
+.cmp-ridges__layer--mid path { fill: #12263a; }
+.cmp-ridges__layer--front path { fill: #0b1b2b; }
+.cmp-ridges__layer--front .cmp-ridges__tent { fill: var(--cmp-ember); filter: drop-shadow(0 0 10px rgba(224, 120, 47, 0.8)); }
+
+.cmp-himal__cards {
+  list-style: none; margin: clamp(2.5rem, 5vw, 4rem) 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+}
+.cmp-himal__cards > li { height: 420px; }
+
+@media (max-width: 900px) {
+  .cmp-himal__cards { grid-template-columns: 1fr; }
+  .cmp-himal__cards > li { height: 360px; }
+}

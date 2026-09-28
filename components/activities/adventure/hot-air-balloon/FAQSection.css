@@ -1,0 +1,14 @@
+.hab-faq .hab-faq__inner { max-width: 860px; }
+.hab-faq__list { border-top: 1px solid var(--hab-line); }
+.hab-faq__item { border-bottom: 1px solid var(--hab-line); }
+.hab-faq__q { margin: 0; }
+.hab-faq__q button {
+  width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  padding: 1.25rem 0; min-height: 56px;
+  background: none; border: 0; cursor: pointer; text-align: left;
+  font: 600 1.05rem/1.4 var(--hab-sans); color: var(--hab-forest);
+}
+.hab-faq__q button:focus-visible { outline: 2px solid var(--hab-gold); outline-offset: 4px; border-radius: 4px; }
+.hab-faq__chev { flex: none; color: var(--hab-gold-deep); transition: transform 0.25s ease; }
+.hab-faq__item.is-open .hab-faq__chev { transform: rotate(45deg); }
+.hab-faq__a p { margin: 0 0 1.35rem; line-height: 1.7; color: var(--hab-muted); max-width: 68ch; }

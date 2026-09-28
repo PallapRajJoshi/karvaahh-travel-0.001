@@ -1,0 +1,227 @@
+.mc-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(560px, 100svh, 940px);
+  padding-top: calc(var(--mc-nav-offset) + 2rem);
+  padding-bottom: clamp(5rem, 11vh, 8rem);
+  overflow: hidden;
+  color: var(--mc-white);
+  background: var(--mc-blue-deep);
+}
+
+.mc-hero__media {
+  position: absolute;
+  inset: -4% 0 0 0;
+  z-index: -2;
+  transform: scale(1.08);
+  will-change: transform;
+}
+
+.mc-hero__shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgb(12 28 44 / 0.55) 0%, rgb(12 28 44 / 0.05) 30%, rgb(12 28 44 / 0.25) 55%, rgb(12 28 44 / 0.88) 100%),
+    linear-gradient(90deg, rgb(12 28 44 / 0.7) 0%, rgb(12 28 44 / 0.25) 45%, rgb(12 28 44 / 0) 70%);
+}
+
+.mc-hero__content {
+  position: relative;
+}
+
+.mc-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1.1rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mc-sand);
+}
+
+.mc-hero__eyebrow::before {
+  content: "";
+  width: 2.25rem;
+  height: 1px;
+  background: currentColor;
+}
+
+.mc-hero__title {
+  margin: 0;
+  max-width: 14ch;
+  font-family: var(--mc-font-display);
+  font-weight: 600;
+  font-size: clamp(2.75rem, 1.4rem + 6.4vw, 6.25rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.mc-hero__subtitle {
+  margin: 1.1rem 0 0;
+  font-family: var(--mc-font-display);
+  font-style: italic;
+  font-size: clamp(1.2rem, 1rem + 1vw, 1.75rem);
+  line-height: 1.3;
+  color: rgb(255 255 255 / 0.92);
+}
+
+.mc-hero__text {
+  margin: 1rem 0 0;
+  max-width: 38rem;
+  font-size: clamp(0.98rem, 0.94rem + 0.2vw, 1.08rem);
+  color: rgb(255 255 255 / 0.82);
+}
+
+.mc-hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 2rem;
+}
+
+.mc-hero__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 2rem 0 0;
+  padding: 1.25rem 0 0;
+  list-style: none;
+  border-top: 1px solid rgb(255 255 255 / 0.2);
+  max-width: 40rem;
+  font-size: 0.85rem;
+  color: rgb(255 255 255 / 0.78);
+}
+
+.mc-hero__facts li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.mc-hero__facts li + li::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--mc-sand);
+  margin-left: -0.9rem;
+}
+
+/* Load-in animation — CSS only, no JS needed */
+@media (prefers-reduced-motion: no-preference) {
+  .mc-hero__anim {
+    opacity: 0;
+    animation: mc-hero-rise 1s var(--mc-ease) forwards;
+  }
+
+  .mc-hero__media {
+    animation: mc-hero-fade 1.6s ease-out both;
+  }
+}
+
+@keyframes mc-hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes mc-hero-fade {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Scroll indicator */
+.mc-hero__scroll {
+  position: absolute;
+  right: var(--mc-gutter);
+  bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem;
+  color: rgb(255 255 255 / 0.8);
+  text-decoration: none;
+}
+
+.mc-hero__scroll-line {
+  position: relative;
+  width: 1px;
+  height: 56px;
+  overflow: hidden;
+  background: rgb(255 255 255 / 0.25);
+}
+
+.mc-hero__scroll-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--mc-sand);
+  transform: translateY(-100%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mc-hero__scroll-line::after {
+    animation: mc-scroll-cue 2.2s var(--mc-ease) infinite;
+  }
+}
+
+@keyframes mc-scroll-cue {
+  0% {
+    transform: translateY(-100%);
+  }
+  55% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.mc-hero__scroll-label {
+  writing-mode: vertical-rl;
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 767px) {
+  .mc-hero {
+    align-items: flex-end;
+  }
+
+  /* Text spans the full width on phones, so protect it evenly. */
+  .mc-hero__shade {
+    background: linear-gradient(180deg, rgb(12 28 44 / 0.6) 0%, rgb(12 28 44 / 0.5) 40%, rgb(12 28 44 / 0.92) 100%);
+  }
+
+  .mc-hero__ctas .mc-btn {
+    flex: 1 1 100%;
+  }
+
+  .mc-hero__scroll {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mc-hero__media {
+    transform: none;
+    inset: 0;
+  }
+}

@@ -1,0 +1,45 @@
+.tsum-crumbs {
+  background: var(--tsum-ivory);
+  border-bottom: 1px solid var(--tsum-line);
+}
+
+.tsum-crumbs__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin: 0 auto;
+  padding-block: 14px;
+  list-style: none;
+  font-size: 0.85rem;
+  color: var(--tsum-muted);
+}
+
+.tsum-crumbs__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.tsum-crumbs__item a {
+  text-decoration: none;
+  color: var(--tsum-blue);
+  padding: 4px 2px;
+}
+
+.tsum-crumbs__item a:hover {
+  color: var(--tsum-teal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.tsum-crumbs__item [aria-current] {
+  color: var(--tsum-charcoal);
+  font-weight: 600;
+}
+
+.tsum-crumbs__sep {
+  width: 14px;
+  height: 14px;
+  opacity: 0.5;
+}

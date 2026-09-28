@@ -1,0 +1,102 @@
+/* Section 9 — Cultural & Himalayan experiences (mosaic) */
+
+.akop-culture__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  list-style: none;
+}
+
+.akop-culture__item {
+  display: flex;
+  min-height: 300px;
+}
+
+.akop-culture__card {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--akop-radius);
+  color: var(--akop-white);
+  background: var(--akop-primary);
+}
+
+.akop-culture__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.akop-culture__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(11, 39, 64, 0.92) 0%, rgba(11, 39, 64, 0.35) 50%, rgba(11, 39, 64, 0) 75%);
+}
+
+.akop-culture__img {
+  transition: transform 1s var(--akop-ease);
+}
+
+.akop-culture__card:hover .akop-culture__img {
+  transform: scale(1.06);
+}
+
+.akop-culture__body {
+  padding: 1.4rem;
+}
+
+.akop-culture__title {
+  font-family: var(--akop-font-heading);
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.akop-culture__text {
+  margin-top: 0.4rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+@media (min-width: 640px) {
+  .akop-culture__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .akop-culture__item:first-child {
+    grid-column: span 2;
+    min-height: 380px;
+  }
+}
+
+/* Desktop mosaic: 4 columns — a 2×2 lead tile, four singles, two wide tiles. */
+@media (min-width: 1024px) {
+  .akop-culture__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: 280px;
+  }
+
+  .akop-culture__item,
+  .akop-culture__item:first-child {
+    min-height: 0;
+  }
+
+  .akop-culture__item:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .akop-culture__item:first-child .akop-culture__title {
+    font-size: 1.9rem;
+  }
+
+  .akop-culture__item:nth-child(6),
+  .akop-culture__item:nth-child(7) {
+    grid-column: span 2;
+  }
+}

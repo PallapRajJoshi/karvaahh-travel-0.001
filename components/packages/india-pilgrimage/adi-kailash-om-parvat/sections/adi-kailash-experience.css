@@ -1,0 +1,96 @@
+/* Section 5 — Adi Kailash spiritual experience */
+
+.akop-adi__grid {
+  display: grid;
+  gap: clamp(3rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.akop-adi__visual {
+  position: relative;
+  padding-bottom: 3rem;
+}
+
+.akop-adi__main {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 200px 200px var(--akop-radius) var(--akop-radius); /* temple-arch frame */
+  box-shadow: var(--akop-shadow-hover);
+}
+
+.akop-adi__detail {
+  position: absolute;
+  left: -0.5rem;
+  bottom: 0;
+  width: min(40%, 220px);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 6px solid var(--akop-bg);
+  border-radius: 50%;
+  box-shadow: var(--akop-shadow);
+}
+
+.akop-adi__intro {
+  margin-top: 1.5rem;
+  font-size: clamp(1.02rem, 0.98rem + 0.25vw, 1.15rem);
+  color: var(--akop-text);
+  text-wrap: pretty;
+}
+
+.akop-adi__list {
+  display: grid;
+  gap: 1.5rem 2rem;
+  margin: 2.5rem 0;
+  list-style: none;
+}
+
+.akop-adi__item {
+  display: flex;
+  gap: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--akop-border);
+}
+
+.akop-adi__num {
+  color: var(--akop-accent-text);
+  font-family: var(--akop-font-heading);
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.akop-adi__item-title {
+  color: var(--akop-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.akop-adi__item-text {
+  margin-top: 0.3rem;
+  color: var(--akop-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+@media (min-width: 640px) {
+  .akop-adi__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .akop-adi__main {
+    width: 88%;
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .akop-adi__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  }
+
+  .akop-adi__visual {
+    position: sticky;
+    top: calc(var(--akop-sticky-offset) + 5.5rem);
+  }
+}

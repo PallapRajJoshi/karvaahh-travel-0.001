@@ -1,0 +1,21 @@
+.km-prep__grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.km-prep__intro .km-heading {
+  margin-bottom: 1.75rem;
+}
+
+@media (min-width: 1024px) {
+  .km-prep__grid {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(3rem, 5vw, 5rem);
+    align-items: start;
+  }
+
+  .km-prep__intro {
+    position: sticky;
+    top: calc(var(--km-site-header-h) + var(--km-nav-h) + 2rem);
+  }
+}

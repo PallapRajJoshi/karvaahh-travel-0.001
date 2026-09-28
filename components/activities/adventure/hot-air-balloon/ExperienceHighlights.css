@@ -1,0 +1,19 @@
+.hab-exp__grid {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--hab-line);
+}
+.hab-exp__item { padding: 1.75rem 1.5rem 0 0; }
+.hab-exp__item + .hab-exp__item { padding-left: 1.5rem; border-left: 1px solid var(--hab-line); }
+.hab-exp__icon { color: var(--hab-dawn); }
+.hab-exp__title { font-family: var(--hab-serif); font-size: 1.25rem; font-weight: 600; margin: 0.9rem 0 0.5rem; color: var(--hab-forest); }
+.hab-exp__text { margin: 0; line-height: 1.6; color: var(--hab-muted); font-size: 0.95rem; }
+.hab-exp__note { margin: 2rem 0 0; font-size: 0.85rem; color: var(--hab-muted); font-style: italic; }
+@media (max-width: 960px) {
+  .hab-exp__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 2rem; }
+  .hab-exp__item:nth-child(odd) { padding-left: 0; border-left: 0; }
+}
+@media (max-width: 560px) {
+  .hab-exp__grid { grid-template-columns: 1fr; row-gap: 0; border-top: 0; }
+  .hab-exp__item, .hab-exp__item + .hab-exp__item { padding: 1.4rem 0; border-left: 0; border-top: 1px solid var(--hab-line); }
+}

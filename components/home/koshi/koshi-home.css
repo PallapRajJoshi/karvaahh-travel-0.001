@@ -1,0 +1,230 @@
+/* =========================================
+   KOSHI GLOBAL CONTENT SHELL
+========================================= */
+
+.koshi-shell {
+  width: 100%;
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 58px;
+  padding-right: 58px;
+  box-sizing: border-box;
+}
+
+/* Tablet */
+@media (max-width: 1200px) {
+  .koshi-shell {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .koshi-shell {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .koshi-shell {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+
+
+
+
+.koshi-section-divider {
+  position: relative;
+
+  width: 100%;
+  height: 1px;
+
+  background: rgba(24, 35, 30, 0.12);
+}
+
+.koshi-section-divider::before {
+  content: "";
+
+  position: absolute;
+
+  left: 5%;
+  top: 0;
+
+  width: 42px;
+  height: 1px;
+
+  background: #c9a45c;
+}
+
+/* divider */
+/* =========================================================
+   KOSHI PREMIUM SECTION DIVIDER
+========================================================= */
+
+.koshi-divider {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  height: 38px;
+
+  padding: 0 5%;
+
+  box-sizing: border-box;
+
+  background: #f7f5ef;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   LINES
+========================================================= */
+
+.koshi-divider__line {
+  flex: 1;
+
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(24, 35, 30, 0.16)
+  );
+}
+
+.koshi-divider__line:last-child {
+  background: linear-gradient(
+    90deg,
+    rgba(24, 35, 30, 0.16),
+    transparent
+  );
+}
+
+
+/* =========================================================
+   NUMBER
+========================================================= */
+
+.koshi-divider__number {
+  margin: 0 14px;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
+
+  color: #a17d37;
+}
+
+
+/* =========================================================
+   DIAMOND
+========================================================= */
+
+.koshi-divider__diamond {
+  width: 7px;
+  height: 7px;
+
+  flex-shrink: 0;
+
+  transform: rotate(45deg);
+
+  background: #c9a45c;
+
+  box-shadow:
+    0 0 0 3px rgba(201, 164, 92, 0.08);
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.koshi-divider__label {
+  margin: 0 16px;
+
+  white-space: nowrap;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 7px;
+  font-weight: 600;
+
+  letter-spacing: 0.28em;
+
+  color: rgba(24, 35, 30, 0.42);
+}
+
+
+/* =========================================================
+   DARK VERSION
+========================================================= */
+
+.koshi-divider--dark {
+  background: #0d1d16;
+}
+
+.koshi-divider--dark .koshi-divider__line {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.14)
+  );
+}
+
+.koshi-divider--dark .koshi-divider__line:last-child {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.14),
+    transparent
+  );
+}
+
+.koshi-divider--dark .koshi-divider__label {
+  color: rgba(255, 255, 255, 0.38);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .koshi-divider {
+    height: 30px;
+
+    padding: 0 20px;
+  }
+
+  .koshi-divider__number {
+    margin: 0 9px;
+
+    font-size: 7px;
+  }
+
+  .koshi-divider__label {
+    margin: 0 10px;
+
+    font-size: 6px;
+
+    letter-spacing: 0.18em;
+  }
+
+  .koshi-divider__diamond {
+    width: 6px;
+    height: 6px;
+  }
+}

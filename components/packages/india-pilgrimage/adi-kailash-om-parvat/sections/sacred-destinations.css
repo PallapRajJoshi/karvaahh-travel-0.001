@@ -1,0 +1,133 @@
+/* Section 4 — Sacred destinations + DestinationCard */
+
+.akop-sites__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+  list-style: none;
+}
+
+@media (min-width: 640px) {
+  .akop-sites__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .akop-sites__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.akop-sites__item {
+  display: flex;
+}
+
+.akop-dest-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--akop-radius);
+  background: var(--akop-surface);
+  box-shadow: var(--akop-shadow);
+  transition:
+    box-shadow 0.4s var(--akop-ease),
+    transform 0.4s var(--akop-ease);
+}
+
+.akop-dest-card:hover,
+.akop-dest-card:focus-within {
+  box-shadow: var(--akop-shadow-hover);
+  transform: translateY(-4px);
+}
+
+.akop-dest-card__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.akop-dest-card__img {
+  transition: transform 0.9s var(--akop-ease);
+}
+
+.akop-dest-card:hover .akop-dest-card__img {
+  transform: scale(1.07);
+}
+
+.akop-dest-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1.25rem 1.25rem 1.4rem;
+}
+
+.akop-dest-card__location {
+  color: var(--akop-accent-text);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.akop-dest-card__name {
+  margin-top: 0.35rem;
+  color: var(--akop-primary);
+  font-family: var(--akop-font-heading);
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.akop-dest-card__tagline {
+  margin-top: 0.25rem;
+  color: var(--akop-text);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.akop-dest-card__text {
+  margin-top: 0.75rem;
+  color: var(--akop-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.akop-dest-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  color: var(--akop-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Stretched link: the whole card is clickable. */
+.akop-dest-card__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.akop-dest-card__link .akop-icon {
+  transition: transform 0.3s var(--akop-ease);
+}
+
+.akop-dest-card:hover .akop-dest-card__link .akop-icon {
+  transform: translateX(4px);
+}
+
+.akop-dest-card__link:focus-visible {
+  outline: none;
+}
+
+.akop-dest-card:has(.akop-dest-card__link:focus-visible) {
+  outline: 2px solid var(--akop-accent);
+  outline-offset: 3px;
+}

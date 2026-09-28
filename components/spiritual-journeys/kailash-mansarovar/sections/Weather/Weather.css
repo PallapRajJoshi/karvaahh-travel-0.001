@@ -1,0 +1,46 @@
+.km-weather__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--km-line);
+  border-left: 1px solid var(--km-line);
+}
+
+.km-weather__item {
+  padding: 1.1rem 1rem;
+  border-right: 1px solid var(--km-line);
+  border-bottom: 1px solid var(--km-line);
+}
+
+.km-weather__icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: var(--km-lake-text);
+}
+
+.km-weather__title {
+  margin-top: 0.9rem;
+  font-size: 1.025rem;
+  font-weight: 600;
+  color: var(--km-ink);
+}
+
+.km-weather__text {
+  margin-top: 0.35rem;
+  font-size: 0.925rem;
+  color: var(--km-slate);
+}
+
+.km-weather__notice {
+  margin-top: 2rem;
+  max-width: 44rem;
+}
+
+@media (min-width: 900px) {
+  .km-weather__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .km-weather__item {
+    padding: 1.5rem;
+  }
+}

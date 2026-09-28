@@ -1,0 +1,55 @@
+@import "../karnali-tokens.css";
+
+.karnali-section-heading {
+  position: relative;
+  max-width: 640px;
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.karnali-align-center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.karnali-section-number {
+  display: block;
+  font-family: var(--k-font-serif);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  color: var(--k-gold);
+  margin-bottom: 0.75rem;
+  opacity: 0.8;
+}
+
+.karnali-heading-title {
+  font-family: var(--k-font-serif);
+  font-weight: 500;
+  font-size: clamp(2.1rem, 4.2vw, 3.4rem);
+  line-height: 1.12;
+  color: var(--k-charcoal);
+  margin: 0.9rem 0 0;
+  letter-spacing: -0.01em;
+}
+
+.karnali-heading-gold {
+  font-style: italic;
+  color: var(--k-gold-deep);
+}
+
+.karnali-heading-description {
+  font-family: var(--k-font-sans);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--k-stone);
+  margin-top: 1.1rem;
+  max-width: 52ch;
+}
+
+.karnali-heading-light .karnali-heading-title {
+  color: var(--k-cream);
+}
+
+.karnali-heading-light .karnali-heading-description {
+  color: rgba(247, 245, 239, 0.78);
+}

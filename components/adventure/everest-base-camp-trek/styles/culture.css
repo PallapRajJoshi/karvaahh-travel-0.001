@@ -1,0 +1,134 @@
+/* Bento grid: one feature tile + six supporting tiles.
+   Descriptions are always visible (no hover-only content, works on touch). */
+
+.ebc-culture__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: minmax(300px, auto);
+  gap: clamp(14px, 1.6vw, 22px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ebc-ccard {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 300px;
+  border-radius: var(--ebc-radius-md);
+  overflow: hidden;
+  color: var(--ebc-white);
+  isolation: isolate;
+}
+
+.ebc-ccard--0 {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.ebc-ccard--5,
+.ebc-ccard--6 {
+  grid-column: span 2;
+}
+
+.ebc-ccard__media {
+  position: absolute !important;
+  inset: 0;
+  z-index: -1;
+}
+
+.ebc-ccard__media img {
+  transition: transform 1.2s var(--ebc-ease) !important;
+}
+
+.ebc-ccard__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 34, 56, 0) 25%, rgba(10, 34, 56, 0.9) 100%);
+  transition: background 0.5s ease;
+}
+
+.ebc-ccard:hover .ebc-ccard__media img {
+  transform: scale(1.06);
+}
+
+.ebc-ccard:hover .ebc-ccard__media::after {
+  background: linear-gradient(180deg, rgba(10, 34, 56, 0.1) 10%, rgba(10, 34, 56, 0.94) 100%);
+}
+
+.ebc-ccard__body {
+  padding: clamp(20px, 2vw, 28px);
+  transform: translateY(6px);
+  transition: transform 0.5s var(--ebc-ease);
+}
+
+.ebc-ccard:hover .ebc-ccard__body {
+  transform: none;
+}
+
+.ebc-ccard__label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ebc-gold);
+}
+
+.ebc-ccard__title {
+  margin-top: 8px !important;
+  font-size: clamp(1.2rem, 1.1rem + 0.4vw, 1.45rem);
+}
+
+.ebc-ccard--0 .ebc-ccard__title {
+  font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.3rem);
+}
+
+.ebc-ccard__desc {
+  margin-top: 8px !important;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.ebc-ccard--0 .ebc-ccard__desc {
+  font-size: 1rem;
+  max-width: 46ch;
+}
+
+@media (max-width: 1023px) {
+  .ebc-culture__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ebc-ccard--0 {
+    grid-column: span 2;
+    grid-row: auto;
+  }
+
+  .ebc-ccard--5,
+  .ebc-ccard--6 {
+    grid-column: auto;
+  }
+
+  .ebc-ccard--0 {
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ebc-culture__grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+
+  .ebc-ccard--0 {
+    grid-column: auto;
+  }
+
+  .ebc-ccard,
+  .ebc-ccard--0 {
+    min-height: 320px;
+  }
+}

@@ -1,0 +1,67 @@
+.bagmati-pilgrimage {
+  box-sizing: border-box;
+  width: 100%;
+  height: calc(100svh - 170px);
+  min-height: 560px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  background: #142019;
+}
+
+.bagmati-pilgrimage__inner {
+  box-sizing: border-box;
+  padding: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.bagmati-pilgrimage__sites {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(247, 245, 239, 0.14);
+}
+
+.bagmati-pilgrimage__site {
+  font-family: "Inter", sans-serif;
+  font-size: 0.82rem;
+  color: #cfd8d1;
+  border: 1px solid rgba(201, 164, 92, 0.35);
+  padding: 8px 16px;
+}
+
+.bagmati-pilgrimage__media {
+  position: relative;
+  height: 100%;
+}
+
+.bagmati-pilgrimage__image {
+  object-fit: cover;
+}
+
+@media (max-width: 1024px) {
+  .bagmati-pilgrimage {
+    height: auto;
+    grid-template-columns: 1fr;
+  }
+  .bagmati-pilgrimage__inner {
+    padding: 56px 32px;
+  }
+  .bagmati-pilgrimage__media {
+    height: 320px;
+  }
+}
+
+@media (max-width: 640px) {
+  .bagmati-pilgrimage__inner {
+    padding: 48px 20px;
+    gap: 28px;
+  }
+  .bagmati-pilgrimage__sites {
+    gap: 8px;
+  }
+}

@@ -1,0 +1,11 @@
+/* Cards step upwards left → right, echoing the climb */
+.lt-zones { list-style: none; margin: 56px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; align-items: end; }
+.lt-zone { margin-bottom: calc(var(--step, 0) * 36px); background: var(--lt-white); border-radius: var(--lt-radius); overflow: hidden; box-shadow: var(--lt-shadow); }
+.lt-zone__media { position: relative; aspect-ratio: 4 / 5; overflow: hidden; }
+.lt-zone__body { padding: 20px 22px 24px; border-top: 3px solid var(--lt-teal); }
+.lt-zone:nth-child(4) .lt-zone__body { border-top-color: var(--lt-gold); }
+.lt-zone__band { font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; color: var(--lt-teal-ink); }
+.lt-zone__title { margin: 6px 0 0; font-family: var(--lt-serif); font-size: 1.22rem; color: var(--lt-blue); }
+.lt-zone__text { margin: 8px 0 0; font-size: 0.92rem; line-height: 1.6; color: var(--lt-ink-soft); }
+@media (max-width: 1024px) { .lt-zones { grid-template-columns: repeat(2, minmax(0, 1fr)); } .lt-zone { margin-bottom: 0; } .lt-zone__media { aspect-ratio: 16 / 10; } }
+@media (max-width: 640px) { .lt-zones { grid-template-columns: 1fr; } }

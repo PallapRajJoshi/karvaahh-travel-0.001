@@ -1,0 +1,78 @@
+/* Shared aerial comparison — self-contained tokens so it works on
+   any of the four aerial pages without depending on page scope. */
+.aerial-cmp {
+  --ac-ink: #0d1d16;
+  --ac-muted: #56645c;
+  --ac-line: #e3ded2;
+  --ac-gold: #b8954e;
+  --ac-highlight: #fbf3e4;
+  background: #fff;
+  padding: clamp(3.5rem, 7vw, 6rem) 1.25rem;
+  color: var(--ac-ink);
+}
+.aerial-cmp__inner { max-width: 1140px; margin: 0 auto; }
+.aerial-cmp__title {
+  font-family: var(--font-playfair, "Playfair Display"), Georgia, serif;
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 0.75rem;
+}
+.aerial-cmp__lede { color: var(--ac-muted); max-width: 60ch; margin: 0 0 2rem; line-height: 1.6; }
+
+.aerial-cmp__scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--ac-line);
+  border-radius: 14px;
+}
+.aerial-cmp__scroll:focus-visible { outline: 2px solid var(--ac-gold); outline-offset: 3px; }
+
+.aerial-cmp__table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.aerial-cmp__table th,
+.aerial-cmp__table td {
+  padding: 0.95rem 1.1rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--ac-line);
+}
+.aerial-cmp__table tbody tr:last-child > * { border-bottom: 0; }
+
+.aerial-cmp__col {
+  font-family: var(--font-playfair, "Playfair Display"), Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  vertical-align: bottom !important;
+}
+.aerial-cmp__link { color: inherit; text-decoration: underline; text-decoration-color: var(--ac-line); text-underline-offset: 4px; }
+.aerial-cmp__link:hover { text-decoration-color: var(--ac-gold); }
+.aerial-cmp__link:focus-visible { outline: 2px solid var(--ac-gold); outline-offset: 2px; border-radius: 2px; }
+
+.aerial-cmp__rowhead {
+  position: sticky;
+  left: 0;
+  background: #fff;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--ac-muted);
+  white-space: nowrap;
+}
+.aerial-cmp__corner { position: sticky; left: 0; background: #fff; }
+
+.aerial-cmp__table .is-current { background: var(--ac-highlight); }
+.aerial-cmp__here {
+  display: block;
+  font-family: var(--font-inter, Inter), system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ac-gold);
+  margin-bottom: 0.25rem;
+}
+
+.aerial-cmp__hint { display: none; font-size: 0.8rem; color: var(--ac-muted); margin: 0.6rem 0 0; }
+@media (max-width: 760px) { .aerial-cmp__hint { display: block; } }

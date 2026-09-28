@@ -1,0 +1,291 @@
+/* Altitude profile */
+.km-alt {
+  margin: 0;
+  padding: clamp(1rem, 3vw, 2rem);
+  border: 1px solid var(--km-line);
+  border-radius: var(--km-radius-l);
+  background: var(--km-paper);
+}
+
+.km-alt__scroll {
+  overflow-x: auto;
+}
+
+.km-alt__svg {
+  display: block;
+  width: 100%;
+  min-width: 640px;
+  height: auto;
+}
+
+.km-alt__grid line {
+  stroke: var(--km-line);
+  stroke-dasharray: 2 4;
+}
+
+.km-alt__grid text {
+  font: 500 11px var(--km-font-body);
+  fill: var(--km-slate);
+}
+
+.km-alt__base {
+  stroke: var(--km-mist);
+}
+
+.km-alt__area {
+  fill: url(#km-alt-fill);
+}
+
+.km-alt__dashed {
+  fill: none;
+  stroke: var(--km-lake);
+  stroke-width: 2;
+  stroke-dasharray: 4 6;
+}
+
+.km-alt__note {
+  font: italic 12px var(--km-font-display);
+  fill: var(--km-slate);
+}
+
+.km-alt__line {
+  fill: none;
+  stroke: var(--km-lake);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1.6s var(--km-ease);
+}
+
+.km-js .km-alt:not([data-revealed]) .km-alt__draw {
+  stroke-dashoffset: 1;
+}
+
+.km-alt__pt circle {
+  fill: var(--km-paper);
+  stroke: var(--km-lake);
+  stroke-width: 2;
+}
+
+.km-alt__pt.is-high circle {
+  fill: var(--km-gold);
+  stroke: var(--km-gold-deep);
+}
+
+.km-alt__value {
+  font: 600 12px var(--km-font-body);
+  fill: var(--km-ink);
+}
+
+.km-alt__pt.is-high .km-alt__value {
+  fill: var(--km-gold-deep);
+  font-size: 13px;
+}
+
+.km-alt__place {
+  font: 500 12px var(--km-font-body);
+  fill: var(--km-slate);
+}
+
+.km-alt__band {
+  font: 600 11px var(--km-font-body);
+  fill: var(--km-gold-deep);
+}
+
+.km-alt__band-line {
+  stroke: var(--km-gold);
+  stroke-width: 1.5;
+}
+
+.km-alt__caption {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--km-slate);
+}
+
+.km-prep__warning {
+  margin-top: 1.5rem;
+}
+
+/* Blocks */
+.km-prep__grid {
+  display: grid;
+  gap: 3rem;
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+}
+
+.km-prep__grid--lower {
+  gap: 1.5rem;
+}
+
+.km-prep__title {
+  font-family: var(--km-font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--km-ink);
+}
+
+.km-prep__text {
+  margin-top: 0.85rem;
+  color: var(--km-slate);
+}
+
+.km-prep__text strong {
+  color: var(--km-ink);
+}
+
+.km-prep__small {
+  font-size: 0.925rem;
+}
+
+/* Categorical difficulty scale: no numeric score */
+.km-scale {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4px;
+  margin-top: 1.25rem;
+}
+
+.km-scale__step {
+  display: flex;
+  align-items: flex-end;
+  min-height: 4.25rem;
+  padding: 0.55rem 0.6rem;
+  border-radius: var(--km-radius-s);
+  background: var(--km-line);
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--km-slate);
+}
+
+.km-scale__step.is-below {
+  background: #c9d6de;
+}
+
+.km-scale__step.is-current {
+  background: var(--km-ink);
+  color: #fff;
+  box-shadow: inset 0 3px 0 var(--km-gold);
+}
+
+.km-factors {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.km-factor {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.km-factor__icon {
+  width: 1.35rem;
+  height: 1.35rem;
+  margin-top: 0.15rem;
+  color: var(--km-lake-text);
+}
+
+.km-factor__title {
+  font-weight: 600;
+  font-size: 0.975rem;
+  color: var(--km-ink);
+}
+
+.km-factor__text {
+  font-size: 0.925rem;
+  color: var(--km-slate);
+}
+
+.km-checklist {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 1.25rem;
+}
+
+.km-checklist li {
+  display: flex;
+  gap: 0.65rem;
+  color: var(--km-charcoal);
+}
+
+.km-checklist__icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.25rem;
+  color: var(--km-lake-text);
+}
+
+.km-bullets {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.km-bullets li {
+  position: relative;
+  padding-left: 1.1rem;
+  color: var(--km-charcoal);
+}
+
+.km-bullets li::before {
+  content: "";
+  position: absolute;
+  top: 0.65em;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--km-gold);
+}
+
+.km-prep__panel {
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border: 1px solid var(--km-line);
+  border-radius: var(--km-radius-l);
+  background: var(--km-paper);
+}
+
+.km-prep__panel-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.km-prep__panel-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: var(--km-lake-text);
+}
+
+.km-prep__remote {
+  margin-top: 1.5rem;
+}
+
+.km-prep__consult {
+  margin-top: 1.25rem;
+  padding: 0.9rem 1rem;
+  border-left: 3px solid var(--km-gold);
+  background: var(--km-gold-soft);
+  font-weight: 600;
+  color: var(--km-ink);
+}
+
+@media (min-width: 900px) {
+  .km-factors {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem 1.5rem;
+  }
+
+  .km-prep__grid {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    gap: 4rem;
+  }
+
+  .km-prep__grid--lower {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}

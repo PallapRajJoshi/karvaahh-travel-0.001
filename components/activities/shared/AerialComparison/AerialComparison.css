@@ -1,0 +1,26 @@
+.aerial-cmp {
+  --ac-navy: var(--sky-navy, #0b1b2b);
+  --ac-gold: var(--sky-gold-deep, #b8954e);
+  --ac-muted: var(--sky-muted, #56636f);
+  --ac-line: var(--sky-line, rgba(11, 27, 43, 0.12));
+  --ac-bg: var(--sky-cream, #f7f5ef);
+  --ac-serif: var(--sky-serif, "Playfair Display", Georgia, serif);
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+.aerial-cmp__inner { max-width: 1200px; margin-inline: auto; padding-inline: clamp(1.25rem, 4vw, 2.5rem); }
+.aerial-cmp__head { max-width: 46rem; margin-bottom: clamp(1.75rem, 3vw, 2.5rem); }
+.aerial-cmp__title { margin: 0; font-family: var(--ac-serif); font-weight: 600; font-size: clamp(1.9rem, 1.3rem + 2.4vw, 3rem); line-height: 1.12; color: var(--ac-navy); }
+.aerial-cmp__intro { margin: 1rem 0 0; line-height: 1.65; color: var(--ac-muted); }
+.aerial-cmp__scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--ac-line); border-radius: 10px; background: #fff; }
+.aerial-cmp__scroll:focus-visible { outline: 2px solid var(--ac-gold); outline-offset: 3px; }
+.aerial-cmp__table { width: 100%; min-width: 720px; border-collapse: collapse; font-size: 0.95rem; }
+.aerial-cmp__table th,
+.aerial-cmp__table td { padding: 0.95rem 1.1rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--ac-line); }
+.aerial-cmp__table thead th { font-family: var(--ac-serif); font-size: 1.05rem; font-weight: 600; color: var(--ac-navy); background: var(--ac-bg); }
+.aerial-cmp__table thead td { background: var(--ac-bg); }
+.aerial-cmp__table tbody th { width: 9rem; font-weight: 600; font-size: 0.85rem; color: var(--ac-muted); white-space: nowrap; }
+.aerial-cmp__table tr:last-child > * { border-bottom: 0; }
+.aerial-cmp__foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 1rem; }
+.aerial-cmp__note { margin: 0; font-size: 0.9rem; color: var(--ac-muted); }
+.aerial-cmp__links { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
+.aerial-cmp__links a { color: var(--ac-navy); font-weight: 600; text-underline-offset: 4px; text-decoration-color: var(--ac-gold); }

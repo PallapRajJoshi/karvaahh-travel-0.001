@@ -1,0 +1,106 @@
+.madhesh-culture {
+  height: var(--madhesh-section-h);
+  min-height: 560px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--madhesh-green-900);
+  color: var(--madhesh-cream);
+}
+
+.madhesh-culture__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.3rem;
+  padding: clamp(2rem, 4vw, 5rem);
+  overflow-y: auto;
+  order: 1;
+}
+
+.madhesh-culture__media {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  order: 2;
+}
+
+.madhesh-culture__image {
+  object-fit: cover;
+}
+
+.madhesh-culture__title {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 3.6vw, 3.4rem);
+  line-height: 1.08;
+  margin: 0;
+}
+
+.madhesh-culture__desc {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgba(247, 245, 239, 0.75);
+  max-width: 48ch;
+  margin: 0;
+}
+
+.madhesh-culture__highlights {
+  display: flex;
+  gap: 1.8rem;
+  padding: 1.2rem 0;
+  border-top: 1px solid var(--madhesh-border-on-dark);
+  border-bottom: 1px solid var(--madhesh-border-on-dark);
+}
+
+.madhesh-culture__highlight {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.madhesh-culture__highlight-number {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--madhesh-gold);
+  font-size: 1.1rem;
+}
+
+.madhesh-culture__highlight-title {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+}
+
+.madhesh-culture__tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.6rem;
+}
+
+.madhesh-culture__tags li {
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  color: rgba(247, 245, 239, 0.8);
+  border: 1px solid var(--madhesh-border-on-dark);
+  padding: 0.3rem 0.7rem;
+  border-radius: 100px;
+}
+
+@media (max-width: 900px) {
+  .madhesh-culture {
+    height: auto;
+    grid-template-columns: 1fr;
+  }
+  .madhesh-culture__content {
+    order: 2;
+    padding: 2rem 1.25rem 3rem;
+  }
+  .madhesh-culture__media {
+    order: 1;
+    height: 55vh;
+  }
+}

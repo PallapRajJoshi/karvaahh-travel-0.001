@@ -1,0 +1,103 @@
+@import "../karnali-tokens.css";
+
+.karnali-adventure {
+  position: relative;
+  height: var(--k-section-desktop-h);
+  min-height: 560px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--k-charcoal);
+  overflow: hidden;
+}
+
+.karnali-adventure-visual {
+  position: relative;
+}
+
+.karnali-adventure-image {
+  object-fit: cover;
+}
+
+.karnali-adventure-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 4vw, 4.5rem);
+  overflow-y: auto;
+}
+
+.karnali-adventure-title {
+  font-family: var(--k-font-serif);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 3.6vw, 3.6rem);
+  line-height: 1.05;
+  color: var(--k-cream);
+  margin: 1rem 0 1.25rem;
+}
+
+.karnali-adventure-title em {
+  color: var(--k-gold);
+  font-style: italic;
+}
+
+.karnali-adventure-description {
+  font-family: var(--k-font-sans);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: rgba(247, 245, 239, 0.75);
+  max-width: 48ch;
+  margin: 0 0 1.75rem;
+}
+
+.karnali-adventure-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+}
+
+.karnali-adventure-list-item {
+  font-family: var(--k-font-sans);
+  font-size: 0.85rem;
+  color: var(--k-cream);
+  padding-left: 1.1rem;
+  position: relative;
+}
+
+.karnali-adventure-list-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 1px;
+  background: var(--k-gold);
+}
+
+.karnali-adventure-tag {
+  font-family: var(--k-font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  color: var(--k-gold);
+  border-top: 1px solid var(--k-line);
+  padding-top: 1.25rem;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .karnali-adventure {
+    height: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .karnali-adventure-visual {
+    height: 60vh;
+  }
+
+  .karnali-adventure-list {
+    grid-template-columns: 1fr;
+  }
+}

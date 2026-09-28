@@ -1,0 +1,151 @@
+.sp-adventure {
+  background: var(--sp-forest-800);
+  color: var(--sp-cream);
+  height: var(--sp-section-height);
+  min-height: 640px;
+  overflow: hidden;
+}
+
+.sp-adventure__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+}
+
+.sp-adventure__media {
+  position: relative;
+}
+
+.sp-adventure__image {
+  object-fit: cover;
+}
+
+.sp-adventure__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: 2.5rem;
+  overflow-y: auto;
+}
+
+.sp-adventure__index {
+  position: absolute;
+  top: 1rem;
+  right: clamp(1.25rem, 4vw, 3.5rem);
+  font-family: var(--sp-font-display);
+  font-size: 4rem;
+  color: rgba(201, 164, 92, 0.14);
+}
+
+.sp-adventure__eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sp-gold);
+  margin: 0 0 0.9rem;
+}
+
+.sp-adventure__title {
+  font-family: var(--sp-font-display);
+  font-weight: 600;
+  font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+  line-height: 1.1;
+  margin: 0 0 1.1rem;
+}
+
+.sp-adventure__title-line {
+  display: block;
+  font-style: italic;
+  color: var(--sp-gold);
+}
+
+.sp-adventure__desc {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: rgba(247, 245, 239, 0.78);
+  max-width: 48ch;
+  margin: 0 0 1.75rem;
+}
+
+.sp-adventure__activities {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem 1.25rem;
+  border-top: 1px solid rgba(247, 245, 239, 0.15);
+  padding-top: 1.25rem;
+}
+
+.sp-adventure__activities li {
+  font-size: 0.85rem;
+  color: rgba(247, 245, 239, 0.85);
+  position: relative;
+  padding-left: 1rem;
+}
+
+.sp-adventure__activities li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 6px;
+  height: 1px;
+  background: var(--sp-gold);
+}
+
+.sp-adventure__waterways {
+  border-top: 1px solid rgba(247, 245, 239, 0.15);
+  padding-top: 1.25rem;
+}
+
+.sp-adventure__waterways-label {
+  font-family: var(--sp-font-display);
+  font-style: italic;
+  color: var(--sp-blue);
+  font-size: 1rem;
+  margin: 0 0 0.6rem;
+}
+
+.sp-adventure__waterways ul {
+  list-style: none;
+  margin: 0 0 0.6rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.sp-adventure__waterways li {
+  font-size: 0.8rem;
+  color: rgba(247, 245, 239, 0.7);
+}
+
+.sp-adventure__waterways-note {
+  font-size: 0.75rem;
+  color: rgba(247, 245, 239, 0.5);
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .sp-adventure {
+    height: auto;
+    min-height: 0;
+  }
+
+  .sp-adventure__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sp-adventure__media {
+    height: 46vh;
+    min-height: 320px;
+  }
+
+  .sp-adventure__content {
+    padding-block: 2.5rem;
+    overflow-y: visible;
+  }
+}

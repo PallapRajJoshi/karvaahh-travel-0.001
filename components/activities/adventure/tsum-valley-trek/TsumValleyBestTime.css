@@ -1,0 +1,155 @@
+.tsum-season {
+  --season-spring: #5b9a6a;
+  --season-autumn: var(--tsum-gold);
+  --season-winter: #7ea3c4;
+  --season-monsoon: #5c6f82;
+}
+
+.tsum-season__months {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 4px;
+  margin: 0 0 28px;
+  padding: 0;
+  list-style: none;
+}
+
+.tsum-season__month {
+  display: grid;
+  place-items: center;
+  height: 36px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--tsum-white);
+}
+
+.tsum-season__month--spring { background: var(--season-spring); }
+.tsum-season__month--autumn { background: var(--season-autumn); color: var(--tsum-blue-deep); }
+.tsum-season__month--winter { background: var(--season-winter); }
+.tsum-season__month--monsoon { background: var(--season-monsoon); }
+
+.tsum-season__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(14px, 1.8vw, 22px);
+}
+
+.tsum-season__card {
+  --accent: var(--tsum-teal);
+  display: flex;
+  flex-direction: column;
+  padding: 26px 24px 28px;
+  border-radius: var(--tsum-radius);
+  background: var(--tsum-white);
+  border-top: 4px solid var(--accent);
+  box-shadow: 0 1px 0 var(--tsum-line);
+}
+
+.tsum-season__card--spring { --accent: var(--season-spring); }
+.tsum-season__card--autumn { --accent: var(--season-autumn); }
+.tsum-season__card--winter { --accent: var(--season-winter); }
+.tsum-season__card--monsoon { --accent: var(--season-monsoon); }
+
+.tsum-season__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.tsum-season__icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+.tsum-season__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.tsum-season__badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tsum-season__badge--recommended { background: var(--tsum-teal-soft); color: var(--tsum-teal); }
+.tsum-season__badge--good { background: var(--tsum-gold-soft); color: #8a6420; }
+.tsum-season__badge--challenging { background: #eef0f3; color: var(--tsum-muted); }
+
+.tsum-season__name {
+  font-size: 1.55rem;
+}
+
+.tsum-season__months-label {
+  margin-top: 2px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--tsum-muted);
+}
+
+.tsum-season__verdict {
+  margin-top: 14px;
+  font-family: var(--tsum-font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--tsum-blue);
+}
+
+.tsum-season__points {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  font-size: 0.9rem;
+  color: #3a424b;
+}
+
+.tsum-season__points li + li {
+  margin-top: 6px;
+}
+
+.tsum-season__points li::marker {
+  color: var(--accent);
+}
+
+.tsum-season__note {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-top: 28px;
+  font-size: 0.9rem;
+  color: var(--tsum-muted);
+}
+
+.tsum-season__note svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--tsum-teal);
+}
+
+@media (max-width: 1024px) {
+  .tsum-season__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .tsum-season__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tsum-season__month {
+    height: 30px;
+    font-size: 0.7rem;
+  }
+}

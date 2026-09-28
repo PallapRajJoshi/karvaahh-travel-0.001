@@ -1,0 +1,723 @@
+/* =========================================================
+   KOSHI TEA HILLS
+   FULL VIEWPORT BELOW TOP AREA
+========================================================= */
+
+.koshi-tea {
+  position: relative;
+  isolation: isolate;
+
+  display: grid;
+
+  /*
+    Slightly wider image creates a more editorial composition.
+  */
+  grid-template-columns: 1.08fr 0.92fr;
+
+  width: 100%;
+
+  height: calc(100svh - 170px);
+  min-height: 0;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+
+  background: #f7f5ef;
+
+  border-bottom: 1px solid rgba(24, 35, 30, 0.14);
+}
+
+
+/* =========================================================
+   LEFT IMAGE
+========================================================= */
+
+.koshi-tea__visual {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  min-width: 0;
+  min-height: 0;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+
+  background: #31483a;
+}
+
+.koshi-tea__image {
+  position: absolute !important;
+
+  inset: 0 !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  object-fit: cover;
+
+  object-position: center;
+
+  transform: scale(1.02);
+
+  transition:
+    transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.koshi-tea:hover .koshi-tea__image {
+  transform: scale(1.055);
+}
+
+
+/* =========================================================
+   IMAGE SHADE
+========================================================= */
+
+.koshi-tea__image-shade {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(8, 20, 13, 0.08) 0%,
+      rgba(8, 20, 13, 0.02) 42%,
+      rgba(8, 20, 13, 0.68) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(8, 20, 13, 0.02),
+      rgba(8, 20, 13, 0.22)
+    );
+}
+
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.koshi-tea__location {
+  position: absolute;
+
+  top: 32px;
+  left: 40px;
+
+  z-index: 3;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 13px;
+
+  color: #fff;
+}
+
+.koshi-tea__location-line {
+  width: 32px;
+  height: 1px;
+
+  margin-top: 6px;
+
+  flex-shrink: 0;
+
+  background: #c9a45c;
+}
+
+.koshi-tea__location-title {
+  display: block;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.27em;
+
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.koshi-tea__location p {
+  margin: 5px 0 0;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 10px;
+
+  color: rgba(255, 255, 255, 0.55);
+}
+
+
+/* =========================================================
+   SECTION NUMBER
+========================================================= */
+
+.koshi-tea__section-number {
+  position: absolute;
+
+  top: 26px;
+  right: 35px;
+
+  z-index: 3;
+
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: 62px;
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  color: rgba(255, 255, 255, 0.23);
+}
+
+
+/* =========================================================
+   IMAGE CAPTION
+========================================================= */
+
+.koshi-tea__caption {
+  position: absolute;
+
+  left: 40px;
+  right: 40px;
+  bottom: 24px;
+
+  z-index: 3;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  padding-top: 11px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.23);
+}
+
+.koshi-tea__caption span {
+  font-family: "Inter", sans-serif;
+
+  font-size: 8px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.2em;
+
+  color: rgba(255, 255, 255, 0.52);
+}
+
+
+/* =========================================================
+   RIGHT CONTENT
+========================================================= */
+
+.koshi-tea__copy {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  min-width: 0;
+  min-height: 0;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+
+  padding: 35px 65px;
+
+  background:
+    radial-gradient(
+      circle at 100% 100%,
+      rgba(184, 149, 78, 0.07),
+      transparent 38%
+    ),
+    #f7f5ef;
+}
+
+
+/* Divider */
+
+.koshi-tea__copy::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 1px;
+  height: 100%;
+
+  background: rgba(24, 35, 30, 0.1);
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.koshi-tea__content {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+  max-width: 610px;
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.koshi-tea__eyebrow {
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  margin-bottom: 18px;
+}
+
+.koshi-tea__eyebrow > span {
+  width: 30px;
+  height: 1px;
+
+  flex-shrink: 0;
+
+  background: #b8954e;
+}
+
+.koshi-tea__eyebrow p {
+  margin: 0;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.3em;
+
+  color: #927238;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.koshi-tea__content h2 {
+  margin: 0;
+
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: clamp(44px, 4vw, 68px);
+
+  font-weight: 400;
+
+  line-height: 0.94;
+
+  letter-spacing: -0.055em;
+
+  color: #17241d;
+}
+
+.koshi-tea__content h2 em {
+  font-weight: 400;
+
+  font-style: italic;
+
+  color: #737963;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.koshi-tea__description {
+  max-width: 560px;
+
+  margin: 20px 0 27px;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 400;
+
+  line-height: 1.7;
+
+  color: rgba(24, 35, 30, 0.58);
+}
+
+
+/* =========================================================
+   PLACES
+========================================================= */
+
+.koshi-tea__places {
+  margin-bottom: 25px;
+}
+
+.koshi-tea__places-label {
+  display: block;
+
+  margin-bottom: 10px;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.25em;
+
+  color: rgba(24, 35, 30, 0.38);
+}
+
+
+/* =========================================================
+   TAGS
+========================================================= */
+
+.koshi-tea__tags {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+}
+
+.koshi-tea__tag {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 8px 12px;
+
+  border: 1px solid rgba(24, 35, 30, 0.14);
+
+  background: rgba(255, 255, 255, 0.38);
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 500;
+
+  color: #25332b;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.koshi-tea__tag small {
+  font-size: 7px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  color: #b8954e;
+}
+
+.koshi-tea__tag:hover {
+  border-color: #b8954e;
+
+  background: #b8954e;
+
+  color: #fff;
+
+  transform: translateY(-2px);
+}
+
+.koshi-tea__tag:hover small {
+  color: #fff;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.koshi-tea__button {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 25px;
+
+  min-width: 215px;
+
+  padding: 10px 11px 10px 17px;
+
+  box-sizing: border-box;
+
+  border: 1px solid rgba(24, 35, 30, 0.3);
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 9px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.08em;
+
+  text-decoration: none;
+
+  color: #18231e;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.koshi-tea__button-arrow {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 27px;
+  height: 27px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #b8954e;
+
+  color: #fff;
+
+  transition: transform 0.3s ease;
+}
+
+.koshi-tea__button:hover {
+  border-color: #b8954e;
+
+  background: #b8954e;
+
+  color: #fff;
+}
+
+.koshi-tea__button:hover
+.koshi-tea__button-arrow {
+  background: #18231e;
+
+  transform: translate(2px, -2px);
+}
+
+
+/* =========================================================
+   VERTICAL LABEL
+========================================================= */
+
+.koshi-tea__vertical-text {
+  position: absolute;
+
+  right: 17px;
+  bottom: 42px;
+
+  z-index: 2;
+
+  writing-mode: vertical-rl;
+
+  transform: rotate(180deg);
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 7px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.3em;
+
+  color: rgba(24, 35, 30, 0.14);
+}
+
+
+/* =========================================================
+   SMALL DESKTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .koshi-tea {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .koshi-tea__copy {
+    padding: 30px 45px;
+  }
+
+  .koshi-tea__content h2 {
+    font-size: clamp(42px, 5vw, 60px);
+  }
+
+  .koshi-tea__description {
+    margin-top: 17px;
+    margin-bottom: 22px;
+  }
+
+  .koshi-tea__places {
+    margin-bottom: 21px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .koshi-tea {
+    display: flex;
+
+    flex-direction: column;
+
+    height: auto;
+
+    min-height: 0;
+  }
+
+  .koshi-tea__visual {
+    height: 55svh;
+
+    min-height: 400px;
+  }
+
+  .koshi-tea__copy {
+    height: auto;
+
+    min-height: 0;
+
+    padding: 65px 40px 70px;
+  }
+
+  .koshi-tea__vertical-text {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .koshi-tea__visual {
+    height: 48svh;
+
+    min-height: 340px;
+  }
+
+  .koshi-tea__location {
+    top: 23px;
+    left: 22px;
+  }
+
+  .koshi-tea__location-title {
+    font-size: 8px;
+  }
+
+  .koshi-tea__location p {
+    font-size: 9px;
+  }
+
+  .koshi-tea__section-number {
+    top: 21px;
+    right: 22px;
+
+    font-size: 47px;
+  }
+
+  .koshi-tea__caption {
+    left: 22px;
+    right: 22px;
+
+    bottom: 20px;
+  }
+
+  .koshi-tea__caption span {
+    font-size: 7px;
+  }
+
+  .koshi-tea__copy {
+    padding: 58px 22px 65px;
+  }
+
+  .koshi-tea__content h2 {
+    font-size: clamp(42px, 13.5vw, 58px);
+
+    line-height: 0.96;
+  }
+
+  .koshi-tea__description {
+    font-size: 12px;
+
+    line-height: 1.7;
+  }
+
+  .koshi-tea__tags {
+    gap: 6px;
+  }
+
+  .koshi-tea__tag {
+    padding: 7px 10px;
+
+    font-size: 9px;
+  }
+
+  .koshi-tea__button {
+    width: 100%;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .koshi-tea__image,
+  .koshi-tea__tag,
+  .koshi-tea__button,
+  .koshi-tea__button-arrow {
+    transition: none;
+  }
+
+  .koshi-tea:hover .koshi-tea__image {
+    transform: none;
+  }
+}

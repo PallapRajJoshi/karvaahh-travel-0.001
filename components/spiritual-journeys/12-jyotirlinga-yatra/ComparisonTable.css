@@ -1,0 +1,131 @@
+.jyl-compare {
+  background: var(--jyl-ivory);
+}
+
+.jyl-compare__scroll {
+  overflow-x: auto;
+  border-radius: var(--jyl-radius);
+  border: 1px solid var(--jyl-stone);
+  background: var(--jyl-white);
+}
+
+.jyl-compare__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.925rem;
+}
+
+.jyl-compare__table thead th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--jyl-muted);
+  padding: 1rem 1.1rem;
+  background: var(--jyl-stone-2);
+  white-space: nowrap;
+}
+
+.jyl-compare__table td,
+.jyl-compare__table tbody th {
+  padding: 0.95rem 1.1rem;
+  border-top: 1px solid var(--jyl-stone-2);
+  text-align: left;
+  vertical-align: top;
+}
+
+.jyl-compare__table tbody tr:hover {
+  background: #fbf9f4;
+}
+
+.jyl-compare__num {
+  font-family: var(--jyl-serif);
+  color: var(--jyl-gold);
+  width: 3rem;
+}
+
+.jyl-compare__name {
+  font-family: var(--jyl-serif);
+  font-weight: 500;
+  font-size: 1.05rem;
+}
+
+.jyl-compare__name a {
+  color: var(--jyl-charcoal);
+  text-decoration: none;
+}
+
+.jyl-compare__name a:hover {
+  color: var(--jyl-indigo);
+  text-decoration: underline;
+  text-decoration-color: var(--jyl-gold);
+}
+
+/* Mobile: same markup reflows into cards */
+@media (max-width: 720px) {
+  .jyl-compare__scroll {
+    border: 0;
+    background: transparent;
+    overflow: visible;
+  }
+
+  .jyl-compare__table,
+  .jyl-compare__table tbody,
+  .jyl-compare__table tr,
+  .jyl-compare__table td,
+  .jyl-compare__table tbody th {
+    display: block;
+  }
+
+  .jyl-compare__table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .jyl-compare__table tbody {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .jyl-compare__table tr {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 0.75rem;
+    background: var(--jyl-white);
+    border: 1px solid var(--jyl-stone);
+    border-radius: var(--jyl-radius);
+    padding: 1rem 1.1rem;
+  }
+
+  .jyl-compare__table td,
+  .jyl-compare__table tbody th {
+    border: 0;
+    padding: 0.2rem 0;
+  }
+
+  .jyl-compare__num {
+    grid-row: 1;
+    width: auto;
+    font-size: 1.1rem;
+  }
+
+  .jyl-compare__name {
+    grid-row: 1;
+    font-size: 1.2rem;
+  }
+
+  .jyl-compare__table td:not(.jyl-compare__num) {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .jyl-compare__table td:not(.jyl-compare__num)::before {
+    content: attr(data-label);
+    color: var(--jyl-muted);
+  }
+}

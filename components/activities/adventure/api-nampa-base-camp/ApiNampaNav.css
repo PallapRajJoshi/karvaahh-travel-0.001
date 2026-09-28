@@ -1,0 +1,140 @@
+/* Breadcrumb + sticky section nav */
+
+.an-crumbs {
+  background: var(--an-ivory);
+  border-bottom: 1px solid var(--an-line);
+}
+
+.an-crumbs__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  padding-block: 14px;
+  font-size: 0.8125rem;
+  color: var(--an-muted);
+}
+
+.an-crumbs__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.an-crumbs__item a {
+  text-decoration: none;
+  color: var(--an-muted);
+  padding: 4px 2px;
+  transition: color 0.2s;
+}
+
+.an-crumbs__item a:hover {
+  color: var(--an-blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.an-crumbs__item [aria-current="page"] {
+  color: var(--an-blue);
+  font-weight: 600;
+}
+
+.an-crumbs__sep {
+  width: 14px;
+  height: 14px;
+  color: var(--an-gold);
+}
+
+/* ---------- Subnav ---------- */
+
+.an-subnav {
+  position: sticky;
+  /* If the global navbar is sticky, set --karvaahh-nav-offset on :root to its height. */
+  top: var(--karvaahh-nav-offset, 0px);
+  z-index: 40;
+  background: rgba(248, 246, 240, 0.9);
+  backdrop-filter: saturate(1.4) blur(12px);
+  border-bottom: 1px solid var(--an-line);
+}
+
+.an-subnav__inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: var(--an-subnav-h);
+}
+
+.an-subnav__list {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  mask-image: linear-gradient(90deg, #000 88%, transparent);
+}
+
+.an-subnav__list::-webkit-scrollbar {
+  display: none;
+}
+
+.an-subnav__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: var(--an-subnav-h);
+  padding-inline: 12px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+  text-decoration: none;
+  color: var(--an-muted);
+  transition: color 0.2s;
+}
+
+.an-subnav__link::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: -1px;
+  height: 2px;
+  background: var(--an-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--an-ease);
+}
+
+.an-subnav__link:hover,
+.an-subnav__link.is-active {
+  color: var(--an-blue);
+}
+
+.an-subnav__link.is-active::after {
+  transform: scaleX(1);
+}
+
+.an-subnav__cta {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--an-blue);
+  color: var(--an-white);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.an-subnav__cta:hover {
+  background: var(--an-blue-deep);
+}
+
+@media (max-width: 560px) {
+  .an-subnav__cta {
+    padding-inline: 14px;
+  }
+}

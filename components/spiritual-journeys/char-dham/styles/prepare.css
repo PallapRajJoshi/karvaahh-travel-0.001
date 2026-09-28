@@ -1,0 +1,168 @@
+/* ---- Kedarnath transport ------------------------------------------- */
+
+.cd-kedar__grid { display: grid; gap: 1.25rem; }
+@media (min-width: 640px) { .cd-kedar__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1100px) { .cd-kedar__grid { grid-template-columns: repeat(4, 1fr); } }
+
+.cd-kedar__card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: var(--cd-radius);
+  border-top: 3px solid var(--cd-tone);
+}
+.cd-kedar__card h3 { font-family: var(--cd-serif); font-size: 1.35rem; font-weight: 600; color: var(--cd-night); }
+.cd-kedar__card > p { margin-top: 0.6rem; font-size: 0.95rem; color: var(--cd-muted); }
+.cd-kedar__depends { margin-top: 1.25rem !important; margin-bottom: 0.5rem; font-size: 0.78rem !important; font-weight: 600; color: var(--cd-night) !important; }
+
+/* ---- Registration --------------------------------------------------- */
+
+.cd-registration__grid { display: grid; gap: 1rem; }
+@media (min-width: 1024px) { .cd-registration__grid { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr); gap: 4rem; } }
+.cd-registration__list { display: grid; gap: 0; border-top: 1px solid var(--cd-line-strong); }
+.cd-registration__list li { padding-block: 1.25rem; border-bottom: 1px solid var(--cd-line); }
+.cd-registration__list h3 { font-size: 1.1rem; font-weight: 600; color: var(--cd-night); }
+.cd-registration__list p { margin-top: 0.3rem; color: var(--cd-muted); }
+
+/* ---- Altitude + difficulty ----------------------------------------- */
+
+.cd-altitude__grid { display: grid; gap: 2rem; }
+@media (min-width: 1024px) { .cd-altitude__grid { grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 3rem; align-items: start; } }
+
+.cd-altitude__conditions { display: grid; gap: 1.5rem 2rem; }
+@media (min-width: 640px) { .cd-altitude__conditions { grid-template-columns: repeat(2, 1fr); } }
+.cd-altitude__conditions li { padding-top: 1rem; border-top: 2px solid var(--cd-night); }
+.cd-altitude__conditions h3 { font-size: 1.05rem; font-weight: 700; color: var(--cd-night); }
+.cd-altitude__conditions p { margin-top: 0.3rem; font-size: 0.95rem; color: var(--cd-muted); }
+
+.cd-altitude__recs { padding: 1.75rem; background: #fff; border-radius: var(--cd-radius-lg); border: 1px solid var(--cd-line); }
+.cd-altitude__recs h3 { font-family: var(--cd-serif); font-size: 1.35rem; font-weight: 600; color: var(--cd-night); margin-bottom: 0.75rem; }
+
+.cd-difficulty {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  background: var(--cd-night);
+  color: var(--cd-snow);
+  border-radius: var(--cd-radius-lg);
+}
+@media (min-width: 1024px) { .cd-difficulty { grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: 3rem; } }
+.cd-difficulty__head h3 { font-family: var(--cd-serif); font-size: clamp(1.4rem, 1.1rem + 1vw, 1.9rem); font-weight: 600; line-height: 1.2; }
+.cd-difficulty__head p { margin-top: 0.75rem; color: rgba(248, 249, 247, 0.8); }
+.cd-difficulty__factors { display: grid; gap: 1rem 1.5rem; }
+@media (min-width: 560px) { .cd-difficulty__factors { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1200px) { .cd-difficulty__factors { grid-template-columns: repeat(3, 1fr); } }
+.cd-difficulty__factors li { display: grid; gap: 0.2rem; padding-left: 0.9rem; border-left: 2px solid var(--cd-gold); }
+.cd-difficulty__factors strong { font-weight: 600; }
+.cd-difficulty__factors span { font-size: 0.9rem; color: rgba(248, 249, 247, 0.75); }
+
+/* ---- Weather tabs --------------------------------------------------- */
+
+.cd-seasons__tabs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+@media (min-width: 768px) { .cd-seasons__tabs { grid-template-columns: repeat(4, 1fr); } }
+
+.cd-seasons__tab {
+  display: grid;
+  gap: 0.15rem;
+  min-height: 64px;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font: inherit;
+  color: var(--cd-muted);
+  background: #fff;
+  border: 1px solid var(--cd-line);
+  border-bottom: 3px solid transparent;
+  border-radius: var(--cd-radius) var(--cd-radius) 0 0;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+}
+.cd-seasons__tab:hover { color: var(--cd-night); }
+.cd-seasons__tab-label { font-weight: 600; font-size: 1rem; }
+.cd-seasons__tab-window { font-size: 0.8rem; }
+.cd-seasons__tab[aria-selected="true"] { color: var(--cd-night); background: var(--cd-ivory); }
+.cd-seasons__tab--good[aria-selected="true"] { border-bottom-color: var(--cd-glacier); }
+.cd-seasons__tab--caution[aria-selected="true"] { border-bottom-color: var(--cd-saffron); }
+.cd-seasons__tab--closed[aria-selected="true"] { border-bottom-color: var(--cd-kedarnath); }
+
+.cd-seasons__panel {
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  background: var(--cd-ivory);
+  border-radius: 0 0 var(--cd-radius-lg) var(--cd-radius-lg);
+  animation: cd-fade 0.35s var(--cd-ease);
+}
+.cd-seasons__title { font-family: var(--cd-serif); font-size: 1.6rem; font-weight: 600; color: var(--cd-night); }
+.cd-seasons__title span { font-family: var(--cd-sans); font-size: 0.95rem; font-weight: 500; color: var(--cd-muted); margin-left: 0.5rem; }
+.cd-seasons__panel > p { margin-top: 0.75rem; max-width: 60ch; font-size: 1.05rem; }
+.cd-seasons__points { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
+.cd-seasons__points li { padding: 0.4rem 0.85rem; background: #fff; border-radius: var(--cd-radius); font-size: 0.9rem; border: 1px solid var(--cd-line); }
+.cd-seasons__panel--caution .cd-seasons__points li { border-color: rgba(184, 105, 31, 0.35); }
+
+@keyframes cd-fade { from { opacity: 0; } to { opacity: 1; } }
+
+/* ---- Packing -------------------------------------------------------- */
+
+.cd-packing__bar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem; margin-bottom: 1.75rem; }
+.cd-packing__progress { flex: 1 1 200px; height: 6px; background: var(--cd-line); border-radius: 99px; overflow: hidden; }
+.cd-packing__progress span { display: block; height: 100%; background: var(--cd-glacier); transform-origin: left; transition: transform 0.4s var(--cd-ease); }
+.cd-packing__count { font-size: 0.9rem; font-weight: 600; color: var(--cd-night); }
+.cd-packing__reset {
+  min-height: 40px;
+  padding: 0 0.9rem;
+  font: inherit;
+  font-size: 0.875rem;
+  background: none;
+  border: 1px solid var(--cd-line-strong);
+  border-radius: var(--cd-radius);
+  color: var(--cd-night);
+  cursor: pointer;
+}
+.cd-packing__reset:disabled { opacity: 0.45; cursor: default; }
+
+.cd-packing__grid { columns: 1; column-gap: 1.25rem; }
+@media (min-width: 640px) { .cd-packing__grid { columns: 2; } }
+@media (min-width: 1024px) { .cd-packing__grid { columns: 3; } }
+.cd-packing__grid > .cd-packing__group { break-inside: avoid; margin-bottom: 1.25rem; display: block; width: 100%; }
+
+.cd-packing__group { margin: 0; padding: 1.25rem 1.25rem 0.75rem; background: #fff; border: 1px solid var(--cd-line); border-radius: var(--cd-radius-lg); min-width: 0; }
+.cd-packing__group legend { float: left; width: 100%; font-family: var(--cd-serif); font-size: 1.25rem; font-weight: 600; color: var(--cd-night); margin-bottom: 0.5rem; padding: 0; }
+.cd-packing__group ul { clear: both; }
+.cd-packing__group li { display: flex; align-items: center; gap: 0.7rem; min-height: 44px; border-top: 1px solid var(--cd-line); }
+.cd-packing__group input { flex: none; width: 20px; height: 20px; margin: 0; accent-color: var(--cd-glacier); cursor: pointer; }
+.cd-packing__group label { flex: 1; cursor: pointer; padding-block: 0.5rem; }
+.cd-packing__group input:checked + label { color: var(--cd-muted); text-decoration: line-through; text-decoration-color: var(--cd-line-strong); }
+
+/* ---- Travellers ----------------------------------------------------- */
+
+.cd-travellers__grid { display: grid; gap: 1.5rem 2rem; }
+@media (min-width: 640px) { .cd-travellers__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .cd-travellers__grid { grid-template-columns: repeat(4, 1fr); } }
+.cd-travellers__grid li { padding-top: 1rem; border-top: 1px solid var(--cd-line-strong); }
+.cd-travellers__grid h3 { font-size: 1.05rem; font-weight: 700; color: var(--cd-night); }
+.cd-travellers__grid p { margin-top: 0.3rem; font-size: 0.95rem; color: var(--cd-muted); }
+
+/* ---- Stay + meals --------------------------------------------------- */
+
+.cd-stay__grid { display: grid; gap: 3rem; }
+@media (min-width: 1024px) { .cd-stay__grid { grid-template-columns: 1.3fr 1fr; gap: 4rem; } }
+.cd-stay__col .cd-heading { margin-bottom: 1.5rem; }
+.cd-stay__col--food { padding: clamp(1.5rem, 3vw, 2.25rem); background: #fff; border-radius: var(--cd-radius-lg); align-self: start; }
+.cd-stay__col--food .cd-heading { margin-bottom: 0; }
+.cd-stay__expect { display: grid; gap: 0; }
+@media (min-width: 560px) { .cd-stay__expect { grid-template-columns: 1fr 1fr; column-gap: 2rem; } }
+.cd-stay__expect > div { padding-block: 0.85rem; border-top: 1px solid var(--cd-line-strong); }
+.cd-stay__expect dt { font-weight: 600; color: var(--cd-night); }
+.cd-stay__expect dd { font-size: 0.95rem; color: var(--cd-muted); }
+
+/* ---- Responsible ---------------------------------------------------- */
+
+.cd-responsible { padding-block: var(--cd-space); background: var(--cd-forest); color: var(--cd-snow); }
+.cd-responsible__grid { display: grid; gap: 2.5rem; }
+@media (min-width: 1024px) { .cd-responsible__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 4rem; align-items: center; } }
+.cd-responsible__title { font-family: var(--cd-serif); font-size: clamp(1.8rem, 1.2rem + 2.2vw, 2.75rem); font-weight: 600; line-height: 1.15; text-wrap: balance; }
+.cd-responsible header p { margin-top: 1rem; color: rgba(248, 249, 247, 0.8); font-size: 1.05rem; }
+.cd-responsible__list { display: grid; gap: 0; }
+@media (min-width: 560px) { .cd-responsible__list { grid-template-columns: 1fr 1fr; column-gap: 2rem; } }
+.cd-responsible__list li { display: flex; align-items: center; gap: 0.8rem; padding-block: 0.8rem; border-bottom: 1px solid rgba(248, 249, 247, 0.12); }
+.cd-responsible__list li::before { content: ""; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--cd-gold); }

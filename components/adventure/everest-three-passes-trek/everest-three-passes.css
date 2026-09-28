@@ -1,0 +1,371 @@
+/* ==========================================================================
+   Everest Three Passes Trek — page tokens & shared primitives
+   Everything is scoped under .etp-page so nothing leaks into other pages.
+   ========================================================================== */
+
+.etp-page {
+  --etp-blue: #123b5d;
+  --etp-blue-deep: #0b2640;
+  --etp-blue-ink: #081b2e;
+  --etp-teal: #2a7f82;
+  --etp-teal-soft: #d9ecec;
+  --etp-gold: #d8a64a;
+  --etp-gold-soft: #f3e6c8;
+  --etp-ivory: #f8f6f0;
+  --etp-ivory-deep: #efebe1;
+  --etp-charcoal: #252b32;
+  --etp-white: #ffffff;
+  --etp-muted: #5a6470;
+  --etp-muted-light: rgba(255, 255, 255, 0.72);
+  --etp-line: rgba(18, 59, 93, 0.14);
+  --etp-line-light: rgba(255, 255, 255, 0.16);
+
+  /* Fonts are expected from next/font at layout level. Fallbacks keep the page usable. */
+  --etp-serif: var(--font-playfair, "Playfair Display"), Georgia, "Times New Roman", serif;
+  --etp-sans: var(--font-inter, "Inter"), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --etp-wrap: 1240px;
+  --etp-gutter: clamp(16px, 4vw, 40px);
+  --etp-section: clamp(72px, 9vw, 128px);
+  --etp-radius: 14px;
+  --etp-radius-lg: 22px;
+  --etp-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --etp-shadow: 0 18px 40px -24px rgba(8, 27, 46, 0.45);
+
+  background: var(--etp-ivory);
+  color: var(--etp-charcoal);
+  font-family: var(--etp-sans);
+  line-height: 1.6;
+  overflow-x: clip;
+}
+
+.etp-page *,
+.etp-page *::before,
+.etp-page *::after {
+  box-sizing: border-box;
+}
+
+.etp-page img {
+  max-width: 100%;
+}
+
+.etp-page :where(h1, h2, h3, h4) {
+  font-family: var(--etp-serif);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.etp-page :where(p) {
+  margin: 0;
+}
+
+:where(.etp-page) a {
+  color: inherit;
+}
+
+.etp-page :focus-visible {
+  outline: 2px solid var(--etp-gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Anchor targets clear the sticky section nav (+ site header, if sticky). */
+.etp-page [id] {
+  scroll-margin-top: calc(var(--site-header-height, 0px) + 72px);
+}
+
+.etp-sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Layout ---------- */
+
+.etp-wrap {
+  width: 100%;
+  max-width: calc(var(--etp-wrap) + var(--etp-gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--etp-gutter);
+}
+
+.etp-section {
+  padding-block: var(--etp-section);
+  position: relative;
+}
+
+.etp-section--dark {
+  background: var(--etp-blue);
+  color: var(--etp-white);
+}
+
+.etp-section--deep {
+  background: var(--etp-blue-ink);
+  color: var(--etp-white);
+}
+
+.etp-section--sand {
+  background: var(--etp-ivory-deep);
+}
+
+.etp-section--white {
+  background: var(--etp-white);
+}
+
+/* ---------- Section heading ---------- */
+
+.etp-heading {
+  max-width: 760px;
+  margin-bottom: clamp(36px, 5vw, 60px);
+}
+
+.etp-heading--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.etp-heading__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--etp-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--etp-teal);
+  margin-bottom: 14px;
+}
+
+.etp-heading__eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+}
+
+.etp-heading--center .etp-heading__eyebrow::after {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+}
+
+.etp-heading__title {
+  font-size: clamp(2rem, 1.2rem + 2.6vw, 3.25rem);
+  color: var(--etp-blue);
+}
+
+.etp-heading__intro {
+  margin-top: 18px;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  color: var(--etp-muted);
+  max-width: 64ch;
+}
+
+.etp-heading--center .etp-heading__intro {
+  margin-inline: auto;
+}
+
+.etp-section--dark .etp-heading__title,
+.etp-section--deep .etp-heading__title {
+  color: var(--etp-white);
+}
+
+.etp-section--dark .etp-heading__eyebrow,
+.etp-section--deep .etp-heading__eyebrow {
+  color: var(--etp-gold);
+}
+
+.etp-section--dark .etp-heading__intro,
+.etp-section--deep .etp-heading__intro {
+  color: var(--etp-muted-light);
+}
+
+/* ---------- Buttons ---------- */
+
+.etp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-family: var(--etp-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    background-color 0.25s var(--etp-ease),
+    color 0.25s var(--etp-ease),
+    border-color 0.25s var(--etp-ease),
+    transform 0.25s var(--etp-ease);
+}
+
+.etp-btn svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.25s var(--etp-ease);
+}
+
+.etp-btn:hover svg {
+  transform: translateX(3px);
+}
+
+.etp-btn--gold {
+  background: var(--etp-gold);
+  color: var(--etp-blue-ink);
+}
+
+.etp-btn--gold:hover {
+  background: #e4b862;
+}
+
+.etp-btn--ghost {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--etp-white);
+  border-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(6px);
+}
+
+.etp-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: var(--etp-white);
+}
+
+.etp-btn--blue {
+  background: var(--etp-blue);
+  color: var(--etp-white);
+}
+
+.etp-btn--blue:hover {
+  background: var(--etp-blue-deep);
+}
+
+.etp-btn--outline {
+  background: transparent;
+  color: var(--etp-blue);
+  border-color: var(--etp-blue);
+}
+
+.etp-btn--outline:hover {
+  background: var(--etp-blue);
+  color: var(--etp-white);
+}
+
+/* ---------- Media + placeholder ---------- */
+
+.etp-media {
+  position: relative;
+  overflow: hidden;
+  background: var(--etp-blue-deep);
+}
+
+.etp-media__img {
+  object-fit: cover;
+  transition: transform 0.9s var(--etp-ease);
+}
+
+.etp-media__placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  background: linear-gradient(170deg, var(--ph-a, #1d4f78) 0%, var(--ph-b, #123b5d) 55%, var(--ph-c, #0b2640) 100%);
+  color: rgba(255, 255, 255, 0.55);
+  transition: transform 0.9s var(--etp-ease);
+}
+
+.etp-media__ridge {
+  position: absolute;
+  inset: auto 0 0 0;
+  width: 100%;
+  height: 72%;
+}
+
+.etp-media__label {
+  position: relative;
+  margin: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: rgba(8, 27, 46, 0.45);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+  max-width: calc(100% - 24px);
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Icons ---------- */
+
+.etp-icon {
+  width: 24px;
+  height: 24px;
+  flex: none;
+}
+
+/* ---------- Pills ---------- */
+
+.etp-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--etp-teal-soft);
+  color: var(--etp-teal);
+}
+
+.etp-pill--gold {
+  background: var(--etp-gold-soft);
+  color: #8a6420;
+}
+
+/* ---------- Scroll reveal (driven by RevealController) ----------
+   Content is visible by default; motion is only applied once JS has
+   confirmed motion is allowed, so nothing is hidden if JS fails. */
+
+.etp-page[data-motion="on"] [data-reveal] {
+  transition:
+    opacity 0.8s var(--etp-ease),
+    transform 0.8s var(--etp-ease);
+  transition-delay: calc(var(--i, 0) * 80ms);
+}
+
+.etp-page[data-motion="on"] [data-reveal]:not(.is-in) {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.etp-page[data-motion="on"] [data-reveal="fade"]:not(.is-in) {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .etp-page *,
+  .etp-page *::before,
+  .etp-page *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

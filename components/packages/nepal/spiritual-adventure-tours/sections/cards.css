@@ -1,0 +1,665 @@
+/* ================================================================
+   Card grids: sacred destinations, adventures, culture mosaic, packages
+   ================================================================ */
+
+.nsa-page .nsa-grid {
+  display: grid;
+  gap: clamp(1.1rem, 2vw, 1.75rem);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 640px) {
+  .nsa-page .nsa-grid--4,
+  .nsa-page .nsa-grid--3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .nsa-page .nsa-grid--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .nsa-page .nsa-grid--4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* ---------------------------------------------------------------
+   Badges
+   --------------------------------------------------------------- */
+
+.nsa-page .nsa-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.38rem 0.7rem;
+  border-radius: var(--nsa-radius-pill);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
+  background: var(--nsa-color-surface);
+  color: var(--nsa-color-primary);
+}
+
+.nsa-page .nsa-badge--hindu {
+  background: #fbefd9;
+  color: #7a4f09;
+}
+.nsa-page .nsa-badge--buddhist {
+  background: #e6f1f1;
+  color: #1a5a5c;
+}
+.nsa-page .nsa-badge--shared {
+  background: #ece7f5;
+  color: #4b3b78;
+}
+.nsa-page .nsa-badge--lake {
+  background: #e3edf6;
+  color: var(--nsa-color-primary);
+}
+.nsa-page .nsa-badge--light {
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--nsa-color-primary);
+}
+.nsa-page .nsa-badge--glass {
+  background: rgba(11, 39, 64, 0.55);
+  color: var(--nsa-color-white);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  text-transform: none;
+  letter-spacing: 0.01em;
+}
+.nsa-page .nsa-badge--easy {
+  background: #dff1e6;
+  color: #1e5b37;
+}
+.nsa-page .nsa-badge--moderate {
+  background: var(--nsa-color-secondary);
+  color: var(--nsa-color-white);
+}
+.nsa-page .nsa-badge--challenging {
+  background: var(--nsa-color-accent);
+  color: #2a1d05;
+}
+.nsa-page .nsa-badge--strenuous {
+  background: #9e3b2f;
+  color: var(--nsa-color-white);
+}
+
+/* ---------------------------------------------------------------
+   Stretched link: makes a whole card clickable through one <a>
+   --------------------------------------------------------------- */
+
+.nsa-page .nsa-stretched::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+}
+
+.nsa-page .nsa-stretched:focus-visible {
+  outline: none;
+}
+
+.nsa-page .nsa-stretched:focus-visible::after {
+  outline: 3px solid var(--nsa-color-accent);
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------------
+   Sacred destination card
+   --------------------------------------------------------------- */
+
+.nsa-page .nsa-dest-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--nsa-radius-md);
+  background: var(--nsa-color-surface);
+  box-shadow: var(--nsa-shadow-card);
+  overflow: hidden;
+  transition:
+    box-shadow 400ms var(--nsa-motion-ease),
+    translate 400ms var(--nsa-motion-ease);
+}
+
+.nsa-page .nsa-dest-card__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--nsa-color-surface-muted);
+}
+
+.nsa-page .nsa-dest-card__img {
+  object-fit: cover;
+  transition: transform 900ms var(--nsa-motion-ease);
+}
+
+.nsa-page .nsa-dest-card__media .nsa-badge {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  z-index: 1;
+}
+
+.nsa-page .nsa-dest-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1.25rem 1.35rem 1.4rem;
+}
+
+.nsa-page .nsa-dest-card__location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 0 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--nsa-color-secondary-deep);
+}
+
+.nsa-page .nsa-dest-card__title {
+  margin: 0 0 0.6rem;
+  font-family: var(--nsa-font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--nsa-color-primary);
+}
+
+.nsa-page .nsa-dest-card__text {
+  flex: 1;
+  margin: 0 0 1.1rem;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--nsa-color-text-muted);
+}
+
+.nsa-page .nsa-dest-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--nsa-color-primary);
+  text-decoration: none;
+}
+
+.nsa-page .nsa-dest-card__link svg {
+  transition: transform 300ms var(--nsa-motion-ease);
+}
+
+@media (hover: hover) {
+  .nsa-page .nsa-dest-card:hover {
+    translate: 0 -4px;
+    box-shadow: var(--nsa-shadow-lift);
+  }
+  .nsa-page .nsa-dest-card:hover .nsa-dest-card__img {
+    transform: scale(var(--nsa-motion-hover-zoom));
+  }
+  .nsa-page .nsa-dest-card:hover .nsa-dest-card__link svg {
+    transform: translateX(4px);
+  }
+}
+
+.nsa-page .nsa-dest-card:focus-within .nsa-dest-card__img {
+  transform: scale(var(--nsa-motion-hover-zoom));
+}
+
+/* ---------------------------------------------------------------
+   Adventures (dark section)
+   --------------------------------------------------------------- */
+
+.nsa-page .nsa-adventures {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Mountain silhouette rising out of the section's top edge */
+.nsa-page .nsa-adventures__ridge {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 1px;
+  height: clamp(36px, 6vw, 88px);
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+.nsa-page .nsa-adventures__ridge svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: var(--nsa-color-primary);
+}
+
+.nsa-page .nsa-adv-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: clamp(430px, 56vw, 500px);
+  border-radius: var(--nsa-radius-md);
+  overflow: hidden;
+  color: var(--nsa-color-white);
+  background: var(--nsa-color-primary-deep);
+  box-shadow: 0 20px 40px -24px rgba(0, 0, 0, 0.6);
+}
+
+@media (min-width: 640px) {
+  .nsa-page .nsa-adv-card {
+    min-height: 470px;
+  }
+}
+
+.nsa-page .nsa-adv-card__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.nsa-page .nsa-adv-card__img {
+  object-fit: cover;
+  transition: transform 1.1s var(--nsa-motion-ease);
+}
+
+.nsa-page .nsa-adv-card__shade {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(180deg, rgba(11, 39, 64, 0.35) 0%, rgba(11, 39, 64, 0) 28%),
+    linear-gradient(0deg, rgba(8, 26, 43, 0.96) 0%, rgba(8, 26, 43, 0.82) 38%, rgba(8, 26, 43, 0.15) 70%);
+  transition: opacity 500ms var(--nsa-motion-ease);
+}
+
+.nsa-page .nsa-adv-card__top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 1rem;
+}
+
+.nsa-page .nsa-adv-card__body {
+  position: relative;
+  z-index: 1;
+  padding: 1.25rem 1.3rem 1.35rem;
+}
+
+.nsa-page .nsa-adv-card__region {
+  margin: 0 0 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--nsa-color-accent);
+}
+
+.nsa-page .nsa-adv-card__title {
+  margin: 0 0 0.55rem;
+  font-family: var(--nsa-font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.18;
+}
+
+.nsa-page .nsa-adv-card__text {
+  margin: 0 0 1rem;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.nsa-page .nsa-adv-card__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.1rem;
+  margin: 0 0 1rem;
+  padding: 0.8rem 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  font-size: 0.84rem;
+}
+
+.nsa-page .nsa-adv-card__facts div {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.nsa-page .nsa-adv-card__facts dt {
+  display: inline-flex;
+  color: var(--nsa-color-accent);
+}
+
+.nsa-page .nsa-adv-card__facts dd {
+  margin: 0;
+  font-weight: 500;
+}
+
+.nsa-page .nsa-adv-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--nsa-color-white);
+  text-decoration: none;
+}
+
+.nsa-page .nsa-adv-card__link svg {
+  transition: transform 300ms var(--nsa-motion-ease);
+}
+
+@media (hover: hover) {
+  .nsa-page .nsa-adv-card:hover .nsa-adv-card__img {
+    transform: scale(var(--nsa-motion-hover-zoom));
+  }
+  .nsa-page .nsa-adv-card:hover .nsa-adv-card__link svg {
+    transform: translateX(4px);
+  }
+  .nsa-page .nsa-adv-card:hover .nsa-adv-card__link {
+    color: var(--nsa-color-accent);
+  }
+}
+
+.nsa-page .nsa-adv-card:focus-within .nsa-adv-card__img {
+  transform: scale(var(--nsa-motion-hover-zoom));
+}
+
+/* ---------------------------------------------------------------
+   Culture mosaic
+   --------------------------------------------------------------- */
+
+.nsa-page .nsa-mosaic {
+  display: grid;
+  gap: clamp(0.9rem, 1.6vw, 1.25rem);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 640px) {
+  .nsa-page .nsa-mosaic {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .nsa-page .nsa-exp-tile--1 {
+    grid-column: 1 / -1;
+  }
+}
+
+/* 3 × 3 editorial layout:
+   [ 1 1 2 ]
+   [ 3 4 2 ]
+   [ 5 6 6 ] */
+@media (min-width: 1024px) {
+  .nsa-page .nsa-mosaic {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(250px, 1fr));
+    grid-template-areas:
+      "a a b"
+      "c d b"
+      "e f f";
+  }
+  .nsa-page .nsa-exp-tile--1 { grid-area: a; }
+  .nsa-page .nsa-exp-tile--2 { grid-area: b; }
+  .nsa-page .nsa-exp-tile--3 { grid-area: c; }
+  .nsa-page .nsa-exp-tile--4 { grid-area: d; }
+  .nsa-page .nsa-exp-tile--5 { grid-area: e; }
+  .nsa-page .nsa-exp-tile--6 { grid-area: f; }
+}
+
+.nsa-page .nsa-exp-tile {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 300px;
+  border-radius: var(--nsa-radius-md);
+  overflow: hidden;
+  color: var(--nsa-color-white);
+  background: var(--nsa-color-primary-deep);
+}
+
+.nsa-page .nsa-exp-tile__media {
+  position: absolute;
+  inset: 0;
+}
+
+.nsa-page .nsa-exp-tile__img {
+  object-fit: cover;
+  transition: transform 1.1s var(--nsa-motion-ease);
+}
+
+.nsa-page .nsa-exp-tile__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(8, 26, 43, 0.92) 0%, rgba(8, 26, 43, 0.55) 45%, rgba(8, 26, 43, 0.05) 80%);
+}
+
+.nsa-page .nsa-exp-tile__body {
+  position: relative;
+  max-width: 34rem;
+  padding: clamp(1.25rem, 2.2vw, 1.75rem);
+}
+
+.nsa-page .nsa-exp-tile__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  margin-bottom: 0.9rem;
+  border: 1px solid rgba(216, 166, 74, 0.6);
+  border-radius: 50%;
+  color: var(--nsa-color-accent);
+  background: rgba(11, 39, 64, 0.35);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.nsa-page .nsa-exp-tile__title {
+  margin: 0 0 0.45rem;
+  font-family: var(--nsa-font-display);
+  font-size: clamp(1.2rem, 1.05rem + 0.5vw, 1.45rem);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.nsa-page .nsa-exp-tile--1 .nsa-exp-tile__title {
+  font-size: clamp(1.45rem, 1.1rem + 1.2vw, 2rem);
+}
+
+.nsa-page .nsa-exp-tile__text {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+@media (hover: hover) {
+  .nsa-page .nsa-exp-tile:hover .nsa-exp-tile__img {
+    transform: scale(1.04);
+  }
+}
+
+/* ---------------------------------------------------------------
+   Package card
+   --------------------------------------------------------------- */
+
+.nsa-page .nsa-pkg-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid transparent;
+  border-radius: var(--nsa-radius-lg);
+  background: var(--nsa-color-surface);
+  box-shadow: var(--nsa-shadow-card);
+  overflow: hidden;
+  transition:
+    box-shadow 400ms var(--nsa-motion-ease),
+    translate 400ms var(--nsa-motion-ease);
+}
+
+.nsa-page .nsa-pkg-card--featured {
+  border-color: rgba(216, 166, 74, 0.55);
+}
+
+.nsa-page .nsa-pkg-card__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--nsa-color-surface-muted);
+}
+
+.nsa-page .nsa-pkg-card__img {
+  object-fit: cover;
+  transition: transform 900ms var(--nsa-motion-ease);
+}
+
+.nsa-page .nsa-pkg-card__media .nsa-badge {
+  position: absolute;
+  top: 0.9rem;
+  left: 0.9rem;
+}
+
+.nsa-page .nsa-pkg-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1.35rem 1.5rem 1.5rem;
+}
+
+.nsa-page .nsa-pkg-card__duration {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 0 0.5rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--nsa-color-secondary-deep);
+}
+
+.nsa-page .nsa-pkg-card__hint {
+  font-weight: 400;
+  color: var(--nsa-color-text-muted);
+}
+
+.nsa-page .nsa-pkg-card__title {
+  margin: 0 0 0.6rem;
+  font-family: var(--nsa-font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--nsa-color-primary);
+}
+
+.nsa-page .nsa-pkg-card__text {
+  margin: 0 0 1rem;
+  font-size: 0.93rem;
+  line-height: 1.6;
+  color: var(--nsa-color-text-muted);
+}
+
+.nsa-page .nsa-pkg-card__highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 1.4rem;
+  padding: 0;
+  list-style: none;
+}
+
+.nsa-page .nsa-pkg-card__highlights li {
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--nsa-radius-pill);
+  background: var(--nsa-color-background);
+  font-size: 0.78rem;
+  color: var(--nsa-color-text);
+}
+
+.nsa-page .nsa-pkg-card__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--nsa-color-line);
+}
+
+.nsa-page .nsa-pkg-card__price {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.nsa-page .nsa-pkg-card__price-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--nsa-color-text-muted);
+}
+
+.nsa-page .nsa-pkg-card__price-value {
+  font-family: var(--nsa-font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--nsa-color-primary);
+}
+
+.nsa-page .nsa-pkg-card__price-value--quote {
+  font-size: 1.1rem;
+}
+
+.nsa-page .nsa-pkg-card__price-note {
+  max-width: 22ch;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: var(--nsa-color-text-muted);
+}
+
+@media (hover: hover) {
+  .nsa-page .nsa-pkg-card:hover {
+    translate: 0 -4px;
+    box-shadow: var(--nsa-shadow-lift);
+  }
+  .nsa-page .nsa-pkg-card:hover .nsa-pkg-card__img {
+    transform: scale(var(--nsa-motion-hover-zoom));
+  }
+}
+
+.nsa-page .nsa-packages__assist {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem 2rem;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding: clamp(1.25rem, 3vw, 1.75rem) clamp(1.25rem, 3vw, 2rem);
+  border: 1px dashed rgba(18, 59, 93, 0.25);
+  border-radius: var(--nsa-radius-lg);
+  background: var(--nsa-color-surface);
+}
+
+.nsa-page .nsa-packages__assist p {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 60ch;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--nsa-color-text);
+}
+
+.nsa-page .nsa-packages__assist p svg {
+  flex: none;
+  margin-top: 0.15rem;
+  color: var(--nsa-color-secondary);
+}

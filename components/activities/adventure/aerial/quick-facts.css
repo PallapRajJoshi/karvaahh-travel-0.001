@@ -1,0 +1,60 @@
+.aerial-page .ae-facts {
+  padding-block: clamp(3rem, 6vw, 4.5rem);
+  background: var(--ae-navy);
+  color: var(--ae-cream);
+}
+.aerial-page .ae-facts__inner {
+  display: grid;
+  grid-template-columns: 12rem minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+.aerial-page .ae-facts__title {
+  margin: 0;
+  font-family: var(--ae-serif);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--ae-gold);
+}
+.aerial-page .ae-facts__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin: 0;
+}
+.aerial-page .ae-facts__item {
+  padding: 1.1rem 1.25rem;
+  border-left: 1px solid rgba(247, 245, 239, 0.16);
+}
+.aerial-page .ae-facts__item:nth-child(-n + 3) {
+  border-bottom: 1px solid rgba(247, 245, 239, 0.16);
+}
+.aerial-page .ae-facts__label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(247, 245, 239, 0.62);
+}
+.aerial-page .ae-facts__value {
+  margin: 0.35rem 0 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+@media (max-width: 900px) {
+  .aerial-page .ae-facts__inner {
+    grid-template-columns: 1fr;
+  }
+  .aerial-page .ae-facts__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .aerial-page .ae-facts__item,
+  .aerial-page .ae-facts__item:nth-child(-n + 3) {
+    border-bottom: 1px solid rgba(247, 245, 239, 0.16);
+  }
+}
+@media (max-width: 480px) {
+  .aerial-page .ae-facts__list {
+    grid-template-columns: 1fr;
+  }
+}

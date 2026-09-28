@@ -1,0 +1,111 @@
+.mc-exp {
+  position: relative;
+  /* clip (not hidden) so the sticky media column still sticks */
+  overflow: clip;
+}
+
+/* Faint contour texture — pure CSS, no image request. */
+.mc-exp::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.07;
+  background: repeating-radial-gradient(circle at 85% 20%, transparent 0 22px, var(--mc-sand) 22px 23px);
+}
+
+.mc-exp__grid {
+  position: relative;
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.mc-exp__media {
+  position: relative;
+  padding-bottom: 18%;
+}
+
+.mc-exp__main {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--mc-radius);
+}
+
+.mc-exp__secondary {
+  position: absolute;
+  right: -4%;
+  bottom: 0;
+  width: 48%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--mc-radius);
+  border: 6px solid var(--mc-blue-deep);
+}
+
+.mc-exp__list {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: none;
+}
+
+.mc-exp__item {
+  display: grid;
+  grid-template-columns: 2.75rem 1fr;
+  gap: 1rem;
+  padding: 1.15rem 0;
+  border-top: 1px solid rgb(255 255 255 / 0.12);
+}
+
+.mc-exp__item:last-child {
+  border-bottom: 1px solid rgb(255 255 255 / 0.12);
+}
+
+.mc-exp__num {
+  font-family: var(--mc-font-display);
+  font-size: 1.25rem;
+  line-height: 1.3;
+  color: var(--mc-sand);
+}
+
+.mc-exp__title {
+  margin: 0 0 0.25rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--mc-white);
+}
+
+.mc-exp__text {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgb(255 255 255 / 0.72);
+}
+
+@media (min-width: 1024px) {
+  .mc-exp__grid {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
+  }
+
+  .mc-exp__media {
+    position: sticky;
+    top: calc(var(--mc-nav-offset) + var(--mc-subnav-h) + 2rem);
+  }
+}
+
+@media (max-width: 1023px) {
+  .mc-exp__media {
+    max-width: 560px;
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  .mc-exp__main {
+    aspect-ratio: 4 / 3;
+    width: 88%;
+  }
+
+  .mc-exp__secondary {
+    right: 0;
+  }
+}

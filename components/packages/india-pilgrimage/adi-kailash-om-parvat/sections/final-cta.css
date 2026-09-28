@@ -1,0 +1,89 @@
+/* Section 14 — Final call to action */
+
+.akop-final {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: clamp(520px, 80vh, 760px);
+  padding-block: clamp(5rem, 10vw, 8rem);
+  color: var(--akop-white);
+  background: var(--akop-primary-deep);
+  overflow: hidden;
+}
+
+.akop-final__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.akop-final__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, rgba(11, 39, 64, 0.45) 0%, rgba(11, 39, 64, 0.8) 75%),
+    linear-gradient(0deg, rgba(11, 39, 64, 0.6), rgba(11, 39, 64, 0.2));
+}
+
+.akop-final__inner {
+  display: flex;
+  justify-content: center;
+}
+
+.akop-final__content {
+  max-width: 46rem;
+  text-align: center;
+}
+
+.akop-final__glyph {
+  display: inline-grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(216, 166, 74, 0.6);
+  border-radius: 50%;
+  color: var(--akop-accent);
+  font-size: 1.6rem;
+}
+
+.akop-final__title {
+  font-family: var(--akop-font-heading);
+  font-size: clamp(2.2rem, 1.4rem + 3.6vw, 4.1rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.akop-final__subtitle {
+  margin-top: 1.25rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: clamp(1rem, 0.95rem + 0.35vw, 1.2rem);
+  text-wrap: pretty;
+}
+
+.akop-final__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem 1.25rem;
+  margin-top: 2.25rem;
+}
+
+.akop-final__brand {
+  margin-top: 2.5rem;
+  color: var(--akop-accent);
+  font-family: var(--akop-font-heading);
+  font-size: 1rem;
+  font-style: italic;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 479px) {
+  .akop-final__ctas .akop-btn:not(.akop-btn--light-ghost) {
+    width: 100%;
+  }
+}

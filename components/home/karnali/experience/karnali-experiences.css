@@ -1,0 +1,90 @@
+@import "../karnali-tokens.css";
+
+.karnali-experiences {
+  position: relative;
+  background: var(--k-cream);
+  padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 5vw, 5rem);
+  overflow: hidden;
+}
+
+.karnali-experiences-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.karnali-experience-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.karnali-experience-image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--k-radius);
+}
+
+.karnali-experience-image {
+  object-fit: cover;
+  transition: transform 0.7s var(--k-ease);
+}
+
+.karnali-experience-card:hover .karnali-experience-image {
+  transform: scale(1.06);
+}
+
+.karnali-experience-number {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-family: var(--k-font-serif);
+  font-style: italic;
+  color: var(--k-cream);
+  background: rgba(7, 16, 12, 0.55);
+  padding: 0.3rem 0.7rem;
+  font-size: 0.85rem;
+  border-radius: var(--k-radius);
+}
+
+.karnali-experience-body {
+  padding-top: 1.1rem;
+}
+
+.karnali-experience-title {
+  font-family: var(--k-font-serif);
+  font-size: 1.35rem;
+  color: var(--k-charcoal);
+  margin: 0 0 0.35rem;
+}
+
+.karnali-experience-meta {
+  font-family: var(--k-font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--k-gold-deep);
+  margin: 0 0 0.6rem;
+}
+
+.karnali-experience-description {
+  font-family: var(--k-font-sans);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--k-stone);
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .karnali-experiences-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .karnali-experiences-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}

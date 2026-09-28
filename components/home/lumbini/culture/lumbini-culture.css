@@ -1,0 +1,100 @@
+.lumbini-culture {
+  box-sizing: border-box;
+  width: 100%;
+  padding: clamp(3.5rem, 8vh, 6rem) clamp(1.5rem, 5vw, 5rem);
+  background: var(--lumbini-cream);
+}
+
+.lumbini-culture__inner {
+  max-width: 88rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vh, 3.5rem);
+}
+
+.lumbini-culture__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.75rem;
+}
+
+.lumbini-culture-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.lumbini-culture-card__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+
+.lumbini-culture-card__image {
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.lumbini-culture-card:hover .lumbini-culture-card__image {
+  transform: scale(1.05);
+}
+
+.lumbini-culture-card__number {
+  font-family: var(--lumbini-font-serif);
+  font-size: 0.85rem;
+  color: var(--lumbini-gold-2);
+}
+
+.lumbini-culture-card__title {
+  font-family: var(--lumbini-font-serif);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--lumbini-forest);
+  margin: 0;
+}
+
+.lumbini-culture-card__description {
+  font-family: var(--lumbini-font-sans);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--lumbini-text-muted);
+  margin: 0;
+}
+
+.lumbini-culture__threads {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--lumbini-line);
+}
+
+.lumbini-culture__thread {
+  font-family: var(--lumbini-font-sans);
+  font-size: 0.76rem;
+  color: var(--lumbini-earth);
+  border: 1px solid var(--lumbini-line);
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+}
+
+@media (max-width: 860px) {
+  .lumbini-culture__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lumbini-culture-card__image {
+    transition: none;
+  }
+  .lumbini-culture-card:hover .lumbini-culture-card__image {
+    transform: none;
+  }
+}

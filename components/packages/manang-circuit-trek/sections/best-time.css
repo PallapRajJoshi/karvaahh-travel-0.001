@@ -1,0 +1,145 @@
+.mc-season {
+  --mc-s-best: var(--mc-forest-3);
+  --mc-s-good: #6f8f6a;
+  --mc-s-caution: #d9b98a;
+  --mc-s-avoid: #d5cfc2;
+}
+
+.mc-season__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+  font-size: 0.8125rem;
+  color: var(--mc-ink-2);
+}
+
+.mc-season__legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mc-season__swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+}
+
+.mc-season__swatch--best,
+.mc-season__month--best .mc-season__bar {
+  background: var(--mc-s-best);
+}
+
+.mc-season__swatch--good,
+.mc-season__month--good .mc-season__bar {
+  background: var(--mc-s-good);
+}
+
+.mc-season__swatch--caution,
+.mc-season__month--caution .mc-season__bar {
+  background: var(--mc-s-caution);
+}
+
+.mc-season__swatch--avoid,
+.mc-season__month--avoid .mc-season__bar {
+  background: var(--mc-s-avoid);
+  /* texture so "not advised" never relies on colour alone */
+  background-image: repeating-linear-gradient(135deg, transparent 0 4px, rgba(22, 32, 27, 0.14) 4px 5px);
+}
+
+.mc-season__months {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mc-season__month {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.mc-season__bar {
+  height: 72px;
+  border-radius: 6px;
+}
+
+.mc-season__month--good .mc-season__bar {
+  height: 56px;
+  margin-top: 16px;
+}
+
+.mc-season__month--caution .mc-season__bar {
+  height: 36px;
+  margin-top: 36px;
+}
+
+.mc-season__month--avoid .mc-season__bar {
+  height: 20px;
+  margin-top: 52px;
+}
+
+.mc-season__name {
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
+
+.mc-season__rating {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--mc-ink-2);
+}
+
+.mc-season__note {
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--mc-ink-3);
+}
+
+@media (max-width: 960px) {
+  .mc-season__months {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    row-gap: 28px;
+  }
+}
+
+@media (max-width: 560px) {
+  .mc-season__months {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .mc-season__month {
+    display: grid;
+    grid-template-columns: 44px 12px 84px 1fr;
+    gap: 12px;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--mc-line);
+  }
+  .mc-season__bar,
+  .mc-season__month--good .mc-season__bar,
+  .mc-season__month--caution .mc-season__bar,
+  .mc-season__month--avoid .mc-season__bar {
+    order: 2;
+    width: 12px;
+    height: 12px;
+    margin: 0;
+    border-radius: 3px;
+  }
+  .mc-season__name {
+    order: 1;
+  }
+  .mc-season__rating {
+    order: 3;
+  }
+  .mc-season__note {
+    order: 4;
+  }
+}

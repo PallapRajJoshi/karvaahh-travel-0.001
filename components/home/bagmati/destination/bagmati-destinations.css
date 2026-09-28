@@ -1,0 +1,186 @@
+.bagmati-destinations {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 96px 64px;
+  background: rgb(2, 2, 100);
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.bagmati-destinations .bagmati-heading__eyebrow {
+  color: #c9a45c;
+}
+
+.bagmati-destinations .bagmati-heading__title {
+  color: #f7f5ef;
+}
+
+.bagmati-destinations__layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 0;
+  border: 1px solid rgba(247, 245, 239, 0.14);
+  min-height: 560px;
+}
+
+.bagmati-destinations__list {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(247, 245, 239, 0.14);
+  max-height: 640px;
+  overflow-y: auto;
+}
+
+.bagmati-destinations__item {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  text-align: left;
+  padding: 18px 24px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(247, 245, 239, 0.1);
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+}
+
+.bagmati-destinations__item-name {
+  font-family: "Playfair Display", serif;
+  font-size: 1.05rem;
+  color: rgba(247, 245, 239, 0.62);
+  transition: color 0.25s ease;
+}
+
+.bagmati-destinations__item-count {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: rgba(247, 245, 239, 0.35);
+}
+
+.bagmati-destinations__item--active {
+  background: rgba(201, 164, 92, 0.08);
+  border-left: 2px solid #c9a45c;
+}
+
+.bagmati-destinations__item--active .bagmati-destinations__item-name {
+  color: #c9a45c;
+}
+
+.bagmati-destinations__panel {
+  display: grid;
+  grid-template-columns: 45% 55%;
+}
+
+.bagmati-destinations__panel-media {
+  position: relative;
+  min-height: 400px;
+}
+
+.bagmati-destinations__panel-image {
+  object-fit: cover;
+}
+
+.bagmati-destinations__panel-body {
+  box-sizing: border-box;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  max-height: 640px;
+}
+
+.bagmati-destinations__panel-title {
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: 2rem;
+  color: #f7f5ef;
+  margin: 0;
+}
+
+.bagmati-destinations__panel-summary {
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(247, 245, 239, 0.7);
+  margin: 0;
+}
+
+.bagmati-destinations__panel-places {
+  list-style: none;
+  margin: 0;
+  padding: 20px 0 0;
+  border-top: 1px solid rgba(247, 245, 239, 0.14);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 20px;
+}
+
+.bagmati-destinations__panel-places li {
+  font-family: "Inter", sans-serif;
+  font-size: 0.86rem;
+  color: rgba(247, 245, 239, 0.78);
+  position: relative;
+  padding-left: 16px;
+}
+
+.bagmati-destinations__panel-places li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 1px;
+  background: #c9a45c;
+}
+
+@media (max-width: 1024px) {
+  .bagmati-destinations {
+    padding: 72px 32px;
+  }
+  .bagmati-destinations__layout {
+    grid-template-columns: 1fr;
+  }
+  .bagmati-destinations__list {
+    flex-direction: row;
+    overflow-x: auto;
+    max-height: none;
+    border-right: none;
+    border-bottom: 1px solid rgba(247, 245, 239, 0.14);
+  }
+  .bagmati-destinations__item {
+    border-bottom: none;
+    border-right: 1px solid rgba(247, 245, 239, 0.1);
+    min-width: 180px;
+  }
+  .bagmati-destinations__panel {
+    grid-template-columns: 1fr;
+  }
+  .bagmati-destinations__panel-media {
+    min-height: 260px;
+  }
+  .bagmati-destinations__panel-body {
+    max-height: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .bagmati-destinations {
+    padding: 56px 20px;
+  }
+  .bagmati-destinations__panel-body {
+    padding: 28px 24px;
+  }
+  .bagmati-destinations__panel-places {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bagmati-destinations__item-name {
+    transition: none;
+  }
+}

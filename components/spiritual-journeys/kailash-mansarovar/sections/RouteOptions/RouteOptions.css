@@ -1,0 +1,243 @@
+.km-routes {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.km-route {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border: 1px solid var(--km-line);
+  border-radius: var(--km-radius-l);
+  background: var(--km-paper);
+}
+
+.km-route__top {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.km-route__icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  color: var(--km-lake-text);
+}
+
+.km-route__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--km-lake-text);
+}
+
+.km-route__name {
+  margin-top: 0.75rem;
+  font-family: var(--km-font-display);
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--km-ink);
+}
+
+/* Route as a connected sequence of stops */
+.km-route__path {
+  position: relative;
+  display: grid;
+  gap: 0.55rem;
+  margin: 1.5rem 0;
+  padding: 1.25rem 1.25rem 1.25rem 2.5rem;
+  border-radius: var(--km-radius-m);
+  background: var(--km-snow);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--km-ink);
+}
+
+.km-route__path::before {
+  content: "";
+  position: absolute;
+  top: 1.75rem;
+  bottom: 1.75rem;
+  left: 1.45rem;
+  width: 1px;
+  background: var(--km-line);
+}
+
+.km-route__path li {
+  position: relative;
+}
+
+.km-route__path li::before {
+  content: "";
+  position: absolute;
+  top: 0.55em;
+  left: -1.35rem;
+  width: 9px;
+  height: 9px;
+  border: 2px solid var(--km-lake);
+  border-radius: 50%;
+  background: var(--km-snow);
+}
+
+.km-route__path li:first-child::before,
+.km-route__path li:last-child::before {
+  background: var(--km-lake);
+}
+
+.km-route__summary {
+  color: var(--km-slate);
+}
+
+.km-route__points {
+  display: grid;
+  gap: 0.6rem;
+  margin: 1.25rem 0 1.5rem;
+}
+
+.km-route__points li {
+  display: flex;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  color: var(--km-charcoal);
+}
+
+.km-route__marker {
+  flex: none;
+  width: 0.4rem;
+  height: 0.4rem;
+  margin-top: 0.6rem;
+  border-radius: 50%;
+  background: var(--km-lake-text);
+}
+
+.km-route__notice {
+  margin-top: auto;
+}
+
+/* Comparison table */
+.km-compare {
+  margin-top: 3rem;
+  overflow-x: auto;
+  border: 1px solid var(--km-line);
+  border-radius: var(--km-radius-l);
+  background: var(--km-paper);
+}
+
+.km-compare__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.km-compare__caption {
+  padding: 1.25rem 1.5rem 0.5rem;
+  font-family: var(--km-font-display);
+  font-size: 1.25rem;
+  text-align: left;
+  color: var(--km-ink);
+}
+
+.km-compare__table th,
+.km-compare__table td {
+  padding: 1rem 1.5rem;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid var(--km-line);
+}
+
+.km-compare__table thead th {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--km-lake-text);
+}
+
+.km-compare__table tbody th {
+  width: 26%;
+  font-weight: 600;
+  color: var(--km-ink);
+}
+
+.km-compare__table td {
+  color: var(--km-slate);
+}
+
+/* Small screens: each aspect becomes a stacked block so both routes stay visible without sideways scrolling. */
+@media (max-width: 639px) {
+  .km-compare__table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .km-compare__table tbody tr {
+    display: block;
+    padding: 1rem 1.25rem;
+    border-top: 1px solid var(--km-line);
+  }
+
+  .km-compare__table tbody th,
+  .km-compare__table td {
+    display: block;
+    width: auto;
+    padding: 0;
+    border-top: 0;
+  }
+
+  .km-compare__table tbody th {
+    margin-bottom: 0.5rem;
+  }
+
+  .km-compare__table td + td {
+    margin-top: 0.5rem;
+  }
+
+  .km-compare__table td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--km-lake-text);
+  }
+
+  .km-compare__caption {
+    padding: 1.1rem 1.25rem 0.75rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .km-routes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .km-route__path {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0;
+    padding: 1.1rem 1.25rem;
+  }
+
+  .km-route__path::before {
+    display: none;
+  }
+
+  .km-route__path li {
+    display: flex;
+    align-items: center;
+  }
+
+  .km-route__path li::before {
+    position: static;
+    flex: none;
+    margin-right: 0.45rem;
+  }
+
+  .km-route__path li + li {
+    margin-left: 0.45rem;
+  }
+
+  .km-route__path li + li::after {
+    content: none;
+  }
+}

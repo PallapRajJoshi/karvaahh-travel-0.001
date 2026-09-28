@@ -1,0 +1,151 @@
+/* ---------- Breadcrumb ---------- */
+
+.ebc-breadcrumb {
+  background: var(--ebc-ivory);
+  border-bottom: 1px solid var(--ebc-line);
+}
+
+.ebc-breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 14px 0;
+  list-style: none;
+  font-size: 0.85rem;
+  color: var(--ebc-muted);
+}
+
+.ebc-breadcrumb__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ebc-breadcrumb__item a {
+  color: var(--ebc-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.ebc-breadcrumb__item a:hover {
+  color: var(--ebc-teal-ink);
+  text-decoration: underline;
+}
+
+.ebc-breadcrumb__item [aria-current="page"] {
+  color: var(--ebc-blue);
+  font-weight: 600;
+}
+
+.ebc-breadcrumb__sep {
+  width: 14px;
+  height: 14px;
+  opacity: 0.6;
+}
+
+/* ---------- Sticky sub-navigation ----------
+   `top` assumes the site navbar is not sticky. If the live navbar is sticky,
+   set --ebc-subnav-top on .ebc-page to its height (e.g. 72px). */
+
+.ebc-subnav {
+  position: sticky;
+  top: var(--ebc-subnav-top, 0px);
+  z-index: 40;
+  background: rgba(248, 246, 240, 0.9);
+  backdrop-filter: saturate(1.4) blur(12px);
+  -webkit-backdrop-filter: saturate(1.4) blur(12px);
+  border-bottom: 1px solid var(--ebc-line);
+}
+
+.ebc-subnav__inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ebc-subnav__list {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.ebc-subnav__list::-webkit-scrollbar {
+  display: none;
+}
+
+.ebc-subnav__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 56px;
+  padding: 0 14px;
+  white-space: nowrap;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ebc-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.ebc-subnav__link::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 0;
+  height: 2px;
+  background: var(--ebc-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--ebc-ease);
+}
+
+.ebc-subnav__link:hover,
+.ebc-subnav__link.is-active {
+  color: var(--ebc-blue);
+}
+
+.ebc-subnav__link.is-active::after {
+  transform: scaleX(1);
+}
+
+.ebc-subnav__cta {
+  flex: none;
+  padding: 9px 18px;
+  border-radius: 999px;
+  background: var(--ebc-blue);
+  color: var(--ebc-white);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.ebc-subnav__cta:hover {
+  background: var(--ebc-teal);
+}
+
+@media (max-width: 767px) {
+  .ebc-subnav__cta {
+    display: none;
+  }
+
+  .ebc-subnav__inner {
+    padding-inline: 0;
+  }
+
+  .ebc-subnav__list {
+    padding-inline: 8px;
+  }
+
+  .ebc-subnav__link {
+    height: 50px;
+  }
+}

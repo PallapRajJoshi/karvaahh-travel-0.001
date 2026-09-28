@@ -1,0 +1,120 @@
+.jyl-pack {
+  background: var(--jyl-ivory);
+}
+
+.jyl-pack__board {
+  counter-reset: packed;
+}
+
+.jyl-pack__groups {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.jyl-pack__group {
+  margin: 0;
+  padding: 1.25rem 1.1rem 1.4rem;
+  border: 1px solid var(--jyl-stone);
+  border-radius: var(--jyl-radius);
+  background: var(--jyl-white);
+  min-width: 0;
+}
+
+.jyl-pack__legend {
+  font-family: var(--jyl-serif);
+  font-size: 1.15rem;
+  color: var(--jyl-charcoal);
+  padding: 0 0.35rem;
+  margin-left: -0.35rem;
+}
+
+.jyl-pack__items {
+  list-style: none;
+  display: grid;
+  gap: 0.15rem;
+  margin-top: 0.5rem;
+}
+
+.jyl-pack__items li {
+  position: relative;
+}
+
+.jyl-pack__input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.jyl-pack__input:checked {
+  counter-increment: packed;
+}
+
+.jyl-pack__label {
+  display: grid;
+  grid-template-columns: 1.15rem 1fr;
+  gap: 0.65rem;
+  align-items: start;
+  padding: 0.5rem 0;
+  min-height: 40px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.jyl-pack__label::before {
+  content: "";
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 0.05rem;
+  border: 1.5px solid var(--jyl-muted);
+  border-radius: 4px;
+  background: var(--jyl-white) center / 0.8rem no-repeat;
+  transition: background-color 0.15s var(--jyl-ease), border-color 0.15s var(--jyl-ease);
+}
+
+.jyl-pack__input:checked + .jyl-pack__label::before {
+  background-color: var(--jyl-night);
+  border-color: var(--jyl-night);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d8c08c' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12.5 4.5 4.5L19 7.5'/%3E%3C/svg%3E");
+}
+
+.jyl-pack__input:checked + .jyl-pack__label {
+  color: var(--jyl-muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--jyl-gold);
+}
+
+.jyl-pack__input:focus-visible + .jyl-pack__label::before {
+  outline: 2px solid var(--jyl-gold);
+  outline-offset: 2px;
+}
+
+.jyl-pack__progress {
+  margin-top: 1.25rem;
+  font-size: 0.9rem;
+  color: var(--jyl-muted);
+}
+
+.jyl-pack__count::after {
+  content: counter(packed) " of " var(--jyl-pack-total) " items packed";
+}
+
+@media (max-width: 1100px) {
+  .jyl-pack__groups {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .jyl-pack__groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 460px) {
+  .jyl-pack__groups {
+    grid-template-columns: 1fr;
+  }
+}

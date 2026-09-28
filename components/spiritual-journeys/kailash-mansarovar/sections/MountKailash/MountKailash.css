@@ -1,0 +1,68 @@
+.km-kailash__grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.km-kailash__figure {
+  margin: 0;
+}
+
+.km-kailash__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--km-radius-m);
+  overflow: hidden;
+}
+
+.km-kailash__caption {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--km-slate);
+}
+
+.km-kailash__facts {
+  margin: 2.25rem 0 0;
+  border-top: 1px solid var(--km-line);
+}
+
+.km-kailash__fact {
+  display: grid;
+  gap: 0.2rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--km-line);
+}
+
+.km-kailash__fact dt {
+  font-size: 0.85rem;
+  color: var(--km-slate);
+}
+
+.km-kailash__fact dd {
+  margin: 0;
+  font-weight: 500;
+  color: var(--km-ink);
+}
+
+@media (min-width: 640px) {
+  .km-kailash__fact {
+    grid-template-columns: 11rem 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .km-kailash__grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: 4.5rem;
+    align-items: start;
+  }
+
+  .km-kailash__figure {
+    position: sticky;
+    top: calc(var(--km-site-header) + var(--km-secnav-h) + 2rem);
+  }
+
+  .km-kailash__media {
+    aspect-ratio: 4 / 5;
+  }
+}

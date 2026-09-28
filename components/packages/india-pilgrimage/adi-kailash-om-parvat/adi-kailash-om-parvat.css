@@ -1,0 +1,622 @@
+/* ==========================================================================
+   Adi Kailash & Om Parvat Yatra — base styles & shared UI
+   All tokens (--akop-*) are injected on .akop-page from data/…/theme.ts.
+   Everything is scoped under .akop-page so nothing leaks to other pages.
+   ========================================================================== */
+
+/* Smooth in-page anchor scrolling, only while this page is mounted. */
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.akop-page) {
+    scroll-behavior: smooth;
+  }
+}
+
+.akop-page {
+  interpolate-size: allow-keywords; /* enables smooth <details> height (progressive) */
+  background: var(--akop-bg);
+  color: var(--akop-text);
+  font-family: var(--akop-font-body);
+  font-size: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+  line-height: 1.65;
+  overflow-x: clip; /* guard against any horizontal overflow */
+  -webkit-font-smoothing: antialiased;
+}
+
+.akop-page *,
+.akop-page *::before,
+.akop-page *::after {
+  box-sizing: border-box;
+}
+
+/* :where() on both parts = zero specificity, so section styles always win. */
+:where(.akop-page) :where(h1, h2, h3, h4, p, ul, ol, dl, dd, figure) {
+  margin: 0;
+}
+
+:where(.akop-page) :where(ul, ol) {
+  padding: 0;
+}
+
+.akop-page img {
+  max-width: 100%;
+}
+
+/* Anchored sections clear the sticky "On this page" bar. */
+.akop-page [id] {
+  scroll-margin-top: calc(var(--akop-sticky-offset) + 4.5rem);
+}
+
+/* Visible, consistent focus ring across the page. */
+.akop-page :where(a, button, summary):focus-visible {
+  outline: 2px solid var(--akop-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.akop-sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Layout
+   -------------------------------------------------------------------------- */
+
+.akop-container {
+  width: 100%;
+  max-width: var(--akop-max);
+  margin-inline: auto;
+  padding-inline: var(--akop-gutter);
+}
+
+.akop-section {
+  padding-block: var(--akop-section-space);
+}
+
+.akop-section--alt {
+  background: var(--akop-bg-alt);
+}
+
+/* --------------------------------------------------------------------------
+   Typography
+   -------------------------------------------------------------------------- */
+
+.akop-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  color: var(--akop-accent-text);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.akop-eyebrow::before {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: currentColor;
+}
+
+.akop-eyebrow--on-dark {
+  color: var(--akop-accent);
+}
+
+.akop-heading {
+  max-width: 44rem;
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.akop-heading--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.akop-heading--center .akop-eyebrow {
+  justify-content: center;
+}
+
+.akop-heading__title {
+  color: var(--akop-primary);
+  font-family: var(--akop-font-heading);
+  font-size: clamp(1.9rem, 1.35rem + 2.4vw, 3.1rem);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.akop-heading__subtitle {
+  margin-top: 1rem;
+  color: var(--akop-text-muted);
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
+  text-wrap: pretty;
+}
+
+.akop-heading--on-dark .akop-heading__title {
+  color: var(--akop-white);
+}
+
+.akop-heading--on-dark .akop-heading__subtitle {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.akop-heading--on-dark .akop-eyebrow {
+  color: var(--akop-accent);
+}
+
+/* --------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+
+.akop-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px; /* touch target */
+  padding: 0.8rem 1.6rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-family: var(--akop-font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.25s var(--akop-ease),
+    color 0.25s var(--akop-ease),
+    border-color 0.25s var(--akop-ease),
+    transform 0.25s var(--akop-ease),
+    box-shadow 0.25s var(--akop-ease);
+}
+
+.akop-btn--small {
+  min-height: 44px;
+  padding: 0.65rem 1.2rem;
+  font-size: 0.875rem;
+}
+
+.akop-btn--primary {
+  background: var(--akop-accent);
+  color: var(--akop-primary-deep);
+  box-shadow: 0 6px 18px -8px rgba(216, 166, 74, 0.7);
+}
+
+.akop-btn--primary:hover {
+  background: #e4b65e;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -10px rgba(216, 166, 74, 0.8);
+}
+
+.akop-btn--secondary {
+  border-color: var(--akop-primary);
+  color: var(--akop-primary);
+  background: transparent;
+}
+
+.akop-btn--secondary:hover {
+  background: var(--akop-primary);
+  color: var(--akop-white);
+  transform: translateY(-2px);
+}
+
+.akop-btn--light {
+  border-color: rgba(255, 255, 255, 0.7);
+  color: var(--akop-white);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(6px);
+}
+
+.akop-btn--light:hover {
+  background: var(--akop-white);
+  color: var(--akop-primary);
+  transform: translateY(-2px);
+}
+
+.akop-btn--ghost,
+.akop-btn--light-ghost {
+  padding-inline: 0.25rem;
+  border-radius: 4px;
+  background: none;
+}
+
+.akop-btn--ghost {
+  color: var(--akop-primary);
+}
+
+.akop-btn--light-ghost {
+  color: var(--akop-white);
+}
+
+.akop-btn__arrow {
+  transition: transform 0.25s var(--akop-ease);
+}
+
+.akop-btn--ghost:hover .akop-btn__arrow,
+.akop-btn--light-ghost:hover .akop-btn__arrow {
+  transform: translateX(4px);
+}
+
+.akop-btn--ghost span,
+.akop-btn--light-ghost span {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.3s var(--akop-ease);
+}
+
+.akop-btn--ghost:hover span,
+.akop-btn--light-ghost:hover span {
+  background-size: 100% 1px;
+}
+
+/* --------------------------------------------------------------------------
+   Badges & icons
+   -------------------------------------------------------------------------- */
+
+.akop-icon {
+  flex-shrink: 0;
+}
+
+.akop-icon--om {
+  display: inline-block;
+  font-size: 1.4em;
+  line-height: 1;
+}
+
+.akop-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.akop-badge--on-image {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1;
+  background: rgba(11, 39, 64, 0.72);
+  color: var(--akop-white);
+  backdrop-filter: blur(6px);
+}
+
+.akop-badge--confirm {
+  border: 1px solid rgba(134, 97, 29, 0.35);
+  background: rgba(216, 166, 74, 0.14);
+  color: var(--akop-accent-text);
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+/* --------------------------------------------------------------------------
+   Image fallback (missing / failed image)
+   -------------------------------------------------------------------------- */
+
+.akop-img-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+  background:
+    linear-gradient(160deg, transparent 55%, rgba(11, 39, 64, 0.35)),
+    linear-gradient(135deg, var(--akop-primary) 0%, var(--akop-secondary) 100%);
+}
+
+.akop-img-fallback__text {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+/* --------------------------------------------------------------------------
+   Scroll reveal (see ui/Reveal.tsx)
+   -------------------------------------------------------------------------- */
+
+.akop-reveal {
+  opacity: 0;
+  transform: translate3d(0, var(--akop-reveal-distance), 0);
+  /* Fail-safe: show content even if JavaScript never hydrates. */
+  animation: akop-reveal-failsafe 0.6s ease-out 2.5s forwards;
+}
+
+.akop-reveal--fade {
+  transform: none;
+}
+
+.akop-reveal.is-armed {
+  animation: none;
+  transition:
+    opacity var(--akop-reveal-duration) var(--akop-ease),
+    transform var(--akop-reveal-duration) var(--akop-ease);
+  transition-delay: calc(var(--akop-i, 0) * var(--akop-stagger));
+}
+
+.akop-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes akop-reveal-failsafe {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Reading progress bar — CSS scroll-driven animation, zero JavaScript.
+   Hidden where unsupported (it is purely decorative).
+   -------------------------------------------------------------------------- */
+
+.akop-progress {
+  display: none;
+}
+
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .akop-progress {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 60;
+      display: block;
+      height: 3px;
+      background: linear-gradient(90deg, var(--akop-accent), var(--akop-secondary));
+      transform-origin: 0 50%;
+      animation: akop-progress linear both;
+      animation-timeline: scroll(root block);
+      pointer-events: none;
+    }
+  }
+}
+
+@keyframes akop-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Sticky "On this page" navigation
+   -------------------------------------------------------------------------- */
+
+.akop-section-nav {
+  position: sticky;
+  top: var(--akop-sticky-offset);
+  z-index: 40;
+  border-bottom: 1px solid var(--akop-border);
+  background: rgba(248, 246, 240, 0.88);
+  backdrop-filter: saturate(140%) blur(10px);
+}
+
+.akop-section-nav__inner {
+  display: flex;
+}
+
+.akop-section-nav__list {
+  display: flex;
+  gap: 0.25rem;
+  margin-inline: calc(var(--akop-gutter) * -1);
+  padding: 0.5rem var(--akop-gutter);
+  overflow-x: auto;
+  list-style: none;
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+}
+
+.akop-section-nav__list::-webkit-scrollbar {
+  display: none;
+}
+
+.akop-section-nav__list li {
+  scroll-snap-align: start;
+}
+
+.akop-section-nav__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0.4rem 0.95rem;
+  border-radius: 999px;
+  color: var(--akop-text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color 0.25s var(--akop-ease),
+    color 0.25s var(--akop-ease);
+}
+
+.akop-section-nav__link:hover {
+  color: var(--akop-primary);
+  background: rgba(18, 59, 93, 0.06);
+}
+
+.akop-section-nav__link.is-active {
+  background: var(--akop-primary);
+  color: var(--akop-white);
+}
+
+/* --------------------------------------------------------------------------
+   Accordion (native <details>)
+   -------------------------------------------------------------------------- */
+
+.akop-accordion {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.akop-accordion__item {
+  border: 1px solid var(--akop-border);
+  border-radius: var(--akop-radius);
+  background: var(--akop-surface);
+  transition:
+    box-shadow 0.3s var(--akop-ease),
+    border-color 0.3s var(--akop-ease);
+}
+
+.akop-accordion__item[open] {
+  border-color: rgba(18, 59, 93, 0.22);
+  box-shadow: var(--akop-shadow);
+}
+
+.akop-accordion__summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.9rem;
+  min-height: 60px;
+  padding: 1rem 1.25rem;
+  list-style: none;
+  cursor: pointer;
+}
+
+.akop-accordion__summary::-webkit-details-marker {
+  display: none;
+}
+
+.akop-accordion__summary::marker {
+  content: "";
+}
+
+.akop-accordion__icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(42, 127, 130, 0.1);
+  color: var(--akop-secondary);
+}
+
+.akop-accordion__title {
+  flex: 1 1 12rem;
+  color: var(--akop-primary);
+  font-family: var(--akop-font-body);
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.akop-accordion__chevron {
+  display: grid;
+  place-items: center;
+  margin-left: auto;
+  color: var(--akop-primary);
+  transition: transform 0.35s var(--akop-ease);
+}
+
+.akop-accordion__item[open] .akop-accordion__chevron {
+  transform: rotate(180deg);
+}
+
+.akop-accordion__panel {
+  padding: 0 1.25rem 1.35rem;
+  color: var(--akop-text);
+}
+
+/* Smooth open/close where supported (Chromium). Instant elsewhere. */
+@supports selector(::details-content) {
+  @media (prefers-reduced-motion: no-preference) {
+    .akop-accordion__item::details-content {
+      block-size: 0;
+      overflow: hidden;
+      transition:
+        block-size 0.4s var(--akop-ease),
+        content-visibility 0.4s allow-discrete;
+    }
+
+    .akop-accordion__item[open]::details-content {
+      block-size: auto;
+    }
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Callouts (safety / weather notes)
+   -------------------------------------------------------------------------- */
+
+.akop-callout {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.25rem 1.4rem;
+  border-radius: var(--akop-radius);
+  border: 1px solid;
+}
+
+.akop-callout > .akop-icon {
+  margin-top: 0.1rem;
+}
+
+.akop-callout__title {
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+}
+
+.akop-callout__text {
+  font-size: 0.95rem;
+}
+
+.akop-callout--warning {
+  margin-top: 2.5rem;
+  border-color: rgba(165, 81, 42, 0.3);
+  background: rgba(165, 81, 42, 0.06);
+  color: #6b3219;
+}
+
+.akop-callout--safety {
+  border-color: rgba(18, 59, 93, 0.2);
+  background: var(--akop-primary);
+  color: var(--akop-white);
+}
+
+.akop-callout--safety .akop-icon {
+  color: var(--akop-accent);
+}
+
+/* --------------------------------------------------------------------------
+   Reduced motion — content is shown immediately, nothing moves.
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .akop-page *,
+  .akop-page *::before,
+  .akop-page *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0s !important;
+  }
+
+  .akop-reveal {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}

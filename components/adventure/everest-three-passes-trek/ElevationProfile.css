@@ -1,0 +1,130 @@
+.etp-profile {
+  margin: 0 0 clamp(40px, 6vw, 72px);
+  padding: clamp(18px, 3vw, 32px);
+  background: var(--etp-white);
+  border: 1px solid var(--etp-line);
+  border-radius: var(--etp-radius-lg);
+}
+
+.etp-profile__cap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px 20px;
+  margin-bottom: 8px;
+}
+
+.etp-profile__title {
+  font-family: var(--etp-serif);
+  font-size: 1.2rem;
+  color: var(--etp-blue);
+}
+
+.etp-profile__legend {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--etp-muted);
+}
+
+.etp-profile__key {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-left: 8px;
+}
+
+.etp-profile__key--pass {
+  background: var(--etp-gold);
+  margin-left: 0;
+}
+
+.etp-profile__key--view {
+  background: var(--etp-blue);
+}
+
+.etp-profile__scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.etp-profile__svg {
+  display: block;
+  width: 100%;
+  min-width: 720px;
+  height: auto;
+  font-family: var(--etp-sans);
+}
+
+.etp-profile__grid line {
+  stroke: var(--etp-line);
+  stroke-dasharray: 3 5;
+}
+
+.etp-profile__grid text {
+  font-size: 11px;
+  fill: var(--etp-muted);
+}
+
+.etp-profile__line {
+  fill: none;
+  stroke: var(--etp-teal);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+
+.etp-profile__pt {
+  fill: var(--etp-white);
+  stroke: var(--etp-teal);
+  stroke-width: 2;
+}
+
+.etp-profile__pt--view {
+  fill: var(--etp-blue);
+  stroke: var(--etp-white);
+  stroke-width: 2;
+}
+
+.etp-profile__pt--pass {
+  fill: var(--etp-gold);
+  stroke: var(--etp-white);
+  stroke-width: 2.5;
+}
+
+.etp-profile__passlabel line {
+  stroke: var(--etp-gold);
+  stroke-width: 1;
+}
+
+.etp-profile__passname {
+  font-family: var(--etp-serif);
+  font-size: 15px;
+  font-weight: 600;
+  fill: var(--etp-blue);
+}
+
+.etp-profile__passelev {
+  font-size: 11px;
+  font-weight: 600;
+  fill: #8a6420;
+}
+
+.etp-profile__label {
+  font-size: 11px;
+  fill: var(--etp-muted);
+}
+
+.etp-profile__label--strong {
+  fill: var(--etp-blue);
+  font-weight: 600;
+}
+
+.etp-profile__note {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: var(--etp-muted);
+}

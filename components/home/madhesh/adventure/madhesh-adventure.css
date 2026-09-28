@@ -1,0 +1,101 @@
+.madhesh-adventure {
+  height: var(--madhesh-section-h);
+  min-height: 520px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--madhesh-green-800);
+  color: var(--madhesh-cream);
+}
+
+.madhesh-adventure__media {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.madhesh-adventure__image {
+  object-fit: cover;
+}
+
+.madhesh-adventure__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.1rem;
+  padding: clamp(2rem, 4vw, 5rem);
+  overflow-y: auto;
+}
+
+.madhesh-adventure__title {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(2.1rem, 3.4vw, 3.2rem);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.madhesh-adventure__desc {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgba(247, 245, 239, 0.78);
+  max-width: 48ch;
+  margin: 0;
+}
+
+.madhesh-adventure__borders {
+  list-style: none;
+  margin: 0;
+  padding: 1rem 0;
+  border-top: 1px solid var(--madhesh-border-on-dark);
+  border-bottom: 1px solid var(--madhesh-border-on-dark);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.madhesh-adventure__borders li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+}
+
+.madhesh-adventure__border-route {
+  font-weight: 600;
+  color: var(--madhesh-gold);
+}
+
+.madhesh-adventure__border-note {
+  color: rgba(247, 245, 239, 0.65);
+  text-align: right;
+}
+
+.madhesh-adventure__note {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-style: italic;
+  color: rgba(247, 245, 239, 0.55);
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .madhesh-adventure {
+    height: auto;
+    grid-template-columns: 1fr;
+  }
+  .madhesh-adventure__media {
+    height: 50vh;
+  }
+  .madhesh-adventure__content {
+    padding: 2rem 1.25rem 3rem;
+  }
+  .madhesh-adventure__borders li {
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .madhesh-adventure__border-note {
+    text-align: left;
+  }
+}

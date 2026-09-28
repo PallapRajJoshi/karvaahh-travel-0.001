@@ -1,0 +1,94 @@
+.etp-exp__list {
+  display: grid;
+  gap: clamp(56px, 8vw, 110px);
+}
+
+.etp-exp__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+}
+
+.etp-exp__row--flip .etp-exp__media-wrap {
+  order: 2;
+}
+
+.etp-exp__media-wrap {
+  position: relative;
+}
+
+.etp-exp__media {
+  aspect-ratio: 3 / 2;
+  border-radius: var(--etp-radius-lg);
+}
+
+.etp-exp__count {
+  position: absolute;
+  bottom: -26px;
+  right: 24px;
+  font-family: var(--etp-serif);
+  font-size: clamp(3.5rem, 2.5rem + 3vw, 5.5rem);
+  line-height: 1;
+  color: var(--etp-gold);
+  text-shadow: 0 2px 0 var(--etp-white);
+  pointer-events: none;
+}
+
+.etp-exp__row--flip .etp-exp__count {
+  right: auto;
+  left: 24px;
+}
+
+.etp-exp__kicker {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--etp-teal);
+  margin-bottom: 12px;
+}
+
+.etp-exp__title {
+  font-size: clamp(1.6rem, 1.2rem + 1.2vw, 2.25rem);
+  color: var(--etp-blue);
+}
+
+.etp-exp__body {
+  margin-top: 16px;
+  color: var(--etp-muted);
+  font-size: 1.02rem;
+}
+
+.etp-exp__points {
+  list-style: none;
+  margin: 22px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.etp-exp__points li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 0.93rem;
+}
+
+.etp-exp__points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 10px;
+  height: 1px;
+  background: var(--etp-gold);
+}
+
+@media (max-width: 860px) {
+  .etp-exp__row {
+    grid-template-columns: 1fr;
+  }
+  .etp-exp__row--flip .etp-exp__media-wrap {
+    order: 0;
+  }
+}

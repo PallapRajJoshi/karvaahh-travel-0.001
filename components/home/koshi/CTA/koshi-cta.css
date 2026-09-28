@@ -1,0 +1,617 @@
+/* =========================================================
+   KOSHI CTA
+   ========================================================= */
+
+.koshi-cta {
+  position: relative;
+
+  width: 100%;
+  height: calc(100svh - 170px);
+  min-height: 0;
+
+  overflow: hidden;
+  box-sizing: border-box;
+
+  background: #07100c;
+  color: #fff;
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
+.koshi-cta__visual {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+
+  overflow: hidden;
+}
+
+.koshi-cta__image {
+  object-fit: cover;
+  object-position: center;
+
+  transform: scale(1.03);
+
+  animation: koshiCtaZoom 16s ease-out forwards;
+}
+
+.koshi-cta__overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(4, 11, 8, 0.82) 0%,
+      rgba(4, 11, 8, 0.55) 40%,
+      rgba(4, 11, 8, 0.15) 75%,
+      rgba(4, 11, 8, 0.28) 100%
+    );
+}
+
+.koshi-cta__gradient {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(3, 9, 6, 0.48) 0%,
+      transparent 32%,
+      transparent 68%,
+      rgba(3, 9, 6, 0.85) 100%
+    );
+}
+
+
+/* =========================================================
+   TOP LABEL
+   ========================================================= */
+
+.koshi-cta__top {
+  position: absolute;
+
+  top: 34px;
+  right: 6%;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  z-index: 5;
+}
+
+.koshi-cta__top-line {
+  width: 34px;
+  height: 1px;
+
+  background: #c9a45c;
+}
+
+.koshi-cta__top span:last-child {
+  font-family: "Inter", sans-serif;
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 0.28em;
+
+  color: rgba(255, 255, 255, 0.58);
+}
+
+
+/* =========================================================
+   NUMBER
+   ========================================================= */
+
+.koshi-cta__number {
+  position: absolute;
+
+  top: 50%;
+  right: 4%;
+
+  transform: translateY(-50%);
+
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: clamp(120px, 18vw, 270px);
+  line-height: 1;
+
+  font-weight: 400;
+
+  color: rgba(255, 255, 255, 0.045);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.koshi-cta__content {
+  position: relative;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+
+  /* Reserve space for bottom information bar */
+  padding-bottom: 75px;
+}
+.koshi-cta__inner {
+  width: min(760px, 100%);
+
+  padding-top: 10px;
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.koshi-cta__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  margin-bottom: 24px;
+}
+
+.koshi-cta__eyebrow span {
+  width: 42px;
+  height: 1px;
+
+  background: #c9a45c;
+}
+
+.koshi-cta__eyebrow p {
+  margin: 0;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.32em;
+
+  color: rgba(255, 255, 255, 0.65);
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.koshi-cta h2 {
+  margin: 0;
+
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: clamp(68px, 8vw, 125px);
+  line-height: 0.84;
+
+  font-weight: 400;
+
+  letter-spacing: -0.06em;
+
+  color: #fff;
+}
+
+.koshi-cta h2 em {
+  color: #d2ae65;
+
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   LEAD
+   ========================================================= */
+
+.koshi-cta__lead {
+  margin: 24px 0 0;
+
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: clamp(25px, 2.5vw, 36px);
+  line-height: 1;
+
+  font-style: italic;
+
+  color: rgba(255, 255, 255, 0.88);
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.koshi-cta__description {
+  width: min(530px, 100%);
+
+  margin: 15px 0 0;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 13px;
+  font-weight: 300;
+
+  line-height: 1.8;
+
+  color: rgba(255, 255, 255, 0.58);
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.koshi-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 30px;
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.koshi-cta__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-width: 175px;
+
+  padding: 14px 18px;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.koshi-cta__button span:last-child {
+  margin-left: 22px;
+
+  font-size: 15px;
+
+  transition: transform 0.3s ease;
+}
+
+
+/* Primary */
+
+.koshi-cta__button--primary {
+  background: #c9a45c;
+
+  color: #111a14;
+
+  border: 1px solid #c9a45c;
+}
+
+.koshi-cta__button--primary:hover {
+  transform: translateY(-3px);
+
+  background: #d7b66f;
+}
+
+.koshi-cta__button--primary:hover span:last-child {
+  transform: translate(3px, -3px);
+}
+
+
+/* Outline */
+
+.koshi-cta__button--outline {
+  border: 1px solid rgba(255, 255, 255, 0.38);
+
+  color: #fff;
+
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.koshi-cta__button--outline:hover {
+  transform: translateY(-3px);
+
+  background: rgba(255, 255, 255, 0.10);
+
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.koshi-cta__button--outline:hover span:last-child {
+  transform: translate(3px, -3px);
+}
+
+
+/* =========================================================
+   BOTTOM INFORMATION
+   ========================================================= */
+
+.koshi-cta__bottom {
+  position: absolute;
+
+  left: 6%;
+  right: 6%;
+  bottom: 28px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+
+  z-index: 4;
+}
+
+.koshi-cta__bottom-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  min-height: 38px;
+
+  border-right: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.koshi-cta__bottom-item:first-child {
+  padding-left: 0;
+}
+
+.koshi-cta__bottom-item:not(:first-child) {
+  padding-left: 20px;
+}
+
+.koshi-cta__bottom-item:last-child {
+  border-right: none;
+}
+
+.koshi-cta__bottom-item span {
+  font-family: "Inter", sans-serif;
+
+  font-size: 7px;
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+
+  color: #c9a45c;
+}
+
+.koshi-cta__bottom-item p {
+  margin: 0;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 7px;
+  font-weight: 600;
+
+  letter-spacing: 0.22em;
+
+  color: rgba(255, 255, 255, 0.38);
+}
+
+
+/* =========================================================
+   VERTICAL
+   ========================================================= */
+
+.koshi-cta__vertical {
+  position: absolute;
+
+  right: 26px;
+  bottom: 95px;
+
+  writing-mode: vertical-rl;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 7px;
+  font-weight: 700;
+
+  letter-spacing: 0.27em;
+
+  color: rgba(255, 255, 255, 0.30);
+}
+
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+@keyframes koshiCtaZoom {
+  from {
+    transform: scale(1.03);
+  }
+
+  to {
+    transform: scale(1.09);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .koshi-cta__content {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .koshi-cta__top {
+    right: 40px;
+  }
+
+  .koshi-cta__bottom {
+    left: 40px;
+    right: 40px;
+  }
+
+  .koshi-cta__number {
+    right: 20px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+  .koshi-cta {
+    height: auto;
+    min-height: 720px;
+  }
+
+  .koshi-cta__content {
+    height: auto;
+    min-height: 720px;
+
+    align-items: flex-end;
+
+    padding: 100px 24px 125px;
+  }
+
+  .koshi-cta__overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(4, 11, 8, 0.20) 0%,
+        rgba(4, 11, 8, 0.48) 36%,
+        rgba(4, 11, 8, 0.94) 100%
+      );
+  }
+
+  .koshi-cta__top {
+    top: 26px;
+    right: 24px;
+  }
+
+  .koshi-cta__number {
+    top: 80px;
+    right: 15px;
+
+    transform: none;
+
+    font-size: 110px;
+  }
+
+  .koshi-cta h2 {
+    font-size: clamp(58px, 16vw, 82px);
+    line-height: 0.86;
+  }
+
+  .koshi-cta__lead {
+    font-size: 27px;
+  }
+
+  .koshi-cta__description {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .koshi-cta__actions {
+    margin-top: 25px;
+  }
+
+  .koshi-cta__button {
+    min-width: 165px;
+  }
+
+  .koshi-cta__bottom {
+    left: 24px;
+    right: 24px;
+    bottom: 20px;
+
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .koshi-cta__bottom-item:nth-child(3),
+  .koshi-cta__bottom-item:nth-child(4) {
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+  }
+
+  .koshi-cta__bottom-item:nth-child(2) {
+    border-right: none;
+  }
+
+  .koshi-cta__vertical {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .koshi-cta__content {
+    min-height: 700px;
+
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .koshi-cta h2 {
+    font-size: 56px;
+  }
+
+  .koshi-cta__lead {
+    font-size: 24px;
+  }
+
+  .koshi-cta__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .koshi-cta__button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .koshi-cta__bottom {
+    left: 18px;
+    right: 18px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .koshi-cta__image {
+    animation: none;
+    transform: none;
+  }
+
+  .koshi-cta__button,
+  .koshi-cta__button span:last-child {
+    transition: none;
+  }
+}

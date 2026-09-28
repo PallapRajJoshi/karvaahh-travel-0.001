@@ -1,0 +1,120 @@
+.etp-faq__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
+  gap: clamp(32px, 6vw, 88px);
+  align-items: start;
+}
+
+.etp-faq__intro {
+  position: sticky;
+  top: calc(var(--site-header-height, 0px) + 90px);
+}
+
+.etp-faq__intro .etp-heading {
+  margin-bottom: 18px;
+}
+
+.etp-faq__intro .etp-heading__title {
+  font-size: clamp(1.8rem, 1.2rem + 1.8vw, 2.6rem);
+}
+
+.etp-faq__help {
+  color: var(--etp-muted);
+  margin-bottom: 22px;
+}
+
+.etp-faq__list {
+  border-top: 1px solid var(--etp-line);
+}
+
+.etp-faq__item {
+  border-bottom: 1px solid var(--etp-line);
+}
+
+.etp-faq__q {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) 24px;
+  gap: 12px;
+  align-items: center;
+  padding: 20px 0;
+  min-height: 64px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.etp-faq__q::-webkit-details-marker {
+  display: none;
+}
+
+.etp-faq__num {
+  font-family: var(--etp-serif);
+  font-size: 0.9rem;
+  color: var(--etp-gold);
+}
+
+.etp-faq__qtext {
+  font-family: var(--etp-serif);
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: var(--etp-blue);
+}
+
+.etp-faq__plus {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--etp-line);
+}
+
+.etp-faq__plus::before,
+.etp-faq__plus::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 1.5px;
+  background: var(--etp-blue);
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s var(--etp-ease);
+}
+
+.etp-faq__plus::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.etp-faq__item[open] .etp-faq__plus::after {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.etp-faq__item[open] .etp-faq__plus {
+  border-color: var(--etp-gold);
+}
+
+.etp-faq__a {
+  padding: 0 36px 22px 46px;
+  color: var(--etp-muted);
+  font-size: 0.97rem;
+}
+
+@media (max-width: 900px) {
+  .etp-faq__grid {
+    grid-template-columns: 1fr;
+  }
+  .etp-faq__intro {
+    position: static;
+  }
+}
+
+@media (max-width: 520px) {
+  .etp-faq__q {
+    grid-template-columns: minmax(0, 1fr) 24px;
+  }
+  .etp-faq__num {
+    display: none;
+  }
+  .etp-faq__a {
+    padding: 0 0 20px;
+  }
+}

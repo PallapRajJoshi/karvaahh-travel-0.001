@@ -1,0 +1,91 @@
+/* Scoped so nothing leaks into other pages. */
+.rafting-page {
+  /* Palette: night-gorge water, wet slate, expedition gold. */
+  --act-bg: #0b1a1d;
+  --act-bg-alt: #081416;
+  --act-surface: #112a2e;
+  --act-surface-alt: #163338;
+  --act-border: rgba(233, 226, 208, 0.14);
+  --act-ink: #f2ede1;
+  --act-ink-soft: rgba(242, 237, 225, 0.76);
+  --act-ink-muted: rgba(242, 237, 225, 0.52);
+  --act-accent: #c9a45c;
+  --act-accent-strong: #dcbc78;
+  --act-accent-soft: rgba(201, 164, 92, 0.28);
+  --act-accent-ink: #0b1a1d;
+  --act-card-rule: #c9a45c;
+  --act-status-bg: rgba(242, 237, 225, 0.1);
+  --act-warn-bg: rgba(201, 124, 62, 0.18);
+  --act-cta-bg: #16333c;
+  --act-cta-ink: #f2ede1;
+  --act-cta-ink-soft: rgba(242, 237, 225, 0.74);
+
+  --act-radius: 4px;
+  --act-radius-pill: 2px;
+  --act-max: 76rem;
+  --act-font-display: var(--font-playfair, "Playfair Display", Georgia, serif);
+
+  background: var(--act-bg);
+  color: var(--act-ink);
+  font-family: var(--font-inter, "Inter", system-ui, sans-serif);
+  overflow-x: clip;
+}
+
+.rafting-page__main {
+  display: block;
+}
+
+.rafting-page .rafting-section {
+  width: min(100% - 2.5rem, var(--act-max));
+  margin-inline: auto;
+  padding-block: clamp(3.25rem, 7vw, 5.5rem);
+}
+
+.rafting-page .rafting-section--tint {
+  width: 100%;
+  max-width: none;
+  background: var(--act-bg-alt);
+}
+
+.rafting-page .rafting-section--tint > .rafting-section__inner {
+  width: min(100% - 2.5rem, var(--act-max));
+  margin-inline: auto;
+}
+
+.rafting-page .rafting-section--flush {
+  padding-top: 0;
+}
+
+.rafting-page__footer {
+  width: min(100% - 2.5rem, var(--act-max));
+  margin-inline: auto;
+  padding-block: 2.25rem 3.5rem;
+  border-top: 1px solid var(--act-border);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--act-ink-muted);
+}
+
+/* Reveal: one quiet fade per section, disabled without JS or motion. */
+.rafting-page .reveal {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rafting-page .reveal[data-reveal="pending"] {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  .rafting-page .reveal[data-reveal="shown"] {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
+  }
+}

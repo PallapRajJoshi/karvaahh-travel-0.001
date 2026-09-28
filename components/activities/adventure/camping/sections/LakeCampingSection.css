@@ -1,0 +1,26 @@
+.cmp-lakes {
+  background: linear-gradient(180deg, #0f2a33 0%, #123843 100%);
+  color: var(--cmp-snow);
+}
+.cmp-lake { width: min(620px, 86vw); }
+.cmp-lake__media {
+  position: relative; aspect-ratio: 16 / 10;
+  border-radius: var(--cmp-radius-lg); overflow: hidden;
+}
+/* Slow light moving across the lower half, suggesting water. */
+.cmp-lake__shimmer {
+  position: absolute; inset: 55% 0 0 0;
+  background: linear-gradient(100deg, transparent 20%, rgba(255, 255, 255, 0.12) 45%, transparent 70%);
+  background-size: 250% 100%;
+  mix-blend-mode: soft-light;
+  animation: cmp-shimmer 9s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes cmp-shimmer { 0%, 100% { background-position: 100% 0; } 50% { background-position: 0 0; } }
+.cmp-lake .cmp-img__el { transition: transform 1.2s var(--cmp-ease); }
+@media (hover: hover) { .cmp-lake:hover .cmp-img__el { transform: scale(1.05); } }
+
+.cmp-lake__body { padding: 1.1rem 0.2rem 0; }
+.cmp-lake__area { margin: 0; display: flex; align-items: center; gap: 0.35rem; font-size: 0.82rem; color: var(--cmp-glacier); }
+.cmp-lake__name { margin: 0.3rem 0 0.35rem; font-family: var(--cmp-serif); font-size: clamp(1.5rem, 2.4vw, 2rem); font-weight: 600; }
+.cmp-lake__note { margin: 0; color: rgba(247, 245, 239, 0.72); line-height: 1.55; }

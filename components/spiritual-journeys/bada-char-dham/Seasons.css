@@ -1,0 +1,85 @@
+.bcd-seasons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.bcd-seasons__item {
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border-radius: var(--bcd-radius);
+  background: var(--bcd-paper);
+  border-left: 4px solid var(--dir);
+}
+.bcd-seasons__head {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+  color: var(--dir);
+}
+.bcd-seasons__head svg {
+  flex: none;
+  margin-top: 0.2rem;
+}
+.bcd-seasons__title {
+  font-family: var(--bcd-serif);
+  font-weight: 500;
+  font-size: 1.3125rem;
+  color: var(--bcd-ink);
+}
+.bcd-seasons__place {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--dir);
+}
+.bcd-seasons__text {
+  margin-top: 0.85rem;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--bcd-ink-soft);
+}
+.bcd-seasons__note {
+  margin-top: 1.25rem;
+}
+
+/* Festivals */
+.bcd-fest {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+.bcd-fest__item {
+  padding-top: 1.25rem;
+  border-top: 2px solid var(--dir);
+}
+.bcd-fest__place {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--dir);
+}
+.bcd-fest__name {
+  margin-top: 0.35rem;
+  font-family: var(--bcd-serif);
+  font-weight: 500;
+  font-size: 1.375rem;
+  line-height: 1.2;
+}
+.bcd-fest__text {
+  margin-top: 0.6rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--bcd-ink-soft);
+}
+.bcd-fest__small {
+  margin-top: 1.75rem;
+  font-size: 0.875rem;
+  color: var(--bcd-stone);
+}
+
+@media (max-width: 900px) {
+  .bcd-fest { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .bcd-seasons,
+  .bcd-fest { grid-template-columns: 1fr; }
+}

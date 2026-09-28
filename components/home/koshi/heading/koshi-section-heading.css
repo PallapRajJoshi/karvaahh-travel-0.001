@@ -1,0 +1,635 @@
+/* =========================================================
+   KOSHI SECTION HEADING
+   Karvaahh — Premium Editorial Travel System
+========================================================= */
+
+.koshi-section-heading {
+  position: relative;
+
+  width: 100%;
+  max-width: 1050px;
+
+  margin: 0;
+
+  text-align: left;
+
+  color: #142019;
+
+  box-sizing: border-box;
+}
+
+.koshi-section-heading *,
+.koshi-section-heading *::before,
+.koshi-section-heading *::after {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.koshi-section-heading__eyebrow {
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  margin: 0 0 25px;
+
+  min-height: 12px;
+}
+
+
+/* =========================================================
+   EYEBROW LINE
+========================================================= */
+
+.koshi-section-heading__eyebrow-line {
+  display: block;
+
+  width: 52px;
+  height: 1px;
+
+  flex: 0 0 52px;
+
+  background: #b8954e;
+
+  transform-origin: left center;
+
+  animation:
+    koshi-heading-line
+    0.8s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+
+
+/* =========================================================
+   EYEBROW TEXT
+========================================================= */
+
+.koshi-section-heading__eyebrow-text {
+  display: block;
+
+  margin: 0;
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  line-height: 1;
+
+  letter-spacing: 0.34em;
+
+  text-transform: uppercase;
+
+  color: rgba(20, 32, 25, 0.62);
+}
+
+
+/* =========================================================
+   MAIN TITLE
+========================================================= */
+
+.koshi-section-heading__title {
+  display: block;
+
+  width: 100%;
+
+  max-width: 1000px;
+
+  margin: 0 !important;
+
+  padding: 0 !important;
+
+  font-family:
+    "Playfair Display",
+    Georgia,
+    "Times New Roman",
+    serif !important;
+
+  font-size:
+    clamp(52px, 5.2vw, 82px) !important;
+
+  font-weight: 400 !important;
+
+  line-height: 0.98 !important;
+
+  letter-spacing: -0.055em !important;
+
+  color: #142019 !important;
+
+  text-align: left;
+
+  text-wrap: balance;
+
+  -webkit-font-smoothing: antialiased;
+
+  text-rendering: optimizeLegibility;
+}
+
+
+/* =========================================================
+   ITALIC EMPHASIS
+========================================================= */
+
+.koshi-section-heading__title em {
+  display: inline;
+
+  margin: 0;
+
+  font-family:
+    "Playfair Display",
+    Georgia,
+    "Times New Roman",
+    serif !important;
+
+  font-style: italic !important;
+
+  font-weight: 400 !important;
+
+  color: #707961 !important;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.koshi-section-heading__description {
+  display: block;
+
+  width: 100%;
+
+  max-width: 720px;
+
+  margin:
+    25px 0 0 !important;
+
+  padding: 0 !important;
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif !important;
+
+  font-size: 15px !important;
+
+  font-weight: 400 !important;
+
+  line-height: 1.75 !important;
+
+  letter-spacing: -0.005em;
+
+  color:
+    rgba(20, 32, 25, 0.57) !important;
+
+  text-align: left;
+
+  text-wrap: pretty;
+}
+
+
+/* =========================================================
+   LEFT ALIGNMENT
+========================================================= */
+
+.koshi-section-heading--left {
+  margin-left: 0;
+
+  margin-right: auto;
+
+  text-align: left;
+}
+
+
+/* =========================================================
+   CENTER ALIGNMENT
+========================================================= */
+
+.koshi-section-heading--center {
+  margin-left: auto;
+
+  margin-right: auto;
+
+  text-align: center;
+}
+
+.koshi-section-heading--center
+.koshi-section-heading__eyebrow {
+  justify-content: center;
+}
+
+.koshi-section-heading--center
+.koshi-section-heading__title {
+  text-align: center;
+}
+
+.koshi-section-heading--center
+.koshi-section-heading__description {
+  margin-left: auto !important;
+
+  margin-right: auto !important;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   OPTIONAL NUMBER
+========================================================= */
+
+.koshi-section-heading__index {
+  position: absolute;
+
+  top: 0;
+
+  right: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  width: 105px;
+
+  height: 105px;
+
+  padding-bottom: 8px;
+
+  border-left:
+    1px solid
+    rgba(20, 32, 25, 0.10);
+}
+
+
+.koshi-section-heading__index span {
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size: 54px;
+
+  font-weight: 400;
+
+  line-height: 0.85;
+
+  letter-spacing: -0.06em;
+
+  color:
+    rgba(20, 32, 25, 0.17);
+}
+
+
+.koshi-section-heading__index small {
+  margin-top: 10px;
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 7px;
+
+  font-weight: 700;
+
+  line-height: 1;
+
+  letter-spacing: 0.30em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(20, 32, 25, 0.42);
+}
+
+
+/* =========================================================
+   LIGHT VERSION
+========================================================= */
+
+.koshi-section-heading--light
+.koshi-section-heading__eyebrow-text {
+  color:
+    rgba(255, 255, 255, 0.65);
+}
+
+
+.koshi-section-heading--light
+.koshi-section-heading__title {
+  color: #ffffff !important;
+}
+
+
+.koshi-section-heading--light
+.koshi-section-heading__title em {
+  color: #e4d8bc !important;
+}
+
+
+.koshi-section-heading--light
+.koshi-section-heading__description {
+  color:
+    rgba(255, 255, 255, 0.60) !important;
+}
+
+
+/* =========================================================
+   TITLE REVEAL
+========================================================= */
+
+.koshi-section-heading__title {
+  opacity: 0;
+
+  transform:
+    translateY(22px);
+
+  animation:
+    koshi-heading-reveal
+    0.9s
+    0.12s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+
+/* =========================================================
+   DESCRIPTION REVEAL
+========================================================= */
+
+.koshi-section-heading__description {
+  opacity: 0;
+
+  transform:
+    translateY(18px);
+
+  animation:
+    koshi-heading-reveal
+    0.8s
+    0.28s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+
+/* =========================================================
+   EYEBROW ANIMATION
+========================================================= */
+
+@keyframes koshi-heading-line {
+
+  from {
+    opacity: 0;
+
+    transform:
+      scaleX(0);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      scaleX(1);
+  }
+}
+
+
+/* =========================================================
+   CONTENT ANIMATION
+========================================================= */
+
+@keyframes koshi-heading-reveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1440px) {
+
+  .koshi-section-heading {
+    max-width: 1100px;
+  }
+
+
+  .koshi-section-heading__eyebrow {
+    margin-bottom: 27px;
+  }
+
+
+  .koshi-section-heading__eyebrow-line {
+    width: 55px;
+
+    flex-basis: 55px;
+  }
+
+
+  .koshi-section-heading__title {
+    font-size:
+      clamp(70px, 4.5vw, 88px) !important;
+  }
+
+
+  .koshi-section-heading__description {
+    max-width: 760px;
+
+    margin-top: 27px !important;
+
+    font-size: 15px !important;
+  }
+}
+
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .koshi-section-heading {
+    max-width: 900px;
+  }
+
+
+  .koshi-section-heading__title {
+    font-size:
+      clamp(50px, 5.5vw, 72px) !important;
+  }
+
+
+  .koshi-section-heading__description {
+    max-width: 650px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .koshi-section-heading__eyebrow {
+    margin-bottom: 19px;
+  }
+
+
+  .koshi-section-heading__eyebrow-line {
+    width: 38px;
+
+    flex-basis: 38px;
+  }
+
+
+  .koshi-section-heading__eyebrow-text {
+    font-size: 9px;
+
+    letter-spacing: 0.27em;
+  }
+
+
+  .koshi-section-heading__title {
+    font-size:
+      clamp(44px, 7vw, 62px) !important;
+
+    line-height: 1 !important;
+  }
+
+
+  .koshi-section-heading__description {
+    max-width: 600px;
+
+    margin-top: 18px !important;
+
+    font-size: 13px !important;
+
+    line-height: 1.7 !important;
+  }
+
+
+  .koshi-section-heading__index {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .koshi-section-heading {
+    max-width: 100%;
+  }
+
+
+  .koshi-section-heading__eyebrow {
+    gap: 10px;
+
+    margin-bottom: 15px;
+  }
+
+
+  .koshi-section-heading__eyebrow-line {
+    width: 30px;
+
+    flex-basis: 30px;
+  }
+
+
+  .koshi-section-heading__eyebrow-text {
+    font-size: 8px;
+
+    letter-spacing: 0.22em;
+  }
+
+
+  .koshi-section-heading__title {
+    font-size:
+      clamp(38px, 11vw, 52px) !important;
+
+    line-height: 1.02 !important;
+
+    letter-spacing: -0.045em !important;
+  }
+
+
+  .koshi-section-heading__description {
+    max-width: 100%;
+
+    margin-top: 15px !important;
+
+    font-size: 12px !important;
+
+    line-height: 1.65 !important;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .koshi-section-heading__eyebrow {
+    margin-bottom: 13px;
+  }
+
+
+  .koshi-section-heading__title {
+    font-size: 38px !important;
+  }
+
+
+  .koshi-section-heading__description {
+    font-size: 11px !important;
+
+    line-height: 1.65 !important;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .koshi-section-heading__eyebrow-line,
+  .koshi-section-heading__title,
+  .koshi-section-heading__description {
+    animation: none !important;
+
+    opacity: 1;
+
+    transform: none;
+  }
+}

@@ -1,0 +1,208 @@
+.hry-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: min(92svh, 860px);
+  color: var(--hry-ivory);
+  background: var(--hry-forest);
+  overflow: hidden;
+}
+
+.hry-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.hry-hero__img {
+  object-fit: cover;
+  object-position: center 60%;
+}
+
+/* Legibility scrim: heavier at the bottom-left where the copy sits */
+.hry-hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(13, 29, 22, 0.35) 0%, rgba(13, 29, 22, 0) 30%),
+    linear-gradient(90deg, rgba(13, 29, 22, 0.82) 0%, rgba(13, 29, 22, 0.45) 55%, rgba(13, 29, 22, 0.1) 100%),
+    linear-gradient(0deg, rgba(13, 29, 22, 0.9) 0%, rgba(13, 29, 22, 0) 45%);
+}
+
+.hry-hero__inner {
+  padding-top: clamp(96px, 14vh, 160px);
+  padding-bottom: clamp(32px, 5vw, 48px);
+}
+
+.hry-hero__content {
+  max-width: 40rem;
+}
+
+.hry-hero__eyebrow {
+  margin: 0 0 16px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--hry-gold);
+}
+
+.hry-hero__title {
+  margin: 0;
+  font-family: var(--hry-font-display);
+  font-weight: 600;
+  font-size: clamp(2.4rem, 1.4rem + 4.4vw, 4.5rem);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.hry-hero__subtitle {
+  margin: 14px 0 0;
+  font-family: var(--hry-font-display);
+  font-style: italic;
+  font-size: clamp(1.15rem, 1rem + 0.8vw, 1.5rem);
+  color: var(--hry-saffron-soft);
+}
+
+.hry-hero__desc {
+  margin: 20px 0 0;
+  max-width: 58ch;
+  font-size: 1.0625rem;
+  color: rgba(251, 248, 241, 0.88);
+}
+
+.hry-hero__features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hry-hero__feature {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(13, 29, 22, 0.5);
+  border: 1px solid var(--hry-line-dark);
+  font-size: 0.8125rem;
+  backdrop-filter: blur(6px);
+}
+
+.hry-hero__feature svg {
+  color: var(--hry-saffron);
+}
+
+.hry-hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+  margin-top: 32px;
+}
+
+/* ----- Route strip -------------------------------------------------------- */
+
+.hry-route {
+  border-top: 1px solid var(--hry-line-dark);
+  background: rgba(13, 29, 22, 0.72);
+  backdrop-filter: blur(8px);
+}
+
+.hry-route__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0 auto;
+  padding-block: 18px;
+  list-style: none;
+}
+
+.hry-route__stop {
+  position: relative;
+}
+
+/* The river line joining stops: solid between core stops, dashed into optional */
+.hry-route__stop:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 21px;
+  left: 22px;
+  right: 0;
+  border-top: 2px solid var(--hry-river);
+}
+
+.hry-route__stop:has(+ .hry-route__stop--optional)::after {
+  border-top-style: dashed;
+  border-top-color: rgba(251, 248, 241, 0.45);
+}
+
+.hry-route__link {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 12px 4px 0;
+  color: var(--hry-ivory);
+  text-decoration: none;
+}
+
+.hry-route__dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--hry-saffron);
+  box-shadow: 0 0 0 4px rgba(224, 138, 46, 0.25);
+}
+
+.hry-route__stop--optional .hry-route__dot {
+  background: var(--hry-forest);
+  border: 2px dashed rgba(251, 248, 241, 0.7);
+  box-shadow: none;
+}
+
+.hry-route__name {
+  font-family: var(--hry-font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.hry-route__link:hover .hry-route__name {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.hry-route__meta {
+  font-size: 0.8125rem;
+  color: rgba(251, 248, 241, 0.7);
+}
+
+@media (max-width: 640px) {
+  .hry-hero {
+    min-height: auto;
+  }
+
+  .hry-hero__desc {
+    font-size: 1rem;
+  }
+
+  .hry-hero__ctas .hry-btn--primary,
+  .hry-hero__ctas .hry-btn--outline-light {
+    flex: 1 1 100%;
+  }
+
+  .hry-route__name {
+    font-size: 0.9375rem;
+  }
+
+  .hry-route__meta {
+    display: none;
+  }
+}

@@ -1,0 +1,97 @@
+.aerial-page .ae-season__summary {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1rem 3rem;
+  align-items: end;
+  margin-bottom: 2.5rem;
+}
+.aerial-page .ae-season__main {
+  margin: 0;
+  font-family: var(--ae-serif);
+  font-size: clamp(1.6rem, 3.2vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--ae-forest);
+}
+.aerial-page .ae-season__body {
+  margin: 0;
+  max-width: 34rem;
+  line-height: 1.7;
+  color: var(--ae-muted);
+}
+.aerial-page .ae-season__strip {
+  display: flex;
+  gap: 6px;
+}
+.aerial-page .ae-season__band {
+  flex-basis: 0;
+  min-width: 0;
+  padding: 1rem 1rem 0.9rem;
+  border-radius: var(--ae-r-md);
+}
+.aerial-page .ae-season__band--open {
+  background: var(--ae-forest);
+  color: var(--ae-cream);
+}
+.aerial-page .ae-season__band--closed {
+  color: var(--ae-muted);
+  background:
+    repeating-linear-gradient(-45deg, rgba(13, 29, 22, 0.06) 0 8px, rgba(13, 29, 22, 0) 8px 16px),
+    var(--ae-cream);
+  border: 1px dashed rgba(13, 29, 22, 0.25);
+}
+.aerial-page .ae-season__band-label {
+  margin: 0 0 0.9rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+.aerial-page .ae-season__band--open .ae-season__band-label {
+  color: var(--ae-gold);
+}
+.aerial-page .ae-season__months {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.aerial-page .ae-season__month {
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.aerial-page .ae-season__month + .ae-season__month {
+  border-left: 1px solid currentColor;
+  border-left-color: rgba(128, 128, 128, 0.3);
+}
+.aerial-page .ae-season__abbr {
+  text-decoration: none;
+}
+.aerial-page .ae-season__note {
+  margin: 1.5rem 0 0;
+  font-size: 0.9rem;
+  color: var(--ae-muted);
+}
+
+/* Mobile: bands stack, months wrap into a readable grid. */
+@media (max-width: 760px) {
+  .aerial-page .ae-season__summary {
+    grid-template-columns: 1fr;
+  }
+  .aerial-page .ae-season__strip {
+    flex-direction: column;
+  }
+  .aerial-page .ae-season__months {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    row-gap: 0.6rem;
+  }
+  .aerial-page .ae-season__band--closed .ae-season__months {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .aerial-page .ae-season__month + .ae-season__month {
+    border-left: 0;
+  }
+}

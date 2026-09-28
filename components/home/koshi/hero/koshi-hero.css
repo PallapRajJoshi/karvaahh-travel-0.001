@@ -1,0 +1,1857 @@
+/* =========================================================
+   KOSHI HERO
+   Karvaahh — Koshi Province
+========================================================= */
+
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+.koshi-hero {
+  /*
+    Your desktop Navbar is approximately 152px.
+
+    Hero fills the remaining viewport.
+  */
+
+  height: calc(100svh - 152px);
+
+  min-height: 620px;
+
+  background: #0b1511;
+
+  isolation: isolate;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   BACKGROUND IMAGE
+========================================================= */
+
+.koshi-hero-image {
+  position: absolute !important;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  /*
+    Your photograph looks best with the mountains
+    slightly above center.
+  */
+
+  object-position: center 47%;
+
+  transform: scale(1.045);
+
+  animation:
+    koshi-image-reveal
+    1.8s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+
+  will-change: transform;
+
+  z-index: -5;
+}
+
+
+/* =========================================================
+   CINEMATIC OVERLAY
+========================================================= */
+
+.koshi-hero__overlay {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -3;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3, 10, 7, 0.80) 0%,
+      rgba(3, 10, 7, 0.63) 22%,
+      rgba(3, 10, 7, 0.38) 42%,
+      rgba(3, 10, 7, 0.13) 67%,
+      rgba(3, 10, 7, 0.02) 100%
+    ),
+    linear-gradient(
+      to top,
+      rgba(3, 10, 7, 0.88) 0%,
+      rgba(3, 10, 7, 0.48) 15%,
+      rgba(3, 10, 7, 0.10) 38%,
+      transparent 65%
+    );
+}
+
+
+/* =========================================================
+   SUBTLE LIGHT EFFECT
+========================================================= */
+
+.koshi-hero__overlay::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 57% 25%,
+      rgba(255, 220, 150, 0.055),
+      transparent 30%
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   LEFT VERTICAL LINE
+========================================================= */
+
+.koshi-hero__left-line {
+  position: absolute;
+
+  left: 5%;
+
+  top: 0;
+
+  width: 1px;
+
+  height: 100%;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      rgba(255, 255, 255, 0.18) 15%,
+      rgba(255, 255, 255, 0.18) 85%,
+      transparent
+    );
+
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.koshi-hero-content {
+  height: 100%;
+
+  /*
+    Space reserved for bottom highlights.
+  */
+
+  padding-bottom: 95px;
+}
+
+
+.koshi-hero__copy {
+  position: relative;
+
+  z-index: 5;
+}
+
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.koshi-eyebrow-line {
+  display: block;
+
+  width: 45px;
+
+  height: 1px;
+
+  background: #c9a45c;
+
+  box-shadow:
+    0 0 10px
+    rgba(201, 164, 92, 0.25);
+}
+
+
+.koshi-eyebrow-text {
+  font-size: 10px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.35em;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.78
+    );
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.koshi-title {
+  margin: 0;
+
+  font-family:
+    "Playfair Display",
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(
+      68px,
+      7.8vw,
+      125px
+    );
+
+  font-weight: 400;
+
+  line-height: 0.82;
+
+  letter-spacing: -0.065em;
+
+  color: #ffffff;
+
+  text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+
+.koshi-title > span {
+  display: block;
+}
+
+
+.koshi-title em {
+  display: block;
+
+  margin-top: 10px;
+
+  margin-left:
+    clamp(
+      40px,
+      7vw,
+      105px
+    );
+
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size: 0.98em;
+
+  font-weight: 400;
+
+  font-style: italic;
+
+  line-height: 0.9;
+
+  color: #f3eee4;
+
+  text-shadow:
+    0 4px 35px
+    rgba(0, 0, 0, 0.28);
+}
+
+
+/* =========================================================
+   LEAD
+========================================================= */
+
+.koshi-hero__lead {
+  max-width: 620px;
+
+  margin-top: 30px;
+
+  font-size:
+    clamp(
+      19px,
+      1.75vw,
+      27px
+    );
+
+  font-weight: 300;
+
+  line-height: 1.38;
+
+  letter-spacing: -0.015em;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.95
+    );
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.koshi-hero__description {
+  max-width: 600px;
+
+  margin-top: 15px;
+
+  font-size: 13px;
+
+  font-weight: 300;
+
+  line-height: 1.75;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.62
+    );
+}
+
+
+/* =========================================================
+   REVEAL ANIMATION
+========================================================= */
+
+.koshi-hero-reveal {
+  opacity: 0;
+
+  transform:
+    translateY(25px);
+
+  animation:
+    koshi-reveal
+    0.9s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    forwards;
+}
+
+
+/*
+  Eyebrow
+*/
+
+.koshi-eyebrow-line
+~ .koshi-eyebrow-text {
+  animation-delay: 0.1s;
+}
+
+
+/*
+  Title
+*/
+
+.koshi-title {
+  animation-delay: 0.22s;
+}
+
+
+/*
+  Lead
+*/
+
+.koshi-title
+~ .koshi-hero__lead {
+  animation-delay: 0.38s;
+}
+
+
+/*
+  Description
+*/
+
+.koshi-hero__lead
+~ .koshi-hero__description {
+  animation-delay: 0.50s;
+}
+
+
+/*
+  Buttons
+*/
+
+.koshi-actions {
+  animation-delay: 0.62s;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.koshi-actions {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 26px;
+
+  margin-top: 26px;
+}
+
+
+/* =========================================================
+   PRIMARY BUTTON
+========================================================= */
+
+.koshi-primary-btn {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  min-width: 205px;
+
+  height: 52px;
+
+  padding:
+    0 7px 0 23px;
+
+  gap: 22px;
+
+  background: #f6f3eb;
+
+  color: #142019;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.2
+    );
+
+  text-decoration: none;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease;
+}
+
+
+.koshi-primary-btn:hover {
+  transform:
+    translateY(-3px);
+
+  background: #ffffff;
+
+  box-shadow:
+    0 15px 35px
+    rgba(
+      0,
+      0,
+      0,
+      0.22
+    );
+}
+
+
+/* =========================================================
+   BUTTON ARROW
+========================================================= */
+
+.koshi-btn-arrow {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 38px;
+
+  height: 38px;
+
+  background: #142019;
+
+  color: #ffffff;
+
+  font-size: 17px;
+
+  transition:
+    transform 0.4s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    ),
+    background 0.3s ease;
+}
+
+
+.koshi-primary-btn:hover
+.koshi-btn-arrow {
+  transform:
+    rotate(45deg);
+
+  background: #b8954e;
+}
+
+
+/* =========================================================
+   SECONDARY LINK
+========================================================= */
+
+.koshi-text-link {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.86
+    );
+
+  text-decoration: none;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.07em;
+
+  transition:
+    color 0.3s ease,
+    gap 0.3s ease;
+}
+
+
+.koshi-text-link:hover {
+  color: #ffffff;
+
+  gap: 15px;
+}
+
+
+.koshi-link-line {
+  position: absolute;
+
+  left: 0;
+
+  bottom: -6px;
+
+  width: 0;
+
+  height: 1px;
+
+  background: #c9a45c;
+
+  transition:
+    width 0.35s ease;
+}
+
+
+.koshi-text-link:hover
+.koshi-link-line {
+  width: 100%;
+}
+
+
+.koshi-link-arrow {
+  font-size: 16px;
+
+  transition:
+    transform 0.35s ease;
+}
+
+
+.koshi-text-link:hover
+.koshi-link-arrow {
+  transform:
+    translate(
+      3px,
+      -3px
+    );
+}
+
+
+/* =========================================================
+   LOCATION CARD
+========================================================= */
+
+.koshi-location-wrapper {
+  position: absolute;
+
+  top: 38px;
+
+  right: 48px;
+
+  z-index: 15;
+}
+
+
+.koshi-location-card {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  min-width: 285px;
+
+  padding:
+    13px 18px;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.14
+    );
+
+  border-radius: 8px;
+
+  background:
+    rgba(
+      8,
+      20,
+      14,
+      0.34
+    );
+
+  backdrop-filter:
+    blur(18px);
+
+  -webkit-backdrop-filter:
+    blur(18px);
+
+  box-shadow:
+    0 18px 45px
+    rgba(
+      0,
+      0,
+      0,
+      0.18
+    );
+}
+
+
+/* =========================================================
+   LOCATION ICON
+========================================================= */
+
+.koshi-location-icon {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 37px;
+
+  height: 37px;
+
+  border:
+    1px solid
+    rgba(
+      201,
+      164,
+      92,
+      0.65
+    );
+
+  border-radius: 50%;
+
+  color: #c9a45c;
+
+  font-size: 19px;
+}
+
+
+/* =========================================================
+   LOCATION TEXT
+========================================================= */
+
+.koshi-location-title {
+  margin: 0;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.20em;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.90
+    );
+}
+
+
+.koshi-location-subtitle {
+  margin: 4px 0 0;
+
+  font-size: 11px;
+
+  font-weight: 300;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.48
+    );
+}
+
+
+/* =========================================================
+   PAGE INDICATOR
+========================================================= */
+
+.koshi-hero-page-indicator {
+  position: absolute;
+
+  top: 50%;
+
+  right: 25px;
+
+  z-index: 15;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 12px;
+
+  transform:
+    translateY(-50%);
+}
+
+
+.koshi-hero-page-indicator > span {
+  font-size: 9px;
+
+  font-weight: 500;
+
+  letter-spacing: 0.15em;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.38
+    );
+}
+
+
+.koshi-hero-page-indicator
+> span.active {
+  color: #c9a45c;
+}
+
+
+/* =========================================================
+   PAGE LINE
+========================================================= */
+
+.koshi-page-line {
+  position: relative;
+
+  width: 1px;
+
+  height: 82px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.20
+    );
+}
+
+
+.koshi-page-line::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  left: 50%;
+
+  width: 7px;
+
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  transform:
+    translateX(-50%);
+}
+
+
+/* =========================================================
+   HIGHLIGHTS WRAPPER
+========================================================= */
+
+.koshi-hero-highlights-wrapper {
+  position: absolute;
+
+  left: 50%;
+
+  bottom: 22px;
+
+  z-index: 20;
+
+  width:
+    min(
+      930px,
+      calc(100% - 310px)
+    );
+
+  transform:
+    translateX(-50%);
+}
+
+
+/* =========================================================
+   HIGHLIGHTS PANEL
+========================================================= */
+
+.koshi-highlights {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  width: 100%;
+
+  min-height: 82px;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.16
+    );
+
+  border-radius: 7px;
+
+  background:
+    linear-gradient(
+      110deg,
+      rgba(6, 17, 12, 0.78),
+      rgba(10, 25, 17, 0.52)
+    );
+
+  backdrop-filter:
+    blur(20px);
+
+  -webkit-backdrop-filter:
+    blur(20px);
+
+  box-shadow:
+    0 25px 60px
+    rgba(
+      0,
+      0,
+      0,
+      0.30
+    );
+}
+
+
+/* =========================================================
+   HIGHLIGHT ITEM
+========================================================= */
+
+.koshi-highlight {
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  min-height: 82px;
+
+  padding:
+    14px 25px;
+
+  border-right:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.11
+    );
+
+  transition:
+    background 0.35s ease;
+}
+
+
+.koshi-highlight:last-child {
+  border-right: none;
+}
+
+
+.koshi-highlight:hover {
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.045
+    );
+}
+
+
+/* =========================================================
+   HIGHLIGHT NUMBER
+========================================================= */
+
+.koshi-highlight-number {
+  flex-shrink: 0;
+
+  font-size: 9px;
+
+  letter-spacing: 0.12em;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.32
+    );
+}
+
+
+/* =========================================================
+   HIGHLIGHT TITLE
+========================================================= */
+
+.koshi-highlight h3 {
+  margin: 0;
+
+  font-size: 12px;
+
+  line-height: 1.2;
+
+  font-weight: 700;
+
+  letter-spacing: 0.11em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.94
+    );
+}
+
+
+/* =========================================================
+   HIGHLIGHT DESCRIPTION
+========================================================= */
+
+.koshi-highlight p {
+  margin:
+    5px 0 0;
+
+  font-size: 10px;
+
+  line-height: 1.3;
+
+  font-weight: 300;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.48
+    );
+}
+
+
+/* =========================================================
+   SCROLL INDICATOR
+========================================================= */
+
+.koshi-scroll {
+  position: absolute;
+
+  left: 40px;
+
+  bottom: 27px;
+
+  z-index: 20;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  text-decoration: none;
+}
+
+
+.koshi-scroll-text {
+  writing-mode:
+    vertical-rl;
+
+  transform:
+    rotate(180deg);
+
+  font-size: 8px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.24em;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.50
+    );
+}
+
+
+/* =========================================================
+   SCROLL LINE
+========================================================= */
+
+.koshi-scroll-line {
+  position: relative;
+
+  display: block;
+
+  width: 1px;
+
+  height: 58px;
+
+  overflow: hidden;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.20
+    );
+}
+
+
+.koshi-scroll-line > span {
+  position: absolute;
+
+  left: 0;
+
+  top: -30px;
+
+  width: 1px;
+
+  height: 30px;
+
+  background: #ffffff;
+
+  animation:
+    koshi-scroll
+    2.2s
+    ease-in-out
+    infinite;
+}
+
+
+/* =========================================================
+   MOBILE SCROLL
+========================================================= */
+
+.koshi-mobile-scroll {
+  display: none;
+}
+
+
+/* =========================================================
+   IMAGE ANIMATION
+========================================================= */
+
+@keyframes koshi-image-reveal {
+
+  from {
+    transform:
+      scale(1.09);
+  }
+
+  to {
+    transform:
+      scale(1.045);
+  }
+
+}
+
+
+/* =========================================================
+   CONTENT ANIMATION
+========================================================= */
+
+@keyframes koshi-reveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+
+}
+
+
+/* =========================================================
+   SCROLL ANIMATION
+========================================================= */
+
+@keyframes koshi-scroll {
+
+  0% {
+    top: -30px;
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  55% {
+    top: 58px;
+    opacity: 1;
+  }
+
+  80% {
+    top: 58px;
+    opacity: 0;
+  }
+
+  100% {
+    top: 58px;
+    opacity: 0;
+  }
+
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1440px) {
+
+  .koshi-hero {
+    height:
+      calc(
+        100svh - 152px
+      );
+
+    min-height: 650px;
+  }
+
+
+  .koshi-title {
+    font-size: 128px;
+  }
+
+
+  .koshi-hero__lead {
+    font-size: 27px;
+  }
+
+
+  .koshi-hero-highlights-wrapper {
+    bottom: 25px;
+  }
+
+}
+
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+@media (max-width: 1280px) {
+
+  .koshi-title {
+    font-size:
+      clamp(
+        62px,
+        7.8vw,
+        112px
+      );
+  }
+
+
+  .koshi-hero-highlights-wrapper {
+    width:
+      min(
+        850px,
+        calc(100% - 240px)
+      );
+  }
+
+
+  .koshi-highlight {
+    padding:
+      14px 18px;
+  }
+
+
+  .koshi-location-wrapper {
+    right: 35px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+  .koshi-hero {
+    height:
+      calc(
+        100svh - 120px
+      );
+
+    min-height: 640px;
+  }
+
+
+  .koshi-hero-content {
+    padding-bottom: 125px;
+  }
+
+
+  .koshi-title {
+    font-size:
+      clamp(
+        58px,
+        10vw,
+        98px
+      );
+  }
+
+
+  .koshi-title em {
+    margin-left: 60px;
+  }
+
+
+  .koshi-hero__lead {
+    font-size: 21px;
+  }
+
+
+  .koshi-hero__description {
+    max-width: 500px;
+
+    font-size: 12px;
+  }
+
+
+  .koshi-hero-highlights-wrapper {
+    width:
+      calc(
+        100% - 100px
+      );
+
+    bottom: 18px;
+  }
+
+
+  .koshi-highlight {
+    gap: 8px;
+
+    padding:
+      12px 14px;
+  }
+
+
+  .koshi-highlight-number {
+    display: none;
+  }
+
+
+  .koshi-highlight h3 {
+    font-size: 10px;
+  }
+
+
+  .koshi-highlight p {
+    font-size: 9px;
+  }
+
+
+  .koshi-location-wrapper {
+    top: 28px;
+
+    right: 25px;
+  }
+
+
+  .koshi-location-card {
+    min-width: 245px;
+  }
+
+
+  .koshi-hero-page-indicator {
+    right: 15px;
+  }
+
+
+  .koshi-scroll {
+    left: 25px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .koshi-hero {
+    height: 100svh;
+
+    min-height: 650px;
+  }
+
+
+  /* -------------------------------------------------------
+     IMAGE
+  ------------------------------------------------------- */
+
+  .koshi-hero-image {
+    object-position:
+      58% center;
+
+    transform:
+      scale(1.03);
+
+    animation: none;
+  }
+
+
+  /* -------------------------------------------------------
+     OVERLAY
+  ------------------------------------------------------- */
+
+  .koshi-hero__overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(4, 11, 8, 0.28) 0%,
+        rgba(4, 11, 8, 0.22) 32%,
+        rgba(4, 11, 8, 0.65) 67%,
+        rgba(4, 11, 8, 0.95) 100%
+      );
+  }
+
+
+  /* -------------------------------------------------------
+     LEFT LINE
+  ------------------------------------------------------- */
+
+  .koshi-hero__left-line {
+    left: 20px;
+  }
+
+
+  /* -------------------------------------------------------
+     CONTENT
+  ------------------------------------------------------- */
+
+  .koshi-hero-content {
+    align-items: flex-start;
+
+    padding-top: 75px;
+
+    padding-bottom: 145px;
+  }
+
+
+  /* -------------------------------------------------------
+     EYEBROW
+  ------------------------------------------------------- */
+
+  .koshi-eyebrow-text {
+    font-size: 9px;
+
+    letter-spacing: 0.27em;
+  }
+
+
+  .koshi-eyebrow-line {
+    width: 30px;
+  }
+
+
+  /* -------------------------------------------------------
+     TITLE
+  ------------------------------------------------------- */
+
+  .koshi-title {
+    font-size:
+      clamp(
+        58px,
+        18vw,
+        90px
+      );
+
+    line-height: 0.84;
+  }
+
+
+  .koshi-title em {
+    margin-top: 7px;
+
+    margin-left: 40px;
+  }
+
+
+  /* -------------------------------------------------------
+     LEAD
+  ------------------------------------------------------- */
+
+  .koshi-hero__lead {
+    max-width: 95%;
+
+    margin-top: 25px;
+
+    font-size: 18px;
+
+    line-height: 1.4;
+  }
+
+
+  /* -------------------------------------------------------
+     DESCRIPTION
+  ------------------------------------------------------- */
+
+  .koshi-hero__description {
+    max-width: 94%;
+
+    margin-top: 13px;
+
+    font-size: 11px;
+
+    line-height: 1.65;
+  }
+
+
+  /* -------------------------------------------------------
+     ACTIONS
+  ------------------------------------------------------- */
+
+  .koshi-actions {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 16px;
+
+    margin-top: 22px;
+  }
+
+
+  .koshi-primary-btn {
+    min-width: 180px;
+
+    height: 50px;
+
+    padding-left: 20px;
+
+    font-size: 11px;
+  }
+
+
+  .koshi-btn-arrow {
+    width: 36px;
+
+    height: 36px;
+  }
+
+
+  /* -------------------------------------------------------
+     LOCATION CARD
+  ------------------------------------------------------- */
+
+  .koshi-location-wrapper {
+    top: 20px;
+
+    right: 18px;
+  }
+
+
+  .koshi-location-card {
+    min-width: 0;
+
+    padding:
+      10px 13px;
+  }
+
+
+  .koshi-location-icon {
+    width: 32px;
+
+    height: 32px;
+
+    font-size: 17px;
+  }
+
+
+  .koshi-location-title {
+    font-size: 8px;
+  }
+
+
+  .koshi-location-subtitle {
+    font-size: 9px;
+  }
+
+
+  /* -------------------------------------------------------
+     HIGHLIGHTS
+  ------------------------------------------------------- */
+
+  .koshi-hero-highlights-wrapper {
+    left: 12px;
+
+    right: 12px;
+
+    bottom: 14px;
+
+    width: auto;
+
+    transform: none;
+  }
+
+
+  .koshi-highlights {
+    min-height: 64px;
+
+    border-radius: 5px;
+  }
+
+
+  .koshi-highlight {
+    justify-content: center;
+
+    min-height: 64px;
+
+    padding:
+      8px 4px;
+
+    text-align: center;
+
+    border-right:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.10
+      );
+  }
+
+
+  .koshi-highlight-number {
+    display: none;
+  }
+
+
+  .koshi-highlight h3 {
+    font-size: 8px;
+
+    letter-spacing: 0.05em;
+  }
+
+
+  .koshi-highlight p {
+    margin-top: 3px;
+
+    font-size: 7px;
+  }
+
+
+  /* -------------------------------------------------------
+     PAGE INDICATOR
+  ------------------------------------------------------- */
+
+  .koshi-hero-page-indicator {
+    display: none;
+  }
+
+
+  /* -------------------------------------------------------
+     DESKTOP SCROLL
+  ------------------------------------------------------- */
+
+  .koshi-scroll {
+    display: none;
+  }
+
+
+  /* -------------------------------------------------------
+     MOBILE SCROLL
+  ------------------------------------------------------- */
+
+  .koshi-mobile-scroll {
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 88px;
+
+    display: block;
+
+    z-index: 20;
+
+    transform:
+      translateX(-50%);
+
+    font-size: 7px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.25em;
+
+    color:
+      rgba(
+        255,
+        255,
+        255,
+        0.45
+      );
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .koshi-hero {
+    min-height: 620px;
+  }
+
+
+  .koshi-hero-content {
+    padding-top: 68px;
+
+    padding-left: 20px;
+
+    padding-right: 20px;
+
+    padding-bottom: 135px;
+  }
+
+
+  .koshi-title {
+    font-size: 64px;
+  }
+
+
+  .koshi-title em {
+    margin-left: 35px;
+  }
+
+
+  .koshi-hero__lead {
+    font-size: 17px;
+  }
+
+
+  .koshi-hero__description {
+    font-size: 10.5px;
+  }
+
+
+  .koshi-primary-btn {
+    min-width: 175px;
+
+    height: 48px;
+  }
+
+
+  .koshi-highlight {
+    min-height: 60px;
+  }
+
+
+  .koshi-highlight h3 {
+    font-size: 7.5px;
+  }
+
+
+  .koshi-highlight p {
+    display: none;
+  }
+
+
+  .koshi-location-card {
+    padding:
+      8px 10px;
+  }
+
+
+  .koshi-location-subtitle {
+    display: none;
+  }
+
+
+  .koshi-mobile-scroll {
+    bottom: 82px;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .koshi-title {
+    font-size: 59px;
+  }
+
+
+  .koshi-title em {
+    margin-left: 30px;
+  }
+
+
+  .koshi-hero__lead {
+    font-size: 16px;
+  }
+
+
+  .koshi-highlight h3 {
+    font-size: 7px;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .koshi-hero-image {
+    animation: none;
+
+    transform: scale(1.03);
+  }
+
+
+  .koshi-hero-reveal {
+    animation: none;
+
+    opacity: 1;
+
+    transform: none;
+  }
+
+
+  .koshi-scroll-line > span {
+    animation: none;
+  }
+
+
+  .koshi-primary-btn,
+  .koshi-btn-arrow,
+  .koshi-text-link,
+  .koshi-highlight {
+    transition: none;
+  }
+
+}

@@ -1,0 +1,118 @@
+.gandaki-pilgrimage {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: calc(100svh - 170px);
+  min-height: 560px;
+  overflow: hidden;
+  color: #f7f5ef;
+  display: flex;
+  align-items: center;
+}
+
+.gandaki-pilgrimage__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.gandaki-pilgrimage__image {
+  object-fit: cover;
+}
+
+.gandaki-pilgrimage__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(7, 16, 12, 0.92) 0%,
+    rgba(7, 16, 12, 0.55) 48%,
+    rgba(7, 16, 12, 0.2) 100%
+  );
+}
+
+.gandaki-pilgrimage__content {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  max-width: 620px;
+  padding: 2rem clamp(1.5rem, 5vw, 4.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.gandaki-pilgrimage__index {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  color: rgba(201, 164, 92, 0.6);
+  font-size: 0.95rem;
+}
+
+.gandaki-pilgrimage__eyebrow {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #c9a45c;
+}
+
+.gandaki-pilgrimage__title {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  line-height: 1.15;
+}
+
+.gandaki-pilgrimage__title em {
+  color: #c9a45c;
+  font-style: italic;
+}
+
+.gandaki-pilgrimage__description {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: rgba(247, 245, 239, 0.82);
+  max-width: 52ch;
+}
+
+.gandaki-pilgrimage__sites {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 1rem 0 0;
+  border-top: 1px solid rgba(247, 245, 239, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.6rem;
+}
+
+.gandaki-pilgrimage__site {
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  color: rgba(247, 245, 239, 0.82);
+  padding: 0.35rem 0.75rem;
+  border: 1px solid rgba(247, 245, 239, 0.22);
+  border-radius: 999px;
+}
+
+@media (max-width: 900px) {
+  .gandaki-pilgrimage {
+    height: auto;
+    min-height: 70svh;
+    padding: 3rem 0;
+  }
+
+  .gandaki-pilgrimage__scrim {
+    background: linear-gradient(
+      180deg,
+      rgba(7, 16, 12, 0.55) 0%,
+      rgba(7, 16, 12, 0.75) 60%,
+      rgba(7, 16, 12, 0.95) 100%
+    );
+  }
+}

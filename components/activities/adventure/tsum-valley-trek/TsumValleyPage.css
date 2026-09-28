@@ -1,0 +1,269 @@
+/* ==========================================================================
+   Tsum Valley Trek — page-scoped design tokens & shared primitives.
+   Everything is scoped under .tsum-page so nothing leaks into other routes.
+   ========================================================================== */
+
+.tsum-page {
+  --tsum-blue: #123b5d;
+  --tsum-blue-deep: #0c2a44;
+  --tsum-teal: #2a7f82;
+  --tsum-teal-soft: #e3f0ef;
+  --tsum-gold: #d8a64a;
+  --tsum-gold-soft: #f4e7cc;
+  --tsum-ivory: #f8f6f0;
+  --tsum-ivory-deep: #efeadf;
+  --tsum-charcoal: #252b32;
+  --tsum-muted: #5b636c;
+  --tsum-line: rgba(18, 59, 93, 0.12);
+  --tsum-white: #ffffff;
+
+  --tsum-font-display: var(--font-playfair, "Playfair Display"), Georgia, "Times New Roman", serif;
+  --tsum-font-body: var(--font-inter, "Inter"), system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --tsum-radius: 18px;
+  --tsum-radius-sm: 10px;
+  --tsum-shadow: 0 18px 40px -24px rgba(12, 42, 68, 0.35);
+  --tsum-shadow-lg: 0 30px 60px -30px rgba(12, 42, 68, 0.45);
+  --tsum-container: 1200px;
+  --tsum-gutter: clamp(16px, 4vw, 40px);
+  --tsum-section-y: clamp(64px, 9vw, 120px);
+  --tsum-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  /* Height of the site's global navbar; override in the layout if it differs. */
+  --tsum-nav-offset: var(--navbar-height, 72px);
+
+  background: var(--tsum-ivory);
+  color: var(--tsum-charcoal);
+  font-family: var(--tsum-font-body);
+  line-height: 1.65;
+  overflow-x: clip;
+}
+
+.tsum-page *,
+.tsum-page *::before,
+.tsum-page *::after {
+  box-sizing: border-box;
+}
+
+.tsum-page img {
+  max-width: 100%;
+}
+
+.tsum-page :where(h1, h2, h3, h4) {
+  font-family: var(--tsum-font-display);
+  color: var(--tsum-blue);
+  line-height: 1.15;
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.tsum-page :where(p) {
+  margin: 0;
+}
+
+.tsum-page :where(a) {
+  color: inherit;
+}
+
+.tsum-page :focus-visible {
+  outline: 3px solid var(--tsum-gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.tsum-page section[id] {
+  scroll-margin-top: calc(var(--tsum-nav-offset) + 64px);
+}
+
+/* ---- Layout -------------------------------------------------------------- */
+
+.tsum-container {
+  width: 100%;
+  max-width: var(--tsum-container);
+  margin-inline: auto;
+  padding-inline: var(--tsum-gutter);
+}
+
+.tsum-section {
+  padding-block: var(--tsum-section-y);
+}
+
+.tsum-section--tint {
+  background: var(--tsum-ivory-deep);
+}
+
+.tsum-section--dark {
+  background: var(--tsum-blue-deep);
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.tsum-section--dark :where(h2, h3) {
+  color: var(--tsum-white);
+}
+
+/* ---- Buttons ------------------------------------------------------------- */
+
+.tsum-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55em;
+  min-height: 48px;
+  padding: 0.85em 1.6em;
+  border-radius: 999px;
+  font-family: var(--tsum-font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.25s var(--tsum-ease), color 0.25s var(--tsum-ease),
+    border-color 0.25s var(--tsum-ease), transform 0.25s var(--tsum-ease);
+}
+
+.tsum-btn:hover {
+  transform: translateY(-2px);
+}
+
+.tsum-btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.tsum-btn--primary {
+  background: var(--tsum-gold);
+  color: var(--tsum-blue-deep);
+}
+
+.tsum-btn--primary:hover {
+  background: #e4b85f;
+}
+
+.tsum-btn--secondary {
+  background: var(--tsum-blue);
+  color: var(--tsum-white);
+}
+
+.tsum-btn--secondary:hover {
+  background: var(--tsum-teal);
+}
+
+.tsum-btn--ghost {
+  background: transparent;
+  color: currentColor;
+  border-color: currentColor;
+}
+
+.tsum-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.tsum-btn--light-ghost {
+  color: var(--tsum-white);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* ---- Utility ------------------------------------------------------------- */
+
+.tsum-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.tsum-approx {
+  display: inline-block;
+  margin-left: 0.35em;
+  padding: 0.05em 0.45em;
+  border-radius: 4px;
+  font-family: var(--tsum-font-body);
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  background: rgba(216, 166, 74, 0.18);
+  color: inherit;
+  opacity: 0.85;
+}
+
+.tsum-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--tsum-radius);
+  background: var(--tsum-ivory-deep);
+}
+
+.tsum-media img {
+  object-fit: cover;
+  transition: transform 0.9s var(--tsum-ease);
+}
+
+/* Prayer-flag rule — a quiet recurring motif */
+.tsum-flagline {
+  display: flex;
+  gap: 4px;
+  width: 64px;
+  height: 4px;
+}
+
+.tsum-flagline span {
+  flex: 1;
+  border-radius: 2px;
+}
+
+.tsum-flagline span:nth-child(1) { background: #3a6ea5; }
+.tsum-flagline span:nth-child(2) { background: #f4f1e8; box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); }
+.tsum-flagline span:nth-child(3) { background: #b8443a; }
+.tsum-flagline span:nth-child(4) { background: #2f8a5b; }
+.tsum-flagline span:nth-child(5) { background: var(--tsum-gold); }
+
+/* ---- Scroll reveal ------------------------------------------------------- */
+/* Content is visible by default; the Reveal component opts elements in to
+   the hidden state only when JS runs and motion is allowed. */
+
+.tsum-reveal[data-reveal="pending"] {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.tsum-reveal[data-reveal="shown"] {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.8s var(--tsum-ease), transform 0.8s var(--tsum-ease);
+  transition-delay: var(--tsum-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tsum-page *,
+  .tsum-page *::before,
+  .tsum-page *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .tsum-reveal[data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+html:has(.tsum-page) {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:has(.tsum-page) {
+    scroll-behavior: auto;
+  }
+}

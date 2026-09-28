@@ -1,0 +1,311 @@
+/* ==========================================================================
+   Bada Char Dham Yatra — page tokens + shared primitives
+   Everything is scoped under .bcd-page so nothing leaks to other pages.
+   ========================================================================== */
+
+.bcd-page {
+  /* Base palette */
+  --bcd-navy: #0b1b2b;
+  --bcd-navy-2: #132a40;
+  --bcd-ink: #1a2633;
+  --bcd-ink-soft: #465261;
+  --bcd-ivory: #f7f3ea;
+  --bcd-ivory-2: #efe7d6;
+  --bcd-paper: #fffdf8;
+  --bcd-stone: #6b6f72;
+  --bcd-line: rgba(26, 38, 51, 0.14);
+
+  /* Temple gold + saffron (decorative vs. text-safe variants) */
+  --bcd-gold: #b8954e;
+  --bcd-gold-light: #d9bf86;
+  --bcd-gold-text: #7a5a1e; /* ≥ 4.5:1 on ivory */
+  --bcd-saffron: #c2702f;
+
+  /* Direction colours — text-safe on ivory/paper */
+  --bcd-north: #3f6788; /* Himalayan blue */
+  --bcd-west: #22595c; /* Arabian Sea teal */
+  --bcd-east: #9a4f1c; /* Bay of Bengal sunrise */
+  --bcd-south: #74502c; /* granite & laterite */
+
+  /* Type */
+  --bcd-serif: var(--font-playfair, "Playfair Display"), Georgia, "Times New Roman", serif;
+  --bcd-sans: var(--font-inter, "Inter"), system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Layout */
+  --bcd-max: 1200px;
+  --bcd-gutter: clamp(1rem, 4vw, 2.5rem);
+  --bcd-section: clamp(4rem, 9vw, 7rem);
+  --bcd-radius: 14px;
+
+  background: var(--bcd-ivory);
+  color: var(--bcd-ink);
+  font-family: var(--bcd-sans);
+  overflow-x: clip; /* guarantee: no horizontal scroll */
+}
+
+.bcd-page *,
+.bcd-page *::before,
+.bcd-page *::after {
+  box-sizing: border-box;
+}
+
+.bcd-page :where(h1, h2, h3, h4, p, ul, ol, dl, dd, figure) {
+  margin: 0;
+}
+
+.bcd-page [id] {
+  scroll-margin-top: 6rem; /* clears the layout-level sticky header */
+}
+
+.bcd-page :focus-visible {
+  outline: 2px solid var(--bcd-gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.bcd-sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ----------------------------------------------------------- containers */
+
+.bcd-container {
+  width: min(100% - 2 * var(--bcd-gutter), var(--bcd-max));
+  margin-inline: auto;
+}
+.bcd-container--narrow {
+  width: min(100% - 2 * var(--bcd-gutter), 820px);
+}
+
+.bcd-section {
+  padding-block: var(--bcd-section);
+}
+.bcd-section--paper { background: var(--bcd-paper); }
+.bcd-section--ivory { background: var(--bcd-ivory); }
+.bcd-section--sand { background: var(--bcd-ivory-2); }
+.bcd-section--navy {
+  background: var(--bcd-navy);
+  color: var(--bcd-ivory);
+}
+.bcd-section--tight {
+  padding-block: clamp(3rem, 6vw, 4.5rem);
+}
+
+/* Direction colour hook */
+.bcd-dir--north { --dir: var(--bcd-north); --dir-tint: rgba(63, 103, 136, 0.08); }
+.bcd-dir--west { --dir: var(--bcd-west); --dir-tint: rgba(34, 89, 92, 0.08); }
+.bcd-dir--east { --dir: var(--bcd-east); --dir-tint: rgba(194, 112, 47, 0.09); }
+.bcd-dir--south { --dir: var(--bcd-south); --dir-tint: rgba(116, 80, 44, 0.08); }
+
+/* -------------------------------------------------------------- heading */
+
+.bcd-heading {
+  max-width: 44rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+.bcd-heading--center {
+  margin-inline: auto;
+  text-align: center;
+}
+.bcd-heading__kicker {
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--bcd-gold-text);
+}
+.bcd-heading--dark .bcd-heading__kicker {
+  color: var(--bcd-gold-light);
+}
+.bcd-heading__title {
+  font-family: var(--bcd-serif);
+  font-weight: 500;
+  font-size: clamp(1.875rem, 4vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.bcd-heading__intro {
+  margin-top: 1rem;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--bcd-ink-soft);
+  text-wrap: pretty;
+}
+.bcd-heading--dark .bcd-heading__intro {
+  color: rgba(247, 243, 234, 0.78);
+}
+
+/* Sub-heading inside a section (H3 level) */
+.bcd-subhead {
+  font-family: var(--bcd-serif);
+  font-weight: 500;
+  font-size: clamp(1.375rem, 2.4vw, 1.75rem);
+  line-height: 1.2;
+}
+
+.bcd-prose p {
+  max-width: 68ch;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--bcd-ink-soft);
+}
+.bcd-prose p + p {
+  margin-top: 1.1rem;
+}
+
+/* -------------------------------------------------------------- buttons */
+
+.bcd-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-family: var(--bcd-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+.bcd-btn:hover {
+  transform: translateY(-1px);
+}
+.bcd-btn--gold {
+  background: var(--bcd-gold-light);
+  color: var(--bcd-navy);
+}
+.bcd-btn--gold:hover {
+  background: #e7d2a2;
+}
+.bcd-btn--navy {
+  background: var(--bcd-navy);
+  color: var(--bcd-ivory);
+}
+.bcd-btn--navy:hover {
+  background: var(--bcd-navy-2);
+}
+.bcd-btn--ghost-light {
+  border-color: rgba(247, 243, 234, 0.45);
+  color: var(--bcd-ivory);
+}
+.bcd-btn--ghost-light:hover {
+  border-color: var(--bcd-gold-light);
+  color: var(--bcd-gold-light);
+}
+.bcd-btn--ghost {
+  border-color: var(--bcd-line);
+  color: var(--bcd-ink);
+}
+.bcd-btn--ghost:hover {
+  border-color: var(--bcd-ink);
+}
+
+.bcd-textlink {
+  color: var(--bcd-gold-text);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.bcd-textlink:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* ----------------------------------------------------------- note boxes */
+
+.bcd-note {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--bcd-gold);
+  background: rgba(184, 149, 78, 0.08);
+  border-radius: 0 10px 10px 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--bcd-ink);
+}
+.bcd-note svg {
+  flex: none;
+  margin-top: 0.1rem;
+  color: var(--bcd-gold-text);
+}
+.bcd-section--navy .bcd-note {
+  background: rgba(217, 191, 134, 0.08);
+  color: rgba(247, 243, 234, 0.85);
+}
+.bcd-section--navy .bcd-note svg {
+  color: var(--bcd-gold-light);
+}
+
+/* ---------------------------------------------------------------- media */
+
+.bcd-media {
+  position: relative;
+  overflow: hidden;
+  background: var(--bcd-navy-2);
+}
+.bcd-media__img {
+  object-fit: cover;
+}
+.bcd-media__art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.bcd-media__dev {
+  position: absolute;
+  left: 0.5rem;
+  bottom: 0.5rem;
+  max-width: calc(100% - 1rem);
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font: 500 0.6875rem/1.3 var(--bcd-sans);
+  overflow-wrap: anywhere;
+}
+
+/* --------------------------------------------------------------- reveal */
+
+@media (prefers-reduced-motion: no-preference) {
+  .bcd-reveal[data-reveal="armed"] {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  .bcd-reveal[data-reveal="visible"] {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+}
+
+/* ------------------------------------------------------- reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  .bcd-page *,
+  .bcd-page *::before,
+  .bcd-page *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

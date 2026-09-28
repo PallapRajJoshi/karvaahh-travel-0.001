@@ -1,0 +1,134 @@
+.etp-cta {
+  position: relative;
+  padding-block: clamp(96px, 14vw, 180px);
+  color: var(--etp-white);
+  text-align: center;
+  isolation: isolate;
+}
+
+.etp-cta__bg {
+  position: absolute !important;
+  inset: 0;
+  z-index: -2;
+}
+
+.etp-cta__shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(ellipse at center, rgba(8, 27, 46, 0.55), rgba(8, 27, 46, 0.9));
+}
+
+.etp-cta__inner {
+  max-width: 860px;
+}
+
+.etp-cta .etp-heading__eyebrow {
+  color: var(--etp-gold);
+  justify-content: center;
+}
+
+.etp-cta .etp-heading__eyebrow::after {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+}
+
+.etp-cta__title {
+  font-size: clamp(2.2rem, 1.3rem + 3.4vw, 4rem);
+  text-wrap: balance;
+}
+
+.etp-cta__text {
+  margin: 20px auto 0;
+  max-width: 60ch;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.12rem);
+}
+
+.etp-cta__btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 36px;
+}
+
+/* ---------- Related links ---------- */
+
+.etp-related {
+  background: var(--etp-ivory);
+  padding-block: clamp(48px, 6vw, 72px);
+  border-bottom: 1px solid var(--etp-line);
+}
+
+.etp-related__title {
+  font-size: 1.5rem;
+  color: var(--etp-blue);
+  margin-bottom: 20px;
+}
+
+.etp-related__list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.etp-related__link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  height: 100%;
+  padding: 18px 20px;
+  border-radius: var(--etp-radius);
+  border: 1px solid var(--etp-line);
+  background: var(--etp-white);
+  text-decoration: none;
+  transition:
+    border-color 0.2s var(--etp-ease),
+    transform 0.2s var(--etp-ease);
+}
+
+.etp-related__link:hover {
+  border-color: var(--etp-gold);
+  transform: translateY(-2px);
+}
+
+.etp-related__link strong {
+  display: block;
+  color: var(--etp-blue);
+  font-size: 0.98rem;
+}
+
+.etp-related__link small {
+  display: block;
+  margin-top: 2px;
+  color: var(--etp-muted);
+  font-size: 0.82rem;
+}
+
+.etp-related__link .etp-icon {
+  color: var(--etp-gold);
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 960px) {
+  .etp-related__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .etp-related__list {
+    grid-template-columns: 1fr;
+  }
+  .etp-cta__btns .etp-btn {
+    flex: 1 1 100%;
+  }
+}

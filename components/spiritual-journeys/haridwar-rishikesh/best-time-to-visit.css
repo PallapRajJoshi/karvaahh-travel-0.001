@@ -1,0 +1,138 @@
+.hry-seasons__strip {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-radius: var(--hry-radius-lg);
+  overflow: hidden;
+  background: var(--hry-line);
+}
+
+.hry-seasons__season {
+  padding: 24px 22px 26px;
+  background: var(--hry-ivory);
+}
+
+/* A quiet colour per season, carried only by the icon chip */
+.hry-seasons__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--hry-paper);
+  border: 1px solid var(--hry-line);
+  color: var(--hry-forest);
+}
+
+.hry-seasons__season--summer .hry-seasons__icon { color: #b0600e; }
+.hry-seasons__season--monsoon .hry-seasons__icon { color: #2f6f8a; }
+.hry-seasons__season--autumn .hry-seasons__icon { color: var(--hry-gold-deep); }
+.hry-seasons__season--winter .hry-seasons__icon { color: #4d6a82; }
+.hry-seasons__season--spring .hry-seasons__icon { color: #7a8a2a; }
+
+.hry-seasons__name {
+  margin: 16px 0 0;
+  font-family: var(--hry-font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--hry-forest);
+}
+
+.hry-seasons__months {
+  margin: 2px 0 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--hry-saffron-ink);
+}
+
+.hry-seasons__summary {
+  margin: 12px 0 0;
+  font-size: 0.9375rem;
+}
+
+.hry-seasons__plan {
+  margin: 10px 0 0;
+  font-size: 0.875rem;
+  color: var(--hry-muted);
+}
+
+.hry-seasons__crowds {
+  margin-top: 40px;
+}
+
+.hry-seasons__crowds-title {
+  margin: 0 0 16px;
+  font-family: var(--hry-font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--hry-forest);
+}
+
+.hry-seasons__advisories {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hry-seasons__advisory {
+  padding: 18px 20px;
+  border-left: 3px solid var(--hry-saffron);
+  background: var(--hry-ivory);
+  border-radius: 0 var(--hry-radius-sm) var(--hry-radius-sm) 0;
+}
+
+.hry-seasons__adv-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  align-items: baseline;
+  margin: 0;
+}
+
+.hry-seasons__adv-head strong {
+  color: var(--hry-forest);
+}
+
+.hry-seasons__adv-head span {
+  font-size: 0.875rem;
+  color: var(--hry-saffron-ink);
+  font-weight: 500;
+}
+
+.hry-seasons__adv-text {
+  margin: 6px 0 0;
+  font-size: 0.9375rem;
+  max-width: 72ch;
+}
+
+.hry-seasons__note {
+  display: flex;
+  gap: 8px;
+  margin: 28px 0 0;
+  font-size: 0.875rem;
+  color: var(--hry-muted);
+}
+
+.hry-seasons__note svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+@media (min-width: 640px) {
+  .hry-seasons__strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hry-seasons__advisories {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1080px) {
+  .hry-seasons__strip {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

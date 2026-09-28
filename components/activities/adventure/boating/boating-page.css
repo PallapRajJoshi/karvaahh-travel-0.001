@@ -1,0 +1,106 @@
+/* Scoped so nothing leaks into other pages. */
+.boating-page {
+  /* Palette: dawn light on still water — paper, reed, lake teal. */
+  --act-bg: #f8f6f0;
+  --act-bg-alt: #eef1ee;
+  --act-surface: #ffffff;
+  --act-surface-alt: #f3f1ea;
+  --act-border: rgba(13, 42, 46, 0.14);
+  --act-ink: #0d2a2e;
+  --act-ink-soft: rgba(13, 42, 46, 0.74);
+  --act-ink-muted: rgba(13, 42, 46, 0.55);
+  --act-accent: #2f6f7a;
+  --act-accent-strong: #235962;
+  --act-accent-soft: rgba(47, 111, 122, 0.16);
+  --act-accent-ink: #ffffff;
+  --act-card-rule: #7fa7ab;
+  --act-status-bg: rgba(13, 42, 46, 0.07);
+  --act-warn-bg: rgba(184, 149, 78, 0.18);
+  --act-cta-bg: #0d2a2e;
+  --act-cta-ink: #f8f6f0;
+  --act-cta-ink-soft: rgba(248, 246, 240, 0.78);
+
+  --act-radius: 10px;
+  --act-radius-pill: 999px;
+  --act-max: 74rem;
+  --act-font-display: var(--font-playfair, "Playfair Display", Georgia, serif);
+
+  background: var(--act-bg);
+  color: var(--act-ink);
+  font-family: var(--font-inter, "Inter", system-ui, sans-serif);
+  overflow-x: clip;
+}
+
+.boating-page .boating-section {
+  width: min(100% - 2.5rem, var(--act-max));
+  margin-inline: auto;
+  padding-block: clamp(3rem, 6.5vw, 5rem);
+}
+
+.boating-page .boating-section--tint {
+  width: 100%;
+  max-width: none;
+  background: var(--act-bg-alt);
+}
+
+.boating-page .boating-section--tint > .boating-section__inner {
+  width: min(100% - 2.5rem, var(--act-max));
+  margin-inline: auto;
+}
+
+.boating-page .boating-section--flush {
+  padding-top: 0;
+}
+
+/* Softer card treatment than the rafting page: no hard top rule. */
+.boating-page .dest-card {
+  border-top-width: 1px;
+  border-top-color: var(--act-border);
+  box-shadow: 0 1px 2px rgba(13, 42, 46, 0.04);
+}
+
+.boating-page .dest-card__status--emerging {
+  color: var(--act-accent-strong);
+  background: var(--act-accent-soft);
+}
+
+.boating-page .dest-card__status--seasonal {
+  color: #7a5a1f;
+  background: var(--act-warn-bg);
+}
+
+.boating-page__footer {
+  width: min(100% - 2.5rem, var(--act-max));
+  margin-inline: auto;
+  padding-block: 2.25rem 3.5rem;
+  border-top: 1px solid var(--act-border);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  font-size: 0.78rem;
+  color: var(--act-ink-muted);
+}
+
+.boating-page__footer a {
+  color: var(--act-accent-strong);
+}
+
+.boating-page .reveal {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .boating-page .reveal[data-reveal="pending"] {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  .boating-page .reveal[data-reveal="shown"] {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.55s ease,
+      transform 0.55s ease;
+  }
+}

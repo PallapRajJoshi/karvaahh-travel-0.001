@@ -1,0 +1,126 @@
+.mc-overview__grid {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: center;
+}
+
+.mc-overview .mc-heading {
+  margin-bottom: 1.75rem;
+}
+
+/* The brief's paragraph is long; set it as a comfortable editorial lead. */
+.mc-overview__lead {
+  margin: 0;
+  max-width: 62ch;
+  font-size: clamp(1rem, 0.96rem + 0.2vw, 1.1rem);
+  line-height: 1.8;
+  color: var(--mc-ink);
+}
+
+.mc-overview__lead::first-letter {
+  float: left;
+  margin: 0.1em 0.12em 0 0;
+  font-family: var(--mc-font-display);
+  font-size: 3.6em;
+  line-height: 0.8;
+  color: var(--mc-ochre);
+}
+
+.mc-overview__glance {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 2rem;
+  margin: 2.25rem 0;
+  padding: 1.5rem 0;
+  border-block: 1px solid var(--mc-line);
+}
+
+.mc-overview__fact dt {
+  margin-bottom: 0.2rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mc-teal);
+}
+
+.mc-overview__fact dd {
+  margin: 0;
+  font-weight: 500;
+  color: var(--mc-blue);
+}
+
+/* Media: large image with an overlapping inset */
+.mc-overview__media {
+  position: relative;
+  padding-bottom: 12%;
+}
+
+.mc-overview__main {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--mc-radius);
+  box-shadow: var(--mc-shadow-lift);
+}
+
+.mc-overview__inset {
+  position: absolute;
+  left: -6%;
+  bottom: 0;
+  width: 46%;
+  margin: 0;
+  padding: 8px 8px 0;
+  background: var(--mc-white);
+  border-radius: calc(var(--mc-radius) + 4px);
+  box-shadow: var(--mc-shadow-lift);
+}
+
+.mc-overview__inset-img {
+  aspect-ratio: 1;
+  border-radius: var(--mc-radius);
+}
+
+.mc-overview__inset figcaption {
+  padding: 0.55rem 0.25rem 0.6rem;
+  font-family: var(--mc-font-display);
+  font-style: italic;
+  font-size: 0.9rem;
+  text-align: center;
+  color: var(--mc-blue);
+}
+
+.mc-overview__main img,
+.mc-overview__inset-img img {
+  transition: transform 1.2s var(--mc-ease);
+}
+
+.mc-overview__media:hover .mc-overview__main img {
+  transform: scale(1.04);
+}
+
+@media (min-width: 1024px) {
+  .mc-overview__grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 1023px) {
+  .mc-overview__media {
+    max-width: 560px;
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  .mc-overview__inset {
+    left: 0;
+  }
+
+  .mc-overview__main {
+    margin-left: 10%;
+  }
+}
+
+@media (max-width: 420px) {
+  .mc-overview__glance {
+    grid-template-columns: 1fr;
+  }
+}

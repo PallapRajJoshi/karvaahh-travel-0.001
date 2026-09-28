@@ -1,0 +1,6 @@
+.sky-how { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(1.5rem, 3vw, 2.5rem); }
+.sky-how__num { display: block; font-family: var(--sky-serif); font-size: 3rem; line-height: 1; color: var(--sky-gold); font-variant-numeric: tabular-nums; }
+.sky-how__title { margin: 1rem 0 0; font-size: 1.1rem; font-weight: 600; color: var(--sky-navy); }
+.sky-how__text { margin: 0.5rem 0 0; line-height: 1.6; color: var(--sky-muted); }
+@media (max-width: 900px) { .sky-how { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .sky-how { grid-template-columns: 1fr; } }

@@ -1,0 +1,162 @@
+/* 4 × 4 editorial mosaic: two 2×2 feature cards (1 and 6) + eight singles. */
+
+.an-hl__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: clamp(220px, 20vw, 290px);
+  grid-auto-flow: dense;
+  gap: 16px;
+}
+
+.an-hl__cell {
+  min-width: 0;
+}
+
+.an-hl__cell--1 {
+  grid-column: 1 / span 2;
+  grid-row: span 2;
+}
+
+.an-hl__cell--6 {
+  grid-column: 3 / span 2;
+  grid-row: span 2;
+}
+
+.an-hl__card {
+  position: relative;
+  display: block;
+  height: 100%;
+  border-radius: var(--an-radius);
+  overflow: hidden;
+  background: var(--an-blue-deep);
+  color: var(--an-white);
+  text-decoration: none;
+  isolation: isolate;
+}
+
+.an-hl__image {
+  object-fit: cover;
+  z-index: -2;
+  transition: transform 1.1s var(--an-ease);
+}
+
+.an-hl__card:hover .an-hl__image {
+  transform: scale(1.05);
+}
+
+.an-hl__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(0deg, rgba(8, 27, 46, 0.9) 0%, rgba(8, 27, 46, 0.35) 45%, rgba(8, 27, 46, 0.05) 75%);
+}
+
+.an-hl__num {
+  position: absolute;
+  top: 16px;
+  left: 18px;
+  font-family: var(--an-serif);
+  font-size: 0.9375rem;
+  color: var(--an-gold-soft);
+  letter-spacing: 0.08em;
+}
+
+.an-hl__body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px;
+}
+
+.an-hl__title {
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+.an-hl__cell--1 .an-hl__title,
+.an-hl__cell--6 .an-hl__title {
+  font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2.125rem);
+}
+
+.an-hl__desc {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.an-hl__cell--1 .an-hl__desc,
+.an-hl__cell--6 .an-hl__desc {
+  font-size: 1rem;
+  max-width: 44ch;
+}
+
+.an-hl__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--an-gold);
+}
+
+.an-hl__more svg {
+  width: 15px;
+  height: 15px;
+  transition: transform 0.25s var(--an-ease);
+}
+
+.an-hl__card--link:hover .an-hl__more svg {
+  transform: translateX(4px);
+}
+
+@media (max-width: 1024px) {
+  .an-hl__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 260px;
+  }
+
+  .an-hl__cell--1,
+  .an-hl__cell--6 {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .an-hl__cell--1 {
+    grid-row: span 2;
+  }
+}
+
+/* Mobile: swipeable row keeps ten cards from becoming an endless scroll. */
+@media (max-width: 640px) {
+  .an-hl__grid {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--an-gutter);
+    padding-bottom: 8px;
+    scrollbar-width: none;
+  }
+
+  .an-hl__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .an-hl__cell,
+  .an-hl__cell--1,
+  .an-hl__cell--6 {
+    flex: 0 0 82%;
+    height: 380px;
+    scroll-snap-align: start;
+  }
+
+  .an-hl__cell--1 .an-hl__title,
+  .an-hl__cell--6 .an-hl__title {
+    font-size: 1.5rem;
+  }
+}

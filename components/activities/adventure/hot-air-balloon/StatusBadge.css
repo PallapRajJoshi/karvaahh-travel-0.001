@@ -1,0 +1,20 @@
+/* Seasonal = solid sunrise fill (a recurring window).
+   Event-based = dashed outline (intermittent, not a schedule). */
+.hab-status {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  border-radius: 999px;
+  font-weight: 600; line-height: 1;
+  white-space: nowrap;
+}
+.hab-status--md { padding: 0.45rem 0.8rem; font-size: 0.8rem; }
+.hab-status--sm { padding: 0.3rem 0.6rem; font-size: 0.72rem; }
+.hab-status__dot { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+
+.hab-status--seasonal { background: var(--hab-dawn-soft); color: #8a4518; border: 1.5px solid var(--hab-dawn); }
+.hab-status--seasonal .hab-status__dot { background: var(--hab-dawn); }
+
+.hab-status--event-based { background: #fff; color: var(--hab-navy); border: 1.5px dashed #6b7f8f; }
+.hab-status--event-based .hab-status__dot { background: transparent; border: 1.5px solid #6b7f8f; }
+
+.hab-status-wrap { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.5rem; }
+.hab-status__note { font-size: 0.78rem; font-weight: 500; color: var(--hab-muted); }

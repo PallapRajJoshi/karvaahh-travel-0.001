@@ -1,0 +1,45 @@
+.avd-secnav {
+  position: sticky;
+  top: var(--avd-header-offset);
+  z-index: 20;
+  background: rgb(247 245 239 / 0.94);
+  backdrop-filter: saturate(1.2) blur(8px);
+  border-bottom: 1px solid var(--avd-line);
+}
+
+.avd-secnav__list {
+  display: flex;
+  gap: 0.25rem;
+  height: var(--avd-nav-h);
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.avd-secnav__list::-webkit-scrollbar {
+  display: none;
+}
+
+.avd-secnav__link {
+  display: block;
+  white-space: nowrap;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--avd-muted);
+  text-decoration: none;
+}
+
+.avd-secnav__link:hover {
+  color: var(--avd-ink);
+  background: rgb(13 29 22 / 0.05);
+}
+
+.avd-secnav__link[aria-current="location"] {
+  color: var(--avd-forest);
+  background: rgb(201 164 92 / 0.22);
+}

@@ -1,0 +1,133 @@
+/* Section 11 — Best time to visit */
+
+.akop-season__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+  list-style: none;
+}
+
+@media (min-width: 640px) {
+  .akop-season__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .akop-season__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.akop-season__card {
+  --akop-outlook: var(--akop-outlook-mixed);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1.4rem 1.6rem;
+  border: 1px solid var(--akop-border);
+  border-radius: var(--akop-radius);
+  background: var(--akop-surface);
+  overflow: hidden;
+}
+
+.akop-season__card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: var(--akop-outlook);
+}
+
+.akop-season__card--favourable {
+  --akop-outlook: var(--akop-outlook-favourable);
+}
+
+.akop-season__card--caution {
+  --akop-outlook: var(--akop-outlook-caution);
+}
+
+.akop-season__card--closed {
+  --akop-outlook: var(--akop-outlook-closed);
+  background: #f4f2ec;
+}
+
+.akop-season__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.akop-season__icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--akop-outlook) 12%, transparent);
+  color: var(--akop-outlook);
+}
+
+.akop-season__outlook {
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--akop-outlook) 12%, transparent);
+  color: var(--akop-outlook);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+/* Teal text on light needs a darker shade for small-text contrast. */
+.akop-season__outlook--favourable {
+  color: #1f6164;
+}
+
+.akop-season__name {
+  margin-top: 1.1rem;
+  color: var(--akop-primary);
+  font-family: var(--akop-font-heading);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.akop-season__months {
+  color: var(--akop-text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.akop-season__text {
+  margin-top: 0.85rem;
+  color: var(--akop-text);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.akop-season__points {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  list-style: none;
+  font-size: 0.84rem;
+  color: var(--akop-text-muted);
+}
+
+.akop-season__points li {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.akop-season__points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--akop-outlook);
+}

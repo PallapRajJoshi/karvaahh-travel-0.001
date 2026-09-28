@@ -1,0 +1,20 @@
+.cmp-village__grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: clamp(2.5rem, 6vw, 6rem); align-items: center; }
+.cmp-village__photos { position: relative; padding-bottom: 18%; }
+.cmp-village__photo { position: relative; overflow: hidden; border-radius: var(--cmp-radius-lg); }
+.cmp-village__photo--main { aspect-ratio: 4 / 5; width: 82%; }
+.cmp-village__photo--inset {
+  position: absolute; right: 0; bottom: 0;
+  width: 48%; aspect-ratio: 1;
+  border: 8px solid var(--cmp-beige);
+}
+.cmp-village__moments {
+  list-style: none; margin: 0 0 2rem; padding: 0;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem 1.5rem;
+}
+.cmp-village__moments li { display: flex; align-items: center; gap: 0.65rem; font-size: 0.95rem; color: var(--cmp-charcoal); }
+.cmp-village__moments svg { color: var(--cmp-ochre); flex: none; }
+@media (max-width: 900px) {
+  .cmp-village__grid { grid-template-columns: 1fr; }
+  .cmp-village__photos { max-width: 520px; }
+}
+@media (max-width: 520px) { .cmp-village__moments { grid-template-columns: 1fr; } }

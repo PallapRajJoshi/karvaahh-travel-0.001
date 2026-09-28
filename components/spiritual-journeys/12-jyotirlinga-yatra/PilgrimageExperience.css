@@ -1,0 +1,116 @@
+.jyl-exp__grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--jyl-stone);
+  border-left: 1px solid var(--jyl-stone);
+}
+
+.jyl-exp__item {
+  padding: 1.25rem 1.1rem;
+  border-right: 1px solid var(--jyl-stone);
+  border-bottom: 1px solid var(--jyl-stone);
+  font-family: var(--jyl-serif);
+  font-size: 1.1rem;
+  color: var(--jyl-charcoal);
+}
+
+.jyl-exp__highlights {
+  margin-top: clamp(3rem, 7vw, 5rem);
+}
+
+.jyl-exp__subtitle {
+  font-size: 1.6rem;
+}
+
+.jyl-exp__subnote {
+  color: var(--jyl-muted);
+  margin-top: 0.4rem;
+  margin-bottom: 1.75rem;
+  font-size: 0.95rem;
+}
+
+.jyl-exp__cards {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.jyl-exp__card-link {
+  display: block;
+  position: relative;
+  border-radius: var(--jyl-radius);
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.jyl-exp__card-img {
+  aspect-ratio: 3 / 4;
+}
+
+.jyl-exp__card-img .jyl-img__placeholder {
+  justify-content: flex-start;
+}
+
+.jyl-exp__card-img .jyl-img__el {
+  transition: transform 0.6s var(--jyl-ease);
+}
+
+.jyl-exp__card-link:hover .jyl-img__el {
+  transform: scale(1.04);
+}
+
+.jyl-exp__card-text {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 3rem 1rem 1rem;
+  display: grid;
+  gap: 0.25rem;
+  background: linear-gradient(transparent, rgba(15, 27, 48, 0.88));
+}
+
+.jyl-exp__card-name {
+  font-family: var(--jyl-serif);
+  color: var(--jyl-ivory);
+  font-size: 1.2rem;
+}
+
+.jyl-exp__card-title {
+  color: #d6dbe4;
+  font-size: 0.825rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 1000px) {
+  .jyl-exp__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 860px) {
+  .jyl-exp__cards {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin-inline: -1.25rem;
+    padding: 0 1.25rem 0.75rem;
+    scroll-padding-inline: 1.25rem;
+  }
+
+  .jyl-exp__card {
+    flex: 0 0 min(62vw, 15rem);
+    scroll-snap-align: start;
+  }
+}
+
+@media (max-width: 560px) {
+  .jyl-exp__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .jyl-exp__item {
+    font-size: 1rem;
+    padding: 1rem 0.85rem;
+  }
+}

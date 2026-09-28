@@ -1,0 +1,31 @@
+.act-heading {
+  max-width: 62ch;
+  margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.act-heading--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.act-heading__title {
+  font-family: var(--act-font-display);
+  font-size: clamp(1.75rem, 1.15rem + 2.4vw, 2.9rem);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+  color: var(--act-ink);
+  margin: 0;
+}
+
+.act-heading__lead {
+  margin: 0.85rem 0 0;
+  font-size: clamp(0.98rem, 0.93rem + 0.25vw, 1.08rem);
+  line-height: 1.65;
+  color: var(--act-ink-soft);
+  max-width: 58ch;
+}
+
+.act-heading--center .act-heading__lead {
+  margin-inline: auto;
+}

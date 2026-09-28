@@ -1,0 +1,135 @@
+.avd-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: min(100svh, 56rem);
+  display: flex;
+  color: #fff;
+  background: var(--avd-forest);
+}
+
+.avd-hero__image {
+  object-fit: cover;
+  object-position: center 35%;
+  z-index: -2;
+}
+
+.avd-hero__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgb(13 29 22 / 0.55) 0%, rgb(13 29 22 / 0) 26%),
+    linear-gradient(8deg, rgb(13 29 22 / 0.92) 12%, rgb(13 29 22 / 0.55) 45%, rgb(13 29 22 / 0.05) 75%);
+}
+
+.avd-hero__inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 3rem;
+  padding-top: clamp(1.25rem, 3vw, 2rem);
+  padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+/* Breadcrumb lives on the hero */
+.avd-crumbs__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.avd-crumbs__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgb(255 255 255 / 0.85);
+}
+
+.avd-crumbs__item + .avd-crumbs__item::before {
+  content: "/";
+  color: rgb(255 255 255 / 0.5);
+}
+
+.avd-crumbs__item a {
+  text-decoration: none;
+  padding-block: 0.35rem;
+}
+
+.avd-crumbs__item a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.avd-crumbs__item [aria-current="page"] {
+  color: #fff;
+  font-weight: 500;
+}
+
+.avd-hero__content {
+  max-width: 44rem;
+}
+
+.avd-hero__eyebrow {
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--avd-gold);
+}
+
+.avd-hero__title {
+  margin-top: 0.75rem;
+  font-size: clamp(2.5rem, 1.4rem + 5vw, 4.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.avd-hero__tagline {
+  margin-top: 1rem;
+  font-family: var(--avd-serif);
+  font-style: italic;
+  font-size: clamp(1.2rem, 1rem + 0.8vw, 1.5rem);
+  color: #f1e6cf;
+}
+
+.avd-hero__desc {
+  margin-top: 1.1rem;
+  max-width: 36rem;
+  font-size: 1.0625rem;
+  color: rgb(255 255 255 / 0.88);
+}
+
+.avd-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.avd-hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.avd-hero__badges li {
+  padding: 0.3rem 0.8rem;
+  border: 1px solid rgb(255 255 255 / 0.3);
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  background: rgb(13 29 22 / 0.35);
+  backdrop-filter: blur(4px);
+}
+
+@media (max-width: 480px) {
+  .avd-hero__actions .avd-btn {
+    flex: 1 1 100%;
+  }
+}

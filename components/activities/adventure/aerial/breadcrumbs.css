@@ -1,0 +1,33 @@
+.aerial-page .ae-crumbs__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.85rem;
+}
+.aerial-page .ae-crumbs__item {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(247, 245, 239, 0.8);
+}
+.aerial-page .ae-crumbs__item + .ae-crumbs__item::before {
+  content: "→";
+  margin-inline: 0.55rem;
+  color: var(--ae-gold);
+}
+.aerial-page .ae-crumbs__link {
+  color: inherit;
+  text-decoration: none;
+  padding-block: 0.35rem; /* comfortable tap target */
+}
+.aerial-page .ae-crumbs__link:hover {
+  color: var(--ae-cream);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.aerial-page .ae-crumbs__current {
+  color: var(--ae-cream);
+  font-weight: 500;
+}

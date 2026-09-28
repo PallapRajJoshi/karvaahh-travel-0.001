@@ -1,0 +1,76 @@
+.madhesh-pilgrimage {
+  height: var(--madhesh-section-h);
+  min-height: 520px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--madhesh-cream);
+}
+
+.madhesh-pilgrimage__media {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.madhesh-pilgrimage__image {
+  object-fit: cover;
+}
+
+.madhesh-pilgrimage__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.3rem;
+  padding: clamp(2rem, 4vw, 5rem);
+  overflow-y: auto;
+}
+
+.madhesh-pilgrimage__title {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 3.6vw, 3.4rem);
+  line-height: 1.1;
+  margin: 0;
+  color: var(--madhesh-ink);
+}
+
+.madhesh-pilgrimage__desc {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--madhesh-ink-soft);
+  max-width: 48ch;
+  margin: 0;
+}
+
+.madhesh-pilgrimage__list {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 1.3rem 0 0;
+  border-top: 1px solid var(--madhesh-border);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.7rem;
+}
+
+.madhesh-pilgrimage__list li {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--madhesh-ink);
+  border: 1px solid var(--madhesh-border);
+  padding: 0.35rem 0.75rem;
+  border-radius: 100px;
+}
+
+@media (max-width: 900px) {
+  .madhesh-pilgrimage {
+    height: auto;
+    grid-template-columns: 1fr;
+  }
+  .madhesh-pilgrimage__media {
+    height: 60vh;
+  }
+  .madhesh-pilgrimage__content {
+    padding: 2rem 1.25rem 3rem;
+  }
+}

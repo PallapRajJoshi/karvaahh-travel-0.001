@@ -1,0 +1,106 @@
+.lt-hero {
+  position: relative;
+  min-height: min(100svh, 920px);
+  min-height: max(640px, min(100svh, 920px));
+  display: flex;
+  align-items: flex-end;
+  color: var(--lt-white);
+  isolation: isolate;
+  overflow: hidden;
+}
+.lt-hero__media { position: absolute; inset: 0; z-index: -2; }
+.lt-hero__img { transform: scale(1.04); animation: lt-hero-settle 2.4s var(--lt-ease) forwards; }
+.lt-hero__shade {
+  position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(18, 59, 93, 0.35) 0%, rgba(18, 59, 93, 0) 30%),
+    linear-gradient(90deg, rgba(10, 30, 48, 0.82) 0%, rgba(10, 30, 48, 0.45) 45%, rgba(10, 30, 48, 0.05) 75%),
+    linear-gradient(0deg, rgba(10, 30, 48, 0.85) 0%, rgba(10, 30, 48, 0) 45%);
+}
+.lt-hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 48px;
+  padding-top: 140px;
+  padding-bottom: clamp(56px, 9vh, 104px);
+  width: 100%;
+}
+.lt-hero__copy { max-width: 660px; }
+.lt-hero__eyebrow {
+  margin: 0 0 18px;
+  font-size: 0.78rem; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 600;
+  color: var(--lt-gold);
+  display: inline-flex; align-items: center; gap: 12px;
+}
+.lt-hero__eyebrow::before { content: ""; width: 32px; height: 1px; background: currentColor; }
+.lt-hero__title {
+  margin: 0;
+  font-family: var(--lt-serif);
+  font-weight: 600;
+  font-size: clamp(2.6rem, 7vw, 5.4rem);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+.lt-hero__subtitle {
+  margin: 14px 0 0;
+  font-family: var(--lt-serif);
+  font-style: italic;
+  font-size: clamp(1.15rem, 2.2vw, 1.6rem);
+  color: rgba(255, 255, 255, 0.92);
+}
+.lt-hero__text { margin: 20px 0 0; max-width: 540px; font-size: 1.05rem; line-height: 1.7; color: rgba(255, 255, 255, 0.84); }
+.lt-hero__actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+
+.lt-hero__badges {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(150px, 1fr));
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--lt-radius);
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.lt-hero__badge { background: rgba(12, 36, 58, 0.55); padding: 16px 20px; }
+.lt-hero__badge dt { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255, 255, 255, 0.66); }
+.lt-hero__badge dd { margin: 6px 0 0; font-family: var(--lt-serif); font-size: 1.2rem; }
+.lt-hero__badge dd span { display: block; font-family: var(--lt-sans); font-size: 0.72rem; color: var(--lt-gold); margin-top: 2px; }
+
+.lt-hero__scroll {
+  position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%);
+  width: 26px; height: 44px; border: 1.5px solid rgba(255, 255, 255, 0.6); border-radius: 14px;
+}
+.lt-hero__scroll-line {
+  position: absolute; left: 50%; top: 8px; width: 2px; height: 8px; margin-left: -1px;
+  background: var(--lt-white); border-radius: 2px; animation: lt-scroll 1.8s ease-in-out infinite;
+}
+
+.lt-hero__anim { opacity: 0; transform: translateY(18px); animation: lt-rise 0.9s var(--lt-ease) forwards; animation-delay: var(--d, 0ms); }
+
+@keyframes lt-rise { to { opacity: 1; transform: none; } }
+@keyframes lt-hero-settle { to { transform: scale(1); } }
+@keyframes lt-scroll { 0% { opacity: 0; transform: translateY(0); } 40% { opacity: 1; } 100% { opacity: 0; transform: translateY(14px); } }
+
+@media (max-width: 1024px) {
+  .lt-hero__inner { grid-template-columns: 1fr; gap: 32px; }
+  .lt-hero__badges { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .lt-hero { min-height: auto; }
+  .lt-hero__inner { padding-top: 120px; padding-bottom: 72px; }
+  .lt-hero__shade { background: linear-gradient(0deg, rgba(10, 30, 48, 0.92) 0%, rgba(10, 30, 48, 0.55) 55%, rgba(10, 30, 48, 0.3) 100%); }
+  .lt-hero__text { font-size: 1rem; }
+  .lt-hero__actions .lt-btn { flex: 1 1 100%; justify-content: center; }
+  .lt-hero__badges { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lt-hero__badge { padding: 12px 14px; }
+  .lt-hero__badge dd { font-size: 1.05rem; }
+  .lt-hero__scroll { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lt-hero__anim, .lt-hero__img { animation: none; opacity: 1; transform: none; }
+  .lt-hero__scroll-line { animation: none; }
+}

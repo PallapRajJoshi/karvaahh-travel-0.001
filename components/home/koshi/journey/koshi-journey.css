@@ -1,0 +1,646 @@
+/* =========================================================
+   KOSHI JOURNEY
+   ========================================================= */
+
+.koshi-journey {
+  position: relative;
+  width: 100%;
+  height: calc(100svh - 170px);
+  min-height: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  background: #f7f5ef;
+  color: #17221c;
+
+  border-bottom: 1px solid rgba(23, 34, 28, 0.12);
+}
+
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
+.koshi-journey__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.koshi-journey__bg::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(247, 245, 239, 0.15),
+      rgba(247, 245, 239, 0.85)
+    );
+}
+
+.koshi-journey__mountain {
+  position: absolute;
+  display: block;
+
+  border-radius: 50% 50% 0 0;
+
+  background: rgba(20, 32, 25, 0.025);
+
+  transform: rotate(-8deg);
+}
+
+.mountain-1 {
+  width: 650px;
+  height: 260px;
+
+  right: -120px;
+  bottom: -150px;
+}
+
+.mountain-2 {
+  width: 800px;
+  height: 300px;
+
+  left: 30%;
+  bottom: -220px;
+
+  transform: rotate(7deg);
+}
+
+.mountain-3 {
+  width: 550px;
+  height: 230px;
+
+  left: -180px;
+  bottom: -160px;
+
+  transform: rotate(-4deg);
+}
+
+
+/* =========================================================
+   SHELL
+   ========================================================= */
+
+.koshi-journey__shell {
+  position: relative;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  padding-top: clamp(48px, 6vh, 82px);
+  padding-bottom: 35px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.koshi-journey__header {
+  position: relative;
+  z-index: 2;
+}
+
+.koshi-journey__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  margin-bottom: 20px;
+}
+
+.koshi-journey__eyebrow span {
+  width: 42px;
+  height: 1px;
+
+  background: #b8954e;
+}
+
+.koshi-journey__eyebrow p {
+  margin: 0;
+
+  font-family: "Inter", sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.32em;
+
+  color: rgba(23, 34, 28, 0.58);
+}
+
+
+/* =========================================================
+   HEADING ROW
+   ========================================================= */
+
+.koshi-journey__heading-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 40px;
+}
+
+.koshi-journey h2 {
+  margin: 0;
+
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(42px, 4.6vw, 72px);
+  line-height: 0.94;
+
+  font-weight: 400;
+  letter-spacing: -0.045em;
+
+  color: #17221c;
+}
+
+.koshi-journey h2 em {
+  color: #9b783b;
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   INDEX
+   ========================================================= */
+
+.koshi-journey__index {
+  flex-shrink: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  padding-bottom: 4px;
+}
+
+.koshi-journey__index strong {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 46px;
+  line-height: 0.8;
+  font-weight: 400;
+
+  color: rgba(23, 34, 28, 0.12);
+}
+
+.koshi-journey__index span {
+  margin-top: 8px;
+
+  font-family: "Inter", sans-serif;
+  font-size: 7px;
+  font-weight: 700;
+
+  letter-spacing: 0.22em;
+
+  color: rgba(23, 34, 28, 0.38);
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.koshi-journey__intro {
+  width: min(620px, 100%);
+
+  margin: 19px 0 0;
+
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  line-height: 1.7;
+  font-weight: 300;
+
+  color: rgba(23, 34, 28, 0.56);
+}
+
+
+/* =========================================================
+   ROUTE
+   ========================================================= */
+
+.koshi-journey__route {
+  position: relative;
+
+  flex: 1;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  align-items: center;
+
+  gap: 0;
+
+  margin-top: 28px;
+}
+
+
+/* =========================================================
+   ROUTE LINE
+   ========================================================= */
+
+.koshi-journey__route-line {
+  position: absolute;
+
+  left: 6%;
+  right: 6%;
+  top: 31px;
+
+  height: 1px;
+
+  background: rgba(23, 34, 28, 0.16);
+}
+
+.koshi-journey__route-line span {
+  position: absolute;
+
+  left: 0;
+  top: 50%;
+
+  width: 7px;
+  height: 7px;
+
+  transform: translate(-50%, -50%) rotate(45deg);
+
+  background: #c9a45c;
+}
+
+
+/* =========================================================
+   JOURNEY STOP
+   ========================================================= */
+
+.koshi-journey-stop {
+  position: relative;
+
+  min-width: 0;
+
+  padding: 0 20px;
+}
+
+.koshi-journey-stop__marker {
+  position: relative;
+  z-index: 2;
+
+  width: 62px;
+  height: 62px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 20px;
+
+  border: 1px solid rgba(23, 34, 28, 0.20);
+
+  border-radius: 50%;
+
+  background: #f7f5ef;
+}
+
+.koshi-journey-stop__marker::after {
+  content: "";
+
+  position: absolute;
+
+  width: 8px;
+  height: 8px;
+
+  right: -5px;
+  top: 50%;
+
+  transform: translateY(-50%) rotate(45deg);
+
+  background: #c9a45c;
+}
+
+.koshi-journey-stop__marker span {
+  font-family: "Inter", sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 0.15em;
+
+  color: #a17d37;
+}
+
+
+/* =========================================================
+   STOP CONTENT
+   ========================================================= */
+
+.koshi-journey-stop__content {
+  position: relative;
+
+  padding-right: 30px;
+}
+
+.koshi-journey-stop__step {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-family: "Inter", sans-serif;
+  font-size: 7px;
+  font-weight: 700;
+
+  letter-spacing: 0.22em;
+
+  color: rgba(23, 34, 28, 0.34);
+}
+
+.koshi-journey-stop h3 {
+  margin: 0;
+
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(22px, 2vw, 30px);
+  line-height: 1;
+
+  font-weight: 400;
+
+  color: #17221c;
+}
+
+.koshi-journey-stop__content p {
+  width: min(210px, 100%);
+
+  margin: 10px 0 0;
+
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  line-height: 1.65;
+  font-weight: 300;
+
+  color: rgba(23, 34, 28, 0.52);
+}
+
+
+/* =========================================================
+   STOP ARROW
+   ========================================================= */
+
+.koshi-journey-stop__arrow {
+  position: absolute;
+
+  right: 4px;
+  top: 4px;
+
+  font-size: 15px;
+
+  color: #b8954e;
+
+  opacity: 0.7;
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.koshi-journey-stop:hover
+.koshi-journey-stop__arrow {
+  opacity: 1;
+  transform: translate(3px, -3px);
+}
+
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.koshi-journey__footer {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  justify-content: flex-end;
+
+  margin-top: 10px;
+}
+
+.koshi-journey__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+
+  padding: 12px 18px;
+
+  border: 1px solid rgba(23, 34, 28, 0.30);
+
+  font-family: "Inter", sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+  text-decoration: none;
+
+  color: #17221c;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.koshi-journey__button span:last-child {
+  font-size: 14px;
+  color: #a17d37;
+
+  transition: transform 0.3s ease;
+}
+
+.koshi-journey__button:hover {
+  background: #17221c;
+  color: #fff;
+
+  transform: translateY(-2px);
+}
+
+.koshi-journey__button:hover span:last-child {
+  transform: translate(3px, -3px);
+}
+
+
+/* =========================================================
+   VERTICAL LABEL
+   ========================================================= */
+
+.koshi-journey__vertical {
+  position: absolute;
+
+  right: 24px;
+  bottom: 90px;
+
+  writing-mode: vertical-rl;
+
+  font-family: "Inter", sans-serif;
+  font-size: 7px;
+  font-weight: 700;
+
+  letter-spacing: 0.28em;
+
+  color: rgba(23, 34, 28, 0.25);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+  .koshi-journey__shell {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .koshi-journey__route {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 24px;
+  }
+
+  .koshi-journey__route-line {
+    display: none;
+  }
+
+  .koshi-journey-stop {
+    padding: 0 10px;
+  }
+
+  .koshi-journey-stop__marker {
+    margin-bottom: 12px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+  .koshi-journey {
+    height: auto;
+    min-height: 760px;
+  }
+
+  .koshi-journey__shell {
+    height: auto;
+    min-height: 760px;
+
+    padding: 70px 24px 80px;
+  }
+
+  .koshi-journey__heading-row {
+    align-items: flex-start;
+  }
+
+  .koshi-journey h2 {
+    font-size: clamp(40px, 11vw, 58px);
+  }
+
+  .koshi-journey__index {
+    display: none;
+  }
+
+  .koshi-journey__intro {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .koshi-journey__route {
+    grid-template-columns: 1fr;
+
+    margin-top: 34px;
+    gap: 20px;
+  }
+
+  .koshi-journey-stop {
+    display: grid;
+    grid-template-columns: 58px 1fr;
+
+    gap: 18px;
+
+    padding: 0;
+  }
+
+  .koshi-journey-stop__marker {
+    width: 52px;
+    height: 52px;
+
+    margin: 0;
+  }
+
+  .koshi-journey-stop__marker::after {
+    display: none;
+  }
+
+  .koshi-journey-stop__content {
+    padding-right: 30px;
+  }
+
+  .koshi-journey-stop h3 {
+    font-size: 25px;
+  }
+
+  .koshi-journey-stop__content p {
+    max-width: 280px;
+  }
+
+  .koshi-journey__footer {
+    justify-content: flex-start;
+
+    margin-top: 28px;
+  }
+
+  .koshi-journey__vertical {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .koshi-journey__shell {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .koshi-journey h2 {
+    font-size: 39px;
+  }
+
+  .koshi-journey-stop {
+    grid-template-columns: 48px 1fr;
+    gap: 14px;
+  }
+
+  .koshi-journey-stop__marker {
+    width: 44px;
+    height: 44px;
+  }
+
+  .koshi-journey-stop h3 {
+    font-size: 22px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .koshi-journey-stop__arrow,
+  .koshi-journey__button,
+  .koshi-journey__button span:last-child {
+    transition: none;
+  }
+}

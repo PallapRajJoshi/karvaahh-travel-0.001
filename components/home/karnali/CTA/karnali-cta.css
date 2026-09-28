@@ -1,0 +1,124 @@
+@import "../karnali-tokens.css";
+
+.karnali-cta {
+  position: relative;
+  height: var(--k-section-desktop-h);
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background: var(--k-forest-900);
+}
+
+.karnali-cta-media {
+  position: absolute;
+  inset: 0;
+}
+
+.karnali-cta-image {
+  object-fit: cover;
+}
+
+.karnali-cta-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(7, 16, 12, 0.75) 0%,
+    rgba(7, 16, 12, 0.55) 50%,
+    rgba(7, 16, 12, 0.85) 100%
+  );
+}
+
+.karnali-cta-content {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+  padding: 0 1.5rem;
+}
+
+.karnali-cta-title {
+  font-family: var(--k-font-serif);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1.1;
+  color: var(--k-cream);
+  margin: 0;
+}
+
+.karnali-cta-gold {
+  font-family: var(--k-font-serif);
+  font-style: italic;
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  color: var(--k-gold);
+  margin: 0.75rem 0 1.5rem;
+}
+
+.karnali-cta-description {
+  font-family: var(--k-font-sans);
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: rgba(247, 245, 239, 0.82);
+  margin: 0 auto 2.25rem;
+  max-width: 50ch;
+}
+
+.karnali-cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.karnali-cta-btn {
+  font-family: var(--k-font-sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.95rem 1.9rem;
+  border-radius: var(--k-radius);
+  text-decoration: none;
+  transition: all 0.3s var(--k-ease);
+}
+
+.karnali-cta-btn-primary {
+  background: var(--k-gold);
+  color: var(--k-forest-900);
+}
+
+.karnali-cta-btn-primary:hover {
+  background: var(--k-cream);
+}
+
+.karnali-cta-btn-secondary {
+  border: 1px solid var(--k-cream);
+  color: var(--k-cream);
+  background: transparent;
+}
+
+.karnali-cta-btn-secondary:hover {
+  background: var(--k-cream);
+  color: var(--k-forest-900);
+}
+
+@media (max-width: 640px) {
+  .karnali-cta {
+    height: auto;
+    min-height: 70svh;
+    padding: 4rem 0;
+  }
+
+  .karnali-cta-buttons {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .karnali-cta-btn {
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+  }
+}

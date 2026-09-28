@@ -1,0 +1,140 @@
+.avd-overview__grid {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 960px) {
+  .avd-overview__grid {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: 3rem;
+    align-items: start;
+  }
+}
+
+.avd-overview__visual {
+  background: var(--avd-forest);
+  color: #eef0ea;
+  border-radius: var(--avd-radius-card);
+  padding: clamp(1.25rem, 3vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.avd-overview__shrines {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.avd-overview__alt {
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+  color: #c6ccc4;
+}
+
+.avd-overview__num {
+  font-family: var(--avd-serif);
+  font-size: clamp(2rem, 1.4rem + 2.4vw, 3rem);
+  font-weight: 600;
+  line-height: 1;
+  color: #fff;
+  font-variant-numeric: lining-nums;
+}
+
+.avd-overview__sub {
+  margin-top: 0.3rem;
+  font-size: 0.875rem;
+  color: #aeb8b1;
+}
+
+/* Altitude profile */
+.avd-alt {
+  margin: 0;
+}
+
+.avd-alt__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.avd-alt__grid line {
+  stroke: rgb(201 164 92 / 0.28);
+  stroke-dasharray: 3 5;
+}
+
+.avd-alt__grid text {
+  fill: #93a198;
+  font: 500 12px var(--avd-sans);
+}
+
+.avd-alt__marker text {
+  font: 500 13px var(--avd-sans);
+  fill: #dfe4dc;
+}
+
+.avd-alt__marker .avd-alt__name {
+  font: 600 15px var(--avd-serif);
+  fill: #fff;
+}
+
+.avd-alt__marker circle {
+  stroke: #fff;
+  stroke-width: 2.5;
+}
+
+.avd-alt__marker--vaishno circle {
+  fill: #e0873d;
+}
+
+.avd-alt__marker--amarnath circle {
+  fill: #6fa6c9;
+}
+
+.avd-alt__caption {
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+  color: #93a198;
+}
+
+/* Facts */
+.avd-overview__facts {
+  margin: 0;
+  display: grid;
+  align-content: start;
+  border-top: 1px solid var(--avd-line);
+}
+
+.avd-overview__fact {
+  display: grid;
+  grid-template-columns: 9.5rem 1fr;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--avd-line);
+}
+
+.avd-overview__fact dt {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--avd-muted);
+}
+
+.avd-overview__fact dd {
+  margin: 0;
+  font-size: 0.975rem;
+}
+
+.avd-overview__fact ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  .avd-overview__fact {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+}

@@ -1,0 +1,190 @@
+.mc-dest__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1.25rem, 2.5vw, 1.75rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mc-dest__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--mc-ivory);
+  border-radius: var(--mc-radius);
+  overflow: hidden;
+  box-shadow: var(--mc-shadow);
+  transition:
+    transform 0.5s var(--mc-ease),
+    box-shadow 0.5s var(--mc-ease);
+}
+
+.mc-dest__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--mc-shadow-lift);
+}
+
+.mc-dest__media {
+  aspect-ratio: 4 / 3;
+}
+
+.mc-dest__media img {
+  transition: transform 1s var(--mc-ease);
+}
+
+.mc-dest__card:hover .mc-dest__media img {
+  transform: scale(1.07);
+}
+
+.mc-dest__category {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  z-index: 1;
+  background: rgb(255 255 255 / 0.92);
+  backdrop-filter: blur(4px);
+}
+
+.mc-dest__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1.25rem 1.3rem 1.4rem;
+}
+
+.mc-dest__location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 0 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mc-teal);
+}
+
+.mc-dest__location svg {
+  width: 14px;
+  height: 14px;
+}
+
+.mc-dest__name {
+  margin: 0;
+  font-family: var(--mc-font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--mc-blue);
+}
+
+.mc-dest__link {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Whole card is clickable via the title link. */
+.mc-dest__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.mc-dest__link:focus-visible {
+  outline: none;
+}
+
+.mc-dest__card:has(.mc-dest__link:focus-visible) {
+  outline: 2.5px solid var(--mc-sand);
+  outline-offset: 3px;
+}
+
+.mc-dest__tagline {
+  margin: 0.3rem 0 0.75rem;
+  font-family: var(--mc-font-display);
+  font-style: italic;
+  font-size: 0.98rem;
+  color: var(--mc-ochre);
+}
+
+.mc-dest__text {
+  flex: 1;
+  margin: 0;
+  font-size: 0.93rem;
+  line-height: 1.65;
+  color: var(--mc-muted);
+}
+
+.mc-dest__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.1rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--mc-blue);
+}
+
+.mc-dest__more svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.35s var(--mc-ease);
+}
+
+.mc-dest__card:hover .mc-dest__more svg {
+  transform: translateX(4px);
+}
+
+@media (min-width: 640px) {
+  .mc-dest__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .mc-dest__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  /* A lone last card in 3 columns becomes a wide feature card. */
+  .mc-dest__card:last-child:nth-child(3n + 1) {
+    grid-column: 1 / -1;
+    flex-direction: row;
+  }
+
+  .mc-dest__card:last-child:nth-child(3n + 1) .mc-dest__media {
+    flex: 0 0 55%;
+    aspect-ratio: auto;
+    min-height: 280px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .mc-dest__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  /* 10 cards in 4 columns: let the last two span wider so the grid ends clean. */
+  .mc-dest__card:nth-last-child(2):nth-child(4n + 1),
+  .mc-dest__card:last-child:nth-child(4n + 2) {
+    grid-column: span 2;
+  }
+
+  .mc-dest__card:nth-last-child(2):nth-child(4n + 1) .mc-dest__media,
+  .mc-dest__card:last-child:nth-child(4n + 2) .mc-dest__media {
+    aspect-ratio: 16 / 7;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mc-dest__card,
+  .mc-dest__card:hover,
+  .mc-dest__media img {
+    transform: none !important;
+    transition: none;
+  }
+}

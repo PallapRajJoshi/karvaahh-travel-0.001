@@ -1,0 +1,77 @@
+.bagmati-wildlife {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: calc(100svh - 170px);
+  min-height: 560px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.bagmati-wildlife__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bagmati-wildlife__image {
+  object-fit: cover;
+}
+
+.bagmati-wildlife__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(7, 16, 12, 0.88) 0%,
+    rgba(7, 16, 12, 0.55) 45%,
+    rgba(7, 16, 12, 0.15) 100%
+  );
+}
+
+.bagmati-wildlife__content {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  padding: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 620px;
+}
+
+.bagmati-wildlife__activities {
+  list-style: none;
+  margin: 0;
+  padding: 20px 0 0;
+  border-top: 1px solid rgba(247, 245, 239, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.bagmati-wildlife__activities li {
+  font-family: "Inter", sans-serif;
+  font-size: 0.82rem;
+  color: #f7f5ef;
+  border: 1px solid rgba(201, 164, 92, 0.4);
+  padding: 8px 16px;
+}
+
+@media (max-width: 1024px) {
+  .bagmati-wildlife {
+    height: auto;
+    min-height: 520px;
+    padding-top: 200px;
+  }
+  .bagmati-wildlife__content {
+    padding: 40px 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .bagmati-wildlife__content {
+    padding: 32px 20px;
+  }
+}

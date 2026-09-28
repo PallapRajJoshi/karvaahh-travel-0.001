@@ -1,0 +1,101 @@
+.pmy-kali {
+  background: var(--pmy-snow);
+  padding-bottom: var(--pmy-section-y);
+}
+
+.pmy-kali__scene {
+  position: relative;
+  min-height: clamp(520px, 88vh, 860px);
+  display: flex;
+  align-items: center;
+  color: #fff;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.pmy-kali__media {
+  position: absolute;
+  inset: -8% 0;
+  z-index: -1;
+}
+
+.pmy-kali__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(16, 38, 58, 0.82) 0%, rgba(16, 38, 58, 0.5) 45%, rgba(16, 38, 58, 0.1) 80%);
+}
+
+/* Zero-JS parallax where the browser supports scroll-driven animations */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .pmy-kali__media {
+      animation: pmy-kali-parallax linear both;
+      animation-timeline: view();
+      animation-range: cover;
+    }
+  }
+}
+
+@keyframes pmy-kali-parallax {
+  from { transform: translateY(-5%); }
+  to { transform: translateY(5%); }
+}
+
+.pmy-kali__copy {
+  max-width: 34rem;
+  padding-block: 4rem;
+}
+
+.pmy-kali__copy .pmy-heading__kicker { color: #8ed0cb; }
+.pmy-kali__copy h2 { margin-bottom: 1.5rem; }
+.pmy-kali__copy p:not(.pmy-heading__kicker) { color: rgba(255, 255, 255, 0.86); }
+
+.pmy-kali__views {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: 1.5rem clamp(2rem, 5vw, 5rem);
+  align-items: end;
+  margin-top: calc(var(--pmy-section-y) * 0.8);
+}
+
+.pmy-kali__views-text {
+  margin-top: 1rem;
+  color: var(--pmy-ink-soft);
+  max-width: 56ch;
+}
+
+.pmy-kali__conditions {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.pmy-kali__conditions li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1rem;
+  border-radius: var(--pmy-radius-m);
+  background: #fff;
+  border: 1px solid var(--pmy-glacier);
+  font-weight: 500;
+  font-size: 0.9375rem;
+}
+
+.pmy-kali__conditions svg { color: var(--pmy-teal); flex: none; }
+
+.pmy-kali__views-note { grid-column: 1 / -1; }
+
+@media (max-width: 900px) {
+  .pmy-kali__views { grid-template-columns: 1fr; }
+  .pmy-kali__media::after {
+    background: linear-gradient(0deg, rgba(16, 38, 58, 0.9) 0%, rgba(16, 38, 58, 0.55) 60%, rgba(16, 38, 58, 0.2) 100%);
+  }
+  .pmy-kali__scene { align-items: flex-end; }
+}
+
+@media (max-width: 360px) {
+  .pmy-kali__conditions { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,78 @@
+@import "../karnali-tokens.css";
+
+.karnali-heritage {
+  position: relative;
+  height: var(--k-section-desktop-h);
+  min-height: 540px;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  background: var(--k-stone);
+  overflow: hidden;
+}
+
+.karnali-heritage-media {
+  position: relative;
+}
+
+.karnali-heritage-image {
+  object-fit: cover;
+}
+
+.karnali-heritage-content {
+  padding: clamp(2rem, 4vw, 4.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.karnali-heritage-title {
+  font-family: var(--k-font-serif);
+  font-size: clamp(2rem, 3.4vw, 3.2rem);
+  line-height: 1.1;
+  color: var(--k-cream);
+  margin: 1rem 0 1.25rem;
+}
+
+.karnali-heritage-title em {
+  color: var(--k-gold);
+  font-style: italic;
+}
+
+.karnali-heritage-description {
+  font-family: var(--k-font-sans);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: rgba(247, 245, 239, 0.85);
+  max-width: 54ch;
+  margin: 0 0 2rem;
+}
+
+.karnali-heritage-activities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  border-top: 1px solid rgba(247, 245, 239, 0.25);
+  padding-top: 1.5rem;
+}
+
+.karnali-heritage-activity {
+  font-family: var(--k-font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--k-forest-900);
+  background: var(--k-gold);
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+}
+
+@media (max-width: 900px) {
+  .karnali-heritage {
+    height: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .karnali-heritage-media {
+    height: 50vh;
+  }
+}

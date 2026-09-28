@@ -1,0 +1,60 @@
+.km-traditions {
+  display: grid;
+  gap: 0;
+}
+
+.km-tradition {
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--km-line);
+}
+
+.km-tradition__name {
+  font-family: var(--km-font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--km-ink);
+}
+
+.km-tradition__local {
+  margin-top: 0.3rem;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--km-gold-deep);
+}
+
+.km-tradition__text {
+  margin-top: 0.9rem;
+  font-size: 0.975rem;
+  line-height: 1.65;
+  color: var(--km-slate);
+}
+
+.km-traditions__note {
+  margin-top: 2.5rem;
+  max-width: 52rem;
+}
+
+@media (min-width: 720px) {
+  .km-traditions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 3rem;
+  }
+}
+
+@media (min-width: 1100px) {
+  .km-traditions {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 0;
+  }
+
+  .km-tradition {
+    padding: 0.25rem 1.75rem 0.5rem;
+    border-top: 0;
+    border-left: 1px solid var(--km-line);
+  }
+
+  .km-tradition:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+}

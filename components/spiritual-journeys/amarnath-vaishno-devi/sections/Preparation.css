@@ -1,0 +1,150 @@
+.avd-prep__grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 900px) {
+  .avd-prep__grid {
+    grid-template-columns: 1fr 1.25fr 1fr;
+    align-items: start;
+  }
+}
+
+.avd-prep__card {
+  padding: clamp(1.5rem, 3vw, 2rem);
+  background: var(--avd-paper);
+  border-radius: var(--avd-radius-card);
+  border: 1px solid var(--avd-line);
+  display: grid;
+  gap: 0.9rem;
+}
+
+.avd-prep__card--alert {
+  border: 0;
+  border-top: 4px solid var(--avd-maroon);
+  background: var(--avd-maroon-tint);
+  color: #3d1218;
+}
+
+.avd-prep__title {
+  font-size: 1.3rem;
+}
+
+.avd-prep__list,
+.avd-prep__kit {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.avd-prep__list li,
+.avd-prep__kit li {
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.avd-prep__list li::before,
+.avd-prep__kit li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  border: 1.5px solid var(--avd-gold-text);
+}
+
+.avd-prep__kit {
+  grid-template-columns: 1fr 1fr;
+  font-size: 0.95rem;
+}
+
+.avd-prep__symptoms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0;
+  list-style: none;
+}
+
+.avd-prep__symptoms li {
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: var(--avd-paper);
+  border: 1px solid rgb(107 31 42 / 0.25);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.avd-prep__small {
+  font-size: 0.875rem;
+}
+
+/* Safety */
+.avd-safety__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 0;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border-top: 1px solid rgb(255 255 255 / 0.12);
+}
+
+.avd-safety__list li {
+  padding: 1rem 1rem 1rem 2rem;
+  position: relative;
+  border-bottom: 1px solid rgb(255 255 255 / 0.12);
+  color: #e4e8e1;
+}
+
+.avd-safety__list li::before {
+  content: "";
+  position: absolute;
+  left: 0.25rem;
+  top: 1.35rem;
+  width: 0.9rem;
+  height: 0.5rem;
+  border-left: 2px solid var(--avd-gold);
+  border-bottom: 2px solid var(--avd-gold);
+  transform: rotate(-45deg);
+}
+
+/* Seasons */
+.avd-season__track {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+@media (min-width: 900px) {
+  .avd-season__track {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0;
+  }
+}
+
+.avd-season__item {
+  padding: 1.25rem;
+  border-top: 3px solid var(--avd-line);
+  background: var(--avd-snow);
+}
+
+.avd-season__item.is-yatra {
+  border-top-color: var(--avd-amarnath);
+  background: var(--avd-amarnath-tint);
+}
+
+.avd-season__name {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.avd-season__item p {
+  font-size: 0.925rem;
+  color: var(--avd-muted);
+}

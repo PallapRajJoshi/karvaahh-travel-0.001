@@ -1,0 +1,29 @@
+.aerial-page .ae-heading {
+  max-width: 42rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+.aerial-page .ae-heading--center {
+  margin-inline: auto;
+  text-align: center;
+}
+.aerial-page .ae-heading__title {
+  font-family: var(--ae-serif);
+  font-size: clamp(1.9rem, 3.6vw, 2.75rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--ae-forest);
+  margin: 0;
+}
+.aerial-page .ae-heading__lead {
+  margin: 0.9rem 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--ae-muted);
+}
+.aerial-page .ae-heading--dark .ae-heading__title {
+  color: var(--ae-cream);
+}
+.aerial-page .ae-heading--dark .ae-heading__lead {
+  color: rgba(247, 245, 239, 0.74);
+}

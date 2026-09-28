@@ -1,0 +1,116 @@
+.mc-culture__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: minmax(300px, auto);
+  gap: clamp(0.9rem, 1.8vw, 1.25rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mc-culture__card {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  border-radius: var(--mc-radius);
+  overflow: hidden;
+  color: var(--mc-white);
+}
+
+.mc-culture__media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.mc-culture__media img {
+  transition: transform 1.2s var(--mc-ease);
+}
+
+.mc-culture__card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgb(12 28 44 / 0.1) 0%, rgb(12 28 44 / 0.62) 42%, rgb(12 28 44 / 0.94) 100%);
+  transition: opacity 0.5s ease;
+}
+
+.mc-culture__card:hover .mc-culture__media img {
+  transform: scale(1.06);
+}
+
+.mc-culture__copy {
+  padding: 1.4rem 1.4rem 1.5rem;
+  max-width: 34rem;
+}
+
+.mc-culture__title {
+  margin: 0 0 0.35rem;
+  font-family: var(--mc-font-display);
+  font-size: clamp(1.2rem, 1.1rem + 0.4vw, 1.4rem);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.mc-culture__title::before {
+  content: "";
+  display: block;
+  width: 1.75rem;
+  height: 2px;
+  margin-bottom: 0.75rem;
+  background: var(--mc-sand);
+  transition: width 0.5s var(--mc-ease);
+}
+
+.mc-culture__card:hover .mc-culture__title::before {
+  width: 3rem;
+}
+
+.mc-culture__text {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: rgb(255 255 255 / 0.86);
+}
+
+@media (min-width: 640px) {
+  .mc-culture__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mc-culture__card:first-child {
+    grid-column: 1 / -1;
+    min-height: 380px;
+  }
+}
+
+/* Desktop mosaic:  [1 1 2 3] / [1 1 4 5] / [6 6 7 7] */
+@media (min-width: 1024px) {
+  .mc-culture__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: minmax(280px, auto);
+  }
+
+  .mc-culture__card:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .mc-culture__card:first-child .mc-culture__title {
+    font-size: 1.9rem;
+  }
+
+  .mc-culture__card:nth-child(6),
+  .mc-culture__card:nth-child(7) {
+    grid-column: span 2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mc-culture__media img {
+    transition: none;
+    transform: none !important;
+  }
+}

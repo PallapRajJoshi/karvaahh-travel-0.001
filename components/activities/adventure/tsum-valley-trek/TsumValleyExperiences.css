@@ -1,0 +1,79 @@
+.tsum-exp__list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(56px, 8vw, 104px);
+}
+
+.tsum-exp__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(32px, 6vw, 80px);
+  align-items: center;
+  scroll-margin-top: calc(var(--tsum-nav-offset) + 80px);
+}
+
+.tsum-exp__row--flip .tsum-exp__media-wrap {
+  order: 2;
+}
+
+.tsum-exp__media {
+  aspect-ratio: 5 / 4;
+  box-shadow: var(--tsum-shadow);
+}
+
+.tsum-exp__row:hover .tsum-exp__media img {
+  transform: scale(1.04);
+}
+
+.tsum-exp__text {
+  position: relative;
+}
+
+.tsum-exp__index {
+  position: absolute;
+  top: -0.55em;
+  right: 0;
+  font-family: var(--tsum-font-display);
+  font-size: clamp(5rem, 10vw, 8rem);
+  line-height: 1;
+  color: var(--tsum-gold);
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+.tsum-exp__kicker {
+  margin-bottom: 10px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--tsum-teal);
+}
+
+.tsum-exp__title {
+  margin-bottom: 18px;
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  text-wrap: balance;
+}
+
+.tsum-exp__para {
+  color: #3a424b;
+}
+
+.tsum-exp__para + .tsum-exp__para {
+  margin-top: 14px;
+}
+
+@media (max-width: 900px) {
+  .tsum-exp__row {
+    grid-template-columns: 1fr;
+  }
+
+  .tsum-exp__row--flip .tsum-exp__media-wrap {
+    order: 0;
+  }
+
+  .tsum-exp__media {
+    aspect-ratio: 16 / 10;
+  }
+}

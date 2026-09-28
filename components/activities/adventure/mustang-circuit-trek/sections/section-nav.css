@@ -1,0 +1,96 @@
+.mc-subnav {
+  position: sticky;
+  top: var(--mc-nav-offset);
+  z-index: 40;
+  background: color-mix(in srgb, var(--mc-ivory) 92%, transparent);
+  backdrop-filter: saturate(1.4) blur(10px);
+  -webkit-backdrop-filter: saturate(1.4) blur(10px);
+  border-bottom: 1px solid var(--mc-line);
+}
+
+.mc-subnav__inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: var(--mc-subnav-h);
+}
+
+.mc-subnav__list {
+  position: relative; /* offsetParent for the auto-scroll maths */
+  display: flex;
+  flex: 1;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, #000 88%, transparent);
+}
+
+.mc-subnav__list::-webkit-scrollbar {
+  display: none;
+}
+
+.mc-subnav__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: calc(var(--mc-subnav-h) - 8px);
+  padding: 0 0.85rem;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--mc-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.mc-subnav__link::after {
+  content: "";
+  position: absolute;
+  left: 0.85rem;
+  right: 0.85rem;
+  bottom: 2px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--mc-sand);
+  transform: scaleX(0);
+  transition: transform 0.35s var(--mc-ease);
+}
+
+.mc-subnav__link:hover,
+.mc-subnav__link.is-active {
+  color: var(--mc-blue);
+}
+
+.mc-subnav__link.is-active::after {
+  transform: scaleX(1);
+}
+
+.mc-subnav__cta {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 1rem;
+  border-radius: 999px;
+  background: var(--mc-blue);
+  color: var(--mc-white);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.mc-subnav__cta:hover {
+  background: var(--mc-teal);
+}
+
+@media (min-width: 1024px) {
+  .mc-subnav__list {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}

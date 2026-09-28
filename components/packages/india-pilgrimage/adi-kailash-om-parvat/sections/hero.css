@@ -1,0 +1,253 @@
+/* Section 1 — Hero */
+
+.akop-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-height: max(640px, 100svh);
+  color: var(--akop-white);
+  background: var(--akop-primary-deep);
+  overflow: hidden;
+}
+
+.akop-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+/* Oversized so the parallax shift never reveals an edge. */
+.akop-hero__parallax {
+  position: absolute;
+  inset: -8% 0 -8% 0;
+}
+
+.akop-hero__img {
+  transform: scale(1.06);
+  animation: akop-hero-settle 2.4s var(--akop-ease) both;
+}
+
+@keyframes akop-hero-settle {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+/* Subtle parallax via scroll-driven animation (no JS). */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .akop-hero__parallax {
+      animation: akop-hero-parallax linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 100%;
+    }
+  }
+}
+
+@keyframes akop-hero-parallax {
+  to {
+    transform: translate3d(0, 14%, 0);
+  }
+}
+
+.akop-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(11, 39, 64, 0.55) 0%, rgba(11, 39, 64, 0) 28%),
+    linear-gradient(90deg, rgba(11, 39, 64, 0.82) 0%, rgba(11, 39, 64, 0.35) 55%, rgba(11, 39, 64, 0.1) 100%),
+    linear-gradient(0deg, rgba(11, 39, 64, 0.92) 0%, rgba(11, 39, 64, 0) 45%);
+}
+
+.akop-hero__inner {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  padding-top: clamp(7rem, 16vh, 10rem);
+  padding-bottom: clamp(2.5rem, 6vh, 4rem);
+}
+
+.akop-hero__content {
+  max-width: 44rem;
+}
+
+.akop-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  color: var(--akop-accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.akop-hero__om {
+  display: grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border: 1px solid rgba(216, 166, 74, 0.6);
+  border-radius: 50%;
+  font-size: 1.05rem;
+  letter-spacing: 0;
+}
+
+.akop-hero__title {
+  font-family: var(--akop-font-heading);
+  font-size: clamp(2.5rem, 1.4rem + 5.2vw, 5.25rem);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.akop-hero__subtitle {
+  margin-top: 1rem;
+  font-family: var(--akop-font-heading);
+  font-size: clamp(1.15rem, 0.95rem + 0.9vw, 1.6rem);
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.akop-hero__text {
+  max-width: 36rem;
+  margin-top: 1.25rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  text-wrap: pretty;
+}
+
+.akop-hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 2rem;
+}
+
+/* Staggered entrance — CSS only, runs once on load. */
+.akop-hero__anim {
+  animation: akop-hero-rise 1s var(--akop-ease) both;
+  animation-delay: calc(0.15s + var(--akop-d, 0) * 0.12s);
+}
+
+@keyframes akop-hero-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Scroll cue */
+.akop-hero__cue {
+  position: absolute;
+  right: var(--akop-gutter);
+  bottom: clamp(2.5rem, 6vh, 4rem);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+}
+
+.akop-hero__cue-line {
+  position: relative;
+  width: 1px;
+  height: 64px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.akop-hero__cue-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--akop-accent);
+  animation: akop-cue 2.2s var(--akop-ease) infinite;
+}
+
+@keyframes akop-cue {
+  0% {
+    transform: translateY(-100%);
+  }
+  60%,
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@media (min-width: 768px) {
+  .akop-hero__cue {
+    display: flex;
+  }
+}
+
+/* Quick facts strip */
+.akop-hero__facts-wrap {
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(11, 39, 64, 0.55);
+  backdrop-filter: blur(10px);
+}
+
+.akop-hero__facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 1.5rem;
+  padding-block: 1.25rem 0.5rem;
+}
+
+.akop-hero__fact dt {
+  margin-bottom: 0.2rem;
+  color: var(--akop-accent);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.akop-hero__fact dd {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.akop-hero__fact-flag {
+  color: var(--akop-accent);
+  margin-left: 0.15rem;
+}
+
+.akop-hero__facts-note {
+  padding-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.75rem;
+}
+
+@media (min-width: 1024px) {
+  .akop-hero__facts {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    padding-top: 1.5rem;
+  }
+
+  .akop-hero__fact {
+    padding-left: 1.25rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.16);
+  }
+}
+
+@media (max-width: 479px) {
+  .akop-hero__ctas .akop-btn {
+    width: 100%;
+  }
+}

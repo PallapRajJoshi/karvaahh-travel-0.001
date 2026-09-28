@@ -1,0 +1,199 @@
+@import "../karnali-tokens.css";
+
+.karnali-hero {
+  position: relative;
+  width: 100%;
+  height: var(--k-section-desktop-h);
+  min-height: 560px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--k-forest-900);
+  padding: 0 clamp(1.5rem, 5vw, 5rem);
+  padding-bottom: 7rem; /* reserved space for highlight bar */
+}
+
+.karnali-hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.karnali-hero-image {
+  object-fit: cover;
+}
+
+.karnali-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(7, 16, 12, 0.55) 0%,
+    rgba(7, 16, 12, 0.35) 40%,
+    rgba(7, 16, 12, 0.85) 100%
+  );
+}
+
+.karnali-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+}
+
+.karnali-hero-eyebrow {
+  color: var(--k-gold);
+  margin-bottom: 1.25rem;
+}
+
+.karnali-hero-title {
+  font-family: var(--k-font-serif);
+  font-weight: 500;
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  line-height: 0.98;
+  color: var(--k-cream);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.karnali-hero-title-gold {
+  font-style: italic;
+  color: var(--k-gold);
+}
+
+.karnali-hero-subline {
+  font-family: var(--k-font-sans);
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  color: var(--k-cream);
+  margin-top: 1.5rem;
+  font-weight: 400;
+}
+
+.karnali-hero-description {
+  font-family: var(--k-font-sans);
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: rgba(247, 245, 239, 0.78);
+  margin-top: 1rem;
+  max-width: 46ch;
+}
+
+.karnali-hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  font-family: var(--k-font-sans);
+}
+
+.karnali-hero-location {
+  color: var(--k-gold);
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+}
+
+.karnali-hero-divider {
+  width: 1px;
+  height: 14px;
+  background: var(--k-line);
+}
+
+.karnali-hero-tagline {
+  color: var(--k-cream);
+  font-size: 0.85rem;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+.karnali-hero-cta-row {
+  margin-top: 2.25rem;
+}
+
+.karnali-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--k-font-sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--k-forest-900);
+  background: var(--k-gold);
+  padding: 0.9rem 1.6rem;
+  border-radius: var(--k-radius);
+  text-decoration: none;
+  transition: background 0.3s var(--k-ease);
+}
+
+.karnali-hero-cta:hover {
+  background: var(--k-cream);
+}
+
+.karnali-hero-highlights {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--k-line);
+  background: rgba(7, 16, 12, 0.55);
+  backdrop-filter: blur(6px);
+}
+
+.karnali-hero-highlight {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1.4rem clamp(1.25rem, 3vw, 2.5rem);
+  border-right: 1px solid var(--k-line);
+}
+
+.karnali-hero-highlight:last-child {
+  border-right: none;
+}
+
+.karnali-hero-highlight-num {
+  font-family: var(--k-font-serif);
+  font-style: italic;
+  color: var(--k-gold);
+  font-size: 1.1rem;
+}
+
+.karnali-hero-highlight-title {
+  font-family: var(--k-font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  color: var(--k-cream);
+  font-weight: 600;
+  margin: 0;
+}
+
+.karnali-hero-highlight-detail {
+  font-family: var(--k-font-sans);
+  font-size: 0.78rem;
+  color: rgba(247, 245, 239, 0.65);
+  margin: 0.15rem 0 0;
+}
+
+@media (max-width: 900px) {
+  .karnali-hero {
+    height: auto;
+    min-height: 100svh;
+    padding-top: 6rem;
+    padding-bottom: 0;
+  }
+
+  .karnali-hero-highlights {
+    position: relative;
+    grid-template-columns: 1fr;
+    margin-top: 3rem;
+  }
+
+  .karnali-hero-highlight {
+    border-right: none;
+    border-bottom: 1px solid var(--k-line);
+  }
+}

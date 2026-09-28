@@ -1,0 +1,148 @@
+.sp-destinations {
+  background: #fbf9f4;
+  padding-block: clamp(4rem, 8vh, 6.5rem);
+  border-top: 1px solid #e4ddcf;
+}
+
+.sp-destinations__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.sp-dest-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: 260px;
+  gap: 1.25rem;
+}
+
+.sp-dest-card {
+  position: relative;
+  overflow: hidden;
+  color: var(--sp-cream);
+  display: flex;
+  align-items: flex-end;
+}
+
+.sp-dest-card--lg {
+  grid-column: span 3;
+  grid-row: span 2;
+}
+
+.sp-dest-card--md {
+  grid-column: span 3;
+  grid-row: span 1;
+}
+
+.sp-dest-card--sm {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.sp-dest-card__media {
+  position: absolute;
+  inset: 0;
+}
+
+.sp-dest-card__image {
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.sp-dest-card:hover .sp-dest-card__image {
+  transform: scale(1.06);
+}
+
+.sp-dest-card__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(7, 16, 12, 0) 35%,
+    rgba(7, 16, 12, 0.88) 100%
+  );
+}
+
+.sp-dest-card__body {
+  position: relative;
+  z-index: 1;
+  padding: 1.25rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.sp-dest-card__category {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sp-gold);
+}
+
+.sp-dest-card__title {
+  font-family: var(--sp-font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.sp-dest-card__location {
+  font-size: 0.75rem;
+  color: rgba(247, 245, 239, 0.75);
+  margin: 0;
+}
+
+.sp-dest-card__desc {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: rgba(247, 245, 239, 0.85);
+  margin: 0.35rem 0 0;
+  max-width: 46ch;
+}
+
+.sp-dest-card--sm .sp-dest-card__desc {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-dest-card__image {
+    transition: none;
+  }
+}
+
+@media (max-width: 1080px) {
+  .sp-dest-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 240px;
+  }
+  .sp-dest-card--lg {
+    grid-column: span 4;
+    grid-row: span 2;
+  }
+  .sp-dest-card--md {
+    grid-column: span 2;
+  }
+  .sp-dest-card--sm {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 680px) {
+  .sp-dest-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+  .sp-dest-card--lg,
+  .sp-dest-card--md,
+  .sp-dest-card--sm {
+    grid-column: span 1;
+    height: 340px;
+  }
+  .sp-dest-card--sm .sp-dest-card__desc {
+    display: block;
+  }
+}

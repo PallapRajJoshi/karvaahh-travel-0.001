@@ -1,0 +1,25 @@
+.cmp-cta {
+  position: relative;
+  min-height: 78vh;
+  display: flex; align-items: center;
+  padding-block: var(--cmp-section);
+  color: var(--cmp-snow);
+  background: #2a1d1a;
+  overflow: hidden; isolation: isolate;
+  text-align: center;
+}
+.cmp-cta__media { position: absolute; inset: 0; z-index: -2; }
+.cmp-cta__photo { position: absolute; inset: -12% 0; }
+.cmp-cta__shade { position: absolute; inset: 0; z-index: -1; background: radial-gradient(ellipse at 50% 60%, rgba(10, 16, 14, 0.35), rgba(10, 16, 14, 0.82)); }
+.cmp-cta .cmp-particles { z-index: -1; }
+/* flex parent would otherwise shrink the content column to its text width */
+.cmp-cta__inner { width: 100%; }
+.cmp-cta__title {
+  margin: 0 auto; max-width: 20ch;
+  font-family: var(--cmp-serif); font-weight: 600;
+  font-size: clamp(2.4rem, 5.6vw, 4.8rem); line-height: 1.02; letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.cmp-cta__text { margin: 1.3rem auto 0; max-width: 32rem; font-size: 1.12rem; line-height: 1.65; color: rgba(247, 245, 239, 0.82); }
+.cmp-cta__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.85rem; margin-top: 2.2rem; }
+@media (max-width: 560px) { .cmp-cta__actions .cmp-btn { flex: 1 1 100%; } }

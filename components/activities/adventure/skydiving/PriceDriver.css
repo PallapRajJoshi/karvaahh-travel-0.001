@@ -1,0 +1,30 @@
+.sky-price__statement {
+  margin: 0;
+  font-family: var(--sky-serif);
+  font-style: italic;
+  font-size: clamp(2rem, 1.2rem + 3.6vw, 4rem);
+  line-height: 1.05;
+  color: var(--sky-navy);
+}
+.sky-price__text { margin: 1rem 0 0; max-width: 56ch; font-size: 1.05rem; line-height: 1.65; color: var(--sky-muted); }
+.sky-price__layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.4fr); gap: 1.25rem; margin-top: clamp(2rem, 4vw, 3rem); }
+.sky-price__tag { margin: 0 0 1rem; font-size: 0.82rem; font-weight: 600; color: var(--sky-gold-deep); }
+.sky-price__core { padding: clamp(1.5rem, 3vw, 2rem); border-radius: var(--sky-radius); background: var(--sky-navy); color: #fff; }
+.sky-price__core .sky-price__tag { color: var(--sky-gold); }
+.sky-price__core-title { margin: 0; font-family: var(--sky-serif); font-size: clamp(2rem, 1.6rem + 1.5vw, 2.75rem); }
+.sky-price__core-text { margin: 0.75rem 0 0; line-height: 1.6; color: rgba(238, 242, 245, 0.78); }
+.sky-price__extras { padding: clamp(1.5rem, 3vw, 2rem); border-radius: var(--sky-radius); border: 1px dashed rgba(184, 149, 78, 0.6); background: #fff; }
+.sky-price__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1.25rem 1.5rem; }
+.sky-price__item-title { margin: 0; font-size: 1rem; font-weight: 600; color: var(--sky-navy); }
+.sky-price__item-text { margin: 0.35rem 0 0; font-size: 0.92rem; line-height: 1.55; color: var(--sky-muted); }
+.sky-price__footnote {
+  margin: 2rem 0 0;
+  padding-left: 1rem;
+  border-left: 3px solid var(--sky-gold);
+  font-family: var(--sky-serif);
+  font-size: 1.25rem;
+  color: var(--sky-navy);
+}
+@media (max-width: 860px) {
+  .sky-price__layout { grid-template-columns: 1fr; }
+}

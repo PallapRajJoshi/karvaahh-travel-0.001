@@ -1,0 +1,335 @@
+/* =====================================================================
+   Pashupatinath & Muktinath Yatra — tokens + shared primitives
+   Everything is scoped under .pmy so nothing leaks into other pages.
+   ===================================================================== */
+
+.pmy {
+  /* Kathmandu chapter: warm stone, ivory, saffron */
+  --pmy-ivory: #f5efe4;
+  --pmy-stone: #e6ddcc;
+  --pmy-stone-deep: #8a7d68;
+  --pmy-saffron: #c2621f;
+  --pmy-gold: #b8954e;
+  --pmy-gold-soft: #d8bf8a;
+
+  /* Mustang chapter: snow, glacier, deep Himalayan blue, river turquoise */
+  --pmy-snow: #f2f5f7;
+  --pmy-glacier: #dce6ec;
+  --pmy-indigo: #10263a;
+  --pmy-indigo-2: #1b3a55;
+  --pmy-teal: #2c7c78;
+
+  /* Text */
+  --pmy-ink: #18222c;
+  --pmy-ink-soft: #4b5662;
+  --pmy-on-dark: #eef2f5;
+  --pmy-on-dark-soft: #b7c4cf;
+
+  --pmy-serif: var(--font-playfair, "Playfair Display"), Georgia, "Times New Roman", serif;
+  --pmy-sans: var(--font-inter, "Inter"), system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --pmy-radius-s: 4px;
+  --pmy-radius-m: 10px;
+  --pmy-radius-l: 18px;
+  --pmy-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --pmy-gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --pmy-section-y: clamp(4rem, 2.5rem + 5vw, 7.5rem);
+  /* VERIFY: height of the site's sticky Navbar. */
+  --pmy-header-offset: var(--site-header-height, 72px);
+
+  font-family: var(--pmy-sans);
+  color: var(--pmy-ink);
+  background: var(--pmy-ivory);
+  overflow-x: clip;
+}
+
+:where(.pmy) *,
+:where(.pmy) *::before,
+:where(.pmy) *::after {
+  box-sizing: border-box;
+}
+
+:where(.pmy) [id] {
+  scroll-margin-top: calc(var(--pmy-header-offset) + 64px);
+}
+
+.pmy-container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: var(--pmy-gutter);
+}
+
+.pmy-container--narrow {
+  max-width: 820px;
+}
+
+.pmy-section {
+  padding-block: var(--pmy-section-y);
+}
+
+.pmy-section--tight {
+  padding-block: calc(var(--pmy-section-y) * 0.6);
+}
+
+/* Chapters shift the ground colour as the journey climbs */
+.pmy-chapter--kathmandu { background: var(--pmy-ivory); }
+.pmy-chapter--mustang { background: var(--pmy-snow); }
+.pmy-chapter--practical { background: #fbfaf7; }
+.pmy-chapter--dark { background: var(--pmy-indigo); color: var(--pmy-on-dark); }
+
+/* A visible seam from warm stone to cold snow between the two chapters */
+.pmy-chapter-seam {
+  height: clamp(80px, 12vw, 160px);
+  background: linear-gradient(180deg, var(--pmy-ivory) 0%, var(--pmy-snow) 100%);
+}
+
+:where(.pmy) p {
+  margin: 0 0 1em;
+  line-height: 1.7;
+}
+
+:where(.pmy) p:last-child {
+  margin-bottom: 0;
+}
+
+:where(.pmy) :where(ul, ol) {
+  margin: 0;
+  padding: 0;
+}
+
+.pmy-prose {
+  max-width: 64ch;
+  font-size: 1.0625rem;
+}
+
+.pmy-lead {
+  font-family: var(--pmy-serif);
+  font-size: clamp(1.25rem, 1.05rem + 0.8vw, 1.6rem);
+  line-height: 1.5;
+  color: var(--pmy-ink);
+  max-width: 34ch;
+}
+
+.pmy-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Section heading ---------- */
+
+.pmy-heading {
+  margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.25rem);
+  max-width: 46rem;
+}
+
+.pmy-heading--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.pmy-heading__kicker {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--pmy-saffron);
+  margin: 0 0 0.75rem;
+}
+
+.pmy-heading--dark .pmy-heading__kicker { color: var(--pmy-gold-soft); }
+
+.pmy-heading__title {
+  font-family: var(--pmy-serif);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.pmy-heading__title--h2 { font-size: clamp(1.9rem, 1.3rem + 2.4vw, 3.1rem); }
+.pmy-heading__title--h3 { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.1rem); }
+
+.pmy-heading__intro {
+  margin-top: 1rem;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--pmy-ink-soft);
+  max-width: 60ch;
+}
+
+.pmy-heading--center .pmy-heading__intro { margin-inline: auto; }
+.pmy-heading--dark .pmy-heading__intro { color: var(--pmy-on-dark-soft); }
+
+/* ---------- Buttons ---------- */
+
+.pmy-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
+  font-family: var(--pmy-sans);
+  font-size: 0.9875rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s var(--pmy-ease);
+}
+
+.pmy-btn:hover { transform: translateY(-1px); }
+.pmy-btn:active { transform: translateY(0); }
+
+.pmy-btn--primary {
+  background: var(--pmy-saffron);
+  color: #fff;
+}
+.pmy-btn--primary:hover { background: #a9531a; }
+
+.pmy-btn--ghost-light {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.06);
+}
+.pmy-btn--ghost-light:hover { background: rgba(255, 255, 255, 0.16); border-color: #fff; }
+
+.pmy-btn--ghost-dark {
+  color: var(--pmy-indigo);
+  border-color: rgba(16, 38, 58, 0.35);
+}
+.pmy-btn--ghost-dark:hover { border-color: var(--pmy-indigo); background: rgba(16, 38, 58, 0.05); }
+
+.pmy a:focus-visible,
+.pmy button:focus-visible,
+.pmy summary:focus-visible,
+.pmy [tabindex]:focus-visible {
+  outline: 3px solid var(--pmy-gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.pmy-btn:focus-visible { border-radius: 999px; }
+
+/* ---------- Images + placeholders ---------- */
+
+.pmy-img {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--pmy-stone);
+}
+
+.pmy-img__el {
+  object-fit: cover;
+}
+
+.pmy-img--placeholder {
+  display: flex;
+  align-items: flex-end;
+}
+
+.pmy-img--warm { background: linear-gradient(160deg, #d9b98a 0%, #a8733f 55%, #5a3a22 100%); }
+.pmy-img--dusk { background: linear-gradient(170deg, #394b66 0%, #7c5a55 55%, #c9864a 100%); }
+.pmy-img--cool { background: linear-gradient(175deg, #b9cad6 0%, #6f8aa0 50%, #2c465e 100%); }
+.pmy-img--stone { background: linear-gradient(165deg, #d8cdb8 0%, #9c8d74 55%, #5d5242 100%); }
+.pmy-img--river { background: linear-gradient(170deg, #c7dade 0%, #5f9c9b 55%, #245a5b 100%); }
+
+.pmy-img__ridge {
+  position: absolute;
+  inset: auto 0 0 0;
+  width: 100%;
+  height: 45%;
+}
+.pmy-img__ridge path:first-child { fill: rgba(255, 255, 255, 0.12); }
+.pmy-img__ridge path:last-child { fill: rgba(0, 0, 0, 0.18); }
+
+.pmy-img__file {
+  position: relative;
+  margin: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--pmy-radius-s);
+  font-size: 0.6875rem;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(0, 0, 0, 0.28);
+  max-width: calc(100% - 1.5rem);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---------- Reveal (only active once JS confirms motion is OK) ---------- */
+
+.pmy [data-reveal] {
+  transition: opacity 0.8s ease, transform 0.8s var(--pmy-ease);
+}
+
+.pmy--reveal [data-reveal]:not(.is-in) {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+/* ---------- Shared small patterns ---------- */
+
+.pmy-note {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--pmy-ink-soft);
+  border-left: 3px solid var(--pmy-saffron);
+  padding: 0.25rem 0 0.25rem 1rem;
+  max-width: 68ch;
+}
+
+.pmy-note--cool { border-left-color: var(--pmy-teal); }
+.pmy-note--dark { color: var(--pmy-on-dark-soft); border-left-color: var(--pmy-gold); }
+
+.pmy-ticklist {
+  list-style: none;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.pmy-ticklist li {
+  position: relative;
+  padding-left: 1.6rem;
+  line-height: 1.55;
+}
+
+.pmy-ticklist li::before {
+  content: "";
+  position: absolute;
+  left: 0.2rem;
+  top: 0.6em;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  border: 1.5px solid var(--pmy-gold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pmy *,
+  .pmy *::before,
+  .pmy *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .pmy--reveal [data-reveal]:not(.is-in) {
+    opacity: 1;
+    transform: none;
+  }
+  .pmy-btn:hover { transform: none; }
+}

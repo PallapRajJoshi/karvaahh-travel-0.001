@@ -1,0 +1,64 @@
+.sp-pilgrimage {
+  position: relative;
+  height: var(--sp-section-height);
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  color: var(--sp-cream);
+  overflow: hidden;
+}
+
+.sp-pilgrimage__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.sp-pilgrimage__image {
+  object-fit: cover;
+}
+
+.sp-pilgrimage__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(7, 16, 12, 0.92) 0%,
+    rgba(7, 16, 12, 0.55) 55%,
+    rgba(7, 16, 12, 0.25) 100%
+  );
+}
+
+.sp-pilgrimage__content {
+  position: relative;
+  z-index: 1;
+}
+
+.sp-pilgrimage__list {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(247, 245, 239, 0.18);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem 1.25rem;
+  max-width: 760px;
+}
+
+.sp-pilgrimage__list li {
+  font-family: var(--sp-font-display);
+  font-style: italic;
+  font-size: 0.92rem;
+  color: rgba(247, 245, 239, 0.8);
+}
+
+@media (max-width: 900px) {
+  .sp-pilgrimage {
+    height: auto;
+    padding-block: 4.5rem;
+  }
+
+  .sp-pilgrimage__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

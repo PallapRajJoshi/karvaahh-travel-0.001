@@ -1,0 +1,104 @@
+.sp-journey {
+  background: var(--sp-cream);
+  padding-block: clamp(4rem, 8vh, 6.5rem);
+  border-top: 1px solid #e4ddcf;
+}
+
+.sp-journey__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.sp-journey__route {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+  counter-reset: none;
+}
+
+.sp-journey__stop {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sp-journey__stop:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 38%;
+  right: -0.75rem;
+  width: 1.25rem;
+  height: 1px;
+  background: var(--sp-gold);
+}
+
+.sp-journey__stop-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+
+.sp-journey__stop-image {
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.sp-journey__stop:hover .sp-journey__stop-image {
+  transform: scale(1.05);
+}
+
+.sp-journey__stop-number {
+  font-family: var(--sp-font-display);
+  font-style: italic;
+  color: var(--sp-gold);
+  font-size: 0.9rem;
+}
+
+.sp-journey__stop-title {
+  font-family: var(--sp-font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--sp-forest-900);
+}
+
+.sp-journey__stop-desc {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--sp-earth);
+  margin: 0;
+}
+
+.sp-journey__cta {
+  display: flex;
+  justify-content: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e4ddcf;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sp-journey__stop-image {
+    transition: none;
+  }
+}
+
+@media (max-width: 980px) {
+  .sp-journey__route {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .sp-journey__stop:not(:last-child)::after {
+    display: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .sp-journey__route {
+    grid-template-columns: 1fr 1fr;
+  }
+}

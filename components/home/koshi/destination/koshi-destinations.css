@@ -1,0 +1,1022 @@
+/* =========================================================
+   KOSHI DESTINATIONS
+   Premium Editorial Layout
+========================================================= */
+
+.koshi-destinations {
+  position: relative;
+  width: 100%;
+  padding: 120px 0 140px;
+  overflow: hidden;
+  background: #fdfcf9;
+  color: #142019;
+  box-sizing: border-box;
+}
+
+.koshi-destinations *,
+.koshi-destinations *::before,
+.koshi-destinations *::after {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   SHELL
+========================================================= */
+
+.koshi-destinations__shell {
+  position: relative;
+  width: calc(100% - 80px);
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.koshi-destinations__header {
+  position: relative;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  width: 100%;
+  margin-bottom: 65px;
+
+  gap: 50px;
+}
+
+
+/* =========================================================
+   DESTINATION INDEX
+========================================================= */
+
+.koshi-destinations__index {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+
+  flex: 0 0 105px;
+
+  height: 105px;
+
+  border-left: 1px solid rgba(20, 32, 25, 0.10);
+
+  padding-bottom: 8px;
+
+  text-align: center;
+}
+
+.koshi-destinations__index span {
+  display: block;
+
+  margin: 0;
+
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size: 54px !important;
+  font-weight: 400 !important;
+
+  line-height: 0.85 !important;
+
+  letter-spacing: -0.06em;
+
+  color: rgba(20, 32, 25, 0.18);
+}
+
+.koshi-destinations__index small {
+  display: block;
+
+  margin-top: 10px;
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 7px !important;
+  font-weight: 700 !important;
+
+  line-height: 1;
+
+  letter-spacing: 0.30em;
+
+  text-transform: uppercase;
+
+  color: rgba(20, 32, 25, 0.45);
+}
+
+
+/* =========================================================
+   DESTINATION GRID
+========================================================= */
+
+.koshi-destination-grid {
+  display: grid !important;
+
+  width: 100%;
+
+  grid-template-columns:
+    repeat(12, minmax(0, 1fr)) !important;
+
+  gap: 18px !important;
+
+  align-items: stretch;
+}
+
+
+/* =========================================================
+   BASE CARD
+========================================================= */
+
+.koshi-destination-card {
+  position: relative;
+
+  display: block;
+
+  min-width: 0;
+
+  height: 430px;
+
+  overflow: hidden;
+
+  isolation: isolate;
+
+  background: #122019;
+
+  color: #fff;
+
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   FORCE CARD WIDTHS
+========================================================= */
+
+/*
+   01 = 7 columns
+   02 = 5 columns
+
+   03 = 5 columns
+   04 = 7 columns
+
+   05 = 7 columns
+   06 = 5 columns
+
+   07 = 5 columns
+   08 = 7 columns
+
+   09 = full width
+*/
+
+
+.koshi-destination-card:nth-child(1) {
+  grid-column: span 7 !important;
+  height: 520px;
+}
+
+.koshi-destination-card:nth-child(2) {
+  grid-column: span 5 !important;
+  height: 520px;
+}
+
+.koshi-destination-card:nth-child(3) {
+  grid-column: span 5 !important;
+  height: 420px;
+}
+
+.koshi-destination-card:nth-child(4) {
+  grid-column: span 7 !important;
+  height: 420px;
+}
+
+.koshi-destination-card:nth-child(5) {
+  grid-column: span 7 !important;
+  height: 420px;
+}
+
+.koshi-destination-card:nth-child(6) {
+  grid-column: span 5 !important;
+  height: 420px;
+}
+
+.koshi-destination-card:nth-child(7) {
+  grid-column: span 5 !important;
+  height: 420px;
+}
+
+.koshi-destination-card:nth-child(8) {
+  grid-column: span 7 !important;
+  height: 420px;
+}
+
+.koshi-destination-card:nth-child(9) {
+  grid-column: span 12 !important;
+  height: 460px;
+}
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.koshi-destination-card__image {
+  position: absolute !important;
+
+  inset: 0 !important;
+
+  z-index: -3;
+
+  display: block;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  object-fit: cover !important;
+  object-position: center center;
+
+  transform: scale(1.01);
+
+  transition:
+    transform 1s
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* =========================================================
+   IMAGE HOVER
+========================================================= */
+
+.koshi-destination-card:hover
+.koshi-destination-card__image {
+  transform: scale(1.07);
+}
+
+
+/* =========================================================
+   OVERLAY
+========================================================= */
+
+.koshi-destination-card__overlay {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -2;
+
+  background:
+    linear-gradient(
+      to bottom,
+
+      rgba(5, 12, 8, 0.02) 0%,
+
+      rgba(5, 12, 8, 0.04) 35%,
+
+      rgba(5, 12, 8, 0.18) 55%,
+
+      rgba(5, 12, 8, 0.90) 100%
+    );
+
+  pointer-events: none;
+
+  transition:
+    background 0.5s ease;
+}
+
+.koshi-destination-card:hover
+.koshi-destination-card__overlay {
+  background:
+    linear-gradient(
+      to bottom,
+
+      rgba(5, 12, 8, 0.04) 0%,
+
+      rgba(5, 12, 8, 0.07) 35%,
+
+      rgba(5, 12, 8, 0.25) 55%,
+
+      rgba(5, 12, 8, 0.94) 100%
+    );
+}
+
+
+/* =========================================================
+   NUMBER
+========================================================= */
+
+.koshi-destination-card__number {
+  position: absolute;
+
+  top: 22px;
+  left: 22px;
+
+  z-index: 10;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.38);
+
+  border-radius: 50%;
+
+  background:
+    rgba(10, 20, 15, 0.12);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 9px !important;
+  font-weight: 600 !important;
+
+  line-height: 1;
+
+  letter-spacing: 0.08em;
+
+  color: rgba(255, 255, 255, 0.90);
+
+  transition:
+    all 0.35s ease;
+}
+
+.koshi-destination-card:hover
+.koshi-destination-card__number {
+  border-color: #c9a45c;
+
+  background:
+    rgba(201, 164, 92, 0.15);
+}
+
+
+/* =========================================================
+   ARROW
+========================================================= */
+
+.koshi-destination-card__arrow {
+  position: absolute;
+
+  top: 22px;
+  right: 22px;
+
+  z-index: 10;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 43px;
+  height: 43px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.32);
+
+  border-radius: 50%;
+
+  background:
+    rgba(10, 20, 15, 0.12);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  font-size: 17px !important;
+  font-weight: 400;
+
+  color: #fff;
+
+  transition:
+    transform 0.45s
+    cubic-bezier(0.22, 1, 0.36, 1),
+
+    background 0.3s ease,
+
+    color 0.3s ease,
+
+    border-color 0.3s ease;
+}
+
+.koshi-destination-card:hover
+.koshi-destination-card__arrow {
+  transform: rotate(45deg);
+
+  background: #c9a45c;
+
+  border-color: #c9a45c;
+
+  color: #142019;
+}
+
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.koshi-destination-card__content {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  z-index: 5;
+
+  padding: 30px;
+}
+
+
+/* Featured cards */
+
+.koshi-destination-card:nth-child(1)
+.koshi-destination-card__content,
+
+.koshi-destination-card:nth-child(4)
+.koshi-destination-card__content,
+
+.koshi-destination-card:nth-child(5)
+.koshi-destination-card__content,
+
+.koshi-destination-card:nth-child(8)
+.koshi-destination-card__content {
+  padding: 38px;
+}
+
+
+/* =========================================================
+   META
+========================================================= */
+
+.koshi-destination-card__meta {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin: 0 0 12px;
+}
+
+.koshi-destination-card__meta span {
+  display: inline-block;
+
+  margin: 0;
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 8px !important;
+  font-weight: 700 !important;
+
+  line-height: 1;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.koshi-destination-card__meta i {
+  display: block;
+
+  width: 3px;
+  height: 3px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #c9a45c;
+}
+
+
+/* =========================================================
+   DESTINATION TITLE
+========================================================= */
+
+.koshi-destination-card h3 {
+  display: block;
+
+  margin: 0;
+
+  max-width: 800px;
+
+  font-family:
+    "Playfair Display",
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(32px, 3vw, 50px) !important;
+
+  font-weight: 400 !important;
+
+  line-height: 0.98 !important;
+
+  letter-spacing: -0.04em;
+
+  color: #ffffff;
+
+  text-rendering: optimizeLegibility;
+
+  transition:
+    transform 0.4s ease;
+}
+
+
+/* Featured title */
+
+.koshi-destination-card:nth-child(1) h3,
+
+.koshi-destination-card:nth-child(4) h3,
+
+.koshi-destination-card:nth-child(5) h3,
+
+.koshi-destination-card:nth-child(8) h3 {
+  font-size:
+    clamp(42px, 4vw, 64px) !important;
+}
+
+
+.koshi-destination-card:hover h3 {
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.koshi-destination-card__content p {
+  display: block;
+
+  max-width: 560px;
+
+  margin:
+    13px 0 0;
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 11px !important;
+
+  font-weight: 300 !important;
+
+  line-height: 1.65 !important;
+
+  color:
+    rgba(255, 255, 255, 0.65);
+}
+
+
+/* =========================================================
+   EXPLORE
+========================================================= */
+
+.koshi-destination-card__explore {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 18px;
+
+  padding-bottom: 6px;
+
+  border-bottom:
+    1px solid
+    rgba(255, 255, 255, 0.30);
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 8px !important;
+
+  font-weight: 700 !important;
+
+  line-height: 1;
+
+  letter-spacing: 0.17em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(255, 255, 255, 0.88);
+
+  transition:
+    gap 0.35s ease,
+
+    color 0.3s ease,
+
+    border-color 0.3s ease;
+}
+
+.koshi-destination-card:hover
+.koshi-destination-card__explore {
+  gap: 15px;
+
+  color: #c9a45c;
+
+  border-color: #c9a45c;
+}
+
+.koshi-destination-card__explore b {
+  margin: 0;
+
+  font-size: 14px !important;
+
+  font-weight: 400 !important;
+}
+
+
+/* =========================================================
+   FOCUS ACCESSIBILITY
+========================================================= */
+
+.koshi-destination-card:focus-visible {
+  outline:
+    2px solid
+    #c9a45c;
+
+  outline-offset: 4px;
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1600px) {
+
+  .koshi-destinations {
+    padding:
+      145px 0 165px;
+  }
+
+  .koshi-destinations__shell {
+    width:
+      calc(100% - 100px);
+
+    max-width: 1800px;
+  }
+
+  .koshi-destination-grid {
+    gap: 20px !important;
+  }
+
+  .koshi-destination-card:nth-child(1),
+  .koshi-destination-card:nth-child(2) {
+    height: 550px;
+  }
+
+  .koshi-destination-card:nth-child(n + 3) {
+    height: 430px;
+  }
+}
+
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+@media (max-width: 1300px) {
+
+  .koshi-destinations {
+    padding:
+      105px 0 125px;
+  }
+
+  .koshi-destinations__shell {
+    width:
+      calc(100% - 60px);
+  }
+
+  .koshi-destination-grid {
+    gap: 16px !important;
+  }
+
+  .koshi-destination-card:nth-child(1) {
+    height: 500px;
+  }
+
+  .koshi-destination-card:nth-child(2) {
+    height: 500px;
+  }
+
+  .koshi-destination-card:nth-child(n + 3) {
+    height: 390px;
+  }
+
+  .koshi-destination-card__content {
+    padding: 27px;
+  }
+
+  .koshi-destination-card:nth-child(1)
+  .koshi-destination-card__content,
+
+  .koshi-destination-card:nth-child(4)
+  .koshi-destination-card__content,
+
+  .koshi-destination-card:nth-child(5)
+  .koshi-destination-card__content,
+
+  .koshi-destination-card:nth-child(8)
+  .koshi-destination-card__content {
+    padding: 32px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .koshi-destinations {
+    padding:
+      90px 0 105px;
+  }
+
+  .koshi-destinations::after {
+    display: none;
+  }
+
+  .koshi-destinations__shell {
+    width:
+      calc(100% - 40px);
+  }
+
+  .koshi-destinations__header {
+    align-items: flex-start;
+
+    margin-bottom: 45px;
+  }
+
+  .koshi-destinations__index {
+    display: none;
+  }
+
+
+  /* Two-column tablet */
+
+  .koshi-destination-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr)) !important;
+
+    gap: 14px !important;
+  }
+
+
+  .koshi-destination-card,
+  .koshi-destination-card:nth-child(n) {
+    grid-column: span 1 !important;
+
+    height: 360px;
+  }
+
+
+  .koshi-destination-card:nth-child(1) {
+    grid-column: span 2 !important;
+
+    height: 470px;
+  }
+
+
+  .koshi-destination-card:nth-child(9) {
+    grid-column: span 2 !important;
+
+    height: 400px;
+  }
+
+
+  .koshi-destination-card:nth-child(1) h3,
+  .koshi-destination-card:nth-child(4) h3,
+  .koshi-destination-card:nth-child(5) h3,
+  .koshi-destination-card:nth-child(8) h3 {
+    font-size: 48px !important;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 640px) {
+
+  .koshi-destinations {
+    padding:
+      70px 0 85px;
+  }
+
+  .koshi-destinations__shell {
+    width:
+      calc(100% - 28px);
+  }
+
+  .koshi-destinations__header {
+    display: block;
+
+    margin-bottom: 35px;
+  }
+
+  .koshi-destination-grid {
+    display: grid !important;
+
+    grid-template-columns: 1fr !important;
+
+    gap: 12px !important;
+  }
+
+
+  /* All cards full width */
+
+  .koshi-destination-card,
+  .koshi-destination-card:nth-child(n) {
+    grid-column: span 1 !important;
+
+    width: 100%;
+
+    height: 390px;
+  }
+
+
+  .koshi-destination-card:nth-child(1) {
+    height: 430px;
+  }
+
+
+  .koshi-destination-card:nth-child(9) {
+    height: 390px;
+  }
+
+
+  /* Top controls */
+
+  .koshi-destination-card__number {
+    top: 16px;
+    left: 16px;
+
+    width: 37px;
+    height: 37px;
+  }
+
+  .koshi-destination-card__arrow {
+    top: 16px;
+    right: 16px;
+
+    width: 38px;
+    height: 38px;
+  }
+
+
+  /* Content */
+
+  .koshi-destination-card__content,
+
+  .koshi-destination-card:nth-child(1)
+  .koshi-destination-card__content,
+
+  .koshi-destination-card:nth-child(4)
+  .koshi-destination-card__content,
+
+  .koshi-destination-card:nth-child(5)
+  .koshi-destination-card__content,
+
+  .koshi-destination-card:nth-child(8)
+  .koshi-destination-card__content {
+    padding:
+      25px 21px 22px;
+  }
+
+
+  /* Titles */
+
+  .koshi-destination-card h3,
+
+  .koshi-destination-card:nth-child(1) h3,
+
+  .koshi-destination-card:nth-child(4) h3,
+
+  .koshi-destination-card:nth-child(5) h3,
+
+  .koshi-destination-card:nth-child(8) h3 {
+    font-size: 34px !important;
+
+    line-height: 1 !important;
+  }
+
+
+  .koshi-destination-card__content p {
+    font-size: 10px !important;
+
+    line-height: 1.6 !important;
+  }
+
+
+  .koshi-destination-card__explore {
+    margin-top: 15px;
+
+    font-size: 7px !important;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .koshi-destinations {
+    padding:
+      60px 0 75px;
+  }
+
+  .koshi-destinations__shell {
+    width:
+      calc(100% - 20px);
+  }
+
+  .koshi-destination-card,
+  .koshi-destination-card:nth-child(n) {
+    height: 350px;
+  }
+
+  .koshi-destination-card:nth-child(1) {
+    height: 400px;
+  }
+
+  .koshi-destination-card__content,
+  .koshi-destination-card:nth-child(1)
+  .koshi-destination-card__content {
+    padding:
+      22px 17px 19px;
+  }
+
+  .koshi-destination-card h3,
+  .koshi-destination-card:nth-child(n) h3 {
+    font-size: 29px !important;
+  }
+
+  .koshi-destination-card__content p {
+    display: -webkit-box;
+
+    -webkit-line-clamp: 3;
+
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .koshi-destination-card__image,
+  .koshi-destination-card__overlay,
+  .koshi-destination-card__arrow,
+  .koshi-destination-card__number,
+  .koshi-destination-card h3,
+  .koshi-destination-card__explore {
+    transition: none !important;
+  }
+
+  .koshi-destination-card__image {
+    transform: none !important;
+  }
+}

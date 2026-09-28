@@ -1,0 +1,98 @@
+@import "../karnali-tokens.css";
+
+.karnali-journey {
+  position: relative;
+  background: var(--k-cream);
+  padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 5vw, 5rem);
+  overflow: hidden;
+}
+
+.karnali-journey-route {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.karnali-journey-stop {
+  position: relative;
+}
+
+.karnali-journey-image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--k-radius);
+  overflow: hidden;
+}
+
+.karnali-journey-image {
+  object-fit: cover;
+}
+
+.karnali-journey-number {
+  display: block;
+  font-family: var(--k-font-serif);
+  font-style: italic;
+  color: var(--k-gold-deep);
+  font-size: 0.95rem;
+  margin-top: 0.9rem;
+}
+
+.karnali-journey-title {
+  font-family: var(--k-font-serif);
+  font-size: 1.15rem;
+  color: var(--k-charcoal);
+  margin: 0.2rem 0 0.4rem;
+}
+
+.karnali-journey-description {
+  font-family: var(--k-font-sans);
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--k-stone);
+  margin: 0;
+}
+
+.karnali-journey-connector {
+  display: none;
+}
+
+.karnali-journey-cta-row {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid var(--k-line);
+}
+
+.karnali-journey-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--k-font-sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--k-forest-900);
+  border: 1px solid var(--k-charcoal);
+  padding: 0.9rem 1.75rem;
+  border-radius: var(--k-radius);
+  text-decoration: none;
+  transition: background 0.3s var(--k-ease), color 0.3s var(--k-ease);
+}
+
+.karnali-journey-cta:hover {
+  background: var(--k-charcoal);
+  color: var(--k-cream);
+}
+
+@media (max-width: 1024px) {
+  .karnali-journey-route {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .karnali-journey-route {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

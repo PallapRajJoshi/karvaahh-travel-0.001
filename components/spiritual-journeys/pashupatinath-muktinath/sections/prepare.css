@@ -1,0 +1,367 @@
+/* ---------- Altitude ---------- */
+
+.pmy-altitude { background: #fbfaf7; }
+
+.pmy-altitude__panel {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(2rem, 4vw, 4rem);
+  padding: clamp(2rem, 4.5vw, 4rem);
+  border-radius: var(--pmy-radius-l);
+  background:
+    linear-gradient(160deg, rgba(44, 124, 120, 0.16) 0%, rgba(16, 38, 58, 0) 55%),
+    var(--pmy-indigo);
+  color: var(--pmy-on-dark);
+}
+
+.pmy-altitude__lead .pmy-heading__kicker { color: var(--pmy-gold-soft); }
+
+.pmy-altitude__figure {
+  display: grid;
+  margin: 1.75rem 0 1.25rem;
+}
+
+.pmy-altitude__value {
+  font-family: var(--pmy-serif);
+  font-size: clamp(2.8rem, 1.8rem + 4vw, 4.6rem);
+  line-height: 1;
+  color: #fff;
+}
+
+.pmy-altitude__label {
+  margin-top: 0.4rem;
+  font-size: 0.9375rem;
+  color: var(--pmy-gold-soft);
+}
+
+.pmy-altitude__intro { color: var(--pmy-on-dark-soft); }
+
+.pmy-altitude__medical {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin-top: 1.5rem;
+  padding: 1rem 1.1rem;
+  border-radius: var(--pmy-radius-m);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(216, 191, 138, 0.35);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+.pmy-altitude__medical svg { flex: none; color: var(--pmy-gold-soft); margin-top: 0.1rem; }
+
+.pmy-altitude__points {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--pmy-radius-m);
+  overflow: hidden;
+  align-self: start;
+}
+
+.pmy-altitude__points li {
+  padding: 1.5rem;
+  background: var(--pmy-indigo);
+}
+
+.pmy-altitude__points svg { color: #8ed0cb; }
+
+.pmy-altitude__points h3 {
+  font-family: var(--pmy-serif);
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin: 0.75rem 0 0.35rem;
+}
+
+.pmy-altitude__points p {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--pmy-on-dark-soft);
+}
+
+@media (max-width: 960px) {
+  .pmy-altitude__panel { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 520px) {
+  .pmy-altitude__points { grid-template-columns: 1fr; }
+  .pmy-altitude__panel { padding: 1.75rem 1.25rem; }
+}
+
+/* ---------- Weather ---------- */
+
+.pmy-weather { background: #fbfaf7; }
+
+.pmy-weather__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.25rem, 3vw, 2rem);
+}
+
+.pmy-weather__card {
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  border-radius: var(--pmy-radius-l);
+}
+
+.pmy-weather__card--valley { background: #f1ebdf; }
+.pmy-weather__card--mountain { background: var(--pmy-glacier); }
+
+.pmy-weather__top {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.pmy-weather__top svg { color: var(--pmy-saffron); }
+.pmy-weather__card--mountain .pmy-weather__top svg { color: var(--pmy-teal); }
+
+.pmy-weather__top h3 {
+  font-family: var(--pmy-serif);
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.pmy-weather__intro {
+  color: var(--pmy-ink-soft);
+  margin-bottom: 1.25rem;
+}
+
+.pmy-weather__seasons {
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.pmy-weather__seasons dt {
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.pmy-weather__seasons dd {
+  margin: 0;
+  color: var(--pmy-ink-soft);
+  line-height: 1.6;
+}
+
+.pmy-weather__note { margin-top: 1.75rem; }
+
+@media (max-width: 800px) {
+  .pmy-weather__grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- Traveller types ---------- */
+
+.pmy-travellers { background: #fbfaf7; }
+
+.pmy-travellers__list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  border-top: 1px solid rgba(24, 34, 44, 0.12);
+}
+
+.pmy-travellers__item {
+  padding: 1.5rem 1.25rem 1.5rem 0;
+}
+
+.pmy-travellers__item + .pmy-travellers__item {
+  padding-left: 1.25rem;
+  border-left: 1px solid rgba(24, 34, 44, 0.12);
+}
+
+.pmy-travellers__item svg { color: var(--pmy-saffron); }
+
+.pmy-travellers__item h3 {
+  font-family: var(--pmy-serif);
+  font-weight: 500;
+  font-size: 1.2rem;
+  margin: 0.75rem 0 0.35rem;
+}
+
+.pmy-travellers__item p {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--pmy-ink-soft);
+}
+
+.pmy-travellers__care {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: 1.5rem clamp(2rem, 5vw, 4rem);
+  margin-top: 3rem;
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+  border-radius: var(--pmy-radius-l);
+  background: #f1ebdf;
+}
+
+.pmy-travellers__care .pmy-note { grid-column: 2; }
+
+@media (max-width: 1000px) {
+  .pmy-travellers__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pmy-travellers__item,
+  .pmy-travellers__item + .pmy-travellers__item {
+    padding: 1.5rem 1rem 1.5rem 0;
+    border-left: 0;
+    border-bottom: 1px solid rgba(24, 34, 44, 0.12);
+  }
+  .pmy-travellers__item:nth-child(even) { padding-left: 1rem; border-left: 1px solid rgba(24, 34, 44, 0.12); }
+}
+
+@media (max-width: 760px) {
+  .pmy-travellers__care { grid-template-columns: 1fr; }
+  .pmy-travellers__care .pmy-note { grid-column: auto; }
+}
+
+@media (max-width: 480px) {
+  .pmy-travellers__list { grid-template-columns: 1fr; }
+  .pmy-travellers__item:nth-child(even) { padding-left: 0; border-left: 0; }
+}
+
+/* ---------- Packing checklist ---------- */
+
+.pmy-pack { background: #fbfaf7; }
+
+.pmy-pack__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem 3rem;
+  margin-bottom: 2.25rem;
+}
+
+.pmy-pack__intro {
+  margin-top: 0.75rem;
+  color: var(--pmy-ink-soft);
+}
+
+.pmy-pack__progress {
+  min-width: 220px;
+  font-size: 0.9375rem;
+}
+
+.pmy-pack__progress strong {
+  font-family: var(--pmy-serif);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.pmy-pack__bar {
+  height: 4px;
+  margin-top: 0.5rem;
+  border-radius: 4px;
+  background: rgba(24, 34, 44, 0.1);
+  overflow: hidden;
+}
+
+.pmy-pack__bar span {
+  display: block;
+  height: 100%;
+  background: var(--pmy-teal);
+  transition: width 0.35s var(--pmy-ease);
+}
+
+.pmy-pack__reset {
+  margin-top: 0.5rem;
+  padding: 0.35rem 0;
+  min-height: 32px;
+  background: none;
+  border: 0;
+  font: inherit;
+  font-size: 0.875rem;
+  color: var(--pmy-ink-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.pmy-pack__groups {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.pmy-pack__group {
+  margin: 0;
+  padding: 1.5rem 1.25rem 1.25rem;
+  border: 1px solid rgba(138, 125, 104, 0.25);
+  border-radius: var(--pmy-radius-m);
+  background: #fff;
+  min-width: 0;
+}
+
+.pmy-pack__group legend {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 0.4rem;
+  font-family: var(--pmy-serif);
+  font-size: 1.15rem;
+}
+
+.pmy-pack__group legend svg { color: var(--pmy-saffron); }
+
+.pmy-pack__group ul {
+  list-style: none;
+  display: grid;
+  gap: 0.15rem;
+}
+
+.pmy-pack__input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.pmy-pack__label {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-height: 44px;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.pmy-pack__box {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 1.5px solid rgba(24, 34, 44, 0.35);
+  color: transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.pmy-pack__input:checked + .pmy-pack__label .pmy-pack__box {
+  background: var(--pmy-teal);
+  border-color: var(--pmy-teal);
+  color: #fff;
+}
+
+.pmy-pack__input:checked + .pmy-pack__label {
+  color: var(--pmy-ink-soft);
+  text-decoration: line-through;
+  text-decoration-color: rgba(24, 34, 44, 0.3);
+}
+
+.pmy-pack__input:focus-visible + .pmy-pack__label .pmy-pack__box {
+  outline: 3px solid var(--pmy-gold);
+  outline-offset: 2px;
+}
+
+@media (max-width: 1000px) {
+  .pmy-pack__groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px) {
+  .pmy-pack__groups { grid-template-columns: 1fr; }
+}

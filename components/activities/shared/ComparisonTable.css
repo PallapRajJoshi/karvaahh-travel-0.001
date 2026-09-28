@@ -1,0 +1,110 @@
+.act-table__scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--act-border);
+  border-radius: var(--act-radius, 4px);
+  background: var(--act-surface);
+}
+
+.act-table__scroll:focus-visible {
+  outline: 2px solid var(--act-accent);
+  outline-offset: 2px;
+}
+
+.act-table {
+  width: 100%;
+  min-width: 56rem;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+}
+
+.act-table__caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.act-table__th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  text-align: left;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--act-ink-muted, var(--act-ink-soft));
+  background: var(--act-surface-alt, var(--act-surface));
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--act-border);
+  white-space: nowrap;
+}
+
+.act-table__th--wide {
+  min-width: 15rem;
+  white-space: normal;
+}
+
+.act-table__th--narrow {
+  width: 6.5rem;
+}
+
+.act-table__rowhead {
+  text-align: left;
+  font-family: var(--act-font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--act-ink);
+  padding: 0.95rem 1rem;
+  border-bottom: 1px solid var(--act-border);
+  white-space: nowrap;
+  vertical-align: top;
+  background: var(--act-surface);
+}
+
+.act-table__td {
+  padding: 0.95rem 1rem;
+  vertical-align: top;
+  line-height: 1.55;
+  color: var(--act-ink-soft);
+  border-bottom: 1px solid var(--act-border);
+}
+
+.act-table__td--wide {
+  min-width: 15rem;
+}
+
+.act-table__td--narrow {
+  white-space: nowrap;
+  font-weight: 600;
+  color: var(--act-ink);
+}
+
+.act-table tbody tr:last-child .act-table__td,
+.act-table tbody tr:last-child .act-table__rowhead {
+  border-bottom: 0;
+}
+
+.act-table tbody tr:hover .act-table__td,
+.act-table tbody tr:hover .act-table__rowhead {
+  background: var(--act-surface-alt, transparent);
+}
+
+.act-table__empty {
+  padding: 2rem;
+  text-align: center;
+  color: var(--act-ink-soft);
+  border: 1px dashed var(--act-border);
+  border-radius: var(--act-radius, 4px);
+}
+
+@media (max-width: 62rem) {
+  .act-table__scroll::after {
+    content: "";
+  }
+}

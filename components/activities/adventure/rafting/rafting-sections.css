@@ -1,0 +1,258 @@
+/* ---------- Experience levels ---------- */
+
+.rafting-page .raft-levels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15.5rem), 1fr));
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--act-border);
+  border: 1px solid var(--act-border);
+}
+
+.rafting-page .raft-levels__item {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.3rem, 2.5vw, 1.8rem);
+  background: var(--act-surface);
+}
+
+.rafting-page .raft-levels__grade {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--act-accent);
+}
+
+.rafting-page .raft-levels__title {
+  margin: 0.75rem 0 0;
+  font-family: var(--act-font-display);
+  font-size: 1.45rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.rafting-page .raft-levels__text {
+  margin: 0.7rem 0 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.62;
+  color: var(--act-ink-soft);
+}
+
+.rafting-page .raft-levels__examples {
+  margin: auto 0 0;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--act-border);
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  color: var(--act-ink-muted);
+}
+
+/* ---------- Comparison table note ---------- */
+
+.rafting-page .raft-table__note {
+  margin: 0.95rem 0 0;
+  font-size: 0.8rem;
+  color: var(--act-ink-muted);
+}
+
+/* ---------- Hotspot groupings ---------- */
+
+.rafting-page .raft-hotspots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rafting-page .raft-hotspots__item {
+  min-width: 0;
+  padding-top: 1rem;
+  border-top: 2px solid var(--act-accent);
+}
+
+.rafting-page .raft-hotspots__label {
+  margin: 0;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--act-ink-muted);
+}
+
+.rafting-page .raft-hotspots__rivers {
+  margin: 0.5rem 0 0;
+  font-family: var(--act-font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--act-ink);
+}
+
+.rafting-page .raft-hotspots__note {
+  margin: 0.55rem 0 0;
+  font-size: 0.87rem;
+  line-height: 1.6;
+  color: var(--act-ink-soft);
+}
+
+/* ---------- Season ---------- */
+
+.rafting-page .raft-season {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: clamp(1rem, 2vw, 1.4rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: none;
+}
+
+.rafting-page .raft-season__band {
+  min-width: 0;
+  padding: 1.15rem 1.2rem 1.35rem;
+  background: var(--act-surface);
+  border: 1px solid var(--act-border);
+  border-radius: var(--act-radius);
+}
+
+.rafting-page .raft-season__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.rafting-page .raft-season__name {
+  margin: 0;
+  font-family: var(--act-font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.rafting-page .raft-season__months {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--act-ink-muted);
+}
+
+.rafting-page .raft-season__meter {
+  position: relative;
+  height: 4px;
+  margin: 0.95rem 0 0.75rem;
+  background: rgba(242, 237, 225, 0.12);
+  overflow: hidden;
+}
+
+.rafting-page .raft-season__meter::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--fill, 0%);
+  background: var(--act-accent);
+}
+
+.rafting-page .raft-season__band--monsoon .raft-season__meter::before {
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(242, 237, 225, 0.32) 0 4px,
+    transparent 4px 8px
+  );
+  width: 100%;
+}
+
+.rafting-page .raft-season__count {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--act-accent-strong);
+}
+
+.rafting-page .raft-season__summary {
+  margin: 0.6rem 0 0;
+  font-size: 0.87rem;
+  line-height: 1.62;
+  color: var(--act-ink-soft);
+}
+
+.rafting-page .raft-season__note {
+  margin: 1.2rem 0 0;
+  max-width: 60ch;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--act-ink-muted);
+}
+
+/* ---------- Kayaking ---------- */
+
+.rafting-page .kayak {
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  border: 1px solid var(--act-border);
+  border-left: 3px solid var(--act-accent);
+  border-radius: var(--act-radius);
+  background: var(--act-surface);
+}
+
+.rafting-page .kayak .act-heading {
+  margin-bottom: 1.75rem;
+}
+
+.rafting-page .kayak__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rafting-page .kayak__item {
+  min-width: 0;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--act-border);
+}
+
+.rafting-page .kayak__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.rafting-page .kayak__where {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  color: var(--act-ink-muted);
+}
+
+.rafting-page .kayak__detail {
+  margin: 0.6rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--act-ink-soft);
+}
+
+.rafting-page .kayak__price {
+  margin: 0.6rem 0 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--act-accent-strong);
+}
+
+.rafting-page .kayak__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.9rem 1.25rem;
+  margin-top: 1.9rem;
+}
+
+.rafting-page .kayak__soon {
+  margin: 0;
+  flex: 1 1 18rem;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--act-ink-muted);
+}

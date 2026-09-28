@@ -1,0 +1,129 @@
+.km-sites__grid {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  grid-template-columns: 1fr;
+}
+
+.km-sites__grid > li {
+  display: flex;
+}
+
+@media (min-width: 640px) {
+  .km-sites__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .km-sites__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.km-dest {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: var(--km-ivory);
+  border-radius: var(--km-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--km-shadow-sm);
+  transition:
+    transform 0.45s var(--km-ease),
+    box-shadow 0.45s var(--km-ease);
+}
+
+.km-dest:hover,
+.km-dest:focus-within {
+  transform: translateY(-4px);
+  box-shadow: var(--km-shadow);
+}
+
+.km-dest__media {
+  aspect-ratio: 4 / 3;
+}
+
+.km-dest__media img {
+  transition: transform 0.9s var(--km-ease);
+}
+
+.km-dest:hover .km-dest__media img {
+  transform: scale(1.07);
+}
+
+.km-dest__badge {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+}
+
+.km-dest__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1.25rem 1.25rem 1.4rem;
+}
+
+.km-dest__location {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  color: var(--km-ink-soft);
+}
+
+.km-dest__location svg {
+  color: var(--km-gold-deep);
+  flex: none;
+}
+
+.km-dest__name {
+  font-family: var(--km-font-display);
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 1.2;
+}
+
+.km-dest__link {
+  color: var(--km-blue);
+  text-decoration: none;
+}
+
+/* Stretched link: whole card clickable, single tab stop */
+.km-dest__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.km-dest__link:focus-visible {
+  outline: none;
+}
+
+.km-dest:has(.km-dest__link:focus-visible) {
+  outline: 3px solid var(--km-gold);
+  outline-offset: 3px;
+}
+
+.km-dest__tagline {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--km-teal);
+}
+
+.km-dest__desc {
+  font-size: 0.9375rem;
+  color: var(--km-ink-soft);
+  flex: 1;
+}
+
+.km-dest__cta {
+  margin-top: 0.5rem;
+}
+
+.km-dest:hover .km-dest__cta svg {
+  transform: translateX(3px);
+}

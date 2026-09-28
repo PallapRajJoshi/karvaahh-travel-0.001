@@ -1,0 +1,229 @@
+/* ================================================================
+   Hero
+   ================================================================ */
+
+.nsa-page .nsa-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(560px, 92svh, 900px);
+  padding-block: clamp(7rem, 16vh, 10rem) clamp(5.5rem, 12vh, 8rem);
+  overflow: hidden;
+  color: var(--nsa-color-white);
+  background: var(--nsa-color-primary-deep);
+}
+
+/* Oversized by the parallax travel so no edge ever shows. */
+.nsa-page .nsa-hero__media {
+  position: absolute;
+  inset: -4% 0 -18% 0;
+  z-index: -2;
+  will-change: transform;
+}
+
+.nsa-page .nsa-hero__img {
+  object-fit: cover;
+  animation: nsa-hero-settle 2.4s var(--nsa-motion-ease) both;
+}
+
+.nsa-page .nsa-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(11, 39, 64, 0.55) 0%, rgba(11, 39, 64, 0.12) 32%, rgba(11, 39, 64, 0.35) 62%, rgba(11, 39, 64, 0.88) 100%),
+    linear-gradient(90deg, rgba(11, 39, 64, 0.55) 0%, rgba(11, 39, 64, 0) 65%);
+}
+
+.nsa-page .nsa-hero__inner {
+  position: relative;
+  width: 100%;
+}
+
+.nsa-page .nsa-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin: 0 0 1.25rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--nsa-color-accent);
+}
+
+.nsa-page .nsa-hero__eyebrow-rule {
+  width: 2.5rem;
+  height: 1px;
+  background: currentColor;
+}
+
+.nsa-page .nsa-hero__title {
+  max-width: 14ch;
+  margin: 0;
+  font-family: var(--nsa-font-display);
+  font-size: clamp(2.5rem, 1.4rem + 4.6vw, 5.25rem);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.25);
+}
+
+.nsa-page .nsa-hero__subtitle {
+  max-width: 38ch;
+  margin: 1.25rem 0 0;
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.3rem);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.nsa-page .nsa-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 2.25rem;
+}
+
+.nsa-page .nsa-hero__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.nsa-page .nsa-hero__facts li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nsa-page .nsa-hero__facts svg {
+  color: var(--nsa-color-accent);
+}
+
+/* ---- Scroll indicator ---- */
+
+.nsa-page .nsa-hero__scroll {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1.25rem, 3vh, 2rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  border-radius: var(--nsa-radius-sm);
+  padding: 0.35rem;
+  animation: nsa-fade-in 1s 900ms both;
+}
+
+.nsa-page .nsa-hero__scroll-track {
+  position: relative;
+  width: 22px;
+  height: 36px;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+}
+
+.nsa-page .nsa-hero__scroll-dot {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  width: 4px;
+  height: 7px;
+  margin-left: -2px;
+  border-radius: 2px;
+  background: var(--nsa-color-accent);
+  animation: nsa-scroll-dot 1.8s var(--nsa-motion-ease) infinite;
+}
+
+.nsa-page .nsa-hero__scroll:hover {
+  color: var(--nsa-color-white);
+}
+
+/* ---- Entrance animation (CSS-only: visible even if JS never runs) ---- */
+
+.nsa-page .nsa-hero__anim {
+  animation: nsa-rise 900ms var(--nsa-motion-ease) both;
+}
+
+@keyframes nsa-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes nsa-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes nsa-hero-settle {
+  from {
+    transform: scale(1.06);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes nsa-scroll-dot {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(14px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .nsa-page .nsa-hero {
+    align-items: flex-end;
+    min-height: clamp(560px, 88svh, 760px);
+  }
+
+  .nsa-page .nsa-hero__actions > * {
+    flex: 1 1 100%;
+  }
+
+  .nsa-page .nsa-hero__scroll-label {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nsa-page .nsa-hero__anim,
+  .nsa-page .nsa-hero__img,
+  .nsa-page .nsa-hero__scroll,
+  .nsa-page .nsa-hero__scroll-dot {
+    animation: none;
+  }
+}

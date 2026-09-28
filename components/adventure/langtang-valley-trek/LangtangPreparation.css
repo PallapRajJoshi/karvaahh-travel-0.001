@@ -1,0 +1,20 @@
+.lt-prep__grid { margin-top: 48px; display: grid; grid-template-columns: minmax(260px, 0.8fr) minmax(0, 2fr); gap: 28px; align-items: start; }
+.lt-prep__diff { position: sticky; top: 110px; background: var(--lt-blue); color: var(--lt-white); border-radius: var(--lt-radius-lg); padding: 32px 28px; }
+.lt-prep__label { margin: 0; font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--lt-gold); font-weight: 600; }
+.lt-prep__rating { margin: 8px 0 0; font-family: var(--lt-serif); font-size: 2.2rem; }
+.lt-prep__meter { display: flex; gap: 6px; margin-top: 14px; }
+.lt-prep__meter span { flex: 1; height: 6px; border-radius: 3px; background: rgba(255, 255, 255, 0.18); }
+.lt-prep__meter span.is-on { background: var(--lt-gold); }
+.lt-prep__difftext { margin: 18px 0 0; line-height: 1.7; color: rgba(255, 255, 255, 0.82); font-size: 0.95rem; }
+.lt-prep__risk { margin: 22px 0 0; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.15); display: flex; gap: 10px; font-size: 0.85rem; line-height: 1.6; color: rgba(255, 255, 255, 0.78); }
+.lt-prep__risk svg { flex: none; color: var(--lt-gold); margin-top: 2px; }
+.lt-prep__items { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.lt-prep__items li { background: var(--lt-white); border-radius: var(--lt-radius); padding: 22px; box-shadow: var(--lt-shadow); transition: transform 0.3s var(--lt-ease), box-shadow 0.3s; }
+.lt-prep__items li:hover { transform: translateY(-3px); box-shadow: var(--lt-shadow-lg); }
+.lt-prep__icon { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: rgba(42, 127, 130, 0.1); color: var(--lt-teal-ink); }
+.lt-prep__items h3 { margin: 14px 0 0; font-family: var(--lt-serif); font-size: 1.12rem; color: var(--lt-blue); }
+.lt-prep__items p { margin: 6px 0 0; font-size: 0.92rem; line-height: 1.65; color: var(--lt-ink-soft); }
+@media (max-width: 900px) { .lt-prep__grid { grid-template-columns: 1fr; } .lt-prep__diff { position: static; } }
+@media (max-width: 600px) { .lt-prep__items { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .lt-prep__items li { transition: none; } .lt-prep__items li:hover { transform: none; } }
+.lt-prep__items li:last-child:nth-child(odd) { grid-column: 1 / -1; }

@@ -1,0 +1,102 @@
+.cmp-dcard {
+  position: relative;
+  height: 100%;
+  border-radius: var(--cmp-radius);
+  overflow: hidden;
+  color: var(--cmp-snow);
+  background: var(--cmp-pine);
+  isolation: isolate;
+  transition: transform 0.5s var(--cmp-ease), box-shadow 0.5s var(--cmp-ease);
+}
+.cmp-dcard .cmp-img { z-index: -2; }
+.cmp-dcard__shade {
+  position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(0deg, rgba(8, 18, 14, 0.92) 0%, rgba(8, 18, 14, 0.5) 42%, rgba(8, 18, 14, 0) 72%);
+}
+.cmp-dcard--wide .cmp-dcard__shade {
+  background: linear-gradient(90deg, rgba(8, 18, 14, 0.88) 0%, rgba(8, 18, 14, 0.4) 45%, rgba(8, 18, 14, 0) 75%);
+}
+
+.cmp-dcard__body {
+  position: absolute; inset: auto 0 0 0;
+  padding: 1.25rem 1.25rem 1.2rem;
+  display: flex; flex-direction: column; gap: 0.45rem;
+}
+.cmp-dcard--feature .cmp-dcard__body { padding: 1.8rem; }
+.cmp-dcard--wide .cmp-dcard__body {
+  inset: 0 auto 0 0; width: min(520px, 60%);
+  justify-content: center; padding: 2.2rem 2.4rem;
+}
+
+.cmp-dcard__region {
+  margin: 0; display: flex; align-items: center; gap: 0.35rem;
+  font-size: 0.8rem; color: rgba(247, 245, 239, 0.78);
+}
+.cmp-dcard__region svg { color: var(--cmp-gold); }
+
+.cmp-dcard__name {
+  margin: 0;
+  font-family: var(--cmp-serif); font-weight: 600;
+  font-size: 1.45rem; line-height: 1.1;
+}
+.cmp-dcard--feature .cmp-dcard__name,
+.cmp-dcard--wide .cmp-dcard__name { font-size: clamp(1.9rem, 3vw, 2.6rem); }
+
+.cmp-dcard__link { color: inherit; text-decoration: none; }
+.cmp-dcard__link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.cmp-dcard__link:focus-visible { outline: none; }
+.cmp-dcard:has(.cmp-dcard__link:focus-visible) { outline: 2px solid var(--cmp-gold); outline-offset: 3px; }
+
+.cmp-dcard__desc {
+  margin: 0;
+  font-size: 0.9rem; line-height: 1.5;
+  color: rgba(247, 245, 239, 0.8);
+  max-width: 44ch;
+}
+.cmp-dcard--standard .cmp-dcard__desc {
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+
+.cmp-dcard__meta { list-style: none; margin: 0.25rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.cmp-dcard__tag {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  padding: 0.28rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.72rem; line-height: 1.2;
+  background: rgba(247, 245, 239, 0.12);
+  border: 1px solid rgba(247, 245, 239, 0.18);
+  backdrop-filter: blur(4px);
+}
+.cmp-dcard__tag--type { background: rgba(201, 164, 92, 0.22); border-color: rgba(201, 164, 92, 0.45); color: #f1dfb8; }
+.cmp-dcard__tag--easy svg { color: #9fd3a8; }
+.cmp-dcard__tag--moderate svg { color: #f0c46a; }
+.cmp-dcard__tag--challenging svg { color: #f09a6a; }
+
+.cmp-dcard__explore {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  margin-top: 0.35rem;
+  font-size: 0.82rem; font-weight: 600; color: var(--cmp-gold);
+}
+.cmp-dcard__explore svg { transition: transform 0.4s var(--cmp-ease); }
+
+@media (hover: hover) {
+  .cmp-dcard:hover { transform: translateY(-5px); box-shadow: 0 26px 44px -28px rgba(13, 29, 22, 0.7); }
+  .cmp-dcard:hover .cmp-img__el { transform: scale(1.05); }
+  .cmp-dcard:hover .cmp-dcard__explore svg { transform: translateX(5px); }
+  /* Metadata reveal on standard cards */
+  .cmp-dcard--standard .cmp-dcard__meta { max-height: 1.62rem; overflow: hidden; transition: max-height 0.5s var(--cmp-ease); }
+  .cmp-dcard--standard:hover .cmp-dcard__meta,
+  .cmp-dcard--standard:focus-within .cmp-dcard__meta { max-height: 6rem; }
+  /* keep type + difficulty on the first (always visible) row */
+  .cmp-dcard--standard .cmp-dcard__meta { flex-wrap: wrap; }
+  .cmp-dcard--standard .cmp-dcard__tag--type {
+    display: block; max-width: 58%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+}
+
+@media (max-width: 767px) {
+  .cmp-dcard--wide .cmp-dcard__body { inset: auto 0 0 0; width: auto; padding: 1.4rem; }
+  .cmp-dcard--wide .cmp-dcard__shade {
+    background: linear-gradient(0deg, rgba(8, 18, 14, 0.92) 0%, rgba(8, 18, 14, 0.45) 50%, rgba(8, 18, 14, 0) 80%);
+  }
+}

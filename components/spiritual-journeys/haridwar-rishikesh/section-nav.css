@@ -1,0 +1,70 @@
+.hry-subnav {
+  position: sticky;
+  top: var(--hry-header-offset);
+  z-index: 30;
+  background: rgba(251, 248, 241, 0.97);
+  border-bottom: 1px solid var(--hry-line);
+  backdrop-filter: saturate(1.2) blur(10px);
+}
+
+.hry-subnav__inner {
+  position: relative;
+}
+
+/* Fade hints that the list scrolls on small screens */
+.hry-subnav__inner::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: var(--hry-gutter);
+  bottom: 0;
+  width: 32px;
+  background: linear-gradient(90deg, rgba(251, 248, 241, 0), var(--hry-ivory));
+  pointer-events: none;
+}
+
+.hry-subnav__list {
+  display: flex;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+  height: var(--hry-subnav-height);
+  align-items: center;
+}
+
+.hry-subnav__list::-webkit-scrollbar {
+  display: none;
+}
+
+.hry-subnav__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--hry-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.hry-subnav__link:hover {
+  color: var(--hry-forest);
+  background: rgba(13, 29, 22, 0.06);
+}
+
+.hry-subnav__link[aria-current="location"] {
+  background: var(--hry-forest);
+  color: var(--hry-ivory);
+}
+
+@media (min-width: 1100px) {
+  .hry-subnav__inner::after {
+    display: none;
+  }
+}

@@ -1,0 +1,35 @@
+.cmp-seasons { --s-spring: #7a9b5a; --s-monsoon: #3f6b7a; --s-autumn: #c9a45c; --s-winter: #8aa0b3; }
+.cmp-seasons__bar {
+  list-style: none; margin: 0 0 1.8rem; padding: 0;
+  display: grid; grid-template-columns: repeat(12, 1fr); gap: 4px;
+}
+.cmp-seasons__month {
+  padding: 0.7rem 0 0.55rem;
+  border-top: 4px solid;
+  font-size: 0.78rem; font-weight: 500; text-align: center; color: var(--cmp-ink-soft);
+}
+.cmp-seasons__month--spring { border-color: var(--s-spring); }
+.cmp-seasons__month--monsoon { border-color: var(--s-monsoon); }
+.cmp-seasons__month--autumn { border-color: var(--s-autumn); }
+.cmp-seasons__month--winter { border-color: var(--s-winter); }
+
+.cmp-seasons__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.cmp-season {
+  padding: 1.6rem 1.4rem;
+  border-radius: var(--cmp-radius);
+  background: var(--cmp-snow);
+  border-top: 3px solid var(--season);
+}
+.cmp-season--spring { --season: var(--s-spring); }
+.cmp-season--monsoon { --season: var(--s-monsoon); }
+.cmp-season--autumn { --season: var(--s-autumn); }
+.cmp-season--winter { --season: var(--s-winter); }
+.cmp-season__name { margin: 0; font-family: var(--cmp-serif); font-size: 1.6rem; font-weight: 600; color: var(--cmp-forest); }
+.cmp-season__months { margin: 0.2rem 0 0.9rem; font-size: 0.86rem; font-weight: 600; color: var(--season); filter: brightness(0.8); }
+.cmp-season__text { margin: 0; font-size: 0.93rem; line-height: 1.65; color: var(--cmp-ink-soft); }
+
+@media (max-width: 1000px) { .cmp-seasons__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) {
+  .cmp-seasons__grid { grid-template-columns: 1fr; }
+  .cmp-seasons__bar { grid-template-columns: repeat(6, 1fr); }
+}

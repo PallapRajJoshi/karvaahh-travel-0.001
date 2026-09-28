@@ -1,0 +1,17 @@
+.lt-info__grid { list-style: none; margin: 48px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.lt-info__card { background: var(--lt-white); border: 1px solid var(--lt-line); border-radius: var(--lt-radius); padding: 24px; transition: border-color 0.25s, box-shadow 0.25s; }
+.lt-info__card:hover { border-color: rgba(42, 127, 130, 0.4); box-shadow: var(--lt-shadow); }
+.lt-info__top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.lt-info__icon { display: inline-grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: var(--lt-blue); color: var(--lt-gold); }
+.lt-info__confirm { font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; color: #8a5d12; background: rgba(216, 166, 74, 0.18); padding: 4px 9px; border-radius: 99px; white-space: nowrap; }
+.lt-info__card h3 { margin: 16px 0 0; font-family: var(--lt-serif); font-size: 1.15rem; color: var(--lt-blue); }
+.lt-info__card p { margin: 8px 0 0; font-size: 0.92rem; line-height: 1.65; color: var(--lt-ink-soft); }
+.lt-info__points { margin: 10px 0 0; padding-left: 18px; font-size: 0.86rem; line-height: 1.7; color: var(--lt-ink-soft); }
+.lt-info__fees { margin-top: 32px; overflow-x: auto; border-radius: var(--lt-radius); border: 1px solid var(--lt-line); background: var(--lt-white); }
+.lt-info__fees table { width: 100%; border-collapse: collapse; font-size: 0.92rem; min-width: 560px; }
+.lt-info__fees caption { text-align: left; padding: 14px 18px; font-size: 0.82rem; color: var(--lt-ink-soft); }
+.lt-info__fees th, .lt-info__fees td { padding: 12px 18px; text-align: left; border-top: 1px solid var(--lt-line); }
+.lt-info__fees thead th { background: var(--lt-ivory); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--lt-blue); }
+.lt-info__card:last-child:nth-child(4n + 3) { grid-column: span 2; }
+@media (max-width: 1024px) { .lt-info__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .lt-info__card:last-child:nth-child(odd) { grid-column: 1 / -1; } }
+@media (max-width: 600px) { .lt-info__grid { grid-template-columns: 1fr; } .lt-info__card:last-child { grid-column: auto; } }

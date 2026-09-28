@@ -1,0 +1,57 @@
+.hotspot-atlas {
+  --act-bg: #f6f4ee;
+  --act-surface: #ffffff;
+  --act-surface-alt: #efece3;
+  --act-border: rgba(13, 29, 22, 0.13);
+  --act-ink: #0d1d16;
+  --act-ink-soft: rgba(13, 29, 22, 0.74);
+  --act-ink-muted: rgba(13, 29, 22, 0.55);
+  --act-accent: #c9a45c;
+  --act-accent-strong: #7d6026;
+  --act-radius: 6px;
+  --act-font-display: var(--font-playfair, "Playfair Display", Georgia, serif);
+
+  background: var(--act-bg);
+  color: var(--act-ink);
+  font-family: var(--font-inter, "Inter", system-ui, sans-serif);
+  overflow-x: clip;
+}
+
+.hotspot-atlas__inner {
+  width: min(100% - 2.5rem, 76rem);
+  margin-inline: auto;
+  padding-block: clamp(2rem, 5vw, 3rem) clamp(3.5rem, 8vw, 6rem);
+}
+
+.hotspot-atlas .act-crumbs {
+  margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.hotspot-atlas__title {
+  margin: 0;
+  font-family: var(--act-font-display);
+  font-size: clamp(2.1rem, 1.3rem + 3.2vw, 3.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.hotspot-atlas__intro {
+  margin: 1rem 0 clamp(2.5rem, 5vw, 3.5rem);
+  max-width: 60ch;
+  font-size: 1.02rem;
+  line-height: 1.68;
+  color: var(--act-ink-soft);
+}
+
+.hotspot-atlas__footer {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--act-border);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  font-size: 0.78rem;
+  color: var(--act-ink-muted);
+}

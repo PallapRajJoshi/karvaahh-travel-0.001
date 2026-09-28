@@ -1,0 +1,126 @@
+.ebc-accordion {
+  border-top: 1px solid var(--ebc-line);
+}
+
+.ebc-accordion__item {
+  border-bottom: 1px solid var(--ebc-line);
+}
+
+.ebc-accordion__heading {
+  font-family: var(--ebc-font-body) !important;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.ebc-accordion__trigger {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  min-height: 64px;
+  padding: 20px 4px;
+  border: 0;
+  background: none;
+  color: var(--ebc-blue);
+  font: inherit;
+  font-size: clamp(1rem, 0.96rem + 0.2vw, 1.1rem);
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.ebc-accordion__trigger:hover {
+  color: var(--ebc-teal-ink);
+}
+
+.ebc-accordion__num {
+  flex: none;
+  font-family: var(--ebc-font-heading);
+  font-size: 0.95rem;
+  color: var(--ebc-gold-ink);
+  min-width: 26px;
+}
+
+.ebc-accordion__title {
+  flex: 1;
+}
+
+.ebc-accordion__verify {
+  flex: none;
+}
+
+.ebc-accordion__icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--ebc-line);
+  transition: transform 0.4s var(--ebc-ease), background-color 0.25s ease, color 0.25s ease;
+}
+
+.ebc-accordion__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.ebc-accordion__item.is-open .ebc-accordion__icon {
+  transform: rotate(45deg);
+  background: var(--ebc-blue);
+  color: var(--ebc-white);
+  border-color: var(--ebc-blue);
+}
+
+.ebc-accordion__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s var(--ebc-ease);
+}
+
+.ebc-accordion__item.is-open .ebc-accordion__panel {
+  grid-template-rows: 1fr;
+}
+
+.ebc-accordion__inner {
+  overflow: hidden;
+  min-height: 0;
+  color: var(--ebc-muted);
+  padding-inline: 4px 56px;
+}
+
+.ebc-accordion__inner p {
+  max-width: 70ch;
+}
+
+.ebc-accordion__inner p + p {
+  margin-top: 12px;
+}
+
+.ebc-accordion__item.is-open .ebc-accordion__inner {
+  padding-bottom: 24px;
+}
+
+@media (max-width: 640px) {
+  .ebc-accordion__trigger {
+    flex-wrap: wrap;
+    gap: 10px 14px;
+  }
+
+  .ebc-accordion__title {
+    flex-basis: calc(100% - 90px);
+  }
+
+  .ebc-accordion__verify {
+    order: 5;
+  }
+
+  .ebc-accordion--numbered .ebc-accordion__verify {
+    margin-left: 40px;
+  }
+
+  .ebc-accordion__inner {
+    padding-inline: 4px;
+  }
+}

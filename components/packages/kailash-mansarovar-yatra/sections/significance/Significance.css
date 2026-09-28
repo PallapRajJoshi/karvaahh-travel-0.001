@@ -1,0 +1,145 @@
+.km-sig {
+  background:
+    radial-gradient(900px 480px at 50% 0%, rgba(216, 166, 74, 0.14), transparent 65%),
+    var(--km-blue);
+}
+
+.km-sig__grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 700px) {
+  .km-sig__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .km-sig__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.km-trad {
+  --trad-accent: var(--km-gold);
+  position: relative;
+  padding: 1.75rem 1.5rem 1.5rem;
+  border-radius: var(--km-radius-lg);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.km-trad::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: var(--trad-accent);
+}
+
+/* Distinct accents: the traditions are not presented as interchangeable */
+.km-trad--hinduism {
+  --trad-accent: #e39a3b;
+}
+
+.km-trad--buddhism {
+  --trad-accent: #d8a64a;
+}
+
+.km-trad--jainism {
+  --trad-accent: #e7ddc6;
+}
+
+.km-trad--bon {
+  --trad-accent: #5fb0b3;
+}
+
+.km-trad__name {
+  font-family: var(--km-font-display);
+  font-weight: 500;
+  font-size: 1.6rem;
+  color: var(--km-white);
+}
+
+.km-trad__known {
+  margin-top: 0.2rem;
+  font-size: 0.9063rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.km-trad__known em {
+  font-family: var(--km-font-display);
+  font-size: 1.05rem;
+  color: var(--trad-accent);
+}
+
+.km-trad__list {
+  margin: 1.25rem 0 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.km-trad__list dt {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.km-trad__list dd {
+  margin: 0.25rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.km-sig__shared {
+  display: grid;
+  gap: 1.5rem 2.5rem;
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  padding-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+@media (min-width: 900px) {
+  .km-sig__shared {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.km-sig__shared-title {
+  font-family: var(--km-font-display);
+  font-weight: 500;
+  font-size: 1.3rem;
+  color: var(--km-gold);
+  margin-bottom: 0.4rem;
+}
+
+.km-sig__shared p {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.km-sig__respect {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin-top: 2.5rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--km-radius);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.9375rem;
+}
+
+.km-sig__respect svg {
+  flex: none;
+  color: var(--km-gold);
+  margin-top: 1px;
+}
+
+.km-sig__respect strong {
+  color: var(--km-white);
+}

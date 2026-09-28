@@ -1,0 +1,118 @@
+.etp-culture__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.etp-culture__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--etp-radius-lg);
+  overflow: hidden;
+  background: var(--etp-white);
+  border: 1px solid var(--etp-line);
+}
+
+/* First item: a tall feature card spanning two rows. */
+.etp-culture__item--0 {
+  grid-row: span 2;
+  color: var(--etp-white);
+  border: 0;
+  min-height: 520px;
+  justify-content: flex-end;
+}
+
+.etp-culture__item--0 .etp-culture__media {
+  position: absolute !important;
+  inset: 0;
+  aspect-ratio: auto;
+}
+
+.etp-culture__item--0::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 35%, rgba(8, 27, 46, 0.9));
+}
+
+.etp-culture__item--0 .etp-culture__body {
+  position: relative;
+  z-index: 1;
+  padding: 28px;
+}
+
+.etp-culture__item--0 .etp-culture__title {
+  color: var(--etp-white);
+  font-size: 1.8rem;
+}
+
+.etp-culture__item--0 .etp-culture__text {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.etp-culture__media {
+  aspect-ratio: 16 / 10;
+}
+
+.etp-culture__item:hover .etp-media__img,
+.etp-culture__item:hover .etp-media__placeholder {
+  transform: scale(1.04);
+}
+
+.etp-culture__body {
+  padding: 20px 22px 24px;
+}
+
+.etp-culture__title {
+  font-size: 1.25rem;
+  color: var(--etp-blue);
+}
+
+.etp-culture__text {
+  margin-top: 8px;
+  font-size: 0.92rem;
+  color: var(--etp-muted);
+}
+
+/* Text-only card (no photo) gets a quiet brand treatment. */
+.etp-culture__item--text {
+  background: var(--etp-teal);
+  border: 0;
+  justify-content: center;
+}
+
+.etp-culture__item--text .etp-culture__title {
+  color: var(--etp-white);
+}
+
+.etp-culture__item--text .etp-culture__text {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.etp-culture__item--text .etp-culture__body {
+  padding: 28px;
+}
+
+@media (max-width: 960px) {
+  .etp-culture__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .etp-culture__item--0 {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 600px) {
+  .etp-culture__grid {
+    grid-template-columns: 1fr;
+  }
+  .etp-culture__item--0 {
+    min-height: 380px;
+  }
+}

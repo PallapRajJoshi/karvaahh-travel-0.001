@@ -1,0 +1,14 @@
+.hab-heading { margin-bottom: clamp(2rem, 4vw, 3rem); max-width: 44rem; }
+.hab-heading--center { margin-left: auto; margin-right: auto; text-align: center; }
+.hab-heading__title {
+  font-family: var(--hab-serif);
+  font-size: clamp(1.8rem, 3.6vw, 2.75rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--hab-forest);
+}
+.hab-heading__lede { margin: 0.9rem 0 0; font-size: 1.05rem; line-height: 1.65; color: var(--hab-muted); }
+.hab-heading--dark .hab-heading__title { color: #fff; }
+.hab-heading--dark .hab-heading__lede { color: rgba(241, 237, 227, 0.75); }

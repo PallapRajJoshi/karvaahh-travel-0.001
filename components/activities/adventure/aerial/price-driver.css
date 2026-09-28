@@ -1,0 +1,131 @@
+.aerial-page .ae-price {
+  background:
+    radial-gradient(120% 90% at 100% 0%, rgba(201, 164, 92, 0.12) 0%, rgba(201, 164, 92, 0) 55%),
+    var(--ae-forest);
+}
+.aerial-page .ae-price__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: center;
+}
+.aerial-page .ae-price__heading {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ae-gold);
+}
+/* The page's one big typographic moment. */
+.aerial-page .ae-price__statement {
+  margin: 0.75rem 0 0;
+  font-family: var(--ae-serif);
+  font-size: clamp(2.75rem, 7vw, 5rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ae-cream);
+  text-wrap: balance;
+}
+.aerial-page .ae-price__body {
+  margin: 1.5rem 0 0;
+  max-width: 32rem;
+  line-height: 1.75;
+  color: rgba(247, 245, 239, 0.78);
+}
+
+.aerial-page .ae-price__chart {
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border-radius: var(--ae-r-lg);
+  background: rgba(247, 245, 239, 0.04);
+  border: 1px solid rgba(247, 245, 239, 0.12);
+}
+.aerial-page .ae-price__chart-cap {
+  margin: 0 0 1.5rem;
+  font-size: 0.85rem;
+  color: rgba(247, 245, 239, 0.6);
+}
+.aerial-page .ae-price__rows {
+  display: grid;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.aerial-page .ae-price__row-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+.aerial-page .ae-price__row-name {
+  color: var(--ae-cream);
+  font-weight: 500;
+}
+.aerial-page .ae-price__row-price {
+  color: var(--ae-gold);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.aerial-page .ae-price__track {
+  position: relative;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(247, 245, 239, 0.1);
+}
+.aerial-page .ae-price__bar,
+.aerial-page .ae-price__range {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 999px;
+  transform-origin: left center;
+}
+.aerial-page .ae-price__bar {
+  left: 0;
+  background: var(--ae-gold);
+}
+/* Variable-length flights: striped tail from min to max minutes. */
+.aerial-page .ae-price__range {
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(201, 164, 92, 0.75) 0 5px,
+    rgba(201, 164, 92, 0.3) 5px 10px
+  );
+}
+.aerial-page .ae-price__axis {
+  position: relative;
+  height: 1.5rem;
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  color: rgba(247, 245, 239, 0.55);
+}
+.aerial-page .ae-price__tick {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+.aerial-page .ae-price__tick:first-child {
+  transform: none;
+}
+.aerial-page .ae-price__tick:last-child {
+  transform: translateX(-100%);
+}
+
+/* Only animates when JS has armed it — no-JS shows full bars. */
+.aerial-page [data-reveal] .ae-price__bar,
+.aerial-page [data-reveal] .ae-price__range {
+  transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: calc(var(--ae-i, 0) * 110ms);
+}
+.aerial-page [data-reveal="armed"] .ae-price__bar,
+.aerial-page [data-reveal="armed"] .ae-price__range {
+  transform: scaleX(0);
+}
+
+@media (max-width: 900px) {
+  .aerial-page .ae-price__grid {
+    grid-template-columns: 1fr;
+  }
+}

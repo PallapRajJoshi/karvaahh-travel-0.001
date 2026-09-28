@@ -1,0 +1,141 @@
+.jyl-temples__list {
+  display: grid;
+  gap: clamp(4rem, 9vw, 6.5rem);
+}
+
+.jyl-temple {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+}
+
+.jyl-temple:nth-child(even) .jyl-temple__media {
+  order: 2;
+}
+
+.jyl-temple__media {
+  position: sticky;
+  top: calc(var(--jyl-header-offset) + var(--jyl-index-height) + 1.5rem);
+}
+
+.jyl-temple__img {
+  aspect-ratio: 4 / 5;
+  border-radius: var(--jyl-radius-lg);
+}
+
+.jyl-temple__num {
+  position: absolute;
+  left: 1.25rem;
+  top: 1rem;
+  font-family: var(--jyl-serif);
+  font-size: clamp(3rem, 2rem + 3vw, 4.5rem);
+  line-height: 1;
+  color: rgba(246, 242, 234, 0.9);
+  text-shadow: 0 2px 20px rgba(15, 27, 48, 0.4);
+  pointer-events: none;
+}
+
+.jyl-temple__content {
+  display: grid;
+  gap: 1.1rem;
+  padding-top: 0.5rem;
+}
+
+.jyl-temple__place {
+  font-size: 0.875rem;
+  color: var(--jyl-saffron);
+}
+
+.jyl-temple__title {
+  font-size: clamp(1.7rem, 1.3rem + 1.6vw, 2.35rem);
+}
+
+.jyl-temple__lead {
+  font-size: 1.06rem;
+  max-width: 40rem;
+}
+
+.jyl-temple__facts {
+  margin: 0.5rem 0 0;
+  display: grid;
+}
+
+.jyl-temple__facts > div {
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr);
+  gap: 1rem;
+  padding-block: 1rem;
+  border-top: 1px solid var(--jyl-stone-2);
+}
+
+.jyl-temple__facts dt {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--jyl-charcoal);
+}
+
+.jyl-temple__facts dd {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.jyl-temple__nearby {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.jyl-temple__nearby li {
+  font-size: 0.85rem;
+  padding: 0.25rem 0.7rem;
+  background: var(--jyl-ivory);
+  border-radius: 999px;
+}
+
+.jyl-temple__tradition {
+  margin-top: 0.25rem;
+}
+
+.jyl-temple__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.jyl-temple__back {
+  font-size: 0.875rem;
+  color: var(--jyl-muted);
+}
+
+.jyl-temple__back:hover {
+  color: var(--jyl-indigo);
+}
+
+@media (max-width: 860px) {
+  .jyl-temple {
+    grid-template-columns: 1fr;
+  }
+
+  .jyl-temple:nth-child(even) .jyl-temple__media {
+    order: 0;
+  }
+
+  .jyl-temple__media {
+    position: relative;
+    top: auto;
+  }
+
+  .jyl-temple__img {
+    aspect-ratio: 3 / 2;
+  }
+
+  .jyl-temple__facts > div {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+}

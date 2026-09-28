@@ -1,0 +1,114 @@
+.lumbini-heritage {
+  box-sizing: border-box;
+  width: 100%;
+  padding: clamp(3.5rem, 8vh, 6rem) clamp(1.5rem, 5vw, 5rem);
+  background: var(--lumbini-forest);
+}
+
+.lumbini-heritage__inner {
+  max-width: 88rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vh, 3.5rem);
+}
+
+.lumbini-heritage__layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.lumbini-heritage__visual {
+  position: relative;
+  min-height: 26rem;
+  overflow: hidden;
+  border: 1px solid rgba(201, 164, 92, 0.2);
+}
+
+.lumbini-heritage__image {
+  object-fit: cover;
+}
+
+.lumbini-heritage__panel {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(201, 164, 92, 0.2);
+}
+
+.lumbini-heritage__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.lumbini-heritage__item {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(247, 245, 239, 0.1);
+}
+
+.lumbini-heritage__item:first-child {
+  padding-top: 0;
+}
+
+.lumbini-heritage__item-name {
+  font-family: var(--lumbini-font-serif);
+  font-size: 1rem;
+  color: var(--lumbini-cream);
+}
+
+.lumbini-heritage__item-note {
+  font-family: var(--lumbini-font-sans);
+  font-size: 0.78rem;
+  color: rgba(247, 245, 239, 0.55);
+  text-align: right;
+}
+
+.lumbini-heritage__activities {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.lumbini-heritage__activities-label {
+  font-family: var(--lumbini-font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--lumbini-saffron);
+}
+
+.lumbini-heritage__activities-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.lumbini-heritage__chip {
+  font-family: var(--lumbini-font-sans);
+  font-size: 0.76rem;
+  color: var(--lumbini-cream);
+  border: 1px solid rgba(201, 164, 92, 0.35);
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+}
+
+@media (max-width: 900px) {
+  .lumbini-heritage__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .lumbini-heritage__visual {
+    min-height: 20rem;
+  }
+}

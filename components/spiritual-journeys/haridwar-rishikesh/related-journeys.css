@@ -1,0 +1,118 @@
+.hry-related__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px 32px;
+  margin-bottom: clamp(28px, 4vw, 48px);
+}
+
+.hry-related__head .hry-heading {
+  margin-bottom: 0;
+}
+
+.hry-related__all {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+  color: var(--hry-forest);
+  text-underline-offset: 4px;
+}
+
+.hry-related__grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hry-related__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--hry-radius-md);
+  overflow: hidden;
+  background: var(--hry-paper);
+  border: 1px solid var(--hry-line);
+}
+
+.hry-related__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: var(--hry-forest-2);
+}
+
+.hry-related__img {
+  object-fit: cover;
+}
+
+.hry-related__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px 22px 22px;
+}
+
+.hry-related__title {
+  margin: 0;
+  font-family: var(--hry-font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--hry-forest);
+}
+
+.hry-related__desc {
+  flex: 1;
+  margin: 8px 0 16px;
+  font-size: 0.9375rem;
+  color: var(--hry-muted);
+}
+
+.hry-related__link {
+  align-self: flex-start;
+  font-weight: 600;
+  color: var(--hry-saffron-ink);
+  text-underline-offset: 4px;
+}
+
+/* Whole card is clickable via the link's pseudo-element */
+.hry-related__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.hry-related__card:hover .hry-related__title {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.hry-related__card:has(.hry-related__link:focus-visible) {
+  outline: 3px solid var(--hry-saffron);
+  outline-offset: 3px;
+}
+
+/* With only one or two live journeys, cards go horizontal so the row doesn't look empty */
+@media (min-width: 760px) {
+  .hry-related__grid--few {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hry-related__grid--few .hry-related__card {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  }
+
+  .hry-related__grid--few .hry-related__card:only-child {
+    grid-column: 1 / -1;
+    max-width: 880px;
+  }
+
+  .hry-related__grid--few .hry-related__media {
+    aspect-ratio: auto;
+    min-height: 240px;
+  }
+}

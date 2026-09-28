@@ -1,0 +1,83 @@
+@import "../karnali-tokens.css";
+
+.karnali-culture {
+  position: relative;
+  background: var(--k-forest-800);
+  padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 5vw, 5rem);
+  overflow: hidden;
+}
+
+.karnali-culture-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.karnali-culture-card {
+  position: relative;
+}
+
+.karnali-culture-image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--k-radius);
+  overflow: hidden;
+  border: 1px solid var(--k-line);
+}
+
+.karnali-culture-image {
+  object-fit: cover;
+}
+
+.karnali-culture-card-number {
+  display: block;
+  font-family: var(--k-font-serif);
+  font-style: italic;
+  color: var(--k-gold);
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.karnali-culture-card-title {
+  font-family: var(--k-font-serif);
+  font-size: 1.3rem;
+  color: var(--k-cream);
+  margin: 0.3rem 0 0.5rem;
+}
+
+.karnali-culture-card-description {
+  font-family: var(--k-font-sans);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: rgba(247, 245, 239, 0.72);
+  margin: 0;
+}
+
+.karnali-culture-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  list-style: none;
+  padding: 1.75rem 0 0;
+  margin: 0;
+  border-top: 1px solid var(--k-line);
+}
+
+.karnali-culture-tag {
+  font-family: var(--k-font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--k-cream);
+  border: 1px solid var(--k-line);
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+}
+
+@media (max-width: 900px) {
+  .karnali-culture-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}

@@ -1,0 +1,23 @@
+.sky-gallery { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: clamp(180px, 20vw, 260px); gap: 0.75rem; }
+.sky-gallery__item:first-child { grid-column: span 2; grid-row: span 2; }
+.sky-gallery__fig { position: relative; margin: 0; height: 100%; overflow: hidden; border-radius: var(--sky-radius); background: #10233a; }
+.sky-gallery__img { object-fit: cover; transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.sky-gallery__fig:hover .sky-gallery__img { transform: scale(1.04); }
+.sky-gallery__cap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2rem 1rem 0.85rem;
+  background: linear-gradient(transparent, rgba(7, 19, 31, 0.8));
+  color: #fff;
+  font-size: 0.88rem;
+}
+@media (max-width: 700px) {
+  .sky-gallery { grid-template-columns: 1fr 1fr; grid-auto-rows: 160px; }
+  .sky-gallery__item:first-child { grid-column: 1 / -1; grid-row: span 2; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sky-gallery__img { transition: none; }
+  .sky-gallery__fig:hover .sky-gallery__img { transform: none; }
+}

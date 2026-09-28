@@ -1,0 +1,342 @@
+/* ==========================================================================
+   Mustang Circuit Trek — base tokens & shared primitives
+   Everything is scoped under .mustang-page so nothing leaks to other routes.
+   Colour values come from data/config.ts (theme) via inline CSS variables;
+   the fallbacks below only apply if that wiring is removed.
+   ========================================================================== */
+
+.mustang-page {
+  --mc-blue: #123b5d;
+  --mc-teal: #2a7f82;
+  --mc-sand: #c99a54;
+  --mc-ivory: #f8f6f0;
+  --mc-ink: #252b32;
+  --mc-white: #ffffff;
+  --mc-ochre: #9e4a2f;
+  --mc-font-display: var(--font-playfair, "Playfair Display"), Georgia, serif;
+  --mc-font-body: var(--font-inter, "Inter"), system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Derived tones */
+  --mc-blue-deep: color-mix(in srgb, var(--mc-blue) 78%, #000);
+  --mc-sand-soft: color-mix(in srgb, var(--mc-sand) 16%, var(--mc-ivory));
+  --mc-line: color-mix(in srgb, var(--mc-ink) 12%, transparent);
+  --mc-muted: color-mix(in srgb, var(--mc-ink) 72%, var(--mc-ivory));
+
+  /* Layout */
+  --mc-max: 1240px;
+  --mc-gutter: clamp(1rem, 4vw, 2.5rem);
+  --mc-section-y: clamp(4rem, 9vw, 7.5rem);
+  --mc-radius: 14px;
+  --mc-radius-sm: 8px;
+  /* Height of the global navbar — adjust to match the site layout. */
+  --mc-nav-offset: 72px;
+  --mc-subnav-h: 52px;
+
+  /* Elevation */
+  --mc-shadow: 0 1px 2px rgb(18 59 93 / 0.06), 0 8px 24px -8px rgb(18 59 93 / 0.18);
+  --mc-shadow-lift: 0 2px 4px rgb(18 59 93 / 0.08), 0 20px 40px -12px rgb(18 59 93 / 0.28);
+
+  --mc-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  background: var(--mc-ivory);
+  color: var(--mc-ink);
+  font-family: var(--mc-font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Smooth in-page anchor scrolling, only while this page is mounted. */
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.mustang-page) {
+    scroll-behavior: smooth;
+  }
+}
+
+.mustang-page *,
+.mustang-page *::before,
+.mustang-page *::after {
+  box-sizing: border-box;
+}
+
+.mustang-page img {
+  max-width: 100%;
+}
+
+/* Sections land below the fixed navbar + sticky sub-nav. */
+.mustang-page section[id] {
+  scroll-margin-top: calc(var(--mc-nav-offset) + var(--mc-subnav-h) + 8px);
+}
+
+/* ---------- Layout primitives ---------- */
+
+.mc-container {
+  width: 100%;
+  max-width: var(--mc-max);
+  margin-inline: auto;
+  padding-inline: var(--mc-gutter);
+}
+
+.mc-section {
+  padding-block: var(--mc-section-y);
+}
+
+.mc-section--white {
+  background: var(--mc-white);
+}
+
+.mc-section--dark {
+  background: var(--mc-blue-deep);
+  color: var(--mc-white);
+}
+
+/* ---------- Section heading ---------- */
+
+.mc-heading {
+  max-width: 46rem;
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
+.mc-heading--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.mc-heading__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 0.9rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mc-ochre);
+}
+
+.mc-heading__eyebrow::before {
+  content: "";
+  width: 1.75rem;
+  height: 1px;
+  background: currentColor;
+}
+
+.mc-heading--center .mc-heading__eyebrow::after {
+  content: "";
+  width: 1.75rem;
+  height: 1px;
+  background: currentColor;
+}
+
+.mc-heading__title {
+  margin: 0;
+  font-family: var(--mc-font-display);
+  font-weight: 600;
+  font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3.1rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--mc-blue);
+  text-wrap: balance;
+}
+
+.mc-heading__subtitle {
+  margin: 1rem 0 0;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  color: var(--mc-muted);
+  text-wrap: pretty;
+}
+
+.mc-section--dark .mc-heading__eyebrow {
+  color: var(--mc-sand);
+}
+
+.mc-section--dark .mc-heading__title {
+  color: var(--mc-white);
+}
+
+.mc-section--dark .mc-heading__subtitle {
+  color: rgb(255 255 255 / 0.78);
+}
+
+/* ---------- Buttons ---------- */
+
+.mc-btn {
+  --_bg: transparent;
+  --_fg: currentColor;
+  --_bd: currentColor;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 48px;
+  padding: 0.8rem 1.5rem;
+  border: 1.5px solid var(--_bd);
+  border-radius: 999px;
+  background: var(--_bg);
+  color: var(--_fg);
+  font: 600 0.95rem/1.2 var(--mc-font-body);
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.35s var(--mc-ease),
+    background-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.35s var(--mc-ease);
+}
+
+.mc-btn svg {
+  width: 1.05em;
+  height: 1.05em;
+  flex-shrink: 0;
+  transition: transform 0.35s var(--mc-ease);
+}
+
+.mc-btn:hover svg {
+  transform: translateX(3px);
+}
+
+.mc-btn--primary {
+  --_bg: var(--mc-sand);
+  --_fg: var(--mc-ink);
+  --_bd: var(--mc-sand);
+}
+
+.mc-btn--primary:hover {
+  --_bg: color-mix(in srgb, var(--mc-sand) 86%, var(--mc-white));
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -10px color-mix(in srgb, var(--mc-sand) 80%, transparent);
+}
+
+.mc-btn--secondary {
+  --_fg: var(--mc-blue);
+  --_bd: color-mix(in srgb, var(--mc-blue) 45%, transparent);
+}
+
+.mc-btn--secondary:hover {
+  --_bg: var(--mc-blue);
+  --_fg: var(--mc-white);
+  --_bd: var(--mc-blue);
+}
+
+.mc-btn--ghost {
+  --_bd: transparent;
+  padding-inline: 0.75rem;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+  text-underline-offset: 0.3em;
+}
+
+.mc-btn--ghost:hover {
+  text-decoration-color: currentColor;
+}
+
+/* Buttons on dark / photographic backgrounds */
+.mc-on-dark .mc-btn--secondary {
+  --_fg: var(--mc-white);
+  --_bd: rgb(255 255 255 / 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.mc-on-dark .mc-btn--secondary:hover {
+  --_bg: var(--mc-white);
+  --_fg: var(--mc-blue);
+  --_bd: var(--mc-white);
+}
+
+.mc-on-dark .mc-btn--ghost {
+  --_fg: var(--mc-white);
+}
+
+/* ---------- Focus ---------- */
+
+.mustang-page :where(a, button, [tabindex]):focus-visible {
+  outline: 2.5px solid var(--mc-sand);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.mustang-page .mc-btn:focus-visible {
+  border-radius: 999px;
+}
+
+/* ---------- Image frame (fallback tone if an image fails) ---------- */
+
+/* :where() keeps specificity at zero so section rules (e.g. position:absolute
+   on hero/CTA media) always win regardless of stylesheet order. */
+:where(.mc-frame) {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(160deg, color-mix(in srgb, var(--mc-sand) 45%, var(--mc-ivory)), color-mix(in srgb, var(--mc-ochre) 55%, var(--mc-ink)));
+}
+
+.mc-frame img {
+  object-fit: cover;
+}
+
+/* ---------- Small shared bits ---------- */
+
+.mc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  background: var(--mc-white);
+  color: var(--mc-blue);
+}
+
+.mc-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Scroll reveal ----------
+   Content is visible by default (no-JS, crawlers, failed hydration).
+   RevealRoot adds .is-reveal-ready after marking what's already on screen,
+   and only then are off-screen elements hidden until they intersect. */
+
+@media (prefers-reduced-motion: no-preference) {
+  .mustang-page.is-reveal-ready [data-reveal]:not(.is-visible) {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  .mustang-page.is-reveal-ready [data-reveal] {
+    transition:
+      opacity 0.8s var(--mc-ease),
+      transform 0.8s var(--mc-ease);
+    transition-delay: var(--mc-delay, 0ms);
+  }
+}
+
+/* ---------- Scroll progress ---------- */
+
+.mc-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 60;
+  height: 3px;
+  pointer-events: none;
+}
+
+.mc-progress__bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--mc-teal), var(--mc-sand));
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  will-change: transform;
+}

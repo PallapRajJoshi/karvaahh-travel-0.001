@@ -1,0 +1,249 @@
+/* ---------- Muktinath band ---------- */
+
+.pmy-mukti__band {
+  position: relative;
+  min-height: clamp(420px, 70vh, 720px);
+  display: flex;
+  align-items: flex-end;
+  color: #fff;
+  isolation: isolate;
+}
+
+.pmy-mukti__band-media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.pmy-mukti__band-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(16, 38, 58, 0.88) 0%, rgba(16, 38, 58, 0.25) 55%, rgba(16, 38, 58, 0) 80%);
+}
+
+.pmy-mukti__band-content {
+  padding-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.pmy-mukti__band-content .pmy-heading__kicker { color: var(--pmy-gold-soft); }
+
+.pmy-mukti__title {
+  font-family: var(--pmy-serif);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 1.3rem + 3.6vw, 4.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  max-width: 16ch;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.pmy-mukti__body {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  padding-bottom: calc(var(--pmy-section-y) * 0.5);
+}
+
+@media (max-width: 900px) {
+  .pmy-mukti__body { grid-template-columns: 1fr; }
+}
+
+/* ---------- 108 water spouts ---------- */
+
+.pmy-spouts__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.pmy-spouts__visual {
+  position: relative;
+  text-align: center;
+}
+
+.pmy-spouts__arc {
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  overflow: visible;
+}
+
+.pmy-spouts__arc circle {
+  fill: var(--pmy-teal);
+  transition: opacity 0.4s ease;
+  transition-delay: calc(var(--i) * 9ms + 0.2s);
+}
+
+.pmy--reveal .pmy-spouts__visual:not(.is-in) .pmy-spouts__arc circle {
+  opacity: 0;
+}
+
+.pmy-spouts__temple {
+  position: absolute;
+  left: 50%;
+  top: 62%;
+  transform: translate(-50%, -50%);
+  color: var(--pmy-indigo);
+}
+
+.pmy-spouts__count {
+  margin-top: 0.5rem;
+  font-size: 0.9375rem;
+  color: var(--pmy-ink-soft);
+}
+
+.pmy-spouts__count span {
+  display: block;
+  font-family: var(--pmy-serif);
+  font-size: clamp(3rem, 2rem + 4vw, 4.75rem);
+  line-height: 1;
+  color: var(--pmy-indigo);
+}
+
+.pmy-spouts__prose { margin-block: 1.25rem 2rem; }
+
+.pmy-spouts__care {
+  padding: 1.5rem;
+  border-radius: var(--pmy-radius-m);
+  background: #fff;
+  border: 1px solid var(--pmy-glacier);
+}
+
+.pmy-spouts__care .pmy-ticklist li::before { border-color: var(--pmy-teal); }
+
+.pmy-spouts__care-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+.pmy-spouts__photo {
+  position: relative;
+  margin-top: clamp(3rem, 5vw, 4.5rem);
+  aspect-ratio: 21 / 9;
+  border-radius: var(--pmy-radius-l);
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .pmy-spouts__grid { grid-template-columns: 1fr; }
+  .pmy-spouts__photo { aspect-ratio: 4 / 3; }
+}
+
+/* ---------- Jwala Mai ---------- */
+
+.pmy-jwala {
+  padding-bottom: var(--pmy-section-y);
+}
+
+.pmy-jwala__card {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  border-radius: var(--pmy-radius-l);
+  overflow: hidden;
+  background: radial-gradient(120% 90% at 0% 100%, rgba(194, 98, 31, 0.35) 0%, rgba(16, 38, 58, 0) 60%), var(--pmy-indigo);
+  color: var(--pmy-on-dark);
+}
+
+.pmy-jwala__media {
+  position: relative;
+  min-height: 320px;
+}
+
+.pmy-jwala__text {
+  padding: clamp(2rem, 4vw, 3.5rem);
+}
+
+.pmy-jwala__text p {
+  color: var(--pmy-on-dark-soft);
+  max-width: 58ch;
+}
+
+.pmy-jwala__text h2 { margin-bottom: 1.25rem; }
+
+.pmy-jwala__flame {
+  display: inline-grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  margin-bottom: 1.25rem;
+  color: #f0a45b;
+  background: rgba(240, 164, 91, 0.12);
+  animation: pmy-flicker 3.5s ease-in-out infinite;
+}
+
+@keyframes pmy-flicker {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(240, 164, 91, 0.25); }
+  50% { box-shadow: 0 0 0 10px rgba(240, 164, 91, 0); }
+}
+
+@media (max-width: 900px) {
+  .pmy-jwala__card { grid-template-columns: 1fr; }
+  .pmy-jwala__media { min-height: 240px; }
+}
+
+/* ---------- Traditions ---------- */
+
+.pmy-traditions { background: #fff; }
+
+.pmy-traditions__split {
+  display: grid;
+  grid-template-columns: 1fr minmax(240px, 0.9fr) 1fr;
+  grid-template-areas: "hindu shared buddhist";
+  gap: clamp(1.5rem, 3vw, 3rem);
+  align-items: center;
+}
+
+.pmy-traditions__side:nth-child(1) { grid-area: hindu; }
+.pmy-traditions__side:nth-child(2) { grid-area: buddhist; }
+.pmy-traditions__shared { grid-area: shared; text-align: center; }
+
+.pmy-traditions__side {
+  padding: 1.75rem;
+  border-top: 2px solid var(--pmy-saffron);
+}
+
+.pmy-traditions__side:nth-child(2) { border-top-color: var(--pmy-teal); }
+.pmy-traditions__side:nth-child(2) .pmy-ticklist li::before { border-color: var(--pmy-teal); }
+
+.pmy-traditions__title {
+  font-family: var(--pmy-serif);
+  font-weight: 500;
+  font-size: 1.45rem;
+  margin: 0 0 1.25rem;
+}
+
+.pmy-traditions__shared-media {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 1.25rem;
+  max-width: 260px;
+  box-shadow: 0 0 0 6px #fff, 0 0 0 7px var(--pmy-gold-soft);
+}
+
+.pmy-traditions__shared p {
+  font-family: var(--pmy-serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--pmy-ink-soft);
+}
+
+@media (max-width: 900px) {
+  .pmy-traditions__split {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "shared shared" "hindu buddhist";
+  }
+}
+
+@media (max-width: 600px) {
+  .pmy-traditions__split {
+    grid-template-columns: 1fr;
+    grid-template-areas: "shared" "hindu" "buddhist";
+  }
+}

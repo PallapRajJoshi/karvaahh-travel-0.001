@@ -1,0 +1,211 @@
+.etp-hero {
+  position: relative;
+  min-height: min(100svh, 980px);
+  display: flex;
+  align-items: flex-end;
+  color: var(--etp-white);
+  background: var(--etp-blue-ink);
+  isolation: isolate;
+}
+
+.etp-hero__bg {
+  position: absolute !important;
+  inset: 0;
+  z-index: -2;
+}
+
+.etp-hero__shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(8, 27, 46, 0.55) 0%, rgba(8, 27, 46, 0.1) 30%, rgba(8, 27, 46, 0.35) 60%, rgba(8, 27, 46, 0.92) 100%),
+    linear-gradient(90deg, rgba(8, 27, 46, 0.55) 0%, rgba(8, 27, 46, 0) 65%);
+}
+
+.etp-hero__inner {
+  padding-top: calc(var(--site-header-height, 80px) + 64px);
+  padding-bottom: clamp(28px, 5vw, 48px);
+}
+
+.etp-hero__content {
+  max-width: 780px;
+}
+
+.etp-hero__eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--etp-gold);
+  margin-bottom: 22px;
+}
+
+.etp-hero__dot {
+  margin-inline: 12px;
+  opacity: 0.7;
+}
+
+.etp-hero__title {
+  font-size: clamp(2.6rem, 1.2rem + 6vw, 5.75rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.etp-hero__subtitle {
+  margin-top: 18px;
+  font-family: var(--etp-serif);
+  font-style: italic;
+  font-size: clamp(1.15rem, 1rem + 0.8vw, 1.6rem);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.etp-hero__text {
+  margin-top: 18px;
+  max-width: 60ch;
+  font-size: clamp(0.98rem, 0.94rem + 0.2vw, 1.08rem);
+  color: var(--etp-muted-light);
+}
+
+.etp-hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.etp-hero__stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: clamp(40px, 7vw, 72px) 0 0;
+  border-top: 1px solid var(--etp-line-light);
+}
+
+.etp-hero__stat {
+  padding: 18px 20px 0 0;
+}
+
+.etp-hero__stat + .etp-hero__stat {
+  padding-left: 20px;
+  border-left: 1px solid var(--etp-line-light);
+}
+
+.etp-hero__stat dt {
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.etp-hero__stat dd {
+  margin: 6px 0 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.etp-hero__stat strong {
+  font-family: var(--etp-serif);
+  font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.etp-hero__stat span {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.etp-hero__scroll {
+  position: absolute;
+  right: var(--etp-gutter);
+  bottom: 40px;
+  width: 28px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+}
+
+.etp-hero__scroll-line {
+  position: relative;
+  width: 1px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+}
+
+.etp-hero__scroll-line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -40%;
+  width: 1px;
+  height: 40%;
+  background: var(--etp-gold);
+  animation: etp-scroll 2.2s var(--etp-ease) infinite;
+}
+
+@keyframes etp-scroll {
+  to {
+    top: 100%;
+  }
+}
+
+/* Text reveal on load — CSS only, no JS needed */
+.etp-hero__eyebrow,
+.etp-hero__title,
+.etp-hero__subtitle,
+.etp-hero__text,
+.etp-hero__ctas,
+.etp-hero__stats {
+  animation: etp-rise 1s var(--etp-ease) both;
+}
+
+.etp-hero__title {
+  animation-delay: 0.08s;
+}
+.etp-hero__subtitle {
+  animation-delay: 0.16s;
+}
+.etp-hero__text {
+  animation-delay: 0.24s;
+}
+.etp-hero__ctas {
+  animation-delay: 0.32s;
+}
+.etp-hero__stats {
+  animation-delay: 0.45s;
+}
+
+@keyframes etp-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+}
+
+@media (max-width: 860px) {
+  .etp-hero__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .etp-hero__stat:nth-child(3) {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .etp-hero__scroll {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .etp-hero__ctas .etp-btn {
+    flex: 1 1 100%;
+  }
+  .etp-hero__dot {
+    margin-inline: 8px;
+  }
+}

@@ -1,0 +1,89 @@
+.madhesh-journey {
+  padding: clamp(3.5rem, 8vw, 6rem) clamp(1.5rem, 5vw, 5rem);
+  background: var(--madhesh-cream);
+}
+
+.madhesh-journey__route {
+  list-style: none;
+  margin: 3rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.4rem;
+  counter-reset: journey;
+}
+
+.madhesh-journey__stop {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  position: relative;
+}
+
+.madhesh-journey__stop:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: calc(50% - 0.5rem);
+  right: -0.9rem;
+  width: 1.4rem;
+  height: 1px;
+  background: var(--madhesh-border);
+  display: none;
+}
+
+.madhesh-journey__stop-media {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 1px solid var(--madhesh-border);
+}
+
+.madhesh-journey__stop-image {
+  object-fit: cover;
+  transition: transform 0.6s var(--madhesh-ease);
+}
+
+.madhesh-journey__stop:hover .madhesh-journey__stop-image {
+  transform: scale(1.06);
+}
+
+.madhesh-journey__stop-number {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--madhesh-gold-dark);
+  font-size: 1rem;
+}
+
+.madhesh-journey__stop-name {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin: 0;
+  color: var(--madhesh-ink);
+}
+
+.madhesh-journey__stop-desc {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--madhesh-ink-soft);
+  margin: 0;
+}
+
+.madhesh-journey__cta {
+  margin-top: 2.8rem;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 1024px) {
+  .madhesh-journey__route {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .madhesh-journey__route {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

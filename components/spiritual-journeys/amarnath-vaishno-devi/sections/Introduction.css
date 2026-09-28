@@ -1,0 +1,33 @@
+.avd-intro__grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 960px) {
+  .avd-intro__grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .avd-intro__grid .avd-heading {
+    position: sticky;
+    top: calc(var(--avd-header-offset) + var(--avd-nav-h) + 2rem);
+  }
+}
+
+.avd-intro__body {
+  font-size: 1.0625rem;
+}
+
+.avd-intro__lead {
+  font-family: var(--avd-serif);
+  font-size: clamp(1.2rem, 1.05rem + 0.6vw, 1.45rem);
+  line-height: 1.5;
+  color: var(--avd-forest);
+}
+
+.avd-intro__body strong {
+  font-weight: 600;
+  color: var(--avd-forest);
+}

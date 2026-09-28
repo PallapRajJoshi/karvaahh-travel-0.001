@@ -1,0 +1,64 @@
+.sky-notify__grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+.sky-notify__intro { position: sticky; top: 110px; }
+.sky-notify__text { margin: 1.25rem 0 0; max-width: 46ch; line-height: 1.7; font-size: 1.05rem; color: rgba(238, 242, 245, 0.82); }
+.sky-notify__fine { margin: 1.5rem 0 0; max-width: 46ch; font-size: 0.85rem; line-height: 1.6; color: rgba(238, 242, 245, 0.55); }
+
+.sky-form { display: grid; gap: 1.25rem; padding: clamp(1.5rem, 3.5vw, 2.5rem); border-radius: var(--sky-radius-lg); background: #fff; color: var(--sky-ink); }
+.sky-form__group { margin: 0; padding: 0; border: 0; min-width: 0; }
+.sky-form__legend { padding: 0; margin-bottom: 0.6rem; font-size: 0.88rem; font-weight: 600; }
+.sky-form__chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.sky-chip { position: relative; cursor: pointer; }
+.sky-chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.sky-chip span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--sky-line);
+  border-radius: 999px;
+  font-size: 0.92rem;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+.sky-chip input:checked + span { background: var(--sky-navy); border-color: var(--sky-navy); color: #fff; }
+.sky-chip input:focus-visible + span { outline: 2px solid var(--sky-gold); outline-offset: 2px; }
+
+.sky-form__row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.sky-form__row--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.sky-field { display: grid; gap: 0.4rem; min-width: 0; }
+.sky-field label { font-size: 0.88rem; font-weight: 600; }
+.sky-field__opt { font-weight: 400; color: var(--sky-muted); }
+.sky-field input,
+.sky-field select,
+.sky-field textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid rgba(11, 27, 43, 0.22);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--sky-ink);
+  font: 400 1rem/1.4 var(--sky-sans);
+}
+.sky-field textarea { resize: vertical; min-height: 110px; }
+.sky-field input:focus,
+.sky-field select:focus,
+.sky-field textarea:focus { outline: 2px solid var(--sky-gold); outline-offset: 1px; border-color: var(--sky-gold-deep); }
+.sky-field [aria-invalid="true"] { border-color: #b3261e; }
+.sky-field__error { margin: 0; font-size: 0.85rem; color: #b3261e; }
+.sky-form__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.sky-form__submit { width: 100%; }
+.sky-form__submit:disabled { opacity: 0.7; cursor: progress; }
+.sky-form__status:empty { display: none; }
+.sky-form__msg { margin: 0; padding: 0.85rem 1rem; border-radius: 8px; font-size: 0.92rem; line-height: 1.5; }
+.sky-form__msg--ok { background: #e8f3ec; color: #1d5b35; }
+.sky-form__msg--warn { background: #fbf1dc; color: #6b4d12; }
+.sky-form__msg a { color: inherit; font-weight: 600; }
+
+@media (max-width: 960px) {
+  .sky-notify__grid { grid-template-columns: 1fr; }
+  .sky-notify__intro { position: static; }
+}
+@media (max-width: 640px) {
+  .sky-form__row,
+  .sky-form__row--2 { grid-template-columns: 1fr; }
+}

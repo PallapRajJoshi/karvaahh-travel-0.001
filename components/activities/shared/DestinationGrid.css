@@ -1,0 +1,21 @@
+.dest-grid {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.dest-grid > * {
+  display: flex;
+  min-width: 0;
+}
+
+.dest-grid--sm {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+}
+
+.dest-grid--md {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20.5rem), 1fr));
+}
+
+.dest-grid--lg {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 26rem), 1fr));
+}

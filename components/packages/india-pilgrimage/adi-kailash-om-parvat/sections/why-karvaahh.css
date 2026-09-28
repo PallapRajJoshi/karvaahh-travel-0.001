@@ -1,0 +1,84 @@
+/* Section 10 — Why travel with Karvaahh */
+
+.akop-why {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 100% 0%, rgba(42, 127, 130, 0.35), transparent 50%),
+    var(--akop-primary);
+  color: var(--akop-white);
+  overflow: hidden;
+}
+
+/* Faint mountain ridge motif along the top edge. */
+.akop-why::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 90px;
+  /* Matches the section above (Culture uses the alt band). */
+  background: var(--akop-bg-alt);
+  clip-path: polygon(0 0, 100% 0, 100% 20%, 88% 55%, 80% 35%, 68% 70%, 57% 40%, 45% 62%, 34% 30%, 22% 58%, 12% 38%, 0 60%);
+  opacity: 1;
+}
+
+.akop-why .akop-container {
+  position: relative;
+  padding-top: 2rem;
+}
+
+.akop-why__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--akop-radius);
+  background: rgba(255, 255, 255, 0.12); /* 1px gaps become hairlines */
+  list-style: none;
+}
+
+.akop-why__item {
+  padding: 1.75rem 1.5rem;
+  background: var(--akop-primary);
+  transition: background-color 0.35s var(--akop-ease);
+}
+
+.akop-why__item:hover {
+  background: #164670;
+}
+
+.akop-why__icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 1.1rem;
+  border: 1px solid rgba(216, 166, 74, 0.45);
+  border-radius: 50%;
+  color: var(--akop-accent);
+}
+
+.akop-why__title {
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.akop-why__text {
+  margin-top: 0.45rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+@media (min-width: 640px) {
+  .akop-why__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .akop-why__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

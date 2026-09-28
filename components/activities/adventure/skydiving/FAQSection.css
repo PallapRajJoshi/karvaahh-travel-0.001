@@ -1,0 +1,15 @@
+.sky-faq-wrap { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr); gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.sky-faq { border-top: 1px solid var(--sky-line); }
+.sky-faq__item { border-bottom: 1px solid var(--sky-line); }
+.sky-faq__q { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.25rem 0; cursor: pointer; list-style: none; }
+.sky-faq__q::-webkit-details-marker { display: none; }
+.sky-faq__q:focus-visible { outline: 2px solid var(--sky-gold); outline-offset: 4px; }
+.sky-faq__q-text { margin: 0; font-size: 1.05rem; font-weight: 600; line-height: 1.4; color: var(--sky-navy); }
+.sky-faq__icon { position: relative; flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--sky-line); }
+.sky-faq__icon::before,
+.sky-faq__icon::after { content: ""; position: absolute; top: 50%; left: 50%; width: 10px; height: 1.5px; background: var(--sky-navy); translate: -50% -50%; transition: rotate 0.2s; }
+.sky-faq__icon::after { rotate: 90deg; }
+.sky-faq__item[open] .sky-faq__icon::after { rotate: 0deg; }
+.sky-faq__a { margin: 0; padding: 0 3rem 1.4rem 0; line-height: 1.7; color: var(--sky-muted); max-width: 65ch; }
+@media (max-width: 900px) { .sky-faq-wrap { grid-template-columns: 1fr; } .sky-faq__a { padding-right: 0; } }
+@media (prefers-reduced-motion: reduce) { .sky-faq__icon::before, .sky-faq__icon::after { transition: none; } }

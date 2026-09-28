@@ -1,0 +1,164 @@
+/* Skydiving in Nepal — page tokens + shared primitives (scoped to .sky-page). */
+.sky-page {
+  --sky-navy: #0b1b2b;
+  --sky-night: #07131f;
+  --sky-gold: #c9a45c;
+  --sky-gold-deep: #b8954e;
+  --sky-gold-soft: rgba(201, 164, 92, 0.14);
+  --sky-snow: #fbfbf9;
+  --sky-cream: #f7f5ef;
+  --sky-ice: #a9c1d3;
+  --sky-ink: #15222f;
+  --sky-muted: #56636f;
+  --sky-line: rgba(11, 27, 43, 0.12);
+  --sky-serif: var(--font-playfair, "Playfair Display"), Georgia, "Times New Roman", serif;
+  --sky-sans: var(--font-inter, "Inter"), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --sky-radius: 10px;
+  --sky-radius-lg: 18px;
+  --sky-section: clamp(4rem, 8vw, 7rem);
+
+  display: block;
+  overflow-x: clip;
+  background: var(--sky-snow);
+  color: var(--sky-ink);
+  font-family: var(--sky-sans);
+}
+.sky-page *,
+.sky-page *::before,
+.sky-page *::after { box-sizing: border-box; }
+.sky-page [id] { scroll-margin-top: 96px; }
+html:has(.sky-page) { scroll-behavior: smooth; }
+
+.sky-container { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: clamp(1.25rem, 4vw, 2.5rem); }
+.sky-section { padding-block: var(--sky-section); }
+.sky-section--cream { background: var(--sky-cream); }
+.sky-section--dark { background: var(--sky-navy); color: #eef2f5; }
+.sky-section--night { background: var(--sky-night); color: #eef2f5; }
+.sky-section--flush { padding-top: 0; }
+
+/* Headings */
+.sky-heading { max-width: 46rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
+.sky-heading__title { margin: 0; font-family: var(--sky-serif); font-weight: 600; font-size: clamp(1.9rem, 1.3rem + 2.4vw, 3rem); line-height: 1.12; letter-spacing: -0.01em; color: var(--sky-navy); }
+.sky-heading--dark .sky-heading__title,
+.sky-section--dark .sky-heading__title { color: #fff; }
+.sky-heading__intro { margin: 1rem 0 0; max-width: 60ch; font-size: 1.0625rem; line-height: 1.65; color: var(--sky-muted); }
+.sky-heading--dark .sky-heading__intro { color: rgba(238, 242, 245, 0.72); }
+.sky-subheading { margin: 0 0 1.25rem; font-family: var(--sky-serif); font-weight: 600; font-size: 1.5rem; color: var(--sky-navy); }
+
+/* Buttons */
+.sky-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.8rem 1.4rem;
+  border: 1.5px solid transparent;
+  border-radius: 999px;
+  font: 600 0.95rem/1.2 var(--sky-sans);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+.sky-btn--gold { background: var(--sky-gold); color: var(--sky-navy); }
+.sky-btn--gold:hover { background: #d8b976; }
+.sky-btn--ghost { border-color: rgba(255, 255, 255, 0.6); color: #fff; }
+.sky-btn--ghost:hover { background: rgba(255, 255, 255, 0.12); }
+.sky-btn--dark { background: var(--sky-navy); color: #fff; }
+.sky-btn--dark:hover { background: #17304a; }
+.sky-btn--outline { border-color: var(--sky-navy); color: var(--sky-navy); }
+.sky-btn--outline:hover { background: var(--sky-navy); color: #fff; }
+.sky-page a:focus-visible,
+.sky-page button:focus-visible,
+.sky-page [tabindex="0"]:focus-visible { outline: 2px solid var(--sky-gold); outline-offset: 3px; }
+
+/* Status pill */
+.sky-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid rgba(184, 149, 78, 0.5);
+  border-radius: 999px;
+  background: var(--sky-gold-soft);
+  color: #8a6a2c;
+  font: 700 0.7rem/1 var(--sky-sans);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+.sky-status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.sky-status--on-dark { color: var(--sky-gold); border-color: rgba(201, 164, 92, 0.55); }
+
+/* Tables */
+.sky-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--sky-line); border-radius: var(--sky-radius); background: #fff; }
+.sky-table { width: 100%; min-width: 820px; border-collapse: collapse; font-size: 0.95rem; }
+.sky-table--compact { min-width: 520px; }
+.sky-table th,
+.sky-table td { padding: 1rem 1.1rem; text-align: left; vertical-align: top; border-bottom: 1px solid var(--sky-line); }
+.sky-table thead th { background: var(--sky-cream); color: var(--sky-muted); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; }
+.sky-table tbody th { font-family: var(--sky-serif); font-size: 1.02rem; font-weight: 600; color: var(--sky-navy); }
+.sky-table tr:last-child > * { border-bottom: 0; }
+.sky-table .sky-table__num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.sky-table-hint { display: none; margin: 0 0 0.6rem; font-size: 0.82rem; color: var(--sky-muted); }
+
+.sky-note { margin: 1rem 0 0; font-size: 0.9rem; line-height: 1.6; color: var(--sky-muted); }
+.sky-note--dark { margin-top: 1.5rem; color: rgba(238, 242, 245, 0.6); }
+
+/* Split layout + icon cards (flexibility, altitude) */
+.sky-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+.sky-split .sky-heading { margin-bottom: 0; }
+.sky-icon-cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+.sky-icon-cards--row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.sky-icon-card { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1rem; padding: 1.4rem; border: 1px solid var(--sky-line); border-radius: var(--sky-radius); background: #fff; }
+.sky-icon-card__icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--sky-navy); color: var(--sky-gold); }
+.sky-icon-card__title { margin: 0.2rem 0 0; font-size: 1.05rem; font-weight: 600; color: var(--sky-navy); }
+.sky-icon-card__text { margin: 0.35rem 0 0; line-height: 1.6; color: var(--sky-muted); }
+
+/* Brand strip */
+.sky-brand { background: var(--sky-night); color: #eef2f5; padding-block: 2rem; border-top: 1px solid rgba(201, 164, 92, 0.3); }
+.sky-brand__inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 2rem; }
+.sky-brand__line { margin: 0; font-family: var(--sky-serif); font-size: 1rem; }
+.sky-brand__line--muted { font-family: var(--sky-sans); font-size: 0.88rem; color: rgba(238, 242, 245, 0.6); }
+
+/* Mobile sticky CTA */
+.sky-mbar { display: none; }
+@media (max-width: 767px) {
+  .sky-mbar {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+    background: rgba(7, 19, 31, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transform: translateY(110%);
+    visibility: hidden;
+    transition: transform 0.25s ease, visibility 0s linear 0.25s;
+  }
+  .sky-mbar.is-shown { transform: none; visibility: visible; transition: transform 0.25s ease, visibility 0s; }
+  .sky-mbar__btn { width: 100%; }
+  .sky-table-hint { display: block; }
+}
+
+.sky-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+@media (max-width: 900px) {
+  .sky-split,
+  .sky-icon-cards--row { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html:has(.sky-page) { scroll-behavior: auto; }
+  .sky-btn,
+  .sky-mbar { transition: none; }
+}
+
+/* Breadcrumbs (rendered over the hero) */
+.sky-crumbs__list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.35rem; font-size: 0.85rem; color: rgba(255, 255, 255, 0.85); }
+.sky-crumbs__item { display: inline-flex; align-items: center; gap: 0.35rem; }
+.sky-crumbs__item + .sky-crumbs__item::before { content: "/"; color: rgba(255, 255, 255, 0.45); }
+.sky-crumbs__link { color: rgba(255, 255, 255, 0.72); text-decoration: none; }
+.sky-crumbs__link:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.sky-table .sky-table__nowrap { white-space: nowrap; font-variant-numeric: tabular-nums; }

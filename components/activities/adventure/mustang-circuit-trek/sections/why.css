@@ -1,0 +1,77 @@
+.mc-why__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--mc-line);
+  border-radius: var(--mc-radius);
+  overflow: hidden;
+  background: var(--mc-ivory);
+}
+
+/* Hairlines drawn per item (negative margins hide the outer edges), so disabling
+   a feature never leaves an odd grey empty cell. */
+.mc-why__item {
+  margin: 0 -1px -1px 0;
+  border-right: 1px solid var(--mc-line);
+  border-bottom: 1px solid var(--mc-line);
+  padding: clamp(1.5rem, 3vw, 2rem);
+  background: var(--mc-ivory);
+  transition: background-color 0.35s ease;
+}
+
+.mc-why__item:hover {
+  background: var(--mc-white);
+}
+
+.mc-why__icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 1.1rem;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--mc-teal) 12%, var(--mc-white));
+  color: var(--mc-teal);
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease,
+    transform 0.5s var(--mc-ease);
+}
+
+.mc-why__icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.mc-why__item:hover .mc-why__icon {
+  background: var(--mc-teal);
+  color: var(--mc-white);
+  transform: rotate(-6deg);
+}
+
+.mc-why__title {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--mc-blue);
+}
+
+.mc-why__text {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--mc-muted);
+}
+
+@media (min-width: 640px) {
+  .mc-why__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .mc-why__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

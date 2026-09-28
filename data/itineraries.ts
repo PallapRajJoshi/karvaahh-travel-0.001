@@ -1,0 +1,9 @@
+export const itinerary=[
+{day:"Day 1",title:"Biratnagar → Dharan",morning:"Arrival and transfer east",afternoon:"Settle in and explore local streets",evening:"Local dinner and rest",meals:"Breakfast / Lunch / Dinner",stay:"Dharan hotel",activities:"City orientation",drive:"Approximate road transfer; confirm current conditions."},
+{day:"Day 2",title:"Dharan → Bhedetar",morning:"Short hill drive",afternoon:"Viewpoints and easy walks",evening:"Cool-climate evening",meals:"Breakfast / Lunch / Dinner",stay:"Bhedetar guesthouse",activities:"Nature and viewpoints",drive:"Road travel; timing varies with traffic and weather."},
+{day:"Day 3",title:"Bhedetar → Ilam",morning:"Scenic eastern road journey",afternoon:"Check in and tea-country walk",evening:"Sunset over the hills",meals:"Breakfast / Lunch / Dinner",stay:"Ilam hotel or homestay",activities:"Tea and photography",drive:"Full-day road transfer."},
+{day:"Day 4",title:"Ilam Tea Gardens",morning:"Tea garden visit",afternoon:"Local food and village exploration",evening:"Slow evening in the hills",meals:"Breakfast / Lunch / Dinner",stay:"Ilam",activities:"Tea experience",drive:"Short local transfers."},
+{day:"Day 5",title:"Kanyam → Antu",morning:"Drive to Kanyam",afternoon:"Tea landscapes and photography",evening:"Antu homestay",meals:"Breakfast / Lunch / Dinner",stay:"Antu homestay",activities:"Tea gardens and village life",drive:"Road transfer."},
+{day:"Day 6",title:"Sunrise → Eastern Nepal Exploration",morning:"Sunrise viewpoint",afternoon:"Flexible local exploration",evening:"Farewell dinner",meals:"Breakfast / Lunch / Dinner",stay:"As arranged",activities:"Photography and culture",drive:"Local travel as needed."},
+{day:"Day 7",title:"Departure",morning:"Breakfast and departure",afternoon:"Transfer toward onward connection",evening:"—",meals:"Breakfast",stay:"—",activities:"Departure",drive:"Transfer depends on final route."}
+];

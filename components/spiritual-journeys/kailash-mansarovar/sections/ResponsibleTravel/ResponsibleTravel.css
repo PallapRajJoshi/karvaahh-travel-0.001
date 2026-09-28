@@ -1,0 +1,49 @@
+.km-resp__grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.km-resp__icon {
+  width: 1.9rem;
+  height: 1.9rem;
+  color: var(--km-gold);
+}
+
+.km-resp__title {
+  margin-top: 1rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--km-line-dark);
+  font-family: var(--km-font-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.km-resp__list {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.km-resp__list li {
+  position: relative;
+  padding-left: 1.1rem;
+  color: #c9d5de;
+}
+
+.km-resp__list li::before {
+  content: "";
+  position: absolute;
+  top: 0.7em;
+  left: 0;
+  width: 6px;
+  height: 1px;
+  background: var(--km-gold);
+}
+
+@media (min-width: 900px) {
+  .km-resp__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 3rem;
+  }
+}

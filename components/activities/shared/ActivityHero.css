@@ -1,0 +1,213 @@
+.act-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(30rem, 78vh, 46rem);
+  padding: clamp(5rem, 9vw, 7rem) 0 clamp(2.5rem, 5vw, 4rem);
+  color: #fff;
+  overflow: hidden;
+}
+
+.act-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.act-hero__image {
+  object-fit: cover;
+  object-position: center 55%;
+}
+
+.act-hero__scrim {
+  position: absolute;
+  inset: 0;
+}
+
+.act-hero--river .act-hero__scrim {
+  background:
+    linear-gradient(
+      100deg,
+      rgba(6, 22, 26, 0.92) 0%,
+      rgba(6, 22, 26, 0.72) 42%,
+      rgba(6, 22, 26, 0.24) 100%
+    ),
+    linear-gradient(to top, rgba(4, 16, 20, 0.9), rgba(4, 16, 20, 0) 55%);
+}
+
+.act-hero--water .act-hero__scrim {
+  background:
+    linear-gradient(
+      100deg,
+      rgba(10, 34, 46, 0.82) 0%,
+      rgba(10, 34, 46, 0.5) 48%,
+      rgba(10, 34, 46, 0.12) 100%
+    ),
+    linear-gradient(to top, rgba(8, 28, 38, 0.82), rgba(8, 28, 38, 0) 60%);
+}
+
+.act-hero__inner {
+  width: min(100% - 2.5rem, var(--act-max, 76rem));
+  margin-inline: auto;
+}
+
+.act-hero .act-crumbs {
+  --act-crumb-ink: rgba(255, 255, 255, 0.72);
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.act-hero .act-crumbs [aria-current="page"] {
+  color: #fff;
+}
+
+.act-hero__eyebrow {
+  margin: 0 0 0.9rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--act-accent);
+}
+
+.act-hero__title {
+  font-family: var(--act-font-display);
+  font-size: clamp(2.3rem, 1.3rem + 4.4vw, 4.4rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+  margin: 0;
+  max-width: 18ch;
+}
+
+.act-hero__subtitle {
+  margin: 1.1rem 0 0;
+  font-size: clamp(1.05rem, 0.96rem + 0.45vw, 1.3rem);
+  line-height: 1.5;
+  max-width: 44ch;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.act-hero__supporting {
+  margin: 0.9rem 0 0;
+  font-size: 0.97rem;
+  line-height: 1.68;
+  max-width: 56ch;
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.act-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.act-hero__location {
+  margin: 1.1rem 0 0;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.act-hero__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr));
+  gap: 1px;
+  margin: clamp(2.25rem, 5vw, 3.25rem) 0 0;
+  padding: 0;
+  list-style: none;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.act-hero__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1.05rem 1.15rem;
+  background: rgba(8, 24, 30, 0.55);
+  backdrop-filter: blur(6px);
+}
+
+.act-hero__stat-value {
+  font-family: var(--act-font-display);
+  font-size: 1.22rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.act-hero__stat-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+/* ---------- Shared buttons ---------- */
+
+.act-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.9rem;
+  padding: 0.7rem 1.5rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  border-radius: var(--act-radius-pill, 999px);
+  border: 1px solid transparent;
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.act-btn--primary {
+  background: var(--act-accent);
+  color: var(--act-accent-ink, #0d1d16);
+}
+
+.act-btn--primary:hover,
+.act-btn--primary:focus-visible {
+  background: var(--act-accent-strong, var(--act-accent));
+}
+
+.act-btn--ghost {
+  border-color: currentColor;
+  color: inherit;
+  background: transparent;
+}
+
+.act-btn--ghost:hover,
+.act-btn--ghost:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.act-btn--solid {
+  background: var(--act-ink);
+  color: var(--act-bg);
+}
+
+.act-btn--solid:hover,
+.act-btn--solid:focus-visible {
+  background: var(--act-accent);
+  color: var(--act-accent-ink, #0d1d16);
+}
+
+.act-btn:focus-visible,
+.act-crumbs__link:focus-visible {
+  outline: 2px solid var(--act-accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 40rem) {
+  .act-hero__actions .act-btn {
+    flex: 1 1 100%;
+  }
+}
+
+/* Teal accent is too dark on the water scrim; use a dawn-gold eyebrow there. */
+.act-hero--water .act-hero__eyebrow {
+  color: #e2cd98;
+}

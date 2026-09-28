@@ -1,0 +1,756 @@
+/* =========================================================
+   KOSHI CULTURE
+   ONE VIEWPORT BELOW NAVBAR
+========================================================= */
+
+.koshi-culture {
+  position: relative;
+  isolation: isolate;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  width: 100%;
+  height: calc(100svh - 170px);
+  min-height: 0;
+
+  overflow: hidden;
+  box-sizing: border-box;
+
+  background: #f7f5ef;
+
+  border-bottom: 1px solid rgba(24, 35, 30, 0.14);
+}
+
+
+/* =========================================================
+   LEFT CONTENT PANEL
+========================================================= */
+
+.koshi-culture__panel {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  min-width: 0;
+  min-height: 0;
+
+  overflow: hidden;
+  box-sizing: border-box;
+
+  padding: 35px 65px;
+
+  background:
+    radial-gradient(
+      circle at 0% 100%,
+      rgba(184, 149, 78, 0.07),
+      transparent 35%
+    ),
+    #f7f5ef;
+
+  color: #18231e;
+}
+
+
+/* Divider */
+
+.koshi-culture__panel::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  width: 1px;
+  height: 100%;
+
+  background: rgba(24, 35, 30, 0.1);
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.koshi-culture__content {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+  max-width: 620px;
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.koshi-culture__eyebrow {
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  margin-bottom: 18px;
+}
+
+.koshi-culture__eyebrow > span {
+  display: block;
+
+  width: 30px;
+  height: 1px;
+
+  flex-shrink: 0;
+
+  background: #b8954e;
+}
+
+.koshi-culture__eyebrow p {
+  margin: 0;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.3em;
+
+  color: #927238;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.koshi-culture__content h2 {
+  margin: 0;
+
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: clamp(46px, 4.2vw, 70px);
+
+  font-weight: 400;
+
+  line-height: 0.93;
+
+  letter-spacing: -0.055em;
+
+  color: #17241d;
+}
+
+.koshi-culture__content h2 em {
+  font-weight: 400;
+
+  font-style: italic;
+
+  color: #737963;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.koshi-culture__description {
+  max-width: 580px;
+
+  margin: 20px 0 23px;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 12px;
+  font-weight: 400;
+
+  line-height: 1.68;
+
+  color: rgba(24, 35, 30, 0.6);
+}
+
+
+/* =========================================================
+   CULTURE LIST
+========================================================= */
+
+.koshi-culture__list {
+  width: 100%;
+
+  margin: 0 0 22px;
+
+  border-top: 1px solid rgba(24, 35, 30, 0.13);
+}
+
+
+/* =========================================================
+   CULTURE ITEM
+========================================================= */
+
+.koshi-culture-item {
+  display: grid;
+
+  grid-template-columns:
+    38px
+    minmax(0, 1fr)
+    32px;
+
+  align-items: center;
+
+  gap: 12px;
+
+  min-height: 59px;
+
+  box-sizing: border-box;
+
+  border-bottom: 1px solid rgba(24, 35, 30, 0.13);
+
+  transition:
+    padding-left 0.3s ease,
+    background 0.3s ease;
+}
+
+.koshi-culture-item:hover {
+  padding-left: 7px;
+
+  background: rgba(24, 35, 30, 0.025);
+}
+
+
+/* Number */
+
+.koshi-culture-item__number {
+  font-family: "Inter", sans-serif;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+
+  color: #a17d37;
+}
+
+
+/* Content */
+
+.koshi-culture-item__content {
+  min-width: 0;
+}
+
+.koshi-culture-item__content h3 {
+  margin: 0 0 2px;
+
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: 18px;
+  font-weight: 400;
+
+  line-height: 1.2;
+
+  color: #18231e;
+}
+
+.koshi-culture-item__content p {
+  margin: 0;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 9px;
+
+  line-height: 1.4;
+
+  color: rgba(24, 35, 30, 0.5);
+}
+
+
+/* =========================================================
+   ITEM ARROW
+========================================================= */
+
+.koshi-culture-item__arrow {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 28px;
+  height: 28px;
+
+  box-sizing: border-box;
+
+  border: 1px solid rgba(24, 35, 30, 0.17);
+
+  border-radius: 50%;
+
+  font-size: 11px;
+
+  color: rgba(24, 35, 30, 0.65);
+
+  transition:
+    color 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.koshi-culture-item:hover
+.koshi-culture-item__arrow {
+  border-color: #b8954e;
+
+  background: #b8954e;
+
+  color: #fff;
+
+  transform: translate(2px, -2px);
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.koshi-culture__button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 24px;
+
+  min-width: 205px;
+
+  padding: 10px 11px 10px 17px;
+
+  box-sizing: border-box;
+
+  border: 1px solid rgba(24, 35, 30, 0.3);
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.08em;
+
+  text-decoration: none;
+
+  color: #18231e;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.koshi-culture__button-arrow {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 27px;
+  height: 27px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #b8954e;
+
+  color: #fff;
+
+  transition: transform 0.3s ease;
+}
+
+.koshi-culture__button:hover {
+  border-color: #b8954e;
+
+  background: #b8954e;
+
+  color: #fff;
+}
+
+.koshi-culture__button:hover
+.koshi-culture__button-arrow {
+  transform: translate(2px, -2px);
+
+  background: #18231e;
+
+  color: #fff;
+}
+
+
+/* =========================================================
+   VERTICAL TEXT
+========================================================= */
+
+.koshi-culture__vertical-text {
+  position: absolute;
+
+  left: 18px;
+  bottom: 42px;
+
+  z-index: 2;
+
+  writing-mode: vertical-rl;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 7px;
+  font-weight: 600;
+
+  letter-spacing: 0.3em;
+
+  color: rgba(24, 35, 30, 0.15);
+}
+
+
+/* =========================================================
+   RIGHT IMAGE
+========================================================= */
+
+.koshi-culture__visual {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  min-width: 0;
+  min-height: 0;
+
+  overflow: hidden;
+  box-sizing: border-box;
+
+  background: #25352d;
+}
+
+.koshi-culture__image {
+  position: absolute !important;
+  inset: 0 !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  object-fit: cover;
+  object-position: center;
+
+  transform: scale(1.02);
+
+  transition:
+    transform 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.koshi-culture:hover .koshi-culture__image {
+  transform: scale(1.055);
+}
+
+
+/* =========================================================
+   IMAGE SHADE
+========================================================= */
+
+.koshi-culture__image-shade {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5, 13, 9, 0.08),
+      rgba(5, 13, 9, 0.68)
+    ),
+    linear-gradient(
+      270deg,
+      rgba(5, 13, 9, 0.05),
+      rgba(5, 13, 9, 0.2)
+    );
+}
+
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.koshi-culture__location {
+  position: absolute;
+
+  top: 32px;
+  left: 40px;
+
+  z-index: 3;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 13px;
+
+  color: #fff;
+}
+
+.koshi-culture__location-line {
+  width: 32px;
+  height: 1px;
+
+  margin-top: 6px;
+
+  flex-shrink: 0;
+
+  background: #c9a45c;
+}
+
+.koshi-culture__location-title {
+  display: block;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.25em;
+
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.koshi-culture__location p {
+  margin: 5px 0 0;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 10px;
+
+  color: rgba(255, 255, 255, 0.55);
+}
+
+
+/* =========================================================
+   SECTION NUMBER
+========================================================= */
+
+.koshi-culture__section-number {
+  position: absolute;
+
+  top: 27px;
+  right: 35px;
+
+  z-index: 3;
+
+  margin: 0;
+
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: 58px;
+  font-weight: 400;
+
+  line-height: 1;
+
+  color: rgba(255, 255, 255, 0.24);
+}
+
+
+/* =========================================================
+   IMAGE CAPTION
+========================================================= */
+
+.koshi-culture__caption {
+  position: absolute;
+
+  left: 40px;
+  right: 40px;
+  bottom: 24px;
+
+  z-index: 3;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  padding-top: 10px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.koshi-culture__caption span {
+  font-family: "Inter", sans-serif;
+
+  font-size: 8px;
+  font-weight: 500;
+
+  letter-spacing: 0.2em;
+
+  color: rgba(255, 255, 255, 0.5);
+}
+
+
+/* =========================================================
+   SMALL DESKTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .koshi-culture__panel {
+    padding: 30px 45px;
+  }
+
+  .koshi-culture__content h2 {
+    font-size: clamp(43px, 5vw, 60px);
+  }
+
+  .koshi-culture__description {
+    margin-top: 16px;
+    margin-bottom: 19px;
+  }
+
+  .koshi-culture-item {
+    min-height: 55px;
+  }
+
+  .koshi-culture__list {
+    margin-bottom: 19px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .koshi-culture {
+    display: flex;
+    flex-direction: column;
+
+    height: auto;
+    min-height: 0;
+  }
+
+  .koshi-culture__visual {
+    order: -1;
+
+    height: 55svh;
+    min-height: 400px;
+  }
+
+  .koshi-culture__panel {
+    height: auto;
+    min-height: 0;
+
+    padding: 65px 40px 70px;
+  }
+
+  .koshi-culture__vertical-text {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .koshi-culture__visual {
+    height: 48svh;
+    min-height: 340px;
+  }
+
+  .koshi-culture__location {
+    top: 23px;
+    left: 22px;
+  }
+
+  .koshi-culture__location-title {
+    font-size: 8px;
+  }
+
+  .koshi-culture__location p {
+    font-size: 9px;
+  }
+
+  .koshi-culture__section-number {
+    top: 21px;
+    right: 22px;
+
+    font-size: 47px;
+  }
+
+  .koshi-culture__caption {
+    left: 22px;
+    right: 22px;
+
+    bottom: 20px;
+  }
+
+  .koshi-culture__caption span {
+    font-size: 7px;
+  }
+
+  .koshi-culture__panel {
+    padding: 58px 22px 65px;
+  }
+
+  .koshi-culture__content h2 {
+    font-size: clamp(43px, 14vw, 59px);
+  }
+
+  .koshi-culture__description {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .koshi-culture-item {
+    grid-template-columns:
+      32px
+      minmax(0, 1fr)
+      30px;
+
+    min-height: 61px;
+
+    gap: 10px;
+  }
+
+  .koshi-culture-item__content h3 {
+    font-size: 17px;
+  }
+
+  .koshi-culture-item__content p {
+    font-size: 9px;
+  }
+
+  .koshi-culture__button {
+    width: 100%;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .koshi-culture__image,
+  .koshi-culture-item,
+  .koshi-culture-item__arrow,
+  .koshi-culture__button,
+  .koshi-culture__button-arrow {
+    transition: none;
+  }
+
+  .koshi-culture:hover .koshi-culture__image {
+    transform: none;
+  }
+}

@@ -1,0 +1,152 @@
+.avd-itin__disclaimer {
+  margin: -1rem 0 1.75rem;
+  max-width: 48rem;
+  font-size: 0.95rem;
+  color: var(--avd-muted);
+}
+
+.avd-itin__disclaimer strong {
+  color: var(--avd-ink);
+}
+
+.avd-itin__tabs {
+  display: inline-flex;
+  gap: 0.25rem;
+  padding: 0.3rem;
+  border-radius: 999px;
+  background: var(--avd-snow);
+  border: 1px solid var(--avd-line);
+  max-width: 100%;
+}
+
+.avd-itin__tab {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 3rem;
+  padding: 0.5rem 1.25rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--avd-muted);
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.avd-itin__tab[aria-selected="true"] {
+  background: var(--avd-forest);
+  color: #fff;
+}
+
+.avd-itin__tablabel {
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+.avd-itin__tabdays {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.avd-itin__panel {
+  margin-top: 1.75rem;
+}
+
+.avd-itin__panel:focus-visible {
+  outline: 2px solid var(--avd-gold);
+  outline-offset: 6px;
+}
+
+.avd-itin__desc {
+  max-width: 48rem;
+  margin-bottom: 1.75rem;
+}
+
+.avd-itin__days {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 720px) {
+  .avd-itin__days {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1080px) {
+  .avd-itin__days {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.avd-itin__day {
+  padding: 1.25rem 1.35rem 1.4rem;
+  background: var(--avd-snow);
+  border-radius: var(--avd-radius-panel);
+  border-left: 3px solid var(--avd-line);
+}
+
+.avd-itin__day--amarnath {
+  border-left-color: var(--avd-amarnath);
+}
+
+.avd-itin__day--vaishno {
+  border-left-color: var(--avd-vaishno);
+}
+
+.avd-itin__day--kashmir {
+  border-left-color: var(--avd-kashmir);
+}
+
+.avd-itin__dayhead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.avd-itin__daynum {
+  font: 600 0.9rem var(--avd-sans);
+  color: var(--avd-muted);
+}
+
+.avd-itin__daytitle {
+  margin-top: 0.6rem;
+  font-size: 1.2rem;
+}
+
+.avd-itin__acts {
+  margin-top: 0.75rem;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.95rem;
+}
+
+.avd-itin__acts li::marker {
+  color: var(--avd-gold-text);
+}
+
+.avd-itin__note {
+  margin-top: 0.85rem;
+  font-size: 0.875rem;
+  color: #4a1a21;
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--avd-maroon);
+}
+
+@media (max-width: 420px) {
+  .avd-itin__tabs {
+    display: flex;
+  }
+
+  .avd-itin__tab {
+    flex: 1;
+    padding-inline: 0.9rem;
+  }
+}

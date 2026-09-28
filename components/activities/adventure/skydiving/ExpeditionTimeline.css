@@ -1,0 +1,43 @@
+.sky-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 1.5rem;
+  position: relative;
+}
+.sky-timeline::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--sky-gold), rgba(169, 193, 211, 0.4));
+}
+.sky-timeline__step { position: relative; }
+.sky-timeline__num {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--sky-gold);
+  background: var(--sky-navy);
+  color: var(--sky-gold);
+  font: 600 0.85rem/1 var(--sky-sans);
+  font-variant-numeric: tabular-nums;
+  position: relative;
+}
+.sky-timeline__title { margin: 1.25rem 0 0; font-family: var(--sky-serif); font-weight: 600; font-size: 1.2rem; color: #fff; }
+.sky-timeline__text { margin: 0.5rem 0 0; font-size: 0.93rem; line-height: 1.6; color: rgba(238, 242, 245, 0.72); }
+
+@media (max-width: 1024px) {
+  .sky-timeline { grid-template-columns: 1fr; gap: 0; }
+  .sky-timeline::before { top: 0; bottom: 0; left: 21px; right: auto; width: 1px; height: auto; background: linear-gradient(180deg, var(--sky-gold), rgba(169, 193, 211, 0.4)); }
+  .sky-timeline__step { display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 1.25rem; padding-bottom: 2rem; }
+  .sky-timeline__num { grid-row: span 2; }
+  .sky-timeline__title { margin-top: 0.6rem; }
+  .sky-timeline__text { grid-column: 2; max-width: 52ch; }
+}

@@ -1,0 +1,323 @@
+/* ==========================================================================
+   Bada Char Dham — Hero
+   ========================================================================== */
+
+.bcd-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 78% 40%, rgba(91, 133, 166, 0.28) 0%, transparent 55%),
+    radial-gradient(80% 70% at 10% 100%, rgba(194, 112, 47, 0.16) 0%, transparent 60%),
+    var(--bcd-navy);
+  color: var(--bcd-ivory);
+  padding-block: clamp(6.5rem, 12vw, 9rem) clamp(4.5rem, 8vw, 6.5rem);
+}
+
+/* Faint compass rings behind the cross */
+.bcd-hero__rings {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: repeating-radial-gradient(
+    circle at 74% 48%,
+    transparent 0 58px,
+    rgba(217, 191, 134, 0.07) 58px 59px
+  );
+  mask-image: radial-gradient(circle at 74% 48%, #000 0 38%, transparent 70%);
+}
+
+.bcd-hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 5rem);
+}
+
+/* ---------------------------------------------------------------- text */
+
+.bcd-breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0 0 2rem;
+  padding: 0;
+  list-style: none;
+  font-size: 0.8125rem;
+  color: rgba(247, 243, 234, 0.7);
+}
+.bcd-breadcrumb li + li::before {
+  content: "/";
+  margin-right: 0.35rem;
+  opacity: 0.5;
+}
+.bcd-breadcrumb a {
+  color: inherit;
+  text-decoration: none;
+}
+.bcd-breadcrumb a:hover {
+  color: var(--bcd-gold-light);
+}
+.bcd-breadcrumb [aria-current] {
+  color: var(--bcd-ivory);
+}
+
+.bcd-hero__eyebrow {
+  margin: 0 0 1rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--bcd-gold-light);
+}
+
+.bcd-hero__title {
+  margin: 0;
+  font-family: var(--bcd-serif);
+  font-weight: 500;
+  font-size: clamp(2.75rem, 7.2vw, 5.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+}
+
+.bcd-hero__subtitle {
+  margin: 1.25rem 0 0;
+  max-width: 26ch;
+  font-family: var(--bcd-serif);
+  font-style: italic;
+  font-size: clamp(1.25rem, 2.3vw, 1.625rem);
+  line-height: 1.3;
+  color: var(--bcd-gold-light);
+}
+
+.bcd-hero__copy {
+  margin: 1.25rem 0 0;
+  max-width: 52ch;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgba(247, 243, 234, 0.82);
+}
+
+.bcd-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2.25rem;
+}
+
+/* --------------------------------------------------------------- cross */
+
+.bcd-hero__cross {
+  position: relative;
+  justify-self: center;
+  width: min(100%, 500px);
+  aspect-ratio: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    ".  n  ."
+    "w  c  e"
+    ".  s  .";
+  gap: clamp(0.4rem, 1.4vw, 0.9rem);
+}
+
+.bcd-hero__route {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.bcd-hero__route path {
+  fill: none;
+  stroke: var(--bcd-gold-light);
+  stroke-width: 1.2;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  opacity: 0.75;
+  vector-effect: non-scaling-stroke;
+}
+
+.bcd-hero__tile {
+  position: relative;
+  z-index: 1;
+  display: block;
+  overflow: hidden;
+  border-radius: 999px 999px 10px 10px; /* arched window */
+  outline: 1px solid rgba(217, 191, 134, 0.35);
+  outline-offset: 3px;
+  color: #fff;
+  text-decoration: none;
+  transition: outline-color 0.3s ease, transform 0.4s ease;
+}
+.bcd-hero__tile--north { grid-area: n; }
+.bcd-hero__tile--west { grid-area: w; }
+.bcd-hero__tile--east { grid-area: e; }
+.bcd-hero__tile--south { grid-area: s; }
+
+.bcd-hero__tile:hover,
+.bcd-hero__tile:focus-visible {
+  outline-color: var(--bcd-gold-light);
+  transform: translateY(-3px);
+}
+
+.bcd-hero__media {
+  position: absolute;
+  inset: 0;
+}
+.bcd-hero__media .bcd-media__img,
+.bcd-hero__media .bcd-media__art {
+  animation: bcd-hero-zoom 14s ease-out both;
+}
+
+.bcd-hero__tile-label {
+  position: absolute;
+  inset: auto 0 0;
+  display: grid;
+  gap: 0.1rem;
+  padding: 1.6rem 0.5rem 0.55rem;
+  text-align: center;
+  background: linear-gradient(to top, rgba(11, 27, 43, 0.85), transparent);
+}
+.bcd-hero__tile-dir {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bcd-gold-light);
+}
+.bcd-hero__tile-name {
+  font-family: var(--bcd-serif);
+  font-size: clamp(0.8125rem, 1.6vw, 1.0625rem);
+  line-height: 1.15;
+}
+
+.bcd-hero__rose {
+  grid-area: c;
+  display: grid;
+  place-items: center;
+  z-index: 1;
+}
+.bcd-hero__rose svg {
+  width: 78%;
+  height: auto;
+  overflow: visible;
+}
+.bcd-hero__rose circle {
+  fill: rgba(11, 27, 43, 0.6);
+  stroke: rgba(217, 191, 134, 0.55);
+  stroke-width: 0.8;
+}
+.bcd-hero__rose circle + circle {
+  fill: none;
+}
+.bcd-hero__rose-star {
+  fill: rgba(217, 191, 134, 0.22);
+  stroke: var(--bcd-gold-light);
+  stroke-width: 0.8;
+  stroke-linejoin: round;
+}
+.bcd-hero__rose-north {
+  fill: var(--bcd-gold-light);
+}
+
+/* --------------------------------------------------------------- scroll */
+
+.bcd-hero__scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 1.25rem;
+  translate: -50% 0;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid rgba(247, 243, 234, 0.3);
+  color: var(--bcd-ivory);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.bcd-hero__scroll:hover {
+  border-color: var(--bcd-gold-light);
+  background: rgba(217, 191, 134, 0.1);
+}
+
+/* ------------------------------------------------- load sequence (motion) */
+
+@media (prefers-reduced-motion: no-preference) {
+  .bcd-hero__text > * {
+    animation: bcd-rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  .bcd-hero__text > :nth-child(2) { animation-delay: 0.08s; }
+  .bcd-hero__text > :nth-child(3) { animation-delay: 0.16s; }
+  .bcd-hero__text > :nth-child(4) { animation-delay: 0.26s; }
+  .bcd-hero__text > :nth-child(5) { animation-delay: 0.34s; }
+  .bcd-hero__text > :nth-child(6) { animation-delay: 0.42s; }
+
+  /* Tiles appear in the traditional order N → W → E → S */
+  .bcd-hero__tile {
+    animation: bcd-tile-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(0.35s + var(--i, 0) * 0.22s);
+  }
+  .bcd-hero__rose svg {
+    animation: bcd-rose-in 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s both;
+  }
+  .bcd-hero__route path {
+    stroke-dashoffset: 1;
+    animation: bcd-draw 1.8s ease-in-out 0.5s forwards;
+  }
+  .bcd-hero__scroll svg {
+    animation: bcd-nudge 2.4s ease-in-out 2.5s 3;
+  }
+}
+
+@keyframes bcd-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes bcd-tile-in {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes bcd-rose-in {
+  from { opacity: 0; transform: rotate(-60deg) scale(0.8); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes bcd-draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes bcd-hero-zoom {
+  from { transform: scale(1.1); }
+  to { transform: scale(1); }
+}
+@keyframes bcd-nudge {
+  0%, 100% { transform: none; }
+  50% { transform: translateY(4px); }
+}
+
+/* ------------------------------------------------------------ responsive */
+
+@media (max-width: 900px) {
+  .bcd-hero__inner {
+    grid-template-columns: 1fr;
+  }
+  .bcd-hero__cross {
+    width: min(100%, 420px);
+  }
+  .bcd-hero__rings {
+    background: repeating-radial-gradient(circle at 50% 78%, transparent 0 48px, rgba(217, 191, 134, 0.07) 48px 49px);
+    mask-image: radial-gradient(circle at 50% 78%, #000 0 30%, transparent 62%);
+  }
+}
+
+@media (max-width: 420px) {
+  .bcd-hero__actions .bcd-btn {
+    flex: 1 1 100%;
+  }
+  .bcd-hero__tile-dir {
+    font-size: 0.5625rem;
+    letter-spacing: 0.12em;
+  }
+}

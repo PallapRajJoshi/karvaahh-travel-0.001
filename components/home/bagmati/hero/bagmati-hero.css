@@ -1,0 +1,218 @@
+.bagmati-hero {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: calc(100svh - 122px);
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  background: #07100c;
+  padding: 64px 64px 40px;
+}
+
+.bagmati-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bagmati-hero__image {
+  object-fit: cover;
+}
+
+.bagmati-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(7, 16, 12, 0.55) 0%,
+    rgba(7, 16, 12, 0.25) 32%,
+    rgba(7, 16, 12, 0.55) 70%,
+    rgba(7, 16, 12, 0.92) 100%
+  );
+}
+
+.bagmati-hero__content {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bagmati-hero__top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  color: #c9a45c;
+}
+
+.bagmati-hero__eyebrow::after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 12px;
+  background: rgba(247, 245, 239, 0.35);
+  margin-left: 14px;
+}
+
+.bagmati-hero__location {
+  color: rgba(247, 245, 239, 0.75);
+}
+
+.bagmati-hero__heading {
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: clamp(3rem, 7vw, 6.2rem);
+  line-height: 0.98;
+  color: #f7f5ef;
+  margin: 0;
+}
+
+.bagmati-hero__heading-accent {
+  font-style: italic;
+  color: #c9a45c;
+}
+
+.bagmati-hero__subheadline {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+  color: #e7e4dd;
+  margin: 0;
+}
+
+.bagmati-hero__description {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(231, 228, 221, 0.82);
+  max-width: 52ch;
+  margin: 0;
+}
+
+.bagmati-hero__actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.bagmati-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #07100c;
+  background: #c9a45c;
+  padding: 15px 26px;
+  border: 1px solid #c9a45c;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.bagmati-hero__cta:hover {
+  background: transparent;
+  color: #c9a45c;
+}
+
+.bagmati-hero__cta-arrow {
+  transition: transform 0.3s ease;
+}
+
+.bagmati-hero__cta:hover .bagmati-hero__cta-arrow {
+  transform: translate(2px, -2px);
+}
+
+.bagmati-hero__tagline {
+  font-family: "Inter", sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  color: rgba(231, 228, 221, 0.6);
+}
+
+.bagmati-hero__highlights {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(231, 228, 221, 0.18);
+}
+
+.bagmati-hero__highlight {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.bagmati-hero__highlight-number {
+  font-family: "Playfair Display", serif;
+  font-size: 1.1rem;
+  color: #c9a45c;
+}
+
+.bagmati-hero__highlight-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bagmati-hero__highlight-title {
+  font-family: "Inter", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #f7f5ef;
+}
+
+.bagmati-hero__highlight-detail {
+  font-family: "Inter", sans-serif;
+  font-size: 0.78rem;
+  color: rgba(231, 228, 221, 0.6);
+}
+
+@media (max-width: 1024px) {
+  .bagmati-hero {
+    padding: 48px 32px 32px;
+  }
+  .bagmati-hero__highlights {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bagmati-hero {
+    height: auto;
+    min-height: 100svh;
+    padding: 120px 24px 40px;
+  }
+  .bagmati-hero__highlights {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .bagmati-hero__actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bagmati-hero__cta,
+  .bagmati-hero__cta-arrow {
+    transition: none;
+  }
+}

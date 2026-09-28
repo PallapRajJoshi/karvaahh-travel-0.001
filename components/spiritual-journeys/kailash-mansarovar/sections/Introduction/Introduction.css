@@ -1,0 +1,76 @@
+.km-intro__grid {
+  display: grid;
+  gap: 3rem;
+}
+
+.km-intro__prose {
+  font-size: 1.0625rem;
+}
+
+.km-intro__prose p:first-child {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--km-ink);
+}
+
+.km-intro__aside {
+  align-self: start;
+  padding: 1.75rem;
+  border-top: 3px solid var(--km-gold);
+  border-radius: 0 0 var(--km-radius-l) var(--km-radius-l);
+  background: var(--km-snow);
+}
+
+.km-intro__aside-title {
+  font-family: var(--km-font-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--km-ink);
+}
+
+.km-intro__list {
+  margin-top: 1.25rem;
+}
+
+.km-intro__item {
+  display: flex;
+  gap: 0.9rem;
+  padding-block: 1.1rem;
+  border-top: 1px solid var(--km-line);
+}
+
+.km-intro__item-icon {
+  width: 1.4rem;
+  height: 1.4rem;
+  margin-top: 0.15rem;
+  color: var(--km-lake-text);
+}
+
+.km-intro__item-title {
+  font-weight: 600;
+  color: var(--km-ink);
+}
+
+.km-intro__item-text {
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+  color: var(--km-slate);
+}
+
+.km-intro__item-link {
+  margin-top: 0.4rem;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 1024px) {
+  .km-intro__grid {
+    grid-template-columns: minmax(0, 1fr) 21rem;
+    gap: 5rem;
+  }
+
+  .km-intro__aside {
+    position: sticky;
+    top: calc(var(--km-site-header) + var(--km-secnav-h) + 2rem);
+    margin-top: 4.5rem;
+  }
+}

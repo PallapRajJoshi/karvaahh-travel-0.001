@@ -1,0 +1,549 @@
+/* =====================================================================
+   Kailash Mansarovar Yatra — page foundation
+   Colour tokens (--km-blue, --km-gold …) are injected on .km-page from
+   config.ts → theme. Everything here is scoped under .km-page.
+   ===================================================================== */
+
+.km-page {
+  --km-font-display: var(--font-playfair, "Playfair Display"), Georgia, "Times New Roman", serif;
+  --km-font-body: var(--font-inter, "Inter"), system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --km-container: 1240px;
+  --km-gutter: clamp(1rem, 4vw, 2.5rem);
+  --km-section-y: clamp(4rem, 9vw, 7.5rem);
+  --km-radius: 14px;
+  --km-radius-lg: 22px;
+  --km-shadow-sm: 0 1px 2px rgba(10, 37, 64, 0.06), 0 2px 8px rgba(10, 37, 64, 0.05);
+  --km-shadow: 0 2px 6px rgba(10, 37, 64, 0.06), 0 14px 34px -12px rgba(10, 37, 64, 0.22);
+  --km-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --km-nav-h: 56px;
+  /* Height of the site's own sticky navbar, if any — override in globals if needed. */
+  --km-site-header-h: 0px;
+
+  background: var(--km-ivory);
+  color: var(--km-ink);
+  font-family: var(--km-font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  overflow-x: clip;
+}
+
+.km-page *,
+.km-page *::before,
+.km-page *::after {
+  box-sizing: border-box;
+}
+
+:where(.km-page) :where(h1, h2, h3, h4, p, ul, ol, dl, dd, figure, blockquote) {
+  margin: 0;
+}
+
+:where(.km-page) :where(ul, ol) {
+  padding: 0;
+  list-style: none;
+}
+
+.km-page :where(section[id], [id^="stage-"], [id^="package-"]) {
+  scroll-margin-top: calc(var(--km-site-header-h) + var(--km-nav-h) + 12px);
+}
+
+.km-page :focus-visible {
+  outline: 3px solid var(--km-gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.km-sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ------------------------------------------------------------------ */
+/* Layout                                                              */
+/* ------------------------------------------------------------------ */
+
+.km-container {
+  width: 100%;
+  max-width: calc(var(--km-container) + var(--km-gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--km-gutter);
+}
+
+.km-section {
+  padding-block: var(--km-section-y);
+  position: relative;
+}
+
+.km-section--white {
+  background: var(--km-white);
+}
+
+.km-section--tint {
+  background: var(--km-ivory-deep);
+}
+
+.km-section--dark {
+  background: var(--km-blue-deep);
+  color: rgba(255, 255, 255, 0.86);
+}
+
+/* ------------------------------------------------------------------ */
+/* Typography                                                          */
+/* ------------------------------------------------------------------ */
+
+.km-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--km-gold-deep);
+}
+
+.km-eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+}
+
+.km-heading {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: clamp(2.5rem, 5vw, 3.75rem);
+  max-width: 760px;
+}
+
+.km-heading--center {
+  margin-inline: auto;
+  text-align: center;
+  justify-items: center;
+}
+
+.km-heading__title {
+  font-family: var(--km-font-display);
+  font-weight: 500;
+  font-size: clamp(2rem, 1.35rem + 2.6vw, 3.25rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--km-blue);
+  text-wrap: balance;
+}
+
+.km-heading__intro {
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  color: var(--km-ink-soft);
+  max-width: 62ch;
+  text-wrap: pretty;
+}
+
+.km-heading--dark .km-eyebrow {
+  color: var(--km-gold);
+}
+
+.km-heading--dark .km-heading__title {
+  color: var(--km-white);
+}
+
+.km-heading--dark .km-heading__intro {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+/* ------------------------------------------------------------------ */
+/* Buttons                                                             */
+/* ------------------------------------------------------------------ */
+
+.km-btn {
+  --btn-bg: var(--km-blue);
+  --btn-fg: var(--km-white);
+  --btn-bd: var(--km-blue);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 48px;
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--btn-bd);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font: 600 0.9375rem/1.2 var(--km-font-body);
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.25s var(--km-ease),
+    color 0.25s var(--km-ease),
+    border-color 0.25s var(--km-ease),
+    transform 0.25s var(--km-ease),
+    box-shadow 0.25s var(--km-ease);
+}
+
+.km-btn__icon {
+  transition: transform 0.3s var(--km-ease);
+  flex: none;
+}
+
+.km-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -10px rgba(10, 37, 64, 0.45);
+}
+
+.km-btn:hover .km-btn__icon {
+  transform: translateX(3px);
+}
+
+.km-btn[href^="#"]:hover .km-btn__icon {
+  transform: translateY(3px);
+}
+
+.km-btn:active {
+  transform: translateY(0);
+}
+
+.km-btn--primary {
+  --btn-bg: var(--km-gold);
+  --btn-fg: var(--km-blue-deep);
+  --btn-bd: var(--km-gold);
+}
+
+.km-btn--primary:hover {
+  --btn-bg: #e2b45c;
+  --btn-bd: #e2b45c;
+}
+
+.km-btn--secondary {
+  --btn-bg: transparent;
+  --btn-fg: var(--km-blue);
+  --btn-bd: var(--km-blue);
+}
+
+.km-btn--secondary:hover {
+  --btn-bg: var(--km-blue);
+  --btn-fg: var(--km-white);
+}
+
+.km-btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: var(--km-teal);
+  --btn-bd: transparent;
+  padding-inline: 0.5rem;
+}
+
+.km-btn--ghost:hover {
+  box-shadow: none;
+  --btn-fg: var(--km-blue);
+}
+
+.km-btn--on-dark.km-btn--secondary {
+  --btn-fg: var(--km-white);
+  --btn-bd: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.km-btn--on-dark.km-btn--secondary:hover {
+  --btn-bg: var(--km-white);
+  --btn-fg: var(--km-blue-deep);
+  background: var(--km-white);
+}
+
+.km-btn--on-dark.km-btn--ghost {
+  --btn-fg: rgba(255, 255, 255, 0.9);
+}
+
+.km-btn--on-dark.km-btn--ghost:hover {
+  --btn-fg: var(--km-gold);
+}
+
+/* Small inline text link with arrow */
+.km-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--km-teal);
+  text-decoration: none;
+}
+
+.km-link svg {
+  transition: transform 0.3s var(--km-ease);
+}
+
+.km-link:hover {
+  color: var(--km-blue);
+}
+
+.km-link:hover svg {
+  transform: translateX(3px);
+}
+
+/* ------------------------------------------------------------------ */
+/* Badges & notices                                                    */
+/* ------------------------------------------------------------------ */
+
+.km-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  background: var(--km-teal-soft);
+  color: var(--km-teal);
+}
+
+.km-badge--gold {
+  background: rgba(216, 166, 74, 0.16);
+  color: var(--km-gold-deep);
+}
+
+.km-badge--glass {
+  background: rgba(10, 37, 64, 0.62);
+  color: var(--km-white);
+  backdrop-filter: blur(6px);
+}
+
+.km-badge--caution {
+  background: var(--km-caution-bg);
+  color: var(--km-caution);
+}
+
+.km-notice {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.9rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--km-radius);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.km-notice--caution {
+  background: var(--km-caution-bg);
+  color: #5e4309;
+  border: 1px solid rgba(169, 124, 43, 0.28);
+}
+
+.km-notice--caution .km-notice__icon {
+  color: var(--km-caution);
+}
+
+.km-notice--info {
+  background: var(--km-teal-soft);
+  color: #1c4d4f;
+  border: 1px solid rgba(42, 127, 130, 0.22);
+}
+
+.km-notice--info .km-notice__icon {
+  color: var(--km-teal);
+}
+
+.km-notice__icon {
+  margin-top: 1px;
+}
+
+.km-notice__title {
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Image frame (placeholder colour while loading — no CLS)             */
+/* ------------------------------------------------------------------ */
+
+.km-frame {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, #c9d6de, #8fa7b8 60%, #5f7d93);
+}
+
+.km-frame img {
+  object-fit: cover;
+}
+
+/* ------------------------------------------------------------------ */
+/* Reveal                                                              */
+/* ------------------------------------------------------------------ */
+
+.km-reveal[data-reveal="pending"] {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+}
+
+.km-reveal[data-reveal="shown"] {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.8s var(--km-ease) var(--km-delay, 0ms),
+    transform 0.8s var(--km-ease) var(--km-delay, 0ms);
+}
+
+/* ------------------------------------------------------------------ */
+/* Accordion                                                           */
+/* ------------------------------------------------------------------ */
+
+.km-accordion {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.km-accordion__item {
+  background: var(--km-white);
+  border: 1px solid var(--km-line);
+  border-radius: var(--km-radius);
+  transition:
+    border-color 0.3s var(--km-ease),
+    box-shadow 0.3s var(--km-ease);
+}
+
+.km-accordion__item.is-open {
+  border-color: rgba(42, 127, 130, 0.35);
+  box-shadow: var(--km-shadow-sm);
+}
+
+.km-accordion__heading {
+  font: inherit;
+}
+
+.km-accordion__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-height: 60px;
+  padding: 1rem 1.25rem;
+  background: none;
+  border: 0;
+  border-radius: var(--km-radius);
+  text-align: left;
+  font: 600 1.0313rem/1.4 var(--km-font-body);
+  color: var(--km-blue);
+  cursor: pointer;
+}
+
+.km-accordion__trigger:hover .km-accordion__title {
+  color: var(--km-teal);
+}
+
+.km-accordion__leading {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 10px;
+  background: var(--km-teal-soft);
+  color: var(--km-teal);
+}
+
+.km-accordion__title {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.75rem;
+  transition: color 0.2s;
+}
+
+.km-accordion__badge {
+  display: inline-flex;
+}
+
+.km-accordion__chevron {
+  flex: none;
+  color: var(--km-ink-soft);
+  transition: transform 0.35s var(--km-ease);
+}
+
+.is-open .km-accordion__chevron {
+  transform: rotate(180deg);
+  color: var(--km-teal);
+}
+
+.km-accordion__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s var(--km-ease);
+}
+
+.is-open > .km-accordion__panel {
+  grid-template-rows: 1fr;
+}
+
+.km-accordion__panel-inner {
+  overflow: hidden;
+}
+
+.km-accordion__content {
+  padding: 0 1.25rem 1.25rem;
+  color: var(--km-ink-soft);
+  display: grid;
+  gap: 0.75rem;
+  opacity: 0;
+  transition: opacity 0.3s var(--km-ease);
+}
+
+.is-open .km-accordion__content {
+  opacity: 1;
+}
+
+.km-accordion__content ul {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.km-accordion__content li {
+  position: relative;
+  padding-left: 1.4rem;
+}
+
+.km-accordion__content li::before {
+  content: "";
+  position: absolute;
+  left: 0.2rem;
+  top: 0.65em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--km-gold);
+}
+
+/* ------------------------------------------------------------------ */
+/* Reduced motion                                                      */
+/* ------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  .km-page *,
+  .km-page *::before,
+  .km-page *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .km-reveal[data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.km-page) {
+    scroll-behavior: smooth;
+  }
+}

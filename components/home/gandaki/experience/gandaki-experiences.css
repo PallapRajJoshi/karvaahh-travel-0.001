@@ -1,0 +1,96 @@
+.gandaki-experiences {
+  box-sizing: border-box;
+  width: 100%;
+  padding: clamp(3.5rem, 7vw, 6rem) clamp(1.5rem, 5vw, 4.5rem);
+  background: #f7f5ef;
+}
+
+.gandaki-experiences__intro {
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.gandaki-experiences__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.75rem;
+}
+
+.gandaki-experience-card {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e3ddcd;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.gandaki-experience-card__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.gandaki-experience-card__image {
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.gandaki-experience-card:hover .gandaki-experience-card__image {
+  transform: scale(1.06);
+}
+
+.gandaki-experience-card__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 16, 12, 0) 55%, rgba(7, 16, 12, 0.55) 100%);
+}
+
+.gandaki-experience-card__index {
+  position: absolute;
+  top: 0.9rem;
+  left: 1rem;
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #f7f5ef;
+  z-index: 1;
+}
+
+.gandaki-experience-card__title {
+  margin: 1.1rem 1.1rem 0.5rem;
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #0d1d16;
+}
+
+.gandaki-experience-card__description {
+  margin: 0 1.1rem 1.25rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #55645b;
+}
+
+@media (max-width: 1024px) {
+  .gandaki-experiences__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .gandaki-experiences__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gandaki-experience-card__image {
+    transition: none;
+  }
+}

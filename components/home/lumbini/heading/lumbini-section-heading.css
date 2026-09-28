@@ -1,0 +1,104 @@
+/* ==========================================================================
+   Lumbini Province — Shared Design Tokens
+   These custom properties are used across every Lumbini component.
+   ========================================================================== */
+:root {
+  --lumbini-cream: #f7f5ef;
+  --lumbini-cream-soft: #fbfaf6;
+  --lumbini-forest: #07100c;
+  --lumbini-forest-2: #0d1d16;
+  --lumbini-earth: #5b4636;
+  --lumbini-gold: #c9a45c;
+  --lumbini-gold-2: #b8954e;
+  --lumbini-saffron: #b8783e;
+  --lumbini-line: rgba(201, 164, 92, 0.28);
+  --lumbini-text-muted: rgba(7, 16, 12, 0.62);
+  --lumbini-text-muted-dark: rgba(247, 245, 239, 0.68);
+
+  --lumbini-font-serif: var(--font-playfair, "Playfair Display", serif);
+  --lumbini-font-sans: var(--font-inter, "Inter", sans-serif);
+
+  --lumbini-section-height: calc(100svh - 170px);
+}
+
+.lumbini-heading {
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  max-width: 62rem;
+}
+
+.lumbini-heading--center {
+  margin-inline: auto;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lumbini-heading__index {
+  font-family: var(--lumbini-font-serif);
+  font-size: clamp(0.75rem, 1vw, 0.85rem);
+  letter-spacing: 0.28em;
+  color: var(--lumbini-gold-2);
+  padding-top: 0.35rem;
+  flex-shrink: 0;
+}
+
+.lumbini-heading--center .lumbini-heading__index {
+  padding-top: 0;
+}
+
+.lumbini-heading__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.lumbini-heading__eyebrow {
+  font-family: var(--lumbini-font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--lumbini-saffron);
+  margin: 0;
+}
+
+.lumbini-heading__title {
+  font-family: var(--lumbini-font-serif);
+  font-weight: 500;
+  font-size: clamp(2rem, 4.2vw, 3.4rem);
+  line-height: 1.1;
+  color: var(--lumbini-forest);
+  margin: 0;
+}
+
+.lumbini-heading--dark .lumbini-heading__title {
+  color: var(--lumbini-cream);
+}
+
+.lumbini-heading__emphasis {
+  font-style: italic;
+  color: var(--lumbini-gold-2);
+}
+
+.lumbini-heading__description {
+  font-family: var(--lumbini-font-sans);
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  line-height: 1.65;
+  color: var(--lumbini-text-muted);
+  max-width: 38rem;
+  margin: 0;
+}
+
+.lumbini-heading--dark .lumbini-heading__description {
+  color: var(--lumbini-text-muted-dark);
+}
+
+@media (max-width: 768px) {
+  .lumbini-heading {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}

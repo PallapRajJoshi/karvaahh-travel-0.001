@@ -1,0 +1,157 @@
+/* ---------- Empty state ---------- */
+
+.boating-page .boat-empty {
+  padding: 2.25rem;
+  text-align: center;
+  color: var(--act-ink-soft);
+  background: var(--act-surface);
+  border: 1px dashed var(--act-border);
+  border-radius: var(--act-radius);
+}
+
+/* ---------- Experience categories ---------- */
+
+.boating-page .boat-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14.5rem), 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.boating-page .boat-categories__item {
+  min-width: 0;
+  padding: 1.35rem 1.4rem 1.5rem;
+  background: var(--act-surface);
+  border: 1px solid var(--act-border);
+  border-radius: var(--act-radius);
+}
+
+.boating-page .boat-categories__title {
+  margin: 0;
+  font-family: var(--act-font-display);
+  font-size: 1.28rem;
+  font-weight: 600;
+  color: var(--act-ink);
+}
+
+.boating-page .boat-categories__places {
+  margin: 0.45rem 0 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--act-accent-strong);
+}
+
+.boating-page .boat-categories__text {
+  margin: 0.75rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.64;
+  color: var(--act-ink-soft);
+}
+
+/* ---------- Pokhara lake loop ---------- */
+
+.boating-page .lake-loop {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: clamp(1rem, 2vw, 1.75rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.boating-page .lake-loop__item {
+  position: relative;
+  min-width: 0;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--act-accent-soft);
+}
+
+.boating-page .lake-loop__index {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--act-accent);
+}
+
+.boating-page .lake-loop__name {
+  margin: 0.35rem 0 0;
+  font-family: var(--act-font-display);
+  font-size: 1.7rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.boating-page .lake-loop__line {
+  margin: 0.5rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.64;
+  color: var(--act-ink-soft);
+}
+
+.boating-page .lake-loop__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+  margin-top: clamp(1.75rem, 3.5vw, 2.5rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--act-border);
+}
+
+.boating-page .lake-loop__extra {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--act-ink-soft);
+}
+
+/* ---------- Wildlife ---------- */
+
+.boating-page .boat-wildlife {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: var(--act-border);
+  border: 1px solid var(--act-border);
+  border-radius: var(--act-radius);
+  overflow: hidden;
+}
+
+.boating-page .boat-wildlife__item {
+  padding: 1.35rem 1.4rem 1.5rem;
+  background: var(--act-surface);
+}
+
+.boating-page .boat-wildlife__title {
+  margin: 0;
+  font-family: var(--act-font-display);
+  font-size: 1.22rem;
+  font-weight: 600;
+}
+
+.boating-page .boat-wildlife__detail {
+  margin: 0.6rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--act-ink-soft);
+}
+
+.boating-page .boat-wildlife__sightings {
+  margin: 0.85rem 0 0;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--act-border);
+  font-size: 0.8rem;
+  line-height: 1.55;
+  color: var(--act-ink-muted);
+}
+
+.boating-page .boat-wildlife__note {
+  margin: 1.1rem 0 0;
+  font-size: 0.82rem;
+  color: var(--act-ink-muted);
+}

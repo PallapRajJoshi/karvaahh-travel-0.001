@@ -1,0 +1,102 @@
+.pmy-stay { background: var(--pmy-ivory); }
+
+.pmy-stay__scale {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.8125rem;
+  color: var(--pmy-stone-deep);
+  margin-bottom: 1.25rem;
+}
+
+.pmy-stay__scale-bar {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, var(--pmy-saffron), var(--pmy-gold) 50%, var(--pmy-teal));
+  border-radius: 2px;
+}
+
+.pmy-stay__stops {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.pmy-stay__stop {
+  /* Surfaces get cooler and plainer as comfort becomes simpler */
+  padding: 1.5rem;
+  border-radius: var(--pmy-radius-m);
+  background: #fff;
+  background: color-mix(in srgb, #fff calc(100% - (var(--comfort) - 1) * 18%), var(--pmy-glacier));
+  border: 1px solid rgba(138, 125, 104, 0.2);
+}
+
+.pmy-stay__stop svg { color: var(--pmy-indigo); }
+
+.pmy-stay__stop h3 {
+  font-family: var(--pmy-serif);
+  font-weight: 500;
+  font-size: 1.35rem;
+  margin: 0.75rem 0 0.3rem;
+}
+
+.pmy-stay__type {
+  font-weight: 600;
+  font-size: 0.9375rem;
+  margin-bottom: 0.4rem;
+}
+
+.pmy-stay__stop p:last-child {
+  font-size: 0.9375rem;
+  color: var(--pmy-ink-soft);
+  line-height: 1.55;
+}
+
+.pmy-stay__note { margin-top: 1.75rem; }
+
+@media (max-width: 960px) {
+  .pmy-stay__stops { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 520px) {
+  .pmy-stay__stops { grid-template-columns: 1fr; }
+}
+
+/* ---------- Food ---------- */
+
+.pmy-food {
+  margin-top: clamp(4rem, 3rem + 4vw, 6rem);
+}
+
+.pmy-food h2 { margin-bottom: 2rem; }
+
+.pmy-food__list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.pmy-food__list svg { color: var(--pmy-saffron); }
+
+.pmy-food__list h3 {
+  font-family: var(--pmy-serif);
+  font-weight: 500;
+  font-size: 1.15rem;
+  margin: 0.6rem 0 0.3rem;
+}
+
+.pmy-food__list p {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--pmy-ink-soft);
+}
+
+@media (max-width: 1000px) {
+  .pmy-food__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 480px) {
+  .pmy-food__list { grid-template-columns: 1fr; }
+}

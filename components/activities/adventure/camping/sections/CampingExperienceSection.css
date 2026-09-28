@@ -1,0 +1,54 @@
+/* Default (mobile, reduced motion, no JS): a simple stacked story. */
+.cmp-night { background: var(--cmp-blue-deep); color: var(--cmp-snow); }
+.cmp-night__stage { padding: var(--cmp-section) var(--cmp-gutter); max-width: var(--cmp-max); margin-inline: auto; }
+.cmp-night__media { display: none; }
+.cmp-night__steps { display: none; }
+.cmp-night__title {
+  margin: 0 0 2.5rem;
+  font-family: var(--cmp-serif); font-weight: 600;
+  font-size: clamp(2.2rem, 4.6vw, 3.6rem); line-height: 1.05;
+}
+.cmp-night__scenes { list-style: none; margin: 0; padding: 0; display: grid; gap: 2.5rem; }
+.cmp-night__scene-media { position: relative; aspect-ratio: 16 / 10; border-radius: var(--cmp-radius); overflow: hidden; margin-bottom: 1.1rem; }
+.cmp-night__num { display: block; font-size: 0.85rem; font-weight: 600; color: var(--cmp-gold); font-variant-numeric: tabular-nums; }
+.cmp-night__scene-title { margin: 0.3rem 0 0.5rem; font-family: var(--cmp-serif); font-size: 1.9rem; font-weight: 600; }
+.cmp-night__scene-text { margin: 0; line-height: 1.7; color: rgba(247, 245, 239, 0.75); max-width: 34rem; }
+
+/* Pinned cinematic mode (desktop, motion allowed; class added by JS). */
+.cmp-night.is-pinned .cmp-night__stage {
+  position: relative; height: 100vh; max-width: none; padding: 0;
+  display: grid; grid-template-columns: 1.35fr 1fr;
+  overflow: hidden;
+}
+.cmp-night.is-pinned .cmp-night__media { display: block; position: relative; overflow: hidden; }
+.cmp-night.is-pinned .cmp-night__media-layer { position: absolute; inset: 0; will-change: opacity, transform; }
+.cmp-night.is-pinned .cmp-night__media-shade {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(11, 27, 43, 0) 60%, rgba(11, 27, 43, 1) 100%);
+}
+.cmp-night.is-pinned .cmp-night__content {
+  position: relative;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: calc(var(--cmp-nav-h) + 2rem) clamp(2rem, 5vw, 5rem) 3rem clamp(1.5rem, 3vw, 3rem);
+}
+.cmp-night.is-pinned .cmp-night__title { font-size: 1rem; font-family: var(--cmp-sans); font-weight: 600; color: var(--cmp-gold); margin: 0 0 2rem; }
+.cmp-night.is-pinned .cmp-night__scenes { position: relative; display: block; min-height: 18rem; }
+.cmp-night.is-pinned .cmp-night__scene { position: absolute; inset: 0; }
+.cmp-night.is-pinned .cmp-night__scene:not(:first-child) { opacity: 0; visibility: hidden; }
+.cmp-night.is-pinned .cmp-night__scene-media { display: none; }
+.cmp-night.is-pinned .cmp-night__num { font-family: var(--cmp-serif); font-size: 1.1rem; }
+.cmp-night.is-pinned .cmp-night__scene-title { font-size: clamp(2.6rem, 4.4vw, 4rem); line-height: 1.02; margin: 0.6rem 0 1.1rem; }
+.cmp-night.is-pinned .cmp-night__scene-text { font-size: 1.1rem; }
+
+.cmp-night.is-pinned .cmp-night__steps {
+  list-style: none; margin: 2rem 0 0; padding: 0;
+  display: flex; gap: 0.5rem;
+}
+.cmp-night__step { flex: 1; }
+.cmp-night__step span {
+  display: block; padding-top: 0.6rem;
+  border-top: 2px solid rgba(247, 245, 239, 0.18);
+  font-size: 0.72rem; color: rgba(247, 245, 239, 0.45);
+  transition: border-color 0.4s var(--cmp-ease), color 0.4s;
+}
+.cmp-night__step.is-active span { border-color: var(--cmp-gold); color: var(--cmp-snow); }

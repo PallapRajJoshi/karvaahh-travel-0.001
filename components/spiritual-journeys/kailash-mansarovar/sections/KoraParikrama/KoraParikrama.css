@@ -1,0 +1,381 @@
+.km-kora {
+  background: var(--km-ink);
+  color: #dfe8ee;
+}
+
+.km-kora__intro {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.km-kora__intro .km-heading {
+  margin-bottom: 0;
+}
+
+/* Linear route sequence */
+.km-kora__path {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.km-kora__path li {
+  display: flex;
+  align-items: center;
+}
+
+.km-kora__path li + li::before {
+  content: "";
+  width: 1.6rem;
+  height: 1px;
+  margin-inline: 0.6rem;
+  background: var(--km-gold);
+  opacity: 0.6;
+}
+
+.km-kora__path li.is-high {
+  color: var(--km-gold);
+}
+
+.km-kora__facts {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--km-line-dark);
+}
+
+.km-kora__facts dt {
+  font-size: 0.8125rem;
+  color: var(--km-mist);
+}
+
+.km-kora__facts dd {
+  margin: 0.2rem 0 0;
+  font-weight: 500;
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .km-kora__facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+
+/* Circuit: diagram + stages ----------------------------------------------- */
+
+.km-circuit {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.km-circuit__figure {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 420px;
+}
+
+.km-circuit__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.km-circuit__north path {
+  fill: none;
+  stroke: var(--km-mist);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.km-circuit__north text {
+  font: 600 11px var(--km-font-body);
+  fill: var(--km-mist);
+}
+
+.km-circuit__peak {
+  fill: var(--km-ink-3);
+}
+
+.km-circuit__cap {
+  fill: #e8eef2;
+}
+
+.km-circuit__mountain-label {
+  font: italic 13px var(--km-font-display);
+  fill: var(--km-mist);
+}
+
+.km-circuit__loop {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.18);
+  stroke-width: 2;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+/* First-visible state is drawn; only hide once JS has confirmed it can reveal */
+.km-js .km-circuit__figure:not([data-revealed]) .km-circuit__draw {
+  stroke-dashoffset: 1;
+}
+
+.km-circuit__draw {
+  transition: stroke-dashoffset 1.8s var(--km-ease);
+}
+
+.km-circuit__progress {
+  fill: none;
+  stroke: var(--km-gold);
+  stroke-width: 3;
+  stroke-linecap: round;
+  transition: stroke-dasharray 0.7s var(--km-ease);
+}
+
+.km-circuit__chevron {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.45);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.km-circuit__halo {
+  fill: var(--km-gold);
+  opacity: 0;
+  transition: opacity 0.4s var(--km-ease);
+}
+
+.km-circuit__dot {
+  fill: var(--km-ink);
+  stroke: #cfdbe4;
+  stroke-width: 2;
+  transition: fill 0.3s var(--km-ease), stroke 0.3s var(--km-ease);
+}
+
+.km-circuit__node.is-high .km-circuit__dot {
+  stroke: var(--km-gold);
+}
+
+.km-circuit__node.is-active .km-circuit__dot {
+  fill: var(--km-gold);
+  stroke: var(--km-gold);
+}
+
+.km-circuit__node.is-active .km-circuit__halo {
+  opacity: 0.18;
+}
+
+.km-circuit__label {
+  font: 600 13px var(--km-font-body);
+  fill: #fff;
+}
+
+.km-circuit__sublabel {
+  font: 400 11.5px var(--km-font-body);
+  fill: var(--km-mist);
+}
+
+.km-circuit__node.is-high .km-circuit__sublabel {
+  fill: var(--km-gold);
+}
+
+.km-circuit__caption {
+  margin-top: 1rem;
+  font-size: 0.8125rem;
+  text-align: center;
+  color: var(--km-mist);
+}
+
+/* Stage list */
+.km-circuit__stages {
+  display: grid;
+}
+
+.km-stage {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  gap: 1rem;
+  padding-block: 1.75rem;
+  border-top: 1px solid var(--km-line-dark);
+  transition: opacity 0.4s var(--km-ease);
+}
+
+.km-stage__num {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+  transition: background-color 0.3s var(--km-ease), border-color 0.3s var(--km-ease), color 0.3s;
+}
+
+.km-stage.is-active .km-stage__num {
+  border-color: var(--km-gold);
+  background: var(--km-gold);
+  color: var(--km-ink);
+}
+
+.km-stage__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
+}
+
+.km-stage__name {
+  font-family: var(--km-font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.km-stage__elev {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--km-mist);
+}
+
+.km-stage--high .km-stage__elev {
+  color: var(--km-gold);
+}
+
+.km-stage__summary {
+  margin-top: 0.75rem;
+  max-width: 60ch;
+  color: #c9d5de;
+}
+
+.km-stage__meta {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.1rem 0 0;
+  font-size: 0.925rem;
+}
+
+.km-stage__meta dt {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--km-mist);
+}
+
+.km-stage__meta dd {
+  margin: 0.1rem 0 0;
+  color: #dfe8ee;
+}
+
+@media (min-width: 1024px) {
+  .km-circuit {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .km-circuit__figure {
+    position: sticky;
+    top: calc(var(--km-site-header) + var(--km-secnav-h) + 3rem);
+    max-width: 480px;
+  }
+
+  .km-stage {
+    opacity: 0.72;
+  }
+
+  .km-stage.is-active {
+    opacity: 1;
+  }
+
+  .km-stage__meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Dolma La panel ----------------------------------------------------------- */
+
+.km-dolma {
+  display: grid;
+  gap: 2rem;
+  margin-top: clamp(3rem, 6vw, 5rem);
+  padding: clamp(1.75rem, 4vw, 3rem);
+  border: 1px solid rgba(201, 164, 92, 0.4);
+  border-radius: var(--km-radius-l);
+  background: linear-gradient(160deg, rgba(201, 164, 92, 0.1), rgba(201, 164, 92, 0) 60%), var(--km-ink-2);
+}
+
+.km-dolma__elev {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--km-font-display);
+  font-size: clamp(2.25rem, 1.6rem + 2.4vw, 3.5rem);
+  line-height: 1;
+  color: var(--km-gold);
+}
+
+.km-dolma__icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.km-dolma__title {
+  margin-top: 1rem;
+  font-family: var(--km-font-display);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.km-dolma__lede {
+  margin-top: 0.75rem;
+  max-width: 44ch;
+  color: #c9d5de;
+}
+
+.km-dolma__points {
+  display: grid;
+  gap: 1.25rem 2rem;
+}
+
+.km-dolma__points li {
+  padding-left: 1rem;
+  border-left: 2px solid rgba(201, 164, 92, 0.5);
+}
+
+.km-dolma__point-title {
+  font-weight: 600;
+  color: #fff;
+}
+
+.km-dolma__point-text {
+  margin-top: 0.2rem;
+  font-size: 0.925rem;
+  color: #b9c7d2;
+}
+
+@media (min-width: 720px) {
+  .km-dolma__points {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .km-dolma {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    column-gap: 4rem;
+  }
+
+  .km-dolma__notice {
+    grid-column: 1 / -1;
+  }
+}

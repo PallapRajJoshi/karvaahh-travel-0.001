@@ -1,0 +1,40 @@
+/* Section 13 — FAQ */
+
+.akop-faq__grid {
+  display: grid;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.akop-faq__intro .akop-heading {
+  margin-bottom: 1.5rem;
+}
+
+.akop-faq__help {
+  display: grid;
+  justify-items: start;
+  gap: 0.5rem;
+  color: var(--akop-text-muted);
+}
+
+.akop-faq__answer {
+  color: var(--akop-text);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.akop-faq__answer + .akop-faq__answer {
+  margin-top: 0.75rem;
+}
+
+@media (min-width: 1024px) {
+  .akop-faq__grid {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 4rem;
+  }
+
+  .akop-faq__intro {
+    position: sticky;
+    top: calc(var(--akop-sticky-offset) + 5.5rem);
+  }
+}

@@ -1,0 +1,122 @@
+.mc-ps__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(20px, 3vw, 32px);
+  align-items: start;
+}
+
+.mc-ps__card {
+  padding: clamp(24px, 3vw, 36px);
+  border-radius: var(--mc-radius);
+  border: 1px solid var(--mc-line-dark);
+  background: var(--mc-forest-2);
+}
+
+.mc-ps__card-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.mc-ps__card-head h3 {
+  font-family: var(--mc-serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.mc-ps__icon {
+  width: 26px;
+  height: 26px;
+  color: var(--mc-gold);
+}
+
+.mc-ps__verified {
+  margin-left: auto;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(201, 164, 92, 0.5);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--mc-gold);
+}
+
+.mc-ps__intro {
+  color: var(--mc-on-dark-2);
+}
+
+.mc-ps__permits {
+  display: grid;
+  gap: 16px;
+  margin: 22px 0;
+}
+
+.mc-ps__permits > div {
+  padding-left: 16px;
+  border-left: 2px solid var(--mc-gold);
+}
+
+.mc-ps__permits dt {
+  font-weight: 600;
+}
+
+.mc-ps__permits dd {
+  margin-top: 4px;
+  font-size: 0.9375rem;
+  color: var(--mc-on-dark-2);
+}
+
+.mc-ps__bring-title {
+  margin-top: 26px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mc-gold);
+}
+
+.mc-ps__bring {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+  padding-left: 18px;
+  font-size: 0.9375rem;
+  color: var(--mc-on-dark-2);
+}
+
+.mc-ps__bring li::marker {
+  color: var(--mc-gold);
+}
+
+.mc-ps__fine {
+  margin-top: 22px;
+  font-size: 0.8125rem;
+  color: var(--mc-on-dark-2);
+}
+
+.mc-ps__safety {
+  display: grid;
+  gap: 18px;
+  padding: 0;
+  list-style: none;
+}
+
+.mc-ps__safety h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.mc-ps__safety p {
+  margin-top: 4px;
+  font-size: 0.9375rem;
+  color: var(--mc-on-dark-2);
+}
+
+@media (max-width: 900px) {
+  .mc-ps__grid {
+    grid-template-columns: 1fr;
+  }
+}

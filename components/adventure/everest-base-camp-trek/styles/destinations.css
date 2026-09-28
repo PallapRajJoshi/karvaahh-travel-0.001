@@ -1,0 +1,147 @@
+.ebc-destinations__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(18px, 2vw, 28px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Rows 1–2 hold the eight trail stops; Kala Patthar and the Khumbu Glacier —
+   the visual climax of the route — share a wider final row on desktop. */
+@media (min-width: 1024px) {
+  .ebc-destinations__grid > .ebc-dcard:nth-child(9),
+  .ebc-destinations__grid > .ebc-dcard:nth-child(10) {
+    grid-column: span 2;
+  }
+
+  .ebc-destinations__grid > .ebc-dcard:nth-child(9) .ebc-dcard__media,
+  .ebc-destinations__grid > .ebc-dcard:nth-child(10) .ebc-dcard__media {
+    aspect-ratio: 16 / 8;
+  }
+}
+
+.ebc-dcard {
+  display: flex;
+  flex-direction: column;
+  background: var(--ebc-white);
+  border-radius: var(--ebc-radius-md);
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(10, 34, 56, 0.06), 0 12px 32px -20px rgba(10, 34, 56, 0.3);
+  transition: transform 0.45s var(--ebc-ease), box-shadow 0.45s var(--ebc-ease);
+}
+
+.ebc-dcard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 1px 2px rgba(10, 34, 56, 0.06), 0 26px 50px -24px rgba(10, 34, 56, 0.4);
+}
+
+.ebc-dcard__media {
+  aspect-ratio: 4 / 3;
+}
+
+.ebc-dcard__media img {
+  transition: transform 1.1s var(--ebc-ease) !important;
+}
+
+.ebc-dcard:hover .ebc-dcard__media img {
+  transform: scale(1.07);
+}
+
+.ebc-dcard__badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 1;
+}
+
+.ebc-dcard__stop {
+  position: absolute;
+  right: 14px;
+  bottom: 10px;
+  z-index: 1;
+  font-family: var(--ebc-font-heading);
+  font-size: 2.2rem;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+}
+
+.ebc-dcard__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px 20px 22px;
+}
+
+.ebc-dcard__meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.76rem;
+  color: var(--ebc-muted);
+}
+
+.ebc-dcard__meta svg {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  color: var(--ebc-teal-ink);
+}
+
+.ebc-dcard__title {
+  margin-top: 8px !important;
+  font-size: 1.4rem;
+  color: var(--ebc-blue);
+}
+
+.ebc-dcard__tagline {
+  margin-top: 4px !important;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--ebc-gold-ink);
+}
+
+.ebc-dcard__desc {
+  margin-top: 12px !important;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--ebc-muted);
+}
+
+.ebc-dcard__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+.ebc-dcard__alt {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ebc-blue);
+}
+
+.ebc-dcard__alt svg {
+  width: 18px;
+  height: 18px;
+  color: var(--ebc-teal-ink);
+}
+
+@media (max-width: 1023px) {
+  .ebc-destinations__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .ebc-destinations__grid {
+    grid-template-columns: 1fr;
+  }
+}

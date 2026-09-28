@@ -1,0 +1,126 @@
+/* ==========================================================================
+   Madhesh Province — Shared Design Tokens
+   Import once (in MadheshHome.tsx) before any section CSS.
+   ========================================================================== */
+
+.madhesh-page {
+  --madhesh-cream: #f7f5ef;
+  --madhesh-green-950: #07100c;
+  --madhesh-green-900: #0d1d16;
+  --madhesh-green-800: #142019;
+  --madhesh-gold: #c9a45c;
+  --madhesh-gold-dark: #b8954e;
+  --madhesh-ink: #1a221d;
+  --madhesh-ink-soft: rgba(20, 32, 25, 0.66);
+  --madhesh-border: rgba(20, 32, 25, 0.12);
+  --madhesh-border-on-dark: rgba(247, 245, 239, 0.18);
+
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --madhesh-section-h: calc(100svh - 170px);
+  --madhesh-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  background: var(--madhesh-cream);
+  color: var(--madhesh-ink);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+.madhesh-page * {
+  box-sizing: border-box;
+}
+
+.madhesh-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--madhesh-gold-dark);
+}
+
+.madhesh-eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: var(--madhesh-gold-dark);
+  display: inline-block;
+}
+
+.madhesh-gold-italic {
+  font-style: italic;
+  color: var(--madhesh-gold);
+}
+
+.madhesh-arrow {
+  display: inline-block;
+  transition: transform 0.35s var(--madhesh-ease);
+}
+
+a:hover .madhesh-arrow,
+button:hover .madhesh-arrow {
+  transform: translate(3px, -3px);
+}
+
+.madhesh-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.95rem 1.9rem;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.3s var(--madhesh-ease), color 0.3s var(--madhesh-ease),
+    border-color 0.3s var(--madhesh-ease);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.madhesh-btn--gold {
+  background: var(--madhesh-gold);
+  color: var(--madhesh-green-950);
+}
+.madhesh-btn--gold:hover {
+  background: var(--madhesh-gold-dark);
+}
+
+.madhesh-btn--outline {
+  background: transparent;
+  border-color: var(--madhesh-border-on-dark);
+  color: var(--madhesh-cream);
+}
+.madhesh-btn--outline:hover {
+  border-color: var(--madhesh-gold);
+  color: var(--madhesh-gold);
+}
+
+.madhesh-btn--outline-dark {
+  background: transparent;
+  border-color: var(--madhesh-border);
+  color: var(--madhesh-ink);
+}
+.madhesh-btn--outline-dark:hover {
+  border-color: var(--madhesh-green-900);
+  background: var(--madhesh-green-900);
+  color: var(--madhesh-cream);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .madhesh-page *,
+  .madhesh-page *::before,
+  .madhesh-page *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

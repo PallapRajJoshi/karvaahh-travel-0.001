@@ -1,0 +1,324 @@
+/* ==========================================================================
+   Api Nampa Base Camp Trek — page tokens & shared primitives
+   Everything is scoped under .an-page so nothing leaks into other routes.
+   ========================================================================== */
+
+.an-page {
+  --an-blue: #123b5d;
+  --an-blue-deep: #0b2640;
+  --an-blue-ink: #081b2e;
+  --an-teal: #2a7f82;
+  --an-teal-ink: #1f6568; /* AA-safe teal for small text on ivory */
+  --an-gold: #d8a64a;
+  --an-gold-soft: #ecd3a0;
+  --an-ivory: #f8f6f0;
+  --an-stone: #efeae0;
+  --an-sand: #e4dccb;
+  --an-charcoal: #252b32;
+  --an-muted: #58616b;
+  --an-white: #ffffff;
+  --an-line: rgba(18, 59, 93, 0.12);
+  --an-line-strong: rgba(18, 59, 93, 0.22);
+  --an-line-light: rgba(255, 255, 255, 0.16);
+
+  --an-serif: var(--font-playfair, "Playfair Display"), Georgia, "Times New Roman", serif;
+  --an-sans: var(--font-inter, "Inter"), system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --an-radius-sm: 8px;
+  --an-radius: 14px;
+  --an-radius-lg: 22px;
+  --an-shadow: 0 1px 2px rgba(8, 27, 46, 0.06), 0 12px 32px -12px rgba(8, 27, 46, 0.18);
+  --an-shadow-lift: 0 2px 4px rgba(8, 27, 46, 0.08), 0 24px 48px -16px rgba(8, 27, 46, 0.28);
+  --an-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --an-gutter: clamp(16px, 4vw, 32px);
+  --an-section-y: clamp(72px, 9vw, 128px);
+  --an-subnav-h: 56px;
+
+  background: var(--an-ivory);
+  color: var(--an-charcoal);
+  font-family: var(--an-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  overflow-x: clip;
+}
+
+/* Smooth anchor scrolling, only while this page is mounted. */
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.an-page) {
+    scroll-behavior: smooth;
+  }
+}
+
+.an-page *,
+.an-page *::before,
+.an-page *::after {
+  box-sizing: border-box;
+}
+
+.an-page :where(img) {
+  max-width: 100%;
+}
+
+.an-page :where(h1, h2, h3, h4) {
+  font-family: var(--an-serif);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: inherit;
+}
+
+.an-page :where(p, ul, ol, dl, dd, figure) {
+  margin: 0;
+}
+
+.an-page :where(ul, ol) {
+  padding: 0;
+  list-style: none;
+}
+
+.an-page :where(a) {
+  color: inherit;
+}
+
+.an-page :where(a, button, summary):focus-visible {
+  outline: 2px solid var(--an-gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.an-page section[id] {
+  scroll-margin-top: calc(var(--an-subnav-h) + 24px);
+}
+
+/* ---------- Layout ---------- */
+
+.an-container {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: var(--an-gutter);
+}
+
+.an-section {
+  padding-block: var(--an-section-y);
+}
+
+.an-section--stone {
+  background: var(--an-stone);
+}
+
+.an-section--dark {
+  background: var(--an-blue-deep);
+  color: var(--an-white);
+}
+
+.an-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Section heading ---------- */
+
+.an-heading {
+  max-width: 760px;
+  margin-bottom: clamp(36px, 5vw, 56px);
+}
+
+.an-heading--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.an-heading__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--an-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--an-teal-ink);
+  margin-bottom: 16px;
+}
+
+.an-heading__eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: var(--an-gold);
+}
+
+.an-heading--center .an-heading__eyebrow::after {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: var(--an-gold);
+}
+
+.an-heading__title {
+  font-size: clamp(2rem, 1.3rem + 2.6vw, 3.25rem);
+  color: var(--an-blue);
+}
+
+.an-heading__intro {
+  margin-top: 18px;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  color: var(--an-muted);
+  max-width: 64ch;
+}
+
+.an-heading--center .an-heading__intro {
+  margin-inline: auto;
+}
+
+.an-section--dark .an-heading__eyebrow {
+  color: var(--an-gold-soft);
+}
+
+.an-section--dark .an-heading__title {
+  color: var(--an-white);
+}
+
+.an-section--dark .an-heading__intro {
+  color: rgba(255, 255, 255, 0.74);
+}
+
+/* ---------- Buttons ---------- */
+
+.an-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-family: var(--an-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.25s var(--an-ease),
+    color 0.25s var(--an-ease),
+    border-color 0.25s var(--an-ease),
+    transform 0.25s var(--an-ease);
+}
+
+.an-btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  transition: transform 0.25s var(--an-ease);
+}
+
+.an-btn:hover svg {
+  transform: translateX(3px);
+}
+
+.an-btn--gold {
+  background: var(--an-gold);
+  color: var(--an-blue-ink);
+}
+
+.an-btn--gold:hover {
+  background: #e3b660;
+}
+
+.an-btn--ghost {
+  border-color: rgba(255, 255, 255, 0.55);
+  color: var(--an-white);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(4px);
+}
+
+.an-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: var(--an-white);
+}
+
+.an-btn--blue {
+  background: var(--an-blue);
+  color: var(--an-white);
+}
+
+.an-btn--blue:hover {
+  background: var(--an-blue-deep);
+}
+
+.an-btn--outline {
+  border-color: var(--an-line-strong);
+  color: var(--an-blue);
+  background: transparent;
+}
+
+.an-btn--outline:hover {
+  border-color: var(--an-blue);
+  background: rgba(18, 59, 93, 0.04);
+}
+
+/* ---------- Tags ---------- */
+
+.an-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(216, 166, 74, 0.16);
+  color: #7a5717;
+}
+
+.an-tag--teal {
+  background: rgba(42, 127, 130, 0.12);
+  color: var(--an-teal-ink);
+}
+
+/* ---------- Scroll reveal ----------
+   Content is visible by default. Hidden state only applies once the client
+   component has mounted (data-reveal="pending"), so no-JS and crawlers see everything. */
+
+.an-reveal[data-reveal="pending"] {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+}
+
+.an-reveal[data-reveal="shown"] {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.9s var(--an-ease),
+    transform 0.9s var(--an-ease);
+  transition-delay: var(--an-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .an-page *,
+  .an-page *::before,
+  .an-page *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .an-reveal[data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}

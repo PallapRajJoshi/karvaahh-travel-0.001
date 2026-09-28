@@ -1,0 +1,114 @@
+.bcd-pack__head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem 3rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+.bcd-pack__head .bcd-heading {
+  margin-bottom: 0;
+}
+.bcd-pack__progress {
+  display: grid;
+  gap: 0.6rem;
+  width: min(100%, 280px);
+  font-size: 0.9375rem;
+}
+.bcd-pack__progress strong {
+  font-family: var(--bcd-serif);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.bcd-pack__bar {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--bcd-ivory-2);
+  overflow: hidden;
+}
+.bcd-pack__bar span {
+  display: block;
+  height: 100%;
+  background: var(--bcd-gold);
+  transition: width 0.35s ease;
+}
+.bcd-pack__reset {
+  justify-self: start;
+  padding: 0.35rem 0;
+  border: 0;
+  background: none;
+  font: 600 0.875rem var(--bcd-sans);
+  color: var(--bcd-gold-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.bcd-pack__reset:disabled {
+  color: var(--bcd-stone);
+  text-decoration: none;
+  cursor: default;
+}
+
+.bcd-pack__grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+}
+.bcd-pack__group {
+  min-width: 0;
+  margin: 0;
+  padding: 1.25rem;
+  border: 1px solid var(--bcd-line);
+  border-radius: var(--bcd-radius);
+  background: var(--bcd-ivory);
+}
+.bcd-pack__legend {
+  float: left; /* keeps the legend inside the fieldset box */
+  width: 100%;
+  margin-bottom: 0.9rem;
+  padding: 0;
+  font-family: var(--bcd-serif);
+  font-size: 1.25rem;
+}
+.bcd-pack__group ul {
+  clear: both;
+  display: grid;
+  gap: 0.2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.bcd-pack__group li {
+  display: grid;
+  grid-template-columns: 1.25rem 1fr;
+  gap: 0.6rem;
+  align-items: start;
+}
+.bcd-pack__group input {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin: 0.55rem 0 0;
+  accent-color: var(--bcd-navy);
+  cursor: pointer;
+}
+.bcd-pack__group label {
+  padding: 0.4rem 0;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  cursor: pointer;
+}
+.bcd-pack__group input:checked + label {
+  color: var(--bcd-stone);
+  text-decoration: line-through;
+  text-decoration-color: var(--bcd-gold);
+}
+
+@media (max-width: 1100px) {
+  .bcd-pack__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  .bcd-pack__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 480px) {
+  .bcd-pack__grid { grid-template-columns: 1fr; }
+}

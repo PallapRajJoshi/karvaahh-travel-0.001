@@ -1,0 +1,156 @@
+.bagmati-adventure {
+  box-sizing: border-box;
+  width: 100%;
+  height: calc(100svh - 170px);
+  min-height: 560px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #f7f5ef;
+}
+
+.bagmati-adventure__media {
+  position: relative;
+  height: 100%;
+}
+
+.bagmati-adventure__image {
+  object-fit: cover;
+}
+
+.bagmati-adventure__content {
+  box-sizing: border-box;
+
+  padding: 64px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.bagmati-adventure__eyebrow {
+  font-family: "Inter", sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  color: #b8954e;
+}
+
+.bagmati-adventure__heading {
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: clamp(2rem, 3.4vw, 3.2rem);
+  line-height: 1.08;
+  color: #0d1d16;
+  margin: 0;
+}
+
+.bagmati-adventure__heading em {
+  font-style: italic;
+  color: #b8954e;
+}
+
+.bagmati-adventure__description {
+  font-family: "Inter", sans-serif;
+  font-size: 0.96rem;
+  line-height: 1.7;
+  color: #4a5750;
+  max-width: 50ch;
+  margin: 0;
+}
+
+.bagmati-adventure__columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  padding-top: 12px;
+  border-top: 1px solid #e7e4dd;
+}
+
+.bagmati-adventure__column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bagmati-adventure__column-label {
+  font-family: "Inter", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: #b8954e;
+}
+
+.bagmati-adventure__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bagmati-adventure__list li {
+  font-family: "Inter", sans-serif;
+  font-size: 0.88rem;
+  color: #0d1d16;
+  padding-left: 14px;
+  position: relative;
+}
+
+.bagmati-adventure__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 1px;
+  background: #b8954e;
+}
+
+.bagmati-adventure__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #0d1d16;
+  border-bottom: 1px solid #0d1d16;
+  padding-bottom: 4px;
+  text-decoration: none;
+  margin-top: 8px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.bagmati-adventure__cta:hover {
+  color: #b8954e;
+  border-color: #b8954e;
+}
+
+@media (max-width: 1024px) {
+  .bagmati-adventure {
+    height: auto;
+    grid-template-columns: 1fr;
+  }
+  .bagmati-adventure__media {
+    height: 320px;
+  }
+  .bagmati-adventure__content {
+    padding: 48px 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .bagmati-adventure__content {
+    padding: 40px 20px;
+  }
+  .bagmati-adventure__columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bagmati-adventure__cta {
+    transition: none;
+  }
+}

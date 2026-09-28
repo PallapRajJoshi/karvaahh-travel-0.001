@@ -1,0 +1,248 @@
+.lumbini-destinations {
+  box-sizing: border-box;
+  width: 100%;
+  padding: clamp(3.5rem, 8vh, 6rem) clamp(1.5rem, 5vw, 5rem);
+  background: var(--lumbini-forest-2);
+}
+
+.lumbini-destinations__inner {
+  max-width: 92rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vh, 3rem);
+}
+
+.lumbini-destinations .lumbini-heading__title,
+.lumbini-destinations .lumbini-heading__description,
+.lumbini-destinations .lumbini-heading__eyebrow {
+  color: var(--lumbini-cream);
+}
+
+.lumbini-destinations .lumbini-heading__eyebrow {
+  color: var(--lumbini-saffron);
+}
+
+.lumbini-destinations .lumbini-heading__emphasis {
+  color: var(--lumbini-gold);
+}
+
+.lumbini-destinations .lumbini-heading__description {
+  color: rgba(247, 245, 239, 0.68);
+}
+
+.lumbini-destinations__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  border-top: 1px solid rgba(247, 245, 239, 0.14);
+  border-bottom: 1px solid rgba(247, 245, 239, 0.14);
+  padding: 1rem 0;
+}
+
+.lumbini-destinations__filter {
+  box-sizing: border-box;
+  font-family: var(--lumbini-font-sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: rgba(247, 245, 239, 0.68);
+  background: transparent;
+  border: 1px solid rgba(247, 245, 239, 0.2);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.lumbini-destinations__filter:hover {
+  border-color: var(--lumbini-gold);
+  color: var(--lumbini-cream);
+}
+
+.lumbini-destinations__filter--active {
+  background: var(--lumbini-gold);
+  border-color: var(--lumbini-gold);
+  color: var(--lumbini-forest);
+  font-weight: 600;
+}
+
+.lumbini-destinations__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: 12rem;
+  gap: 1.25rem;
+}
+
+.lumbini-destination-card {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(247, 245, 239, 0.12);
+  background: rgba(247, 245, 239, 0.03);
+}
+
+.lumbini-destination-card--large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.lumbini-destination-card--medium {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.lumbini-destination-card--small {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.lumbini-destination-card__media {
+  position: relative;
+  width: 100%;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.lumbini-destination-card__image {
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.lumbini-destination-card:hover .lumbini-destination-card__image {
+  transform: scale(1.06);
+}
+
+.lumbini-destination-card__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(7, 16, 12, 0) 40%,
+    rgba(7, 16, 12, 0.88) 100%
+  );
+}
+
+.lumbini-destination-card__category {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  z-index: 1;
+  font-family: var(--lumbini-font-sans);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--lumbini-cream);
+  background: rgba(184, 120, 62, 0.55);
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
+}
+
+.lumbini-destination-card__body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  padding: 1rem 1.15rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.lumbini-destination-card__heading-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.lumbini-destination-card__number {
+  font-family: var(--lumbini-font-serif);
+  font-size: 0.72rem;
+  color: var(--lumbini-gold);
+}
+
+.lumbini-destination-card__title {
+  font-family: var(--lumbini-font-serif);
+  font-size: clamp(1rem, 1.4vw, 1.3rem);
+  font-weight: 500;
+  color: var(--lumbini-cream);
+  margin: 0;
+}
+
+.lumbini-destination-card__location {
+  font-family: var(--lumbini-font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: rgba(247, 245, 239, 0.6);
+  margin: 0;
+}
+
+.lumbini-destination-card__description {
+  font-family: var(--lumbini-font-sans);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: rgba(247, 245, 239, 0.78);
+  margin: 0.25rem 0 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.lumbini-destination-card--small .lumbini-destination-card__description {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .lumbini-destinations__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 860px) {
+  .lumbini-destinations__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 10rem;
+  }
+
+  .lumbini-destination-card--large {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .lumbini-destination-card--medium {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+}
+
+@media (max-width: 520px) {
+  .lumbini-destinations__grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 13rem;
+  }
+
+  .lumbini-destination-card--large,
+  .lumbini-destination-card--medium,
+  .lumbini-destination-card--small {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lumbini-destination-card__image {
+    transition: none;
+  }
+  .lumbini-destination-card:hover .lumbini-destination-card__image {
+    transform: none;
+  }
+}

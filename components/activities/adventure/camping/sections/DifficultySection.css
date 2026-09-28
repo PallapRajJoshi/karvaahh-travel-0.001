@@ -1,0 +1,39 @@
+.cmp-diff__wrap { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+.cmp-diff__svg { width: 100%; height: auto; display: block; }
+.cmp-diff__ground { stroke: rgba(13, 29, 22, 0.25); stroke-width: 1; }
+.cmp-diff__peak {
+  fill: rgba(13, 29, 22, 0.06);
+  stroke: rgba(13, 29, 22, 0.25); stroke-width: 1.2;
+  transition: fill 0.6s var(--cmp-ease), stroke 0.6s var(--cmp-ease), transform 0.6s var(--cmp-ease);
+  transform-origin: 50% 100%; transform-box: fill-box;
+}
+.cmp-diff__peak.is-past { fill: rgba(47, 90, 69, 0.2); }
+.cmp-diff__peak.is-active { fill: var(--cmp-moss); stroke: var(--cmp-forest); transform: scaleY(1.04); }
+.cmp-diff__snow { fill: var(--cmp-snow); stroke: rgba(13, 29, 22, 0.25); stroke-width: 0.8; }
+
+.cmp-diff__tabs { display: grid; gap: 0.5rem; }
+.cmp-diff__tab {
+  display: grid; grid-template-columns: 8.5rem 1fr; align-items: baseline; gap: 1rem;
+  width: 100%; padding: 1rem 1.2rem;
+  border-radius: var(--cmp-radius);
+  border: 1px solid rgba(13, 29, 22, 0.14);
+  background: transparent; text-align: left; cursor: pointer;
+  font-family: var(--cmp-sans); color: var(--cmp-charcoal);
+  transition: background-color 0.35s var(--cmp-ease), border-color 0.35s, color 0.35s;
+}
+.cmp-diff__tab:hover { border-color: var(--cmp-forest); }
+.cmp-diff__tab[aria-selected="true"] { background: var(--cmp-forest); border-color: var(--cmp-forest); color: var(--cmp-snow); }
+.cmp-diff__tab-level { font-family: var(--cmp-serif); font-size: 1.45rem; font-weight: 600; }
+.cmp-diff__tab-sum { font-size: 0.92rem; opacity: 0.85; }
+
+.cmp-diff__panel { margin-top: 1.4rem; padding: 0.4rem 0.2rem; animation: cmp-panel-in 0.5s var(--cmp-ease); }
+@keyframes cmp-panel-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.cmp-diff__alt { margin: 0; font-weight: 600; color: var(--cmp-gold-deep); font-size: 0.92rem; }
+.cmp-diff__detail { margin: 0.4rem 0 1.2rem; line-height: 1.65; color: var(--cmp-ink-soft); }
+.cmp-diff__ex-label { margin: 0 0 0.3rem; font-size: 0.8rem; font-weight: 600; color: var(--cmp-forest); }
+.cmp-diff__examples { margin: 0; font-size: 0.9rem; line-height: 1.7; color: var(--cmp-moss); }
+
+@media (max-width: 900px) {
+  .cmp-diff__wrap { grid-template-columns: 1fr; }
+  .cmp-diff__tab { grid-template-columns: 1fr; gap: 0.2rem; }
+}

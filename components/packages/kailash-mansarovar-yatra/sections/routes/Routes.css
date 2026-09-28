@@ -1,0 +1,146 @@
+.km-routes__grid {
+  display: grid;
+  gap: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.km-routes__grid > li {
+  display: flex;
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .km-routes__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .km-routes__grid > li:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .km-routes__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.km-route {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--km-white);
+  border-radius: var(--km-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--km-shadow-sm);
+}
+
+.km-route__media {
+  aspect-ratio: 16 / 10;
+}
+
+.km-route__mode {
+  position: absolute;
+  left: 0.85rem;
+  bottom: 0.85rem;
+}
+
+.km-route__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.5rem;
+}
+
+.km-route__title {
+  font-family: var(--km-font-display);
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 1.2;
+  color: var(--km-blue);
+}
+
+.km-route__overview {
+  font-size: 0.9375rem;
+  color: var(--km-ink-soft);
+}
+
+.km-route__label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--km-ink-soft);
+}
+
+/* Vertical route line */
+.km-route__stops {
+  display: grid;
+  gap: 0.15rem;
+  position: relative;
+}
+
+.km-route__stops li {
+  position: relative;
+  padding: 0.2rem 0 0.2rem 1.6rem;
+  font-size: 0.9063rem;
+  font-weight: 500;
+  color: var(--km-blue);
+}
+
+.km-route__stops li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 0.62em;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 2px solid var(--km-teal);
+  background: var(--km-white);
+  z-index: 1;
+}
+
+.km-route__stops li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 1.1em;
+  bottom: -0.55em;
+  width: 1px;
+  background: rgba(42, 127, 130, 0.35);
+}
+
+.km-route__stops li:last-child::before {
+  background: var(--km-gold);
+  border-color: var(--km-gold);
+}
+
+.km-route__meta {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0.25rem 0 0;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--km-line);
+}
+
+.km-route__meta dt {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--km-ink-soft);
+}
+
+.km-route__meta dd {
+  margin: 0.15rem 0 0;
+  font-size: 0.9063rem;
+  color: var(--km-ink);
+}
+
+.km-route__cta {
+  margin-top: auto;
+  padding-top: 0.5rem;
+}

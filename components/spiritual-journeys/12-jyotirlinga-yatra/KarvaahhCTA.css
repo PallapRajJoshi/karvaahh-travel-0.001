@@ -1,0 +1,106 @@
+/* ---------- approach ---------- */
+
+.jyl-approach {
+  background: var(--jyl-ivory);
+}
+
+.jyl-approach__steps {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.jyl-approach__step {
+  display: grid;
+  align-content: start;
+  gap: 0.6rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--jyl-charcoal);
+}
+
+.jyl-approach__num {
+  font-family: var(--jyl-serif);
+  font-size: 2.25rem;
+  line-height: 1;
+  color: var(--jyl-gold);
+}
+
+.jyl-approach__title {
+  font-size: 1.3rem;
+}
+
+.jyl-approach__text {
+  font-size: 0.95rem;
+}
+
+/* ---------- final CTA ---------- */
+
+.jyl-cta {
+  background:
+    radial-gradient(50% 70% at 50% 0%, rgba(184, 149, 78, 0.16), transparent 70%),
+    var(--jyl-night);
+  padding-block: clamp(5rem, 11vw, 8.5rem);
+  text-align: center;
+}
+
+.jyl-cta__inner {
+  display: grid;
+  justify-items: center;
+  gap: 1.25rem;
+  max-width: 48rem;
+}
+
+.jyl-cta__mark {
+  width: 72px;
+  height: 72px;
+  fill: var(--jyl-gold);
+  margin-bottom: 0.5rem;
+}
+
+.jyl-cta__ring {
+  stroke: rgba(184, 149, 78, 0.35);
+  stroke-width: 1;
+}
+
+.jyl-cta__title {
+  color: var(--jyl-ivory);
+  font-size: clamp(2.2rem, 1.4rem + 3.4vw, 3.8rem);
+  letter-spacing: -0.015em;
+}
+
+.jyl-cta__copy {
+  color: #aeb7c6;
+  font-size: 1.05rem;
+  max-width: 38rem;
+}
+
+.jyl-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 900px) {
+  .jyl-approach__steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .jyl-approach__steps {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .jyl-cta__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .jyl-cta__actions .jyl-btn:not(.jyl-btn--ghost) {
+    width: 100%;
+  }
+}

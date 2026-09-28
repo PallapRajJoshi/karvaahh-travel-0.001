@@ -1,0 +1,212 @@
+/* Shared styles for the planning / preparation information sections */
+
+.jyl-festivals {
+  background: var(--jyl-ivory);
+}
+
+.jyl-info__rows {
+  margin: 0;
+  display: grid;
+  border-top: 1px solid var(--jyl-stone);
+}
+
+.jyl-info__row {
+  display: grid;
+  grid-template-columns: minmax(12rem, 0.4fr) 1fr;
+  gap: 1.5rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--jyl-stone);
+}
+
+.jyl-info__row dt {
+  font-family: var(--jyl-serif);
+  font-size: 1.3rem;
+  color: var(--jyl-charcoal);
+}
+
+.jyl-info__row dd {
+  margin: 0;
+  align-self: center;
+}
+
+.jyl-info__tiles {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.jyl-info__tiles--four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.jyl-info__tile {
+  padding: 1.35rem 1.25rem;
+  border-radius: var(--jyl-radius);
+  background: var(--jyl-ivory);
+}
+
+.jyl-info__tile dt {
+  font-weight: 600;
+  color: var(--jyl-charcoal);
+  margin-bottom: 0.4rem;
+}
+
+.jyl-info__tile dd {
+  margin: 0;
+  font-size: 0.925rem;
+  line-height: 1.6;
+}
+
+.jyl-section--night .jyl-info__tile {
+  background: var(--jyl-night-2);
+  border: 1px solid rgba(174, 183, 198, 0.14);
+}
+
+.jyl-section--night .jyl-info__tile dt {
+  color: var(--jyl-gold-soft);
+}
+
+.jyl-info__note {
+  margin-top: 2rem;
+}
+
+.jyl-info__more {
+  margin-top: 2rem;
+}
+
+.jyl-best__lead {
+  font-family: var(--jyl-serif);
+  font-size: clamp(1.25rem, 1rem + 1vw, 1.65rem);
+  line-height: 1.45;
+  color: var(--jyl-charcoal);
+  max-width: 44rem;
+  margin: -1rem 0 2.5rem;
+}
+
+.jyl-altitude {
+  background:
+    linear-gradient(180deg, rgba(15, 27, 48, 0) 60%, rgba(37, 64, 106, 0.35)),
+    var(--jyl-night);
+}
+
+/* ---------- health & safety ---------- */
+
+.jyl-health__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.jyl-health__panel {
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  border-radius: var(--jyl-radius-lg);
+  border: 1px solid var(--jyl-stone);
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+}
+
+.jyl-health__title {
+  font-size: 1.5rem;
+}
+
+.jyl-health__tips {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem 1rem;
+}
+
+.jyl-health__tips li,
+.jyl-list li {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.jyl-health__tips li::before,
+.jyl-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  background: var(--jyl-gold);
+  transform: rotate(45deg);
+}
+
+/* ---------- stay & meals ---------- */
+
+.jyl-stay__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 6vw, 5rem);
+}
+
+.jyl-stay__grid .jyl-heading {
+  margin-bottom: 1.5rem;
+}
+
+.jyl-stay__grid .jyl-heading__title {
+  font-size: clamp(1.6rem, 1.2rem + 1.5vw, 2.2rem);
+}
+
+.jyl-list {
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+/* ---------- responsible travel ---------- */
+
+.jyl-responsible {
+  background: var(--jyl-stone-2);
+}
+
+.jyl-responsible__list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.jyl-responsible__list li {
+  padding: 0.7rem 1.1rem;
+  border-radius: 999px;
+  background: var(--jyl-white);
+  border: 1px solid var(--jyl-stone);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 1000px) {
+  .jyl-info__tiles--four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 860px) {
+  .jyl-info__tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .jyl-health__grid,
+  .jyl-stay__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .jyl-info__tiles,
+  .jyl-info__tiles--four,
+  .jyl-health__tips {
+    grid-template-columns: 1fr;
+  }
+
+  .jyl-info__row {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+}

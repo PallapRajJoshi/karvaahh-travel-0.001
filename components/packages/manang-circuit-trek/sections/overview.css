@@ -1,0 +1,112 @@
+.mc-overview__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  gap: clamp(32px, 6vw, 80px);
+  align-items: start;
+}
+
+.mc-overview__story .mc-heading {
+  margin-bottom: 24px;
+}
+
+.mc-overview__lead {
+  font-family: var(--mc-serif);
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  line-height: 1.45;
+  color: var(--mc-forest);
+}
+
+.mc-overview__p {
+  margin-top: 18px;
+  color: var(--mc-ink-2);
+}
+
+.mc-overview__card {
+  padding: clamp(24px, 3vw, 36px);
+  border-radius: var(--mc-radius);
+  background: var(--mc-forest);
+  color: var(--mc-on-dark);
+}
+
+.mc-overview__card-title {
+  margin-bottom: 18px;
+  font-family: var(--mc-serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.mc-overview__highlights {
+  display: grid;
+  gap: 14px;
+  padding: 0;
+  list-style: none;
+}
+
+.mc-overview__highlights li {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 12px;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--mc-on-dark-2);
+}
+
+.mc-overview__tick {
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  color: var(--mc-gold);
+}
+
+.mc-facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: clamp(48px, 7vw, 80px);
+  border-top: 1px solid var(--mc-line);
+  border-left: 1px solid var(--mc-line);
+}
+
+.mc-facts__item {
+  padding: 20px 22px;
+  border-right: 1px solid var(--mc-line);
+  border-bottom: 1px solid var(--mc-line);
+  background: var(--mc-paper);
+}
+
+.mc-facts__item dt {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mc-ink-3);
+}
+
+.mc-facts__item dd {
+  margin-top: 6px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--mc-ink);
+}
+
+.mc-facts__item small {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: var(--mc-ink-3);
+}
+
+@media (max-width: 960px) {
+  .mc-overview__grid {
+    grid-template-columns: 1fr;
+  }
+  .mc-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .mc-facts {
+    grid-template-columns: 1fr;
+  }
+}

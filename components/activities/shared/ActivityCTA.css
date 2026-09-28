@@ -1,0 +1,39 @@
+.act-cta {
+  background: var(--act-cta-bg, var(--act-ink));
+  color: var(--act-cta-ink, #fff);
+  border-radius: var(--act-radius, 4px);
+  padding: clamp(2.25rem, 5vw, 3.75rem) clamp(1.5rem, 4vw, 3.25rem);
+}
+
+.act-cta__inner {
+  max-width: 44rem;
+}
+
+.act-cta__heading {
+  margin: 0;
+  font-family: var(--act-font-display);
+  font-size: clamp(1.7rem, 1.2rem + 2vw, 2.6rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.act-cta__text {
+  margin: 1rem 0 0;
+  font-size: 1rem;
+  line-height: 1.68;
+  color: var(--act-cta-ink-soft, rgba(255, 255, 255, 0.78));
+}
+
+.act-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: clamp(1.6rem, 3vw, 2.1rem);
+}
+
+@media (max-width: 40rem) {
+  .act-cta__actions .act-btn {
+    flex: 1 1 100%;
+  }
+}

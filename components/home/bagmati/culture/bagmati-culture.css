@@ -1,0 +1,84 @@
+.bagmati-culture {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 96px 64px;
+  background: #f7f5ef;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.bagmati-culture__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+
+.bagmati-culture-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bagmati-culture-card__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+
+.bagmati-culture-card__image {
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+.bagmati-culture-card:hover .bagmati-culture-card__image {
+  transform: scale(1.05);
+}
+
+.bagmati-culture-card__number {
+  font-family: "Playfair Display", serif;
+  font-size: 0.9rem;
+  color: #b8954e;
+}
+
+.bagmati-culture-card__title {
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: #0d1d16;
+  margin: 0;
+}
+
+.bagmati-culture-card__description {
+  font-family: "Inter", sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #4a5750;
+  margin: 0;
+}
+
+@media (max-width: 1024px) {
+  .bagmati-culture {
+    padding: 72px 32px;
+  }
+  .bagmati-culture__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .bagmati-culture {
+    padding: 56px 20px;
+  }
+  .bagmati-culture__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bagmati-culture-card__image {
+    transition: none;
+  }
+}

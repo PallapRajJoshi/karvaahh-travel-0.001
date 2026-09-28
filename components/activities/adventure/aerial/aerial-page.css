@@ -1,0 +1,137 @@
+/* Shared tokens for all aerial activity pages — scoped so nothing leaks. */
+.aerial-page {
+  --ae-forest: #0d1d16;
+  --ae-forest-2: #17332a;
+  --ae-navy: #0b1b2b;
+  --ae-gold: #c9a45c;
+  --ae-gold-deep: #b8954e;
+  --ae-gold-text: #7d5f24; /* gold that passes AA on white/cream */
+  --ae-cream: #f7f5ef;
+  --ae-paper: #ffffff;
+  --ae-ink: #15211c;
+  --ae-muted: #4f5d56;
+  --ae-line: rgba(13, 29, 22, 0.12);
+  --ae-sky: #dfe8e6;
+
+  --ae-serif: var(--font-playfair, "Playfair Display"), Georgia, "Times New Roman", serif;
+  --ae-sans: var(--font-inter, "Inter"), system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --ae-r-lg: 22px;
+  --ae-r-md: 14px;
+  --ae-r-sm: 8px;
+  --ae-shadow: 0 1px 2px rgba(13, 29, 22, 0.06), 0 12px 32px -14px rgba(13, 29, 22, 0.22);
+  --ae-gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --ae-section-y: clamp(4rem, 9vw, 7rem);
+  /* Height of the layout-level Navbar if it overlays the hero. */
+  --ae-nav-offset: 88px;
+
+  font-family: var(--ae-sans);
+  color: var(--ae-ink);
+  background: var(--ae-paper);
+  overflow-x: clip;
+}
+
+.aerial-page *,
+.aerial-page *::before,
+.aerial-page *::after {
+  box-sizing: border-box;
+}
+
+.aerial-page .ae-container {
+  width: min(1200px, 100% - 2 * var(--ae-gutter));
+  margin-inline: auto;
+}
+
+.aerial-page .ae-section {
+  padding-block: var(--ae-section-y);
+}
+.aerial-page .ae-section--cream {
+  background: var(--ae-cream);
+}
+.aerial-page .ae-section--dark {
+  background: var(--ae-forest);
+  color: var(--ae-cream);
+}
+
+/* Buttons */
+.aerial-page .ae-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 48px;
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
+  font-family: var(--ae-sans);
+  font-size: 0.975rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.aerial-page .ae-btn--gold {
+  background: var(--ae-gold);
+  color: var(--ae-forest);
+}
+.aerial-page .ae-btn--gold:hover {
+  background: #d7b56f;
+}
+.aerial-page .ae-btn--ghost-light {
+  color: var(--ae-cream);
+  border-color: rgba(247, 245, 239, 0.6);
+}
+.aerial-page .ae-btn--ghost-light:hover {
+  background: rgba(247, 245, 239, 0.12);
+  border-color: var(--ae-cream);
+}
+.aerial-page .ae-btn--forest {
+  background: var(--ae-forest);
+  color: var(--ae-cream);
+}
+.aerial-page .ae-btn--forest:hover {
+  background: var(--ae-forest-2);
+}
+.aerial-page .ae-btn--outline {
+  color: var(--ae-forest);
+  border-color: var(--ae-forest);
+}
+.aerial-page .ae-btn--outline:hover {
+  background: var(--ae-forest);
+  color: var(--ae-cream);
+}
+.aerial-page .ae-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.aerial-page a:focus-visible,
+.aerial-page button:focus-visible,
+.aerial-page summary:focus-visible,
+.aerial-page [tabindex]:focus-visible {
+  outline: 3px solid var(--ae-gold);
+  outline-offset: 3px;
+}
+
+.aerial-page .ae-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aerial-page *,
+  .aerial-page *::before,
+  .aerial-page *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

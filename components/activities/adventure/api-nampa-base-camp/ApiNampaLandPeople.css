@@ -1,0 +1,172 @@
+/* Shared layout for Conservation (image left) and Culture (image right). */
+
+.an-lp__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(40px, 6vw, 88px);
+  align-items: start;
+}
+
+.an-lp--flip .an-lp__visual {
+  order: 2;
+}
+
+.an-lp__visual {
+  position: sticky;
+  top: calc(var(--karvaahh-nav-offset, 0px) + var(--an-subnav-h) + 32px);
+}
+
+.an-lp__frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--an-radius-lg);
+  overflow: hidden;
+  background: var(--an-sand);
+}
+
+.an-lp__image {
+  object-fit: cover;
+}
+
+.an-lp__stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: -48px 20px 0;
+  position: relative;
+  border-radius: var(--an-radius);
+  background: var(--an-blue);
+  color: var(--an-white);
+  box-shadow: var(--an-shadow-lift);
+}
+
+.an-lp__stats > div {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 4px;
+  padding: 18px 16px;
+}
+
+.an-lp__stats > div + div {
+  border-left: 1px solid var(--an-line-light);
+}
+
+.an-lp__stats dd {
+  margin: 0;
+  font-family: var(--an-serif);
+  font-size: clamp(1.05rem, 0.9rem + 0.6vw, 1.375rem);
+  line-height: 1.2;
+}
+
+.an-lp__stats dt {
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--an-gold-soft);
+}
+
+.an-lp__collage {
+  padding-bottom: 64px;
+}
+
+.an-lp__frame--main {
+  width: 84%;
+}
+
+.an-lp__frame--inset {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 48%;
+  aspect-ratio: 1;
+  border: 6px solid var(--an-stone);
+  box-shadow: var(--an-shadow-lift);
+}
+
+.an-lp__content .an-heading {
+  margin-bottom: 36px;
+}
+
+.an-lp__points {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 32px;
+}
+
+.an-lp__point {
+  display: flex;
+  gap: 14px;
+}
+
+.an-lp__icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  padding: 9px;
+  border-radius: 50%;
+  background: rgba(42, 127, 130, 0.1);
+  color: var(--an-teal);
+}
+
+.an-lp__point h3 {
+  font-family: var(--an-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--an-blue);
+  line-height: 1.35;
+}
+
+.an-lp__point p {
+  margin-top: 6px;
+  font-size: 0.9375rem;
+  color: var(--an-muted);
+}
+
+@media (max-width: 960px) {
+  .an-lp__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .an-lp__visual,
+  .an-lp--flip .an-lp__visual {
+    position: relative;
+    top: auto;
+    order: 0;
+  }
+
+  .an-lp__frame {
+    aspect-ratio: 16 / 10;
+  }
+
+  .an-lp__frame--inset {
+    aspect-ratio: 1;
+    width: 36%;
+  }
+}
+
+@media (max-width: 560px) {
+  .an-lp__points {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .an-lp__stats {
+    margin: -32px 10px 0;
+  }
+
+  .an-lp__stats > div {
+    padding: 14px 10px;
+  }
+
+  .an-lp__frame--main {
+    width: 100%;
+  }
+
+  .an-lp__collage {
+    padding-bottom: 0;
+  }
+
+  .an-lp__frame--inset {
+    display: none;
+  }
+}

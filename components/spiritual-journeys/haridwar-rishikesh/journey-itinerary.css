@@ -1,0 +1,217 @@
+.hry-itin {
+  background:
+    radial-gradient(80% 60% at 0% 0%, rgba(90, 148, 134, 0.18), rgba(90, 148, 134, 0) 60%),
+    var(--hry-forest);
+}
+
+.hry-itin__layout {
+  display: grid;
+  gap: 8px 64px;
+}
+
+/* Small screens: CTA sits below the days (aside's children join the grid) */
+@media (max-width: 999px) {
+  .hry-itin__aside {
+    display: contents;
+  }
+
+  .hry-itin__days {
+    order: 2;
+  }
+
+  .hry-itin__layout .hry-itin__foot {
+    order: 3;
+    margin: 32px 0 0;
+  }
+}
+
+@media (min-width: 1000px) {
+  .hry-itin__layout {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+    align-items: start;
+  }
+
+  .hry-itin__aside {
+    position: sticky;
+    top: calc(var(--hry-header-offset) + var(--hry-subnav-height) + 32px);
+  }
+}
+
+.hry-itin__label {
+  color: var(--hry-gold);
+  font-weight: 600;
+}
+
+.hry-itin__days {
+  --marker: 44px;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* The river: a segment from each day's marker to the next — ends at the last day */
+.hry-itin__day:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: var(--marker);
+  bottom: -24px;
+  left: calc(var(--marker) / 2 - 1px);
+  width: 2px;
+  background: linear-gradient(180deg, var(--hry-saffron) 0%, var(--hry-river) 100%);
+}
+
+.hry-itin__day {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--marker) 1fr;
+  gap: clamp(16px, 3vw, 32px);
+}
+
+.hry-itin__day + .hry-itin__day {
+  margin-top: 24px;
+}
+
+.hry-itin__marker {
+  position: relative;
+  z-index: 1;
+}
+
+.hry-itin__num {
+  display: grid;
+  place-items: center;
+  width: var(--marker);
+  height: var(--marker);
+  border-radius: 50%;
+  background: var(--hry-forest);
+  border: 2px solid var(--hry-saffron);
+  font-family: var(--hry-font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--hry-ivory);
+}
+
+.hry-itin__card {
+  padding: clamp(20px, 3vw, 28px);
+  border-radius: var(--hry-radius-md);
+  background: rgba(251, 248, 241, 0.05);
+  border: 1px solid var(--hry-line-dark);
+}
+
+.hry-itin__daylabel {
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--hry-gold);
+}
+
+.hry-itin__title {
+  margin: 4px 0 0;
+  font-family: var(--hry-font-display);
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  font-weight: 600;
+}
+
+.hry-itin__route {
+  margin: 4px 0 0;
+  font-size: 0.9375rem;
+  color: rgba(251, 248, 241, 0.7);
+}
+
+.hry-itin__acts {
+  display: grid;
+  gap: 8px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hry-itin__act {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  padding-left: 22px;
+  color: rgba(251, 248, 241, 0.92);
+}
+
+.hry-itin__act::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 0.6em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--hry-saffron);
+}
+
+.hry-itin__act--optional::before {
+  background: transparent;
+  border: 1.5px dashed var(--hry-gold);
+}
+
+.hry-itin .hry-tag--optional {
+  color: var(--hry-gold);
+}
+
+.hry-itin__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+  margin: 20px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--hry-line-dark);
+  font-size: 0.875rem;
+}
+
+.hry-itin__meta dt {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--hry-gold);
+  font-weight: 500;
+}
+
+.hry-itin__meta dd {
+  margin: 2px 0 0;
+  color: rgba(251, 248, 241, 0.88);
+}
+
+.hry-itin__foot {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.hry-itin__disclaimer {
+  display: flex;
+  gap: 10px;
+  max-width: 56ch;
+  margin: 0;
+  font-size: 0.875rem;
+  color: rgba(251, 248, 241, 0.72);
+}
+
+.hry-itin__disclaimer svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--hry-gold);
+}
+
+@media (max-width: 520px) {
+  .hry-itin__days {
+    --marker: 36px;
+  }
+
+  .hry-itin__num {
+    font-size: 1rem;
+  }
+
+  .hry-itin__foot .hry-btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,158 @@
+/* Why Karvaahh */
+.bcd-why {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+.bcd-why li {
+  padding: 1.5rem;
+  border-radius: var(--bcd-radius);
+  background: var(--bcd-paper);
+  border-top: 3px solid var(--bcd-gold);
+}
+.bcd-why__title {
+  font-family: var(--bcd-serif);
+  font-weight: 500;
+  font-size: 1.3125rem;
+}
+.bcd-why__text {
+  margin-top: 0.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--bcd-ink-soft);
+}
+
+.bcd-related {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+.bcd-related__title {
+  margin-bottom: 1rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bcd-ink-soft);
+}
+.bcd-related__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 0.75rem;
+  padding: 0;
+  list-style: none;
+}
+.bcd-related__link {
+  display: grid;
+  gap: 0.25rem;
+  height: 100%;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--bcd-line);
+  border-radius: 10px;
+  color: var(--bcd-ink);
+  text-decoration: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+.bcd-related__link:hover {
+  border-color: var(--bcd-gold);
+  background: var(--bcd-paper);
+}
+.bcd-related__label {
+  font-family: var(--bcd-serif);
+  font-size: 1.125rem;
+}
+.bcd-related__desc {
+  font-size: 0.875rem;
+  color: var(--bcd-ink-soft);
+}
+
+/* Final CTA */
+.bcd-cta {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(5rem, 11vw, 8rem) 2.5rem;
+  background:
+    radial-gradient(60% 80% at 50% 0%, rgba(217, 191, 134, 0.16), transparent 70%),
+    var(--bcd-navy);
+  color: var(--bcd-ivory);
+  text-align: center;
+}
+.bcd-cta__horizon {
+  position: absolute;
+  inset: auto 0 5.5rem;
+  height: 160px;
+  opacity: 0.35;
+  pointer-events: none;
+}
+.bcd-cta__horizon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--bcd-gold-light);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.bcd-cta__inner {
+  position: relative;
+  max-width: 46rem;
+}
+.bcd-cta__title {
+  font-family: var(--bcd-serif);
+  font-weight: 500;
+  font-size: clamp(2.25rem, 5.5vw, 4rem);
+  line-height: 1.05;
+  text-wrap: balance;
+}
+.bcd-cta__text {
+  margin: 1.25rem auto 0;
+  max-width: 40rem;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: rgba(247, 243, 234, 0.82);
+}
+.bcd-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2.25rem;
+}
+.bcd-cta__talk {
+  margin-top: 1.25rem;
+  font-size: 0.9375rem;
+  color: rgba(247, 243, 234, 0.7);
+}
+.bcd-cta__talk-link {
+  color: var(--bcd-gold-light);
+  font-weight: 600;
+  text-underline-offset: 3px;
+}
+.bcd-cta__legal {
+  position: relative;
+  display: grid;
+  gap: 0.5rem;
+  margin-top: clamp(5rem, 10vw, 7rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(247, 243, 234, 0.14);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: rgba(247, 243, 234, 0.6);
+  text-align: left;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bcd-cta__actions .bcd-btn--gold {
+    box-shadow: 0 0 0 0 rgba(217, 191, 134, 0.45);
+    transition: box-shadow 0.4s ease, background-color 0.25s ease, transform 0.25s ease;
+  }
+  .bcd-cta__actions .bcd-btn--gold:hover {
+    box-shadow: 0 0 0 8px rgba(217, 191, 134, 0.12);
+  }
+}
+
+@media (max-width: 760px) {
+  .bcd-why { grid-template-columns: 1fr; }
+}
+@media (max-width: 420px) {
+  .bcd-cta__actions .bcd-btn { flex: 1 1 100%; }
+}

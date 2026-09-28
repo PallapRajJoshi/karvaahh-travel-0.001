@@ -1,0 +1,187 @@
+/* ==========================================================================
+   Journey map — chapter panel
+   Panels are stacked in the same grid cell. Opacity is owned by the scroll
+   timeline; one panel fading out over the next is the image crossfade.
+   ========================================================================== */
+
+.journey-map .jm-panel {
+  grid-area: 1 / 1;
+  align-self: center;
+  width: 100%;
+  min-width: 0;
+  /* Hidden by default, but the first stop is shown so the section is legible
+     before GSAP runs — and stays legible if it never does. The timeline takes
+     over with inline styles the moment it initialises. */
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+.journey-map .jm-panel:first-child {
+  opacity: 1;
+}
+
+.journey-map .jm-panel[aria-hidden='false'] {
+  pointer-events: auto;
+}
+
+/* --- Image --------------------------------------------------------------- */
+
+.journey-map .jm-panel__figure {
+  position: relative;
+  margin: 0 0 1.75rem;
+  overflow: hidden;
+  border-radius: 3px;
+  aspect-ratio: 5 / 3;
+  background-color: rgba(22, 33, 31, 0.06);
+  box-shadow:
+    0 1px 2px rgba(22, 33, 31, 0.06),
+    0 18px 40px -24px rgba(22, 33, 31, 0.4);
+}
+
+/* Inner frame is what the parallax moves, so the mask edge stays fixed. */
+.journey-map .jm-panel__frame {
+  position: absolute;
+  inset: -7% 0;
+  will-change: transform;
+}
+
+.journey-map .jm-panel__image {
+  object-fit: cover;
+}
+
+/* Shown when a stop has no photograph yet, or the file 404s. Quiet enough to
+   ship with, obvious enough that nobody forgets to replace it. */
+.journey-map .jm-panel__figure[data-empty] {
+  background:
+    linear-gradient(135deg, rgba(192, 122, 34, 0.1), rgba(22, 33, 31, 0.07)),
+    var(--jm-mist);
+  box-shadow: inset 0 0 0 1px rgba(22, 33, 31, 0.09);
+}
+
+.journey-map .jm-panel__placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display, "Playfair Display", Georgia, serif);
+  font-size: 1.5rem;
+  color: rgba(22, 33, 31, 0.28);
+}
+
+/* --- Type ---------------------------------------------------------------- */
+
+.journey-map .jm-panel__step {
+  margin: 0 0 1rem;
+  font-family: var(--font-body, "Inter", system-ui, sans-serif);
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+  color: var(--jm-brass-deep);
+}
+
+.journey-map .jm-panel__name {
+  margin: 0;
+  font-family: var(--font-display, "Playfair Display", Georgia, serif);
+  font-size: clamp(2.25rem, 3.6vw, 3.125rem);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.018em;
+  color: var(--jm-ink);
+}
+
+.journey-map .jm-panel__mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+}
+
+.journey-map .jm-panel__line {
+  display: block;
+  will-change: transform;
+}
+
+.journey-map .jm-panel__region {
+  margin: 0.5rem 0 1.5rem;
+  font-family: var(--font-body, "Inter", system-ui, sans-serif);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--jm-ink-soft);
+}
+
+.journey-map .jm-panel__blurb {
+  margin: 0 0 1.5rem;
+  max-width: 34em;
+  font-family: var(--font-body, "Inter", system-ui, sans-serif);
+  font-size: 1rem;
+  line-height: 1.62;
+  color: var(--jm-ink);
+}
+
+.journey-map .jm-panel__notes {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--jm-rule);
+}
+
+/* The meta row carries its own rule, so the list must not double it up. */
+.journey-map .jm-panel__note:last-child {
+  border-bottom: 0;
+}
+
+.journey-map .jm-panel__note {
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--jm-rule);
+  font-family: var(--font-body, "Inter", system-ui, sans-serif);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--jm-ink-soft);
+}
+
+.journey-map .jm-panel__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 2.25rem;
+  margin: 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--jm-rule);
+}
+
+.journey-map .jm-panel__meta-item dt {
+  font-family: var(--font-body, "Inter", system-ui, sans-serif);
+  font-size: 0.75rem;
+  color: var(--jm-ink-soft);
+}
+
+.journey-map .jm-panel__meta-item dd {
+  margin: 0.2rem 0 0;
+  font-family: var(--font-display, "Playfair Display", Georgia, serif);
+  font-size: 1.375rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--jm-ink);
+}
+
+/* --- Mobile -------------------------------------------------------------- */
+
+@media (max-width: 880px) {
+  .journey-map .jm-panel__figure {
+    margin-bottom: 1.25rem;
+    aspect-ratio: 16 / 9;
+  }
+
+  .journey-map .jm-panel__blurb {
+    font-size: 0.9375rem;
+  }
+
+  /* Notes are supporting detail; the stack is tight enough without them. */
+  .journey-map .jm-panel__notes {
+    display: none;
+  }
+
+  .journey-map .jm-panel__meta {
+    gap: 1rem 1.75rem;
+    padding-top: 1rem;
+  }
+}

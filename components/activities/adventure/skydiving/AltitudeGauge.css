@@ -1,0 +1,76 @@
+.sky-gauge {
+  margin: 0;
+  width: min(100%, 320px);
+  padding: 1.5rem 1.25rem 1.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--sky-radius-lg);
+  background: rgba(7, 19, 31, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+}
+.sky-gauge__big { margin: 0 0 1.5rem; display: grid; gap: 0.35rem; }
+.sky-gauge__big-value {
+  font-family: var(--sky-serif);
+  font-size: clamp(2.4rem, 2rem + 1.5vw, 3.1rem);
+  line-height: 1;
+  color: var(--sky-gold);
+  font-variant-numeric: tabular-nums;
+}
+.sky-gauge__big-caption { font-size: 0.82rem; line-height: 1.45; color: rgba(255, 255, 255, 0.7); }
+
+.sky-gauge__scale { position: relative; height: 320px; }
+.sky-gauge__track,
+.sky-gauge__drop,
+.sky-gauge__band,
+.sky-gauge__ref { position: absolute; left: 50%; translate: -50% 0; }
+
+.sky-gauge__track {
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: repeating-linear-gradient(to top, rgba(255, 255, 255, 0.35) 0 1px, transparent 1px 16px);
+}
+.sky-gauge__drop {
+  bottom: var(--from);
+  height: var(--len);
+  width: 2px;
+  background: linear-gradient(to bottom, var(--sky-gold), var(--sky-ice));
+  transform-origin: top;
+  animation: sky-gauge-drop 1.8s 0.7s cubic-bezier(0.55, 0, 0.25, 1) both;
+}
+.sky-gauge__band {
+  bottom: var(--from);
+  height: var(--len);
+  width: 26px;
+  border: 1px solid var(--sky-gold);
+  border-radius: 3px;
+  background: rgba(201, 164, 92, 0.35);
+}
+.sky-gauge__ref { bottom: var(--at); width: 40px; height: 1px; background: #fff; }
+
+.sky-gauge__mark {
+  position: absolute;
+  bottom: var(--at);
+  translate: 0 50%;
+  width: calc(50% - 24px);
+  display: grid;
+  gap: 0.1rem;
+}
+.sky-gauge__mark--right { left: calc(50% + 24px); }
+.sky-gauge__mark--left { right: calc(50% + 24px); text-align: right; }
+.sky-gauge__value { font-family: var(--sky-serif); font-size: 0.98rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.sky-gauge__label { font-size: 0.75rem; color: rgba(255, 255, 255, 0.68); }
+
+@keyframes sky-gauge-drop {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+@media (max-width: 960px) {
+  .sky-gauge { width: 100%; max-width: 420px; }
+  .sky-gauge__scale { height: 260px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sky-gauge__drop { animation: none; }
+}

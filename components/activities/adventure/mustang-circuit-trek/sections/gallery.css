@@ -1,0 +1,132 @@
+.mc-gallery {
+  background: var(--mc-ink);
+  overflow: clip;
+}
+
+.mc-gal {
+  --_h: clamp(300px, 52vw, 540px);
+  /* Align the first slide with the container edge, let the rest bleed right. */
+  --_inset: max(var(--mc-gutter), calc((100vw - var(--mc-max)) / 2 + var(--mc-gutter)));
+}
+
+.mc-gal__track {
+  display: flex;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  margin: 0;
+  padding: 0 var(--_inset) 0.5rem;
+  list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--_inset);
+  scrollbar-width: none;
+}
+
+.mc-gal__track::-webkit-scrollbar {
+  display: none;
+}
+
+.mc-gal__track:focus-visible {
+  outline: 2px solid var(--mc-sand);
+  outline-offset: 4px;
+}
+
+.mc-gal__slide {
+  flex: 0 0 auto;
+  height: var(--_h);
+  aspect-ratio: 4 / 5;
+  scroll-snap-align: start;
+}
+
+.mc-gal__slide--wide {
+  aspect-ratio: 16 / 10;
+}
+
+.mc-gal__figure {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border-radius: var(--mc-radius);
+}
+
+.mc-gal__figure img {
+  transition: transform 1.2s var(--mc-ease);
+}
+
+.mc-gal__figure:hover img {
+  transform: scale(1.05);
+}
+
+.mc-gal__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2.5rem 1.1rem 1rem;
+  background: linear-gradient(180deg, transparent, rgb(0 0 0 / 0.65));
+  font-family: var(--mc-font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--mc-white);
+}
+
+.mc-gal__controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+}
+
+.mc-gal__btn {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgb(255 255 255 / 0.3);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--mc-white);
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.mc-gal__btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+.mc-gal__btn:hover:not(:disabled) {
+  background: var(--mc-sand);
+  border-color: var(--mc-sand);
+  color: var(--mc-ink);
+}
+
+.mc-gal__btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+@media (max-width: 639px) {
+  .mc-gal {
+    --_h: auto;
+  }
+
+  .mc-gal__slide {
+    width: 78vw;
+    height: auto;
+  }
+
+  .mc-gal__slide--wide {
+    width: 88vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mc-gal__figure img {
+    transition: none;
+    transform: none !important;
+  }
+}

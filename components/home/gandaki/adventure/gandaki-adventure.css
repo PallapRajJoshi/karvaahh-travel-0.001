@@ -1,0 +1,158 @@
+.gandaki-adventure {
+  box-sizing: border-box;
+  width: 100%;
+  height: calc(100svh - 170px);
+  min-height: 560px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #142019;
+  overflow: hidden;
+}
+
+.gandaki-adventure__media {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.gandaki-adventure__image {
+  object-fit: cover;
+}
+
+.gandaki-adventure__panel {
+  position: relative;
+  box-sizing: border-box;
+  height: 100%;
+  padding: clamp(2rem, 4vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.25rem;
+  color: #f7f5ef;
+  overflow: hidden;
+}
+
+.gandaki-adventure__index {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  color: rgba(201, 164, 92, 0.14);
+  line-height: 1;
+}
+
+.gandaki-adventure__eyebrow {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #c9a45c;
+}
+
+.gandaki-adventure__title {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+  line-height: 1.15;
+}
+
+.gandaki-adventure__title em {
+  color: #c9a45c;
+  font-style: italic;
+}
+
+.gandaki-adventure__columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.gandaki-adventure__column-title {
+  margin: 0 0 0.6rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(247, 245, 239, 0.55);
+}
+
+.gandaki-adventure__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.88rem;
+  color: rgba(247, 245, 239, 0.85);
+}
+
+.gandaki-adventure__list li {
+  position: relative;
+  padding-left: 0.9rem;
+}
+
+.gandaki-adventure__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 1px;
+  background: #c9a45c;
+}
+
+.gandaki-adventure__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: fit-content;
+  margin-top: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  border: 1px solid #c9a45c;
+  color: #c9a45c;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.gandaki-adventure__cta:hover {
+  background: #c9a45c;
+  color: #0d1d16;
+}
+
+.gandaki-adventure__cta:focus-visible {
+  outline: 2px solid #f7f5ef;
+  outline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+  .gandaki-adventure {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .gandaki-adventure__media {
+    height: 46svh;
+    min-height: 320px;
+  }
+
+  .gandaki-adventure__columns {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gandaki-adventure__cta {
+    transition: none;
+  }
+}

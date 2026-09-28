@@ -1,0 +1,127 @@
+.etp-peaks {
+  background:
+    radial-gradient(900px 400px at 10% 0%, rgba(216, 166, 74, 0.12), transparent 60%),
+    var(--etp-blue);
+}
+
+/* Track aligns its first card with the page wrap, then bleeds to the edge. */
+.etp-rail__track {
+  --rail-inset: max(var(--etp-gutter), calc((100vw - var(--etp-wrap)) / 2));
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min(380px, 82vw);
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 4px var(--rail-inset) 8px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--rail-inset);
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+
+.etp-rail__track::-webkit-scrollbar {
+  display: none;
+}
+
+.etp-peak {
+  scroll-snap-align: start;
+}
+
+.etp-peak__card {
+  height: 100%;
+  border-radius: var(--etp-radius-lg);
+  overflow: hidden;
+  background: var(--etp-blue-deep);
+  border: 1px solid var(--etp-line-light);
+}
+
+.etp-peak__media {
+  aspect-ratio: 4 / 3;
+}
+
+.etp-peak__card:hover .etp-media__img,
+.etp-peak__card:hover .etp-media__placeholder {
+  transform: scale(1.05);
+}
+
+.etp-peak__body {
+  padding: 22px 22px 26px;
+}
+
+.etp-peak__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.etp-peak__name {
+  font-size: 1.45rem;
+}
+
+.etp-peak__rank {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--etp-gold);
+  white-space: nowrap;
+}
+
+.etp-peak__elev {
+  margin-top: 6px;
+  font-family: var(--etp-serif);
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  color: var(--etp-gold);
+}
+
+.etp-peak__elev span {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.etp-peak__desc {
+  margin-top: 12px;
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.etp-rail__controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.etp-rail__btn {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: transparent;
+  color: var(--etp-white);
+  cursor: pointer;
+  transition:
+    background-color 0.2s var(--etp-ease),
+    opacity 0.2s var(--etp-ease);
+}
+
+.etp-rail__btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.etp-rail__btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.etp-rail__flip {
+  transform: rotate(180deg);
+}

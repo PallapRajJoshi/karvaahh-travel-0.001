@@ -1,0 +1,152 @@
+.lumbini-cta {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--lumbini-section-height);
+  min-height: 520px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lumbini-cta__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.lumbini-cta__image {
+  object-fit: cover;
+}
+
+.lumbini-cta__overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    120% 100% at 50% 60%,
+    rgba(7, 16, 12, 0.55) 0%,
+    rgba(7, 16, 12, 0.85) 100%
+  );
+}
+
+.lumbini-cta__content {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  max-width: 44rem;
+  padding: 0 clamp(1.5rem, 5vw, 3rem);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.lumbini-cta__index {
+  font-family: var(--lumbini-font-serif);
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  color: var(--lumbini-gold);
+}
+
+.lumbini-cta__title {
+  font-family: var(--lumbini-font-serif);
+  font-weight: 500;
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  line-height: 1.15;
+  color: var(--lumbini-cream);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.lumbini-cta__title-emphasis {
+  font-style: italic;
+  color: var(--lumbini-gold);
+}
+
+.lumbini-cta__subline {
+  font-family: var(--lumbini-font-sans);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--lumbini-saffron);
+  margin: 0;
+}
+
+.lumbini-cta__description {
+  font-family: var(--lumbini-font-sans);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: rgba(247, 245, 239, 0.78);
+  margin: 0;
+}
+
+.lumbini-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding-top: 0.75rem;
+}
+
+.lumbini-cta__button {
+  font-family: var(--lumbini-font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.9rem 1.75rem;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.lumbini-cta__button--primary {
+  background: var(--lumbini-gold);
+  color: var(--lumbini-forest);
+  border: 1px solid var(--lumbini-gold);
+}
+
+.lumbini-cta__button--primary:hover {
+  background: var(--lumbini-cream);
+  border-color: var(--lumbini-cream);
+  transform: translateY(-2px);
+}
+
+.lumbini-cta__button--secondary {
+  background: transparent;
+  color: var(--lumbini-cream);
+  border: 1px solid rgba(247, 245, 239, 0.4);
+}
+
+.lumbini-cta__button--secondary:hover {
+  border-color: var(--lumbini-cream);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+  .lumbini-cta {
+    height: auto;
+    min-height: 100svh;
+    padding: 4rem 0;
+  }
+
+  .lumbini-cta__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .lumbini-cta__button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lumbini-cta__button {
+    transition: none;
+  }
+}

@@ -1,0 +1,103 @@
+/*
+  Shared design tokens for the Sudurpaschim province page.
+  Import once, at the top level (SudurpaschimHome.tsx).
+*/
+:root {
+  --sp-cream: #f7f5ef;
+  --sp-forest-900: #07100c;
+  --sp-forest-800: #0b1711;
+  --sp-forest-700: #142019;
+  --sp-earth: #5a4a3a;
+  --sp-blue: #405b67;
+  --sp-gold: #c9a45c;
+  --sp-gold-deep: #b8954e;
+  --sp-terracotta: #9a6448;
+
+  --sp-font-display: "Playfair Display", "Georgia", serif;
+  --sp-font-body: "Inter", system-ui, -apple-system, sans-serif;
+
+  --sp-section-height: calc(100svh - 170px);
+}
+
+.sudurpaschim-page {
+  background: var(--sp-cream);
+  color: var(--sp-forest-900);
+  font-family: var(--sp-font-body);
+  overflow-x: hidden;
+}
+
+.sudurpaschim-page * {
+  box-sizing: border-box;
+}
+
+.sudurpaschim-page section {
+  position: relative;
+}
+
+.sp-container {
+  width: 100%;
+  max-width: 1320px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+.sp-arrow {
+  display: inline-block;
+  transition: transform 0.35s ease;
+}
+
+.sp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--sp-font-body);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  padding: 0.85rem 1.6rem;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.sp-btn:focus-visible {
+  outline: 2px solid var(--sp-gold);
+  outline-offset: 3px;
+}
+
+.sp-btn--primary {
+  background: var(--sp-gold);
+  color: var(--sp-forest-900);
+  border: 1px solid var(--sp-gold);
+}
+
+.sp-btn--primary:hover {
+  background: var(--sp-gold-deep);
+  border-color: var(--sp-gold-deep);
+}
+
+.sp-btn--ghost {
+  background: transparent;
+  color: inherit;
+  border: 1px solid rgba(247, 245, 239, 0.4);
+}
+
+.sp-btn--ghost:hover {
+  border-color: var(--sp-gold);
+  color: var(--sp-gold);
+}
+
+.sp-btn:hover .sp-arrow {
+  transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sudurpaschim-page *,
+  .sudurpaschim-page *::before,
+  .sudurpaschim-page *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,224 @@
+.jyl-explorer {
+  background: var(--jyl-ivory);
+}
+
+.jyl-explorer__filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.jyl-explorer__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 44px;
+  padding: 0 1.05rem;
+  border-radius: 999px;
+  border: 1px solid var(--jyl-stone);
+  background: var(--jyl-white);
+  color: var(--jyl-ink);
+  font: 500 0.9rem/1 var(--jyl-sans);
+  cursor: pointer;
+  transition: background-color 0.2s var(--jyl-ease), color 0.2s var(--jyl-ease), border-color 0.2s var(--jyl-ease);
+}
+
+.jyl-explorer__chip:hover {
+  border-color: var(--jyl-indigo);
+}
+
+.jyl-explorer__chip[aria-pressed="true"] {
+  background: var(--jyl-night);
+  border-color: var(--jyl-night);
+  color: var(--jyl-ivory);
+}
+
+.jyl-explorer__count {
+  font-size: 0.75rem;
+  color: var(--jyl-muted);
+}
+
+.jyl-explorer__chip[aria-pressed="true"] .jyl-explorer__count {
+  color: var(--jyl-gold-soft);
+}
+
+/* ---------- grid ---------- */
+
+.jyl-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+/* Region filter — pure CSS, driven by data-filter on the wrapper */
+.jyl-explorer__grid-wrap[data-filter="North"] .jyl-card:not([data-region="North"]),
+.jyl-explorer__grid-wrap[data-filter="Central"] .jyl-card:not([data-region="Central"]),
+.jyl-explorer__grid-wrap[data-filter="West"] .jyl-card:not([data-region="West"]),
+.jyl-explorer__grid-wrap[data-filter="East"] .jyl-card:not([data-region="East"]),
+.jyl-explorer__grid-wrap[data-filter="South"] .jyl-card:not([data-region="South"]) {
+  display: none;
+}
+
+.jyl-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--jyl-white);
+  border-radius: var(--jyl-radius);
+  overflow: hidden;
+  border: 1px solid var(--jyl-stone-2);
+  transition: border-color 0.25s var(--jyl-ease), transform 0.25s var(--jyl-ease);
+}
+
+.jyl-card:hover,
+.jyl-card:focus-within {
+  border-color: var(--jyl-gold);
+  transform: translateY(-3px);
+}
+
+.jyl-card__img {
+  aspect-ratio: 4 / 3;
+}
+
+.jyl-card__img .jyl-img__el {
+  transition: transform 0.6s var(--jyl-ease);
+}
+
+.jyl-card:hover .jyl-card__img .jyl-img__el {
+  transform: scale(1.04);
+}
+
+.jyl-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.15rem 1.2rem 1.3rem;
+  flex: 1;
+}
+
+.jyl-card__meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--jyl-muted);
+}
+
+.jyl-card__num {
+  font-family: var(--jyl-serif);
+  color: var(--jyl-gold);
+  font-size: 0.95rem;
+}
+
+.jyl-card__title {
+  font-size: 1.45rem;
+}
+
+.jyl-card__place {
+  font-size: 0.875rem;
+  color: var(--jyl-indigo);
+  line-height: 1.4;
+}
+
+.jyl-card__desc {
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.jyl-card__details {
+  margin: 0.35rem 0 0;
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.jyl-card__details dt {
+  color: var(--jyl-muted);
+}
+
+.jyl-card__details dd {
+  margin: 0;
+  color: var(--jyl-ink);
+}
+
+.jyl-card__link {
+  margin-top: auto;
+  padding-top: 0.9rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--jyl-indigo);
+  text-decoration: none;
+}
+
+/* Stretched link: whole card is clickable, one accessible link */
+.jyl-card__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.jyl-card__link:focus-visible {
+  outline: none;
+}
+
+.jyl-card:has(.jyl-card__link:focus-visible) {
+  outline: 2px solid var(--jyl-gold);
+  outline-offset: 3px;
+}
+
+.jyl-explorer__note {
+  margin-top: 2rem;
+}
+
+@media (max-width: 1100px) {
+  .jyl-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 820px) {
+  .jyl-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile: swipeable row of cards, compact scrollable filters */
+@media (max-width: 640px) {
+  .jyl-explorer__filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin-inline: -1.25rem;
+    padding-inline: 1.25rem;
+    scrollbar-width: none;
+  }
+
+  .jyl-explorer__filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .jyl-explorer__chip {
+    flex: 0 0 auto;
+  }
+
+  .jyl-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 0.9rem;
+    margin-inline: -1.25rem;
+    padding: 0.25rem 1.25rem 1rem;
+    scroll-padding-inline: 1.25rem;
+  }
+
+  .jyl-card {
+    flex: 0 0 min(80vw, 20rem);
+    scroll-snap-align: start;
+  }
+
+  .jyl-card:hover,
+  .jyl-card:focus-within {
+    transform: none;
+  }
+}

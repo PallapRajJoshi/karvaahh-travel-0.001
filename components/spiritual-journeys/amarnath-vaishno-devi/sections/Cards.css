@@ -1,0 +1,205 @@
+/* Shared card grids for experiences, stays, travellers, tips, package lists. */
+.avd-cards {
+  display: grid;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+@media (min-width: 1080px) {
+  .avd-cards--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .avd-cards--4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .avd-cards--5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+.avd-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.5rem;
+  background: var(--avd-paper);
+  border-radius: var(--avd-radius-card);
+}
+
+.avd-card--flat {
+  background: var(--avd-snow);
+}
+
+.avd-card--line {
+  background: transparent;
+  border-radius: 0;
+  padding: 1.25rem 0 0;
+  border-top: 2px solid var(--avd-forest);
+}
+
+.avd-card--amarnath .avd-card__icon {
+  color: var(--avd-amarnath);
+}
+
+.avd-card--vaishno .avd-card__icon {
+  color: var(--avd-vaishno);
+}
+
+.avd-card__icon {
+  color: var(--avd-kashmir);
+}
+
+.avd-card .avd-tag {
+  align-self: flex-start;
+}
+
+.avd-card__title {
+  font-size: 1.2rem;
+}
+
+.avd-card__body {
+  font-size: 0.95rem;
+  color: var(--avd-muted);
+}
+
+/* Notes under stay cards */
+.avd-notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+  margin-top: 1.5rem;
+  padding: 0;
+  list-style: none;
+  font-size: 0.925rem;
+  color: var(--avd-muted);
+}
+
+.avd-notes li::before {
+  content: "";
+  display: inline-block;
+  width: 0.35rem;
+  height: 0.35rem;
+  margin-right: 0.55rem;
+  border-radius: 50%;
+  background: var(--avd-gold);
+  vertical-align: middle;
+}
+
+/* Transport definitions */
+.avd-deflist {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1.5rem 2rem;
+  margin: 0;
+}
+
+.avd-deflist > div {
+  padding-top: 1rem;
+  border-top: 1px solid var(--avd-line);
+}
+
+.avd-deflist dt {
+  font-family: var(--avd-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.avd-deflist dd {
+  margin: 0.35rem 0 0;
+  color: var(--avd-muted);
+  font-size: 0.95rem;
+}
+
+/* Package */
+.avd-pkg__grid {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 900px) {
+  .avd-pkg__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3rem;
+  }
+}
+
+.avd-pkg__col {
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border-radius: var(--avd-radius-card);
+}
+
+.avd-pkg__col--in {
+  background: var(--avd-kashmir-tint);
+}
+
+.avd-pkg__col--out {
+  background: var(--avd-paper);
+}
+
+.avd-pkg__title {
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+}
+
+.avd-pkg__lede {
+  margin-top: 0.6rem;
+  color: var(--avd-muted);
+  font-size: 0.95rem;
+}
+
+.avd-pkg__list {
+  margin-top: 1.25rem;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.avd-pkg__list li {
+  display: grid;
+  grid-template-columns: 1.25rem 1fr;
+  gap: 0.6rem;
+  align-items: start;
+  font-size: 0.975rem;
+}
+
+.avd-pkg__list svg {
+  margin-top: 0.2rem;
+}
+
+.avd-pkg__col--in svg {
+  color: var(--avd-kashmir);
+}
+
+.avd-pkg__col--out svg {
+  color: var(--avd-maroon);
+}
+
+/* Tips */
+.avd-tips {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.avd-tips li {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.9rem 1rem;
+  background: var(--avd-paper);
+  border-radius: var(--avd-radius-panel);
+  font-size: 0.95rem;
+}
+
+.avd-tips__icon {
+  flex: none;
+  color: var(--avd-gold-text);
+}

@@ -1,0 +1,123 @@
+/* Temple experience list */
+.bcd-texp {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1px;
+  padding: 0;
+  list-style: none;
+  background: var(--bcd-line);
+  border: 1px solid var(--bcd-line);
+  border-radius: var(--bcd-radius);
+  overflow: hidden;
+}
+.bcd-texp li {
+  padding: 1.35rem 1.2rem;
+  background: var(--bcd-ivory);
+}
+.bcd-texp__title {
+  font-family: var(--bcd-serif);
+  font-weight: 500;
+  font-size: 1.125rem;
+}
+.bcd-texp__text {
+  margin-top: 0.4rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--bcd-ink-soft);
+}
+
+/* Etiquette cards */
+.bcd-etq {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+.bcd-etq__card {
+  padding: 1.5rem;
+  border-radius: var(--bcd-radius);
+  background: var(--bcd-ivory);
+  border-top: 4px solid var(--dir);
+}
+.bcd-etq__title {
+  font-family: var(--bcd-serif);
+  font-weight: 500;
+  font-size: 1.375rem;
+  color: var(--dir);
+}
+.bcd-etq__list {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 1rem;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+.bcd-etq__list li {
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  gap: 0.6rem;
+}
+.bcd-etq__list svg {
+  margin-top: 0.2rem;
+  color: var(--dir);
+}
+
+/* Photography */
+.bcd-photo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 1.5rem 3rem;
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border-radius: var(--bcd-radius);
+  background: var(--bcd-navy);
+  color: var(--bcd-ivory);
+}
+.bcd-photo__head {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  color: var(--bcd-gold-light);
+}
+.bcd-photo__head svg {
+  flex: none;
+  margin-top: 0.35rem;
+}
+.bcd-photo__title {
+  font-family: var(--bcd-serif);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 2.6vw, 1.875rem);
+  line-height: 1.2;
+  color: var(--bcd-ivory);
+}
+.bcd-photo__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem 2rem;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: rgba(247, 243, 234, 0.85);
+}
+.bcd-photo__list li {
+  padding-left: 1rem;
+  border-left: 1px solid rgba(217, 191, 134, 0.45);
+}
+
+@media (max-width: 1024px) {
+  .bcd-texp { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .bcd-etq { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  .bcd-photo { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .bcd-texp { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bcd-etq,
+  .bcd-photo__list { grid-template-columns: 1fr; }
+}
+@media (max-width: 360px) {
+  .bcd-texp { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,84 @@
+/* =========================================================
+   KARNALI PROVINCE — SHARED DESIGN TOKENS
+   Raw / Remote / Wilderness / Expedition identity
+   Import this file at the top of every karnali/*.css file.
+========================================================= */
+
+:root {
+  --k-cream: #f7f5ef;
+  --k-forest-900: #07100c;
+  --k-forest-800: #0b1711;
+  --k-charcoal: #17201c;
+  --k-stone: #4d5149;
+  --k-blue: #405866;
+  --k-gold: #c9a45c;
+  --k-gold-deep: #b8954e;
+
+  --k-white: #ffffff;
+  --k-line: rgba(201, 164, 92, 0.28);
+  --k-overlay-strong: rgba(7, 16, 12, 0.72);
+  --k-overlay-soft: rgba(7, 16, 12, 0.42);
+
+  --k-font-serif: "Playfair Display", Georgia, serif;
+  --k-font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --k-section-desktop-h: calc(100svh - 170px);
+  --k-radius: 2px;
+  --k-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.karnali-root * {
+  box-sizing: border-box;
+}
+
+.karnali-eyebrow {
+  font-family: var(--k-font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--k-gold);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.karnali-eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: var(--k-gold);
+  display: inline-block;
+}
+
+.karnali-num {
+  font-family: var(--k-font-serif);
+  font-size: clamp(3rem, 8vw, 6rem);
+  color: transparent;
+  -webkit-text-stroke: 1px var(--k-line);
+  line-height: 1;
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  pointer-events: none;
+  user-select: none;
+}
+
+.karnali-arrow {
+  display: inline-block;
+  transition: transform 0.4s var(--k-ease);
+}
+
+a:hover .karnali-arrow,
+button:hover .karnali-arrow {
+  transform: translate(3px, -3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .karnali-root * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

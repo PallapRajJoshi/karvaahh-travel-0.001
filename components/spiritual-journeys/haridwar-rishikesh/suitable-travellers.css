@@ -1,0 +1,45 @@
+.hry-who__grid {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--hry-line);
+}
+
+.hry-who__item {
+  padding: 28px 24px 28px 0;
+  border-bottom: 1px solid var(--hry-line);
+}
+
+.hry-who__icon {
+  color: var(--hry-saffron-ink);
+}
+
+.hry-who__title {
+  margin: 14px 0 0;
+  font-family: var(--hry-font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--hry-forest);
+}
+
+.hry-who__text {
+  margin: 6px 0 0;
+  font-size: 0.9375rem;
+  color: var(--hry-muted);
+  max-width: 40ch;
+}
+
+@media (min-width: 640px) {
+  .hry-who__grid {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 32px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .hry-who__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

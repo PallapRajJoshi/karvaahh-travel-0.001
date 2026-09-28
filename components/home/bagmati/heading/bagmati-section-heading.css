@@ -1,0 +1,67 @@
+.bagmati-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-sizing: border-box;
+  max-width: 640px;
+}
+
+.bagmati-heading--center {
+  align-items: center;
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.bagmati-heading__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: #b8954e;
+}
+
+.bagmati-heading__eyebrow-line {
+  width: 32px;
+  height: 1px;
+  background: #b8954e;
+  display: inline-block;
+}
+
+.bagmati-heading--light .bagmati-heading__eyebrow {
+  color: #c9a45c;
+}
+
+.bagmati-heading__title {
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.08;
+  color: #0d1d16;
+  margin: 0;
+}
+
+.bagmati-heading--light .bagmati-heading__title {
+  color: #f7f5ef;
+}
+
+.bagmati-heading__title em {
+  font-style: italic;
+  color: #b8954e;
+}
+
+.bagmati-heading__description {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #4a5750;
+  margin: 0;
+  max-width: 52ch;
+}
+
+.bagmati-heading--light .bagmati-heading__description {
+  color: #cfd8d1;
+}

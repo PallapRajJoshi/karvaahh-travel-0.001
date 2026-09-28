@@ -1,0 +1,15 @@
+.mc-faq__inner {
+  max-width: 880px;
+}
+
+.mc-faq__more {
+  margin: 2rem 0 0;
+  text-align: center;
+  color: var(--mc-muted);
+}
+
+.mc-faq__more a {
+  color: var(--mc-blue);
+  font-weight: 600;
+  text-underline-offset: 0.2em;
+}

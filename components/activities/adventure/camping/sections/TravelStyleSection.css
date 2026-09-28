@@ -1,0 +1,23 @@
+.cmp-styles__grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.cmp-style {
+  display: grid; grid-template-columns: 0.8fr 1.2fr;
+  min-height: 300px;
+  border-radius: var(--cmp-radius-lg); overflow: hidden;
+  background: var(--cmp-snow);
+  border: 1px solid rgba(13, 29, 22, 0.08);
+}
+.cmp-style__media { position: relative; }
+.cmp-style__body { padding: 1.8rem 1.7rem; display: flex; flex-direction: column; }
+.cmp-style__title { margin: 0; font-family: var(--cmp-serif); font-size: 1.6rem; font-weight: 600; color: var(--cmp-forest); }
+.cmp-style__tagline { margin: 0.5rem 0 1.2rem; font-size: 1rem; line-height: 1.55; color: var(--cmp-ink-soft); }
+.cmp-style__places {
+  margin: auto 0 0; padding-top: 1rem;
+  border-top: 1px solid rgba(13, 29, 22, 0.1);
+  font-size: 0.85rem; line-height: 1.75; color: var(--cmp-moss);
+}
+@media (hover: hover) { .cmp-style:hover .cmp-img__el { transform: scale(1.06); } }
+@media (max-width: 1000px) { .cmp-styles__grid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) {
+  .cmp-style { grid-template-columns: 1fr; }
+  .cmp-style__media { aspect-ratio: 16 / 9; }
+}

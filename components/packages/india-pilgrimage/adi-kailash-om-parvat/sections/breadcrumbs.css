@@ -1,0 +1,49 @@
+/* Section 2 — Breadcrumb */
+
+.akop-breadcrumbs {
+  background: var(--akop-bg);
+}
+
+.akop-breadcrumbs__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0;
+  padding-block: 0.9rem;
+  list-style: none;
+  font-size: 0.85rem;
+  color: var(--akop-text-muted);
+}
+
+.akop-breadcrumbs__item {
+  display: inline-flex;
+  align-items: center;
+}
+
+.akop-breadcrumbs__item + .akop-breadcrumbs__item::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin-inline: 0.7rem;
+  border-top: 1.5px solid var(--akop-accent-text);
+  border-right: 1.5px solid var(--akop-accent-text);
+  transform: rotate(45deg);
+  opacity: 0.7;
+}
+
+.akop-breadcrumbs a {
+  color: var(--akop-text-muted);
+  text-decoration: none;
+  padding-block: 0.4rem; /* larger tap target */
+}
+
+.akop-breadcrumbs a:hover {
+  color: var(--akop-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.akop-breadcrumbs [aria-current="page"] {
+  color: var(--akop-primary);
+  font-weight: 600;
+}

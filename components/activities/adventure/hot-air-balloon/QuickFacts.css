@@ -1,0 +1,12 @@
+.hab-facts__grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0; gap: 1px;
+  background: var(--hab-line); border: 1px solid var(--hab-line);
+  border-radius: var(--hab-radius); overflow: hidden;
+}
+.hab-facts__item { background: #fff; padding: 1.5rem 1.6rem; }
+.hab-facts__label { font-size: 0.8rem; color: var(--hab-muted); }
+.hab-facts__value { margin: 0.4rem 0 0; font-family: var(--hab-serif); font-size: clamp(1.2rem, 2.2vw, 1.5rem); font-weight: 600; color: var(--hab-forest); line-height: 1.25; }
+.hab-facts__note { display: block; margin-top: 0.35rem; font-family: var(--hab-sans); font-size: 0.75rem; font-weight: 500; color: #8a4518; }
+@media (max-width: 860px) { .hab-facts__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 460px) { .hab-facts__grid { grid-template-columns: 1fr; } }

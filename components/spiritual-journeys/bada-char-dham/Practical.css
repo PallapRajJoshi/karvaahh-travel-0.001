@@ -1,0 +1,142 @@
+/* Accommodation + food */
+.bcd-stay {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2.5rem, 6vw, 5rem);
+}
+.bcd-stay__title {
+  margin-bottom: 1.5rem;
+}
+.bcd-stay__list {
+  display: grid;
+  gap: 0;
+  padding: 0;
+  list-style: none;
+}
+.bcd-stay__list li {
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--bcd-line);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--bcd-ink-soft);
+}
+
+/* Seniors */
+.bcd-seniors {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+.bcd-seniors li {
+  padding: 1.5rem;
+  border-radius: var(--bcd-radius);
+  background: var(--bcd-paper);
+}
+.bcd-seniors__title {
+  font-family: var(--bcd-serif);
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+.bcd-seniors__text {
+  margin-top: 0.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--bcd-ink-soft);
+}
+.bcd-seniors__note {
+  margin-top: 1.25rem;
+}
+
+/* Health & safety */
+.bcd-health {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+.bcd-health__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.75rem 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+.bcd-health__list li {
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(217, 191, 134, 0.3);
+}
+.bcd-health__title {
+  font-family: var(--bcd-serif);
+  font-weight: 500;
+  font-size: 1.125rem;
+  color: var(--bcd-gold-light);
+}
+.bcd-health__text {
+  margin-top: 0.4rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(247, 243, 234, 0.8);
+}
+.bcd-health__small {
+  margin-top: 1.75rem;
+  font-size: 0.8125rem;
+  color: rgba(247, 243, 234, 0.6);
+}
+.bcd-insure {
+  position: sticky;
+  top: 7rem;
+  padding: 1.75rem;
+  border-radius: var(--bcd-radius);
+  background: var(--bcd-ivory);
+  color: var(--bcd-ink);
+}
+.bcd-insure__title {
+  font-family: var(--bcd-serif);
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+.bcd-insure__text {
+  margin-top: 0.75rem;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--bcd-ink-soft);
+}
+.bcd-insure__note {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--bcd-line);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+/* Responsible travel */
+.bcd-resp__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding: 0;
+  list-style: none;
+}
+.bcd-resp__list li {
+  padding: 0.65rem 1.1rem;
+  border-radius: 999px;
+  background: var(--bcd-paper);
+  border: 1px solid var(--bcd-line);
+  font-size: 0.9375rem;
+}
+
+@media (max-width: 1000px) {
+  .bcd-health { grid-template-columns: 1fr; }
+  .bcd-insure { position: static; }
+}
+@media (max-width: 860px) {
+  .bcd-seniors,
+  .bcd-health__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bcd-stay { grid-template-columns: 1fr; }
+}
+@media (max-width: 540px) {
+  .bcd-seniors,
+  .bcd-health__list { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,84 @@
+.tsum-related {
+  padding-block: clamp(48px, 6vw, 80px);
+  border-top: 1px solid var(--tsum-line);
+}
+
+.tsum-related__title {
+  margin-bottom: 24px;
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+}
+
+.tsum-related__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(12px, 1.6vw, 18px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tsum-related__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  height: 100%;
+  padding: 22px 22px 48px;
+  border-radius: var(--tsum-radius);
+  background: var(--tsum-white);
+  border: 1px solid var(--tsum-line);
+  text-decoration: none;
+  transition: border-color 0.25s var(--tsum-ease), transform 0.25s var(--tsum-ease), box-shadow 0.25s var(--tsum-ease);
+}
+
+.tsum-related__card:hover {
+  border-color: var(--tsum-teal);
+  transform: translateY(-3px);
+  box-shadow: var(--tsum-shadow);
+}
+
+.tsum-related__kicker {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tsum-teal);
+}
+
+.tsum-related__label {
+  font-family: var(--tsum-font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--tsum-blue);
+}
+
+.tsum-related__desc {
+  font-size: 0.87rem;
+  color: var(--tsum-muted);
+}
+
+.tsum-related__arrow {
+  position: absolute;
+  left: 22px;
+  bottom: 18px;
+  width: 20px;
+  height: 20px;
+  color: var(--tsum-gold);
+  transition: transform 0.25s var(--tsum-ease);
+}
+
+.tsum-related__card:hover .tsum-related__arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 960px) {
+  .tsum-related__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .tsum-related__grid {
+    grid-template-columns: 1fr;
+  }
+}

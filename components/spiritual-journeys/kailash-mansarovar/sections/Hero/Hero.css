@@ -1,0 +1,813 @@
+/* =========================================================
+   KAILASH MANSAROVAR HERO
+   ========================================================= */
+
+.km-hero {
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  min-height: calc(100svh - var(--km-site-header, 184px));
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: flex-end;
+
+  background: #071a2b;
+  color: #fff;
+}
+
+
+/* =========================================================
+   VIDEO
+   ========================================================= */
+
+.km-hero__media {
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  /* IMPORTANT:
+     Do not animate this container initially.
+     Once everything works, animation can be added back.
+  */
+}
+
+
+.km-hero__video {
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: center center;
+
+  background: #071a2b;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   CINEMATIC VIDEO ZOOM
+   ========================================================= */
+
+.km-hero__media {
+  animation:
+    km-hero-zoom
+    22s
+    ease-out
+    both;
+}
+
+@keyframes km-hero-zoom {
+  from {
+    transform: scale(1.08);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+
+/* =========================================================
+   VIDEO OVERLAY
+   ========================================================= */
+
+.km-hero__veil {
+  position: absolute;
+  inset: 0;
+
+  z-index: 2;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5, 20, 34, 0.45) 0%,
+      rgba(5, 20, 34, 0.12) 28%,
+      rgba(5, 20, 34, 0.22) 50%,
+      rgba(5, 20, 34, 0.62) 78%,
+      rgba(5, 20, 34, 0.94) 100%
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(5, 20, 34, 0.72) 0%,
+      rgba(5, 20, 34, 0.38) 38%,
+      rgba(5, 20, 34, 0.08) 72%,
+      rgba(5, 20, 34, 0.05) 100%
+    );
+}
+
+
+/* =========================================================
+   FLOATING PARTICLES
+   ========================================================= */
+
+.km-hero__air {
+  position: absolute;
+  inset: 0;
+
+  z-index: 3;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+
+.km-hero__air span {
+  position: absolute;
+
+  top: -4%;
+
+  left:
+    calc(
+      var(--i) * 6.2% + 1.5%
+    );
+
+  width: 3px;
+  height: 3px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.7);
+
+  opacity: 0;
+
+  filter: blur(0.4px);
+
+  animation:
+    km-drift
+    calc(15s + var(--i) * 0.8s)
+    linear
+    infinite;
+
+  animation-delay:
+    calc(var(--i) * -2.1s);
+}
+
+
+.km-hero__air span:nth-child(3n) {
+  width: 2px;
+  height: 2px;
+}
+
+
+.km-hero__air span:nth-child(4n) {
+  width: 4px;
+  height: 4px;
+
+  filter: blur(1.2px);
+}
+
+
+@keyframes km-drift {
+  0% {
+    transform:
+      translate3d(0, 0, 0);
+
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.75;
+  }
+
+  85% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform:
+      translate3d(-48px, 105vh, 0);
+
+    opacity: 0;
+  }
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.km-hero__inner {
+  position: relative;
+
+  z-index: 4;
+
+  width: 100%;
+
+  padding-top:
+    clamp(
+      4rem,
+      9vh,
+      7rem
+    );
+
+  padding-bottom:
+    clamp(
+      5rem,
+      10vh,
+      7rem
+    );
+}
+
+
+/* =========================================================
+   CONTENT ENTRANCE
+   ========================================================= */
+
+.km-hero [data-hero-seq] {
+  animation:
+    km-rise
+    0.9s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+
+  animation-delay:
+    calc(
+      var(--seq) * 110ms + 150ms
+    );
+}
+
+
+@keyframes km-rise {
+  from {
+    opacity: 0;
+    transform:
+      translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0);
+  }
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.km-hero__eyebrow {
+  display: flex;
+  align-items: center;
+
+  gap: 0.75rem;
+
+  margin:
+    0 0 1.35rem;
+
+  font-size:
+    clamp(
+      0.72rem,
+      0.68rem + 0.2vw,
+      0.86rem
+    );
+
+  font-weight: 700;
+
+  letter-spacing: 0.23em;
+
+  line-height: 1;
+
+  text-transform: uppercase;
+
+  color:
+    var(--km-gold, #d7ad57);
+}
+
+
+.km-hero__eyebrow::before {
+  content: "";
+
+  width: 32px;
+  height: 1px;
+
+  flex-shrink: 0;
+
+  background:
+    var(--km-gold, #d7ad57);
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.km-hero__title {
+  max-width: 12ch;
+
+  margin: 0;
+
+  font-family:
+    var(
+      --km-font-display,
+      Georgia,
+      "Times New Roman",
+      serif
+    );
+
+  font-weight: 500;
+
+  font-size:
+    clamp(
+      3rem,
+      1.7rem + 5.6vw,
+      6.5rem
+    );
+
+  line-height: 0.97;
+
+  letter-spacing: -0.035em;
+
+  color: #fff;
+
+  text-wrap: balance;
+
+  text-shadow:
+    0 3px 25px rgba(0, 0, 0, 0.3);
+}
+
+
+/* =========================================================
+   SUBTITLE
+   ========================================================= */
+
+.km-hero__subtitle {
+  max-width: 42rem;
+
+  margin:
+    1.35rem 0 0;
+
+  font-family:
+    var(
+      --km-font-display,
+      Georgia,
+      "Times New Roman",
+      serif
+    );
+
+  font-style: italic;
+
+  font-size:
+    clamp(
+      1.2rem,
+      1rem + 1vw,
+      1.8rem
+    );
+
+  line-height: 1.3;
+
+  color: #edf2f5;
+
+  text-shadow:
+    0 2px 15px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.km-hero__lede {
+  max-width: 38rem;
+
+  margin:
+    1.4rem 0 0;
+
+  font-size:
+    clamp(
+      0.98rem,
+      0.92rem + 0.3vw,
+      1.12rem
+    );
+
+  line-height: 1.7;
+
+  color:
+    rgba(235, 242, 247, 0.92);
+
+  text-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.km-hero__actions {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 0.9rem;
+
+  margin-top: 2.15rem;
+}
+
+
+/* =========================================================
+   BUTTON BASE
+   ========================================================= */
+
+.km-hero .km-btn {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 52px;
+
+  padding:
+    0.85rem 1.4rem;
+
+  border-radius: 7px;
+
+  font-size: 0.95rem;
+
+  font-weight: 650;
+
+  line-height: 1;
+
+  text-decoration: none;
+
+  transition:
+    transform 220ms ease,
+    background 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+
+/* =========================================================
+   PRIMARY BUTTON
+   ========================================================= */
+
+.km-hero .km-btn--primary {
+  gap: 0.65rem;
+
+  border:
+    1px solid
+    var(--km-gold, #d7ad57);
+
+  background:
+    var(--km-gold, #d7ad57);
+
+  color: #0a1c2d;
+
+  box-shadow:
+    0 12px 30px
+    rgba(0, 0, 0, 0.2);
+}
+
+
+.km-hero .km-btn--primary:hover {
+  transform:
+    translateY(-2px);
+
+  background: #e2bc6c;
+
+  border-color: #e2bc6c;
+
+  box-shadow:
+    0 16px 35px
+    rgba(0, 0, 0, 0.28);
+}
+
+
+.km-hero .km-btn--primary span {
+  transition:
+    transform 220ms ease;
+}
+
+
+.km-hero .km-btn--primary:hover span {
+  transform:
+    translateX(4px);
+}
+
+
+/* =========================================================
+   GHOST BUTTON
+   ========================================================= */
+
+.km-hero .km-btn--ghost {
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.55);
+
+  background:
+    rgba(255, 255, 255, 0.05);
+
+  color: #fff;
+
+  backdrop-filter:
+    blur(8px);
+}
+
+
+.km-hero .km-btn--ghost:hover {
+  transform:
+    translateY(-2px);
+
+  border-color:
+    rgba(255, 255, 255, 0.9);
+
+  background:
+    rgba(255, 255, 255, 0.12);
+}
+
+
+/* =========================================================
+   SCROLL INDICATOR
+   ========================================================= */
+
+.km-hero__scroll {
+  position: absolute;
+
+  z-index: 5;
+
+  left: 50%;
+  bottom: 1.5rem;
+
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: center;
+
+  width: 27px;
+  height: 43px;
+
+  padding-top: 8px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.55);
+
+  border-radius: 15px;
+
+  transform:
+    translateX(-50%);
+
+  text-decoration: none;
+}
+
+
+.km-hero__scroll span {
+  width: 3px;
+  height: 8px;
+
+  border-radius: 2px;
+
+  background: #fff;
+
+  animation:
+    km-scroll-cue
+    2.2s
+    ease-in-out
+    infinite;
+}
+
+
+@keyframes km-scroll-cue {
+  0% {
+    transform:
+      translateY(0);
+
+    opacity: 1;
+  }
+
+  70% {
+    transform:
+      translateY(13px);
+
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1024px) {
+
+  .km-hero__inner {
+    padding-top: 4rem;
+    padding-bottom: 5rem;
+  }
+
+  .km-hero__title {
+    max-width: 11ch;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .km-hero {
+    min-height:
+      calc(
+        100svh -
+        var(--km-site-header, 72px)
+      );
+  }
+
+  .km-hero__video {
+    object-position: 55% center;
+  }
+
+  .km-hero__veil {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(5, 20, 34, 0.5) 0%,
+        rgba(5, 20, 34, 0.15) 30%,
+        rgba(5, 20, 34, 0.68) 68%,
+        rgba(5, 20, 34, 0.97) 100%
+      );
+  }
+
+  .km-hero__inner {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .km-hero__title {
+    max-width: 9ch;
+
+    font-size:
+      clamp(
+        2.8rem,
+        12vw,
+        4.5rem
+      );
+  }
+
+  .km-hero__subtitle {
+    font-size:
+      clamp(
+        1.1rem,
+        5vw,
+        1.45rem
+      );
+  }
+
+  .km-hero__lede {
+    font-size: 0.96rem;
+  }
+
+  .km-hero__actions {
+    width: 100%;
+
+    gap: 0.7rem;
+
+    margin-top: 1.7rem;
+  }
+
+  .km-hero .km-btn {
+    width: 100%;
+  }
+
+  .km-hero__scroll {
+    display: none;
+  }
+
+  .km-hero__air span:nth-child(n + 9) {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .km-hero__inner {
+    padding-top: 3rem;
+    padding-bottom: 3.25rem;
+  }
+
+  .km-hero__eyebrow {
+    font-size: 0.68rem;
+
+    letter-spacing: 0.17em;
+  }
+
+  .km-hero__eyebrow::before {
+    width: 22px;
+  }
+
+  .km-hero__title {
+    font-size:
+      clamp(
+        2.55rem,
+        13vw,
+        3.7rem
+      );
+  }
+
+  .km-hero__lede {
+    font-size: 0.92rem;
+  }
+}
+
+
+/* =========================================================
+   SHORT DESKTOP SCREEN
+   ========================================================= */
+
+@media (min-width: 769px) and (max-height: 760px) {
+
+  .km-hero__inner {
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+  }
+
+  .km-hero__title {
+    font-size:
+      clamp(
+        3rem,
+        5vw,
+        5.2rem
+      );
+  }
+
+  .km-hero__lede {
+    margin-top: 1rem;
+  }
+
+  .km-hero__actions {
+    margin-top: 1.5rem;
+  }
+
+  .km-hero__scroll {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .km-hero__media {
+    animation: none;
+  }
+
+  .km-hero [data-hero-seq] {
+    animation: none;
+
+    opacity: 1;
+
+    transform: none;
+  }
+
+  .km-hero__air span {
+    animation: none;
+
+    opacity: 0;
+  }
+
+  .km-hero__scroll span {
+    animation: none;
+  }
+
+}

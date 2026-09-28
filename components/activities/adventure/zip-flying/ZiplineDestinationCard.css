@@ -1,0 +1,106 @@
+/* Reusable adventure site card — self-contained tokens with fallbacks */
+.adv-card {
+  --adv-ink: var(--zf-ink, #0b1b2b);
+  --adv-muted: var(--zf-muted, #52606b);
+  --adv-line: var(--zf-line, #e2ddd0);
+  --adv-gold: var(--zf-gold, #b8954e);
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--adv-line);
+  border-radius: 6px;
+  overflow: hidden;
+  min-width: 0;
+}
+.adv-card__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: #1b2b3a;
+}
+.adv-card__media .zf-status {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+}
+.adv-card__img { object-fit: cover; }
+.adv-card__media--blank {
+  background:
+    repeating-radial-gradient(circle at 70% 120%, transparent 0 14px, rgba(201, 164, 92, 0.16) 14px 15px),
+    linear-gradient(160deg, #13283a, #0d1d16);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0.9rem 1rem;
+}
+.adv-card__region-mark {
+  font-family: var(--zf-serif, Georgia, serif);
+  font-style: italic;
+  font-size: 1.75rem;
+  color: rgba(247, 245, 239, 0.55);
+}
+.adv-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.1rem 1.2rem 1.25rem;
+  flex: 1;
+}
+.adv-card__region {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--adv-muted);
+}
+.adv-card__title {
+  margin: 0;
+  font-family: var(--zf-serif, Georgia, serif);
+  font-size: 1.3rem;
+  line-height: 1.2;
+  color: var(--adv-ink);
+}
+.adv-card__spec {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--adv-gold);
+}
+.adv-card__desc {
+  margin: 0.2rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--adv-muted);
+}
+.adv-card__foot {
+  margin-top: auto;
+  padding-top: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  border-top: 1px solid var(--adv-line);
+}
+.adv-card__price {
+  margin: 0;
+  font-weight: 700;
+  color: var(--adv-ink);
+  font-variant-numeric: tabular-nums;
+}
+.adv-card__price-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--adv-muted);
+}
+.adv-card__cta {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--adv-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--adv-gold);
+  text-underline-offset: 4px;
+}
+.adv-card__cta:hover { color: var(--adv-gold); }
+.adv-card__cta:focus-visible {
+  outline: 2px solid var(--adv-gold);
+  outline-offset: 3px;
+}

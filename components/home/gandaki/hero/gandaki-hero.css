@@ -1,0 +1,206 @@
+.gandaki-hero {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: calc(100svh - 170px);
+  min-height: 560px;
+  overflow: hidden;
+  color: #f7f5ef;
+  display: flex;
+  align-items: flex-end;
+}
+
+.gandaki-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.gandaki-hero__image {
+  object-fit: cover;
+}
+
+.gandaki-hero__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(7, 16, 12, 0.55) 0%,
+    rgba(7, 16, 12, 0.25) 35%,
+    rgba(7, 16, 12, 0.55) 72%,
+    rgba(7, 16, 12, 0.92) 100%
+  );
+}
+
+.gandaki-hero__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 2.5rem clamp(1.5rem, 5vw, 4.5rem) 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.gandaki-hero__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.gandaki-hero__eyebrow {
+  margin: 0;
+  color: #c9a45c;
+}
+
+.gandaki-hero__location {
+  margin: 0;
+  color: rgba(247, 245, 239, 0.75);
+}
+
+.gandaki-hero__middle {
+  max-width: 760px;
+}
+
+.gandaki-hero__title {
+  margin: 0 0 0.75rem;
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: clamp(2.6rem, 7vw, 5.2rem);
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+}
+
+.gandaki-hero__title-line {
+  display: block;
+  color: #c9a45c;
+  font-style: italic;
+}
+
+.gandaki-hero__headline {
+  margin: 0 0 1rem;
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  color: rgba(247, 245, 239, 0.92);
+}
+
+.gandaki-hero__description {
+  margin: 0 0 1.75rem;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: rgba(247, 245, 239, 0.78);
+  max-width: 56ch;
+}
+
+.gandaki-hero__actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.gandaki-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.6rem;
+  background: #c9a45c;
+  color: #0d1d16;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.gandaki-hero__cta:hover {
+  background: #ddb972;
+  transform: translateY(-1px);
+}
+
+.gandaki-hero__cta:focus-visible {
+  outline: 2px solid #f7f5ef;
+  outline-offset: 3px;
+}
+
+.gandaki-hero__tagline {
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  color: rgba(247, 245, 239, 0.65);
+}
+
+.gandaki-hero__highlights {
+  list-style: none;
+  margin: 0;
+  padding: 1.25rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  border-top: 1px solid rgba(247, 245, 239, 0.2);
+}
+
+.gandaki-hero__highlight {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.gandaki-hero__highlight-index {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  color: #c9a45c;
+  font-size: 0.9rem;
+}
+
+.gandaki-hero__highlight-label {
+  font-family: "Inter", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: #f7f5ef;
+}
+
+.gandaki-hero__highlight-detail {
+  font-family: "Inter", sans-serif;
+  font-size: 0.82rem;
+  color: rgba(247, 245, 239, 0.65);
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .gandaki-hero {
+    height: auto;
+    min-height: 92svh;
+    padding-top: 4rem;
+  }
+
+  .gandaki-hero__highlights {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .gandaki-hero__top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gandaki-hero__cta {
+    transition: none;
+  }
+}

@@ -1,0 +1,22 @@
+.sky-why {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem) clamp(1.5rem, 3vw, 3rem);
+}
+.sky-why__item { grid-column: span 2; padding-top: 1.25rem; border-top: 2px solid var(--sky-gold); }
+.sky-why__item:nth-child(n + 4) { grid-column: span 3; }
+.sky-why__title { margin: 0; font-family: var(--sky-serif); font-weight: 600; font-size: 1.3rem; color: var(--sky-navy); }
+.sky-why__text { margin: 0.6rem 0 0; line-height: 1.65; color: var(--sky-muted); max-width: 46ch; }
+
+@media (max-width: 900px) {
+  .sky-why { grid-template-columns: 1fr 1fr; }
+  .sky-why__item,
+  .sky-why__item:nth-child(n + 4) { grid-column: span 1; }
+  .sky-why__item:last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 600px) {
+  .sky-why { grid-template-columns: 1fr; }
+}

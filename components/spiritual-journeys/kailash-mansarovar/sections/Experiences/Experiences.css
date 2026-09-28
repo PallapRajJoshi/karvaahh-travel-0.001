@@ -1,0 +1,49 @@
+.km-experiences__list {
+  display: grid;
+  gap: 0 2.5rem;
+  border-top: 1px solid var(--km-line);
+}
+
+.km-experience {
+  display: flex;
+  gap: 1rem;
+  padding-block: 1.25rem;
+  border-bottom: 1px solid var(--km-line);
+}
+
+.km-experience__icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-top: 0.1rem;
+  color: var(--km-lake-text);
+}
+
+.km-experience__title {
+  font-size: 1.025rem;
+  font-weight: 600;
+  color: var(--km-ink);
+}
+
+.km-experience__text {
+  margin-top: 0.2rem;
+  font-size: 0.95rem;
+  color: var(--km-slate);
+}
+
+.km-experiences__foot {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--km-slate);
+}
+
+@media (min-width: 720px) {
+  .km-experiences__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .km-experiences__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
