@@ -181,15 +181,80 @@ export const mainNav: MainNavItem[] = [
           title: "Nepal Packages",
           href: "/packages/nepal",
           items: [
-            { label: "Nepal Spiritual & Adventure Tours", href: "/packages/nepal/spiritual-adventure-tours" },
+            // { label: "Nepal Spiritual & Adventure Tours", href: "/packages/nepal/spiritual-adventure-tours" },
+           // Nepal Tour Categories
+{ 
+  label: "Spiritual & Pilgrimage Tours", 
+  href: "/packages/nepal/spiritual-pilgrimage-tours" 
+},
+
+{ 
+  label: "Trekking & Hiking Packages", 
+  href: "/packages/nepal/trekking-hiking-packages" 
+},
+
+{ 
+  label: "Adventure & Offbeat Tours", 
+  href: "/packages/nepal/adventure-offbeat-tours" 
+},
+
+{ 
+  label: "Base Camp Trek Packages", 
+  href: "/packages/nepal/base-camp-treks" 
+},
+
+{ 
+  label: "Festival & Cultural Tours", 
+  href: "/packages/nepal/festival-cultural-tours" 
+},
+
+{ 
+  label: "Helicopter Tour Packages", 
+  href: "/packages/nepal/helicopter-tours" 
+},
+
+{ 
+  label: "Nepal Couple Tour Packages", 
+  href: "/packages/nepal/couple-tour-packages" 
+},
+          
           ],
         },
+
+
+
+
+
+
+
+        
         {
           title: "India Pilgrimage",
           href: "/packages/india-pilgrimage",
           accent: "gold",
           items: [
-            { label: "Adi Kailash & Om Parvat – Uttarakhand", href: "/packages/india-pilgrimage/adi-kailash-om-parvat" },
+            // { label: "Adi Kailash & Om Parvat – Uttarakhand", href: "/packages/india-pilgrimage/adi-kailash-om-parvat" },
+        // Spiritual & Pilgrimage
+{ label: "Spiritual & Pilgrimage Tours", href: "/packages/spiritual-pilgrimage" },
+
+// Historical & Heritage
+{ label: "Historical & Heritage Tours", href: "/packages/historical-heritage" },
+
+// North India
+{ label: "North India Tour Packages", href: "/packages/north-india" },
+
+// Beach & Cruise
+{ label: "Beach & Cruise Packages", href: "/packages/beach-cruise" },
+
+// Leh & Ladakh
+{ label: "Leh & Ladakh Tour Packages", href: "/packages/leh-ladakh" },
+
+// Uttarakhand
+{ label: "Uttarakhand Tour Packages", href: "/packages/uttarakhand" },
+
+// Northeast India
+{ label: "Northeast India Tour Packages", href: "/packages/northeast-india" },
+
           ],
         },
         {
@@ -197,7 +262,18 @@ export const mainNav: MainNavItem[] = [
           href: "/packages/international-pilgrimage",
           accent: "gold",
           items: [
-            { label: "Kailash Mansarovar Yatra – Tibet", href: "/packages/kailash-mansarovar-yatra" },
+            // { label: "Kailash Mansarovar Yatra – Tibet", href: "/packages/kailash-mansarovar-yatra" },
+         
+         { label: "Asia Tour Packages", href: "/packages/international/asia" },
+  { label: "Europe Tour Packages", href: "/packages/international/europe" },
+  // { label: "China Tour Packages", href: "/packages/international/china" },
+  { label: "Russia Tour Packages", href: "/packages/international/russia" },
+  { label: "USA Tour Packages", href: "/packages/international/usa" },
+  { label: "Australia Tour Packages", href: "/packages/international/australia" },
+  { label: "Antarctica Tour Packages", href: "/packages/international/antarctica" },
+  { label: "South Africa Tour Packages", href: "/packages/international/south-africa" },
+         
+         
           ],
         },
       ],
