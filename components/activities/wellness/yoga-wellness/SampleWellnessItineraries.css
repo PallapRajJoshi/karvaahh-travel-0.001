@@ -1,0 +1,83 @@
+.ykw .ykw-itin__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(20px, 3vw, 36px);
+}
+.ykw .ykw-itin__card {
+  background: var(--ykw-ivory);
+  border: 1px solid var(--ykw-line);
+  border-radius: var(--ykw-radius);
+  padding: clamp(24px, 3vw, 40px);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.ykw .ykw-itin__head h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.ykw .ykw-itin__dur {
+  margin-top: 6px;
+  font-weight: 600;
+  color: var(--ykw-teal-deep);
+}
+.ykw .ykw-itin__dur span {
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(37, 43, 50, 0.7);
+}
+.ykw .ykw-itin__days {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 22px;
+  border-left: 2px solid rgba(42, 127, 130, 0.3);
+  display: grid;
+  gap: 22px;
+  flex: 1;
+}
+.ykw .ykw-itin__day {
+  position: relative;
+}
+.ykw .ykw-itin__dot {
+  position: absolute;
+  left: -30px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--ykw-gold);
+  border: 3px solid var(--ykw-ivory);
+  box-shadow: 0 0 0 1px var(--ykw-gold);
+}
+.ykw .ykw-itin__day-title {
+  font-family: var(--ykw-serif);
+  font-size: 1.1rem;
+  color: var(--ykw-blue);
+  margin-bottom: 6px;
+}
+.ykw .ykw-itin__day-title span {
+  font-family: var(--ykw-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ykw-gold-deep);
+  font-weight: 700;
+  margin-right: 8px;
+}
+.ykw .ykw-itin__day ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 0.93rem;
+}
+.ykw .ykw-itin__card .ykw-btn {
+  align-self: flex-start;
+}
+.ykw .ykw-itin__cta {
+  text-align: center;
+  margin-top: clamp(32px, 5vw, 56px);
+}
+@media (max-width: 900px) {
+  .ykw .ykw-itin__list {
+    grid-template-columns: 1fr;
+  }
+}

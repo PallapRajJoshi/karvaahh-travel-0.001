@@ -1,0 +1,100 @@
+.et-cat__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.25rem, 2.4vw, 2rem);
+}
+.et-cat__card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--et-radius);
+  background: var(--et-ivory);
+  border: 1px solid var(--et-line);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease,
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.et-cat__card.is-in:hover,
+.et-cat__card.is-in:focus-within {
+  transform: translateY(-6px);
+  box-shadow: var(--et-shadow-lg);
+}
+.et-cat__media {
+  position: relative;
+  height: 13rem;
+  overflow: hidden;
+}
+.et-cat__media .et-media {
+  transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.et-cat__card:hover .et-cat__media .et-media {
+  transform: scale(1.06);
+}
+.et-cat__letter {
+  position: absolute;
+  right: 1.1rem;
+  bottom: 0.4rem;
+  font-family: var(--et-font-display);
+  font-size: 4.6rem;
+  line-height: 1;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.3);
+  z-index: 2;
+}
+.et-cat__body {
+  flex: 1;
+  padding: 1.6rem 1.7rem 1.8rem;
+}
+.et-cat__head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+.et-cat__title {
+  margin: 0;
+  font-family: var(--et-font-display);
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  line-height: 1.2;
+  color: var(--et-blue);
+}
+.et-cat__label {
+  margin: 1rem 0 0.45rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--et-teal);
+}
+.et-cat__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.92rem;
+}
+.et-cat__list li {
+  position: relative;
+  padding-left: 0.95rem;
+}
+.et-cat__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.68em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--et-gold);
+}
+.et-cat__themes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+}
+
+@media (max-width: 899px) {
+  .et-cat__grid { grid-template-columns: 1fr; }
+}

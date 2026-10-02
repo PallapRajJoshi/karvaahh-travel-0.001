@@ -1,0 +1,31 @@
+.tsho-breadcrumb {
+  background: var(--tsho-surface);
+  border-bottom: 1px solid var(--tsho-border);
+}
+
+.tsho-breadcrumb__list {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding-block: 0.9rem;
+  font-size: 0.85rem;
+  color: var(--tsho-text-soft);
+  flex-wrap: wrap;
+}
+
+.tsho-breadcrumb__list a {
+  color: var(--tsho-text-soft);
+  text-decoration: none;
+  transition: color var(--tsho-transition);
+}
+
+.tsho-breadcrumb__list a:hover {
+  color: var(--tsho-blue);
+}
+
+.tsho-breadcrumb__list li[aria-current="page"] {
+  color: var(--tsho-blue);
+  font-weight: 600;
+}

@@ -1,0 +1,524 @@
+/* ==========================================================================
+   Road & Trail Adventure — tokens + shared primitives
+   Everything is scoped under .rt-page so nothing leaks into other pages.
+
+   NOTE: this page uses the palette from the brief (#123B5D / #2A7F82 / #D8A64A
+   / #F8F6F0 / #252B32), same as the Rara Lake, Tsho Rolpa, Panch Pokhari and
+   Saipal pages. Swap these tokens for the site-wide ones in one place if the
+   brand owner decides to unify.
+   ========================================================================== */
+
+.rt-page {
+  --rt-blue: #123b5d;
+  --rt-blue-deep: #0b2740;
+  --rt-teal: #2a7f82;
+  --rt-teal-ink: #1d6265; /* teal for small text on ivory (AA contrast) */
+  --rt-gold: #d8a64a;
+  --rt-gold-deep: #b8862e;
+  --rt-ivory: #f8f6f0;
+  --rt-ivory-2: #efeadd;
+  --rt-charcoal: #252b32;
+  --rt-muted: #566069;
+  --rt-white: #ffffff;
+  --rt-line: rgba(37, 43, 50, 0.12);
+
+  --rt-font-display: var(--font-playfair), "Playfair Display", Georgia, "Times New Roman", serif;
+  --rt-font-body: var(--font-inter), "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --rt-radius: 16px;
+  --rt-radius-sm: 10px;
+  --rt-shadow-sm: 0 1px 2px rgba(18, 59, 93, 0.06), 0 4px 14px rgba(18, 59, 93, 0.06);
+  --rt-shadow-md: 0 10px 30px rgba(18, 59, 93, 0.14);
+  --rt-container: 1240px;
+  --rt-gutter: clamp(20px, 5vw, 56px);
+  --rt-section-y: clamp(72px, 9vw, 132px);
+  --rt-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* Offset for the sticky sub-nav if the global navbar is also sticky.
+     Set to the navbar height (e.g. 72px) from the site’s global CSS. */
+  --rt-nav-offset: 0px;
+
+  font-family: var(--rt-font-body);
+  color: var(--rt-charcoal);
+  background: var(--rt-ivory);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.rt-page *,
+.rt-page *::before,
+.rt-page *::after {
+  box-sizing: border-box;
+}
+
+.rt-page img {
+  max-width: 100%;
+}
+
+/* ---- Layout ------------------------------------------------------------ */
+
+.rt-container {
+  width: 100%;
+  max-width: var(--rt-container);
+  margin-inline: auto;
+  padding-inline: var(--rt-gutter);
+}
+
+.rt-section {
+  padding-block: var(--rt-section-y);
+  position: relative;
+  scroll-margin-top: calc(var(--rt-nav-offset) + 56px);
+}
+
+.rt-section--alt {
+  background: var(--rt-ivory-2);
+}
+
+.rt-section--dark {
+  background: var(--rt-blue);
+  color: var(--rt-ivory);
+}
+
+/* ---- Typography -------------------------------------------------------- */
+
+.rt-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--rt-teal-ink);
+}
+
+.rt-eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: var(--rt-gold-deep);
+}
+
+.rt-section--dark .rt-eyebrow,
+.rt-eyebrow--light {
+  color: var(--rt-gold);
+}
+
+.rt-section--dark .rt-eyebrow::before,
+.rt-eyebrow--light::before {
+  background: var(--rt-gold);
+}
+
+.rt-h2 {
+  margin: 0;
+  font-family: var(--rt-font-display);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 4.2vw, 3.1rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--rt-blue);
+  text-wrap: balance;
+}
+
+.rt-section--dark .rt-h2 {
+  color: var(--rt-white);
+}
+
+.rt-lede {
+  margin: 1.25rem 0 0;
+  max-width: 62ch;
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  color: var(--rt-muted);
+}
+
+.rt-section--dark .rt-lede {
+  color: rgba(248, 246, 240, 0.8);
+}
+
+.rt-heading {
+  margin-bottom: clamp(36px, 5vw, 64px);
+}
+
+.rt-heading--center {
+  text-align: center;
+}
+
+.rt-heading--center .rt-lede {
+  margin-inline: auto;
+}
+
+.rt-heading--center .rt-eyebrow {
+  justify-content: center;
+}
+
+/* ---- Gold divider ------------------------------------------------------ */
+
+.rt-divider {
+  display: block;
+  width: 96px;
+  height: 14px;
+  margin: 1.75rem 0;
+  color: var(--rt-gold);
+}
+
+/* ---- Buttons ----------------------------------------------------------- */
+
+.rt-btn {
+  --rt-btn-bg: var(--rt-gold);
+  --rt-btn-fg: var(--rt-charcoal);
+  --rt-btn-bd: var(--rt-gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 48px;
+  padding: 0.8rem 1.6rem;
+  border: 1.5px solid var(--rt-btn-bd);
+  border-radius: 999px;
+  background: var(--rt-btn-bg);
+  color: var(--rt-btn-fg);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.25s var(--rt-ease),
+    background-color 0.25s var(--rt-ease),
+    color 0.25s var(--rt-ease),
+    border-color 0.25s var(--rt-ease),
+    box-shadow 0.25s var(--rt-ease);
+}
+
+.rt-btn svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.25s var(--rt-ease);
+}
+
+.rt-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(216, 166, 74, 0.35);
+}
+
+.rt-btn:hover svg {
+  transform: translateX(3px);
+}
+
+.rt-btn:active {
+  transform: translateY(0);
+}
+
+.rt-btn--ghost {
+  --rt-btn-bg: transparent;
+  --rt-btn-fg: var(--rt-white);
+  --rt-btn-bd: rgba(255, 255, 255, 0.7);
+}
+
+.rt-btn--ghost:hover {
+  --rt-btn-bg: rgba(255, 255, 255, 0.12);
+  box-shadow: none;
+}
+
+.rt-btn--outline {
+  --rt-btn-bg: transparent;
+  --rt-btn-fg: var(--rt-blue);
+  --rt-btn-bd: var(--rt-blue);
+}
+
+.rt-btn--outline:hover {
+  --rt-btn-bg: var(--rt-blue);
+  --rt-btn-fg: var(--rt-white);
+  box-shadow: none;
+}
+
+.rt-btn--sm {
+  min-height: 42px;
+  padding: 0.55rem 1.2rem;
+  font-size: 0.875rem;
+}
+
+.rt-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--rt-blue);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--rt-gold);
+  padding-bottom: 2px;
+  transition: gap 0.25s var(--rt-ease), color 0.25s var(--rt-ease);
+}
+
+.rt-link svg {
+  width: 16px;
+  height: 16px;
+}
+
+.rt-link:hover {
+  gap: 0.75rem;
+  color: var(--rt-teal-ink);
+}
+
+/* Visible keyboard focus everywhere on the page. */
+.rt-page :where(a, button, input, select, textarea, summary):focus-visible {
+  outline: 3px solid var(--rt-gold);
+  outline-offset: 3px;
+}
+
+.rt-section--dark :where(a, button):focus-visible {
+  outline-color: var(--rt-white);
+}
+
+/* ---- Chips ------------------------------------------------------------- */
+
+.rt-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rt-chip {
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(42, 127, 130, 0.1);
+  color: var(--rt-teal-ink);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.rt-badge {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: var(--rt-blue);
+  color: var(--rt-white);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.rt-badge--gold {
+  background: var(--rt-gold);
+  color: var(--rt-charcoal);
+}
+
+.rt-badge--outline {
+  background: transparent;
+  border: 1px solid currentColor;
+  color: var(--rt-teal-ink);
+}
+
+/* ---- Check list -------------------------------------------------------- */
+
+.rt-checklist {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rt-checklist li {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 0.65rem;
+  align-items: start;
+  font-size: 0.93rem;
+  line-height: 1.5;
+}
+
+.rt-checklist svg {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  color: var(--rt-teal);
+}
+
+.rt-section--dark .rt-checklist svg {
+  color: var(--rt-gold);
+}
+
+/* ---- Photo slot + placeholder ----------------------------------------- */
+
+.rt-photo {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--rt-blue);
+}
+
+.rt-photo img {
+  object-fit: cover;
+}
+
+.rt-photo--placeholder {
+  background:
+    radial-gradient(120% 80% at 80% 10%, rgba(216, 166, 74, 0.35), transparent 55%),
+    linear-gradient(165deg, #1b5479 0%, var(--rt-blue) 45%, var(--rt-blue-deep) 100%);
+}
+
+.rt-photo__ridge {
+  position: absolute;
+  inset: auto 0 0 0;
+  width: 100%;
+  height: 62%;
+  color: rgba(248, 246, 240, 0.09);
+}
+
+.rt-photo__ridge--back {
+  color: rgba(42, 127, 130, 0.35);
+  height: 74%;
+}
+
+.rt-photo__label {
+  position: absolute;
+  inset: auto 12px 12px 12px;
+  padding: 0.4rem 0.6rem;
+  border-radius: 8px;
+  background: rgba(11, 39, 64, 0.72);
+  color: rgba(248, 246, 240, 0.9);
+  font-size: 0.68rem;
+  line-height: 1.35;
+  pointer-events: none;
+}
+
+/* ---- Reveal on scroll -------------------------------------------------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .rt-reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition:
+      opacity 0.8s var(--rt-ease),
+      transform 0.8s var(--rt-ease);
+    transition-delay: var(--rt-delay, 0ms);
+  }
+
+  .rt-reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---- Card primitives shared by several sections ------------------------ */
+
+.rt-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--rt-radius);
+  background: var(--rt-white);
+  box-shadow: var(--rt-shadow-sm);
+  transition:
+    transform 0.4s var(--rt-ease),
+    box-shadow 0.4s var(--rt-ease);
+}
+
+.rt-card__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.rt-card__media .rt-photo > * {
+  transition: transform 0.9s var(--rt-ease);
+}
+
+.rt-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 1.5rem 1.5rem 1.6rem;
+}
+
+.rt-card__title {
+  margin: 0;
+  font-family: var(--rt-font-display);
+  font-size: 1.4rem;
+  line-height: 1.2;
+  color: var(--rt-blue);
+}
+
+.rt-card__text {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--rt-muted);
+}
+
+@media (hover: hover) {
+  .rt-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--rt-shadow-md);
+  }
+
+  .rt-card:hover .rt-card__media .rt-photo > * {
+    transform: scale(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rt-card,
+  .rt-card__media .rt-photo > *,
+  .rt-btn,
+  .rt-btn svg {
+    transition: none;
+  }
+  .rt-card:hover {
+    transform: none;
+  }
+  .rt-card:hover .rt-card__media .rt-photo > * {
+    transform: none;
+  }
+}
+
+.rt-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.rt-note {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin: 0;
+  padding: 1rem 1.15rem;
+  border-left: 3px solid var(--rt-gold);
+  border-radius: 0 var(--rt-radius-sm) var(--rt-radius-sm) 0;
+  background: rgba(216, 166, 74, 0.13);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--rt-charcoal);
+}
+
+.rt-note svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  color: var(--rt-gold-deep);
+}
+
+/* Parallax wrapper: sized inline (inset) by the component, moved via transform. */
+.rt-parallax {
+  position: absolute;
+  will-change: transform;
+}

@@ -1,0 +1,83 @@
+.rara-final-cta {
+  position: relative;
+  max-width: none;
+  padding: clamp(4.5rem, 9vw, 7rem) 1.5rem;
+  overflow: hidden;
+  color: var(--rara-white);
+  text-align: center;
+}
+
+.rara-final-cta__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.rara-final-cta__image {
+  object-fit: cover;
+}
+
+.rara-final-cta__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(18, 27, 34, 0.55), rgba(18, 27, 34, 0.82));
+}
+
+.rara-final-cta__content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.rara-final-cta__heading {
+  font-family: var(--font-heading, "Playfair Display", serif);
+  font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+  margin: 0 0 1rem;
+}
+
+.rara-final-cta__text {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0 0 2.25rem;
+}
+
+.rara-final-cta__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.rara-final-cta__button {
+  padding: 0.875rem 1.75rem;
+  border-radius: var(--rara-radius-sm);
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: transform 200ms ease, background-color 200ms ease;
+}
+
+.rara-final-cta__button--primary {
+  background-color: var(--rara-gold);
+  color: var(--rara-blue);
+}
+
+.rara-final-cta__button--primary:hover {
+  transform: translateY(-2px);
+  background-color: #e3b563;
+}
+
+.rara-final-cta__button--secondary {
+  background-color: transparent;
+  color: var(--rara-white);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+.rara-final-cta__button--secondary:hover {
+  transform: translateY(-2px);
+  background-color: rgba(255, 255, 255, 0.12);
+}

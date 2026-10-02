@@ -1,0 +1,89 @@
+.khaptad-itineraries {
+  padding-block: var(--khaptad-section-padding);
+  background: var(--khaptad-white);
+}
+
+.khaptad-itineraries__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.75rem;
+}
+
+.khaptad-itinerary-card {
+  position: relative;
+  border: 1px solid var(--khaptad-border);
+  border-radius: var(--khaptad-radius-lg);
+  padding: 1.75rem;
+  background: var(--khaptad-ivory);
+}
+
+.khaptad-itinerary-card__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--khaptad-border);
+}
+
+.khaptad-itinerary-card__title {
+  font-size: 1.15rem;
+}
+
+.khaptad-itinerary-card__duration {
+  flex-shrink: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--khaptad-teal);
+  white-space: nowrap;
+}
+
+.khaptad-itinerary-card__timeline {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.khaptad-itinerary-card__day {
+  padding-left: 1rem;
+  border-left: 2px solid var(--khaptad-gold);
+}
+
+.khaptad-itinerary-card__day-number {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--khaptad-blue);
+  margin-bottom: 0.25rem;
+}
+
+.khaptad-itinerary-card__day p {
+  font-size: 0.9rem;
+  color: var(--khaptad-charcoal-soft);
+}
+
+.khaptad-itinerary-card__tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: var(--khaptad-gold-soft);
+  color: var(--khaptad-blue);
+}
+
+.khaptad-itineraries__disclaimer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--khaptad-charcoal-soft);
+  font-style: italic;
+}

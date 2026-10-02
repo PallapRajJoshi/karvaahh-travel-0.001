@@ -1,0 +1,78 @@
+.phoksundo-wildlife {
+  padding: var(--phoksundo-section-padding);
+  background: var(--phoksundo-blue);
+  color: var(--phoksundo-white);
+}
+
+.phoksundo-wildlife .phoksundo-heading__title,
+.phoksundo-wildlife h3 {
+  color: var(--phoksundo-white);
+}
+
+.phoksundo-wildlife .phoksundo-heading__eyebrow {
+  color: var(--phoksundo-gold);
+}
+
+.phoksundo-wildlife__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.phoksundo-wildlife__card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--phoksundo-radius-md);
+  overflow: hidden;
+  padding-bottom: 1.25rem;
+}
+
+.phoksundo-wildlife__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+}
+
+.phoksundo-wildlife__image {
+  object-fit: cover;
+}
+
+.phoksundo-wildlife__title {
+  font-size: 1.05rem;
+  margin: 1rem 1.25rem 0.5rem;
+}
+
+.phoksundo-wildlife__description {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 1.25rem;
+}
+
+.phoksundo-wildlife__conservation {
+  margin-top: 2.5rem;
+  text-align: center;
+  padding: 1.5rem 2rem;
+  border-radius: var(--phoksundo-radius-md);
+  background: rgba(var(--phoksundo-gold-rgb), 0.14);
+  border: 1px solid rgba(var(--phoksundo-gold-rgb), 0.3);
+}
+
+.phoksundo-wildlife__conservation p {
+  margin: 0;
+  font-style: italic;
+  color: var(--phoksundo-gold);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 900px) {
+  .phoksundo-wildlife__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .phoksundo-wildlife__grid {
+    grid-template-columns: 1fr;
+  }
+}

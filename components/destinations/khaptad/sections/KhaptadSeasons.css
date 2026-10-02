@@ -1,0 +1,47 @@
+.khaptad-seasons {
+  padding-block: var(--khaptad-section-padding);
+  background: var(--khaptad-ivory);
+}
+
+.khaptad-seasons__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.25rem;
+}
+
+.khaptad-season-card {
+  background: var(--khaptad-white);
+  border: 1px solid var(--khaptad-border);
+  border-radius: var(--khaptad-radius-md);
+  padding: 1.5rem;
+}
+
+.khaptad-season-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--khaptad-border);
+}
+
+.khaptad-season-card__header h3 {
+  font-size: 1.1rem;
+  color: var(--khaptad-blue);
+}
+
+.khaptad-season-card__header span {
+  font-size: 0.8rem;
+  color: var(--khaptad-teal);
+  font-weight: 600;
+}
+
+.khaptad-season-card ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--khaptad-charcoal-soft);
+}

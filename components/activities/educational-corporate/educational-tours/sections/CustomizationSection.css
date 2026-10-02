@@ -1,0 +1,71 @@
+.et-custom__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.9rem, 1.6vw, 1.25rem);
+}
+.et-custom__card {
+  min-width: 0;
+  margin: 0;
+  padding: 1.2rem 1.15rem 1.3rem;
+  border-radius: var(--et-radius);
+  background: var(--et-ivory);
+  border: 1px solid var(--et-line);
+}
+.et-custom__legend {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 0.4rem;
+  font-family: var(--et-font-display);
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--et-blue);
+}
+.et-custom__legend svg { color: var(--et-teal); }
+.et-custom__legend small {
+  font-family: var(--et-font-body);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--et-muted);
+}
+.et-custom__options { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.6rem; }
+.et-custom__option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  min-height: 2.3rem;
+  padding: 0.3rem 0.75rem;
+  border: 1.5px solid var(--et-line);
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--et-charcoal);
+  background: var(--et-white);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.et-custom__option:hover { border-color: var(--et-teal); transform: translateY(-1px); }
+.et-custom__option.is-on { color: var(--et-white); background: var(--et-teal); border-color: var(--et-teal); }
+
+.et-custom__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+  margin-top: 2rem;
+  padding: 1.2rem 1.5rem;
+  border-radius: var(--et-radius);
+  background: linear-gradient(120deg, var(--et-blue), var(--et-blue-deep));
+  color: var(--et-white);
+}
+.et-custom__count { margin: 0; font-size: 0.95rem; }
+
+@media (max-width: 1099px) { .et-custom__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 799px) { .et-custom__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 559px) {
+  .et-custom__grid { grid-template-columns: 1fr; }
+  .et-custom__bar { flex-direction: column; align-items: stretch; text-align: center; }
+}

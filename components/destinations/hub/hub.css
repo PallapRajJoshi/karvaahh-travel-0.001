@@ -1,0 +1,278 @@
+/* ==========================================================================
+   Karvaahh /destinations hub — shared tokens + primitives
+   Everything is scoped under .dhub so nothing leaks into other pages.
+   Tokens follow the site palette (forest / gold / cream / navy).
+   ========================================================================== */
+
+.dhub {
+  --dh-forest: #0d1d16;
+  --dh-forest-2: #14291f;
+  --dh-navy: #0b1b2b;
+  --dh-gold: #c9a45c;
+  --dh-gold-bright: #e0bd74;
+  --dh-gold-deep: #7a5c22; /* gold for text on cream — 5.7:1 on #f7f5ef */
+  --dh-cream: #f7f5ef;
+  --dh-sand: #efeadc;
+  --dh-ink: #1b2a23;
+  --dh-ink-soft: #46554d; /* 7.2:1 on cream */
+  --dh-line: rgba(13, 29, 22, 0.12);
+  --dh-on-dark: #f3efe4;
+  --dh-on-dark-soft: rgba(243, 239, 228, 0.78);
+
+  --dh-radius: 22px;
+  --dh-radius-sm: 14px;
+  --dh-shadow-sm: 0 1px 2px rgba(13, 29, 22, 0.06), 0 4px 14px rgba(13, 29, 22, 0.06);
+  --dh-shadow-md: 0 2px 4px rgba(13, 29, 22, 0.08), 0 14px 34px rgba(13, 29, 22, 0.14);
+  --dh-gutter: clamp(16px, 4vw, 40px);
+  --dh-section: clamp(56px, 8vw, 112px);
+  --dh-ease: cubic-bezier(0.22, 0.8, 0.3, 1);
+
+  --dh-head: var(--font-playfair), "Playfair Display", Georgia, "Times New Roman", serif;
+  --dh-body: var(--font-inter), Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  font-family: var(--dh-body);
+  color: var(--dh-ink);
+  background: var(--dh-cream);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip; /* no horizontal overflow on small screens */
+}
+
+.dhub *,
+.dhub *::before,
+.dhub *::after {
+  box-sizing: border-box;
+}
+
+.dhub h1,
+.dhub h2,
+.dhub h3,
+.dhub p {
+  margin: 0;
+}
+
+.dhub a {
+  color: inherit;
+}
+
+.dhub :focus-visible {
+  outline: 3px solid var(--dh-gold);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.dhub .dh-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.dh-container {
+  width: min(1240px, 100% - 2 * var(--dh-gutter));
+  margin-inline: auto;
+}
+
+/* ---------- Section shell ---------- */
+.dh-section {
+  padding-block: var(--dh-section);
+  position: relative;
+}
+
+.dh-section--sand {
+  background: var(--dh-sand);
+}
+
+.dh-section--dark {
+  background: radial-gradient(1200px 500px at 85% -10%, rgba(201, 164, 92, 0.12), transparent 60%),
+    linear-gradient(180deg, var(--dh-forest) 0%, var(--dh-navy) 100%);
+  color: var(--dh-on-dark);
+}
+
+.dh-section__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px 40px;
+  margin-bottom: clamp(28px, 4vw, 52px);
+}
+
+.dh-section__titles {
+  max-width: 44rem;
+}
+
+.dh-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dh-gold-deep);
+  margin-bottom: 14px;
+}
+
+.dh-eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+}
+
+.dh-section--dark .dh-eyebrow {
+  color: var(--dh-gold-bright);
+}
+
+.dh-title {
+  font-family: var(--dh-head);
+  font-weight: 600;
+  font-size: clamp(1.9rem, 4.2vw, 3.1rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.dh-lede {
+  margin-top: 14px;
+  font-size: clamp(1rem, 1.4vw, 1.14rem);
+  color: var(--dh-ink-soft);
+  max-width: 40rem;
+}
+
+.dh-section--dark .dh-lede {
+  color: var(--dh-on-dark-soft);
+}
+
+/* ---------- Buttons ---------- */
+.dh-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 26px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font: 600 0.95rem/1 var(--dh-body);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s var(--dh-ease), background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.dh-btn svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.25s var(--dh-ease);
+}
+
+.dh-btn:hover svg {
+  transform: translateX(4px);
+}
+
+.dh-btn--gold {
+  background: var(--dh-gold);
+  color: #1a1407;
+}
+.dh-btn--gold:hover {
+  background: var(--dh-gold-bright);
+  box-shadow: 0 10px 26px rgba(201, 164, 92, 0.35);
+}
+
+.dh-btn--dark {
+  background: var(--dh-forest);
+  color: var(--dh-on-dark);
+}
+.dh-btn--dark:hover {
+  background: var(--dh-forest-2);
+  box-shadow: var(--dh-shadow-md);
+}
+
+.dh-btn--ghost {
+  border-color: currentColor;
+  background: transparent;
+}
+.dh-btn--ghost:hover {
+  background: rgba(127, 127, 127, 0.12);
+}
+
+.dh-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--dh-gold-deep);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s, gap 0.25s var(--dh-ease);
+}
+.dh-link:hover {
+  border-color: currentColor;
+  gap: 12px;
+}
+.dh-section--dark .dh-link {
+  color: var(--dh-gold-bright);
+}
+
+/* ---------- Motion ---------- */
+@keyframes dh-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes dh-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dh-reveal {
+  from {
+    opacity: 0;
+    translate: 0 32px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/*
+  Scroll reveal is pure CSS (no JS, no IntersectionObserver): supported browsers
+  animate on scroll; everything else simply shows the content. Reduced motion
+  users never get it.
+*/
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .dh-reveal {
+      animation: dh-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 5% entry 38%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dhub *,
+  .dhub *::before,
+  .dhub *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

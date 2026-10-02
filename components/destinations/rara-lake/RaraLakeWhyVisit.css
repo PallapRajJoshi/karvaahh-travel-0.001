@@ -1,0 +1,47 @@
+.rara-why-visit {
+  padding: var(--rara-section-padding);
+}
+
+.rara-why-visit__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.75rem;
+}
+
+.rara-why-visit__card {
+  background-color: var(--rara-white);
+  border-radius: var(--rara-radius-md);
+  overflow: hidden;
+  box-shadow: var(--rara-shadow-card);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.rara-why-visit__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--rara-shadow-card-hover);
+}
+
+.rara-why-visit__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+}
+
+.rara-why-visit__image {
+  object-fit: cover;
+}
+
+.rara-why-visit__title {
+  font-family: var(--font-heading, "Playfair Display", serif);
+  font-size: 1.25rem;
+  color: var(--rara-blue);
+  margin: 1.25rem 1.25rem 0.5rem;
+}
+
+.rara-why-visit__description {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--rara-charcoal-muted);
+  margin: 0 1.25rem 1.5rem;
+}

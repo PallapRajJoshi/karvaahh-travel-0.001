@@ -1,0 +1,115 @@
+.et-fmt__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.75rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.et-fmt__card {
+  position: relative;
+  padding: 2rem 1.7rem 1.8rem;
+  border-radius: var(--et-radius);
+  background: linear-gradient(180deg, var(--et-ivory), var(--et-white));
+  border: 1px solid var(--et-line);
+  box-shadow: 0 6px 24px -18px rgba(11, 41, 66, 0.45);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease,
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.et-fmt__card.is-in:hover { transform: translateY(-6px); box-shadow: var(--et-shadow-lg); }
+.et-fmt__tag {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--et-blue);
+  background: rgba(216, 166, 74, 0.28);
+}
+.et-fmt__title { margin: 1.1rem 0 0.7rem; font-family: var(--et-font-display); font-size: 1.4rem; line-height: 1.2; color: var(--et-blue); }
+.et-fmt__route { margin: 0 0 0.8rem; font-weight: 600; color: var(--et-teal); font-size: 0.95rem; }
+.et-fmt__arrow { color: var(--et-gold); }
+.et-fmt__text { margin: 0 0 1rem; color: var(--et-muted); font-size: 0.95rem; }
+.et-fmt__focus { margin: 0; padding-top: 0.9rem; border-top: 1px dashed var(--et-line); font-size: 0.9rem; font-weight: 600; }
+.et-fmt__focus span {
+  margin-right: 0.4rem;
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--et-teal);
+}
+
+/* 5-day timeline */
+.et-five { margin-top: clamp(4rem, 8vw, 6.5rem); }
+.et-five .et-heading { margin-bottom: 1.5rem; }
+.et-five__label {
+  display: inline-block;
+  margin: 0 0 2.4rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--et-blue-deep);
+  background: var(--et-gold);
+}
+.et-five__list { position: relative; margin: 0; padding: 0; list-style: none; }
+.et-five__list::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: 1.35rem;
+  width: 2px;
+  background: linear-gradient(180deg, var(--et-gold), var(--et-teal));
+  opacity: 0.5;
+}
+.et-five__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2.7rem 1fr;
+  gap: 1.4rem;
+  padding-bottom: 1.5rem;
+}
+.et-five__dot {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 2.7rem;
+  height: 2.7rem;
+  border-radius: 50%;
+  font-weight: 700;
+  color: var(--et-white);
+  background: var(--et-blue);
+  border: 3px solid var(--et-white);
+  box-shadow: 0 0 0 2px var(--et-gold);
+  transform: scale(0.4);
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s;
+}
+.et-five__item.is-in .et-five__dot { transform: scale(1); }
+.et-five__card {
+  padding: 1.3rem 1.5rem;
+  border-radius: var(--et-radius);
+  background: var(--et-ivory);
+  border: 1px solid var(--et-line);
+}
+.et-five__day { margin: 0; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--et-teal); }
+.et-five__title { margin: 0.2rem 0 0.7rem; font-family: var(--et-font-display); font-size: 1.35rem; color: var(--et-blue); }
+.et-five__items { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.3rem 1.5rem; margin: 0; padding: 0; list-style: none; font-size: 0.93rem; }
+.et-five__items li { position: relative; padding-left: 1.1rem; }
+.et-five__items li::before { content: ""; position: absolute; left: 0; top: 0.65em; width: 6px; height: 6px; border-radius: 50%; background: var(--et-gold); }
+.et-five__disclaimer { max-width: 44rem; }
+
+@media (max-width: 899px) { .et-fmt__grid { grid-template-columns: 1fr; } }
+@media (max-width: 559px) {
+  .et-five__items { grid-template-columns: 1fr; }
+  .et-five__item { grid-template-columns: 2.4rem 1fr; gap: 0.9rem; }
+  .et-five__dot { width: 2.4rem; height: 2.4rem; }
+  .et-five__list::before { left: 1.15rem; }
+}
+@media (prefers-reduced-motion: reduce) { .et-five__dot { transform: none; } }

@@ -1,0 +1,59 @@
+.saipal-final-cta {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: var(--saipal-ivory);
+  padding: clamp(3rem, 8vw, 6rem) clamp(1.25rem, 5vw, 4rem);
+}
+
+.saipal-final-cta__bg {
+  position: absolute;
+  inset: 0;
+}
+
+.saipal-final-cta__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(18, 59, 93, 0.85), rgba(18, 59, 93, 0.92));
+}
+
+.saipal-final-cta__content {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.saipal-final-cta__title {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  color: var(--saipal-white);
+}
+
+.saipal-final-cta__text {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: rgba(248, 246, 240, 0.9);
+  margin: 0;
+}
+
+.saipal-final-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.saipal-final-cta__tagline {
+  margin-top: 0.5rem;
+  font-family: var(--saipal-font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--saipal-gold);
+}

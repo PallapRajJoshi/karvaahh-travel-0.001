@@ -1,0 +1,41 @@
+/* Shared scroll-reveal animation primitives, used across Panch Pokhari sections. */
+
+.pp-reveal {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: opacity var(--pp-duration-base, 0.6s) var(--pp-ease, ease),
+    transform var(--pp-duration-base, 0.6s) var(--pp-ease, ease);
+}
+
+.pp-reveal--fade-up {
+  transform: translateY(28px);
+}
+
+.pp-reveal--fade-in {
+  transform: none;
+}
+
+.pp-reveal--scale-in {
+  transform: scale(0.94);
+}
+
+.pp-reveal--slide-left {
+  transform: translateX(-32px);
+}
+
+.pp-reveal--slide-right {
+  transform: translateX(32px);
+}
+
+.pp-reveal--visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pp-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

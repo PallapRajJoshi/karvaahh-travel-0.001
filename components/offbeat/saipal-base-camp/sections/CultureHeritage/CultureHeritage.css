@@ -1,0 +1,44 @@
+.saipal-culture {
+  background: var(--saipal-white);
+}
+
+.saipal-culture__grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.saipal-culture__media {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--saipal-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--saipal-shadow-soft);
+}
+
+.saipal-culture__title {
+  font-size: clamp(1.75rem, 3.2vw, 2.4rem);
+  margin: 0.75rem 0 1.5rem;
+}
+
+.saipal-culture__list {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(37, 43, 50, 0.82);
+}
+
+.saipal-culture__list li::marker {
+  color: var(--saipal-teal);
+}
+
+@media (max-width: 900px) {
+  .saipal-culture__grid {
+    grid-template-columns: 1fr;
+  }
+}

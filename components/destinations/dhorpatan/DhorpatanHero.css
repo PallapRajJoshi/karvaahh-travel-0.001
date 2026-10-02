@@ -1,0 +1,129 @@
+.dhorpatan-hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  padding: 0 !important;
+}
+
+.dhorpatan-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.dhorpatan-hero__image {
+  object-fit: cover;
+}
+
+.dhorpatan-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 59, 93, 0.35) 0%,
+    rgba(18, 59, 93, 0.55) 55%,
+    rgba(18, 30, 40, 0.92) 100%
+  );
+}
+
+.dhorpatan-hero__content {
+  position: relative;
+  z-index: 1;
+  padding-bottom: clamp(3.5rem, 8vh, 6rem);
+  padding-top: 8rem;
+  /* Visible by default (no JS dependency); animation is additive. */
+  animation: dhorpatan-hero-rise 0.9s ease both;
+}
+
+@keyframes dhorpatan-hero-rise {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dhorpatan-hero__eyebrow {
+  display: inline-block;
+  color: var(--dhorpatan-gold);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  margin-bottom: 1.1rem;
+}
+
+.dhorpatan-hero__heading {
+  font-family: var(--font-heading);
+  color: var(--dhorpatan-white);
+  font-size: clamp(2.1rem, 5vw, 3.6rem);
+  line-height: 1.12;
+  max-width: 16ch;
+  margin: 0 0 1.2rem;
+}
+
+.dhorpatan-hero__subtitle {
+  color: rgba(248, 246, 240, 0.92);
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  line-height: 1.6;
+  max-width: 52ch;
+  margin: 0 0 2rem;
+}
+
+.dhorpatan-hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.dhorpatan-hero__facts {
+  color: rgba(248, 246, 240, 0.75);
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  margin: 0;
+}
+
+.dhorpatan-hero__scroll-indicator {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  width: 26px;
+  height: 42px;
+  border: 2px solid rgba(248, 246, 240, 0.6);
+  border-radius: 999px;
+}
+
+.dhorpatan-hero__scroll-indicator span {
+  display: block;
+  width: 4px;
+  height: 8px;
+  margin: 6px auto 0;
+  border-radius: 999px;
+  background-color: var(--dhorpatan-gold);
+  animation: dhorpatan-scroll-bounce 1.8s ease-in-out infinite;
+}
+
+@keyframes dhorpatan-scroll-bounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(14px); opacity: 0.3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dhorpatan-hero__content {
+    animation: none;
+  }
+  .dhorpatan-hero__scroll-indicator span {
+    animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .dhorpatan-hero {
+    min-height: 100vh;
+  }
+  .dhorpatan-hero__ctas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

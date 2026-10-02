@@ -1,0 +1,104 @@
+.rt-faq__layout {
+  display: grid;
+  gap: clamp(28px, 5vw, 72px);
+  align-items: start;
+}
+
+@media (min-width: 960px) {
+  .rt-faq__layout {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
+  }
+  .rt-faq__layout > .rt-heading {
+    position: sticky;
+    top: calc(var(--rt-nav-offset) + 96px);
+    margin-bottom: 0;
+  }
+}
+
+.rt-faq__list {
+  border-top: 1px solid var(--rt-line);
+}
+
+.rt-faq__item {
+  border-bottom: 1px solid var(--rt-line);
+}
+
+.rt-faq__heading {
+  margin: 0;
+  font: inherit;
+}
+
+.rt-faq__button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  min-height: 64px;
+  padding: 1.1rem 0.25rem;
+  border: 0;
+  background: transparent;
+  color: var(--rt-blue);
+  font-family: var(--rt-font-display);
+  font-size: clamp(1.02rem, 1.5vw, 1.2rem);
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+}
+
+.rt-faq__button:hover {
+  color: var(--rt-teal-ink);
+}
+
+.rt-faq__chevron {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  color: var(--rt-gold-deep);
+  transition: transform 0.35s var(--rt-ease);
+}
+
+.rt-faq__item.is-open .rt-faq__chevron {
+  transform: rotate(180deg);
+}
+
+/* Smooth open/close: animate grid row 0fr -> 1fr. Closed content is
+   visibility:hidden so it is not reachable by assistive tech or Tab. */
+.rt-faq__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition:
+    grid-template-rows 0.4s var(--rt-ease),
+    visibility 0s linear 0.4s;
+}
+
+.rt-faq__item.is-open .rt-faq__panel {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition:
+    grid-template-rows 0.4s var(--rt-ease),
+    visibility 0s;
+}
+
+.rt-faq__panel-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.rt-faq__panel-inner p {
+  margin: 0;
+  padding: 0 0.25rem 1.35rem;
+  max-width: 68ch;
+  color: var(--rt-muted);
+  font-size: 0.98rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rt-faq__panel,
+  .rt-faq__item.is-open .rt-faq__panel,
+  .rt-faq__chevron {
+    transition: none;
+  }
+}

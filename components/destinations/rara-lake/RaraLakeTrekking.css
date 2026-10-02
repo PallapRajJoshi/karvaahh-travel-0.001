@@ -1,0 +1,88 @@
+.rara-trekking {
+  padding: var(--rara-section-padding);
+  background-color: var(--rara-white);
+}
+
+.rara-trekking__list {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.rara-trekking__item {
+  display: flex;
+  gap: 1.25rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(37, 43, 50, 0.08);
+}
+
+.rara-trekking__item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.rara-trekking__index {
+  flex-shrink: 0;
+  font-family: var(--font-heading, "Playfair Display", serif);
+  font-size: 1.5rem;
+  color: var(--rara-gold);
+  width: 2.5rem;
+}
+
+.rara-trekking__heading-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.4rem;
+}
+
+.rara-trekking__title {
+  font-family: var(--font-heading, "Playfair Display", serif);
+  font-size: 1.125rem;
+  color: var(--rara-blue);
+  margin: 0;
+}
+
+.rara-trekking__difficulty {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background-color: rgba(42, 127, 130, 0.12);
+  color: var(--rara-teal);
+}
+
+.rara-trekking__difficulty--moderate {
+  background-color: rgba(216, 166, 74, 0.18);
+  color: #9a7222;
+}
+
+.rara-trekking__difficulty--challenging {
+  background-color: rgba(18, 59, 93, 0.12);
+  color: var(--rara-blue);
+}
+
+.rara-trekking__description {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--rara-charcoal-muted);
+  margin: 0;
+}
+
+.rara-trekking__note {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.8125rem;
+  font-style: italic;
+  color: var(--rara-charcoal-muted);
+  border-left: 3px solid var(--rara-gold);
+  padding-left: 1rem;
+  margin: 0;
+}

@@ -1,0 +1,22 @@
+.itineraries-section {
+  background-color: var(--dhorpatan-ivory);
+}
+
+.itineraries-section__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.75rem;
+  align-items: stretch;
+}
+
+.itineraries-section__disclaimer {
+  margin: 2.5rem 0 0;
+  font-size: 0.85rem;
+  color: var(--dhorpatan-charcoal);
+  opacity: 0.75;
+  text-align: center;
+  font-style: italic;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}

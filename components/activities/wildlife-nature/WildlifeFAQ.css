@@ -1,0 +1,74 @@
+.wn-faq__wrap {
+  max-width: 860px;
+}
+.wn-faq {
+  display: grid;
+  gap: 0.75rem;
+}
+.wn-faq__item {
+  border: 1px solid var(--wn-line);
+  border-radius: var(--wn-radius-sm);
+  background: var(--wn-ivory);
+  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+}
+.wn-faq__item.is-open {
+  border-color: var(--wn-gold);
+  background: var(--wn-white);
+  box-shadow: var(--wn-shadow);
+}
+.wn-faq__q {
+  font-family: var(--wn-font-body) !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  letter-spacing: 0 !important;
+}
+.wn-faq__btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  min-height: 60px;
+  padding: 1rem 1.25rem;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  color: var(--wn-blue);
+}
+.wn-faq__chev {
+  flex: none;
+  transition: transform 0.35s var(--wn-ease);
+  color: var(--wn-gold-ink);
+}
+.is-open .wn-faq__chev {
+  transform: rotate(180deg);
+}
+/* Collapsed content stays in the DOM (indexable) but is removed from the a11y tree + tab order */
+.wn-faq__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows 0.4s var(--wn-ease), visibility 0s linear 0.4s;
+}
+.is-open .wn-faq__panel {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition: grid-template-rows 0.4s var(--wn-ease), visibility 0s;
+}
+.wn-faq__inner {
+  overflow: hidden;
+}
+.wn-faq__a {
+  padding: 0 1.25rem 1.25rem;
+  color: #39424b;
+  font-size: 0.97rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .wn-faq__panel,
+  .is-open .wn-faq__panel,
+  .wn-faq__chev {
+    transition: none;
+  }
+}

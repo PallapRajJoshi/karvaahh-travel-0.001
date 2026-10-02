@@ -1,0 +1,83 @@
+.khaptad-overview {
+  padding-block: var(--khaptad-section-padding);
+  background: var(--khaptad-white);
+}
+
+.khaptad-overview__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.khaptad-overview__media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--khaptad-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--khaptad-shadow);
+}
+
+.khaptad-overview__image {
+  object-fit: cover;
+}
+
+.khaptad-overview__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.khaptad-overview__heading {
+  font-size: clamp(1.85rem, 3.2vw, 2.5rem);
+}
+
+.khaptad-overview__text {
+  color: var(--khaptad-charcoal-soft);
+  font-size: 1.05rem;
+}
+
+.khaptad-overview__facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 0.5rem;
+  padding: 1.25rem;
+  background: var(--khaptad-blue-soft);
+  border-radius: var(--khaptad-radius-md);
+}
+
+.khaptad-overview__fact dt {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--khaptad-teal);
+  margin-bottom: 0.2rem;
+}
+
+.khaptad-overview__fact dd {
+  margin: 0;
+  font-weight: 600;
+  color: var(--khaptad-blue);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 900px) {
+  .khaptad-overview__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .khaptad-overview__media {
+    aspect-ratio: 16 / 10;
+  }
+
+  .khaptad-overview__facts {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .khaptad-overview__facts {
+    grid-template-columns: 1fr;
+  }
+}

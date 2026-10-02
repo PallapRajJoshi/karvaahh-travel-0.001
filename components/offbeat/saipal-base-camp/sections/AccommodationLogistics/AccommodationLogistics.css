@@ -1,0 +1,45 @@
+.saipal-logistics {
+  background: var(--saipal-white);
+}
+
+.saipal-logistics__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.saipal-logistics__card {
+  background: var(--saipal-ivory);
+  border-radius: var(--saipal-radius-md);
+  padding: 1.75rem;
+  transition: transform var(--saipal-transition-fast), box-shadow var(--saipal-transition-fast);
+}
+
+.saipal-logistics__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--saipal-shadow-card);
+}
+
+.saipal-logistics__icon {
+  display: inline-flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(18, 59, 93, 0.08);
+  color: var(--saipal-blue);
+  margin-bottom: 1rem;
+}
+
+.saipal-logistics__title {
+  font-size: 1.05rem;
+  margin-bottom: 0.5rem;
+}
+
+.saipal-logistics__desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(37, 43, 50, 0.75);
+  margin: 0;
+}

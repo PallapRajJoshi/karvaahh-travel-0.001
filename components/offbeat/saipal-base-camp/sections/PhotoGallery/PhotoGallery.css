@@ -1,0 +1,138 @@
+.saipal-gallery {
+  background: var(--saipal-ivory);
+  position: relative;
+}
+
+.saipal-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.saipal-gallery__tile {
+  aspect-ratio: 1;
+}
+
+.saipal-gallery__trigger {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 0;
+  cursor: zoom-in;
+  border-radius: var(--saipal-radius-md);
+  overflow: hidden;
+  background: none;
+}
+
+.saipal-gallery__trigger img {
+  transition: transform 0.6s ease;
+}
+
+.saipal-gallery__trigger:hover img {
+  transform: scale(1.08);
+}
+
+.saipal-gallery__trigger:focus-visible {
+  outline: 2px solid var(--saipal-gold);
+  outline-offset: 3px;
+}
+
+.saipal-gallery__caption {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.75rem;
+  color: var(--saipal-white);
+  background: linear-gradient(to top, rgba(18, 59, 93, 0.85), transparent);
+  text-align: left;
+}
+
+.saipal-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(18, 59, 93, 0.96);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.saipal-lightbox__stage {
+  position: relative;
+  width: min(900px, 90vw);
+  height: min(600px, 70vh);
+  border-radius: var(--saipal-radius-md);
+  overflow: hidden;
+}
+
+.saipal-lightbox__caption {
+  margin-top: 1.25rem;
+  color: var(--saipal-ivory);
+  font-size: 0.95rem;
+}
+
+.saipal-lightbox__close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.75rem;
+  background: transparent;
+  border: 1px solid rgba(248, 246, 240, 0.4);
+  color: var(--saipal-ivory);
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.saipal-lightbox__close:hover {
+  background: rgba(248, 246, 240, 0.12);
+}
+
+.saipal-lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(248, 246, 240, 0.12);
+  border: none;
+  color: var(--saipal-ivory);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.saipal-lightbox__nav:hover {
+  background: rgba(248, 246, 240, 0.22);
+}
+
+.saipal-lightbox__nav--prev {
+  left: 1.5rem;
+}
+
+.saipal-lightbox__nav--next {
+  right: 1.5rem;
+}
+
+.saipal-lightbox__chevron--left {
+  transform: rotate(90deg);
+}
+
+.saipal-lightbox__chevron--right {
+  transform: rotate(-90deg);
+}
+
+@media (max-width: 900px) {
+  .saipal-gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .saipal-lightbox__nav {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+}

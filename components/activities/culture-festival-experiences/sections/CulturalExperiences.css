@@ -1,0 +1,100 @@
+.culture-exp {
+  padding-block: var(--cx-section);
+  background: var(--cx-white);
+}
+
+.culture-exp__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.exp-card__inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--cx-ivory);
+  border-radius: var(--cx-radius);
+  overflow: hidden;
+  border: 1px solid var(--cx-line);
+  transition: transform 0.35s var(--cx-ease), box-shadow 0.35s var(--cx-ease), border-color 0.35s var(--cx-ease);
+}
+.exp-card__inner:hover,
+.exp-card__inner:focus-within {
+  transform: translateY(-5px);
+  box-shadow: var(--cx-shadow-lift);
+  border-color: rgba(216, 166, 74, 0.6);
+}
+
+.exp-card__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+.exp-card__media .cx-img,
+.exp-card__media .cx-ph {
+  transition: transform 0.9s var(--cx-ease);
+}
+.exp-card__inner:hover .exp-card__media .cx-img,
+.exp-card__inner:hover .exp-card__media .cx-ph {
+  transform: scale(1.06);
+}
+.exp-card__icon {
+  position: absolute;
+  right: 0.75rem;
+  bottom: -1.35rem;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  color: var(--cx-blue-deep);
+  background: var(--cx-gold);
+  border-radius: 50%;
+  box-shadow: 0 8px 20px -8px rgba(11, 41, 66, 0.5);
+}
+.exp-card__icon .cx-cta__arrow,
+.exp-card__icon svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.exp-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.75rem 1.25rem 1.1rem;
+}
+.exp-card__title {
+  font-family: var(--cx-serif);
+  font-weight: 500;
+  font-size: 1.28rem;
+  line-height: 1.2;
+  color: var(--cx-blue);
+}
+.exp-card__desc {
+  font-size: 0.92rem;
+  color: var(--cx-muted);
+}
+.exp-card__body .cx-cta {
+  margin-top: auto;
+}
+
+.culture-exp__note {
+  max-width: 70ch;
+  margin: clamp(2rem, 4vw, 3rem) auto 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--cx-muted);
+}
+
+@media (max-width: 1100px) {
+  .culture-exp__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  .culture-exp__grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,70 @@
+.rara-culture {
+  padding: var(--rara-section-padding);
+  background-color: var(--rara-white);
+}
+
+.rara-culture__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .rara-culture__grid {
+    grid-template-columns: 1.1fr 1fr;
+  }
+}
+
+.rara-culture__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--rara-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--rara-shadow-card);
+}
+
+.rara-culture__image {
+  object-fit: cover;
+}
+
+.rara-culture__eyebrow {
+  display: inline-block;
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rara-teal);
+  margin-bottom: 0.75rem;
+}
+
+.rara-culture__heading {
+  font-family: var(--font-heading, "Playfair Display", serif);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  color: var(--rara-blue);
+  margin: 0 0 1.25rem;
+}
+
+.rara-culture__points {
+  margin: 0 0 1.5rem;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--rara-charcoal);
+}
+
+.rara-culture__note {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.8125rem;
+  font-style: italic;
+  color: var(--rara-charcoal-muted);
+  border-left: 3px solid var(--rara-gold);
+  padding-left: 1rem;
+  margin: 0;
+}

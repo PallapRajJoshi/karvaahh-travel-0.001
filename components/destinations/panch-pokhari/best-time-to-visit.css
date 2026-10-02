@@ -1,0 +1,112 @@
+.pp-seasons {
+  padding-block: var(--pp-space-8);
+  background: var(--pp-bg);
+}
+
+.pp-seasons__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--pp-space-4);
+}
+
+.pp-seasons__card {
+  padding: var(--pp-space-4);
+  border-radius: var(--pp-radius-md);
+  background: var(--pp-white);
+  box-shadow: var(--pp-shadow-sm);
+  border-top: 4px solid var(--pp-teal);
+  transition: transform var(--pp-duration-base) var(--pp-ease),
+    box-shadow var(--pp-duration-base) var(--pp-ease);
+}
+
+.pp-seasons__card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--pp-shadow-md);
+}
+
+.pp-seasons__card--spring {
+  border-top-color: #7bab6e;
+}
+
+.pp-seasons__card--summer {
+  border-top-color: #5b8aa8;
+}
+
+.pp-seasons__card--autumn {
+  border-top-color: var(--pp-gold);
+}
+
+.pp-seasons__card--winter {
+  border-top-color: #8fa3b8;
+}
+
+.pp-seasons__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--pp-bg-alt);
+  color: var(--pp-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--pp-space-3);
+}
+
+.pp-seasons__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.pp-seasons__name {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.pp-seasons__months {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--pp-teal);
+  margin-block: 0.3rem 0.7rem;
+}
+
+.pp-seasons__body {
+  font-size: 0.9rem;
+}
+
+.pp-seasons__recommendation {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  max-width: 780px;
+  margin: var(--pp-space-6) auto 0;
+  padding: var(--pp-space-4);
+  border-radius: var(--pp-radius-md);
+  background: var(--pp-accent-soft);
+}
+
+.pp-seasons__recommendation-icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  color: var(--pp-blue);
+  margin-top: 0.1em;
+}
+
+.pp-seasons__recommendation p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--pp-charcoal);
+}
+
+@media (max-width: 900px) {
+  .pp-seasons__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .pp-seasons__grid {
+    grid-template-columns: 1fr;
+  }
+}

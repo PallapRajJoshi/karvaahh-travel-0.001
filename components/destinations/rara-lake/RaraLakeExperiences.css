@@ -1,0 +1,55 @@
+.rara-experiences {
+  padding: var(--rara-section-padding);
+}
+
+.rara-experiences__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.rara-experiences__card {
+  background-color: var(--rara-white);
+  border-radius: var(--rara-radius-md);
+  overflow: hidden;
+  box-shadow: var(--rara-shadow-card);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.rara-experiences__card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--rara-shadow-card-hover);
+}
+
+.rara-experiences__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+}
+
+.rara-experiences__image {
+  object-fit: cover;
+}
+
+.rara-experiences__title {
+  font-family: var(--font-heading, "Playfair Display", serif);
+  font-size: 1.0625rem;
+  color: var(--rara-blue);
+  margin: 1rem 1rem 0.4rem;
+}
+
+.rara-experiences__description {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--rara-charcoal-muted);
+  margin: 0 1rem 0.5rem;
+}
+
+.rara-experiences__note {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--rara-teal);
+  margin: 0 1rem 1rem;
+}

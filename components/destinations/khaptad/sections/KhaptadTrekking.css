@@ -1,0 +1,57 @@
+.khaptad-trekking {
+  padding-block: var(--khaptad-section-padding);
+  background: var(--khaptad-blue);
+  color: var(--khaptad-white);
+}
+
+.khaptad-trekking .khaptad-section-heading__title,
+.khaptad-trekking .khaptad-page__eyebrow {
+  color: var(--khaptad-white);
+}
+
+.khaptad-trekking .khaptad-section-heading__description {
+  color: rgba(248, 246, 240, 0.75);
+}
+
+.khaptad-trekking__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.khaptad-trek-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: var(--khaptad-radius-md);
+  padding: 1.75rem;
+}
+
+.khaptad-trek-card__title {
+  color: var(--khaptad-gold);
+  font-size: 1.15rem;
+  margin-bottom: 0.6rem;
+}
+
+.khaptad-trek-card__description {
+  color: rgba(248, 246, 240, 0.8);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.khaptad-trek-card__list {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: rgba(248, 246, 240, 0.92);
+}
+
+.khaptad-trekking__disclaimer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.82rem;
+  color: rgba(248, 246, 240, 0.65);
+  font-style: italic;
+}

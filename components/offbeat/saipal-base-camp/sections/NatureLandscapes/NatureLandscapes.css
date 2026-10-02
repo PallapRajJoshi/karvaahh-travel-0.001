@@ -1,0 +1,57 @@
+.saipal-nature {
+  background: var(--saipal-ivory);
+}
+
+.saipal-nature__gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem;
+}
+
+.saipal-nature__tile {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--saipal-radius-md);
+  overflow: hidden;
+}
+
+.saipal-nature__tile img {
+  transition: transform 0.7s ease;
+}
+
+.saipal-nature__tile:hover img {
+  transform: scale(1.08);
+}
+
+.saipal-nature__caption {
+  position: absolute;
+  left: 0.9rem;
+  bottom: 0.8rem;
+  color: var(--saipal-white);
+  font-size: 0.82rem;
+  background: rgba(18, 59, 93, 0.55);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
+}
+
+.saipal-nature__note {
+  margin: 2rem auto 0;
+  max-width: 620px;
+  text-align: center;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: rgba(37, 43, 50, 0.6);
+}
+
+@media (max-width: 760px) {
+  .saipal-nature__gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .saipal-nature__gallery {
+    grid-template-columns: 1fr;
+  }
+}

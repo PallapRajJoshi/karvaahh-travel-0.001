@@ -1,0 +1,47 @@
+.tsho-final-cta {
+  position: relative;
+  padding-block: var(--tsho-space-2xl);
+  color: var(--tsho-white);
+  text-align: center;
+  overflow: hidden;
+}
+
+.tsho-final-cta__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.tsho-final-cta__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(18, 59, 93, 0.82), rgba(18, 22, 27, 0.9));
+}
+
+.tsho-final-cta__content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+}
+
+.tsho-final-cta__title {
+  font-family: var(--tsho-font-display);
+  font-weight: 600;
+  font-size: clamp(2rem, 1.6rem + 1.8vw, 2.9rem);
+  margin: 0.75rem 0 1.25rem;
+  line-height: 1.15;
+}
+
+.tsho-final-cta__text {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(248, 246, 240, 0.9);
+  margin: 0 0 2.25rem;
+}
+
+.tsho-final-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}

@@ -1,0 +1,172 @@
+/*
+  Khaptad National Park — page-scoped design tokens.
+  Scoped under .khaptad-page so nothing leaks into shared layout/navbar/footer
+  or other destination pages, per Karvaahh's token-scoping convention.
+
+  NOTE: this brief specified a bespoke palette (deep Himalayan blue / mountain
+  teal / warm gold) rather than the site-wide dark-forest-green tokens used on
+  province pages. Kept as specified — flagged in the README for a brand-owner
+  decision on whether to align it with global tokens, consistent with how the
+  Rara Lake build handled the same situation.
+*/
+
+.khaptad-page {
+  --khaptad-blue: #123b5d;
+  --khaptad-teal: #2a7f82;
+  --khaptad-gold: #d8a64a;
+  --khaptad-ivory: #f8f6f0;
+  --khaptad-charcoal: #252b32;
+  --khaptad-white: #ffffff;
+
+  /* Derived tones for depth without introducing new hues */
+  --khaptad-blue-deep: #0c283f;
+  --khaptad-blue-soft: rgba(18, 59, 93, 0.08);
+  --khaptad-teal-soft: rgba(42, 127, 130, 0.12);
+  --khaptad-gold-soft: rgba(216, 166, 74, 0.16);
+  --khaptad-charcoal-soft: rgba(37, 43, 50, 0.68);
+  --khaptad-border: rgba(18, 59, 93, 0.12);
+  --khaptad-shadow: 0 24px 48px -24px rgba(12, 40, 63, 0.35);
+  --khaptad-shadow-soft: 0 12px 32px -16px rgba(12, 40, 63, 0.22);
+
+  /* Typography (site convention: Playfair Display headings + Inter body) */
+  --khaptad-font-heading: var(--font-playfair, "Playfair Display", serif);
+  --khaptad-font-body: var(--font-inter, "Inter", sans-serif);
+
+  /* Layout rhythm */
+  --khaptad-section-padding: clamp(4rem, 8vw, 7rem);
+  --khaptad-container-max: 1240px;
+  --khaptad-radius-lg: 20px;
+  --khaptad-radius-md: 14px;
+  --khaptad-radius-sm: 8px;
+
+  background: var(--khaptad-ivory);
+  color: var(--khaptad-charcoal);
+  font-family: var(--khaptad-font-body);
+}
+
+.khaptad-page * {
+  box-sizing: border-box;
+}
+
+.khaptad-page__container {
+  width: 100%;
+  max-width: var(--khaptad-container-max);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.khaptad-page h1,
+.khaptad-page h2,
+.khaptad-page h3 {
+  font-family: var(--khaptad-font-heading);
+  color: var(--khaptad-blue);
+  line-height: 1.15;
+  margin: 0;
+}
+
+.khaptad-page p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+.khaptad-page a {
+  color: inherit;
+}
+
+.khaptad-page__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--khaptad-teal);
+}
+
+/* Reveal-on-scroll base state; JS adds .is-visible via IntersectionObserver */
+.khaptad-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.khaptad-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .khaptad-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.khaptad-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.khaptad-btn:hover {
+  transform: translateY(-2px);
+}
+
+.khaptad-btn--primary {
+  background: var(--khaptad-gold);
+  color: var(--khaptad-blue-deep);
+  box-shadow: var(--khaptad-shadow-soft);
+}
+
+.khaptad-btn--primary:hover {
+  box-shadow: var(--khaptad-shadow);
+}
+
+.khaptad-btn--secondary {
+  background: transparent;
+  color: var(--khaptad-white);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.khaptad-btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.khaptad-btn--outline {
+  background: transparent;
+  color: var(--khaptad-blue);
+  border-color: var(--khaptad-blue);
+}
+
+.khaptad-btn--outline:hover {
+  background: var(--khaptad-blue);
+  color: var(--khaptad-white);
+}
+
+.khaptad-page :focus-visible {
+  outline: 3px solid var(--khaptad-gold);
+  outline-offset: 3px;
+}
+
+.khaptad-page .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

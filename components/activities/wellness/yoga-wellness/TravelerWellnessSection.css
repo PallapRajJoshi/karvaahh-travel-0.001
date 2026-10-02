@@ -1,0 +1,63 @@
+.ykw .ykw-trav__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 2vw, 26px);
+}
+.ykw .ykw-trav__card {
+  background: var(--ykw-white);
+  border: 1px solid var(--ykw-line);
+  border-radius: var(--ykw-radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.5s var(--ykw-ease),
+    box-shadow 0.5s var(--ykw-ease);
+}
+.ykw .ykw-trav__card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--ykw-shadow-lift);
+}
+.ykw .ykw-trav__img {
+  position: relative;
+  aspect-ratio: 4 / 3;
+}
+.ykw .ykw-trav__body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+.ykw .ykw-trav__kicker {
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ykw-teal-deep);
+}
+.ykw .ykw-trav__body h3 {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+.ykw .ykw-trav__body p:not(.ykw-trav__kicker) {
+  font-size: 0.93rem;
+  flex: 1;
+}
+.ykw .ykw-trav__body .ykw-btn {
+  align-self: flex-start;
+  padding-inline: 20px;
+}
+@media (max-width: 1100px) {
+  .ykw .ykw-trav__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .ykw .ykw-trav__grid {
+    grid-template-columns: 1fr;
+  }
+}

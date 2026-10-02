@@ -1,0 +1,122 @@
+/* Page-scoped tokens. All selectors live under .ykw so nothing leaks to other pages.
+   Palette follows the brief; see README for the global-token decision. */
+.ykw {
+  --ykw-blue: #123b5d;
+  --ykw-teal: #2a7f82;
+  --ykw-gold: #d8a64a;
+  --ykw-ivory: #f8f6f0;
+  --ykw-charcoal: #252b32;
+  --ykw-white: #ffffff;
+  --ykw-teal-deep: #1f6467; /* teal darkened for text contrast on ivory */
+  --ykw-gold-deep: #8a6416; /* gold darkened for text on ivory */
+  --ykw-line: rgba(18, 59, 93, 0.12);
+  --ykw-radius: 20px;
+  --ykw-radius-sm: 12px;
+  --ykw-shadow: 0 10px 30px rgba(18, 59, 93, 0.1);
+  --ykw-shadow-lift: 0 18px 44px rgba(18, 59, 93, 0.16);
+  --ykw-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ykw-serif: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --ykw-sans: var(--font-inter), Inter, system-ui, sans-serif;
+  --ykw-gutter: clamp(20px, 5vw, 64px);
+  --ykw-section: clamp(64px, 9vw, 120px);
+
+  background: var(--ykw-ivory);
+  color: var(--ykw-charcoal);
+  font-family: var(--ykw-sans);
+  line-height: 1.65;
+  scroll-behavior: smooth;
+}
+
+.ykw *,
+.ykw *::before,
+.ykw *::after {
+  box-sizing: border-box;
+}
+
+.ykw h1,
+.ykw h2,
+.ykw h3,
+.ykw h4 {
+  font-family: var(--ykw-serif);
+  color: var(--ykw-blue);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.ykw p {
+  margin: 0;
+}
+
+.ykw a:focus-visible,
+.ykw button:focus-visible,
+.ykw input:focus-visible,
+.ykw select:focus-visible,
+.ykw textarea:focus-visible,
+.ykw summary:focus-visible {
+  outline: 3px solid var(--ykw-gold);
+  outline-offset: 3px;
+}
+
+.ykw-container {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: var(--ykw-gutter);
+}
+
+.ykw-section {
+  padding-block: var(--ykw-section);
+  scroll-margin-top: 80px;
+}
+
+.ykw-section--white {
+  background: var(--ykw-white);
+}
+
+.ykw-section--blue {
+  background: var(--ykw-blue);
+  color: var(--ykw-ivory);
+}
+
+.ykw-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Scroll reveal: content is visible by default. JS arms it, then reveals. */
+.ykw .ykw-rv-armed {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.9s var(--ykw-ease) var(--ykw-delay, 0s),
+    transform 0.9s var(--ykw-ease) var(--ykw-delay, 0s);
+}
+
+.ykw .ykw-rv-armed.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ykw {
+    scroll-behavior: auto;
+  }
+  .ykw *,
+  .ykw *::before,
+  .ykw *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .ykw .ykw-rv-armed {
+    opacity: 1;
+    transform: none;
+  }
+}

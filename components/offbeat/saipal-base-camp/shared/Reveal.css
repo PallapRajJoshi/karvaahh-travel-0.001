@@ -1,0 +1,34 @@
+.saipal-reveal {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.saipal-reveal--up {
+  transform: translateY(28px);
+}
+
+.saipal-reveal--left {
+  transform: translateX(-28px);
+}
+
+.saipal-reveal--right {
+  transform: translateX(28px);
+}
+
+.saipal-reveal--fade {
+  transform: none;
+}
+
+.saipal-reveal--visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .saipal-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

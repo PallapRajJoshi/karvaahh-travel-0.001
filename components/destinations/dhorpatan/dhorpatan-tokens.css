@@ -1,0 +1,51 @@
+/**
+ * Design tokens for the Dhorpatan Hunting Reserve page, scoped under
+ * .dhorpatan-page to prevent cross-page leakage (matches the project's
+ * per-page/per-province token convention, e.g. --lumbini-, --pg-, .bagmati-page).
+ *
+ * PALETTE NOTE: This page uses the palette specified in the Dhorpatan brief
+ * (Deep Himalayan Blue / Mountain Teal / Warm Gold / Ivory / Charcoal), which
+ * differs slightly in hex values from the site-wide tokens on file
+ * (#0d1d16 forest green, #c9a45c gold, #f7f5ef cream, #0B1B2B navy). Both sit
+ * within the same Himalayan-identity family (deep blue/green + gold + cream),
+ * and the project's design system explicitly allows per-destination visual
+ * storytelling. This was not reconciled against the live global tokens file
+ * since the repository wasn't available at build time — see README for the
+ * verification step before merging.
+ */
+
+.dhorpatan-page {
+  --dhorpatan-blue: #123b5d;
+  --dhorpatan-teal: #2a7f82;
+  --dhorpatan-gold: #d8a64a;
+  --dhorpatan-ivory: #f8f6f0;
+  --dhorpatan-charcoal: #252b32;
+  --dhorpatan-white: #ffffff;
+
+  /* Falls back to system serif/sans if the project's next/font variables
+     (Playfair Display / Inter) aren't in scope — replace with the project's
+     actual font variable names on integration. */
+  --font-heading: var(--font-playfair, "Playfair Display", Georgia, serif);
+  --font-body: var(--font-inter, "Inter", -apple-system, sans-serif);
+
+  background-color: var(--dhorpatan-ivory);
+  color: var(--dhorpatan-charcoal);
+  font-family: var(--font-body);
+}
+
+.dhorpatan-page section {
+  padding: clamp(3.5rem, 6vw, 6rem) 0;
+}
+
+.dhorpatan-page__container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .dhorpatan-page__container {
+    padding: 0 2.5rem;
+  }
+}

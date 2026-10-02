@@ -1,0 +1,131 @@
+.pp-itinerary {
+  padding-block: var(--pp-space-8);
+  background: var(--pp-bg);
+}
+
+.pp-itinerary__timeline {
+  position: relative;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 760px;
+}
+
+.pp-itinerary__timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 27px;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    var(--pp-gold) 0%,
+    var(--pp-teal) 100%
+  );
+  opacity: 0.4;
+}
+
+.pp-itinerary__item {
+  position: relative;
+  display: flex;
+  gap: var(--pp-space-4);
+  padding-bottom: var(--pp-space-5);
+}
+
+.pp-itinerary__item:last-child {
+  padding-bottom: 0;
+}
+
+.pp-itinerary__marker {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--pp-blue);
+  color: var(--pp-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--pp-shadow-sm);
+}
+
+.pp-itinerary__day-number {
+  font-family: var(--pp-font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.pp-itinerary__card {
+  flex: 1;
+  background: var(--pp-white);
+  border-radius: var(--pp-radius-md);
+  padding: var(--pp-space-4);
+  box-shadow: var(--pp-shadow-sm);
+}
+
+.pp-itinerary__day-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pp-teal);
+  margin-bottom: 0.35rem;
+}
+
+.pp-itinerary__title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.pp-itinerary__body {
+  font-size: 0.95rem;
+}
+
+.pp-itinerary__disclaimer {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  max-width: 760px;
+  margin: var(--pp-space-6) auto 0;
+  padding: var(--pp-space-4);
+  border-radius: var(--pp-radius-md);
+  background: var(--pp-bg-alt);
+  border: 1px dashed var(--pp-line);
+}
+
+.pp-itinerary__disclaimer-icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  color: var(--pp-teal);
+  margin-top: 0.1em;
+}
+
+.pp-itinerary__disclaimer p {
+  margin: 0;
+  font-size: 0.88rem;
+  font-style: italic;
+}
+
+@media (max-width: 560px) {
+  .pp-itinerary__timeline::before {
+    left: 19px;
+  }
+
+  .pp-itinerary__marker {
+    width: 40px;
+    height: 40px;
+  }
+
+  .pp-itinerary__day-number {
+    font-size: 1rem;
+  }
+
+  .pp-itinerary__item {
+    gap: var(--pp-space-3);
+  }
+}

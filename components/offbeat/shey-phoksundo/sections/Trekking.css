@@ -1,0 +1,86 @@
+.phoksundo-trekking {
+  padding: var(--phoksundo-section-padding);
+  background: var(--phoksundo-white);
+}
+
+.phoksundo-trekking__tiers {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.phoksundo-trekking__tier {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: var(--phoksundo-ivory);
+  border-radius: var(--phoksundo-radius-lg);
+  border: 1px solid rgba(var(--phoksundo-blue-rgb), 0.08);
+}
+
+.phoksundo-trekking__index {
+  font-family: var(--phoksundo-font-heading);
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: rgba(var(--phoksundo-gold-rgb), 0.9);
+  line-height: 1;
+}
+
+.phoksundo-trekking__title {
+  font-size: 1.3rem;
+  margin-bottom: 0.35rem;
+}
+
+.phoksundo-trekking__tagline {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--phoksundo-teal);
+  margin: 0 0 0.9rem;
+}
+
+.phoksundo-trekking__description {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  opacity: 0.88;
+  margin: 0 0 1rem;
+}
+
+.phoksundo-trekking__points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0 0 0.75rem;
+  padding: 0;
+}
+
+.phoksundo-trekking__points li {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--phoksundo-blue);
+  background: var(--phoksundo-white);
+  border: 1px solid rgba(var(--phoksundo-blue-rgb), 0.15);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+}
+
+.phoksundo-trekking__note {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--phoksundo-teal);
+  margin: 0;
+}
+
+.phoksundo-trekking__disclaimer {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  text-align: center;
+  opacity: 0.7;
+}
+
+@media (max-width: 640px) {
+  .phoksundo-trekking__tier {
+    grid-template-columns: 1fr;
+  }
+}

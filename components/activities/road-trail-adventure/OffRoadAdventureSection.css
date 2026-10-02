@@ -1,0 +1,90 @@
+.rt-offroad {
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--rt-blue-deep);
+}
+
+.rt-offroad__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.rt-offroad__shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(11, 39, 64, 0.88), rgba(11, 39, 64, 0.72) 45%, rgba(11, 39, 64, 0.92)),
+    radial-gradient(70% 60% at 15% 90%, rgba(216, 166, 74, 0.16), transparent 70%);
+}
+
+.rt-offroad__layout {
+  display: grid;
+  gap: clamp(28px, 4vw, 56px);
+  align-items: start;
+}
+
+@media (min-width: 960px) {
+  .rt-offroad__layout {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
+  }
+}
+
+.rt-offroad__featured {
+  display: grid;
+  gap: 1.25rem;
+  padding: clamp(22px, 3vw, 34px);
+  border: 1px solid rgba(216, 166, 74, 0.45);
+  border-radius: var(--rt-radius);
+  background: rgba(11, 39, 64, 0.5);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.rt-offroad__subtitle {
+  margin: 0;
+  font-family: var(--rt-font-display);
+  font-size: 1.4rem;
+  color: var(--rt-white);
+}
+
+.rt-offroad__cta {
+  justify-self: start;
+  margin-top: 0.5rem;
+}
+
+.rt-offroad__blocks {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 640px) {
+  .rt-offroad__blocks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.rt-offroad__block {
+  padding: 1.35rem 1.4rem;
+  border: 1px solid rgba(248, 246, 240, 0.14);
+  border-radius: var(--rt-radius-sm);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.rt-offroad__block-title {
+  margin: 0 0 0.5rem;
+  font-family: var(--rt-font-display);
+  font-size: 1.1rem;
+  color: var(--rt-gold);
+}
+
+.rt-offroad__block-text {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: rgba(248, 246, 240, 0.85);
+}

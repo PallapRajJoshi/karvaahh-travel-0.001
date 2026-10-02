@@ -1,0 +1,22 @@
+.wn-heading {
+  max-width: 46rem;
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+  display: grid;
+  gap: 1rem;
+}
+.wn-heading--center {
+  margin-inline: auto;
+  text-align: center;
+  justify-items: center;
+}
+.wn-heading__title {
+  font-size: clamp(2rem, 4.2vw, 3.25rem);
+}
+.wn-heading__lead {
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  color: var(--wn-muted);
+  max-width: 40rem;
+}
+.wn-section--dark .wn-heading__lead {
+  color: rgba(248, 246, 240, 0.78);
+}

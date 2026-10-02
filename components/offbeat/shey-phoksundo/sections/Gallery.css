@@ -1,0 +1,119 @@
+.phoksundo-gallery {
+  padding: var(--phoksundo-section-padding);
+  background: var(--phoksundo-white);
+}
+
+.phoksundo-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.85rem;
+}
+
+.phoksundo-gallery__thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--phoksundo-radius-sm);
+  overflow: hidden;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background: var(--phoksundo-ivory);
+}
+
+.phoksundo-gallery__thumb:nth-child(5n + 1),
+.phoksundo-gallery__thumb:nth-child(5n + 4) {
+  aspect-ratio: 4 / 5;
+}
+
+.phoksundo-gallery__image {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.phoksundo-gallery__thumb:hover .phoksundo-gallery__image {
+  transform: scale(1.08);
+}
+
+.phoksundo-gallery__lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(10, 16, 22, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.phoksundo-gallery__lightbox-media {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 900px;
+  width: 100%;
+}
+
+.phoksundo-gallery__lightbox-image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+}
+
+.phoksundo-gallery__lightbox-image {
+  object-fit: contain;
+}
+
+.phoksundo-gallery__lightbox-caption {
+  color: var(--phoksundo-white);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.phoksundo-gallery__lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.75rem;
+  background: none;
+  border: none;
+  color: var(--phoksundo-white);
+  font-size: 2.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.phoksundo-gallery__lightbox-nav {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: var(--phoksundo-white);
+  font-size: 2.5rem;
+  line-height: 1;
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.phoksundo-gallery__lightbox-nav:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 900px) {
+  .phoksundo-gallery__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .phoksundo-gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .phoksundo-gallery__lightbox-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 2rem;
+  }
+}

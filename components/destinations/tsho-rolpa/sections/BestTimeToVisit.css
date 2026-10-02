@@ -1,0 +1,64 @@
+.tsho-seasons__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: var(--tsho-space-md);
+}
+
+.tsho-seasons__card {
+  background: var(--tsho-white);
+  border: 1px solid var(--tsho-border);
+  border-top: 4px solid var(--tsho-teal);
+  border-radius: var(--tsho-radius-md);
+  padding: var(--tsho-space-md);
+  box-shadow: var(--tsho-shadow-card);
+}
+
+.tsho-seasons__title {
+  font-family: var(--tsho-font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--tsho-blue);
+  margin: 0 0 0.2rem;
+}
+
+.tsho-seasons__months {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--tsho-teal);
+  margin: 0 0 0.9rem;
+}
+
+.tsho-seasons__points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.tsho-seasons__points li {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--tsho-text-soft);
+  padding-left: 1rem;
+  position: relative;
+}
+
+.tsho-seasons__points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--tsho-gold);
+}
+
+.tsho-seasons__note {
+  margin-top: var(--tsho-space-md);
+  font-size: 0.85rem;
+  color: var(--tsho-text-soft);
+  font-style: italic;
+}

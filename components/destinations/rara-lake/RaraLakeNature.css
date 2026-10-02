@@ -1,0 +1,83 @@
+.rara-nature {
+  padding: var(--rara-section-padding);
+  background-color: var(--rara-blue);
+  color: var(--rara-white);
+  max-width: none;
+}
+
+.rara-nature > .rara-nature__grid {
+  max-width: var(--rara-max-width);
+  margin: 0 auto;
+}
+
+.rara-nature__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .rara-nature__grid {
+    grid-template-columns: 1fr 1.1fr;
+  }
+}
+
+.rara-nature__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--rara-radius-lg);
+  overflow: hidden;
+}
+
+.rara-nature__image {
+  object-fit: cover;
+}
+
+.rara-nature__eyebrow {
+  display: inline-block;
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rara-gold);
+  margin-bottom: 0.75rem;
+}
+
+.rara-nature__heading {
+  font-family: var(--font-heading, "Playfair Display", serif);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  margin: 0 0 1rem;
+}
+
+.rara-nature__intro {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 1.25rem;
+}
+
+.rara-nature__points {
+  margin: 0 0 1.5rem;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.rara-nature__note {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.8125rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.65);
+  border-left: 3px solid var(--rara-gold);
+  padding-left: 1rem;
+  margin: 0;
+}

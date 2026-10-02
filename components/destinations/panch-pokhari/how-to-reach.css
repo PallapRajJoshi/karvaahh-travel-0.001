@@ -1,0 +1,107 @@
+.pp-route {
+  padding-block: var(--pp-space-8);
+  background: var(--pp-bg-alt);
+}
+
+.pp-route__banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  max-width: 760px;
+  margin: 0 auto var(--pp-space-6);
+  padding: var(--pp-space-3) var(--pp-space-4);
+  border-radius: 999px;
+  background: var(--pp-blue);
+  color: var(--pp-white);
+  font-weight: 600;
+  text-align: center;
+  font-size: 1.02rem;
+  flex-wrap: wrap;
+}
+
+.pp-route__banner-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--pp-gold);
+  flex-shrink: 0;
+}
+
+.pp-route__steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--pp-space-4);
+}
+
+.pp-route__step {
+  position: relative;
+  background: var(--pp-white);
+  border-radius: var(--pp-radius-md);
+  padding: var(--pp-space-4);
+  box-shadow: var(--pp-shadow-sm);
+}
+
+.pp-route__step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--pp-accent-soft);
+  color: var(--pp-blue);
+  font-family: var(--pp-font-display);
+  font-weight: 700;
+  margin-bottom: var(--pp-space-3);
+}
+
+.pp-route__step-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.pp-route__step-body {
+  font-size: 0.9rem;
+}
+
+.pp-route__step-connector {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: -1.3rem;
+  transform: translateY(-50%);
+  color: var(--pp-teal);
+  width: 20px;
+  height: 20px;
+}
+
+.pp-route__note {
+  max-width: 700px;
+  margin: var(--pp-space-6) auto 0;
+  text-align: center;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--pp-text-muted);
+}
+
+@media (min-width: 901px) {
+  .pp-route__step-connector {
+    display: block;
+  }
+}
+
+@media (max-width: 900px) {
+  .pp-route__steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .pp-route__steps {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,326 @@
+/* ==========================================================================
+   Culture & Festival Experiences: page tokens and shared primitives
+   Everything is scoped under .culture-page so nothing leaks into other pages.
+   Palette is the page brief's (Deep Himalayan Blue / Mountain Teal / Warm Gold).
+   It differs from the site-wide tokens: see README, "Decisions for you".
+   ========================================================================== */
+
+.culture-page {
+  --cx-blue: #123b5d;
+  --cx-blue-deep: #0b2942;
+  --cx-teal: #2a7f82;
+  --cx-teal-deep: #1d6366; /* teal for small text on ivory (AA) */
+  --cx-gold: #d8a64a;
+  --cx-gold-soft: #e8c47c;
+  --cx-gold-deep: #86601c; /* gold for text on ivory (AA); never use --cx-gold for small text on light */
+  --cx-ivory: #f8f6f0;
+  --cx-ivory-deep: #efeadd;
+  --cx-charcoal: #252b32;
+  --cx-white: #ffffff;
+  --cx-muted: #4d5560;
+  --cx-line: rgba(37, 43, 50, 0.12);
+  --cx-focus: #123b5d;
+
+  --cx-serif: var(--font-playfair), "Playfair Display", Georgia, "Times New Roman", serif;
+  --cx-sans: var(--font-inter), "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --cx-gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --cx-section: clamp(4.5rem, 9vw, 8rem);
+  --cx-radius: 16px;
+  --cx-ease: cubic-bezier(0.22, 0.7, 0.2, 1);
+  --cx-shadow: 0 1px 2px rgba(11, 41, 66, 0.06), 0 12px 32px -12px rgba(11, 41, 66, 0.22);
+  --cx-shadow-lift: 0 2px 4px rgba(11, 41, 66, 0.08), 0 24px 48px -16px rgba(11, 41, 66, 0.32);
+
+  font-family: var(--cx-sans);
+  color: var(--cx-charcoal);
+  background: var(--cx-ivory);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.culture-page *,
+.culture-page *::before,
+.culture-page *::after {
+  box-sizing: border-box;
+}
+
+/* Resets use :where() so they carry zero specificity and never beat a component class. */
+:where(.culture-page) :is(h1, h2, h3, h4, p, ul, ol, dl, dd, figure) {
+  margin: 0;
+}
+
+:where(.culture-page) :is(ul, ol) {
+  padding: 0;
+  list-style: none;
+}
+
+:where(.culture-page) a {
+  color: inherit;
+}
+
+.culture-page :focus-visible {
+  outline: 3px solid var(--cx-focus);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+:where(.culture-page) section {
+  scroll-margin-top: 5rem;
+}
+
+.cx-container {
+  width: min(100% - 2 * var(--cx-gutter), 1240px);
+  margin-inline: auto;
+}
+
+.cx-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---- Scroll reveal --------------------------------------------------------
+   Visible by default. JS only hides below-the-fold items (see useReveal). */
+.cx-reveal[data-reveal="pending"] {
+  opacity: 0;
+  transform: translateY(26px);
+}
+.cx-reveal[data-reveal="visible"] {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.85s var(--cx-ease) var(--cx-delay, 0ms),
+    transform 0.85s var(--cx-ease) var(--cx-delay, 0ms);
+}
+
+/* ---- Images & placeholders ------------------------------------------------ */
+.cx-img {
+  object-fit: cover;
+}
+
+.cx-ph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  color: rgba(255, 255, 255, 0.16);
+  background: linear-gradient(140deg, var(--cx-blue) 0%, var(--cx-teal) 100%);
+}
+.cx-ph--1 { background: linear-gradient(150deg, var(--cx-blue-deep) 0%, #3a5f7a 100%); }
+.cx-ph--2 { background: linear-gradient(135deg, var(--cx-charcoal) 0%, var(--cx-blue) 100%); }
+.cx-ph--3 { background: linear-gradient(160deg, var(--cx-teal-deep) 0%, var(--cx-blue) 100%); }
+.cx-ph--4 { background: linear-gradient(145deg, var(--cx-blue) 0%, #6b5a3a 130%); }
+
+.cx-ph__pattern {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.cx-ph__label {
+  position: relative;
+  display: grid;
+  gap: 0.15rem;
+  padding: 1rem 1.15rem;
+  color: rgba(255, 255, 255, 0.92);
+}
+.cx-ph__subject {
+  font-family: var(--cx-serif);
+  font-size: 1.05rem;
+  line-height: 1.2;
+}
+.cx-ph__note {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+/* ---- Section heading ------------------------------------------------------ */
+.cx-heading {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: clamp(2.25rem, 5vw, 3.75rem);
+}
+.cx-heading--center {
+  justify-items: center;
+  text-align: center;
+}
+.cx-heading--left {
+  justify-items: start;
+}
+.cx-heading__eyebrow {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cx-teal-deep);
+}
+.cx-heading__title {
+  font-family: var(--cx-serif);
+  font-weight: 500;
+  font-size: clamp(2rem, 4.4vw, 3.3rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--cx-blue);
+  max-width: 22ch;
+  text-wrap: balance;
+}
+.cx-heading--center .cx-heading__title {
+  max-width: 26ch;
+}
+.cx-heading__lede {
+  max-width: 62ch;
+  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  color: var(--cx-muted);
+  text-wrap: pretty;
+}
+.cx-heading--dark .cx-heading__eyebrow { color: var(--cx-gold); }
+.cx-heading--dark .cx-heading__title { color: var(--cx-white); }
+.cx-heading--dark .cx-heading__lede { color: rgba(255, 255, 255, 0.82); }
+
+/* ---- Gold divider --------------------------------------------------------- */
+.cx-divider {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--cx-gold);
+}
+.cx-divider__line {
+  display: block;
+  width: 2.75rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.8;
+}
+
+/* ---- CTA ------------------------------------------------------------------ */
+.cx-cta {
+  --cx-cta-bg: transparent;
+  --cx-cta-fg: var(--cx-blue);
+  --cx-cta-border: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 3rem;
+  padding: 0.85rem 1.6rem;
+  font: 600 0.95rem/1.2 var(--cx-sans);
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  color: var(--cx-cta-fg);
+  background: var(--cx-cta-bg);
+  border: 1.5px solid var(--cx-cta-border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    background-color 0.25s var(--cx-ease),
+    color 0.25s var(--cx-ease),
+    border-color 0.25s var(--cx-ease),
+    transform 0.25s var(--cx-ease),
+    box-shadow 0.25s var(--cx-ease);
+}
+.cx-cta__arrow {
+  flex: none;
+  transition: transform 0.3s var(--cx-ease);
+}
+.cx-cta:hover .cx-cta__arrow {
+  transform: translateX(4px);
+}
+.cx-cta:disabled {
+  opacity: 0.65;
+  cursor: progress;
+}
+
+.cx-cta--gold {
+  --cx-cta-bg: var(--cx-gold);
+  --cx-cta-fg: var(--cx-blue-deep);
+  --cx-cta-border: var(--cx-gold);
+}
+.cx-cta--gold:hover:not(:disabled) {
+  --cx-cta-bg: var(--cx-gold-soft);
+  --cx-cta-border: var(--cx-gold-soft);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -10px rgba(216, 166, 74, 0.7);
+}
+.cx-cta--ghost {
+  --cx-cta-fg: var(--cx-blue);
+  --cx-cta-border: var(--cx-blue);
+}
+.cx-cta--ghost:hover:not(:disabled) {
+  --cx-cta-bg: var(--cx-blue);
+  --cx-cta-fg: var(--cx-white);
+  transform: translateY(-2px);
+}
+.cx-cta--ghost-light {
+  --cx-cta-fg: var(--cx-white);
+  --cx-cta-border: rgba(255, 255, 255, 0.7);
+}
+.cx-cta--ghost-light:hover:not(:disabled) {
+  --cx-cta-bg: var(--cx-white);
+  --cx-cta-fg: var(--cx-blue-deep);
+  --cx-cta-border: var(--cx-white);
+  transform: translateY(-2px);
+}
+.cx-cta--text {
+  --cx-cta-fg: var(--cx-teal-deep);
+  min-height: 2.75rem;
+  padding: 0.5rem 0;
+  border-radius: 4px;
+  border-color: transparent;
+  justify-content: flex-start;
+}
+.cx-cta--text span {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1.5px no-repeat;
+  padding-bottom: 2px;
+  transition: background-size 0.35s var(--cx-ease);
+}
+.cx-cta--text:hover span {
+  background-size: 100% 1.5px;
+}
+
+/* ---- Reading progress + parallax ------------------------------------------ */
+.cx-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 3px;
+  z-index: 40;
+  pointer-events: none;
+}
+.cx-progress__bar {
+  height: 100%;
+  background: var(--cx-gold);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  will-change: transform;
+}
+.cx-parallax {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+  transform: scale(1.08);
+}
+
+/* ---- Reduced motion ------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .culture-page *,
+  .culture-page *::before,
+  .culture-page *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+  .cx-parallax {
+    transform: none;
+  }
+}

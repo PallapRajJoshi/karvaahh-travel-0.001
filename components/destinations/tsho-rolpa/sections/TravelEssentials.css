@@ -1,0 +1,59 @@
+.tsho-essentials__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--tsho-space-md);
+  align-items: start;
+}
+
+.tsho-essentials__panel {
+  background: var(--tsho-white);
+  border: 1px solid var(--tsho-border);
+  border-radius: var(--tsho-radius-md);
+  padding: var(--tsho-space-md);
+  box-shadow: var(--tsho-shadow-card);
+}
+
+.tsho-essentials__panel-title {
+  font-family: var(--tsho-font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--tsho-blue);
+  margin: 0 0 0.9rem;
+}
+
+.tsho-essentials__list {
+  list-style: none;
+  margin: 0 0 0.75rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.tsho-essentials__list li {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--tsho-text-soft);
+  padding-left: 1.15rem;
+  position: relative;
+}
+
+.tsho-essentials__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--tsho-teal);
+}
+
+.tsho-essentials__disclaimer {
+  font-size: 0.8rem;
+  color: var(--tsho-text-soft);
+  font-style: italic;
+  margin: 0;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--tsho-border);
+}

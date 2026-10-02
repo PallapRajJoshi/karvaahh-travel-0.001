@@ -1,0 +1,103 @@
+.culture-perf {
+  --cx-focus: var(--cx-gold);
+  padding-block: var(--cx-section);
+  color: var(--cx-white);
+  background: var(--cx-charcoal);
+  overflow: hidden;
+}
+.culture-perf__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: center;
+}
+
+.culture-perf__eyebrow {
+  margin-bottom: 1rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cx-gold);
+}
+.culture-perf__title {
+  font-family: var(--cx-serif);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 4.6vw, 3.6rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+.culture-perf__divider {
+  margin-block: 1.4rem;
+}
+.culture-perf__intro {
+  color: rgba(255, 255, 255, 0.86);
+  max-width: 50ch;
+}
+.culture-perf__list {
+  display: grid;
+  gap: 0;
+  margin-block: 1.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+.culture-perf__list li {
+  padding: 0.75rem 0 0.75rem 1.6rem;
+  position: relative;
+  font-size: 0.98rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+.culture-perf__list li::before {
+  content: "";
+  position: absolute;
+  left: 0.15rem;
+  top: 1.35em;
+  width: 0.42rem;
+  height: 0.42rem;
+  background: var(--cx-gold);
+  border-radius: 50%;
+}
+.culture-perf__note {
+  margin-bottom: 1.75rem;
+  padding: 0.9rem 1.1rem;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.06);
+  border-left: 3px solid var(--cx-teal);
+  border-radius: 0 10px 10px 0;
+}
+
+.culture-perf__media {
+  position: relative;
+  isolation: isolate;
+}
+.culture-perf__frame {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  border-radius: 200px 20px 20px 20px;
+  overflow: hidden;
+  box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.7);
+}
+.culture-perf__accent {
+  position: absolute;
+  left: -1.25rem;
+  bottom: -1.25rem;
+  z-index: -1;
+  width: 42%;
+  height: 42%;
+  background: var(--cx-teal);
+  opacity: 0.55;
+  border-radius: 20px;
+}
+
+@media (max-width: 900px) {
+  .culture-perf__grid {
+    grid-template-columns: 1fr;
+  }
+  .culture-perf__media {
+    order: -1;
+  }
+  .culture-perf__frame {
+    border-radius: 120px 20px 20px 20px;
+    aspect-ratio: 4 / 3;
+  }
+}

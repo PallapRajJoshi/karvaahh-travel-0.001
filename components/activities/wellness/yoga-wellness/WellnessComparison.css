@@ -1,0 +1,99 @@
+.ykw .ykw-cmp__wrap {
+  background: var(--ykw-white);
+  border: 1px solid var(--ykw-line);
+  border-radius: var(--ykw-radius);
+  overflow: hidden;
+  box-shadow: var(--ykw-shadow);
+}
+.ykw .ykw-cmp__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.93rem;
+}
+.ykw .ykw-cmp__table thead th {
+  background: var(--ykw-blue);
+  color: var(--ykw-white);
+  text-align: left;
+  font-weight: 600;
+  padding: 16px 18px;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+}
+.ykw .ykw-cmp__table td,
+.ykw .ykw-cmp__table tbody th {
+  padding: 16px 18px;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid var(--ykw-line);
+}
+.ykw .ykw-cmp__table tbody th {
+  font-family: var(--ykw-serif);
+  font-weight: 500;
+  color: var(--ykw-blue);
+  font-size: 1rem;
+}
+.ykw .ykw-cmp__table tbody tr:nth-child(even) {
+  background: rgba(248, 246, 240, 0.7);
+}
+.ykw .ykw-cmp__table tbody tr {
+  transition: background-color 0.3s var(--ykw-ease);
+}
+.ykw .ykw-cmp__table tbody tr:hover {
+  background: rgba(42, 127, 130, 0.07);
+}
+
+@media (max-width: 900px) {
+  .ykw .ykw-cmp__wrap {
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
+  }
+  .ykw .ykw-cmp__table,
+  .ykw .ykw-cmp__table tbody,
+  .ykw .ykw-cmp__table tr,
+  .ykw .ykw-cmp__table td,
+  .ykw .ykw-cmp__table tbody th {
+    display: block;
+  }
+  .ykw .ykw-cmp__table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+  .ykw .ykw-cmp__table tbody tr {
+    background: var(--ykw-white);
+    border: 1px solid var(--ykw-line);
+    border-radius: var(--ykw-radius);
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .ykw .ykw-cmp__table tbody tr:nth-child(even) {
+    background: var(--ykw-white);
+  }
+  .ykw .ykw-cmp__table tbody th {
+    background: var(--ykw-blue);
+    color: var(--ykw-white);
+    border-top: 0;
+  }
+  .ykw .ykw-cmp__table td {
+    display: grid;
+    grid-template-columns: 9.5rem 1fr;
+    gap: 12px;
+  }
+  .ykw .ykw-cmp__table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--ykw-teal-deep);
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 480px) {
+  .ykw .ykw-cmp__table td {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}

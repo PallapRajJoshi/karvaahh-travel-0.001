@@ -1,0 +1,18 @@
+.cr-media-img {
+  object-fit: cover;
+}
+
+.cr-media-ph {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  text-align: center;
+  background:
+    radial-gradient(circle at 70% 20%, rgba(216, 166, 74, 0.35), transparent 45%),
+    linear-gradient(160deg, #0b2a44, #2a7f82);
+  color: rgba(255, 255, 255, 0.85);
+  font: 500 0.85rem/1.4 var(--cr-sans, system-ui);
+  letter-spacing: 0.02em;
+}

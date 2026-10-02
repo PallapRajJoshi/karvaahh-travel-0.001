@@ -1,0 +1,40 @@
+.rara-essentials {
+  padding: var(--rara-section-padding);
+  background-color: var(--rara-white);
+}
+
+.rara-essentials__list {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.rara-essentials__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.9375rem;
+  color: var(--rara-charcoal);
+  line-height: 1.5;
+}
+
+.rara-essentials__icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--rara-teal);
+  margin-top: 0.15rem;
+}
+
+.rara-essentials__note {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.875rem;
+  color: var(--rara-blue);
+  background-color: rgba(42, 127, 130, 0.08);
+  border-radius: var(--rara-radius-sm);
+  padding: 1rem 1.25rem;
+}

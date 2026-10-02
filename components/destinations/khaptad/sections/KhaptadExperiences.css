@@ -1,0 +1,50 @@
+.khaptad-experiences {
+  padding-block: var(--khaptad-section-padding);
+  background: var(--khaptad-ivory);
+}
+
+.khaptad-experiences__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.khaptad-experience-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.khaptad-experience-card__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--khaptad-radius-md);
+  overflow: hidden;
+}
+
+.khaptad-experience-card__media img {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.khaptad-experience-card:hover .khaptad-experience-card__media img {
+  transform: scale(1.05);
+}
+
+.khaptad-experience-card__title {
+  font-size: 1.02rem;
+  color: var(--khaptad-blue);
+}
+
+.khaptad-experience-card__description {
+  font-size: 0.88rem;
+  color: var(--khaptad-charcoal-soft);
+}
+
+.khaptad-experiences__disclaimer {
+  margin-top: 2.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--khaptad-charcoal-soft);
+  font-style: italic;
+}

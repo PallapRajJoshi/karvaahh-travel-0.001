@@ -1,0 +1,121 @@
+.culture-journeys {
+  --cx-focus: var(--cx-gold);
+  padding-block: var(--cx-section);
+  color: var(--cx-white);
+  background:
+    radial-gradient(70rem 36rem at 0% 110%, rgba(42, 127, 130, 0.4), transparent 60%),
+    var(--cx-blue-deep);
+}
+
+.culture-journeys__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  align-items: stretch;
+}
+
+.journey-card {
+  display: flex;
+  flex-direction: column;
+  color: var(--cx-charcoal);
+  background: var(--cx-ivory);
+  border-radius: var(--cx-radius);
+  overflow: hidden;
+  transition: transform 0.4s var(--cx-ease), box-shadow 0.4s var(--cx-ease);
+}
+.journey-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 40px 70px -30px rgba(0, 0, 0, 0.65);
+}
+
+.journey-card__media {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+}
+.journey-card__media .cx-img,
+.journey-card__media .cx-ph {
+  transition: transform 1s var(--cx-ease);
+}
+.journey-card:hover .journey-card__media .cx-img,
+.journey-card:hover .journey-card__media .cx-ph {
+  transform: scale(1.05);
+}
+.journey-card__badge {
+  position: absolute;
+  left: 0.9rem;
+  top: 0.9rem;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cx-blue-deep);
+  background: var(--cx-gold);
+  border-radius: 999px;
+}
+
+.journey-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 1.6rem 1.5rem 1.6rem;
+}
+.journey-card__duration {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cx-gold-deep);
+}
+.journey-card__title {
+  font-family: var(--cx-serif);
+  font-weight: 500;
+  font-size: 1.65rem;
+  line-height: 1.18;
+  color: var(--cx-blue);
+}
+.journey-card__overview {
+  font-size: 0.95rem;
+  color: var(--cx-muted);
+}
+.journey-card__list {
+  display: grid;
+  gap: 0.45rem;
+  font-size: 0.92rem;
+}
+.journey-card__list li {
+  position: relative;
+  padding-left: 1.35rem;
+}
+.journey-card__list li::before {
+  content: "";
+  position: absolute;
+  left: 0.15rem;
+  top: 0.62em;
+  width: 0.4rem;
+  height: 0.4rem;
+  background: var(--cx-teal);
+  transform: rotate(45deg);
+}
+.journey-card__body .cx-cta {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.culture-journeys__note {
+  max-width: 72ch;
+  margin: clamp(2rem, 4vw, 3rem) auto 0;
+  text-align: center;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+@media (max-width: 1000px) {
+  .culture-journeys__grid {
+    grid-template-columns: 1fr;
+    max-width: 40rem;
+    margin-inline: auto;
+  }
+}

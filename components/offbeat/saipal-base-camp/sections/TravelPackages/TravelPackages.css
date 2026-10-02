@@ -1,0 +1,58 @@
+.saipal-packages {
+  background: var(--saipal-white);
+}
+
+.saipal-packages__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 1.5rem;
+}
+
+.saipal-packages__card {
+  border: 1px solid rgba(18, 59, 93, 0.1);
+  border-radius: var(--saipal-radius-lg);
+  padding: 1.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  transition: transform var(--saipal-transition-fast), box-shadow var(--saipal-transition-fast), border-color var(--saipal-transition-fast);
+}
+
+.saipal-packages__card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--saipal-shadow-soft);
+  border-color: var(--saipal-gold);
+}
+
+.saipal-packages__name {
+  font-size: 1.2rem;
+}
+
+.saipal-packages__desc {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: rgba(37, 43, 50, 0.78);
+  margin: 0;
+}
+
+.saipal-packages__profile {
+  font-size: 0.85rem;
+  color: rgba(37, 43, 50, 0.65);
+  margin: 0;
+}
+
+.saipal-packages__profile strong {
+  color: var(--saipal-blue);
+}
+
+.saipal-packages__fallback {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--saipal-teal);
+  margin: 0;
+}
+
+.saipal-packages__cta {
+  margin-top: 0.5rem;
+  align-self: flex-start;
+}

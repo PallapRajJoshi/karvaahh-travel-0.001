@@ -1,0 +1,54 @@
+.ykw .ykw-act__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2.2vw, 28px);
+}
+.ykw .ykw-act__card {
+  padding: 32px 28px;
+  border: 1px solid rgba(248, 246, 240, 0.16);
+  border-radius: var(--ykw-radius);
+  background: rgba(255, 255, 255, 0.05);
+  transition:
+    background-color 0.5s var(--ykw-ease),
+    transform 0.5s var(--ykw-ease),
+    border-color 0.5s var(--ykw-ease);
+}
+.ykw .ykw-act__card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(216, 166, 74, 0.6);
+  transform: translateY(-4px);
+}
+.ykw .ykw-act__icon {
+  display: inline-flex;
+  width: 56px;
+  height: 56px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--ykw-gold);
+  background: rgba(216, 166, 74, 0.14);
+  margin-bottom: 18px;
+}
+.ykw .ykw-act__card h3 {
+  color: var(--ykw-white);
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.ykw .ykw-act__card p {
+  color: rgba(248, 246, 240, 0.85);
+  font-size: 0.97rem;
+}
+@media (max-width: 1000px) {
+  .ykw .ykw-act__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 620px) {
+  .ykw .ykw-act__grid {
+    grid-template-columns: 1fr;
+  }
+}

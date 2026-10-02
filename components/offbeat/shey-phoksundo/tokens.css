@@ -1,0 +1,80 @@
+/*
+  Page-scoped design tokens for the Shey Phoksundo destination page.
+  Scoped under .phoksundo-page to prevent cross-page leakage, following the
+  Karvaahh convention of per-destination CSS custom properties
+  (e.g. --lumbini-*, --pg-*).
+
+  Palette follows the brief's Himalayan storytelling variant for this
+  destination — inspired by Phoksundo Lake's turquoise waters, rugged cliffs,
+  and traditional Himalayan architecture — layered on top of the site's
+  shared Playfair Display / Inter typography.
+*/
+
+.phoksundo-page {
+  --phoksundo-blue: #123b5d;
+  --phoksundo-teal: #2a7f82;
+  --phoksundo-gold: #d8a64a;
+  --phoksundo-ivory: #f8f6f0;
+  --phoksundo-charcoal: #252b32;
+  --phoksundo-white: #ffffff;
+
+  --phoksundo-blue-rgb: 18, 59, 93;
+  --phoksundo-teal-rgb: 42, 127, 130;
+  --phoksundo-gold-rgb: 216, 166, 74;
+
+  --phoksundo-font-heading: var(--font-playfair-display, "Playfair Display", serif);
+  --phoksundo-font-body: var(--font-inter, "Inter", sans-serif);
+
+  --phoksundo-radius-sm: 8px;
+  --phoksundo-radius-md: 14px;
+  --phoksundo-radius-lg: 24px;
+
+  --phoksundo-shadow-card: 0 12px 32px rgba(18, 59, 93, 0.14);
+  --phoksundo-shadow-card-hover: 0 20px 44px rgba(18, 59, 93, 0.22);
+
+  --phoksundo-section-padding: clamp(3.5rem, 6vw, 6.5rem) clamp(1.25rem, 5vw, 4rem);
+  --phoksundo-max-width: 1280px;
+
+  background: var(--phoksundo-ivory);
+  color: var(--phoksundo-charcoal);
+  font-family: var(--phoksundo-font-body);
+}
+
+.phoksundo-page h1,
+.phoksundo-page h2,
+.phoksundo-page h3 {
+  font-family: var(--phoksundo-font-heading);
+  color: var(--phoksundo-blue);
+  margin: 0;
+}
+
+.phoksundo-page a {
+  color: inherit;
+}
+
+.phoksundo-page__container {
+  max-width: var(--phoksundo-max-width);
+  margin: 0 auto;
+  padding-left: clamp(1.25rem, 5vw, 4rem);
+  padding-right: clamp(1.25rem, 5vw, 4rem);
+}
+
+/* Shared reveal-on-scroll utility (IntersectionObserver driven, see useScrollReveal) */
+.phoksundo-page [data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.phoksundo-page [data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phoksundo-page [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

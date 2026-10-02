@@ -1,0 +1,55 @@
+.why-visit {
+  background-color: var(--dhorpatan-ivory);
+}
+
+.why-visit__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.75rem;
+}
+
+.why-visit__card {
+  background-color: var(--dhorpatan-white);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(18, 59, 93, 0.07);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding-bottom: 1.4rem;
+}
+
+.why-visit__card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 32px rgba(18, 59, 93, 0.12);
+}
+
+.why-visit__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+}
+
+.why-visit__image {
+  object-fit: cover;
+}
+
+.why-visit__title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--dhorpatan-blue);
+  margin: 1.1rem 1.3rem 0.5rem;
+}
+
+.why-visit__description {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--dhorpatan-charcoal);
+  margin: 0 1.3rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .why-visit__card {
+    transition: none;
+  }
+  .why-visit__card:hover {
+    transform: none;
+  }
+}

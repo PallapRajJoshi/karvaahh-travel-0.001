@@ -1,0 +1,103 @@
+.tsho-packages__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--tsho-space-md);
+}
+
+.tsho-packages__card {
+  position: relative;
+  background: var(--tsho-white);
+  border: 1px solid var(--tsho-border);
+  border-radius: var(--tsho-radius-md);
+  padding: var(--tsho-space-md);
+  box-shadow: var(--tsho-shadow-card);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--tsho-transition), box-shadow var(--tsho-transition);
+}
+
+.tsho-packages__card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--tsho-shadow-soft);
+}
+
+.tsho-packages__technical-badge {
+  position: absolute;
+  top: var(--tsho-space-md);
+  right: var(--tsho-space-md);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: rgba(var(--tsho-gold-rgb), 0.18);
+  color: #8a611f;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+}
+
+.tsho-packages__duration {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tsho-teal);
+  margin-bottom: 0.6rem;
+}
+
+.tsho-packages__title {
+  font-family: var(--tsho-font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--tsho-blue);
+  margin: 0 0 0.6rem;
+  padding-right: 5rem;
+}
+
+.tsho-packages__description {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--tsho-text-soft);
+  margin: 0 0 0.9rem;
+}
+
+.tsho-packages__experiences {
+  list-style: none;
+  margin: 0 0 0.9rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tsho-packages__experiences li {
+  font-size: 0.75rem;
+  color: var(--tsho-text);
+  background: var(--tsho-surface-alt);
+  border-radius: 999px;
+  padding: 0.3rem 0.65rem;
+}
+
+.tsho-packages__profile {
+  font-size: 0.85rem;
+  color: var(--tsho-text-soft);
+  margin: 0 0 var(--tsho-space-md);
+  flex: 1;
+}
+
+.tsho-packages__profile strong {
+  color: var(--tsho-text);
+}
+
+.tsho-packages__actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.tsho-packages__btn {
+  flex: 1;
+  padding-inline: 1rem;
+  font-size: 0.85rem;
+}

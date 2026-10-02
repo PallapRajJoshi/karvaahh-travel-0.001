@@ -1,0 +1,204 @@
+/* ==========================================================================
+   Panch Pokhari — page-scoped design tokens
+   Scoped under .panch-pokhari-page to avoid leaking into global site styles.
+   Palette matches the brief exactly and continues the page-specific-palette
+   pattern already used on the Rara Lake and Tsho Rolpa Lake offbeat pages
+   (see project README for the open decision on unifying this with the
+   site-wide token set).
+   ========================================================================== */
+
+.panch-pokhari-page {
+  --pp-blue: #123b5d;
+  --pp-blue-rgb: 18, 59, 93;
+  --pp-teal: #2a7f82;
+  --pp-teal-rgb: 42, 127, 130;
+  --pp-gold: #d8a64a;
+  --pp-gold-rgb: 216, 166, 74;
+  --pp-ivory: #f8f6f0;
+  --pp-ivory-rgb: 248, 246, 240;
+  --pp-charcoal: #252b32;
+  --pp-charcoal-rgb: 37, 43, 50;
+  --pp-white: #ffffff;
+
+  /* Functional aliases */
+  --pp-bg: var(--pp-ivory);
+  --pp-bg-alt: #f1eee4;
+  --pp-text: var(--pp-charcoal);
+  --pp-text-muted: #5b6672;
+  --pp-heading: var(--pp-blue);
+  --pp-accent: var(--pp-gold);
+  --pp-accent-soft: #f0dfba;
+  --pp-line: rgba(37, 43, 50, 0.1);
+
+  /* Typography — reuses site-wide font families */
+  --pp-font-display: var(--font-playfair, "Playfair Display", Georgia, serif);
+  --pp-font-body: var(--font-inter, "Inter", -apple-system, sans-serif);
+
+  /* Spacing scale */
+  --pp-space-1: 0.25rem;
+  --pp-space-2: 0.5rem;
+  --pp-space-3: 1rem;
+  --pp-space-4: 1.5rem;
+  --pp-space-5: 2.5rem;
+  --pp-space-6: 4rem;
+  --pp-space-7: 6rem;
+  --pp-space-8: 8rem;
+
+  /* Radii & shadow */
+  --pp-radius-sm: 8px;
+  --pp-radius-md: 16px;
+  --pp-radius-lg: 28px;
+  --pp-shadow-sm: 0 4px 16px rgba(var(--pp-charcoal-rgb), 0.08);
+  --pp-shadow-md: 0 12px 40px rgba(var(--pp-charcoal-rgb), 0.14);
+  --pp-shadow-lg: 0 24px 64px rgba(var(--pp-blue-rgb), 0.22);
+
+  /* Motion */
+  --pp-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --pp-duration-fast: 0.3s;
+  --pp-duration-base: 0.6s;
+  --pp-duration-slow: 1.1s;
+
+  /* Container */
+  --pp-container: 1280px;
+  --pp-gutter: clamp(1.25rem, 4vw, 3rem);
+
+  background: var(--pp-bg);
+  color: var(--pp-text);
+  font-family: var(--pp-font-body);
+}
+
+.panch-pokhari-page * {
+  box-sizing: border-box;
+}
+
+.panch-pokhari-page .pp-container {
+  width: 100%;
+  max-width: var(--pp-container);
+  margin-inline: auto;
+  padding-inline: var(--pp-gutter);
+}
+
+.panch-pokhari-page h1,
+.panch-pokhari-page h2,
+.panch-pokhari-page h3,
+.panch-pokhari-page h4 {
+  font-family: var(--pp-font-display);
+  color: var(--pp-heading);
+  line-height: 1.15;
+  margin: 0;
+}
+
+.panch-pokhari-page p {
+  margin: 0;
+  line-height: 1.7;
+  color: var(--pp-text-muted);
+}
+
+.panch-pokhari-page section {
+  position: relative;
+}
+
+.panch-pokhari-page a {
+  color: inherit;
+}
+
+.panch-pokhari-page .pp-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: var(--pp-font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pp-teal);
+}
+
+.panch-pokhari-page .pp-eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1.5px;
+  background: var(--pp-gold);
+  display: inline-block;
+}
+
+/* Reduced motion: collapse all custom transitions/animations site-wide for this page */
+@media (prefers-reduced-motion: reduce) {
+  .panch-pokhari-page * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.panch-pokhari-page .pp-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.panch-pokhari-page .pp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  font-family: var(--pp-font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  padding: 0.9em 1.8em;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform var(--pp-duration-fast) var(--pp-ease),
+    box-shadow var(--pp-duration-fast) var(--pp-ease),
+    background var(--pp-duration-fast) var(--pp-ease),
+    color var(--pp-duration-fast) var(--pp-ease);
+  text-decoration: none;
+}
+
+.panch-pokhari-page .pp-btn:focus-visible {
+  outline: 2px solid var(--pp-gold);
+  outline-offset: 3px;
+}
+
+.panch-pokhari-page .pp-btn--primary {
+  background: var(--pp-gold);
+  color: var(--pp-blue);
+  box-shadow: var(--pp-shadow-sm);
+}
+
+.panch-pokhari-page .pp-btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--pp-shadow-md);
+}
+
+.panch-pokhari-page .pp-btn--ghost {
+  background: transparent;
+  color: var(--pp-white);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+.panch-pokhari-page .pp-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--pp-white);
+  transform: translateY(-2px);
+}
+
+.panch-pokhari-page .pp-btn--outline {
+  background: transparent;
+  color: var(--pp-blue);
+  border-color: var(--pp-blue);
+}
+
+.panch-pokhari-page .pp-btn--outline:hover {
+  background: var(--pp-blue);
+  color: var(--pp-white);
+}

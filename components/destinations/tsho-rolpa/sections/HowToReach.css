@@ -1,0 +1,77 @@
+.tsho-access__panel {
+  background: var(--tsho-white);
+  border: 1px solid var(--tsho-border);
+  border-radius: var(--tsho-radius-lg);
+  padding: var(--tsho-space-lg);
+  box-shadow: var(--tsho-shadow-card);
+}
+
+.tsho-access__panel-title {
+  font-family: var(--tsho-font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--tsho-blue);
+  margin: 0 0 0.75rem;
+}
+
+.tsho-access__route {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--tsho-text-soft);
+  margin: 0 0 var(--tsho-space-md);
+}
+
+.tsho-access__selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: var(--tsho-space-md);
+}
+
+.tsho-access__chip {
+  font-family: var(--tsho-font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid var(--tsho-border);
+  background: var(--tsho-surface-alt);
+  color: var(--tsho-text);
+  cursor: pointer;
+  transition: background var(--tsho-transition), color var(--tsho-transition),
+    border-color var(--tsho-transition);
+}
+
+.tsho-access__chip:hover {
+  border-color: var(--tsho-teal);
+}
+
+.tsho-access__chip--active {
+  background: var(--tsho-blue);
+  border-color: var(--tsho-blue);
+  color: var(--tsho-white);
+}
+
+.tsho-access__notes {
+  list-style: none;
+  margin: 0;
+  padding: var(--tsho-space-sm) 0 0;
+  border-top: 1px dashed var(--tsho-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tsho-access__notes li {
+  font-size: 0.88rem;
+  color: var(--tsho-text-soft);
+  padding-left: 1.1rem;
+  position: relative;
+}
+
+.tsho-access__notes li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--tsho-gold);
+}

@@ -1,0 +1,50 @@
+.ykw .ykw-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 12px 26px;
+  border-radius: 999px;
+  font: 600 0.95rem/1.2 var(--ykw-sans);
+  text-decoration: none;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition:
+    transform 0.35s var(--ykw-ease),
+    background-color 0.35s var(--ykw-ease),
+    color 0.35s var(--ykw-ease),
+    border-color 0.35s var(--ykw-ease),
+    box-shadow 0.35s var(--ykw-ease);
+}
+.ykw .ykw-btn:hover {
+  transform: translateY(-2px);
+}
+.ykw .ykw-btn--primary {
+  background: var(--ykw-gold);
+  color: #1c2530;
+}
+.ykw .ykw-btn--primary:hover {
+  box-shadow: 0 10px 24px rgba(216, 166, 74, 0.4);
+}
+.ykw .ykw-btn--ghost {
+  border-color: rgba(255, 255, 255, 0.75);
+  color: var(--ykw-white);
+  background: rgba(255, 255, 255, 0.06);
+}
+.ykw .ykw-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+.ykw .ykw-btn--light {
+  background: var(--ykw-white);
+  color: var(--ykw-blue);
+}
+.ykw .ykw-btn--outline {
+  border-color: var(--ykw-teal);
+  color: var(--ykw-teal-deep);
+  background: transparent;
+}
+.ykw .ykw-btn--outline:hover {
+  background: var(--ykw-teal);
+  color: var(--ykw-white);
+}

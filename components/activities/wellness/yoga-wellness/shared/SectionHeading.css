@@ -1,0 +1,43 @@
+.ykw .ykw-head {
+  max-width: 760px;
+  margin-bottom: clamp(32px, 5vw, 56px);
+}
+.ykw .ykw-head--center {
+  margin-inline: auto;
+  text-align: center;
+}
+.ykw .ykw-head__eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ykw-teal-deep);
+  margin-bottom: 12px;
+}
+.ykw .ykw-head__title {
+  font-size: clamp(1.9rem, 4.2vw, 3rem);
+  font-weight: 500;
+}
+.ykw .ykw-head__rule {
+  display: block;
+  width: 56px;
+  height: 2px;
+  background: var(--ykw-gold);
+  margin: 20px 0;
+}
+.ykw .ykw-head--center .ykw-head__rule {
+  margin-inline: auto;
+}
+.ykw .ykw-head__intro {
+  font-size: 1.05rem;
+  color: rgba(37, 43, 50, 0.82);
+}
+.ykw .ykw-head--dark .ykw-head__eyebrow {
+  color: var(--ykw-gold);
+}
+.ykw .ykw-head--dark .ykw-head__title {
+  color: var(--ykw-white);
+}
+.ykw .ykw-head--dark .ykw-head__intro {
+  color: rgba(248, 246, 240, 0.85);
+}

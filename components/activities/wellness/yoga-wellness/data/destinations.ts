@@ -1,0 +1,182 @@
+import type { DestinationItem } from "./types";
+import { LINKS } from "./config";
+
+const IMG = "/images/activities/wellness/yoga-wellness";
+
+export const destinations: DestinationItem[] = [
+  {
+    id: "rishikesh",
+    name: "Rishikesh",
+    region: "Uttarakhand",
+    country: "India",
+    heading: "Find Your Rhythm Along the Ganges",
+    description:
+      "A destination known for yoga traditions, meditation experiences, spiritual learning, and peaceful Himalayan surroundings.",
+    highlights: [
+      "Yoga and meditation retreats",
+      "Mindfulness and breathing sessions",
+      "Spiritual and cultural exploration",
+      "Riverside relaxation",
+      "Nature experiences in the Himalayan foothills",
+    ],
+    idealFor: "Yoga enthusiasts and travelers seeking spiritual learning",
+    image: {
+      src: `${IMG}/dest-rishikesh.webp`,
+      alt: "Yoga practice beside the Ganges with the Himalayan foothills behind",
+      label: "Yoga overlooking the Ganges, Himalayan foothills beyond",
+    },
+    href: LINKS.haridwarRishikesh,
+    inquiryValue: "Rishikesh, India",
+    featured: true,
+  },
+  {
+    id: "haridwar",
+    name: "Haridwar",
+    region: "Uttarakhand",
+    country: "India",
+    heading: "A Peaceful Journey of Reflection",
+    description:
+      "Haridwar's spiritual atmosphere, riverside surroundings, and opportunities for mindful travel and cultural exploration.",
+    highlights: [
+      "Meditation and reflection",
+      "Riverside walks",
+      "Spiritual and cultural experiences",
+      "Yoga sessions where available",
+      "Peaceful moments along the Ganges",
+    ],
+    idealFor: "Reflective travelers and cultural explorers",
+    image: {
+      src: `${IMG}/dest-haridwar.webp`,
+      alt: "Har Ki Pauri on the Ganges in soft morning light",
+      label: "Har Ki Pauri riverside in soft morning light",
+    },
+    href: LINKS.haridwarRishikesh,
+    inquiryValue: "Haridwar, India",
+    featured: false,
+  },
+  {
+    id: "kathmandu",
+    name: "Kathmandu",
+    region: "Bagmati Province",
+    country: "Nepal",
+    heading: "Mindfulness Amid Heritage and Himalayan Culture",
+    description:
+      "Spiritual heritage, traditional culture, meditation spaces, and wellness-focused travel in the heart of the valley.",
+    highlights: [
+      "Yoga and meditation sessions where offered",
+      "Visits to spiritual and cultural landmarks",
+      "Mindful heritage walks",
+      "Wellness experiences in peaceful retreat settings",
+      "Cultural exploration",
+    ],
+    idealFor: "Culture-minded travelers and first-time visitors to Nepal",
+    image: {
+      src: `${IMG}/dest-kathmandu.webp`,
+      alt: "A quiet meditation setting among Kathmandu Valley's traditional architecture",
+      label: "Meditation setting with Kathmandu Valley architecture",
+    },
+    href: LINKS.bagmati,
+    inquiryValue: "Kathmandu, Nepal",
+    featured: true,
+  },
+  {
+    id: "pokhara",
+    name: "Pokhara",
+    region: "Gandaki Province",
+    country: "Nepal",
+    heading: "Rejuvenate Beside the Himalayan Lakes",
+    description:
+      "Peaceful lakes, mountain scenery, natural beauty, and opportunities for yoga, meditation, and nature-based relaxation.",
+    highlights: [
+      "Lakeside yoga sessions where available",
+      "Meditation with scenic surroundings",
+      "Nature walks and relaxation",
+      "Peaceful boating experiences where available",
+      "Sunrise and sunset views",
+    ],
+    idealFor: "Couples, individuals, and families who love lakeside calm",
+    image: {
+      src: `${IMG}/dest-pokhara.webp`,
+      alt: "Yoga beside Phewa Lake with the Annapurna range in the distance",
+      label: "Lakeside yoga by Phewa Lake, Annapurna range beyond",
+    },
+    href: LINKS.gandaki,
+    inquiryValue: "Pokhara, Nepal",
+    featured: true,
+  },
+  {
+    id: "lumbini",
+    name: "Lumbini",
+    region: "Lumbini Province",
+    country: "Nepal",
+    heading: "A Journey Into Peace and Reflection",
+    description:
+      "A spiritual destination associated with the birthplace of Gautama Buddha and peaceful monastic surroundings.",
+    highlights: [
+      "Mindful walks through the sacred garden",
+      "Meditation experiences where offered",
+      "Spiritual and cultural exploration",
+      "Quiet reflection",
+      "Visits to monasteries and heritage sites",
+    ],
+    idealFor: "Spiritual travelers and those seeking quiet reflection",
+    image: {
+      src: `${IMG}/dest-lumbini.webp`,
+      alt: "A peaceful garden pathway within the Lumbini sacred area",
+      label: "Garden pathway in the Lumbini sacred area",
+    },
+    href: LINKS.lumbini,
+    inquiryValue: "Lumbini, Nepal",
+    featured: false,
+  },
+  {
+    id: "nagarkot",
+    name: "Nagarkot",
+    region: "Bagmati Province",
+    country: "Nepal",
+    heading: "Wake Up to Himalayan Serenity",
+    description:
+      "Scenic hills, fresh mountain air, peaceful landscapes, and opportunities for nature-inspired relaxation.",
+    highlights: [
+      "Sunrise and mountain-view experiences",
+      "Outdoor yoga where available",
+      "Nature walks",
+      "Mindful relaxation",
+      "Scenic countryside exploration",
+    ],
+    idealFor: "Short escapes from Kathmandu and sunrise lovers",
+    image: {
+      src: `${IMG}/dest-nagarkot.webp`,
+      alt: "Outdoor yoga at Nagarkot overlooking the Himalayan range",
+      label: "Outdoor yoga overlooking the Himalayan range",
+    },
+    href: LINKS.bagmati,
+    inquiryValue: "Nagarkot, Nepal",
+    featured: false,
+  },
+  {
+    id: "foothills",
+    name: "Himalayan Foothills",
+    region: "Nepal",
+    country: "Nepal",
+    heading: "Reconnect With Nature in the Himalayas",
+    description:
+      "Tranquil foothills as a setting for mindful travel, nature walks, quiet retreats, and peaceful outdoor experiences.",
+    highlights: [
+      "Nature-inspired yoga sessions",
+      "Scenic walking trails",
+      "Meditation in peaceful surroundings",
+      "Mountain-view relaxation",
+      "Wellness-focused nature escapes",
+    ],
+    idealFor: "Nature lovers wanting a slower, greener pace",
+    image: {
+      src: `${IMG}/dest-foothills.webp`,
+      alt: "A quiet retreat among green hills with distant Himalayan peaks",
+      label: "Retreat among green hills, distant Himalayan peaks",
+    },
+    href: LINKS.destinations,
+    inquiryValue: "Himalayan Foothills of Nepal",
+    featured: false,
+  },
+];

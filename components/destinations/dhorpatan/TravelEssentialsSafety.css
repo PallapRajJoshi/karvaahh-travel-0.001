@@ -1,0 +1,75 @@
+.essentials-section {
+  background-color: var(--dhorpatan-ivory);
+}
+
+.essentials-section__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 860px) {
+  .essentials-section__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.essentials-panel {
+  background-color: var(--dhorpatan-white);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.essentials-panel--regulations {
+  background-color: var(--dhorpatan-blue);
+}
+
+.essentials-panel--regulations .essentials-panel__title,
+.essentials-panel--regulations .essentials-panel__list li {
+  color: var(--dhorpatan-ivory);
+}
+
+.essentials-panel--regulations .essentials-panel__icon {
+  color: var(--dhorpatan-gold);
+}
+
+.essentials-panel__title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--dhorpatan-blue);
+  margin: 0 0 1.25rem;
+}
+
+.essentials-panel__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.essentials-panel__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--dhorpatan-charcoal);
+}
+
+.essentials-panel__icon {
+  flex-shrink: 0;
+  color: var(--dhorpatan-teal);
+  margin-top: 0.15rem;
+}
+
+.essentials-panel__disclaimer {
+  margin: 1.5rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(248, 246, 240, 0.25);
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: rgba(248, 246, 240, 0.85);
+  font-style: italic;
+}

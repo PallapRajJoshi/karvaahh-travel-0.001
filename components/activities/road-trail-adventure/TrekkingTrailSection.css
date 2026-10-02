@@ -1,0 +1,114 @@
+.rt-trails__grid {
+  display: grid;
+  gap: clamp(20px, 3vw, 32px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 900px) {
+  .rt-trails__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.rt-trails__item {
+  display: flex;
+}
+
+.rt-trails__card {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(248, 246, 240, 0.14);
+  border-radius: var(--rt-radius);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.rt-trails__media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.rt-trails__media .rt-photo > * {
+  transition: transform 0.9s var(--rt-ease);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .rt-trails__card:hover .rt-trails__media .rt-photo > * {
+    transform: scale(1.05);
+  }
+}
+
+.rt-trails__shade {
+  position: absolute;
+  inset: 40% 0 0 0;
+  background: linear-gradient(180deg, transparent, rgba(11, 39, 64, 0.7));
+  pointer-events: none;
+}
+
+.rt-badge.rt-trails__tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.rt-trails__tag svg {
+  width: 14px;
+  height: 14px;
+}
+
+.rt-trails__body {
+  display: grid;
+  gap: 1rem;
+  padding: 1.6rem;
+}
+
+.rt-trails__title {
+  margin: 0;
+  font-family: var(--rt-font-display);
+  font-size: 1.55rem;
+  color: var(--rt-white);
+}
+
+.rt-trails__intro {
+  margin: -0.4rem 0 0;
+  color: rgba(248, 246, 240, 0.78);
+  font-size: 0.95rem;
+}
+
+.rt-trails__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: clamp(32px, 4vw, 52px);
+  padding-top: clamp(24px, 3vw, 36px);
+  border-top: 1px solid rgba(248, 246, 240, 0.16);
+}
+
+.rt-trails__caution {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  max-width: 62ch;
+  margin: 0;
+  font-size: 0.92rem;
+  color: rgba(248, 246, 240, 0.82);
+}
+
+.rt-trails__caution svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  color: var(--rt-gold);
+}

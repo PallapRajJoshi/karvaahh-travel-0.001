@@ -143,21 +143,21 @@ export const mainNav: MainNavItem[] = [
           items: [
             { label: "Rara Lake", href: "/offbeat-unexplored/rara-lake" },
 
-            { label: "Dhorpatan", href: "/offbeat-unexplored/dhorpatan" },
+            { label: "Dhorpatan", href: "/offbeat-unexplored/dhorpatan-hunting-reserve" },
 
             // { label: "Tsum Valley", href: "/offbeat-unexplored/tsum-valley" },
 
             // { label: "Nar Phu Valley", href: "/offbeat-unexplored/nar-phu-valley" },
 
-            { label: "Dolpo Shey Phoksundo", href: "/offbeat-unexplored/dolpo" },
+            { label: "Dolpo Shey Phoksundo", href: "/offbeat-unexplored/shey-phoksundo" },
 
-            { label: "Tsho Rolpa", href: "/offbeat-unexplored/kanchenjunga" },
+            { label: "Tsho Rolpa", href: "/offbeat-unexplored/tsho-rolpa-lake" },
 
-            { label: "Khaptad National Park", href: "/offbeat-unexplored/khaptad" },
+            { label: "Khaptad National Park", href: "/offbeat-unexplored/khaptad-national-park" },
 
             { label: "Panch Pokhari Trek", href: "/offbeat-unexplored/panch-pokhari" },
 
-            { label: "Saipal Base Camp", href: "/offbeat-unexplored/kori-trek" },
+            { label: "Saipal Base Camp", href: "/offbeat-unexplored/saipal-base-camp" },
 
             // { label: "Sailung", href: "/offbeat-unexplored/sailung" },
           ],
@@ -282,13 +282,13 @@ export const mainNav: MainNavItem[] = [
           href: "/activities/educational-corporate",
           items: [
             { label: "Educational Tours", href: "/activities/educational-corporate/educational-tours" },
-            { label: "Corporate Tours & Retreats", href: "/activities/educational-corporate/student-leadership" },
+            { label: "Corporate Tours & Retreats", href: "/activities/educational-corporate/corporate-tours-retreats" },
             { label: "Cruise Experiences", href: "/activities/educational-corporate/cultural-exchange" },
             { label: "Destination Weddings", href: "/activities/educational-corporate/corporate-meetings" },
-            { label: "Yoga & Wellness", href: "/activities/educational-corporate/business-exhibitions" },
-            { label: "Wildlife & Nature", href: "/activities/educational-corporate/networking-events" },
-            { label: "Cultural & Festival Experiences", href: "/activities/educational-corporate/team-building" },
-            { label: "Road & Trail Adventure Experiences", href: "/activities/educational-corporate/mice" },
+            { label: "Yoga & Wellness", href: "/activities/wellness/yoga-wellness" },
+            { label: "Wildlife & Nature", href: "/activities/wildlife-nature" },
+            { label: "Cultural & Festival Experiences", href: "/activities/culture-festival-experiences" },
+            { label: "Road & Trail Adventure Experiences", href: "/activities/road-trail-adventure" },
           ],
         },
       ],

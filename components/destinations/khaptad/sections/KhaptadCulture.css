@@ -1,0 +1,28 @@
+.khaptad-culture {
+  padding-block: var(--khaptad-section-padding);
+  background: var(--khaptad-white);
+}
+
+.khaptad-culture__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.khaptad-culture-card {
+  padding: 1.5rem;
+  border-left: 3px solid var(--khaptad-gold);
+  background: var(--khaptad-ivory);
+  border-radius: 0 var(--khaptad-radius-md) var(--khaptad-radius-md) 0;
+}
+
+.khaptad-culture-card__title {
+  font-size: 1.05rem;
+  color: var(--khaptad-blue);
+  margin-bottom: 0.5rem;
+}
+
+.khaptad-culture-card__description {
+  font-size: 0.9rem;
+  color: var(--khaptad-charcoal-soft);
+}

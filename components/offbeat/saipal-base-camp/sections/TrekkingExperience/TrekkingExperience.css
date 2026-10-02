@@ -1,0 +1,65 @@
+.saipal-trek__grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.saipal-trek__media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--saipal-radius-lg);
+  overflow: hidden;
+  box-shadow: 0 25px 60px -20px rgba(0, 0, 0, 0.5);
+}
+
+.saipal-trek__title {
+  font-size: clamp(1.75rem, 3.2vw, 2.4rem);
+  margin: 0.75rem 0 1.5rem;
+}
+
+.saipal-trek__list {
+  list-style: none;
+  margin: 0 0 1.75rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.saipal-trek__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: rgba(248, 246, 240, 0.92);
+}
+
+.saipal-trek__check {
+  flex-shrink: 0;
+  width: 1.3rem;
+  height: 1.3rem;
+  color: var(--saipal-gold);
+  margin-top: 0.15rem;
+}
+
+.saipal-trek__notice {
+  background: rgba(216, 166, 74, 0.14);
+  border-left: 3px solid var(--saipal-gold);
+  padding: 1rem 1.25rem;
+  border-radius: var(--saipal-radius-sm);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--saipal-ivory);
+}
+
+.saipal-trek__notice strong {
+  color: var(--saipal-gold);
+}
+
+@media (max-width: 900px) {
+  .saipal-trek__grid {
+    grid-template-columns: 1fr;
+  }
+}

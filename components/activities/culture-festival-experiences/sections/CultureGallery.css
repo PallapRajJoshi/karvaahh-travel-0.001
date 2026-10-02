@@ -1,0 +1,150 @@
+.culture-gallery {
+  padding-block: var(--cx-section);
+  background: var(--cx-white);
+}
+
+.culture-gallery__masonry {
+  columns: 4 220px;
+  column-gap: clamp(0.75rem, 1.6vw, 1.25rem);
+}
+
+.gallery-tile {
+  break-inside: avoid;
+  margin-bottom: clamp(0.75rem, 1.6vw, 1.25rem);
+}
+.gallery-tile__button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: zoom-in;
+}
+.gallery-tile__frame {
+  position: relative;
+  display: block;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--cx-shadow);
+}
+.gallery-tile__frame .cx-img,
+.gallery-tile__frame .cx-ph {
+  transition: transform 0.9s var(--cx-ease), filter 0.5s var(--cx-ease);
+}
+.gallery-tile__button:hover .cx-img,
+.gallery-tile__button:hover .cx-ph {
+  transform: scale(1.06);
+}
+.gallery-tile__caption {
+  display: block;
+  padding: 0.55rem 0.15rem 0;
+  font-size: 0.82rem;
+  color: var(--cx-muted);
+}
+
+/* Lightbox: native <dialog> gives focus trapping, Esc to close and focus return. */
+.culture-lightbox {
+  width: min(94vw, 1100px);
+  max-width: none;
+  max-height: 94vh;
+  padding: 0;
+  color: var(--cx-white);
+  background: transparent;
+  border: 0;
+  overflow: visible;
+}
+.culture-lightbox::backdrop {
+  background: rgba(8, 24, 38, 0.92);
+  backdrop-filter: blur(3px);
+}
+.culture-lightbox__inner {
+  --cx-focus: #d8a64a;
+  position: relative;
+  display: grid;
+  gap: 0.9rem;
+  justify-items: center;
+  font-family: var(--cx-sans, system-ui, sans-serif);
+}
+.culture-lightbox__inner :focus-visible {
+  outline: 3px solid #d8a64a;
+  outline-offset: 3px;
+}
+.culture-lightbox__close {
+  justify-self: end;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.culture-lightbox__close:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+.culture-lightbox__stage {
+  position: relative;
+  width: auto;
+  max-width: 100%;
+  height: min(72vh, 780px);
+  max-height: 72vh;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #0b2942;
+}
+.culture-lightbox__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: min(100%, 720px);
+}
+.culture-lightbox__caption {
+  display: grid;
+  gap: 0.1rem;
+  text-align: center;
+  font-size: 0.98rem;
+}
+.culture-lightbox__count {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+}
+.culture-lightbox__nav {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.culture-lightbox__nav:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+.culture-lightbox__nav--prev svg {
+  transform: scaleX(-1);
+}
+
+/* Stop the page scrolling behind an open lightbox. */
+html:has(.culture-lightbox[open]) {
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .culture-gallery__masonry {
+    columns: 2 140px;
+  }
+  .culture-lightbox__stage {
+    height: min(60vh, 520px);
+  }
+}

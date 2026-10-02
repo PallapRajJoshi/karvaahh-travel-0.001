@@ -1,0 +1,42 @@
+.rara-best-time {
+  padding: var(--rara-section-padding);
+}
+
+.rara-best-time__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.rara-best-time__card {
+  background-color: var(--rara-white);
+  border-radius: var(--rara-radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--rara-shadow-card);
+}
+
+.rara-best-time__months {
+  display: block;
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--rara-gold);
+  margin-bottom: 0.5rem;
+}
+
+.rara-best-time__season {
+  font-family: var(--font-heading, "Playfair Display", serif);
+  font-size: 1.25rem;
+  color: var(--rara-blue);
+  margin: 0 0 0.6rem;
+}
+
+.rara-best-time__description {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--rara-charcoal-muted);
+  margin: 0;
+}

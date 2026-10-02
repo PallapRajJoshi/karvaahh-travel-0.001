@@ -1,0 +1,83 @@
+.rara-attractions {
+  padding: var(--rara-section-padding);
+  background-color: var(--rara-white);
+}
+
+.rara-attractions__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 1.75rem;
+}
+
+.rara-attractions__card {
+  border-radius: var(--rara-radius-md);
+  overflow: hidden;
+  background-color: var(--rara-ivory);
+  box-shadow: var(--rara-shadow-card);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.rara-attractions__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--rara-shadow-card-hover);
+}
+
+.rara-attractions__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+}
+
+.rara-attractions__image {
+  object-fit: cover;
+}
+
+.rara-attractions__badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  background-color: rgba(18, 59, 93, 0.85);
+  color: var(--rara-white);
+}
+
+.rara-attractions__badge--day-trip {
+  background-color: rgba(216, 166, 74, 0.92);
+  color: var(--rara-blue);
+}
+
+.rara-attractions__badge--regional-gateway {
+  background-color: rgba(42, 127, 130, 0.92);
+}
+
+.rara-attractions__body {
+  padding: 1.25rem;
+}
+
+.rara-attractions__title {
+  font-family: var(--font-heading, "Playfair Display", serif);
+  font-size: 1.15rem;
+  color: var(--rara-blue);
+  margin: 0 0 0.5rem;
+}
+
+.rara-attractions__description {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--rara-charcoal-muted);
+  margin: 0 0 0.75rem;
+}
+
+.rara-attractions__activity {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.875rem;
+  color: var(--rara-charcoal);
+  margin: 0;
+}

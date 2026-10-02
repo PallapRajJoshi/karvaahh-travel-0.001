@@ -1,0 +1,73 @@
+.saipal-seasons {
+  background: var(--saipal-ivory);
+}
+
+.saipal-seasons__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.25rem;
+}
+
+.saipal-seasons__card {
+  position: relative;
+  background: var(--saipal-white);
+  border-radius: var(--saipal-radius-lg);
+  padding: 1.75rem 1.5rem;
+  border-top: 4px solid rgba(18, 59, 93, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  transition: transform var(--saipal-transition-fast), box-shadow var(--saipal-transition-fast);
+}
+
+.saipal-seasons__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--saipal-shadow-card);
+}
+
+.saipal-seasons__card--recommended {
+  border-top-color: var(--saipal-gold);
+}
+
+.saipal-seasons__badge {
+  position: absolute;
+  top: -0.65rem;
+  right: 1.25rem;
+  background: var(--saipal-gold);
+  color: var(--saipal-charcoal);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+}
+
+.saipal-seasons__name {
+  font-size: 1.2rem;
+}
+
+.saipal-seasons__months {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--saipal-teal);
+  text-transform: uppercase;
+}
+
+.saipal-seasons__desc {
+  margin-top: 0.5rem;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: rgba(37, 43, 50, 0.75);
+}
+
+.saipal-seasons__footnote {
+  max-width: 720px;
+  margin: 2.25rem auto 0;
+  text-align: center;
+  font-size: 0.9rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: rgba(37, 43, 50, 0.65);
+}

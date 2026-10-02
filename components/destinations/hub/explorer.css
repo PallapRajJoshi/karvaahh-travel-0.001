@@ -1,0 +1,217 @@
+/* ==========================================================================
+   Explorer: country selector, experience tiles, toolbar, results grid
+   ========================================================================== */
+
+.dx {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3vw, 32px);
+}
+
+.dx__countries {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.dx__exps {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 4px 2px 12px;
+  margin-inline: calc(var(--dh-gutter) * -1);
+  padding-inline: var(--dh-gutter);
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: var(--dh-gutter);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(13, 29, 22, 0.25) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 1300px) {
+  .dx__exps {
+    margin-inline: 0;
+    padding-inline: 2px;
+  }
+}
+
+.dx__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 24px;
+  padding-top: 10px;
+  border-top: 1px solid var(--dh-line);
+}
+
+.dx__count {
+  font-size: 1rem;
+  color: var(--dh-ink-soft);
+}
+
+.dx__count strong {
+  font-family: var(--dh-head);
+  font-size: 1.5rem;
+  color: var(--dh-ink);
+}
+
+.dx__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+}
+
+.dx__field {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--dh-ink-soft);
+}
+
+.dx__field select {
+  min-height: 44px;
+  padding: 0 34px 0 14px;
+  border: 1px solid var(--dh-line);
+  border-radius: 999px;
+  background: #fff
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2346554d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")
+    no-repeat right 10px center / 16px;
+  color: var(--dh-ink);
+  font: 500 0.9rem/1 var(--dh-body);
+  appearance: none;
+  cursor: pointer;
+}
+
+.dx__clear {
+  min-height: 44px;
+  padding: 0 6px;
+  border: 0;
+  background: none;
+  font: 600 0.9rem/1 var(--dh-body);
+  color: var(--dh-gold-deep);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+
+.dx__clear:disabled {
+  color: var(--dh-ink-soft);
+  opacity: 0.55;
+  text-decoration: none;
+  cursor: default;
+}
+
+.dx__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid var(--dh-line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--dh-ink);
+  font: 500 0.88rem/1 var(--dh-body);
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s var(--dh-ease);
+}
+
+.dx__chip:hover {
+  border-color: var(--dh-gold);
+  transform: translateY(-1px);
+}
+
+.dx__chip svg {
+  width: 14px;
+  height: 14px;
+}
+
+.dx__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  animation: dh-fade 0.35s ease both;
+}
+
+.dx__grid > li {
+  min-width: 0;
+}
+
+.dx__more {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.dx__more p {
+  font-size: 0.85rem;
+  color: var(--dh-ink-soft);
+}
+
+.dx__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: clamp(32px, 6vw, 64px) 20px;
+  text-align: center;
+  border: 1px dashed var(--dh-line);
+  border-radius: var(--dh-radius);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.dx__empty h3 {
+  font-family: var(--dh-head);
+  font-size: 1.5rem;
+}
+
+.dx__empty p {
+  color: var(--dh-ink-soft);
+}
+
+.dx__suggest {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (max-width: 820px) {
+  .dx__countries {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .dx__countries .dcountry {
+    min-height: 132px;
+  }
+  .dx__bar {
+    align-items: flex-start;
+  }
+  .dx__controls {
+    width: 100%;
+  }
+  .dx__field {
+    flex: 1 1 140px;
+  }
+  .dx__field select {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .dx__grid {
+    grid-template-columns: 1fr;
+  }
+}

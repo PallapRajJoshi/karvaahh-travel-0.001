@@ -1,0 +1,47 @@
+.khaptad-access {
+  padding-block: var(--khaptad-section-padding);
+  background: var(--khaptad-white);
+}
+
+.khaptad-access__routes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+.khaptad-access__route {
+  padding: 1.5rem;
+  border-radius: var(--khaptad-radius-md);
+  background: var(--khaptad-blue-soft);
+}
+
+.khaptad-access__route h3 {
+  font-size: 1.05rem;
+  color: var(--khaptad-blue);
+  margin-bottom: 0.5rem;
+}
+
+.khaptad-access__route p {
+  font-size: 0.9rem;
+  color: var(--khaptad-charcoal-soft);
+}
+
+.khaptad-access__planner {
+  padding: 2rem;
+  border-radius: var(--khaptad-radius-lg);
+  border: 1px solid var(--khaptad-border);
+  background: var(--khaptad-ivory);
+}
+
+.khaptad-access__planner-title {
+  font-size: 1.15rem;
+  color: var(--khaptad-blue);
+  margin-bottom: 0.4rem;
+}
+
+.khaptad-access__planner-copy {
+  font-size: 0.9rem;
+  color: var(--khaptad-charcoal-soft);
+  margin-bottom: 1.25rem;
+}

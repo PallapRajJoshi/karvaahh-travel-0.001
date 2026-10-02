@@ -1,0 +1,128 @@
+.phoksundo-attractions {
+  padding: var(--phoksundo-section-padding);
+  background: var(--phoksundo-white);
+}
+
+.phoksundo-attractions__filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.phoksundo-attractions__filter {
+  padding: 0.6rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid rgba(var(--phoksundo-blue-rgb), 0.2);
+  background: transparent;
+  color: var(--phoksundo-blue);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.phoksundo-attractions__filter--active {
+  background: var(--phoksundo-blue);
+  color: var(--phoksundo-white);
+  border-color: var(--phoksundo-blue);
+}
+
+.phoksundo-attractions__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+.phoksundo-attractions__card {
+  background: var(--phoksundo-ivory);
+  border-radius: var(--phoksundo-radius-md);
+  overflow: hidden;
+  box-shadow: var(--phoksundo-shadow-card);
+}
+
+.phoksundo-attractions__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+}
+
+.phoksundo-attractions__image {
+  object-fit: cover;
+}
+
+.phoksundo-attractions__badge {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--phoksundo-white);
+}
+
+.phoksundo-attractions__badge--lake-region {
+  background: var(--phoksundo-teal);
+}
+
+.phoksundo-attractions__badge--upper-dolpo {
+  background: var(--phoksundo-gold);
+  color: var(--phoksundo-blue);
+}
+
+.phoksundo-attractions__body {
+  padding: 1.5rem;
+}
+
+.phoksundo-attractions__title {
+  font-size: 1.15rem;
+  margin-bottom: 0.3rem;
+}
+
+.phoksundo-attractions__location {
+  font-size: 0.8rem;
+  color: var(--phoksundo-teal);
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+}
+
+.phoksundo-attractions__description {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  opacity: 0.85;
+  margin: 0 0 1rem;
+}
+
+.phoksundo-attractions__activities {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.phoksundo-attractions__activities li {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(var(--phoksundo-blue-rgb), 0.08);
+  color: var(--phoksundo-blue);
+}
+
+@media (max-width: 1000px) {
+  .phoksundo-attractions__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .phoksundo-attractions__grid {
+    grid-template-columns: 1fr;
+  }
+}

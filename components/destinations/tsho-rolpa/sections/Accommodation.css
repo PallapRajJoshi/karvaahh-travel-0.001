@@ -1,0 +1,35 @@
+.tsho-stay__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--tsho-space-md);
+}
+
+.tsho-stay__card {
+  background: var(--tsho-white);
+  border: 1px solid var(--tsho-border);
+  border-radius: var(--tsho-radius-md);
+  padding: var(--tsho-space-md);
+  box-shadow: var(--tsho-shadow-card);
+}
+
+.tsho-stay__title {
+  font-family: var(--tsho-font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--tsho-blue);
+  margin: 0 0 0.5rem;
+}
+
+.tsho-stay__description {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--tsho-text-soft);
+  margin: 0;
+}
+
+.tsho-stay__note {
+  margin-top: var(--tsho-space-md);
+  font-size: 0.85rem;
+  color: var(--tsho-text-soft);
+  font-style: italic;
+}

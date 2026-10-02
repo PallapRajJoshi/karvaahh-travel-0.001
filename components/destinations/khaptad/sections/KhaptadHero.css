@@ -1,0 +1,170 @@
+.khaptad-hero {
+  position: relative;
+  min-height: min(92vh, 900px);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  color: var(--khaptad-white);
+}
+
+.khaptad-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.khaptad-hero__image {
+  object-fit: cover;
+}
+
+.khaptad-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 40, 63, 0.35) 0%,
+    rgba(12, 40, 63, 0.35) 40%,
+    rgba(12, 40, 63, 0.92) 100%
+  );
+}
+
+.khaptad-hero__content {
+  position: relative;
+  z-index: 1;
+  padding-block: clamp(3rem, 8vw, 5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 900px;
+  animation: khaptad-hero-rise 0.9s ease both;
+}
+
+.khaptad-hero__eyebrow {
+  color: var(--khaptad-gold);
+  animation: khaptad-hero-fade 0.9s ease 0.1s both;
+}
+
+.khaptad-hero__title {
+  color: var(--khaptad-white);
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  animation: khaptad-hero-rise 0.9s ease 0.2s both;
+}
+
+.khaptad-hero__subtitle {
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  color: rgba(248, 246, 240, 0.88);
+  max-width: 640px;
+  animation: khaptad-hero-rise 0.9s ease 0.32s both;
+}
+
+.khaptad-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  animation: khaptad-hero-rise 0.9s ease 0.44s both;
+}
+
+.khaptad-hero__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2.5rem;
+  margin: 1.5rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  animation: khaptad-hero-rise 0.9s ease 0.56s both;
+}
+
+.khaptad-hero__fact dt {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--khaptad-gold);
+  margin-bottom: 0.25rem;
+}
+
+.khaptad-hero__fact dd {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.khaptad-hero__scroll-indicator {
+  position: absolute;
+  left: 50%;
+  bottom: 1.75rem;
+  transform: translateX(-50%);
+  z-index: 1;
+  width: 28px;
+  height: 44px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 999px;
+}
+
+.khaptad-hero__scroll-indicator span {
+  display: block;
+  width: 4px;
+  height: 8px;
+  margin: 8px auto 0;
+  border-radius: 999px;
+  background: var(--khaptad-gold);
+  animation: khaptad-scroll-dot 1.8s ease infinite;
+}
+
+@keyframes khaptad-hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes khaptad-hero-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes khaptad-scroll-dot {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  70% {
+    transform: translateY(14px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .khaptad-hero__content,
+  .khaptad-hero__eyebrow,
+  .khaptad-hero__title,
+  .khaptad-hero__subtitle,
+  .khaptad-hero__actions,
+  .khaptad-hero__facts {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .khaptad-hero__scroll-indicator span {
+    animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .khaptad-hero__facts {
+    gap: 1rem 1.5rem;
+  }
+}

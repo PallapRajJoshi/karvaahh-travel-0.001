@@ -1,0 +1,18 @@
+.best-time-section {
+  background-color: var(--dhorpatan-white);
+}
+
+.best-time-section__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.best-time-section__disclaimer {
+  margin: 2.5rem 0 0;
+  font-size: 0.85rem;
+  color: var(--dhorpatan-charcoal);
+  opacity: 0.75;
+  text-align: center;
+  font-style: italic;
+}

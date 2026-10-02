@@ -1,0 +1,67 @@
+.wn-final {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 78vh;
+  display: grid;
+  align-items: center;
+  color: var(--wn-white);
+  text-align: center;
+  padding-block: clamp(5rem, 10vw, 8rem);
+}
+.wn-final__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+}
+.wn-final__veil {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(160deg, rgba(10, 31, 25, 0.92) 0%, rgba(15, 42, 34, 0.8) 45%, rgba(18, 59, 93, 0.78) 100%);
+}
+.wn-final__glow {
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 100%;
+  width: 90vw;
+  height: 50vw;
+  max-height: 520px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(closest-side, rgba(216, 166, 74, 0.28), transparent);
+  animation: wn-glow 9s ease-in-out infinite alternate;
+}
+.wn-final__inner {
+  display: grid;
+  justify-items: center;
+  gap: 1.5rem;
+  max-width: 52rem;
+}
+.wn-final .wn-eyebrow {
+  color: var(--wn-gold);
+}
+.wn-final__title {
+  font-size: clamp(2.2rem, 5.5vw, 4.25rem);
+}
+.wn-final__text {
+  max-width: 40rem;
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  color: rgba(255, 255, 255, 0.88);
+}
+.wn-final__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.9rem;
+  margin-top: 0.5rem;
+}
+@keyframes wn-glow {
+  from { opacity: 0.55; transform: translate(-50%, -50%) scale(0.95); }
+  to { opacity: 1; transform: translate(-50%, -54%) scale(1.05); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wn-final__glow {
+    animation: none;
+  }
+}

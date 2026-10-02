@@ -1,0 +1,87 @@
+.phoksundo-final-cta {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: var(--phoksundo-white);
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 5vw, 4rem);
+}
+
+.phoksundo-final-cta__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.phoksundo-final-cta__image {
+  object-fit: cover;
+}
+
+.phoksundo-final-cta__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(var(--phoksundo-blue-rgb), 0.78) 0%,
+    rgba(10, 16, 22, 0.85) 100%
+  );
+}
+
+.phoksundo-final-cta__content {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  text-align: center;
+}
+
+.phoksundo-final-cta__heading {
+  color: var(--phoksundo-white);
+  font-size: clamp(1.9rem, 4vw, 2.75rem);
+  margin-bottom: 1.25rem;
+  line-height: 1.2;
+}
+
+.phoksundo-final-cta__text {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 2.25rem;
+}
+
+.phoksundo-final-cta__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.phoksundo-final-cta__button {
+  padding: 0.9rem 1.75rem;
+  border-radius: var(--phoksundo-radius-sm);
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.phoksundo-final-cta__button--primary {
+  background: var(--phoksundo-gold);
+  color: var(--phoksundo-blue);
+}
+
+.phoksundo-final-cta__button--primary:hover {
+  transform: translateY(-2px);
+}
+
+.phoksundo-final-cta__button--secondary {
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: var(--phoksundo-white);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.phoksundo-final-cta__button--secondary:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+}

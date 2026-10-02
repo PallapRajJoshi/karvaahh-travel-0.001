@@ -1,0 +1,150 @@
+/**
+ * Page-scoped design tokens — Saipal Base Camp
+ * Scoped under `.saipal-page` to avoid leaking into global site styles.
+ * NOTE: This palette is taken directly from the brief and differs from the
+ * site-wide Karvaahh tokens (dark forest green / warm gold / cream / navy).
+ * Same pattern as Rara Lake and Tsho Rolpa Lake — flagged again in the README
+ * for a brand-owner decision on per-page palettes vs. global tokens.
+ */
+
+.saipal-page {
+  --saipal-blue: #123b5d;
+  --saipal-blue-rgb: 18, 59, 93;
+  --saipal-teal: #2a7f82;
+  --saipal-teal-rgb: 42, 127, 130;
+  --saipal-gold: #d8a64a;
+  --saipal-gold-rgb: 216, 166, 74;
+  --saipal-ivory: #f8f6f0;
+  --saipal-charcoal: #252b32;
+  --saipal-white: #ffffff;
+
+  --saipal-font-display: "Playfair Display", Georgia, serif;
+  --saipal-font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --saipal-radius-sm: 6px;
+  --saipal-radius-md: 12px;
+  --saipal-radius-lg: 20px;
+
+  --saipal-shadow-soft: 0 20px 60px -20px rgba(18, 59, 93, 0.35);
+  --saipal-shadow-card: 0 10px 30px -12px rgba(37, 43, 50, 0.25);
+
+  --saipal-transition: 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  --saipal-transition-fast: 0.25s ease;
+
+  background: var(--saipal-ivory);
+  color: var(--saipal-charcoal);
+  font-family: var(--saipal-font-body);
+  overflow-x: hidden;
+}
+
+.saipal-page h1,
+.saipal-page h2,
+.saipal-page h3,
+.saipal-page h4 {
+  font-family: var(--saipal-font-display);
+  color: var(--saipal-blue);
+  line-height: 1.15;
+  margin: 0;
+}
+
+.saipal-page a {
+  color: inherit;
+}
+
+.saipal-page__section {
+  padding: clamp(3.5rem, 7vw, 7rem) clamp(1.25rem, 5vw, 4rem);
+}
+
+.saipal-page__section--dark {
+  background: var(--saipal-blue);
+  color: var(--saipal-ivory);
+}
+
+.saipal-page__section--dark h2,
+.saipal-page__section--dark h3 {
+  color: var(--saipal-ivory);
+}
+
+.saipal-page__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.saipal-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--saipal-teal);
+}
+
+.saipal-page__section--dark .saipal-eyebrow {
+  color: var(--saipal-gold);
+}
+
+.saipal-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.95rem 2rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform var(--saipal-transition-fast), box-shadow var(--saipal-transition-fast), background var(--saipal-transition-fast), color var(--saipal-transition-fast);
+}
+
+.saipal-btn:hover {
+  transform: translateY(-2px);
+}
+
+.saipal-btn:focus-visible {
+  outline: 2px solid var(--saipal-gold);
+  outline-offset: 3px;
+}
+
+.saipal-btn--primary {
+  background: var(--saipal-gold);
+  color: var(--saipal-charcoal);
+  box-shadow: 0 12px 30px -10px rgba(216, 166, 74, 0.6);
+}
+
+.saipal-btn--primary:hover {
+  box-shadow: 0 16px 36px -8px rgba(216, 166, 74, 0.7);
+}
+
+.saipal-btn--outline {
+  background: transparent;
+  color: var(--saipal-ivory);
+  border-color: rgba(248, 246, 240, 0.55);
+}
+
+.saipal-btn--outline:hover {
+  background: rgba(248, 246, 240, 0.1);
+  border-color: var(--saipal-ivory);
+}
+
+.saipal-btn--dark {
+  background: var(--saipal-blue);
+  color: var(--saipal-ivory);
+}
+
+.saipal-btn--dark:hover {
+  background: #0d2e49;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .saipal-page * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

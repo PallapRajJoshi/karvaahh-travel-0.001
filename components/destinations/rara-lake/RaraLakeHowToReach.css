@@ -1,0 +1,128 @@
+.rara-reach {
+  padding: var(--rara-section-padding);
+  background-color: var(--rara-white);
+}
+
+.rara-reach__methods {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 700px) {
+  .rara-reach__methods {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.rara-reach__method {
+  background-color: var(--rara-ivory);
+  border-radius: var(--rara-radius-md);
+  padding: 1.5rem;
+}
+
+.rara-reach__method-title {
+  font-family: var(--font-heading, "Playfair Display", serif);
+  font-size: 1.125rem;
+  color: var(--rara-blue);
+  margin: 0 0 0.85rem;
+}
+
+.rara-reach__method-list {
+  margin: 0;
+  padding-left: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--rara-charcoal-muted);
+}
+
+.rara-reach__planner {
+  background-color: var(--rara-blue);
+  border-radius: var(--rara-radius-lg);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.rara-reach__planner-title {
+  font-family: var(--font-heading, "Playfair Display", serif);
+  font-size: 1.25rem;
+  color: var(--rara-white);
+  margin: 0 0 1.25rem;
+}
+
+.rara-reach__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.rara-reach__tab {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.rara-reach__tab:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.rara-reach__tab--active {
+  background-color: var(--rara-gold);
+  border-color: var(--rara-gold);
+  color: var(--rara-blue);
+}
+
+.rara-reach__panel {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: var(--rara-radius-md);
+  padding: 1.25rem 1.5rem;
+}
+
+.rara-reach__panel-modes {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.rara-reach__mode-badge {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background-color: rgba(216, 166, 74, 0.22);
+  color: var(--rara-gold);
+}
+
+.rara-reach__panel-note {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+.rara-reach__verification {
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 0.8125rem;
+  font-style: italic;
+  color: var(--rara-charcoal-muted);
+  border-left: 3px solid var(--rara-gold);
+  padding-left: 1rem;
+  margin: 0;
+}

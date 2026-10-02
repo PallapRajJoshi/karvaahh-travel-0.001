@@ -1,0 +1,95 @@
+.khaptad-attractions {
+  padding-block: var(--khaptad-section-padding);
+  background: var(--khaptad-white);
+}
+
+.khaptad-attractions__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.75rem;
+}
+
+.khaptad-attraction-card {
+  border-radius: var(--khaptad-radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--khaptad-border);
+  background: var(--khaptad-ivory);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.khaptad-attraction-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--khaptad-shadow-soft);
+}
+
+.khaptad-attraction-card__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+}
+
+.khaptad-attraction-card__media img {
+  object-fit: cover;
+}
+
+.khaptad-attraction-card__badge {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.khaptad-attraction-card__badge--within {
+  background: var(--khaptad-teal);
+  color: var(--khaptad-white);
+}
+
+.khaptad-attraction-card__badge--nearby {
+  background: var(--khaptad-gold);
+  color: var(--khaptad-blue-deep);
+}
+
+.khaptad-attraction-card__body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.khaptad-attraction-card__title {
+  font-size: 1.2rem;
+}
+
+.khaptad-attraction-card__location {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--khaptad-teal);
+  font-weight: 600;
+}
+
+.khaptad-attraction-card__description {
+  color: var(--khaptad-charcoal-soft);
+  font-size: 0.92rem;
+}
+
+.khaptad-attraction-card__activities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+
+.khaptad-attraction-card__activities li {
+  font-size: 0.78rem;
+  padding: 0.3rem 0.65rem;
+  background: var(--khaptad-blue-soft);
+  color: var(--khaptad-blue);
+  border-radius: 999px;
+}

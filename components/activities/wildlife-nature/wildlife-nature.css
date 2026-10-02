@@ -1,0 +1,302 @@
+/* ==========================================================================
+   Wildlife & Nature — page-scoped tokens + shared primitives
+   Scoped under .wn-page so nothing leaks into the rest of the site.
+   Palette: Karvaahh brand blues/teal/gold/ivory + deep forest greens.
+   ========================================================================== */
+
+.wn-page {
+  --wn-blue: #123b5d;
+  --wn-teal: #2a7f82;
+  --wn-gold: #d8a64a;
+  --wn-ivory: #f8f6f0;
+  --wn-charcoal: #252b32;
+  --wn-white: #ffffff;
+
+  --wn-forest-900: #0a1f19;
+  --wn-forest-800: #0f2a22;
+  --wn-forest-700: #173d31;
+  --wn-leaf: #2f6b4f;
+
+  /* text-safe variants for light backgrounds (AA contrast on ivory) */
+  --wn-gold-ink: #86620f;
+  --wn-teal-ink: #1d5f62;
+  --wn-muted: #4d5661;
+  --wn-line: rgba(37, 43, 50, 0.12);
+
+  --wn-font-display: var(--font-playfair), "Playfair Display", Georgia, "Times New Roman", serif;
+  --wn-font-body: var(--font-inter), Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --wn-radius: 20px;
+  --wn-radius-sm: 12px;
+  --wn-shadow: 0 18px 40px -22px rgba(10, 31, 25, 0.45);
+  --wn-shadow-lg: 0 30px 60px -28px rgba(10, 31, 25, 0.55);
+  --wn-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --wn-container: 1200px;
+  --wn-nav-offset: 72px; /* height of the site navbar — used by the sticky jump nav */
+
+  font-family: var(--wn-font-body);
+  color: var(--wn-charcoal);
+  background: var(--wn-ivory);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+:root:has(.wn-page) {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root:has(.wn-page) {
+    scroll-behavior: auto;
+  }
+}
+
+.wn-page *,
+.wn-page *::before,
+.wn-page *::after {
+  box-sizing: border-box;
+}
+.wn-page h1,
+.wn-page h2,
+.wn-page h3,
+.wn-page h4 {
+  font-family: var(--wn-font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.wn-page p {
+  margin: 0;
+}
+.wn-page ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.wn-page :where(section[id]) {
+  scroll-margin-top: calc(var(--wn-nav-offset) + 56px);
+}
+
+/* Layout ------------------------------------------------------------------ */
+.wn-container {
+  width: min(100% - 2.5rem, var(--wn-container));
+  margin-inline: auto;
+}
+.wn-section {
+  padding-block: clamp(4rem, 8vw, 7.5rem);
+  position: relative;
+}
+.wn-section--ivory {
+  background: var(--wn-ivory);
+}
+.wn-section--white {
+  background: var(--wn-white);
+}
+.wn-section--dark {
+  background: linear-gradient(180deg, var(--wn-forest-800), var(--wn-forest-900));
+  color: var(--wn-ivory);
+}
+
+/* Typography helpers ------------------------------------------------------ */
+.wn-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--wn-gold-ink);
+}
+.wn-eyebrow::before {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: currentColor;
+}
+.wn-section--dark .wn-eyebrow,
+.wn-on-dark .wn-eyebrow {
+  color: var(--wn-gold);
+}
+.wn-mark {
+  background: linear-gradient(transparent 62%, rgba(216, 166, 74, 0.38) 62%);
+  color: inherit;
+  padding: 0 0.1em;
+}
+
+.wn-visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Buttons ----------------------------------------------------------------- */
+.wn-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 48px;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  font: 600 0.95rem/1 var(--wn-font-body);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.25s var(--wn-ease), background 0.25s, color 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+.wn-btn:hover {
+  transform: translateY(-2px);
+}
+.wn-btn svg {
+  transition: transform 0.25s var(--wn-ease);
+}
+.wn-btn:hover svg {
+  transform: translateX(3px);
+}
+.wn-btn--gold {
+  background: var(--wn-gold);
+  color: #1b1408;
+  box-shadow: 0 10px 24px -12px rgba(216, 166, 74, 0.9);
+}
+.wn-btn--gold:hover {
+  background: #e4b65e;
+}
+.wn-btn--ghost {
+  color: var(--wn-white);
+  border-color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(6px);
+}
+.wn-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: var(--wn-white);
+}
+.wn-btn--outline {
+  color: var(--wn-blue);
+  border-color: var(--wn-blue);
+  background: transparent;
+}
+.wn-btn--outline:hover {
+  background: var(--wn-blue);
+  color: var(--wn-white);
+}
+.wn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--wn-teal-ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s, gap 0.2s var(--wn-ease);
+}
+.wn-link:hover {
+  border-color: currentColor;
+  gap: 0.6rem;
+}
+
+/* Focus ------------------------------------------------------------------- */
+.wn-page :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--wn-gold);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Media + placeholders ----------------------------------------------------- */
+.wn-media {
+  position: relative;
+  overflow: hidden;
+  background: var(--wn-forest-700);
+}
+.wn-media img,
+.wn-img {
+  object-fit: cover;
+}
+.wn-ph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 0.75rem;
+  background:
+    radial-gradient(120% 90% at 20% 10%, var(--ph-a, #2f6b4f) 0%, transparent 60%),
+    linear-gradient(160deg, var(--ph-b, #173d31), var(--ph-c, #0a1f19));
+}
+.wn-ph::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.035) 0 2px, transparent 2px 14px);
+}
+.wn-ph__label {
+  position: relative;
+  z-index: 1;
+  font-size: 0.68rem;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.72);
+  background: rgba(0, 0, 0, 0.32);
+  padding: 0.3rem 0.55rem;
+  border-radius: 6px;
+  max-width: 90%;
+}
+.wn-ph--forest { --ph-a: #2f6b4f; --ph-b: #173d31; --ph-c: #0a1f19; }
+.wn-ph--grass { --ph-a: #8a8f3f; --ph-b: #3d5a35; --ph-c: #14291d; }
+.wn-ph--wetland { --ph-a: #2a7f82; --ph-b: #1c4f57; --ph-c: #0d2a33; }
+.wn-ph--alpine { --ph-a: #5d86a8; --ph-b: #123b5d; --ph-c: #0a2136; }
+.wn-ph--lake { --ph-a: #3fa9a6; --ph-b: #1d6a78; --ph-c: #0c2f45; }
+.wn-ph--dawn { --ph-a: #d8a64a; --ph-b: #6b4a28; --ph-c: #1f1a16; }
+.wn-ph--trail { --ph-a: #4d8a4a; --ph-b: #24512f; --ph-c: #0e2417; }
+
+/* Scroll reveal ------------------------------------------------------------ */
+.wn-reveal--armed {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.8s var(--wn-ease) var(--wn-delay, 0ms),
+    transform 0.8s var(--wn-ease) var(--wn-delay, 0ms);
+}
+.wn-reveal--armed.wn-reveal--in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .wn-reveal--armed {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.wn-note {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  font-size: 0.9rem;
+  color: var(--wn-muted);
+  background: rgba(42, 127, 130, 0.08);
+  border-left: 3px solid var(--wn-teal);
+  padding: 0.9rem 1.1rem;
+  border-radius: 0 var(--wn-radius-sm) var(--wn-radius-sm) 0;
+}
+.wn-note svg {
+  flex: none;
+  margin-top: 0.15rem;
+  color: var(--wn-teal-ink);
+}
+.wn-section--dark .wn-note {
+  color: rgba(248, 246, 240, 0.85);
+  background: rgba(255, 255, 255, 0.06);
+  border-left-color: var(--wn-gold);
+}
+.wn-section--dark .wn-note svg {
+  color: var(--wn-gold);
+}

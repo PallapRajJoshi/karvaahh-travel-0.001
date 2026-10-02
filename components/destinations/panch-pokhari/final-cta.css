@@ -1,0 +1,71 @@
+.pp-final-cta {
+  position: relative;
+  padding-block: var(--pp-space-8);
+  overflow: hidden;
+  color: var(--pp-white);
+  text-align: center;
+}
+
+.pp-final-cta__media {
+  position: absolute;
+  inset: 0;
+}
+
+.pp-final-cta__image {
+  object-fit: cover;
+}
+
+.pp-final-cta__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(var(--pp-blue-rgb), 0.9) 0%,
+    rgba(var(--pp-charcoal-rgb), 0.85) 100%
+  );
+}
+
+.pp-final-cta__content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.pp-final-cta__tagline {
+  font-family: var(--pp-font-display);
+  font-style: italic;
+  color: var(--pp-gold);
+  font-size: 1.05rem;
+  margin-bottom: var(--pp-space-3);
+}
+
+.pp-final-cta__heading {
+  color: var(--pp-white);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  margin-bottom: var(--pp-space-3);
+}
+
+.pp-final-cta__body {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+  margin-bottom: var(--pp-space-5);
+}
+
+.pp-final-cta__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--pp-space-3);
+}
+
+@media (max-width: 560px) {
+  .pp-final-cta__buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .pp-final-cta__buttons .pp-btn {
+    width: 100%;
+  }
+}

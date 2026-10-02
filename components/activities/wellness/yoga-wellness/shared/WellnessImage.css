@@ -1,0 +1,24 @@
+.ykw .ykw-img {
+  object-fit: cover;
+}
+
+.ykw .ykw-ph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+  background:
+    radial-gradient(120% 80% at 80% 0%, rgba(216, 166, 74, 0.35), transparent 55%),
+    linear-gradient(160deg, #2a7f82 0%, #1c5a66 45%, #123b5d 100%);
+}
+
+.ykw .ykw-ph__label {
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(18, 59, 93, 0.55);
+  padding: 6px 10px;
+  border-radius: 999px;
+  max-width: 100%;
+}

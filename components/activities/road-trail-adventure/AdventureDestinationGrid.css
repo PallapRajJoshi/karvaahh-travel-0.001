@@ -1,0 +1,51 @@
+.rt-dest {
+  display: grid;
+  gap: clamp(20px, 3vw, 36px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 720px) {
+  .rt-dest {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.rt-dest__item {
+  display: flex;
+}
+
+.rt-dest__card {
+  width: 100%;
+}
+
+.rt-dest__media {
+  aspect-ratio: 16 / 10;
+}
+
+.rt-dest__access {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 1;
+}
+
+.rt-dest__types {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.rt-dest__types-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rt-muted);
+}
+
+.rt-dest__cta {
+  align-self: flex-start;
+  margin-top: auto;
+}

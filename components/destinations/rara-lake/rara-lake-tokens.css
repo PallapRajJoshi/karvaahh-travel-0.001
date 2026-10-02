@@ -1,0 +1,54 @@
+/**
+ * Design tokens for the Rara Lake page only, scoped under .rara-page to
+ * avoid leaking into other pages (per project convention: tokens defined
+ * once, scoped under a top-level page class).
+ *
+ * NOTE — palette source: these six colors are taken verbatim from the
+ * Rara Lake page brief and differ slightly from the site-wide tokens
+ * recorded in project memory (#0d1d16 / #c9a45c / #f7f5ef / #0B1B2B).
+ * Flagged as a deviation in the README — confirm with brand owner whether
+ * Rara should use this page-specific palette or inherit the global one.
+ */
+
+.rara-page {
+  --rara-blue: #123b5d;
+  --rara-teal: #2a7f82;
+  --rara-gold: #d8a64a;
+  --rara-ivory: #f8f6f0;
+  --rara-charcoal: #252b32;
+  --rara-charcoal-muted: #5b636b;
+  --rara-white: #ffffff;
+
+  --rara-radius-sm: 6px;
+  --rara-radius-md: 14px;
+  --rara-radius-lg: 24px;
+
+  --rara-shadow-card: 0 8px 30px rgba(18, 59, 93, 0.1);
+  --rara-shadow-card-hover: 0 16px 40px rgba(18, 59, 93, 0.16);
+
+  --rara-section-padding: clamp(3.5rem, 7vw, 6rem) 1.5rem;
+  --rara-max-width: 1200px;
+
+  background-color: var(--rara-ivory);
+  color: var(--rara-charcoal);
+}
+
+.rara-page section {
+  max-width: var(--rara-max-width);
+  margin: 0 auto;
+}
+
+.rara-page *,
+.rara-page *::before,
+.rara-page *::after {
+  box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rara-page * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

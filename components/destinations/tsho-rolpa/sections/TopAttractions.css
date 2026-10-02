@@ -1,0 +1,107 @@
+.tsho-attractions__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--tsho-space-md);
+}
+
+.tsho-attractions__card {
+  background: var(--tsho-white);
+  border-radius: var(--tsho-radius-md);
+  overflow: hidden;
+  border: 1px solid var(--tsho-border);
+  box-shadow: var(--tsho-shadow-card);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--tsho-transition), box-shadow var(--tsho-transition);
+}
+
+.tsho-attractions__card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--tsho-shadow-soft);
+}
+
+.tsho-attractions__card:hover .tsho-media img {
+  transform: scale(1.06);
+}
+
+.tsho-attractions__media {
+  border-radius: 0;
+}
+
+.tsho-attractions__body {
+  padding: var(--tsho-space-sm) var(--tsho-space-md) var(--tsho-space-md);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.tsho-attractions__badges {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.8rem;
+}
+
+.tsho-attractions__badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+}
+
+.tsho-attractions__badge--route {
+  background: rgba(var(--tsho-teal-rgb), 0.14);
+  color: var(--tsho-teal);
+}
+
+.tsho-attractions__badge--separate {
+  background: rgba(var(--tsho-blue-rgb), 0.1);
+  color: var(--tsho-blue);
+}
+
+.tsho-attractions__badge--technical {
+  background: rgba(var(--tsho-gold-rgb), 0.18);
+  color: #8a611f;
+}
+
+.tsho-attractions__name {
+  font-family: var(--tsho-font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--tsho-blue);
+  margin: 0 0 0.25rem;
+}
+
+.tsho-attractions__location {
+  font-size: 0.8rem;
+  color: var(--tsho-teal);
+  font-weight: 600;
+  margin: 0 0 0.65rem;
+}
+
+.tsho-attractions__description {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--tsho-text-soft);
+  margin: 0 0 0.9rem;
+  flex: 1;
+}
+
+.tsho-attractions__activities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tsho-attractions__activities li {
+  font-size: 0.75rem;
+  color: var(--tsho-text);
+  background: var(--tsho-surface-alt);
+  border-radius: 999px;
+  padding: 0.3rem 0.65rem;
+}

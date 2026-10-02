@@ -1,0 +1,124 @@
+.pp-spiritual {
+  position: relative;
+  padding-block: var(--pp-space-8);
+  overflow: hidden;
+  color: var(--pp-white);
+}
+
+.pp-spiritual__media {
+  position: absolute;
+  inset: 0;
+}
+
+.pp-spiritual__image {
+  object-fit: cover;
+}
+
+.pp-spiritual__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(var(--pp-blue-rgb), 0.88) 0%,
+    rgba(var(--pp-charcoal-rgb), 0.85) 100%
+  );
+}
+
+.pp-spiritual__content {
+  position: relative;
+  z-index: 1;
+}
+
+.pp-spiritual__intro {
+  max-width: 720px;
+  margin-inline: auto;
+  text-align: center;
+  margin-bottom: var(--pp-space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--pp-space-3);
+}
+
+.pp-spiritual__eyebrow {
+  color: var(--pp-gold);
+  justify-content: center;
+}
+
+.pp-spiritual__eyebrow::before {
+  background: var(--pp-white);
+}
+
+.pp-spiritual__heading {
+  color: var(--pp-white);
+  font-size: clamp(1.9rem, 3.4vw, 2.75rem);
+}
+
+.pp-spiritual__lede {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.05rem;
+}
+
+.pp-spiritual__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--pp-space-3);
+}
+
+.pp-spiritual__card {
+  background: rgba(248, 246, 240, 0.08);
+  border: 1px solid rgba(248, 246, 240, 0.16);
+  border-radius: var(--pp-radius-md);
+  padding: var(--pp-space-4);
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: background var(--pp-duration-base) var(--pp-ease),
+    transform var(--pp-duration-base) var(--pp-ease);
+}
+
+.pp-spiritual__card:hover {
+  background: rgba(248, 246, 240, 0.14);
+  transform: translateY(-4px);
+}
+
+.pp-spiritual__card-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--pp-gold);
+}
+
+.pp-spiritual__card-title {
+  color: var(--pp-white);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.pp-spiritual__card-body {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.9rem;
+}
+
+.pp-spiritual__disclaimer {
+  max-width: 720px;
+  margin: var(--pp-space-6) auto 0;
+  text-align: center;
+}
+
+.pp-spiritual__disclaimer p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.82rem;
+  font-style: italic;
+}
+
+@media (max-width: 900px) {
+  .pp-spiritual__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .pp-spiritual__grid {
+    grid-template-columns: 1fr;
+  }
+}

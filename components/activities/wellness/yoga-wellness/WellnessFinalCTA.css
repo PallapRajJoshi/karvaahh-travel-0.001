@@ -1,0 +1,49 @@
+.ykw .ykw-final {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(96px, 14vw, 170px);
+  text-align: center;
+  color: var(--ykw-white);
+}
+.ykw .ykw-final__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+.ykw .ykw-final__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 50% at 50% 100%, rgba(216, 166, 74, 0.3), transparent 70%),
+    linear-gradient(180deg, rgba(18, 59, 93, 0.82), rgba(42, 127, 130, 0.7));
+}
+.ykw .ykw-final__inner {
+  max-width: 860px;
+}
+.ykw .ykw-final__eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--ykw-gold);
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+.ykw .ykw-final h2 {
+  color: var(--ykw-white);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 500;
+}
+.ykw .ykw-final__text {
+  margin: 22px auto 0;
+  max-width: 620px;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.92);
+}
+.ykw .ykw-final__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  margin-top: 34px;
+}

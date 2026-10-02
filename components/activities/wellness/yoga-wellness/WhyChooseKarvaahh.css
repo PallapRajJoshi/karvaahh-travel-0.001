@@ -1,0 +1,41 @@
+.ykw .ykw-why__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 3vw, 40px) clamp(20px, 3vw, 44px);
+}
+.ykw .ykw-why__card {
+  padding-top: 22px;
+  border-top: 2px solid var(--ykw-gold);
+}
+.ykw .ykw-why__icon {
+  display: inline-flex;
+  width: 52px;
+  height: 52px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: rgba(42, 127, 130, 0.1);
+  color: var(--ykw-teal-deep);
+  margin-bottom: 14px;
+}
+.ykw .ykw-why__card h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.ykw .ykw-why__card p {
+  font-size: 0.97rem;
+}
+@media (max-width: 960px) {
+  .ykw .ykw-why__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .ykw .ykw-why__grid {
+    grid-template-columns: 1fr;
+  }
+}

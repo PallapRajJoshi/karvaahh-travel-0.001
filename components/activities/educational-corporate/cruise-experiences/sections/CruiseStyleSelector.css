@@ -1,0 +1,87 @@
+.cr-style {
+  background: var(--cr-white);
+}
+.cr-style__fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+.cr-style__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.9rem;
+}
+.cr-style__opt {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+.cr-style__opt input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  cursor: pointer;
+}
+.cr-style__card {
+  display: grid;
+  place-items: center;
+  min-height: 84px;
+  padding: 1rem;
+  text-align: center;
+  font: 600 1rem/1.3 var(--cr-serif);
+  color: var(--cr-blue);
+  background: var(--cr-ivory);
+  border: 1.5px solid var(--cr-line);
+  border-radius: var(--cr-radius-sm);
+  transition: border-color 0.25s ease, background-color 0.25s ease,
+    transform 0.25s ease, color 0.25s ease;
+}
+.cr-style__opt:hover .cr-style__card {
+  border-color: var(--cr-teal);
+  transform: translateY(-2px);
+}
+.cr-style__opt input:checked + .cr-style__card {
+  background: var(--cr-blue);
+  border-color: var(--cr-gold);
+  color: var(--cr-white);
+}
+.cr-style__opt input:focus-visible + .cr-style__card {
+  outline: 3px solid var(--cr-gold);
+  outline-offset: 3px;
+}
+.cr-style__panel {
+  margin-top: 1.75rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border-radius: var(--cr-radius);
+  background: linear-gradient(160deg, var(--cr-blue-deep), var(--cr-blue));
+  color: var(--cr-white);
+  display: grid;
+  gap: 0.8rem;
+  justify-items: start;
+}
+.cr-style__panel h3 {
+  font-size: 1.6rem;
+  color: var(--cr-gold-soft);
+}
+.cr-style__panel p {
+  max-width: 62ch;
+  color: rgba(255, 255, 255, 0.88);
+}
+.cr-style__sugg strong {
+  color: var(--cr-white);
+}
+.cr-style__fine {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+@media (max-width: 1000px) {
+  .cr-style__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .cr-style__grid { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cr-style__card { transition: none; }
+  .cr-style__opt:hover .cr-style__card { transform: none; }
+}

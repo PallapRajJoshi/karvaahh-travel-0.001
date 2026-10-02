@@ -1,0 +1,80 @@
+.wildlife-section {
+  background-color: var(--dhorpatan-white);
+}
+
+.wildlife-section__species-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.6rem;
+  margin-bottom: 3rem;
+}
+
+.wildlife-species__media {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 0.9rem;
+}
+
+.wildlife-species__image {
+  object-fit: cover;
+}
+
+.wildlife-species__name {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  color: var(--dhorpatan-blue);
+  margin: 0 0 0.4rem;
+}
+
+.wildlife-species__description {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--dhorpatan-charcoal);
+  margin: 0;
+}
+
+.wildlife-section__habitats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.habitat-highlight {
+  background-color: var(--dhorpatan-ivory);
+  border-radius: 14px;
+  padding: 1.5rem;
+}
+
+.habitat-highlight__title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--dhorpatan-teal);
+  margin: 0 0 0.5rem;
+}
+
+.habitat-highlight__description {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--dhorpatan-charcoal);
+  margin: 0;
+}
+
+.wildlife-section__conservation {
+  text-align: center;
+  padding: 1.75rem;
+  background-color: var(--dhorpatan-blue);
+  border-radius: 14px;
+}
+
+.wildlife-section__conservation p {
+  margin: 0;
+  color: var(--dhorpatan-ivory);
+  font-size: 0.95rem;
+  font-style: italic;
+  line-height: 1.6;
+  max-width: 640px;
+  margin: 0 auto;
+}

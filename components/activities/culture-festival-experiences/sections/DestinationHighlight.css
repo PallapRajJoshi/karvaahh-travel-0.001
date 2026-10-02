@@ -1,0 +1,99 @@
+.culture-highlight {
+  padding-block: var(--cx-section);
+  background: var(--cx-ivory);
+}
+.culture-highlight__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: center;
+}
+
+.culture-highlight__media {
+  position: relative;
+  isolation: isolate;
+}
+.culture-highlight__frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--cx-radius);
+  overflow: hidden;
+  box-shadow: var(--cx-shadow-lift);
+}
+.culture-highlight__corner {
+  position: absolute;
+  right: -1rem;
+  bottom: -1rem;
+  z-index: -1;
+  width: 55%;
+  height: 55%;
+  border-right: 2px solid var(--cx-gold);
+  border-bottom: 2px solid var(--cx-gold);
+  border-radius: 0 0 var(--cx-radius) 0;
+}
+
+.culture-highlight__title {
+  font-family: var(--cx-serif);
+  font-weight: 500;
+  font-size: clamp(1.75rem, 3.4vw, 2.75rem);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  color: var(--cx-blue);
+  text-wrap: balance;
+}
+.culture-highlight__divider {
+  margin-block: 1.4rem 1.75rem;
+}
+.culture-highlight__text {
+  font-size: clamp(1.02rem, 1.25vw, 1.14rem);
+  line-height: 1.85;
+  color: var(--cx-charcoal);
+  max-width: 62ch;
+}
+.culture-highlight__text::first-letter {
+  font-family: var(--cx-serif);
+  font-size: 3.4em;
+  line-height: 0.85;
+  float: left;
+  margin: 0.06em 0.12em 0 0;
+  color: var(--cx-gold-deep);
+}
+
+.culture-highlight__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 2rem;
+}
+.culture-highlight__chips a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0.4rem 1rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--cx-blue);
+  border: 1px solid var(--cx-line);
+  border-radius: 999px;
+  background: var(--cx-white);
+  transition: border-color 0.25s var(--cx-ease), background-color 0.25s var(--cx-ease), color 0.25s var(--cx-ease);
+}
+.culture-highlight__chips a:hover {
+  border-color: var(--cx-gold);
+  background: var(--cx-blue);
+  color: var(--cx-white);
+}
+
+@media (max-width: 900px) {
+  .culture-highlight__grid {
+    grid-template-columns: 1fr;
+  }
+  .culture-highlight__frame {
+    aspect-ratio: 4 / 3;
+  }
+  .culture-highlight__corner {
+    right: -0.5rem;
+    bottom: -0.5rem;
+  }
+}

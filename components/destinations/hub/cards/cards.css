@@ -1,0 +1,761 @@
+/* ==========================================================================
+   Destination card system + placeholder artwork
+   ========================================================================== */
+
+/* ---------- Artwork (photo or themed placeholder) ---------- */
+.dh-art {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--art-sky, #163046);
+  isolation: isolate;
+}
+
+.dh-art__img {
+  object-fit: cover;
+  transition: transform 0.7s var(--dh-ease);
+}
+
+.dh-art__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s var(--dh-ease);
+}
+
+.dh-art__sun {
+  fill: var(--art-sun, #e0bd74);
+  opacity: 0.92;
+}
+.dh-art__ring {
+  fill: none;
+  stroke: var(--art-sun, #e0bd74);
+  stroke-width: 1;
+  opacity: 0.35;
+}
+.dh-art__s1 {
+  fill: var(--art-1);
+}
+.dh-art__s2 {
+  fill: var(--art-2);
+}
+.dh-art__s3 {
+  fill: var(--art-3);
+}
+.dh-art__sea {
+  fill: var(--art-sea, var(--art-1));
+}
+.dh-art__snow {
+  fill: rgba(255, 255, 255, 0.85);
+}
+
+.dh-art--himalaya {
+  --art-sky: linear-gradient(180deg, #27506d 0%, #12293b 62%, #0d1d16 100%);
+  --art-1: #3b6680;
+  --art-2: #234861;
+  --art-3: #0d1d16;
+}
+.dh-art--spiritual {
+  --art-sky: linear-gradient(180deg, #3a2a1c 0%, #a8733a 58%, #2a1f14 100%);
+  --art-sun: #f0cf86;
+  --art-1: #2a1d12;
+  --art-3: #171009;
+}
+.dh-art--wildlife {
+  --art-sky: linear-gradient(180deg, #355f4b 0%, #173a2a 70%);
+  --art-sun: #e8d28e;
+  --art-1: #2a5a43;
+  --art-2: #1b4331;
+  --art-3: #0d2218;
+}
+.dh-art--beach {
+  --art-sky: linear-gradient(180deg, #f3cf8f 0%, #e58f5c 50%, #1d6b82 50.5%, #0b3a4e 100%);
+  --art-sun: #fff0c2;
+  --art-sea: #1d6b82;
+  --art-1: #2a8299;
+  --art-2: #1d6b82;
+  --art-3: #0e4a60;
+}
+.dh-art--city {
+  --art-sky: linear-gradient(180deg, #1b2a44 0%, #433a5d 62%, #0b1b2b 100%);
+  --art-sun: #f0cf86;
+  --art-1: #0f1a2a;
+  --art-3: #081018;
+}
+.dh-art--desert {
+  --art-sky: linear-gradient(180deg, #ecc78e 0%, #cf8f50 60%, #7b4a27 100%);
+  --art-sun: #fff0c2;
+  --art-1: #b77a40;
+  --art-2: #96602f;
+  --art-3: #6b4021;
+}
+.dh-art--lake {
+  --art-sky: linear-gradient(180deg, #2a6073 0%, #12343f 100%);
+  --art-sea: #174654;
+  --art-1: #2d6b7d;
+  --art-2: #1f5666;
+  --art-3: #0e3340;
+}
+
+/* ---------- Tags ---------- */
+.dcard__tags,
+.dlarge__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dh-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  background: rgba(13, 29, 22, 0.07);
+  color: var(--dh-ink-soft);
+}
+
+/* ---------- DestinationCard (grid) ---------- */
+.dcard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: var(--dh-radius);
+  overflow: hidden;
+  box-shadow: var(--dh-shadow-sm);
+  transition: transform 0.35s var(--dh-ease), box-shadow 0.35s var(--dh-ease);
+  height: 100%;
+}
+
+.dcard:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--dh-shadow-md);
+}
+
+.dcard:hover .dh-art__img,
+.dcard:hover .dh-art__svg {
+  transform: scale(1.06);
+}
+
+.dcard__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.dcard__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 20px 20px;
+  flex: 1;
+}
+
+.dcard__name {
+  font-family: var(--dh-head);
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.dcard__place {
+  font-size: 0.85rem;
+  color: var(--dh-ink-soft);
+}
+
+.dcard__copy {
+  font-size: 0.92rem;
+  color: var(--dh-ink-soft);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.dcard__cta {
+  margin-top: auto;
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--dh-gold-deep);
+  text-decoration: none;
+}
+
+.dcard__cta span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dcard__cta svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s var(--dh-ease);
+}
+
+.dcard:hover .dcard__cta svg {
+  transform: translateX(5px);
+}
+
+/* whole card is one click target, one tab stop */
+.dcard__cta::after,
+.dlarge__cta::after,
+.dfeat__cta::after,
+.dprov__cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+}
+
+.dcard:focus-within,
+.dlarge:focus-within,
+.dfeat:focus-within,
+.dprov:focus-within {
+  outline: 3px solid var(--dh-gold);
+  outline-offset: 3px;
+}
+
+.dcard__cta:focus-visible,
+.dlarge__cta:focus-visible,
+.dfeat__cta:focus-visible,
+.dprov__cta:focus-visible {
+  outline: none;
+}
+
+/* ---------- DestinationLargeCard ---------- */
+.dlarge {
+  position: relative;
+  display: block;
+  min-height: 420px;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--dh-radius);
+  overflow: hidden;
+  color: #fff;
+  box-shadow: var(--dh-shadow-sm);
+  transition: transform 0.4s var(--dh-ease), box-shadow 0.4s var(--dh-ease);
+  isolation: isolate;
+}
+
+.dlarge:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--dh-shadow-md);
+}
+
+.dlarge:hover .dh-art__img,
+.dlarge:hover .dh-art__svg {
+  transform: scale(1.07);
+}
+
+.dlarge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(8, 16, 12, 0) 35%, rgba(8, 16, 12, 0.88) 100%);
+  transition: opacity 0.4s;
+}
+
+.dlarge__body {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px;
+  transition: transform 0.4s var(--dh-ease);
+}
+
+.dlarge:hover .dlarge__body {
+  transform: translateY(-4px);
+}
+
+.dlarge .dh-tag {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  backdrop-filter: blur(6px);
+}
+
+.dlarge__name {
+  font-family: var(--dh-head);
+  font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+  line-height: 1.15;
+  font-weight: 600;
+}
+
+.dlarge__place {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.dlarge__copy {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.88);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.dlarge__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--dh-gold-bright);
+  text-decoration: none;
+}
+
+.dlarge__cta svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s var(--dh-ease);
+}
+
+.dlarge:hover .dlarge__cta svg {
+  transform: translateX(5px);
+}
+
+/* cinematic variant (Offbeat section) */
+.dlarge--cinema {
+  aspect-ratio: 2 / 3;
+  min-height: 480px;
+  border-radius: 6px 6px 120px 6px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+}
+
+.dlarge--cinema::before {
+  background: linear-gradient(180deg, rgba(5, 10, 8, 0.1) 0%, rgba(5, 10, 8, 0.25) 40%, rgba(5, 10, 8, 0.92) 100%);
+}
+
+.dlarge__index {
+  position: absolute;
+  top: 18px;
+  left: 22px;
+  z-index: 1;
+  font-family: var(--dh-head);
+  font-size: 2.6rem;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ---------- DestinationFeaturedCard ---------- */
+.dfeat {
+  position: relative;
+  display: block;
+  min-height: 320px;
+  height: 100%;
+  border-radius: var(--dh-radius);
+  overflow: hidden;
+  color: #fff;
+  box-shadow: var(--dh-shadow-sm);
+  transition: transform 0.4s var(--dh-ease), box-shadow 0.4s var(--dh-ease);
+  isolation: isolate;
+}
+
+.dfeat:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--dh-shadow-md);
+}
+
+.dfeat:hover .dh-art__img,
+.dfeat:hover .dh-art__svg {
+  transform: scale(1.07);
+}
+
+.dfeat::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(8, 16, 12, 0.35) 0%, rgba(8, 16, 12, 0) 30%, rgba(8, 16, 12, 0.9) 100%);
+  transition: opacity 0.4s;
+}
+
+.dfeat__top {
+  position: absolute;
+  z-index: 1;
+  inset: 18px 18px auto 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.dfeat__chip {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(13, 29, 22, 0.55);
+  backdrop-filter: blur(8px);
+  color: var(--dh-on-dark);
+}
+
+.dfeat__arrow {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--dh-gold);
+  color: #1a1407;
+  transition: transform 0.35s var(--dh-ease), background-color 0.2s;
+}
+
+.dfeat__arrow svg {
+  width: 18px;
+  height: 18px;
+}
+
+.dfeat:hover .dfeat__arrow {
+  transform: translate(3px, -3px) rotate(0deg);
+  background: var(--dh-gold-bright);
+}
+
+.dfeat__body {
+  position: absolute;
+  z-index: 1;
+  inset: auto 0 0 0;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform 0.4s var(--dh-ease);
+}
+
+.dfeat:hover .dfeat__body {
+  transform: translateY(-4px);
+}
+
+.dfeat__country {
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dh-gold-bright);
+}
+
+.dfeat__name {
+  font-family: var(--dh-head);
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.dfeat--wide .dfeat__name {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.dfeat__copy {
+  font-size: 0.93rem;
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 34rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.dfeat__cta {
+  margin-top: 6px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  align-self: flex-start;
+  padding-bottom: 2px;
+}
+
+/* ---------- DestinationProvinceCard ---------- */
+.dprov {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--dh-radius);
+  overflow: hidden;
+  background: #fff;
+  box-shadow: var(--dh-shadow-sm);
+  transition: transform 0.35s var(--dh-ease), box-shadow 0.35s var(--dh-ease);
+  height: 100%;
+}
+
+.dprov:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--dh-shadow-md);
+}
+
+.dprov:hover .dh-art__img,
+.dprov:hover .dh-art__svg {
+  transform: scale(1.06);
+}
+
+.dprov__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.dprov__body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 22px 22px;
+  flex: 1;
+}
+
+.dprov__name {
+  font-family: var(--dh-head);
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.dprov__blurb {
+  font-size: 0.93rem;
+  color: var(--dh-ink-soft);
+}
+
+.dprov__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dprov__cta {
+  margin-top: auto;
+  padding-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--dh-gold-deep);
+  text-decoration: none;
+}
+
+.dprov__cta svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s var(--dh-ease);
+}
+
+.dprov:hover .dprov__cta svg {
+  transform: translateX(5px);
+}
+
+.dprov__soon {
+  margin-top: auto;
+  padding-top: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--dh-ink-soft);
+}
+
+/* ---------- DestinationCountryCard (selector) ---------- */
+.dcountry {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 4px;
+  min-height: 176px;
+  padding: 20px 22px;
+  border: 0;
+  border-radius: var(--dh-radius);
+  overflow: hidden;
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  isolation: isolate;
+  box-shadow: var(--dh-shadow-sm);
+  transition: transform 0.3s var(--dh-ease), box-shadow 0.3s var(--dh-ease);
+}
+
+.dcountry::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(8, 16, 12, 0.05) 10%, rgba(8, 16, 12, 0.86) 100%);
+}
+
+.dcountry:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--dh-shadow-md);
+}
+
+.dcountry:hover .dh-art__img,
+.dcountry:hover .dh-art__svg {
+  transform: scale(1.06);
+}
+
+.dcountry[aria-pressed="true"] {
+  box-shadow: 0 0 0 3px var(--dh-gold), var(--dh-shadow-md);
+}
+
+.dcountry__body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dcountry__label {
+  font-family: var(--dh-head);
+  font-size: 1.7rem;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.dcountry__tag {
+  font-size: 0.86rem;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.dcountry__count {
+  position: absolute;
+  z-index: 1;
+  top: 16px;
+  right: 16px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: rgba(13, 29, 22, 0.6);
+  backdrop-filter: blur(6px);
+}
+
+.dcountry__flag {
+  position: absolute;
+  z-index: 1;
+  top: 12px;
+  left: 18px;
+  font-size: 1.6rem;
+}
+
+/* ---------- DestinationExperienceCard (filter tile) ---------- */
+.dexp {
+  flex: none;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 150px;
+  padding: 14px 18px;
+  border: 1px solid var(--dh-line);
+  border-radius: var(--dh-radius-sm);
+  background: #fff;
+  color: var(--dh-ink);
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  transition: transform 0.2s var(--dh-ease), border-color 0.2s, background-color 0.2s, color 0.2s;
+}
+
+.dexp:hover {
+  transform: translateY(-2px);
+  border-color: var(--dh-gold);
+}
+
+.dexp[aria-pressed="true"] {
+  background: var(--dh-forest);
+  border-color: var(--dh-forest);
+  color: var(--dh-on-dark);
+}
+
+.dexp__label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.dexp__count {
+  font-size: 0.78rem;
+  color: var(--dh-ink-soft);
+}
+
+.dexp[aria-pressed="true"] .dexp__count {
+  color: var(--dh-on-dark-soft);
+}
+
+/* ---------- DestinationRegionCard ---------- */
+.dregion {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 200px;
+  padding: 18px 20px;
+  border: 0;
+  border-radius: var(--dh-radius);
+  overflow: hidden;
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  isolation: isolate;
+  transition: transform 0.3s var(--dh-ease);
+}
+
+.dregion::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(8, 16, 12, 0) 20%, rgba(8, 16, 12, 0.85) 100%);
+}
+
+.dregion:hover {
+  transform: translateY(-4px);
+}
+
+.dregion:hover .dh-art__svg {
+  transform: scale(1.06);
+}
+
+.dregion__body {
+  position: relative;
+  z-index: 1;
+}
+
+.dregion__label {
+  font-family: var(--dh-head);
+  font-size: 1.3rem;
+  font-weight: 600;
+  display: block;
+}
+
+.dregion__blurb {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.dregion__count {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--dh-gold-bright);
+}

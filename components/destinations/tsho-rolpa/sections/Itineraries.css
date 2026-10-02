@@ -1,0 +1,85 @@
+.tsho-itineraries__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--tsho-space-md);
+  align-items: stretch;
+}
+
+.tsho-itineraries__card {
+  background: var(--tsho-white);
+  border: 1px solid var(--tsho-border);
+  border-radius: var(--tsho-radius-md);
+  padding: var(--tsho-space-md);
+  box-shadow: var(--tsho-shadow-card);
+  display: flex;
+  flex-direction: column;
+}
+
+.tsho-itineraries__card-header {
+  margin-bottom: var(--tsho-space-sm);
+  padding-bottom: var(--tsho-space-sm);
+  border-bottom: 1px solid var(--tsho-border);
+}
+
+.tsho-itineraries__duration {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tsho-teal);
+  background: rgba(var(--tsho-teal-rgb), 0.12);
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  margin-bottom: 0.6rem;
+}
+
+.tsho-itineraries__title {
+  font-family: var(--tsho-font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--tsho-blue);
+  margin: 0;
+}
+
+.tsho-itineraries__days {
+  list-style: none;
+  margin: 0 0 var(--tsho-space-sm);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  flex: 1;
+}
+
+.tsho-itineraries__days li {
+  display: grid;
+  grid-template-columns: 84px 1fr;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.tsho-itineraries__day-label {
+  font-weight: 700;
+  color: var(--tsho-blue);
+}
+
+.tsho-itineraries__day-summary {
+  color: var(--tsho-text-soft);
+}
+
+.tsho-itineraries__card-note {
+  font-size: 0.8rem;
+  color: var(--tsho-text-soft);
+  font-style: italic;
+  margin: 0;
+  padding-top: var(--tsho-space-sm);
+  border-top: 1px dashed var(--tsho-border);
+}
+
+@media (max-width: 420px) {
+  .tsho-itineraries__days li {
+    grid-template-columns: 1fr;
+  }
+}

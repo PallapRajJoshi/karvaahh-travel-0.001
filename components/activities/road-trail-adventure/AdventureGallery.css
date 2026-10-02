@@ -1,0 +1,193 @@
+/* Masonry via CSS columns; item shape sets the tile's aspect ratio. */
+.rt-gallery {
+  columns: 1;
+  column-gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 640px) {
+  .rt-gallery {
+    columns: 2;
+  }
+}
+
+@media (min-width: 1100px) {
+  .rt-gallery {
+    columns: 3;
+    column-gap: 20px;
+  }
+}
+
+.rt-gallery__item {
+  break-inside: avoid;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 1100px) {
+  .rt-gallery__item {
+    margin-bottom: 20px;
+  }
+}
+
+.rt-gallery__button {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  border-radius: var(--rt-radius-sm);
+  background: var(--rt-blue);
+  color: var(--rt-white);
+  font: inherit;
+  text-align: left;
+  cursor: zoom-in;
+}
+
+.rt-gallery__button--tall {
+  aspect-ratio: 3 / 4;
+}
+
+.rt-gallery__button--wide {
+  aspect-ratio: 4 / 3;
+}
+
+.rt-gallery__button--square {
+  aspect-ratio: 1 / 1;
+}
+
+.rt-gallery__button .rt-photo > * {
+  transition: transform 0.9s var(--rt-ease);
+}
+
+.rt-gallery__button::after {
+  content: "";
+  position: absolute;
+  inset: 45% 0 0 0;
+  background: linear-gradient(180deg, transparent, rgba(11, 39, 64, 0.82));
+  opacity: 0.85;
+  transition: opacity 0.4s var(--rt-ease);
+  pointer-events: none;
+}
+
+.rt-gallery__caption {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 14px;
+  z-index: 1;
+  font-family: var(--rt-font-display);
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.25;
+  transform: translateY(0);
+  transition: transform 0.4s var(--rt-ease);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .rt-gallery__button:hover .rt-photo > * {
+    transform: scale(1.06);
+  }
+  .rt-gallery__button:hover .rt-gallery__caption {
+    transform: translateY(-4px);
+  }
+}
+
+/* ---- Lightbox ---------------------------------------------------------- */
+
+.rt-lightbox {
+  width: min(96vw, 1200px);
+  max-width: none;
+  max-height: 94svh;
+  padding: 0;
+  border: 0;
+  border-radius: var(--rt-radius);
+  background: var(--rt-blue-deep);
+  color: var(--rt-white);
+  overflow: visible;
+}
+
+.rt-lightbox::backdrop {
+  background: rgba(8, 24, 38, 0.86);
+}
+
+.rt-lightbox__panel {
+  position: relative;
+  display: grid;
+}
+
+.rt-lightbox__stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  max-height: calc(94svh - 64px);
+  overflow: hidden;
+  border-radius: var(--rt-radius) var(--rt-radius) 0 0;
+  background: var(--rt-blue);
+}
+
+.rt-lightbox__caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0;
+  padding: 0.9rem 1.25rem;
+  font-family: var(--rt-font-display);
+  font-size: 1.05rem;
+}
+
+.rt-lightbox__count {
+  font-family: var(--rt-font-body);
+  font-size: 0.82rem;
+  color: rgba(248, 246, 240, 0.7);
+}
+
+.rt-lightbox__btn {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(11, 39, 64, 0.82);
+  color: var(--rt-white);
+  cursor: pointer;
+  transition: background-color 0.25s var(--rt-ease), color 0.25s var(--rt-ease);
+}
+
+.rt-lightbox__btn:hover {
+  background: var(--rt-gold);
+  color: var(--rt-charcoal);
+}
+
+.rt-lightbox__btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+.rt-lightbox__btn--close {
+  top: 12px;
+  right: 12px;
+}
+
+.rt-lightbox__btn--prev,
+.rt-lightbox__btn--next {
+  top: calc(50% - 55px);
+}
+
+.rt-lightbox__btn--prev {
+  left: 12px;
+}
+
+.rt-lightbox__btn--next {
+  right: 12px;
+}
+
+.rt-lightbox :where(button):focus-visible {
+  outline: 3px solid var(--rt-gold);
+  outline-offset: 3px;
+}

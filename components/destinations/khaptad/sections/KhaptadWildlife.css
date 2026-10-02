@@ -1,0 +1,71 @@
+.khaptad-wildlife {
+  padding-block: var(--khaptad-section-padding);
+  background: var(--khaptad-ivory);
+}
+
+.khaptad-wildlife__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.khaptad-wildlife__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--khaptad-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--khaptad-shadow-soft);
+}
+
+.khaptad-wildlife__media img {
+  object-fit: cover;
+}
+
+.khaptad-wildlife__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem 1rem;
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+}
+
+.khaptad-wildlife__list li {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: 0.92rem;
+  color: var(--khaptad-charcoal);
+}
+
+.khaptad-wildlife__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--khaptad-teal);
+}
+
+.khaptad-wildlife__conservation {
+  padding: 1.1rem 1.4rem;
+  border-radius: var(--khaptad-radius-md);
+  background: var(--khaptad-teal-soft);
+  color: var(--khaptad-blue);
+  font-size: 0.92rem;
+  font-style: italic;
+}
+
+@media (max-width: 900px) {
+  .khaptad-wildlife__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .khaptad-wildlife__list {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,35 @@
+.khaptad-why-visit {
+  padding-block: var(--khaptad-section-padding);
+  background: var(--khaptad-ivory);
+}
+
+.khaptad-why-visit__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.khaptad-why-visit__card {
+  background: var(--khaptad-white);
+  border: 1px solid var(--khaptad-border);
+  border-radius: var(--khaptad-radius-md);
+  padding: 1.75rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.khaptad-why-visit__card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--khaptad-shadow-soft);
+  border-color: var(--khaptad-teal);
+}
+
+.khaptad-why-visit__title {
+  font-size: 1.15rem;
+  color: var(--khaptad-blue);
+  margin-bottom: 0.6rem;
+}
+
+.khaptad-why-visit__description {
+  color: var(--khaptad-charcoal-soft);
+  font-size: 0.95rem;
+}

@@ -1,0 +1,76 @@
+.rt-styles {
+  display: grid;
+  gap: clamp(20px, 2.5vw, 30px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 720px) {
+  .rt-styles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .rt-styles {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+  .rt-styles__item {
+    grid-column: span 2;
+  }
+  .rt-styles__item:nth-child(n + 4) {
+    grid-column: span 3;
+  }
+}
+
+.rt-styles__item {
+  display: flex;
+}
+
+.rt-styles__card {
+  width: 100%;
+}
+
+.rt-styles__media {
+  aspect-ratio: 16 / 9;
+}
+
+.rt-styles__icon {
+  position: absolute;
+  left: 18px;
+  bottom: -22px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--rt-gold);
+  color: var(--rt-charcoal);
+  box-shadow: var(--rt-shadow-sm);
+}
+
+.rt-styles__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Media clips overflow, so lift the icon back inside its box. */
+.rt-styles__card .rt-styles__media {
+  overflow: visible;
+}
+
+.rt-styles__card .rt-styles__media .rt-photo {
+  border-radius: var(--rt-radius) var(--rt-radius) 0 0;
+}
+
+.rt-styles__card .rt-card__body {
+  padding-top: 2rem;
+}
+
+.rt-styles__cta {
+  align-self: flex-start;
+  margin-top: auto;
+}

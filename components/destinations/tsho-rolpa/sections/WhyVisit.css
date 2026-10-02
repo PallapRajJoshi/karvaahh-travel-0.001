@@ -1,0 +1,51 @@
+.tsho-why-visit__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--tsho-space-md);
+}
+
+.tsho-why-visit__card {
+  background: var(--tsho-white);
+  border: 1px solid var(--tsho-border);
+  border-radius: var(--tsho-radius-md);
+  padding: var(--tsho-space-md);
+  box-shadow: var(--tsho-shadow-card);
+  transition: transform var(--tsho-transition), box-shadow var(--tsho-transition);
+}
+
+.tsho-why-visit__card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--tsho-shadow-soft);
+}
+
+.tsho-why-visit__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(var(--tsho-teal-rgb), 0.12);
+  color: var(--tsho-teal);
+  margin-bottom: 1.1rem;
+}
+
+.tsho-why-visit__icon .tsho-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.tsho-why-visit__title {
+  font-family: var(--tsho-font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--tsho-blue);
+  margin: 0 0 0.5rem;
+}
+
+.tsho-why-visit__description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--tsho-text-soft);
+  margin: 0;
+}

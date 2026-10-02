@@ -1,0 +1,39 @@
+.phoksundo-heading {
+  max-width: 760px;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.phoksundo-heading--center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.phoksundo-heading--left {
+  text-align: left;
+}
+
+.phoksundo-heading__eyebrow {
+  display: inline-block;
+  font-family: var(--phoksundo-font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--phoksundo-teal);
+  margin-bottom: 0.75rem;
+}
+
+.phoksundo-heading__title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.phoksundo-heading__description {
+  margin-top: 0.9rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--phoksundo-charcoal);
+  opacity: 0.85;
+}

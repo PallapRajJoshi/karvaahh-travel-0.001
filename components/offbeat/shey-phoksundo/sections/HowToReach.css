@@ -1,0 +1,108 @@
+.phoksundo-access {
+  padding: var(--phoksundo-section-padding);
+  background: var(--phoksundo-white);
+}
+
+.phoksundo-access__routes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.phoksundo-access__route {
+  background: var(--phoksundo-ivory);
+  border-radius: var(--phoksundo-radius-md);
+  padding: 1.75rem;
+  border: 1px solid rgba(var(--phoksundo-blue-rgb), 0.08);
+}
+
+.phoksundo-access__route-title {
+  font-size: 1.15rem;
+  margin-bottom: 0.75rem;
+}
+
+.phoksundo-access__route-description {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  opacity: 0.88;
+  margin: 0 0 1rem;
+}
+
+.phoksundo-access__route-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.phoksundo-access__route-highlights li {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--phoksundo-blue);
+  background: var(--phoksundo-white);
+  border: 1px solid rgba(var(--phoksundo-blue-rgb), 0.15);
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+}
+
+.phoksundo-access__planner {
+  background: var(--phoksundo-blue);
+  border-radius: var(--phoksundo-radius-lg);
+  padding: 2rem;
+  color: var(--phoksundo-white);
+}
+
+.phoksundo-access__planner-title {
+  color: var(--phoksundo-white);
+  font-size: 1.1rem;
+  margin-bottom: 1.25rem;
+}
+
+.phoksundo-access__planner-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.phoksundo-access__planner-button {
+  padding: 0.6rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--phoksundo-white);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.phoksundo-access__planner-button--active {
+  background: var(--phoksundo-gold);
+  color: var(--phoksundo-blue);
+  border-color: var(--phoksundo-gold);
+}
+
+.phoksundo-access__planner-description {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 640px;
+  margin: 0;
+}
+
+.phoksundo-access__note {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+@media (max-width: 800px) {
+  .phoksundo-access__routes {
+    grid-template-columns: 1fr;
+  }
+}

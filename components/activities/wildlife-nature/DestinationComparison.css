@@ -1,0 +1,115 @@
+.wn-cmp__scroll {
+  border-radius: var(--wn-radius);
+  border: 1px solid var(--wn-line);
+  overflow-x: auto;
+  background: var(--wn-white);
+}
+.wn-cmp {
+  width: 100%;
+  min-width: 980px;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.wn-cmp thead th {
+  position: sticky;
+  top: 0;
+  text-align: left;
+  padding: 1rem 1.1rem;
+  background: var(--wn-blue);
+  color: var(--wn-ivory);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.wn-cmp tbody th,
+.wn-cmp tbody td {
+  text-align: left;
+  vertical-align: top;
+  padding: 1.1rem;
+  border-top: 1px solid var(--wn-line);
+}
+.wn-cmp tbody tr:nth-child(even) {
+  background: rgba(248, 246, 240, 0.7);
+}
+.wn-cmp tbody tr {
+  transition: background 0.2s;
+}
+.wn-cmp tbody tr:hover {
+  background: rgba(216, 166, 74, 0.12);
+}
+.wn-cmp__name {
+  display: block;
+  font-family: var(--wn-font-display);
+  font-size: 1.05rem;
+  color: var(--wn-blue);
+  font-weight: 600;
+}
+.wn-cmp__region {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--wn-muted);
+}
+.wn-cmp__foot {
+  margin-top: 1.25rem;
+  font-size: 0.85rem;
+  color: var(--wn-muted);
+}
+
+/* Mobile: each row becomes a labelled card */
+@media (max-width: 760px) {
+  .wn-cmp__scroll {
+    overflow: visible;
+    border: 0;
+    background: transparent;
+  }
+  .wn-cmp,
+  .wn-cmp tbody,
+  .wn-cmp tr,
+  .wn-cmp th,
+  .wn-cmp td {
+    display: block;
+    min-width: 0;
+    width: 100%;
+  }
+  .wn-cmp thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+  .wn-cmp tbody tr {
+    background: var(--wn-white) !important;
+    border: 1px solid var(--wn-line);
+    border-radius: var(--wn-radius);
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+  .wn-cmp tbody th {
+    background: var(--wn-blue);
+    border: 0;
+  }
+  .wn-cmp tbody th .wn-cmp__name {
+    color: var(--wn-ivory);
+  }
+  .wn-cmp tbody th .wn-cmp__region {
+    color: rgba(248, 246, 240, 0.75);
+  }
+  .wn-cmp tbody td {
+    padding: 0.8rem 1.1rem;
+    border-top: 1px solid var(--wn-line);
+  }
+  .wn-cmp tbody td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--wn-teal-ink);
+    margin-bottom: 0.2rem;
+  }
+}
