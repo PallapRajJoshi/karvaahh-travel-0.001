@@ -28,3 +28,237 @@ body {
 
 
 
+
+
+/* navbarmegamenu */
+
+/* =========================================
+   KARVAAHH PREMIUM MEGA MENU
+   ========================================= */
+
+/* -----------------------------------------
+   Column entrance
+   ----------------------------------------- */
+
+.mega-column {
+  animation: megaColumnIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes megaColumnIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* -----------------------------------------
+   Header
+   ----------------------------------------- */
+
+.mega-column-header {
+  transition: transform 0.3s ease;
+}
+
+.mega-column:hover .mega-column-header {
+  transform: translateX(2px);
+}
+
+
+/* -----------------------------------------
+   Icon
+   ----------------------------------------- */
+
+.mega-column-icon {
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease;
+}
+
+.mega-column:hover .mega-column-icon {
+  transform: translateY(-2px) scale(1.06);
+  box-shadow:
+    0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+.mega-column-icon svg {
+  transition:
+    transform 0.35s ease,
+    opacity 0.3s ease;
+}
+
+.mega-column:hover .mega-column-icon svg {
+  transform: scale(1.12) rotate(-4deg);
+}
+
+
+/* -----------------------------------------
+   Header underline
+   ----------------------------------------- */
+
+.mega-title-line {
+  transform-origin: left center;
+  transition:
+    width 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.3s ease;
+}
+
+.mega-column:hover .mega-title-line {
+  width: 38px;
+}
+
+
+/* -----------------------------------------
+   Menu item entrance
+   ----------------------------------------- */
+
+.mega-menu-item {
+  opacity: 0;
+  animation:
+    megaItemIn
+    0.45s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+@keyframes megaItemIn {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* -----------------------------------------
+   Menu link
+   ----------------------------------------- */
+
+.mega-menu-link {
+  transition:
+    background-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease,
+    color 0.25s ease;
+}
+
+.mega-menu-link:hover {
+  color: #0A2540;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(248, 250, 252, 0.95),
+      rgba(255, 255, 255, 0.75)
+    );
+
+  box-shadow:
+    0 5px 18px rgba(15, 23, 42, 0.055);
+
+  transform: translateX(2px);
+}
+
+
+/* -----------------------------------------
+   Left accent line
+   ----------------------------------------- */
+
+.mega-link-line {
+  opacity: 0;
+  height: 0;
+  transition:
+    height 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.mega-menu-link:hover .mega-link-line {
+  height: 20px;
+  opacity: 1;
+}
+
+
+/* -----------------------------------------
+   Text
+   ----------------------------------------- */
+
+.mega-link-text {
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease;
+}
+
+.mega-menu-link:hover .mega-link-text {
+  transform: translateX(3px);
+}
+
+
+/* -----------------------------------------
+   Arrow
+   ----------------------------------------- */
+
+.mega-link-arrow {
+  opacity: 0;
+  transform: translateX(-6px) scale(0.8);
+
+  background: rgba(255, 255, 255, 0);
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.mega-menu-link:hover .mega-link-arrow {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+
+  background: rgba(255, 255, 255, 0.95);
+
+  box-shadow:
+    0 3px 10px rgba(15, 23, 42, 0.08);
+}
+
+.mega-link-arrow svg {
+  transition:
+    transform 0.25s ease;
+}
+
+.mega-menu-link:hover .mega-link-arrow svg {
+  transform: translateX(2px);
+}
+
+
+/* -----------------------------------------
+   Reduced motion accessibility
+   ----------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .mega-column,
+  .mega-menu-item {
+    animation: none;
+    opacity: 1;
+  }
+
+  .mega-column-header,
+  .mega-column-icon,
+  .mega-column-icon svg,
+  .mega-title-line,
+  .mega-menu-link,
+  .mega-link-line,
+  .mega-link-text,
+  .mega-link-arrow,
+  .mega-link-arrow svg {
+    transition: none;
+  }
+}
