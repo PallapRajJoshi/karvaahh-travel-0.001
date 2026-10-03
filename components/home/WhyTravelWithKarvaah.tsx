@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "motion/react";
 import {
   ArrowUpRight,
   Compass,
@@ -10,6 +10,9 @@ import {
   Hotel,
   Route,
 } from "lucide-react";
+
+/* Height of top bar + nav. Change this one number if the header changes. */
+const HEADER_OFFSET = 179;
 
 const benefits = [
   {
@@ -36,8 +39,7 @@ const benefits = [
   {
     number: "04",
     title: "Transparent Pricing",
-    description:
-      "Clear, honest pricing with no confusing surprises.",
+    description: "Clear, honest pricing with no confusing surprises.",
     icon: IndianRupee,
   },
   {
@@ -57,100 +59,66 @@ const benefits = [
 ];
 
 const trustPoints = [
-  "NEPAL & INDIA OPERATIONS",
-  "LOCAL TRAVEL EXPERTS",
-  "CURATED EXPERIENCES",
-  "PERSONALIZED JOURNEYS",
+  "Nepal & India Operations",
+  "Local Travel Experts",
+  "Curated Experiences",
+  "Personalized Journeys",
 ];
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
+const listVariants: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.07, delayChildren: 0.15 } },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 22 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease } },
+};
+
 export default function WhyTravelWithKarvaah() {
-  const shouldReduceMotion = useReducedMotion();
+  const reduce = useReducedMotion();
 
   return (
     <section
       id="why-travel-with-karvaah"
       aria-labelledby="why-travel-with-karvaah-heading"
-      className="
-        relative
-        overflow-hidden
-        bg-[#F7F5F0]
-        py-8
-        sm:py-10
-        lg:min-h-[calc(100svh-158px)]
-        lg:py-9
-        xl:py-10
-      "
+      style={{ ["--hdr" as string]: `${HEADER_OFFSET}px` }}
+      /* min-height only: fills the screen when there is room,
+         grows when content needs more, so nothing is ever clipped */
+      className="relative flex min-h-[calc(100svh-var(--hdr))] scroll-mt-[179px] flex-col overflow-hidden bg-[#F7F5F0] py-6 sm:py-8 lg:py-6"
     >
-      <div className="mx-auto flex h-full max-w-[1380px] flex-col px-5 sm:px-8 lg:px-10">
+      {/* soft background glow */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-32 top-1/3 h-72 w-72 rounded-full bg-[#D39A17]/10 blur-3xl"
+      />
 
-        {/* =========================================================
-            COMPACT EDITORIAL HEADER
-        ========================================================= */}
-
+      <div className="relative mx-auto flex w-full max-w-[1380px] flex-1 flex-col px-4 sm:px-8 lg:px-10">
+        {/* ============ HEADER ============ */}
         <motion.header
-          initial={
-            shouldReduceMotion
-              ? false
-              : { opacity: 0, y: 18 }
-          }
-          whileInView={
-            shouldReduceMotion
-              ? undefined
-              : { opacity: 1, y: 0 }
-          }
+          initial={reduce ? false : { opacity: 0, y: 14 }}
+          whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
-          transition={{
-            duration: 0.6,
-            ease,
-          }}
-          className="mb-6 flex items-center justify-between lg:mb-7"
+          transition={{ duration: 0.55, ease }}
+          className="mb-4 flex shrink-0 items-center justify-between lg:mb-5"
         >
           <div className="flex items-center gap-3">
-
             <motion.span
-              initial={
-                shouldReduceMotion
-                  ? false
-                  : { width: 0 }
-              }
-              whileInView={
-                shouldReduceMotion
-                  ? undefined
-                  : { width: 42 }
-              }
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.7,
-                ease,
-              }}
               aria-hidden="true"
+              initial={reduce ? false : { width: 0 }}
+              whileInView={reduce ? undefined : { width: 40 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease }}
               className="h-px bg-[#C99016]"
             />
-
-            <span className="
-              text-[10px]
-              font-semibold
-              uppercase
-              tracking-[0.3em]
-              text-[#60748A]
-            ">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.26em] text-[#60748A] sm:tracking-[0.3em]">
               Why Travel With Karvaah?
             </span>
-
             <span
               aria-hidden="true"
-              className="
-                flex
-                h-7
-                w-7
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-[#D9C28D]
-              "
+              className="flex h-7 w-7 items-center justify-center rounded-full border border-[#D9C28D]"
             >
               <Compass
                 size={13}
@@ -158,488 +126,149 @@ export default function WhyTravelWithKarvaah() {
                 className="text-[#C99016]"
               />
             </span>
-
           </div>
 
-          <span className="
-            hidden
-            text-[9px]
-            font-medium
-            uppercase
-            tracking-[0.2em]
-            text-[#A1A8AE]
-            sm:block
-          ">
+          <span className="hidden text-[9px] font-medium uppercase tracking-[0.2em] text-[#A1A8AE] sm:block">
             Nepal · India
           </span>
         </motion.header>
 
-
-        {/* =========================================================
-            MAIN CONTENT
-        ========================================================= */}
-
-        <div
-          className="
-            grid
-            flex-1
-            overflow-hidden
-            lg:grid-cols-[0.86fr_1.14fr]
-          "
-        >
-
-          {/* =======================================================
-              LEFT — EDITORIAL NAVY PANEL
-          ======================================================= */}
-
+        {/* ============ MAIN ============ */}
+        <div className="grid flex-1 grid-cols-1 gap-3 lg:grid-cols-[0.9fr_1.1fr] lg:gap-0">
+          {/* ---------- LEFT: NAVY PANEL ---------- */}
           <motion.article
-            initial={
-              shouldReduceMotion
-                ? false
-                : {
-                    opacity: 0,
-                    x: -35,
-                  }
-            }
-            whileInView={
-              shouldReduceMotion
-                ? undefined
-                : {
-                    opacity: 1,
-                    x: 0,
-                  }
-            }
-            viewport={{
-              once: true,
-              amount: 0.2,
-            }}
-            transition={{
-              duration: 0.75,
-              ease,
-            }}
-            className="
-              relative
-              flex
-              min-h-[510px]
-              flex-col
-              justify-between
-              overflow-hidden
-              bg-[#0B2942]
-              px-7
-              py-8
-              sm:px-9
-              sm:py-9
-              lg:min-h-0
-              lg:px-10
-              lg:py-10
-              xl:px-12
-            "
+            initial={reduce ? false : { opacity: 0, x: -30 }}
+            whileInView={reduce ? undefined : { opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.75, ease }}
+            className="relative flex flex-col justify-between gap-8 overflow-hidden bg-[#0B2942] px-6 pb-24 pt-8 sm:px-9 sm:pt-9 lg:px-10 lg:pt-9 xl:px-12 xl:pt-10"
           >
-
-            {/* Animated circular editorial detail */}
+            {/* rotating rings */}
+            <motion.div
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-28 -top-28 h-[280px] w-[280px] rounded-full border border-[#D39A17]/20"
+              animate={reduce ? undefined : { rotate: 360 }}
+              transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+            >
+              {/* orbiting dot */}
+              <span className="absolute left-1/2 top-0 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D39A17]" />
+            </motion.div>
 
             <motion.div
               aria-hidden="true"
-              className="
-                pointer-events-none
-                absolute
-                -right-28
-                -top-28
-                h-[280px]
-                w-[280px]
-                rounded-full
-                border
-                border-[#D39A17]/10
-              "
+              className="pointer-events-none absolute -right-12 -top-12 h-[160px] w-[160px] rounded-full border border-white/10"
               animate={
-                shouldReduceMotion
+                reduce
                   ? undefined
-                  : {
-                      rotate: [0, 360],
-                    }
+                  : { scale: [1, 1.1, 1], opacity: [0.35, 0.8, 0.35] }
               }
-              transition={{
-                duration: 35,
-                repeat: Infinity,
-                ease: "linear",
-              }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             />
 
-            <motion.div
-              aria-hidden="true"
-              className="
-                pointer-events-none
-                absolute
-                -right-12
-                -top-12
-                h-[160px]
-                w-[160px]
-                rounded-full
-                border
-                border-white/[0.05]
-              "
-              animate={
-                shouldReduceMotion
-                  ? undefined
-                  : {
-                      scale: [1, 1.08, 1],
-                      opacity: [0.3, 0.6, 0.3],
-                    }
-              }
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-
-            {/* Gold vertical accent */}
-
+            {/* gold accent bar */}
             <motion.span
               aria-hidden="true"
-              initial={
-                shouldReduceMotion
-                  ? false
-                  : { height: 0 }
-              }
-              whileInView={
-                shouldReduceMotion
-                  ? undefined
-                  : { height: 88 }
-              }
+              initial={reduce ? false : { height: 0 }}
+              whileInView={reduce ? undefined : { height: 88 }}
               viewport={{ once: true }}
-              transition={{
-                duration: 0.8,
-                ease,
-              }}
-              className="
-                absolute
-                left-0
-                top-10
-                w-[3px]
-                bg-[#D39A17]
-              "
+              transition={{ duration: 0.8, ease }}
+              className="absolute left-0 top-8 w-[3px] bg-[#D39A17]"
             />
 
-
-            {/* Top label */}
-
+            {/* top copy */}
             <div className="relative z-10">
-
               <div className="flex items-center gap-3">
-
-                <span
-                  aria-hidden="true"
-                  className="h-px w-7 bg-[#D39A17]"
-                />
-
-                <span className="
-                  text-[9px]
-                  font-semibold
-                  uppercase
-                  tracking-[0.25em]
-                  text-[#D7B15F]
-                ">
+                <span aria-hidden="true" className="h-px w-7 bg-[#D39A17]" />
+                <span className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[#D7B15F]">
                   The Karvaah Difference
                 </span>
-
               </div>
-
-
-              {/* =================================================
-                  SEO FRIENDLY MAIN HEADING
-              ================================================= */}
 
               <h2
                 id="why-travel-with-karvaah-heading"
-                className="
-                  mt-7
-                  max-w-[570px]
-                  font-serif
-                  text-[38px]
-                  font-medium
-                  leading-[1.03]
-                  tracking-[-0.025em]
-                  text-white
-                  sm:text-[45px]
-                  lg:text-[46px]
-                  xl:text-[52px]
-                "
+                className="mt-5 font-serif text-[32px] font-medium leading-[1.06] tracking-[-0.025em] text-white sm:text-[42px] lg:text-[38px] xl:text-[46px]"
               >
-
-                <motion.span
-                  initial={
-                    shouldReduceMotion
-                      ? false
-                      : {
-                          opacity: 0,
-                          y: 22,
-                        }
-                  }
-                  whileInView={
-                    shouldReduceMotion
-                      ? undefined
-                      : {
-                          opacity: 1,
-                          y: 0,
-                        }
-                  }
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 0.65,
-                    delay: 0.15,
-                    ease,
-                  }}
-                  className="block"
-                >
-                  More than a trip.
-                </motion.span>
-
-                <motion.span
-                  initial={
-                    shouldReduceMotion
-                      ? false
-                      : {
-                          opacity: 0,
-                          y: 22,
-                        }
-                  }
-                  whileInView={
-                    shouldReduceMotion
-                      ? undefined
-                      : {
-                          opacity: 1,
-                          y: 0,
-                        }
-                  }
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 0.65,
-                    delay: 0.27,
-                    ease,
-                  }}
-                  className="block text-[#D39A17]"
-                >
-                  A journey thoughtfully
-                </motion.span>
-
-                <motion.span
-                  initial={
-                    shouldReduceMotion
-                      ? false
-                      : {
-                          opacity: 0,
-                          y: 22,
-                        }
-                  }
-                  whileInView={
-                    shouldReduceMotion
-                      ? undefined
-                      : {
-                          opacity: 1,
-                          y: 0,
-                        }
-                  }
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 0.65,
-                    delay: 0.39,
-                    ease,
-                  }}
-                  className="block"
-                >
-                  crafted for you.
-                </motion.span>
-
+                {[
+                  "More than a trip.",
+                  "A journey thoughtfully",
+                  "crafted for you.",
+                ].map((line, i) => (
+                  <motion.span
+                    key={line}
+                    initial={reduce ? false : { opacity: 0, y: 22 }}
+                    whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 0.65,
+                      delay: 0.15 + i * 0.12,
+                      ease,
+                    }}
+                    className={`block ${i === 1 ? "text-[#D39A17]" : ""}`}
+                  >
+                    {line}
+                  </motion.span>
+                ))}
               </h2>
 
-
-              {/* Supporting copy */}
-
               <motion.p
-                initial={
-                  shouldReduceMotion
-                    ? false
-                    : {
-                        opacity: 0,
-                        y: 15,
-                      }
-                }
-                whileInView={
-                  shouldReduceMotion
-                    ? undefined
-                    : {
-                        opacity: 1,
-                        y: 0,
-                      }
-                }
+                initial={reduce ? false : { opacity: 0, y: 14 }}
+                whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{
-                  duration: 0.6,
-                  delay: 0.5,
-                  ease,
-                }}
-                className="
-                  mt-5
-                  max-w-[470px]
-                  text-[13px]
-                  leading-6
-                  text-[#B9C5D0]
-                  sm:text-[14px]
-                "
+                transition={{ duration: 0.6, delay: 0.5, ease }}
+                className="mt-5 max-w-[470px] text-[13px] leading-6 text-[#B9C5D0] sm:text-[14px]"
               >
-                From your first enquiry to the moment you return home,
-                we take care of the details so you can focus on
-                experiencing Nepal and India.
+                From your first enquiry to the moment you return home, we take
+                care of the details so you can focus on experiencing Nepal and
+                India.
               </motion.p>
-
             </div>
 
-
-            {/* =================================================
-                BOTTOM LEFT CONTENT
-            ================================================= */}
-
-            <div className="relative z-10 mt-8">
-
-              {/* Quote */}
-
+            {/* bottom copy */}
+            <div className="relative z-10">
               <motion.div
-                initial={
-                  shouldReduceMotion
-                    ? false
-                    : {
-                        opacity: 0,
-                        x: -15,
-                      }
-                }
-                whileInView={
-                  shouldReduceMotion
-                    ? undefined
-                    : {
-                        opacity: 1,
-                        x: 0,
-                      }
-                }
+                initial={reduce ? false : { opacity: 0, x: -14 }}
+                whileInView={reduce ? undefined : { opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{
-                  duration: 0.6,
-                  delay: 0.55,
-                  ease,
-                }}
+                transition={{ duration: 0.6, delay: 0.55, ease }}
                 className="flex items-start gap-3"
               >
-
                 <span
                   aria-hidden="true"
                   className="mt-2 h-px w-8 shrink-0 bg-[#D39A17]"
                 />
-
-                <p className="
-                  font-serif
-                  text-[14px]
-                  italic
-                  leading-5
-                  text-[#E6E0D5]
-                ">
+                <p className="font-serif text-[14px] italic leading-5 text-[#E6E0D5]">
                   Local knowledge. Thoughtful planning.
                   <br />
                   Genuine hospitality.
                 </p>
-
               </motion.div>
-
-
-              {/* About button */}
 
               <motion.a
                 href="/about"
                 aria-label="Learn more about Karvaah travel services"
-                initial={
-                  shouldReduceMotion
-                    ? false
-                    : {
-                        opacity: 0,
-                        y: 10,
-                      }
-                }
-                whileInView={
-                  shouldReduceMotion
-                    ? undefined
-                    : {
-                        opacity: 1,
-                        y: 0,
-                      }
-                }
+                initial={reduce ? false : { opacity: 0, y: 10 }}
+                whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{
-                  duration: 0.55,
-                  delay: 0.65,
-                  ease,
-                }}
-                className="
-                  group
-                  mt-6
-                  inline-flex
-                  items-center
-                  gap-3
-                  text-[12px]
-                  font-semibold
-                  text-white
-                "
+                transition={{ duration: 0.55, delay: 0.65, ease }}
+                className="group mt-5 inline-flex items-center gap-3 text-[12px] font-semibold text-white"
               >
-
-                <span className="
-                  border-b
-                  border-white/30
-                  pb-1
-                  transition-colors
-                  duration-300
-                  group-hover:border-[#D39A17]
-                ">
+                <span className="border-b border-white/30 pb-1 transition-colors duration-300 group-hover:border-[#D39A17]">
                   About Karvaah
                 </span>
-
                 <span
                   aria-hidden="true"
-                  className="
-                    flex
-                    h-8
-                    w-8
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-[#D39A17]
-                    text-[#0B2942]
-                    transition-all
-                    duration-300
-                    group-hover:translate-x-1
-                    group-hover:bg-white
-                  "
+                  className="flex h-8 w-8 items-center justify-center rounded-full bg-[#D39A17] text-[#0B2942] transition-all duration-300 group-hover:translate-x-1 group-hover:bg-white"
                 >
                   <ArrowUpRight size={14} />
                 </span>
-
               </motion.a>
-
             </div>
 
-
-            {/* =================================================
-                ANIMATED HIMALAYAN CONTOUR
-            ================================================= */}
-
+            {/* Himalayan contour: sits in the reserved bottom space,
+                never behind the text */}
             <div
               aria-hidden="true"
-              className="
-                pointer-events-none
-                absolute
-                bottom-0
-                left-0
-                right-0
-                h-[100px]
-                opacity-60
-              "
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-[70px] opacity-70"
             >
               <svg
                 viewBox="0 0 800 140"
@@ -647,41 +276,14 @@ export default function WhyTravelWithKarvaah() {
                 className="h-full w-full"
                 fill="none"
               >
-
                 <motion.path
-                  d="
-                    M0 130
-                    L70 92
-                    L115 105
-                    L175 55
-                    L230 92
-                    L300 35
-                    L355 82
-                    L415 50
-                    L470 92
-                    L535 40
-                    L595 83
-                    L660 32
-                    L735 72
-                    L800 15
-                  "
+                  d="M0 130 L70 92 L115 105 L175 55 L230 92 L300 35 L355 82 L415 50 L470 92 L535 40 L595 83 L660 32 L735 72 L800 15"
                   stroke="#D39A17"
                   strokeWidth="1.2"
-                  initial={
-                    shouldReduceMotion
-                      ? false
-                      : {
-                          pathLength: 0,
-                          opacity: 0,
-                        }
-                  }
+                  vectorEffect="non-scaling-stroke"
+                  initial={reduce ? false : { pathLength: 0, opacity: 0 }}
                   whileInView={
-                    shouldReduceMotion
-                      ? undefined
-                      : {
-                          pathLength: 1,
-                          opacity: 0.45,
-                        }
+                    reduce ? undefined : { pathLength: 1, opacity: 0.55 }
                   }
                   viewport={{ once: true }}
                   transition={{
@@ -690,314 +292,96 @@ export default function WhyTravelWithKarvaah() {
                       delay: 0.2,
                       ease: "easeInOut",
                     },
-                    opacity: {
-                      duration: 0.4,
-                    },
+                    opacity: { duration: 0.4 },
                   }}
                 />
-
               </svg>
             </div>
-
           </motion.article>
 
-
-          {/* =======================================================
-              RIGHT — SIX BENEFITS
-          ======================================================= */}
-
+          {/* ---------- RIGHT: BENEFITS ---------- */}
           <motion.ul
             initial="hidden"
             whileInView="visible"
-            viewport={{
-              once: true,
-              amount: 0.12,
-            }}
-            variants={{
-              hidden: {},
-              visible: {
-                transition: {
-                  staggerChildren: 0.08,
-                },
-              },
-            }}
+            viewport={{ once: true, amount: 0.1 }}
+            variants={listVariants}
             aria-label="Why choose Karvaah for Nepal and India travel"
-            className="
-              grid
-              grid-cols-1
-              bg-white
-              sm:grid-cols-2
-            "
+            className="grid grid-cols-1 gap-px bg-[#E5E1D8] sm:grid-cols-2 lg:grid-rows-3"
           >
-
-            {benefits.map((benefit, index) => {
-              const Icon = benefit.icon;
-
+            {benefits.map((b) => {
+              const Icon = b.icon;
               return (
                 <motion.li
-                  key={benefit.number}
-                  variants={{
-                    hidden: {
-                      opacity: 0,
-                      y: 25,
-                    },
-                    visible: {
-                      opacity: 1,
-                      y: 0,
-                      transition: {
-                        duration: 0.55,
-                        ease,
-                      },
-                    },
-                  }}
-                  className={`
-                    group
-                    relative
-                    flex
-                    min-h-[180px]
-                    flex-col
-                    justify-between
-                    border-[#E5E1D8]
-                    p-6
-                    transition-colors
-                    duration-300
-                    hover:bg-[#FCFBF8]
-                    sm:min-h-0
-                    sm:p-7
-                    lg:p-7
-                    xl:p-8
-
-                    ${index % 2 === 0 ? "sm:border-r" : ""}
-
-                    ${index < 4 ? "border-b" : ""}
-                  `}
+                  key={b.number}
+                  variants={itemVariants}
+                  whileHover={reduce ? undefined : { y: -2 }}
+                  className="group relative flex items-center gap-4 overflow-hidden bg-white px-5 py-4 transition-colors duration-300 hover:bg-[#FFFCF4] sm:min-h-[150px] sm:flex-col sm:items-stretch sm:justify-between sm:gap-4 sm:p-6 lg:min-h-[140px] lg:p-5 xl:p-7"
                 >
-
-                  {/* =================================================
-                      TOP
-                  ================================================= */}
-
-                  <div className="flex items-start justify-between">
-
-                    <span
-                      className="
-                        text-[9px]
-                        font-semibold
-                        tracking-[0.25em]
-                        text-[#9BA5AE]
-                        transition-colors
-                        duration-300
-                        group-hover:text-[#C99016]
-                      "
-                    >
-                      {benefit.number}
+                  {/* number + icon */}
+                  <div className="flex shrink-0 items-start justify-between sm:w-full">
+                    <span className="hidden text-[10px] font-semibold tracking-[0.25em] text-[#9BA5AE] transition-colors duration-300 group-hover:text-[#C99016] sm:block">
+                      {b.number}
                     </span>
-
-
-                    {/* Icon */}
 
                     <motion.span
                       aria-hidden="true"
                       whileHover={
-                        shouldReduceMotion
-                          ? undefined
-                          : {
-                              scale: 1.08,
-                              rotate: 6,
-                            }
+                        reduce ? undefined : { scale: 1.1, rotate: 8 }
                       }
-                      transition={{
-                        duration: 0.25,
-                      }}
-                      className="
-                        flex
-                        h-9
-                        w-9
-                        items-center
-                        justify-center
-                        rounded-full
-                        border
-                        border-[#DDD9D0]
-                        transition-all
-                        duration-300
-                        group-hover:border-[#C99016]
-                        group-hover:bg-[#FFF9EA]
-                      "
+                      transition={{ duration: 0.25 }}
+                      className="flex h-11 w-11 items-center justify-center rounded-full border border-[#DDD9D0] bg-[#FBFAF6] transition-all duration-300 group-hover:border-[#C99016] group-hover:bg-[#FFF3D6] sm:h-10 sm:w-10"
                     >
                       <Icon
-                        size={16}
+                        size={18}
                         strokeWidth={1.4}
-                        className="
-                          text-[#0B2942]
-                          transition-colors
-                          duration-300
-                          group-hover:text-[#C99016]
-                        "
+                        className="text-[#0B2942] transition-colors duration-300 group-hover:text-[#C99016]"
                       />
                     </motion.span>
-
                   </div>
 
-
-                  {/* =================================================
-                      CONTENT
-                  ================================================= */}
-
-                  <div className="mt-6">
-
-                    <h3
-                      className="
-                        font-serif
-                        text-[20px]
-                        font-medium
-                        leading-tight
-                        text-[#0B2942]
-                        transition-transform
-                        duration-300
-                        group-hover:translate-x-1
-                        lg:text-[21px]
-                      "
-                    >
-                      {benefit.title}
+                  {/* text */}
+                  <div className="min-w-0">
+                    <h3 className="font-serif text-[18px] font-medium leading-tight text-[#0B2942] transition-transform duration-300 group-hover:translate-x-1 sm:text-[19px] lg:text-[20px]">
+                      {b.title}
                     </h3>
-
-                    <p
-                      className="
-                        mt-2
-                        max-w-[280px]
-                        text-[12px]
-                        leading-5
-                        text-[#718196]
-                        lg:text-[13px]
-                      "
-                    >
-                      {benefit.description}
+                    <p className="mt-1 max-w-[300px] text-[12px] leading-[1.5] text-[#718196] lg:text-[13px]">
+                      {b.description}
                     </p>
-
                   </div>
 
-
-                  {/* =================================================
-                      HOVER ACCENT
-                  ================================================= */}
-
-                  <motion.span
+                  {/* hover underline accent */}
+                  <span
                     aria-hidden="true"
-                    className="
-                      absolute
-                      bottom-0
-                      left-0
-                      h-[2px]
-                      w-0
-                      bg-[#C99016]
-                      transition-all
-                      duration-300
-                      group-hover:w-12
-                    "
+                    className="absolute bottom-0 left-0 h-[2px] w-0 bg-[#C99016] transition-all duration-500 group-hover:w-full"
                   />
-
                 </motion.li>
               );
             })}
-
           </motion.ul>
-
         </div>
 
-
-        {/* =========================================================
-            COMPACT TRUST STRIP
-        ========================================================= */}
-
+        {/* ============ TRUST STRIP (no dots) ============ */}
         <motion.ul
-          initial={
-            shouldReduceMotion
-              ? false
-              : { opacity: 0, y: 8 }
-          }
-          whileInView={
-            shouldReduceMotion
-              ? undefined
-              : { opacity: 1, y: 0 }
-          }
+          initial={reduce ? false : { opacity: 0, y: 8 }}
+          whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{
-            duration: 0.5,
-            delay: 0.15,
-            ease,
-          }}
+          transition={{ duration: 0.5, delay: 0.15, ease }}
           aria-label="Karvaah travel strengths"
-          className="
-            grid
-            grid-cols-2
-            border-b
-            border-[#DDD8CE]
-            sm:grid-cols-4
-          "
+          className="mt-4 grid shrink-0 grid-cols-2 gap-y-1 border-b border-[#DDD8CE] pb-2 sm:grid-cols-4 lg:pb-3"
         >
-
-          {trustPoints.map((point, index) => (
+          {trustPoints.map((point, i) => (
             <li
               key={point}
-              className={`
-                flex
-                items-center
-                gap-2
-                py-4
-                ${index < 2 ? "border-b sm:border-b-0" : ""}
-                ${
-                  index % 2 === 0
-                    ? "sm:border-r"
-                    : ""
-                }
-                ${
-                  index !== 0
-                    ? "sm:pl-6"
-                    : ""
-                }
-              `}
+              className={`py-1.5 ${
+                i > 0 ? "sm:border-l sm:border-[#DDD8CE] sm:pl-6" : ""
+              }`}
             >
-
-              <motion.span
-                aria-hidden="true"
-                className="
-                  h-1.5
-                  w-1.5
-                  shrink-0
-                  rounded-full
-                  bg-[#C99016]
-                "
-                animate={
-                  shouldReduceMotion
-                    ? undefined
-                    : {
-                        scale: [1, 1.3, 1],
-                      }
-                }
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  delay: index * 0.35,
-                }}
-              />
-
-              <span
-                className="
-                  text-[8px]
-                  font-semibold
-                  tracking-[0.16em]
-                  text-[#65768A]
-                  sm:text-[9px]
-                "
-              >
+              <span className="text-[9px] font-semibold uppercase tracking-[0.14em] text-[#65768A] sm:text-[10px] sm:tracking-[0.16em]">
                 {point}
               </span>
-
             </li>
           ))}
-
         </motion.ul>
-
       </div>
     </section>
   );

@@ -6,13 +6,10 @@ import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
   Compass,
-  Flame,
-  Mountain,
-  Users,
-  Landmark,
 } from "lucide-react";
 
 import JourneyCard from "./JourneyCard";
+
 import {
   CATEGORIES,
   JOURNEYS,
@@ -43,27 +40,30 @@ export default function FeaturedJourneys() {
         relative
         overflow-hidden
         bg-[#F7F6F2]
-        py-10
-        sm:py-12
-        lg:py-14
+        py-7
+        sm:py-8
+        lg:flex
+        lg:min-h-[calc(100dvh-0px)]
+        lg:items-center
+        lg:py-8
       "
     >
-      {/* =========================================================
-          BACKGROUND DETAILS
-      ========================================================= */}
+      {/* ============================================================
+          PREMIUM BACKGROUND DETAILS
+      ============================================================ */}
 
       <div
         aria-hidden="true"
         className="
           pointer-events-none
           absolute
-          -right-40
-          top-20
-          h-[420px]
-          w-[420px]
+          -right-48
+          top-[-120px]
+          h-[500px]
+          w-[500px]
           rounded-full
-          bg-[#D99A18]/[0.035]
-          blur-3xl
+          bg-[#D99A18]/[0.045]
+          blur-[100px]
         "
       />
 
@@ -72,56 +72,118 @@ export default function FeaturedJourneys() {
         className="
           pointer-events-none
           absolute
-          -left-40
-          bottom-0
-          h-[350px]
-          w-[350px]
+          -left-48
+          bottom-[-160px]
+          h-[450px]
+          w-[450px]
           rounded-full
-          bg-[#102A43]/[0.025]
-          blur-3xl
+          bg-[#102A43]/[0.035]
+          blur-[100px]
         "
       />
+
+      <div
+        aria-hidden="true"
+        className="
+          pointer-events-none
+          absolute
+          inset-x-0
+          top-0
+          h-px
+          bg-gradient-to-r
+          from-transparent
+          via-[#D99A18]/30
+          to-transparent
+        "
+      />
+
+      {/* ============================================================
+          CONTAINER
+      ============================================================ */}
 
       <div
         className="
           relative
           mx-auto
           w-full
-          max-w-[1480px]
+          max-w-[1500px]
           px-5
           sm:px-8
           lg:px-10
-          xl:px-12
+          xl:px-14
+          2xl:px-16
         "
       >
-        {/* =========================================================
-            SECTION HEADER
-        ========================================================= */}
+        {/* ==========================================================
+            HEADER
+        ========================================================== */}
 
         <div
           className="
             flex
             flex-col
             gap-5
+            sm:gap-6
             lg:flex-row
             lg:items-end
             lg:justify-between
           "
         >
-          <div>
+          <motion.div
+            initial={
+              reduceMotion
+                ? false
+                : {
+                    opacity: 0,
+                    y: 18,
+                  }
+            }
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.3,
+            }}
+            transition={{
+              duration: 0.65,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          >
             {/* Eyebrow */}
+
             <div className="flex items-center gap-3">
-              <span
+              <motion.span
+                initial={
+                  reduceMotion
+                    ? false
+                    : {
+                        scale: 0.7,
+                        opacity: 0,
+                      }
+                }
+                whileInView={{
+                  scale: 1,
+                  opacity: 1,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.1,
+                }}
                 className="
                   flex
-                  h-7
-                  w-7
+                  h-8
+                  w-8
                   items-center
                   justify-center
                   rounded-full
                   border
                   border-[#D99A18]/40
-                  bg-[#D99A18]/[0.06]
+                  bg-[#D99A18]/[0.07]
                 "
               >
                 <Compass
@@ -129,15 +191,16 @@ export default function FeaturedJourneys() {
                   className="h-3.5 w-3.5 text-[#C48608]"
                   strokeWidth={1.8}
                 />
-              </span>
+              </motion.span>
 
               <span
                 className="
-                  text-[11px]
+                  text-[10px]
                   font-bold
                   uppercase
-                  tracking-[0.22em]
+                  tracking-[0.24em]
                   text-[#66758A]
+                  sm:text-[11px]
                 "
               >
                 Explore By Style
@@ -145,111 +208,156 @@ export default function FeaturedJourneys() {
             </div>
 
             {/* Heading */}
+
             <h2
               id="featured-journeys-heading"
               className="
-                mt-3
+                mt-2.5
                 max-w-[700px]
                 font-serif
                 text-[34px]
                 font-medium
-                leading-[1.02]
-                tracking-[-0.035em]
+                leading-[0.98]
+                tracking-[-0.04em]
                 text-[#102A43]
-
-                sm:text-[40px]
+                sm:text-[42px]
                 lg:text-[46px]
                 xl:text-[50px]
               "
             >
-              Journeys made
+              Journeys made{" "}
               <span className="text-[#C48608]">
-                {" "}to be remembered.
+                to be remembered.
               </span>
             </h2>
-          </div>
+          </motion.div>
 
           {/* View all */}
-          <Link
-            href="/journeys"
-            className="
-              group
-              inline-flex
-              w-fit
-              items-center
-              gap-3
-              rounded-full
-              border
-              border-[#D8D5CC]
-              bg-white
-              px-4
-              py-2.5
-              text-[12px]
-              font-semibold
-              text-[#102A43]
-              shadow-[0_5px_20px_rgba(16,42,67,0.04)]
-              transition-all
-              duration-300
-              hover:-translate-y-0.5
-              hover:border-[#C48608]
-              hover:shadow-[0_10px_25px_rgba(16,42,67,0.08)]
-              focus-visible:outline-none
-              focus-visible:ring-2
-              focus-visible:ring-[#C48608]
-              focus-visible:ring-offset-2
-            "
-          >
-            View all journeys
 
-            <span
+          <motion.div
+            initial={
+              reduceMotion
+                ? false
+                : {
+                    opacity: 0,
+                    x: 20,
+                  }
+            }
+            whileInView={{
+              opacity: 1,
+              x: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.6,
+              delay: 0.15,
+            }}
+          >
+            <Link
+              href="/journeys"
               className="
-                flex
-                h-6
-                w-6
+                group
+                inline-flex
+                w-fit
                 items-center
-                justify-center
+                gap-3
                 rounded-full
-                bg-[#102A43]
-                text-white
+                border
+                border-[#D8D5CC]
+                bg-white/90
+                px-4
+                py-2.5
+                text-[12px]
+                font-semibold
+                text-[#102A43]
+                shadow-[0_6px_24px_rgba(16,42,67,0.05)]
+                backdrop-blur-sm
                 transition-all
                 duration-300
-                group-hover:bg-[#C48608]
+                hover:-translate-y-0.5
+                hover:border-[#C48608]
+                hover:shadow-[0_12px_30px_rgba(16,42,67,0.1)]
               "
             >
-              <ArrowRight
-                className="h-3 w-3 transition-transform group-hover:translate-x-0.5"
-                strokeWidth={2}
-              />
-            </span>
-          </Link>
+              View all journeys
+
+              <span
+                className="
+                  flex
+                  h-6
+                  w-6
+                  items-center
+                  justify-center
+                  rounded-full
+                  bg-[#102A43]
+                  text-white
+                  transition-all
+                  duration-300
+                  group-hover:bg-[#C48608]
+                "
+              >
+                <ArrowRight
+                  className="
+                    h-3
+                    w-3
+                    transition-transform
+                    duration-300
+                    group-hover:translate-x-0.5
+                  "
+                  strokeWidth={2}
+                />
+              </span>
+            </Link>
+          </motion.div>
         </div>
 
-        {/* =========================================================
+        {/* ==========================================================
             CATEGORY SELECTOR
-        ========================================================= */}
+        ========================================================== */}
 
-        <div className="mt-7">
+        <motion.div
+          initial={
+            reduceMotion
+              ? false
+              : {
+                  opacity: 0,
+                  y: 15,
+                }
+          }
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.25,
+          }}
+          transition={{
+            duration: 0.65,
+            delay: 0.15,
+          }}
+          className="mt-6 sm:mt-7"
+        >
           <nav
             aria-label="Journey categories"
-            className={`
-              overflow-x-auto
-              ${HIDE_SCROLLBAR}
-            `}
+            className={`overflow-x-auto ${HIDE_SCROLLBAR}`}
           >
             <div
               className="
                 flex
-                w-max
                 min-w-full
+                w-max
                 items-center
-                gap-1.5
+                gap-1
                 rounded-2xl
                 border
                 border-[#DDD9D0]
                 bg-white/80
                 p-1.5
                 shadow-[0_8px_30px_rgba(16,42,67,0.035)]
-                backdrop-blur-sm
+                backdrop-blur-md
                 lg:rounded-full
               "
             >
@@ -270,21 +378,20 @@ export default function FeaturedJourneys() {
                       relative
                       flex
                       h-10
-                      min-w-[150px]
+                      min-w-[145px]
                       shrink-0
                       items-center
                       justify-center
                       gap-2
                       rounded-xl
-                      px-5
-                      text-[12px]
+                      px-4
+                      text-[11px]
                       font-semibold
                       outline-none
                       transition-colors
                       duration-300
-
-                      sm:min-w-[165px]
-
+                      sm:min-w-[160px]
+                      lg:min-w-0
                       lg:flex-1
                       lg:rounded-full
                     "
@@ -292,23 +399,23 @@ export default function FeaturedJourneys() {
                     {isActive && (
                       <motion.span
                         layoutId="active-journey-category"
-                        className="
-                          absolute
-                          inset-0
-                          rounded-xl
-                          bg-[#102A43]
-                          shadow-[0_5px_15px_rgba(16,42,67,0.15)]
-                          lg:rounded-full
-                        "
                         transition={
                           reduceMotion
                             ? { duration: 0 }
                             : {
                                 type: "spring",
-                                stiffness: 420,
-                                damping: 34,
+                                stiffness: 450,
+                                damping: 32,
                               }
                         }
+                        className="
+                          absolute
+                          inset-0
+                          rounded-xl
+                          bg-[#102A43]
+                          shadow-[0_6px_18px_rgba(16,42,67,0.16)]
+                          lg:rounded-full
+                        "
                       />
                     )}
 
@@ -319,6 +426,8 @@ export default function FeaturedJourneys() {
                         z-10
                         h-4
                         w-4
+                        transition-transform
+                        duration-300
                         ${
                           isActive
                             ? "text-[#F0B429]"
@@ -347,36 +456,54 @@ export default function FeaturedJourneys() {
               })}
             </div>
           </nav>
-        </div>
+        </motion.div>
 
-        {/* =========================================================
+        {/* ==========================================================
             COLLECTION META
-        ========================================================= */}
+        ========================================================== */}
 
-        <div
+        <motion.div
+          initial={
+            reduceMotion
+              ? false
+              : {
+                  opacity: 0,
+                }
+          }
+          whileInView={{
+            opacity: 1,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 0.5,
+            delay: 0.25,
+          }}
           className="
-            mt-7
+            mt-5
             flex
             items-center
             justify-between
             border-t
             border-[#DDD9D0]
-            pt-3
+            pt-2.5
           "
         >
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <span
               className="
                 h-1.5
                 w-1.5
                 rounded-full
                 bg-[#D99A18]
+                shadow-[0_0_10px_rgba(217,154,24,0.35)]
               "
             />
 
             <span
               className="
-                text-[10px]
+                text-[9px]
                 font-bold
                 uppercase
                 tracking-[0.2em]
@@ -393,7 +520,7 @@ export default function FeaturedJourneys() {
 
           <span
             className="
-              text-[10px]
+              text-[9px]
               font-medium
               tracking-[0.08em]
               text-[#8A929C]
@@ -401,11 +528,11 @@ export default function FeaturedJourneys() {
           >
             Nepal · India
           </span>
-        </div>
+        </motion.div>
 
-        {/* =========================================================
+        {/* ==========================================================
             JOURNEY CARDS
-        ========================================================= */}
+        ========================================================== */}
 
         {visibleJourneys.length > 0 ? (
           <motion.div
@@ -415,7 +542,7 @@ export default function FeaturedJourneys() {
                 ? false
                 : {
                     opacity: 0,
-                    y: 10,
+                    y: 12,
                   }
             }
             animate={{
@@ -423,19 +550,19 @@ export default function FeaturedJourneys() {
               y: 0,
             }}
             transition={{
-              duration: reduceMotion ? 0 : 0.4,
+              duration: reduceMotion ? 0 : 0.45,
               ease: [0.22, 1, 0.36, 1],
             }}
             className={`
               -mx-5
-              mt-4
+              mt-3
               flex
               snap-x
               snap-mandatory
-              gap-4
+              gap-3
               overflow-x-auto
               px-5
-              pb-4
+              pb-2
 
               sm:-mx-8
               sm:px-8
@@ -443,13 +570,12 @@ export default function FeaturedJourneys() {
               md:mx-0
               md:grid
               md:grid-cols-2
-              md:gap-5
+              md:gap-4
               md:overflow-visible
               md:px-0
-              md:pb-0
 
               lg:grid-cols-4
-              lg:gap-5
+              lg:gap-4
 
               ${HIDE_SCROLLBAR}
             `}
@@ -467,22 +593,24 @@ export default function FeaturedJourneys() {
         ) : (
           <div
             className="
-              mt-5
+              mt-4
               rounded-2xl
               border
               border-dashed
               border-[#D8D5CC]
               bg-white
               px-6
-              py-10
+              py-8
               text-center
             "
           >
-            <Compass className="mx-auto h-6 w-6 text-[#C48608]" />
+            <Compass
+              className="mx-auto h-6 w-6 text-[#C48608]"
+            />
 
             <p
               className="
-                mt-3
+                mt-2
                 text-sm
                 font-semibold
                 text-[#102A43]
@@ -494,7 +622,7 @@ export default function FeaturedJourneys() {
             <Link
               href="/contact"
               className="
-                mt-3
+                mt-2
                 inline-flex
                 items-center
                 gap-2
@@ -510,31 +638,30 @@ export default function FeaturedJourneys() {
           </div>
         )}
 
-        {/* =========================================================
-            FOOTER CTA
-        ========================================================= */}
+        {/* ==========================================================
+            MOBILE SWIPE HINT / DESKTOP FOOTER
+        ========================================================== */}
 
         <div
           className="
-            mt-4
+            mt-2
             flex
             items-center
             justify-between
             border-t
             border-[#DDD9D0]
-            pt-3
+            pt-2.5
           "
         >
           <p
             className="
-              max-w-[620px]
-              text-[10px]
+              text-[9px]
               leading-4
               text-[#7B8794]
             "
           >
             Thoughtfully designed journeys across Nepal
-            and India, created around meaningful experiences.
+            and India.
           </p>
 
           <Link
@@ -544,7 +671,7 @@ export default function FeaturedJourneys() {
               hidden
               items-center
               gap-2
-              text-[10px]
+              text-[9px]
               font-bold
               text-[#102A43]
               transition-colors
@@ -563,6 +690,19 @@ export default function FeaturedJourneys() {
               "
             />
           </Link>
+
+          <span
+            className="
+              text-[8px]
+              font-medium
+              uppercase
+              tracking-[0.14em]
+              text-[#A0A7AF]
+              md:hidden
+            "
+          >
+            Swipe →
+          </span>
         </div>
       </div>
     </section>

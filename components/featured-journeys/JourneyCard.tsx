@@ -24,7 +24,8 @@ export default function JourneyCard({
   index,
 }: JourneyCardProps) {
   const reduceMotion = useReducedMotion();
-  const [imageFailed, setImageFailed] = useState(false);
+  const [imageFailed, setImageFailed] =
+    useState(false);
 
   return (
     <motion.article
@@ -33,70 +34,72 @@ export default function JourneyCard({
           ? { opacity: 0 }
           : {
               opacity: 0,
-              y: 14,
+              y: 20,
+              scale: 0.98,
             }
       }
-      whileInView={{
+      animate={{
         opacity: 1,
         y: 0,
-      }}
-      viewport={{
-        once: true,
-        amount: 0.1,
+        scale: 1,
       }}
       transition={{
-        duration: reduceMotion ? 0 : 0.4,
-        delay: reduceMotion ? 0 : index * 0.06,
+        duration: reduceMotion ? 0 : 0.55,
+        delay: reduceMotion ? 0 : index * 0.08,
         ease: [0.22, 1, 0.36, 1],
       }}
+      whileHover={
+        reduceMotion
+          ? undefined
+          : {
+              y: -5,
+            }
+      }
       className="
         group
         relative
         flex
-        w-[88vw]
-        max-w-[390px]
+        w-[86vw]
+        max-w-[370px]
         shrink-0
         snap-start
         flex-col
         overflow-hidden
         rounded-[18px]
         border
-        border-[#E2DED6]
+        border-[#E1DDD4]
         bg-white
-        shadow-[0_8px_28px_rgba(16,42,67,0.055)]
-        transition-all
+        shadow-[0_8px_30px_rgba(16,42,67,0.06)]
+        transition-shadow
         duration-500
-
-        hover:-translate-y-1
         hover:border-[#D6D0C5]
         hover:shadow-[0_20px_45px_rgba(16,42,67,0.12)]
 
         sm:w-[72vw]
-        sm:max-w-[440px]
+        sm:max-w-[400px]
 
         md:w-auto
         md:max-w-none
-
-        motion-reduce:transform-none
-        motion-reduce:transition-none
       "
     >
-      {/* =====================================================
+      {/* ==========================================================
           IMAGE
-      ===================================================== */}
+      ========================================================== */}
 
       <div
         className="
           relative
-          h-[175px]
+          h-[155px]
           w-full
           shrink-0
           overflow-hidden
           bg-[#102A43]
 
-          sm:h-[185px]
+          sm:h-[165px]
 
-          lg:h-[190px]
+          lg:h-[175px]
+
+          xl:h-[180px]
         "
       >
         {!imageFailed ? (
@@ -109,15 +112,15 @@ export default function JourneyCard({
               (min-width: 1280px) 25vw,
               (min-width: 1024px) 25vw,
               (min-width: 768px) 50vw,
-              88vw
+              86vw
             "
             onError={() => setImageFailed(true)}
             className="
               object-cover
               transition-transform
-              duration-[900ms]
-              ease-out
-              group-hover:scale-[1.045]
+              duration-[1000ms]
+              ease-[cubic-bezier(0.22,1,0.36,1)]
+              group-hover:scale-[1.07]
               motion-reduce:transform-none
             "
           />
@@ -137,17 +140,14 @@ export default function JourneyCard({
             "
           >
             <MountainSnow
-              className="
-                h-10
-                w-10
-                text-white/20
-              "
+              className="h-10 w-10 text-white/20"
               strokeWidth={1}
             />
           </div>
         )}
 
-        {/* Image overlay */}
+        {/* Subtle image depth */}
+
         <div
           aria-hidden="true"
           className="
@@ -155,35 +155,51 @@ export default function JourneyCard({
             absolute
             inset-0
             bg-gradient-to-t
-            from-[#071A2B]/35
+            from-[#071A2B]/45
             via-transparent
             to-transparent
-            opacity-70
           "
         />
 
         {/* Badge */}
+
         {journey.badge ? (
-          <div
+          <motion.div
+            initial={
+              reduceMotion
+                ? false
+                : {
+                    opacity: 0,
+                    x: -8,
+                  }
+            }
+            animate={{
+              opacity: 1,
+              x: 0,
+            }}
+            transition={{
+              duration: 0.45,
+              delay: 0.15 + index * 0.08,
+            }}
             className="
               absolute
-              left-4
-              top-4
+              left-3
+              top-3
               inline-flex
               items-center
               rounded-full
               border
-              border-white/50
+              border-white/60
               bg-white/95
-              px-3
-              py-1.5
+              px-2.5
+              py-1
               shadow-[0_5px_18px_rgba(0,0,0,0.12)]
               backdrop-blur-md
             "
           >
             <span
               className="
-                text-[8px]
+                text-[7px]
                 font-bold
                 uppercase
                 tracking-[0.18em]
@@ -192,41 +208,42 @@ export default function JourneyCard({
             >
               {journey.badge}
             </span>
-          </div>
+          </motion.div>
         ) : null}
       </div>
 
-      {/* =====================================================
+      {/* ==========================================================
           CONTENT
-          SAME CONTENT ON DESKTOP + MOBILE
-      ===================================================== */}
+      ========================================================== */}
 
       <div className="flex flex-1 flex-col">
         <div
           className="
             flex-1
             px-4
-            pb-3.5
-            pt-4
+            pb-3
+            pt-3.5
 
-            sm:px-5
+            sm:px-4.5
+            sm:pt-4
           "
         >
           {/* Destination */}
+
           <h3
             className="
               line-clamp-1
               font-serif
-              text-[21px]
+              text-[20px]
               font-medium
-              leading-[1.1]
+              leading-[1.05]
               tracking-[-0.025em]
               text-[#102A43]
               transition-colors
               duration-300
               group-hover:text-[#B87800]
 
-              sm:text-[22px]
+              sm:text-[21px]
             "
           >
             <Link
@@ -244,44 +261,42 @@ export default function JourneyCard({
           </h3>
 
           {/* Descriptor */}
+
           <p
             className="
               mt-1
               line-clamp-1
-              text-[11.5px]
+              text-[11px]
               leading-4
               text-[#7B8794]
-
-              sm:text-[12px]
             "
           >
             {journey.descriptor}
           </p>
 
           {/* Package details */}
+
           <div
             className="
-              mt-3
+              mt-2.5
               border-t
               border-[#EEEAE2]
-              pt-2.5
+              pt-2
             "
           >
             <ul
               className="
-                space-y-1
-                text-[11.5px]
-                leading-[1.45]
+                space-y-0.5
+                text-[10.5px]
+                leading-[1.4]
                 text-[#64748B]
-
-                sm:text-[12px]
               "
             >
               <li className="flex gap-2">
                 <span
                   aria-hidden="true"
                   className="
-                    mt-[6px]
+                    mt-[5px]
                     h-[4px]
                     w-[4px]
                     shrink-0
@@ -299,7 +314,7 @@ export default function JourneyCard({
                 <span
                   aria-hidden="true"
                   className="
-                    mt-[6px]
+                    mt-[5px]
                     h-[4px]
                     w-[4px]
                     shrink-0
@@ -317,7 +332,7 @@ export default function JourneyCard({
                 <span
                   aria-hidden="true"
                   className="
-                    mt-[6px]
+                    mt-[5px]
                     h-[4px]
                     w-[4px]
                     shrink-0
@@ -332,15 +347,14 @@ export default function JourneyCard({
           </div>
 
           {/* Arrival */}
+
           <p
             className="
-              mt-2.5
-              line-clamp-2
-              text-[11px]
-              leading-[1.45]
+              mt-2
+              line-clamp-1
+              text-[10px]
+              leading-4
               text-[#6B7785]
-
-              sm:text-[11.5px]
             "
           >
             <span
@@ -355,9 +369,10 @@ export default function JourneyCard({
           </p>
 
           {/* Price */}
+
           <div
             className="
-              mt-2.5
+              mt-2
               flex
               items-end
               justify-between
@@ -369,7 +384,7 @@ export default function JourneyCard({
             <div>
               <p
                 className="
-                  text-[8px]
+                  text-[7px]
                   font-bold
                   uppercase
                   tracking-[0.16em]
@@ -382,12 +397,12 @@ export default function JourneyCard({
               <p
                 className="
                   mt-0.5
-                  text-[15px]
+                  text-[14px]
                   font-bold
                   tracking-[-0.01em]
                   text-[#102A43]
 
-                  sm:text-[16px]
+                  sm:text-[15px]
                 "
               >
                 {formatFromPrice(
@@ -398,7 +413,7 @@ export default function JourneyCard({
 
             <span
               className="
-                text-[9px]
+                text-[8px]
                 font-medium
                 text-[#98A0AA]
               "
@@ -408,9 +423,9 @@ export default function JourneyCard({
           </div>
         </div>
 
-        {/* =====================================================
-            SAME BUTTONS ON MOBILE + DESKTOP
-        ===================================================== */}
+        {/* ========================================================
+            ACTION BUTTONS
+        ======================================================== */}
 
         <div
           className="
@@ -426,22 +441,21 @@ export default function JourneyCard({
             )}`}
             className="
               flex
-              h-[43px]
+              h-[40px]
               items-center
               justify-center
               border-r
               border-white/20
               bg-[#E93445]
-              text-[10.5px]
+              text-[10px]
               font-semibold
               text-white
-              transition-colors
+              transition-all
               duration-300
               hover:bg-[#D82C3D]
               active:bg-[#C92535]
 
-              sm:h-[44px]
-              sm:text-[11px]
+              sm:h-[42px]
             "
           >
             Enquire Now
@@ -452,21 +466,20 @@ export default function JourneyCard({
             className="
               group/details
               flex
-              h-[43px]
+              h-[40px]
               items-center
               justify-center
               gap-1.5
               bg-[#21438D]
-              text-[10.5px]
+              text-[10px]
               font-semibold
               text-white
-              transition-colors
+              transition-all
               duration-300
               hover:bg-[#193875]
               active:bg-[#142E64]
 
-              sm:h-[44px]
-              sm:text-[11px]
+              sm:h-[42px]
             "
           >
             View Details

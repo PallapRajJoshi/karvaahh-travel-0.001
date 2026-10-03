@@ -1,0 +1,222 @@
+/* ============================================================
+   KARVAAHH HERO
+============================================================ */
+
+.karvaahh-hero {
+  height: calc(100dvh - 139px);
+  min-height: 0;
+  max-height: calc(100dvh - 139px);
+  overflow: hidden;
+}
+
+
+/* ============================================================
+   MAIN HERO AREA
+   IMPORTANT:
+   We use items-start instead of items-center.
+   This prevents the content from overflowing into the stats.
+============================================================ */
+
+.hero-main {
+  padding-top: 12px;
+}
+
+
+/* ============================================================
+   HERO CONTENT
+============================================================ */
+
+.hero-content-wrapper {
+  width: 100%;
+  max-width: 780px;
+}
+
+
+/* ============================================================
+   TRUST
+============================================================ */
+
+.hero-trust {
+  margin-top: 22px;
+}
+
+
+/* ============================================================
+   STATS
+============================================================ */
+
+.hero-stats-wrapper {
+  position: relative;
+  z-index: 10;
+  margin-top: 0;
+}
+
+
+/* ============================================================
+   LARGE DESKTOP
+============================================================ */
+
+@media (min-width: 1536px) {
+  .karvaahh-hero {
+    height: calc(100dvh - 179px);
+    max-height: calc(100dvh - 179px);
+  }
+
+  .hero-main {
+    padding-top: 10px;
+  }
+
+  .hero-content-wrapper {
+    max-width: 780px;
+  }
+
+  .hero-trust {
+    margin-top: 20px;
+  }
+}
+
+
+/* ============================================================
+   DESKTOP
+============================================================ */
+
+@media (min-width: 1280px) and (max-width: 1535px) {
+  .hero-main {
+    padding-top: 10px;
+  }
+
+  .hero-trust {
+    margin-top: 20px;
+  }
+}
+
+
+/* ============================================================
+   LAPTOP
+============================================================ */
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .karvaahh-hero {
+    height: calc(100dvh - 160px);
+    max-height: calc(100dvh - 160px);
+  }
+
+  .hero-main {
+    padding-top: 8px;
+  }
+
+  .hero-content-wrapper {
+    max-width: 700px;
+  }
+
+  .hero-trust {
+    margin-top: 18px;
+  }
+}
+
+
+/* ============================================================
+   TABLET
+============================================================ */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .karvaahh-hero {
+    height: calc(100dvh - 150px);
+    max-height: none;
+  }
+
+  .hero-main {
+    padding-top: 20px;
+  }
+
+  .hero-content-wrapper {
+    max-width: 680px;
+  }
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (max-width: 767px) {
+  .karvaahh-hero {
+    height: auto;
+    min-height: calc(100dvh - 72px);
+    max-height: none;
+  }
+
+  .hero-main {
+    flex: none;
+    padding-top: 28px;
+  }
+
+  .hero-content-wrapper {
+    max-width: 100%;
+  }
+
+  .hero-trust {
+    margin-top: 18px;
+  }
+
+  .hero-stats-wrapper {
+    margin-top: 8px;
+  }
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+============================================================ */
+
+@media (max-width: 480px) {
+  .karvaahh-hero {
+    min-height: calc(100dvh - 68px);
+  }
+
+  .hero-main {
+    padding-top: 24px;
+  }
+
+  .hero-stats-wrapper {
+    margin-top: 6px;
+  }
+}
+
+
+/* ============================================================
+   SHORT DESKTOP SCREEN
+============================================================ */
+
+@media (min-width: 1024px) and (max-height: 760px) {
+  .karvaahh-hero {
+    height: calc(100dvh - 179px);
+  }
+
+  .hero-main {
+    padding-top: 5px;
+  }
+
+  .hero-trust {
+    margin-top: 14px;
+  }
+
+  .hero-stats-wrapper {
+    padding-top: 2px;
+    padding-bottom: 4px;
+  }
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .karvaahh-hero *,
+  .karvaahh-hero {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
