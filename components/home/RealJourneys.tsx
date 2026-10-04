@@ -1,14 +1,25 @@
 "use client";
 
 import Image from "next/image";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import {
+  AnimatePresence,
+  animate,
+  motion,
+  useAnimationFrame,
+  useInView,
+  useMotionValue,
+  useReducedMotion,
+  type PanInfo,
+} from "framer-motion"; // if you use the new package: "motion/react"
 import {
   ArrowLeft,
   ArrowRight,
   Camera,
   MapPin,
+  Pause,
+  Play,
 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 type JourneyStory = {
   id: string;
@@ -23,7 +34,7 @@ type JourneyStory = {
 const journeyStories: JourneyStory[] = [
   {
     id: "01",
-    category: "MOUNTAINS",
+    category: "Mountains",
     title: "Where the Himalayas begin.",
     location: "Pokhara · Nepal",
     image: "/images/home/annapurna-view.jpg",
@@ -33,7 +44,7 @@ const journeyStories: JourneyStory[] = [
   },
   {
     id: "02",
-    category: "CULTURE",
+    category: "Culture",
     title: "Stories carved in stone.",
     location: "Kathmandu · Nepal",
     image: "/images/home/kathmandu-view.jpg",
@@ -43,7 +54,7 @@ const journeyStories: JourneyStory[] = [
   },
   {
     id: "03",
-    category: "VILLAGES",
+    category: "Villages",
     title: "Life at a slower pace.",
     location: "Ghandruk · Nepal",
     image: "/images/home/view-from-ghandruk.jpg",
@@ -53,7 +64,7 @@ const journeyStories: JourneyStory[] = [
   },
   {
     id: "04",
-    category: "WILDLIFE",
+    category: "Wildlife",
     title: "Wild Nepal, up close.",
     location: "Chitwan · Nepal",
     image: "/images/home/chitwan-wild-life.jpg",
@@ -63,7 +74,7 @@ const journeyStories: JourneyStory[] = [
   },
   {
     id: "05",
-    category: "SPIRITUAL",
+    category: "Spiritual",
     title: "Journeys with meaning.",
     location: "Muktinath · Nepal",
     image: "/images/home/muktinath.jpg",
@@ -73,7 +84,7 @@ const journeyStories: JourneyStory[] = [
   },
   {
     id: "06",
-    category: "HERITAGE",
+    category: "Heritage",
     title: "A city of timeless stories.",
     location: "Delhi · India",
     image: "/images/home/delhi-old-view.jpg",
@@ -83,7 +94,7 @@ const journeyStories: JourneyStory[] = [
   },
   {
     id: "07",
-    category: "ROYAL INDIA",
+    category: "Royal India",
     title: "Where history feels alive.",
     location: "Rajasthan · India",
     image: "/images/home/kolry-india.jpg",
@@ -93,7 +104,7 @@ const journeyStories: JourneyStory[] = [
   },
   {
     id: "08",
-    category: "SPIRITUAL",
+    category: "Spiritual",
     title: "Where faith meets the river.",
     location: "Varanasi · India",
     image: "/images/home/varanasi.jpg",
@@ -104,500 +115,439 @@ const journeyStories: JourneyStory[] = [
 ];
 
 const VISIBLE_COUNT = 4;
+/* Time each group of 4 stays on screen (milliseconds). 6000 = 6 seconds. */
+const DURATION = 6000;
+const EASE = [0.22, 1, 0.36, 1] as const;
+const TOTAL_PAGES = Math.ceil(journeyStories.length / VISIBLE_COUNT);
+
+function CountUp({ to }: { to: number }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true });
+  const reduce = useReducedMotion();
+
+  useEffect(() => {
+    if (!inView || !ref.current) return;
+    if (reduce) {
+      ref.current.textContent = String(to).padStart(2, "0");
+      return;
+    }
+    const c = animate(0, to, {
+      duration: 1.4,
+      ease: EASE,
+      onUpdate: (v) => {
+        if (ref.current)
+          ref.current.textContent = String(Math.round(v)).padStart(2, "0");
+      },
+    });
+    return () => c.stop();
+  }, [inView, to, reduce]);
+
+  return <span ref={ref}>00</span>;
+}
 
 export default function RealJourneys() {
-  const prefersReducedMotion = useReducedMotion();
-
-  const [page, setPage] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-
-  const totalPages = Math.ceil(
-    journeyStories.length / VISIBLE_COUNT
-  );
-
-  /*
-   * Create groups of four destinations.
-   *
-   * Page 1:
-   * Pokhara / Kathmandu / Ghandruk / Chitwan
-   *
-   * Page 2:
-   * Muktinath / Delhi / Rajasthan / Varanasi
-   */
+  const reduce = !!useReducedMotion();
+  const [[page, dir], setState] = useState<[number, number]>([0, 1]);
+  const [hovered, setHovered] = useState(false); // real mouse over gallery
+  const [userPaused, setUserPaused] = useState(false); // pause button
+  const progress = useMotionValue(0);
 
   const visibleStories = useMemo(() => {
     const start = page * VISIBLE_COUNT;
-
-    return journeyStories.slice(
-      start,
-      start + VISIBLE_COUNT
-    );
+    return journeyStories.slice(start, start + VISIBLE_COUNT);
   }, [page]);
 
-  const featuredStory = visibleStories[0];
+  const featured = visibleStories[0];
+  const small = visibleStories.slice(1);
 
-  const smallStories = visibleStories.slice(1);
-
-  const goNext = () => {
-    setPage((current) =>
-      current === totalPages - 1 ? 0 : current + 1
-    );
+  const next = () => {
+    setState(([p]) => [(p + 1) % TOTAL_PAGES, 1]);
+    progress.set(0);
+  };
+  const prev = () => {
+    setState(([p]) => [(p - 1 + TOTAL_PAGES) % TOTAL_PAGES, -1]);
+    progress.set(0);
+  };
+  const goTo = (i: number) => {
+    setState(([p]) => [i, i > p ? 1 : -1]);
+    progress.set(0);
   };
 
-  const goPrevious = () => {
-    setPage((current) =>
-      current === 0 ? totalPages - 1 : current - 1
-    );
-  };
-
-  /*
-   * Automatic destination group change.
-   */
-
-  useEffect(() => {
-    if (isPaused || prefersReducedMotion) {
-      return;
+  /* AUTO CHANGE: progress fills 0 → 1 over DURATION, then shows the next group. */
+  useAnimationFrame((_, delta) => {
+    if (hovered || userPaused) return;
+    const p = progress.get() + Math.min(delta, 100) / DURATION;
+    if (p >= 1) {
+      progress.set(0);
+      setState(([pg]) => [(pg + 1) % TOTAL_PAGES, 1]);
+    } else {
+      progress.set(p);
     }
+  });
 
-    const timer = window.setInterval(() => {
-      setPage((current) =>
-        current === totalPages - 1 ? 0 : current + 1
-      );
-    }, 6000);
+  const onDragEnd = (_: unknown, info: PanInfo) => {
+    if (info.offset.x < -50) next();
+    else if (info.offset.x > 50) prev();
+  };
 
-    return () => {
-      window.clearInterval(timer);
-    };
-  }, [isPaused, prefersReducedMotion, totalPages]);
+  if (!featured) return null;
 
-  if (!featuredStory) {
-    return null;
-  }
+  const wipeIn = dir > 0 ? "inset(0 0 0 100%)" : "inset(0 100% 0 0)";
 
   return (
     <section
       id="real-journeys"
       aria-labelledby="real-journeys-heading"
-      className="relative flex min-h-[calc(100vh-155px)] items-center overflow-hidden bg-[#F8F6F1] py-7 sm:py-8 lg:py-9"
+      aria-roledescription="carousel"
+      /* 139px = header + navbar height. Change it if yours differs. */
+      className="relative flex h-[calc(100svh-139px)] min-h-[560px] flex-col overflow-hidden bg-[#F8F6F1]"
     >
-      {/* =========================================================
-          BACKGROUND DECORATION
-      ========================================================== */}
-
-      <div
+      {/* drifting background rings */}
+      <motion.div
         aria-hidden="true"
-        className="pointer-events-none absolute -left-48 -top-48 h-[500px] w-[500px] rounded-full border border-[#D39A17]/10"
+        className="pointer-events-none absolute -left-40 -top-40 h-[420px] w-[420px] rounded-full border border-[#D39A17]/20"
+        animate={reduce ? undefined : { rotate: 360, scale: [1, 1.06, 1] }}
+        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+      />
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-48 -right-40 h-[420px] w-[420px] rounded-full border border-[#0B2942]/10"
+        animate={reduce ? undefined : { rotate: -360, scale: [1, 1.08, 1] }}
+        transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
       />
 
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -left-24 -top-24 h-[320px] w-[320px] rounded-full border border-[#0B2942]/5"
-      />
-
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-56 -right-48 h-[500px] w-[500px] rounded-full border border-[#D39A17]/10"
-      />
-
-      <div className="relative mx-auto w-full max-w-[1500px] px-5 sm:px-8 lg:px-10">
-
-        {/* =======================================================
-            HEADER
-        ======================================================== */}
-
-        <motion.div
-          initial={
-            prefersReducedMotion
-              ? { opacity: 1, y: 0 }
-              : { opacity: 0, y: 20 }
-          }
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.2,
-          }}
-          transition={{
-            duration: 0.65,
-            ease: "easeOut",
-          }}
-          className="mb-5 flex items-end justify-between gap-6"
+      <div className="relative mx-auto flex min-h-0 w-full max-w-[1500px] flex-1 flex-col gap-3 px-4 py-4 sm:px-8 sm:py-5 lg:px-10">
+        {/* ---------- HEADER ---------- */}
+        <motion.header
+          initial={reduce ? false : "hidden"}
+          whileInView="show"
+          viewport={{ once: true }}
+          variants={{ show: { transition: { staggerChildren: 0.1 } } }}
+          className="flex shrink-0 items-end justify-between gap-4"
         >
-          <div>
-            {/* Eyebrow */}
-
-            <div className="mb-2 flex items-center gap-3">
-              <span
+          <div className="min-w-0">
+            <motion.div
+              variants={{ hidden: { opacity: 0, x: -14 }, show: { opacity: 1, x: 0 } }}
+              transition={{ duration: 0.5, ease: EASE }}
+              className="mb-2 flex items-center gap-2.5"
+            >
+              <motion.span
                 aria-hidden="true"
-                className="h-px w-10 bg-[#D39A17]"
+                className="h-px w-8 origin-left bg-[#D39A17] sm:w-10"
+                variants={{ hidden: { scaleX: 0 }, show: { scaleX: 1 } }}
+                transition={{ duration: 0.7, ease: EASE }}
               />
-
-              <span className="text-[8px] font-semibold uppercase tracking-[0.3em] text-[#56718A]">
-                Real Journeys · Real Moments
+              <span className="truncate text-[10px] font-semibold uppercase tracking-[0.22em] text-[#56718A] sm:text-[11px]">
+                Nepal &amp; India travel moments
               </span>
-
               <span
                 aria-hidden="true"
-                className="flex h-7 w-7 items-center justify-center rounded-full border border-[#D39A17]/50"
+                className="hidden h-7 w-7 items-center justify-center rounded-full border border-[#D39A17]/50 sm:flex"
               >
-                <Camera
-                  size={11}
-                  strokeWidth={1.5}
-                  className="text-[#C9910B]"
-                />
+                <Camera size={12} strokeWidth={1.5} className="text-[#C9910B]" />
               </span>
-            </div>
+            </motion.div>
 
-            {/* SEO heading */}
-
-            <h2
+            <motion.h2
               id="real-journeys-heading"
-              className="font-serif text-[39px] font-medium leading-none tracking-[-0.045em] text-[#0B2942] sm:text-[48px] lg:text-[56px]"
+              variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
+              transition={{ duration: 0.7, ease: EASE }}
+              className="font-serif text-[30px] font-medium leading-none tracking-[-0.04em] text-[#0B2942] sm:text-[44px] lg:text-[52px]"
             >
               Real journeys.{" "}
-              <span className="text-[#C9910B]">
+              <span className="relative inline-block text-[#C9910B]">
                 Real moments.
+                <motion.svg
+                  aria-hidden="true"
+                  viewBox="0 0 200 12"
+                  preserveAspectRatio="none"
+                  className="absolute -bottom-1 left-0 h-1.5 w-full"
+                  fill="none"
+                >
+                  <motion.path
+                    d="M2 8 C 50 2, 120 2, 198 7"
+                    stroke="#D39A17"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    variants={{ hidden: { pathLength: 0 }, show: { pathLength: 1 } }}
+                    transition={{ duration: 0.9, delay: 0.5, ease: EASE }}
+                  />
+                </motion.svg>
               </span>
-            </h2>
+            </motion.h2>
 
-            <p className="mt-2 max-w-[780px] text-[11px] leading-5 text-[#60788F] sm:text-[12px]">
-              Explore unforgettable travel experiences across Nepal and
-              India — from Himalayan landscapes and sacred temples to
-              wildlife, heritage and local culture.
-            </p>
+            <motion.p
+              variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="mt-2 hidden max-w-[720px] text-[13px] leading-5 text-[#60788F] md:block"
+            >
+              Explore unforgettable travel experiences across Nepal and India,
+              from Himalayan landscapes and sacred temples to wildlife,
+              heritage and local culture.
+            </motion.p>
           </div>
 
-          {/* Counter */}
-
-          <div className="hidden items-center gap-3 sm:flex">
+          <motion.div
+            variants={{ hidden: { opacity: 0, x: 16 }, show: { opacity: 1, x: 0 } }}
+            transition={{ duration: 0.6, ease: EASE }}
+            className="hidden shrink-0 items-center gap-4 sm:flex"
+          >
             <div className="text-right">
-              <div className="text-[7px] font-semibold uppercase tracking-[0.25em] text-[#7C8993]">
+              <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#7C8993]">
                 Destinations
               </div>
-
-              <div className="font-serif text-[29px] leading-none text-[#0B2942]">
-                08
+              <div className="font-serif text-[34px] leading-none text-[#0B2942]">
+                <CountUp to={journeyStories.length} />
               </div>
             </div>
-
-            <div className="h-9 w-px bg-[#D8D3CA]" />
-
-            <div className="text-[7px] font-semibold uppercase tracking-[0.2em] text-[#7C8993]">
+            <div className="h-10 w-px bg-[#D8D3CA]" />
+            <div className="text-[10px] font-semibold uppercase leading-4 tracking-[0.18em] text-[#7C8993]">
               Nepal
               <br />
               India
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </motion.header>
 
-        {/* =======================================================
-            GALLERY
-        ======================================================== */}
-
+        {/* ---------- GALLERY (fills remaining height) ---------- */}
         <div
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          onFocus={() => setIsPaused(true)}
-          onBlur={() => setIsPaused(false)}
+          className="relative min-h-0 flex-1"
+          onPointerEnter={(e) => e.pointerType === "mouse" && setHovered(true)}
+          onPointerLeave={(e) => e.pointerType === "mouse" && setHovered(false)}
         >
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait" initial={false} custom={dir}>
             <motion.div
               key={page}
-              initial={
-                prefersReducedMotion
-                  ? { opacity: 1, x: 0 }
-                  : { opacity: 0, x: 35 }
-              }
-              animate={{
-                opacity: 1,
-                x: 0,
-              }}
-              exit={
-                prefersReducedMotion
-                  ? { opacity: 1 }
-                  : { opacity: 0, x: -35 }
-              }
-              transition={{
-                duration: prefersReducedMotion ? 0 : 0.55,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="grid gap-3 lg:grid-cols-[1.38fr_1fr]"
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.12}
+              onDragEnd={onDragEnd}
+              initial={{ opacity: 0, x: reduce ? 0 : dir * 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: reduce ? 0 : dir * -40 }}
+              transition={{ duration: 0.55, ease: EASE }}
+              className="absolute inset-0 grid touch-pan-y grid-rows-[1.35fr_1fr] gap-2 sm:gap-3 lg:grid-cols-[1.38fr_1fr] lg:grid-rows-1"
             >
-              {/* =================================================
-                  FEATURED DESTINATION
-              ================================================== */}
+              {/* FEATURED */}
+              <div className="group relative min-h-0 overflow-hidden bg-[#0B2942]">
+                <motion.div
+                  key={featured.id}
+                  initial={reduce ? false : { clipPath: wipeIn, scale: 1.15 }}
+                  animate={{
+                    clipPath: "inset(0 0% 0 0%)",
+                    scale: 1,
+                    transition: {
+                      clipPath: { duration: 0.9, ease: EASE },
+                      scale: { duration: 1.8, ease: EASE },
+                    },
+                  }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={featured.image}
+                    alt={featured.alt}
+                    fill
+                    priority={page === 0}
+                    sizes="(max-width: 1024px) 100vw, 58vw"
+                    className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
+                  />
+                </motion.div>
 
-              <div className="group relative h-[390px] overflow-hidden bg-[#0B2942] sm:h-[420px] lg:h-[445px]">
-
-                <Image
-                  src={featuredStory.image}
-                  alt={featuredStory.alt}
-                  fill
-                  priority={page === 0}
-                  sizes="(max-width: 1024px) 100vw, 58vw"
-                  className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
-                />
-
-                {/* Overlay */}
-
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 bg-[#061B2C]/15"
-                />
-
+                <div aria-hidden="true" className="absolute inset-0 bg-[#061B2C]/15" />
                 <div
                   aria-hidden="true"
                   className="absolute inset-x-0 bottom-0 h-[75%] bg-gradient-to-t from-[#061B2C]/95 via-[#061B2C]/35 to-transparent"
                 />
 
-                {/* Top information */}
-
-                <div className="absolute left-5 right-5 top-5 z-10 flex items-start justify-between sm:left-6 sm:right-6 sm:top-6">
-
+                {/* top row */}
+                <div className="absolute inset-x-4 top-4 z-10 flex items-start justify-between sm:inset-x-6 sm:top-6">
                   <div className="flex items-center gap-2">
-                    <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 bg-[#0B2942]/30">
-                      <MapPin
-                        size={13}
-                        strokeWidth={1.5}
-                        className="text-[#D39A17]"
-                      />
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 bg-[#0B2942]/30 backdrop-blur-sm sm:h-9 sm:w-9">
+                      <MapPin size={13} strokeWidth={1.5} className="text-[#D39A17]" />
                     </span>
-
-                    <span className="text-[7px] font-semibold uppercase tracking-[0.24em] text-white">
-                      {featuredStory.category}
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white sm:text-[11px]">
+                      {featured.category}
                     </span>
                   </div>
-
-                  <span className="font-serif text-[70px] leading-none text-white/15">
-                    {featuredStory.id}
+                  <span
+                    aria-hidden="true"
+                    className="font-serif text-[44px] leading-none text-white/25 sm:text-[64px]"
+                  >
+                    {featured.id}
                   </span>
                 </div>
 
-                {/* Featured content */}
+                {/* text */}
+                <motion.div
+                  key={`${featured.id}-text`}
+                  initial={reduce ? false : "hidden"}
+                  animate="show"
+                  variants={{ show: { transition: { staggerChildren: 0.1, delayChildren: 0.25 } } }}
+                  className="absolute inset-x-4 bottom-5 z-10 sm:inset-x-6 sm:bottom-7"
+                >
+                  <motion.p
+                    variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } }}
+                    transition={{ duration: 0.5, ease: EASE }}
+                    className="mb-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#E3B74A] sm:text-[11px]"
+                  >
+                    {featured.location}
+                  </motion.p>
+                  <motion.h3
+                    variants={{ hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0 } }}
+                    transition={{ duration: 0.6, ease: EASE }}
+                    className="max-w-[650px] font-serif text-[26px] leading-[1.05] tracking-[-0.025em] text-white sm:text-[36px] lg:text-[42px]"
+                  >
+                    {featured.title}
+                  </motion.h3>
+                  <motion.p
+                    variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } }}
+                    transition={{ duration: 0.5, ease: EASE }}
+                    className="mt-2 hidden max-w-[560px] text-[13px] leading-5 text-white/80 sm:block"
+                  >
+                    {featured.description}
+                  </motion.p>
+                </motion.div>
 
-                <div className="absolute bottom-6 left-5 right-5 z-10 sm:left-6 sm:right-6">
-
-                  <p className="mb-2 text-[8px] font-semibold uppercase tracking-[0.25em] text-[#D6A536]">
-                    {featuredStory.location}
-                  </p>
-
-                  <h3 className="max-w-[650px] font-serif text-[30px] leading-[1.02] tracking-[-0.025em] text-white sm:text-[36px] lg:text-[40px]">
-                    {featuredStory.title}
-                  </h3>
-
-                  <p className="mt-2 max-w-[570px] text-[10px] leading-5 text-white/70 sm:text-[11px]">
-                    {featuredStory.description}
-                  </p>
-
-                  <div className="mt-4 flex items-center gap-3">
-                    <span className="h-px w-8 bg-[#D39A17]" />
-
-                    <span className="text-[7px] font-semibold uppercase tracking-[0.22em] text-white/65">
-                      Karvaahh · Live to Travel
-                    </span>
-                  </div>
-                </div>
-
-                {/* Progress */}
-
-                {!isPaused && !prefersReducedMotion && (
+                {/* progress bar (this is the countdown) */}
+                <div aria-hidden="true" className="absolute inset-x-0 bottom-0 z-30 h-[3px] bg-white/15">
                   <motion.div
-                    key={`progress-${page}`}
-                    initial={{ width: "0%" }}
-                    animate={{ width: "100%" }}
-                    transition={{
-                      duration: 6,
-                      ease: "linear",
-                    }}
-                    className="absolute bottom-0 left-0 z-30 h-[3px] bg-[#D39A17]"
+                    className="h-full origin-left bg-[#D39A17]"
+                    style={{ scaleX: progress }}
                   />
-                )}
+                </div>
               </div>
 
-              {/* =================================================
-                  SMALL DESTINATION GALLERY
-              ================================================== */}
-
-              <div className="grid grid-cols-2 gap-3">
-                {smallStories.map((story, index) => (
+              {/* SMALL CARDS */}
+              <div className="grid min-h-0 grid-cols-3 gap-2 sm:gap-3 lg:grid-cols-2 lg:grid-rows-2">
+                {small.map((story, i) => (
                   <motion.article
                     key={story.id}
-                    initial={
-                      prefersReducedMotion
-                        ? { opacity: 1, y: 0 }
-                        : { opacity: 0, y: 15 }
-                    }
-                    animate={{
-                      opacity: 1,
-                      y: 0,
-                    }}
-                    transition={{
-                      duration: prefersReducedMotion ? 0 : 0.45,
-                      delay: prefersReducedMotion
-                        ? 0
-                        : index * 0.08,
-                    }}
-                    className="group relative min-h-[190px] overflow-hidden bg-[#0B2942] sm:min-h-[202px] lg:min-h-0"
+                    initial={reduce ? false : { opacity: 0, y: 24, scale: 0.96 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.6, delay: 0.2 + i * 0.12, ease: EASE }}
+                    whileHover={{ y: -3 }}
+                    className={`group relative min-h-0 overflow-hidden bg-[#0B2942] ${
+                      i === 0 ? "lg:col-span-2" : ""
+                    }`}
                   >
                     <Image
                       src={story.image}
                       alt={story.alt}
                       fill
-                      sizes="(max-width: 640px) 50vw, 30vw"
+                      sizes="(max-width: 640px) 34vw, (max-width: 1024px) 34vw, 40vw"
                       className="object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
                     />
-
                     <div
                       aria-hidden="true"
                       className="absolute inset-0 bg-[#061B2C]/20 transition-colors duration-500 group-hover:bg-[#061B2C]/5"
                     />
-
                     <div
                       aria-hidden="true"
-                      className="absolute inset-x-0 bottom-0 h-[75%] bg-gradient-to-t from-[#061B2C]/95 via-[#061B2C]/25 to-transparent"
+                      className="absolute inset-x-0 bottom-0 h-[80%] bg-gradient-to-t from-[#061B2C]/95 via-[#061B2C]/30 to-transparent"
                     />
 
-                    {/* Number */}
-
-                    <span className="absolute right-3 top-3 z-10 font-serif text-[23px] text-white/55">
+                    <span
+                      aria-hidden="true"
+                      className="absolute right-2.5 top-2 z-10 font-serif text-[18px] text-white/60 sm:right-3 sm:top-3 sm:text-[24px]"
+                    >
                       {story.id}
                     </span>
-
-                    {/* Category */}
-
-                    <span className="absolute left-4 top-4 z-10 text-[7px] font-semibold uppercase tracking-[0.2em] text-[#D6A536]">
+                    <span className="absolute left-2.5 top-2.5 z-10 hidden text-[10px] font-semibold uppercase tracking-[0.16em] text-[#E3B74A] sm:left-4 sm:top-4 sm:block">
                       {story.category}
                     </span>
 
-                    {/* Text */}
-
-                    <div className="absolute bottom-4 left-4 right-4 z-10">
-                      <h3 className="font-serif text-[19px] leading-tight text-white sm:text-[21px]">
+                    <div className="absolute inset-x-2.5 bottom-2.5 z-10 sm:inset-x-4 sm:bottom-4">
+                      <h3 className="font-serif text-[15px] leading-tight text-white sm:text-[20px]">
                         {story.location.split("·")[0].trim()}
                       </h3>
-
-                      <p className="mt-1 max-w-[180px] text-[8px] leading-4 text-white/65">
+                      <p className="mt-1 hidden max-w-[260px] text-[12px] leading-4 text-white/75 lg:block">
                         {story.description}
                       </p>
                     </div>
 
-                    {/* Hover arrow */}
-
-                    <span className="absolute bottom-4 right-4 z-10 flex h-8 w-8 translate-y-2 items-center justify-center rounded-full border border-white/30 text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:border-white group-hover:bg-white group-hover:text-[#0B2942] group-hover:opacity-100">
-                      <ArrowRight size={12} />
+                    <span
+                      aria-hidden="true"
+                      className="absolute bottom-3 right-3 z-10 hidden h-8 w-8 translate-y-2 items-center justify-center rounded-full border border-white/30 text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:bg-white group-hover:text-[#0B2942] group-hover:opacity-100 lg:flex"
+                    >
+                      <ArrowRight size={13} />
                     </span>
                   </motion.article>
                 ))}
               </div>
             </motion.div>
           </AnimatePresence>
-
-          {/* =====================================================
-              NAVIGATION BAR
-          ====================================================== */}
-
-          <div className="mt-3 flex items-center justify-between border-t border-[#DDD8CE] pt-3">
-
-            {/* Page indicator */}
-
-            <div className="flex items-center gap-2">
-              {Array.from({ length: totalPages }).map(
-                (_, index) => (
-                  <button
-                    key={index}
-                    type="button"
-                    onClick={() => setPage(index)}
-                    aria-label={`Show destination group ${
-                      index + 1
-                    }`}
-                    aria-current={
-                      page === index ? "true" : undefined
-                    }
-                    className="group flex h-6 items-center outline-none"
-                  >
-                    <span
-                      className={`h-[2px] transition-all duration-500 ${
-                        page === index
-                          ? "w-11 bg-[#D39A17]"
-                          : "w-5 bg-[#D7D2C9] group-hover:bg-[#A9A39A]"
-                      }`}
-                    />
-                  </button>
-                )
-              )}
-
-              <span className="ml-2 text-[8px] font-semibold uppercase tracking-[0.2em] text-[#7B8994]">
-                {String(page + 1).padStart(2, "0")} /{" "}
-                {String(totalPages).padStart(2, "0")}
-              </span>
-            </div>
-
-            {/* Center label */}
-
-            <div className="hidden items-center gap-3 md:flex">
-              <span className="h-px w-7 bg-[#D39A17]" />
-
-              <span className="text-[7px] font-semibold uppercase tracking-[0.25em] text-[#7C8994]">
-                Explore · Experience · Remember
-              </span>
-
-              <span className="h-px w-7 bg-[#D39A17]" />
-            </div>
-
-            {/* Controls */}
-
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={goPrevious}
-                aria-label="Previous travel destinations"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#D5D0C7] bg-white text-[#0B2942] transition-all duration-300 hover:border-[#D39A17] hover:text-[#C9910B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D39A17]"
-              >
-                <ArrowLeft size={13} />
-              </button>
-
-              <button
-                type="button"
-                onClick={goNext}
-                aria-label="Next travel destinations"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-[#0B2942] text-white transition-all duration-300 hover:bg-[#C9910B] hover:text-[#0B2942] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D39A17]"
-              >
-                <ArrowRight size={13} />
-              </button>
-            </div>
-          </div>
         </div>
 
-        {/* =======================================================
-            SEO / EDITORIAL KEYWORDS
-        ======================================================== */}
+        {/* ---------- NAV BAR ---------- */}
+        <div className="flex shrink-0 items-center justify-between border-t border-[#DDD8CE] pt-3">
+          <div className="flex items-center gap-2">
+            {Array.from({ length: TOTAL_PAGES }).map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => goTo(i)}
+                aria-label={`Show destination group ${i + 1}`}
+                aria-current={page === i ? "true" : undefined}
+                className="group flex h-6 items-center outline-none"
+              >
+                <motion.span
+                  className="relative block h-[3px] overflow-hidden rounded-full bg-[#D7D2C9] group-hover:bg-[#B9B3A8]"
+                  animate={{ width: page === i ? 44 : 20 }}
+                  transition={{ duration: 0.5, ease: EASE }}
+                >
+                  {page === i && (
+                    <motion.span
+                      className="absolute inset-0 origin-left bg-[#D39A17]"
+                      style={{ scaleX: progress }}
+                    />
+                  )}
+                </motion.span>
+              </button>
+            ))}
+            <span className="ml-2 text-[11px] font-semibold tracking-[0.18em] text-[#7B8994]">
+              {String(page + 1).padStart(2, "0")} / {String(TOTAL_PAGES).padStart(2, "0")}
+            </span>
+          </div>
 
-        <div className="mt-3 flex items-center justify-center gap-x-4 gap-y-1">
-          {[
-            "Nepal Travel",
-            "India Travel",
-            "Himalayan Adventures",
-            "Cultural Experiences",
-            "Wildlife",
-          ].map((item, index) => (
-            <div
-              key={item}
-              className="flex items-center gap-2"
+          <div className="hidden items-center gap-3 md:flex">
+            <span className="h-px w-7 bg-[#D39A17]" />
+            <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#7C8994]">
+              Explore · Experience · Remember
+            </span>
+            <span className="h-px w-7 bg-[#D39A17]" />
+          </div>
+
+          <div className="flex items-center gap-2">
+            <motion.button
+              type="button"
+              onClick={() => setUserPaused((v) => !v)}
+              aria-label={userPaused ? "Play auto-change" : "Pause auto-change"}
+              whileTap={{ scale: 0.92 }}
+              className="flex h-10 w-10 items-center justify-center rounded-full text-[#60788F] transition-colors hover:text-[#C9910B]"
             >
-              {index !== 0 && (
-                <span
-                  aria-hidden="true"
-                  className="h-1 w-1 rounded-full bg-[#D39A17]"
-                />
-              )}
-
-              <span className="text-[6px] font-semibold uppercase tracking-[0.17em] text-[#87929A]">
-                {item}
-              </span>
-            </div>
-          ))}
+              {userPaused ? <Play size={15} aria-hidden="true" /> : <Pause size={15} aria-hidden="true" />}
+            </motion.button>
+            <motion.button
+              type="button"
+              onClick={prev}
+              aria-label="Previous travel destinations"
+              whileHover={{ scale: 1.08, x: -2 }}
+              whileTap={{ scale: 0.92 }}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D5D0C7] bg-white text-[#0B2942] transition-colors hover:border-[#D39A17] hover:text-[#C9910B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D39A17]"
+            >
+              <ArrowLeft size={16} aria-hidden="true" />
+            </motion.button>
+            <motion.button
+              type="button"
+              onClick={next}
+              aria-label="Next travel destinations"
+              whileHover={{ scale: 1.08, x: 2 }}
+              whileTap={{ scale: 0.92 }}
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0B2942] text-white transition-colors hover:bg-[#C9910B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D39A17]"
+            >
+              <ArrowRight size={16} aria-hidden="true" />
+            </motion.button>
+          </div>
         </div>
       </div>
     </section>

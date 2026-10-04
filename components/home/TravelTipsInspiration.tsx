@@ -1,15 +1,25 @@
 "use client";
 
 import Image from "next/image";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import Link from "next/link";
+import {
+  AnimatePresence,
+  motion,
+  useAnimationFrame,
+  useMotionValue,
+  useReducedMotion,
+  type PanInfo,
+} from "framer-motion"; // if you use the new package: "motion/react"
 import {
   ArrowLeft,
   ArrowRight,
   BookOpen,
   Clock3,
   MapPin,
+  Pause,
+  Play,
 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 type TravelArticle = {
   id: string;
@@ -25,7 +35,7 @@ type TravelArticle = {
 const articles: TravelArticle[] = [
   {
     id: "01",
-    category: "NEPAL GUIDE",
+    category: "Nepal Guide",
     title: "Best Time to Visit Nepal",
     description:
       "Discover the ideal seasons for Himalayan adventures, cultural exploration, pilgrimage and scenic escapes across Nepal.",
@@ -36,7 +46,7 @@ const articles: TravelArticle[] = [
   },
   {
     id: "02",
-    category: "TRAVEL GUIDE",
+    category: "Travel Guide",
     title: "Your Complete Nepal Travel Guide",
     description:
       "Everything you need to know before travelling through Kathmandu, Pokhara, Chitwan, Muktinath and beyond.",
@@ -47,7 +57,7 @@ const articles: TravelArticle[] = [
   },
   {
     id: "03",
-    category: "ITINERARY",
+    category: "Itinerary",
     title: "India–Nepal Itinerary",
     description:
       "A thoughtfully planned route combining India's heritage with Nepal's mountains, culture and spiritual experiences.",
@@ -58,7 +68,7 @@ const articles: TravelArticle[] = [
   },
   {
     id: "04",
-    category: "HIMALAYAN GUIDE",
+    category: "Himalayan Guide",
     title: "What to Pack for the Himalayas",
     description:
       "A practical packing guide covering clothing, footwear, essentials and useful travel accessories for mountain journeys.",
@@ -69,7 +79,7 @@ const articles: TravelArticle[] = [
   },
   {
     id: "05",
-    category: "CULTURE",
+    category: "Culture",
     title: "Places You Should Not Miss in Kathmandu",
     description:
       "Explore ancient temples, heritage squares, local neighbourhoods and experiences that reveal the soul of Kathmandu.",
@@ -80,7 +90,7 @@ const articles: TravelArticle[] = [
   },
   {
     id: "06",
-    category: "SPIRITUAL TRAVEL",
+    category: "Spiritual Travel",
     title: "A Guide to Muktinath",
     description:
       "Understand the spiritual significance, route options, weather and practical details before visiting Muktinath.",
@@ -91,375 +101,340 @@ const articles: TravelArticle[] = [
   },
 ];
 
-const GROUP_SIZE = 4;
+/* 3 per group = 1 big story + 2 small ones, so both groups are always full. */
+const GROUP_SIZE = 3;
+/* Time each group stays on screen (milliseconds). 7000 = 7 seconds. */
+const DURATION = 7000;
+const EASE = [0.22, 1, 0.36, 1] as const;
+const TOTAL_GROUPS = Math.ceil(articles.length / GROUP_SIZE);
+
+const slugify = (title: string) =>
+  title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
 
 export default function TravelTipsInspiration() {
-  const prefersReducedMotion = useReducedMotion();
+  const reduce = !!useReducedMotion();
+  const [[group, dir], setState] = useState<[number, number]>([0, 1]);
+  const [hovered, setHovered] = useState(false); // real mouse over gallery
+  const [userPaused, setUserPaused] = useState(false); // pause button
+  const progress = useMotionValue(0);
+  const dragged = useRef(false);
 
-  const [activeGroup, setActiveGroup] = useState(0);
-  const [paused, setPaused] = useState(false);
-
-  const totalGroups = Math.ceil(articles.length / GROUP_SIZE);
-
-  const visibleArticles = useMemo(() => {
-    const start = activeGroup * GROUP_SIZE;
-
+  const visible = useMemo(() => {
+    const start = group * GROUP_SIZE;
     return articles.slice(start, start + GROUP_SIZE);
-  }, [activeGroup]);
+  }, [group]);
 
-  const featuredArticle = visibleArticles[0];
+  const featured = visible[0];
+  const small = visible.slice(1);
 
-  const secondaryArticles = visibleArticles.slice(1);
-
-  const nextGroup = () => {
-    setActiveGroup((current) =>
-      current === totalGroups - 1 ? 0 : current + 1
-    );
+  const next = () => {
+    setState(([g]) => [(g + 1) % TOTAL_GROUPS, 1]);
+    progress.set(0);
+  };
+  const prev = () => {
+    setState(([g]) => [(g - 1 + TOTAL_GROUPS) % TOTAL_GROUPS, -1]);
+    progress.set(0);
+  };
+  const goTo = (i: number) => {
+    setState(([g]) => [i, i > g ? 1 : -1]);
+    progress.set(0);
   };
 
-  const previousGroup = () => {
-    setActiveGroup((current) =>
-      current === 0 ? totalGroups - 1 : current - 1
-    );
-  };
-
-  /*
-   * Automatic article rotation.
-   */
-  useEffect(() => {
-    if (paused || prefersReducedMotion) {
-      return;
+  /* AUTO CHANGE: progress fills 0 → 1 over DURATION, then shows the next group. */
+  useAnimationFrame((_, delta) => {
+    if (hovered || userPaused) return;
+    const p = progress.get() + Math.min(delta, 100) / DURATION;
+    if (p >= 1) {
+      progress.set(0);
+      setState(([g]) => [(g + 1) % TOTAL_GROUPS, 1]);
+    } else {
+      progress.set(p);
     }
+  });
 
-    const timer = window.setInterval(() => {
-      setActiveGroup((current) =>
-        current === totalGroups - 1 ? 0 : current + 1
-      );
-    }, 7000);
+  const onDragEnd = (_: unknown, info: PanInfo) => {
+    if (info.offset.x < -50) next();
+    else if (info.offset.x > 50) prev();
+    window.setTimeout(() => (dragged.current = false), 0);
+  };
 
-    return () => {
-      window.clearInterval(timer);
-    };
-  }, [paused, prefersReducedMotion, totalGroups]);
+  if (!featured) return null;
 
-  if (!featuredArticle) {
-    return null;
-  }
+  const wipeIn = dir > 0 ? "inset(0 0 0 100%)" : "inset(0 100% 0 0)";
 
   return (
     <section
       id="travel-tips"
       aria-labelledby="travel-tips-heading"
-      className="relative overflow-hidden bg-[#F8F6F1] py-12 sm:py-14 lg:py-16"
+      aria-roledescription="carousel"
+      /* 139px = header + navbar height. Change it if yours differs. */
+      className="relative flex h-[calc(100svh-139px)] min-h-[560px] flex-col overflow-hidden bg-[#F8F6F1]"
     >
-      {/* =====================================================
-          SUBTLE EDITORIAL BACKGROUND
-      ====================================================== */}
-
-      <div
+      {/* drifting background rings */}
+      <motion.div
         aria-hidden="true"
-        className="pointer-events-none absolute -left-40 -top-40 h-[440px] w-[440px] rounded-full border border-[#D39A17]/10"
+        className="pointer-events-none absolute -left-40 -top-40 h-[420px] w-[420px] rounded-full border border-[#D39A17]/20"
+        animate={reduce ? undefined : { rotate: 360, scale: [1, 1.06, 1] }}
+        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+      />
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-48 -right-40 h-[420px] w-[420px] rounded-full border border-[#0B2942]/10"
+        animate={reduce ? undefined : { rotate: -360, scale: [1, 1.08, 1] }}
+        transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
       />
 
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -left-20 -top-20 h-[280px] w-[280px] rounded-full border border-[#0B2942]/5"
-      />
-
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-48 -right-40 h-[420px] w-[420px] rounded-full border border-[#D39A17]/10"
-      />
-
-      <div className="relative mx-auto w-full max-w-[1400px] px-5 sm:px-8 lg:px-10">
-
-        {/* =====================================================
-            SECTION HEADER
-        ====================================================== */}
-
+      <div className="relative mx-auto flex min-h-0 w-full max-w-[1400px] flex-1 flex-col gap-3 px-4 py-4 sm:px-8 sm:py-5 lg:px-10">
+        {/* ---------- HEADER ---------- */}
         <motion.header
-          initial={
-            prefersReducedMotion
-              ? { opacity: 1, y: 0 }
-              : { opacity: 0, y: 22 }
-          }
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.2,
-          }}
-          transition={{
-            duration: 0.65,
-            ease: "easeOut",
-          }}
-          className="mb-7 flex items-end justify-between gap-6"
+          initial={reduce ? false : "hidden"}
+          whileInView="show"
+          viewport={{ once: true }}
+          variants={{ show: { transition: { staggerChildren: 0.1 } } }}
+          className="flex shrink-0 items-end justify-between gap-4"
         >
-          <div>
-
-            {/* Eyebrow */}
-
-            <div className="mb-3 flex items-center gap-3">
-              <span
+          <div className="min-w-0">
+            <motion.div
+              variants={{ hidden: { opacity: 0, x: -14 }, show: { opacity: 1, x: 0 } }}
+              transition={{ duration: 0.5, ease: EASE }}
+              className="mb-2 flex items-center gap-2.5"
+            >
+              <motion.span
                 aria-hidden="true"
-                className="h-px w-10 bg-[#D39A17]"
+                className="h-px w-8 origin-left bg-[#D39A17] sm:w-10"
+                variants={{ hidden: { scaleX: 0 }, show: { scaleX: 1 } }}
+                transition={{ duration: 0.7, ease: EASE }}
               />
-
-              <span className="text-[8px] font-semibold uppercase tracking-[0.32em] text-[#58718A]">
-                Travel Tips & Inspiration
+              <span className="truncate text-[10px] font-semibold uppercase tracking-[0.22em] text-[#58718A] sm:text-[11px]">
+                Travel tips &amp; inspiration
               </span>
-
               <span
                 aria-hidden="true"
-                className="flex h-7 w-7 items-center justify-center rounded-full border border-[#D39A17]/45"
+                className="hidden h-7 w-7 items-center justify-center rounded-full border border-[#D39A17]/50 sm:flex"
               >
-                <BookOpen
-                  size={11}
-                  strokeWidth={1.5}
-                  className="text-[#C9910B]"
-                  aria-hidden="true"
-                />
+                <BookOpen size={12} strokeWidth={1.5} className="text-[#C9910B]" />
               </span>
-            </div>
+            </motion.div>
 
-            {/* Main SEO heading */}
-
-            <h2
+            <motion.h2
               id="travel-tips-heading"
-              className="font-serif text-[38px] font-medium leading-[0.98] tracking-[-0.045em] text-[#0B2942] sm:text-[48px] lg:text-[56px]"
+              variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
+              transition={{ duration: 0.7, ease: EASE }}
+              className="font-serif text-[30px] font-medium leading-none tracking-[-0.04em] text-[#0B2942] sm:text-[44px] lg:text-[52px]"
             >
               Travel better.{" "}
-              <span className="text-[#C9910B]">
+              <span className="relative inline-block text-[#C9910B]">
                 Go further.
+                <motion.svg
+                  aria-hidden="true"
+                  viewBox="0 0 200 12"
+                  preserveAspectRatio="none"
+                  className="absolute -bottom-1 left-0 h-1.5 w-full"
+                  fill="none"
+                >
+                  <motion.path
+                    d="M2 8 C 50 2, 120 2, 198 7"
+                    stroke="#D39A17"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    variants={{ hidden: { pathLength: 0 }, show: { pathLength: 1 } }}
+                    transition={{ duration: 0.9, delay: 0.5, ease: EASE }}
+                  />
+                </motion.svg>
               </span>
-            </h2>
+            </motion.h2>
 
-            <p className="mt-3 max-w-[730px] text-[11px] leading-5 text-[#60788F] sm:text-[12px]">
-              Practical travel guides, destination inspiration and
-              thoughtful advice to help you plan unforgettable journeys
-              across Nepal and India.
-            </p>
+            <motion.p
+              variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="mt-2 hidden max-w-[720px] text-[13px] leading-5 text-[#60788F] md:block"
+            >
+              Practical travel guides, destination inspiration and thoughtful
+              advice to help you plan unforgettable journeys across Nepal and
+              India.
+            </motion.p>
           </div>
 
-          {/* Desktop blog link */}
-
-          <a
-            href="/blog"
-            className="hidden items-center gap-3 border-b border-[#0B2942]/25 pb-2 text-[8px] font-semibold uppercase tracking-[0.2em] text-[#0B2942] transition-colors duration-300 hover:border-[#D39A17] hover:text-[#C9910B] sm:flex"
+          <motion.div
+            variants={{ hidden: { opacity: 0, x: 16 }, show: { opacity: 1, x: 0 } }}
+            transition={{ duration: 0.6, ease: EASE }}
+            className="shrink-0"
           >
-            Explore all stories
-            <ArrowRight size={13} aria-hidden="true" />
-          </a>
+            <Link
+              href="/blog"
+              className="group inline-flex items-center gap-2 border-b border-[#0B2942]/25 pb-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#0B2942] transition-colors duration-300 hover:border-[#D39A17] hover:text-[#C9910B] sm:text-[11px]"
+            >
+              <span className="sm:hidden">All stories</span>
+              <span className="hidden sm:inline">Explore all stories</span>
+              <ArrowRight
+                size={13}
+                aria-hidden="true"
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              />
+            </Link>
+          </motion.div>
         </motion.header>
 
-        {/* =====================================================
-            DECORATIVE DIVIDER
-        ====================================================== */}
-
-        <div className="mb-6 flex items-center gap-3">
-          <div className="h-px flex-1 bg-[#DDD8CE]" />
-
-          <span
-            aria-hidden="true"
-            className="h-2 w-2 rounded-full bg-[#D39A17]"
-          />
-
-          <span
-            aria-hidden="true"
-            className="h-px w-12 bg-[#D39A17]"
-          />
-
-          <span
-            aria-hidden="true"
-            className="h-2 w-2 rounded-full bg-[#D39A17]"
-          />
-
-          <div className="h-px flex-1 bg-[#DDD8CE]" />
-        </div>
-
-        {/* =====================================================
-            ARTICLE GALLERY
-        ====================================================== */}
-
+        {/* ---------- GALLERY (fills remaining height) ---------- */}
         <div
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-          onFocus={() => setPaused(true)}
-          onBlur={() => setPaused(false)}
+          className="relative min-h-0 flex-1"
+          onPointerEnter={(e) => e.pointerType === "mouse" && setHovered(true)}
+          onPointerLeave={(e) => e.pointerType === "mouse" && setHovered(false)}
+          onClickCapture={(e) => {
+            // a swipe must not open an article
+            if (dragged.current) {
+              e.preventDefault();
+              e.stopPropagation();
+            }
+          }}
         >
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait" initial={false}>
             <motion.div
-              key={activeGroup}
-              initial={
-                prefersReducedMotion
-                  ? { opacity: 1, x: 0 }
-                  : { opacity: 0, x: 35 }
-              }
-              animate={{
-                opacity: 1,
-                x: 0,
-              }}
-              exit={
-                prefersReducedMotion
-                  ? { opacity: 1 }
-                  : { opacity: 0, x: -35 }
-              }
-              transition={{
-                duration: prefersReducedMotion ? 0 : 0.55,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="grid gap-4 lg:grid-cols-[1.25fr_1fr]"
+              key={group}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.12}
+              onDragStart={() => (dragged.current = true)}
+              onDragEnd={onDragEnd}
+              initial={{ opacity: 0, x: reduce ? 0 : dir * 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: reduce ? 0 : dir * -40 }}
+              transition={{ duration: 0.55, ease: EASE }}
+              className="absolute inset-0 grid touch-pan-y grid-rows-[1.35fr_1fr] gap-2 sm:gap-3 lg:grid-cols-[1.25fr_1fr] lg:grid-rows-1"
             >
-
-              {/* =================================================
-                  FEATURED ARTICLE
-              ================================================== */}
-
-              <motion.article
-                initial={
-                  prefersReducedMotion
-                    ? { opacity: 1, y: 0 }
-                    : { opacity: 0, y: 18 }
-                }
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                transition={{
-                  duration: 0.55,
-                }}
-                className="group relative h-[390px] overflow-hidden bg-[#0B2942] sm:h-[410px] lg:h-[425px]"
-              >
-                <a
-                  href={`/blog/${featuredArticle.title
-                    .toLowerCase()
-                    .replace(/[^a-z0-9]+/g, "-")
-                    .replace(/(^-|-$)/g, "")}`}
-                  aria-label={`Read ${featuredArticle.title}`}
+              {/* FEATURED */}
+              <article className="group relative min-h-0 overflow-hidden bg-[#0B2942]">
+                <Link
+                  href={`/blog/${slugify(featured.title)}`}
+                  aria-label={`Read ${featured.title}`}
                   className="absolute inset-0 z-20"
                 />
 
-                <Image
-                  src={featuredArticle.image}
-                  alt={featuredArticle.alt}
-                  fill
-                  priority={activeGroup === 0}
-                  sizes="(max-width: 1024px) 100vw, 58vw"
-                  className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
-                />
+                <motion.div
+                  key={featured.id}
+                  initial={reduce ? false : { clipPath: wipeIn, scale: 1.15 }}
+                  animate={{
+                    clipPath: "inset(0 0% 0 0%)",
+                    scale: 1,
+                    transition: {
+                      clipPath: { duration: 0.9, ease: EASE },
+                      scale: { duration: 1.8, ease: EASE },
+                    },
+                  }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={featured.image}
+                    alt={featured.alt}
+                    fill
+                    priority={group === 0}
+                    sizes="(max-width: 1024px) 100vw, 58vw"
+                    className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
+                  />
+                </motion.div>
 
-                {/* Image overlay */}
-
+                <div aria-hidden="true" className="absolute inset-0 bg-[#071D2E]/20" />
                 <div
                   aria-hidden="true"
-                  className="absolute inset-0 bg-[#071D2E]/20"
+                  className="absolute inset-x-0 bottom-0 h-[80%] bg-gradient-to-t from-[#061A2A] via-[#061A2A]/55 to-transparent"
                 />
 
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-x-0 bottom-0 h-[78%] bg-gradient-to-t from-[#061A2A] via-[#061A2A]/55 to-transparent"
-                />
-
-                {/* Top label */}
-
-                <div className="absolute left-5 right-5 top-5 z-10 flex items-center justify-between sm:left-6 sm:right-6">
-
+                {/* top row */}
+                <div className="absolute inset-x-4 top-4 z-10 flex items-center justify-between sm:inset-x-6 sm:top-6">
                   <div className="flex items-center gap-2">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30">
-                      <BookOpen
-                        size={12}
-                        strokeWidth={1.5}
-                        className="text-[#D39A17]"
-                        aria-hidden="true"
-                      />
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 bg-[#0B2942]/30 backdrop-blur-sm">
+                      <BookOpen size={13} strokeWidth={1.5} className="text-[#D39A17]" aria-hidden="true" />
                     </span>
-
-                    <span className="text-[7px] font-semibold uppercase tracking-[0.25em] text-white">
-                      Featured Guide
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white sm:text-[11px]">
+                      Featured guide
                     </span>
                   </div>
-
-                  <span className="font-serif text-[64px] leading-none text-white/10">
-                    {featuredArticle.id}
+                  <span
+                    aria-hidden="true"
+                    className="font-serif text-[44px] leading-none text-white/25 sm:text-[62px]"
+                  >
+                    {featured.id}
                   </span>
                 </div>
 
-                {/* Content */}
-
-                <div className="absolute bottom-6 left-5 right-5 z-10 sm:left-6 sm:right-6">
-
-                  <div className="mb-2 flex items-center gap-3">
-                    <span className="text-[7px] font-semibold uppercase tracking-[0.22em] text-[#D5A22B]">
-                      {featuredArticle.category}
+                {/* text */}
+                <motion.div
+                  key={`${featured.id}-text`}
+                  initial={reduce ? false : "hidden"}
+                  animate="show"
+                  variants={{ show: { transition: { staggerChildren: 0.1, delayChildren: 0.25 } } }}
+                  className="absolute inset-x-4 bottom-5 z-10 sm:inset-x-6 sm:bottom-7"
+                >
+                  <motion.div
+                    variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } }}
+                    transition={{ duration: 0.5, ease: EASE }}
+                    className="mb-2 flex items-center gap-3"
+                  >
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#E3B74A] sm:text-[11px]">
+                      {featured.category}
                     </span>
-
                     <span className="h-px w-6 bg-[#D39A17]" />
-
-                    <span className="text-[7px] uppercase tracking-[0.16em] text-white/60">
-                      {featuredArticle.location}
+                    <span className="text-[10px] uppercase tracking-[0.14em] text-white/70 sm:text-[11px]">
+                      {featured.location}
                     </span>
-                  </div>
+                  </motion.div>
 
-                  <h3 className="max-w-[650px] font-serif text-[29px] leading-[1.04] tracking-[-0.025em] text-white sm:text-[34px] lg:text-[38px]">
-                    {featuredArticle.title}
-                  </h3>
+                  <motion.h3
+                    variants={{ hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0 } }}
+                    transition={{ duration: 0.6, ease: EASE }}
+                    className="max-w-[650px] font-serif text-[26px] leading-[1.05] tracking-[-0.025em] text-white sm:text-[34px] lg:text-[40px]"
+                  >
+                    {featured.title}
+                  </motion.h3>
 
-                  <p className="mt-2 max-w-[590px] text-[10px] leading-5 text-white/70 sm:text-[11px]">
-                    {featuredArticle.description}
-                  </p>
+                  <motion.p
+                    variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } }}
+                    transition={{ duration: 0.5, ease: EASE }}
+                    className="mt-2 hidden max-w-[590px] text-[13px] leading-5 text-white/80 sm:block"
+                  >
+                    {featured.description}
+                  </motion.p>
 
-                  <div className="mt-4 flex items-center gap-4">
-                    <span className="text-[7px] font-semibold uppercase tracking-[0.2em] text-white/75">
+                  <motion.div
+                    variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } }}
+                    transition={{ duration: 0.5, ease: EASE }}
+                    className="mt-3 flex items-center gap-3 sm:mt-4"
+                  >
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/85 sm:text-[11px]">
                       Read story
                     </span>
-
                     <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/35 text-white transition-all duration-300 group-hover:border-[#D39A17] group-hover:bg-[#D39A17] group-hover:text-[#0B2942]">
-                      <ArrowRight
-                        size={12}
-                        aria-hidden="true"
-                      />
+                      <ArrowRight size={13} aria-hidden="true" />
                     </span>
+                    <span className="ml-auto flex items-center gap-1.5 text-[10px] uppercase tracking-[0.14em] text-white/65 sm:text-[11px]">
+                      <Clock3 size={11} aria-hidden="true" />
+                      {featured.readTime}
+                    </span>
+                  </motion.div>
+                </motion.div>
 
-                    <span className="ml-auto flex items-center gap-2 text-[7px] uppercase tracking-[0.16em] text-white/50">
-                      <Clock3 size={10} aria-hidden="true" />
-                      {featuredArticle.readTime}
-                    </span>
-                  </div>
+                {/* countdown bar */}
+                <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 z-30 h-[3px] bg-white/15">
+                  <motion.div className="h-full origin-left bg-[#D39A17]" style={{ scaleX: progress }} />
                 </div>
-              </motion.article>
+              </article>
 
-              {/* =================================================
-                  SECONDARY ARTICLES
-              ================================================== */}
-
-              <div className="grid grid-cols-2 gap-4">
-                {secondaryArticles.map((article, index) => (
+              {/* SMALL ARTICLES */}
+              <div className="grid min-h-0 grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-1 lg:grid-rows-2">
+                {small.map((article, i) => (
                   <motion.article
                     key={article.id}
-                    initial={
-                      prefersReducedMotion
-                        ? { opacity: 1, y: 0 }
-                        : { opacity: 0, y: 18 }
-                    }
-                    animate={{
-                      opacity: 1,
-                      y: 0,
-                    }}
-                    transition={{
-                      duration: 0.5,
-                      delay: prefersReducedMotion
-                        ? 0
-                        : index * 0.08,
-                    }}
-                    className="group relative min-h-[190px] overflow-hidden bg-[#0B2942] sm:min-h-[198px]"
+                    initial={reduce ? false : { opacity: 0, y: 24, scale: 0.96 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.6, delay: 0.2 + i * 0.12, ease: EASE }}
+                    whileHover={{ y: -3 }}
+                    className="group relative min-h-0 overflow-hidden bg-[#0B2942]"
                   >
-                    <a
-                      href={`/blog/${article.title
-                        .toLowerCase()
-                        .replace(/[^a-z0-9]+/g, "-")
-                        .replace(/(^-|-$)/g, "")}`}
+                    <Link
+                      href={`/blog/${slugify(article.title)}`}
                       aria-label={`Read ${article.title}`}
                       className="absolute inset-0 z-20"
                     />
@@ -468,193 +443,127 @@ export default function TravelTipsInspiration() {
                       src={article.image}
                       alt={article.alt}
                       fill
-                      sizes="(max-width: 640px) 50vw, 30vw"
+                      sizes="(max-width: 1024px) 50vw, 40vw"
                       className="object-cover transition-transform duration-1000 ease-out group-hover:scale-110"
                     />
-
                     <div
                       aria-hidden="true"
                       className="absolute inset-0 bg-[#061B2C]/25 transition-colors duration-500 group-hover:bg-[#061B2C]/5"
                     />
-
                     <div
                       aria-hidden="true"
-                      className="absolute inset-x-0 bottom-0 h-[75%] bg-gradient-to-t from-[#061A2A]/95 via-[#061A2A]/35 to-transparent"
+                      className="absolute inset-x-0 bottom-0 h-[85%] bg-gradient-to-t from-[#061A2A]/95 via-[#061A2A]/40 to-transparent"
                     />
 
-                    {/* Number */}
-
-                    <span className="absolute right-3 top-3 z-10 font-serif text-[22px] text-white/45">
+                    <span
+                      aria-hidden="true"
+                      className="absolute right-3 top-2 z-10 font-serif text-[20px] text-white/55 sm:top-3 sm:text-[26px]"
+                    >
                       {article.id}
                     </span>
-
-                    {/* Category */}
-
-                    <span className="absolute left-4 top-4 z-10 text-[6px] font-semibold uppercase tracking-[0.2em] text-[#D5A22B]">
+                    <span className="absolute left-3 top-3 z-10 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#E3B74A] sm:left-4 sm:top-4">
                       {article.category}
                     </span>
 
-                    {/* Content */}
-
-                    <div className="absolute bottom-4 left-4 right-4 z-10">
-
-                      <h3 className="font-serif text-[18px] leading-[1.05] text-white sm:text-[20px]">
+                    <div className="absolute inset-x-3 bottom-3 z-10 sm:inset-x-4 sm:bottom-4">
+                      <h3 className="line-clamp-3 font-serif text-[16px] leading-[1.1] text-white sm:text-[20px]">
                         {article.title}
                       </h3>
-
-                      <div className="mt-2 flex items-center gap-2">
-                        <MapPin
-                          size={9}
-                          className="text-[#D39A17]"
-                          aria-hidden="true"
-                        />
-
-                        <span className="text-[7px] uppercase tracking-[0.13em] text-white/60">
+                      <div className="mt-1.5 flex items-center gap-3 text-[10px] uppercase tracking-[0.12em] text-white/70 sm:text-[11px]">
+                        <span className="flex items-center gap-1.5">
+                          <MapPin size={10} className="text-[#D39A17]" aria-hidden="true" />
                           {article.location}
                         </span>
+                        <span className="hidden items-center gap-1.5 sm:flex">
+                          <Clock3 size={10} aria-hidden="true" />
+                          {article.readTime}
+                        </span>
                       </div>
-
-                      {/* Hover arrow */}
-
-                      <span className="absolute bottom-0 right-0 flex h-8 w-8 translate-y-2 items-center justify-center rounded-full border border-white/30 text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:border-[#D39A17] group-hover:bg-[#D39A17] group-hover:text-[#0B2942] group-hover:opacity-100">
-                        <ArrowRight
-                          size={11}
-                          aria-hidden="true"
-                        />
-                      </span>
                     </div>
+
+                    <span
+                      aria-hidden="true"
+                      className="absolute bottom-3 right-3 z-10 hidden h-8 w-8 translate-y-2 items-center justify-center rounded-full border border-white/30 text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:border-[#D39A17] group-hover:bg-[#D39A17] group-hover:text-[#0B2942] group-hover:opacity-100 lg:flex"
+                    >
+                      <ArrowRight size={12} />
+                    </span>
                   </motion.article>
                 ))}
               </div>
             </motion.div>
           </AnimatePresence>
+        </div>
 
-          {/* =====================================================
-              CONTROLS
-          ====================================================== */}
-
-          <div className="mt-4 flex items-center justify-between border-t border-[#DDD8CE] pt-4">
-
-            {/* Progress indicators */}
-
-            <div className="flex items-center gap-2">
-              {Array.from({ length: totalGroups }).map(
-                (_, index) => (
-                  <button
-                    key={index}
-                    type="button"
-                    onClick={() => setActiveGroup(index)}
-                    aria-label={`Show travel articles group ${
-                      index + 1
-                    }`}
-                    aria-current={
-                      activeGroup === index
-                        ? "true"
-                        : undefined
-                    }
-                    className="flex h-5 items-center outline-none"
-                  >
-                    <span
-                      className={`h-[2px] transition-all duration-500 ${
-                        activeGroup === index
-                          ? "w-10 bg-[#D39A17]"
-                          : "w-5 bg-[#D7D2C9] hover:bg-[#A9A39A]"
-                      }`}
+        {/* ---------- CONTROLS ---------- */}
+        <div className="flex shrink-0 items-center justify-between border-t border-[#DDD8CE] pt-3">
+          <div className="flex items-center gap-2">
+            {Array.from({ length: TOTAL_GROUPS }).map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => goTo(i)}
+                aria-label={`Show travel articles group ${i + 1}`}
+                aria-current={group === i ? "true" : undefined}
+                className="group flex h-6 items-center outline-none"
+              >
+                <motion.span
+                  className="relative block h-[3px] overflow-hidden rounded-full bg-[#D7D2C9] group-hover:bg-[#B9B3A8]"
+                  animate={{ width: group === i ? 44 : 20 }}
+                  transition={{ duration: 0.5, ease: EASE }}
+                >
+                  {group === i && (
+                    <motion.span
+                      className="absolute inset-0 origin-left bg-[#D39A17]"
+                      style={{ scaleX: progress }}
                     />
-                  </button>
-                )
-              )}
-
-              <span className="ml-2 text-[7px] font-semibold uppercase tracking-[0.18em] text-[#7B8994]">
-                {String(activeGroup + 1).padStart(2, "0")} /{" "}
-                {String(totalGroups).padStart(2, "0")}
-              </span>
-            </div>
-
-            {/* Editorial phrase */}
-
-            <div className="hidden items-center gap-3 md:flex">
-              <span className="h-px w-7 bg-[#D39A17]" />
-
-              <span className="text-[7px] font-semibold uppercase tracking-[0.25em] text-[#7C8994]">
-                Discover · Plan · Travel
-              </span>
-
-              <span className="h-px w-7 bg-[#D39A17]" />
-            </div>
-
-            {/* Navigation */}
-
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={previousGroup}
-                aria-label="Previous travel stories"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#D5D0C7] bg-white text-[#0B2942] transition-all duration-300 hover:border-[#D39A17] hover:text-[#C9910B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D39A17]"
-              >
-                <ArrowLeft
-                  size={13}
-                  aria-hidden="true"
-                />
+                  )}
+                </motion.span>
               </button>
-
-              <button
-                type="button"
-                onClick={nextGroup}
-                aria-label="Next travel stories"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-[#0B2942] text-white transition-all duration-300 hover:bg-[#C9910B] hover:text-[#0B2942] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D39A17]"
-              >
-                <ArrowRight
-                  size={13}
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
+            ))}
+            <span className="ml-2 text-[11px] font-semibold tracking-[0.18em] text-[#7B8994]">
+              {String(group + 1).padStart(2, "0")} / {String(TOTAL_GROUPS).padStart(2, "0")}
+            </span>
           </div>
-        </div>
 
-        {/* =====================================================
-            MOBILE BLOG LINK
-        ====================================================== */}
+          <div className="hidden items-center gap-3 md:flex">
+            <span className="h-px w-7 bg-[#D39A17]" />
+            <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#7C8994]">
+              Discover · Plan · Travel
+            </span>
+            <span className="h-px w-7 bg-[#D39A17]" />
+          </div>
 
-        <div className="mt-5 flex justify-center sm:hidden">
-          <a
-            href="/blog"
-            className="flex items-center gap-3 border-b border-[#0B2942]/25 pb-2 text-[8px] font-semibold uppercase tracking-[0.2em] text-[#0B2942]"
-          >
-            Explore all travel stories
-            <ArrowRight size={12} aria-hidden="true" />
-          </a>
-        </div>
-
-        {/* =====================================================
-            SEO KEYWORDS / EDITORIAL STRIP
-        ====================================================== */}
-
-        <div className="mt-5 flex flex-wrap items-center justify-center gap-x-4 gap-y-2 border-t border-[#DDD8CE] pt-4">
-          {[
-            "Nepal Travel Guide",
-            "India Travel Tips",
-            "Himalayan Travel",
-            "Travel Inspiration",
-            "Destination Guides",
-          ].map((keyword, index) => (
-            <div
-              key={keyword}
-              className="flex items-center gap-2"
+          <div className="flex items-center gap-2">
+            <motion.button
+              type="button"
+              onClick={() => setUserPaused((v) => !v)}
+              aria-label={userPaused ? "Play auto-change" : "Pause auto-change"}
+              whileTap={{ scale: 0.92 }}
+              className="flex h-10 w-10 items-center justify-center rounded-full text-[#60788F] transition-colors hover:text-[#C9910B]"
             >
-              {index !== 0 && (
-                <span
-                  aria-hidden="true"
-                  className="h-1 w-1 rounded-full bg-[#D39A17]"
-                />
-              )}
-
-              <span className="text-[6px] font-semibold uppercase tracking-[0.16em] text-[#87929A]">
-                {keyword}
-              </span>
-            </div>
-          ))}
+              {userPaused ? <Play size={15} aria-hidden="true" /> : <Pause size={15} aria-hidden="true" />}
+            </motion.button>
+            <motion.button
+              type="button"
+              onClick={prev}
+              aria-label="Previous travel stories"
+              whileHover={{ scale: 1.08, x: -2 }}
+              whileTap={{ scale: 0.92 }}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D5D0C7] bg-white text-[#0B2942] transition-colors hover:border-[#D39A17] hover:text-[#C9910B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D39A17]"
+            >
+              <ArrowLeft size={16} aria-hidden="true" />
+            </motion.button>
+            <motion.button
+              type="button"
+              onClick={next}
+              aria-label="Next travel stories"
+              whileHover={{ scale: 1.08, x: 2 }}
+              whileTap={{ scale: 0.92 }}
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0B2942] text-white transition-colors hover:bg-[#C9910B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D39A17]"
+            >
+              <ArrowRight size={16} aria-hidden="true" />
+            </motion.button>
+          </div>
         </div>
       </div>
     </section>
