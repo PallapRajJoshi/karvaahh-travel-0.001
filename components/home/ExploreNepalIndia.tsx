@@ -52,28 +52,28 @@ type Destination = {
 
 const destinations: Destination[] = [
   {
-    name: "Kathmandu",
+    name: "Solukhumbu Region",
     country: "Nepal",
     description:
-      "Ancient temples, living heritage and the cultural heart of Nepal.",
-    image: "/images/home/swayambhu-view.jpg",
+      "Where Everest meets Sherpa culture, ancient monasteries, and breathtaking Himalayan landscapes..",
+    image: "/images/home/solukhumbu-everest-region-nepal.webp",
     href: "/destinations/kathmandu",
     span: "col-span-2 md:col-span-2 md:row-span-2 lg:col-span-2 lg:row-span-2",
     desc: "always",
     featured: true,
   },
   {
-    name: "Pokhara",
+    name: "Upper Dolpo",
     country: "Nepal",
     description:
-      "Lakeside calm, mountain views and unforgettable Himalayan experiences.",
-    image: "/images/home/pokhara.jpg",
+      "Himalayan sanctuary of ancient monasteries, Buddhist heritage.",
+    image: "/images/home/upper-dolpo-nepal-himalayan.jpg",
     href: "/destinations/pokhara",
     span: "",
     desc: "hover",
   },
   {
-    name: "Chitwan",
+    name: "Manang & Mustang",
     country: "Nepal",
     description: "Jungle adventures, wildlife and a different side of Nepal.",
     image: "/images/home/chitwan-view.jpg",
@@ -81,9 +81,22 @@ const destinations: Destination[] = [
     span: "",
     desc: "hover",
   },
+
+
+
   {
-    name: "Muktinath",
+    name: "Gosainkunda & Panch Pokhari",
     country: "Nepal",
+    description: "Jungle adventures, wildlife and a different side of Nepal.",
+    image: "/images/home/chitwan-view.jpg",
+    href: "/destinations/chitwan",
+    span: "",
+    desc: "hover",
+  },
+
+  {
+    name: "Adi Kailash & OM Parvat",
+    country: "India",
     description:
       "A sacred Himalayan destination surrounded by dramatic landscapes.",
     image: "/images/home/muktinath-view.jpg",
@@ -92,7 +105,7 @@ const destinations: Destination[] = [
     desc: "hover",
   },
   {
-    name: "Delhi",
+    name: "South India Destinations",
     country: "India",
     description: "History, culture and the vibrant energy of modern India.",
     image: "/images/home/delhi.jpg",
@@ -100,8 +113,22 @@ const destinations: Destination[] = [
     span: "",
     desc: "hover",
   },
+
+
+
+
   {
-    name: "Rajasthan",
+    name: "Thar Desert-Rajasthan",
+    country: "India",
+    description: "Royal forts, desert landscapes and timeless heritage.",
+    image: "/images/destinations/rajasthan-travel-tour-packages.webp", // ← file must exist in /public
+    href: "/destinations/rajasthan",
+    span: "col-span-2 md:col-span-2 lg:col-span-1",
+    desc: "hoverLg",
+  },
+
+  {
+    name: "North East India",
     country: "India",
     description: "Royal forts, desert landscapes and timeless heritage.",
     image: "/images/destinations/rajasthan-travel-tour-packages.webp", // ← file must exist in /public
@@ -110,7 +137,7 @@ const destinations: Destination[] = [
     desc: "hoverLg",
   },
   {
-    name: "Varanasi",
+    name: "12 Jyotrilinga Pilgrimage",
     country: "India",
     description:
       "Sacred ghats, timeless rituals and the spiritual soul of India.",

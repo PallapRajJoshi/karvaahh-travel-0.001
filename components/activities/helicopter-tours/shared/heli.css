@@ -1,0 +1,23 @@
+/* Smooth expand/collapse for native <details> accordions (progressive:
+   browsers without ::details-content support simply open instantly). */
+.heli-details {
+  interpolate-size: allow-keywords;
+}
+
+.heli-details::details-content {
+  block-size: 0;
+  overflow: hidden;
+  transition:
+    block-size 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    content-visibility 0.4s allow-discrete;
+}
+
+.heli-details[open]::details-content {
+  block-size: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heli-details::details-content {
+    transition: none;
+  }
+}

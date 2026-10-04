@@ -78,7 +78,7 @@ const experiences: Experience[] = [
   },
   {
     number: "04",
-    title: "Wildlife & Nature",
+    title: "Helicopter Experiences",
     description:
       "Discover jungles, wildlife, national parks and beautiful natural landscapes.",
     image: "/images/home/wild-life-tiger.jpg",
@@ -100,7 +100,7 @@ const experiences: Experience[] = [
   },
   {
     number: "06",
-    title: "Family Holidays",
+    title: "Destination Weddings",
     description:
       "Easy-going holidays designed for families, shared moments and lasting memories.",
     image: "/images/home/family-tour.jpg",

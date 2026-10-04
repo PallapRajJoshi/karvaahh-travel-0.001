@@ -64,9 +64,9 @@ const journeyStories: JourneyStory[] = [
   },
   {
     id: "04",
-    category: "Wildlife",
-    title: "Wild Nepal, up close.",
-    location: "Chitwan · Nepal",
+    category: "Himalayas",
+    title: "Glaciers, up close.",
+    location: "Manang · Nepal",
     image: "/images/home/chitwan-wild-life.jpg",
     alt: "Wildlife and jungle safari experience in Chitwan Nepal",
     description:
@@ -76,7 +76,7 @@ const journeyStories: JourneyStory[] = [
     id: "05",
     category: "Spiritual",
     title: "Journeys with meaning.",
-    location: "Muktinath · Nepal",
+    location: "Chardham Yatra · India",
     image: "/images/home/muktinath.jpg",
     alt: "Muktinath pilgrimage and Himalayan landscape in Nepal",
     description:
@@ -84,9 +84,9 @@ const journeyStories: JourneyStory[] = [
   },
   {
     id: "06",
-    category: "Heritage",
+    category: "Beach & Nightlife",
     title: "A city of timeless stories.",
-    location: "Delhi · India",
+    location: "Goa · India",
     image: "/images/home/delhi-old-view.jpg",
     alt: "Historic architecture and heritage of Delhi India",
     description:
