@@ -1,89 +1,141 @@
 .madhesh-journey {
-  padding: clamp(3.5rem, 8vw, 6rem) clamp(1.5rem, 5vw, 5rem);
-  background: var(--madhesh-cream);
+  padding: clamp(3.5rem, 8vw, 6rem) clamp(1rem, 5vw, 5rem);
+  background: linear-gradient(180deg, var(--madhesh-cream) 0%, #efebe1 100%);
 }
 
-.madhesh-journey__route {
+.madhesh-journey__routes {
   list-style: none;
-  margin: 3rem 0 0;
+  margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1.4rem;
-  counter-reset: journey;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
 }
 
-.madhesh-journey__stop {
+.madhesh-journey__card {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-  position: relative;
-}
-
-.madhesh-journey__stop:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  top: calc(50% - 0.5rem);
-  right: -0.9rem;
-  width: 1.4rem;
-  height: 1px;
-  background: var(--madhesh-border);
-  display: none;
-}
-
-.madhesh-journey__stop-media {
-  position: relative;
-  aspect-ratio: 3 / 4;
   overflow: hidden;
+  background: #fff;
   border: 1px solid var(--madhesh-border);
+  border-radius: 1.1rem;
+  transition: transform 0.4s var(--madhesh-ease), box-shadow 0.4s var(--madhesh-ease);
 }
 
-.madhesh-journey__stop-image {
+.madhesh-journey__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 44px -24px rgba(7, 16, 12, 0.35);
+}
+
+.madhesh-journey__media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--madhesh-green-800);
+}
+
+.madhesh-journey__image {
   object-fit: cover;
-  transition: transform 0.6s var(--madhesh-ease);
+  transition: transform 0.8s var(--madhesh-ease);
 }
 
-.madhesh-journey__stop:hover .madhesh-journey__stop-image {
+.madhesh-journey__card:hover .madhesh-journey__image {
   transform: scale(1.06);
 }
 
-.madhesh-journey__stop-number {
+.madhesh-journey__number {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.9rem;
   font-family: var(--font-serif);
   font-style: italic;
+  font-size: 1.1rem;
+  color: var(--madhesh-cream);
+  background: rgba(7, 16, 12, 0.5);
+  backdrop-filter: blur(6px);
+  border-radius: 999px;
+  padding: 0.2rem 0.75rem;
+}
+
+.madhesh-journey__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1.3rem 1.3rem 1.4rem;
+}
+
+.madhesh-journey__theme {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   color: var(--madhesh-gold-dark);
-  font-size: 1rem;
 }
 
-.madhesh-journey__stop-name {
+.madhesh-journey__title {
+  margin: 0;
   font-family: var(--font-serif);
-  font-size: 1.15rem;
   font-weight: 500;
-  margin: 0;
-  color: var(--madhesh-ink);
+  font-size: 1.35rem;
+  line-height: 1.2;
+  color: var(--madhesh-green-900);
 }
 
-.madhesh-journey__stop-desc {
-  font-family: var(--font-sans);
-  font-size: 0.82rem;
-  line-height: 1.5;
-  color: var(--madhesh-ink-soft);
+.madhesh-journey__stops {
+  list-style: none;
   margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.4rem;
+}
+
+.madhesh-journey__stops li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--madhesh-green-900);
+}
+
+.madhesh-journey__stops li + li::before {
+  content: "→";
+  color: var(--madhesh-gold);
+}
+
+.madhesh-journey__desc {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--madhesh-ink-soft);
+}
+
+.madhesh-journey__note {
+  margin: auto 0 0;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--madhesh-border);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  font-style: italic;
+  color: var(--madhesh-ink-soft);
 }
 
 .madhesh-journey__cta {
-  margin-top: 2.8rem;
   display: flex;
   justify-content: center;
 }
 
-@media (max-width: 1024px) {
-  .madhesh-journey__route {
-    grid-template-columns: repeat(3, 1fr);
+@media (max-width: 1100px) {
+  .madhesh-journey__routes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 640px) {
-  .madhesh-journey__route {
-    grid-template-columns: repeat(2, 1fr);
+@media (max-width: 700px) {
+  .madhesh-journey__routes {
+    grid-template-columns: 1fr;
   }
 }

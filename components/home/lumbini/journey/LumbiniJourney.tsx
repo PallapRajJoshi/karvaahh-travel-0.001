@@ -1,6 +1,6 @@
 import Link from "next/link";
 import LumbiniSectionHeading from "../heading/LumbiniSectionHeading";
-import { lumbiniJourney } from "@/data/lumbini/journey";
+import { lumbiniJourney, lumbiniRoutes } from "@/data/lumbini/journey";
 import "./lumbini-journey.css";
 
 export default function LumbiniJourney() {
@@ -12,8 +12,8 @@ export default function LumbiniJourney() {
     >
       <div className="lumbini-journey__inner">
         <LumbiniSectionHeading
-          index="09"
-          eyebrow="Suggested Route"
+          index="11"
+          eyebrow="Suggested Routes"
           heading="From sacred gardens"
           emphasis="to wild forests."
         />
@@ -34,25 +34,18 @@ export default function LumbiniJourney() {
           ))}
         </ol>
 
-        <div className="lumbini-journey__info">
-          <div className="lumbini-journey__info-block">
-            <span className="lumbini-journey__info-label">Best Time</span>
-            <p className="lumbini-journey__info-text">
-              October–March is ideal for Lumbini, pilgrimage and Terai
-              wildlife. October–November and March–May suit hill landscapes,
-              trekking and outdoor exploration.
-            </p>
-          </div>
-          <div className="lumbini-journey__info-block">
-            <span className="lumbini-journey__info-label">
-              Getting There
-            </span>
-            <p className="lumbini-journey__info-text">
-              Gautam Buddha International Airport at Bhairahawa serves as the
-              principal aviation gateway, with road connectivity to
-              Kathmandu, Pokhara, Chitwan, India and the rest of Nepal.
-            </p>
-          </div>
+        <div className="lumbini-journey__routes">
+          <h3 className="lumbini-journey__routes-title">More route ideas</h3>
+          <ul className="lumbini-journey__routes-grid">
+            {lumbiniRoutes.map((route) => (
+              <li key={route.title} className="lumbini-journey__route lumbini-reveal">
+                <span className="lumbini-journey__route-duration">{route.duration}</span>
+                <h4 className="lumbini-journey__route-title">{route.title}</h4>
+                <p className="lumbini-journey__route-stops">{route.stops.join(" → ")}</p>
+                <p className="lumbini-journey__route-for">Best for: {route.bestFor}</p>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className="lumbini-journey__cta-row">

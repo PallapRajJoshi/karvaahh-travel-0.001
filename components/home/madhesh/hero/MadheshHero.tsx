@@ -3,14 +3,15 @@ import Link from "next/link";
 import "./madhesh-hero.css";
 
 const heroHighlights = [
-  { number: "01", label: "Pilgrimage" },
-  { number: "02", label: "Mithila Culture" },
-  { number: "03", label: "Heritage" },
+  { number: "01", label: "Pilgrimage", href: "#pilgrimage" },
+  { number: "02", label: "Mithila Culture", href: "#culture" },
+  { number: "03", label: "Heritage", href: "#heritage" },
+  { number: "04", label: "Wildlife", href: "#wildlife" },
 ];
 
 export default function MadheshHero() {
   return (
-    <section className="madhesh-hero" aria-label="Madhesh Province introduction">
+    <section className="madhesh-hero" aria-labelledby="madhesh-hero-title">
       <div className="madhesh-hero__media">
         <Image
           src="/images/madhesh/janaki-temple.jpg"
@@ -23,10 +24,17 @@ export default function MadheshHero() {
         <div className="madhesh-hero__overlay" aria-hidden="true" />
       </div>
 
-      <div className="madhesh-hero__content">
-        <p className="madhesh-hero__eyebrow">SOUTHERN NEPAL</p>
+      <div className="madhesh-hero__meta">
+        <span className="madhesh-hero__location">MADHESH PROVINCE</span>
+        <span className="madhesh-hero__tagline">
+          Sacred. Cultural. Unforgettable.
+        </span>
+      </div>
 
-        <h1 className="madhesh-hero__title">
+      <div className="madhesh-hero__content">
+        <p className="madhesh-hero__eyebrow">Southern Nepal · Land of Mithila</p>
+
+        <h1 id="madhesh-hero-title" className="madhesh-hero__title">
           Discover
           <br />
           <span className="madhesh-gold-italic">Madhesh</span>
@@ -37,40 +45,37 @@ export default function MadheshHero() {
         </p>
 
         <p className="madhesh-hero__description">
-          Journey through sacred cities, ancient heritage, vibrant festivals,
-          traditional villages, wetlands and the extraordinary cultural
-          landscape of southern Nepal.
+          Walk the Ramayana heritage of Janakpurdham, meet Mithila painters,
+          explore the medieval ruins of Simraungadh and drive through the sal
+          forests of Parsa — all just across the border from Bihar.
         </p>
 
         <div className="madhesh-hero__actions">
-          <Link href="#experiences" className="madhesh-btn madhesh-btn--gold">
-            Explore Madhesh <span className="madhesh-arrow">↗</span>
+          <Link href="#explore-destinations" className="madhesh-btn madhesh-btn--gold">
+            Explore Destinations <span className="madhesh-arrow">↗</span>
           </Link>
-          <Link href="#cta" className="madhesh-btn madhesh-btn--outline">
+          <Link href="/contact" className="madhesh-btn madhesh-btn--outline">
             Plan Your Trip
           </Link>
         </div>
       </div>
 
-      <div className="madhesh-hero__meta">
-        <span className="madhesh-hero__location">MADHESH PROVINCE</span>
-        <span className="madhesh-hero__tagline">
-          Sacred. Cultural. Unforgettable.
-        </span>
-      </div>
-
-      <ul className="madhesh-hero__highlights">
-        {heroHighlights.map((item) => (
-          <li key={item.number}>
-            <span className="madhesh-hero__highlight-number">
-              {item.number}
-            </span>
-            <span className="madhesh-hero__highlight-label">
-              {item.label}
-            </span>
-          </li>
-        ))}
-      </ul>
+      <nav className="madhesh-hero__highlights" aria-label="Jump to Madhesh themes">
+        <ul>
+          {heroHighlights.map((item) => (
+            <li key={item.number}>
+              <Link href={item.href}>
+                <span className="madhesh-hero__highlight-number">
+                  {item.number}
+                </span>
+                <span className="madhesh-hero__highlight-label">
+                  {item.label}
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </section>
   );
 }

@@ -1,0 +1,288 @@
+.gandaki-explore {
+  box-sizing: border-box;
+  width: 100%;
+  padding: clamp(3.5rem, 7vw, 6rem) clamp(1rem, 5vw, 4.5rem);
+  background:
+    radial-gradient(ellipse at 85% 0%, rgba(201, 164, 92, 0.14) 0%, rgba(201, 164, 92, 0) 55%),
+    linear-gradient(180deg, #0d1d16 0%, #112319 100%);
+  color: #f7f5ef;
+}
+
+.gandaki-explore__inner {
+  max-width: 92rem;
+  margin: 0 auto;
+}
+
+.gandaki-explore .gandaki-heading__eyebrow,
+.gandaki-explore .gandaki-heading__emphasis {
+  color: #c9a45c;
+}
+
+.gandaki-explore .gandaki-heading__title {
+  color: #f7f5ef;
+}
+
+.gandaki-explore .gandaki-heading__description {
+  color: rgba(247, 245, 239, 0.7);
+}
+
+.gandaki-explore__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: clamp(1.75rem, 3vw, 2.5rem) 0 0.9rem;
+}
+
+.gandaki-explore__filter {
+  min-height: 44px;
+  padding: 0 1.15rem;
+  border: 1px solid rgba(247, 245, 239, 0.22);
+  border-radius: 999px;
+  background: rgba(247, 245, 239, 0.04);
+  color: rgba(247, 245, 239, 0.85);
+  font-family: "Inter", sans-serif;
+  font-size: 0.86rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.gandaki-explore__filter:hover {
+  border-color: rgba(201, 164, 92, 0.7);
+  color: #f7f5ef;
+}
+
+.gandaki-explore__filter--active,
+.gandaki-explore__filter--active:hover {
+  background: #c9a45c;
+  border-color: #c9a45c;
+  color: #0d1d16;
+  font-weight: 600;
+}
+
+.gandaki-explore__filter:focus-visible {
+  outline: 2px solid #f7f5ef;
+  outline-offset: 2px;
+}
+
+.gandaki-explore__count {
+  margin: 0 0 1.5rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  color: rgba(247, 245, 239, 0.55);
+}
+
+.gandaki-explore__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.gandaki-place-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background: rgba(247, 245, 239, 0.04);
+  border: 1px solid rgba(247, 245, 239, 0.12);
+  overflow: hidden;
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gandaki-place-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(201, 164, 92, 0.55);
+  box-shadow: 0 24px 50px -30px rgba(0, 0, 0, 0.8);
+}
+
+.gandaki-place-card__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.gandaki-place-card__image {
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gandaki-place-card:hover .gandaki-place-card__image {
+  transform: scale(1.07);
+}
+
+.gandaki-place-card__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 16, 12, 0) 55%, rgba(7, 16, 12, 0.6) 100%);
+}
+
+.gandaki-place-card__categories {
+  position: absolute;
+  left: 0.9rem;
+  bottom: 0.8rem;
+  right: 0.9rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.gandaki-place-card__categories li {
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(13, 29, 22, 0.72);
+  backdrop-filter: blur(4px);
+  font-family: "Inter", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #e6c98a;
+}
+
+.gandaki-place-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.25rem 1.25rem 1.4rem;
+}
+
+.gandaki-place-card__district {
+  margin: 0 0 0.3rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #c9a45c;
+}
+
+.gandaki-place-card__name {
+  margin: 0 0 0.65rem;
+  font-family: "Playfair Display", serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #f7f5ef;
+}
+
+.gandaki-place-card__description {
+  margin: 0 0 1rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: rgba(247, 245, 239, 0.74);
+}
+
+.gandaki-place-card__tags {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.gandaki-place-card__tags li {
+  padding: 0.28rem 0.65rem;
+  border: 1px solid rgba(247, 245, 239, 0.16);
+  border-radius: 999px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.74rem;
+  color: rgba(247, 245, 239, 0.75);
+}
+
+.gandaki-place-card__link {
+  margin-top: auto;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 44px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #e6c98a;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(201, 164, 92, 0.45);
+  transition: color 0.25s ease, border-color 0.25s ease, gap 0.25s ease;
+}
+
+.gandaki-place-card__link:hover {
+  color: #f7f5ef;
+  border-color: #f7f5ef;
+  gap: 0.6rem;
+}
+
+.gandaki-place-card__link:focus-visible {
+  outline: 2px solid #f7f5ef;
+  outline-offset: 3px;
+}
+
+/* After a filter change the grid is re-keyed; cards rise in with a short stagger. */
+@media (prefers-reduced-motion: no-preference) {
+  .gandaki-explore__grid--filtered .gandaki-place-card {
+    animation: gandaki-place-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--gandaki-i, 0) * 60ms);
+  }
+}
+
+@keyframes gandaki-place-in {
+  from {
+    opacity: 0;
+    translate: 0 18px;
+  }
+  to {
+    opacity: 1;
+    translate: none;
+  }
+}
+
+@media (max-width: 1100px) {
+  .gandaki-explore__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .gandaki-explore__filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin-inline: calc(-1 * clamp(1rem, 5vw, 4.5rem));
+    padding: 0.25rem clamp(1rem, 5vw, 4.5rem);
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+  }
+
+  .gandaki-explore__filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gandaki-explore__filter {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+
+  .gandaki-explore__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gandaki-explore__filter,
+  .gandaki-place-card,
+  .gandaki-place-card__image,
+  .gandaki-place-card__link {
+    transition: none;
+  }
+
+  .gandaki-place-card:hover,
+  .gandaki-place-card:hover .gandaki-place-card__image {
+    transform: none;
+  }
+}

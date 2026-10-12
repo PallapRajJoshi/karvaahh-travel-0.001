@@ -21,7 +21,7 @@ export default function SudurpaschimCTA() {
       </div>
 
       <div className="sp-container sp-cta__content">
-        <span className="sp-cta__index" aria-hidden="true">11</span>
+        <span className="sp-cta__index" aria-hidden="true">14</span>
         <p className="sp-cta__eyebrow">Sudurpaschim Awaits</p>
         <h2 id="sp-cta-heading" className="sp-cta__title">
           Go farther.
@@ -36,10 +36,10 @@ export default function SudurpaschimCTA() {
         </p>
 
         <div className="sp-cta__actions">
-          <Link href="#sp-experiences" className="sp-btn sp-btn--primary">
+          <Link href="#sp-destinations" className="sp-btn sp-btn--primary">
             Explore Sudurpaschim <span className="sp-arrow">↗</span>
           </Link>
-          <Link href="/plan-your-trip" className="sp-btn sp-btn--ghost">
+          <Link href="/contact?province=sudurpaschim" className="sp-btn sp-btn--ghost">
             Plan Your Journey
           </Link>
         </div>

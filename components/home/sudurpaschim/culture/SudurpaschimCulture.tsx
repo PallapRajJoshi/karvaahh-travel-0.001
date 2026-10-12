@@ -31,6 +31,7 @@ const cultureGroups = [
 
 const festivals = [
   "Gaura Parva",
+  "Deuda folk song & dance",
   "Dashain",
   "Tihar",
   "Holi",
@@ -48,6 +49,7 @@ export default function SudurpaschimCulture() {
     >
       <div className="sp-container sp-culture__inner">
         <SudurpaschimSectionHeading
+          id="sp-culture-heading"
           index="07"
           eyebrow="Living Traditions"
           heading="Meet the soul of the far west."
@@ -55,7 +57,7 @@ export default function SudurpaschimCulture() {
 
         <div className="sp-culture__groups">
           {cultureGroups.map((group) => (
-            <article className="sp-culture-card" key={group.number}>
+            <article className="sp-culture-card" key={group.number} data-reveal>
               <div className="sp-culture-card__media">
                 <Image
                   src={group.image}
@@ -77,9 +79,9 @@ export default function SudurpaschimCulture() {
             <p className="sp-culture__festivals-label">Signature Festival</p>
             <h3 className="sp-culture__festivals-title">Gaura Parva</h3>
             <p className="sp-culture__festivals-desc">
-              An important far-western cultural tradition, Gaura Parva brings
-              villages together in song, ritual and community celebration
-              through the autumn season.
+              An important far-western tradition, Gaura Parva brings villages
+              together in ritual and celebration in late summer, when circles
+              of dancers trade improvised Deuda verses long into the night.
             </p>
           </div>
           <ul className="sp-culture__festivals-list">

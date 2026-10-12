@@ -1,0 +1,158 @@
+.madhesh-traditions {
+  width: 100%;
+  padding: clamp(3.5rem, 8vh, 6.5rem) clamp(1rem, 5vw, 5rem);
+  background:
+    radial-gradient(ellipse at 90% 0%, rgba(201, 164, 92, 0.16), transparent 50%),
+    var(--madhesh-cream);
+}
+
+.madhesh-traditions__festivals {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.madhesh-traditions__festival {
+  position: relative;
+  padding: 1.6rem 1.5rem 1.5rem;
+  background: #fff;
+  border: 1px solid var(--madhesh-border);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: transform 0.35s var(--madhesh-ease), box-shadow 0.35s var(--madhesh-ease);
+}
+
+.madhesh-traditions__festival::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(90deg, var(--madhesh-gold), #d9773b);
+}
+
+.madhesh-traditions__festival:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px -24px rgba(7, 16, 12, 0.35);
+}
+
+.madhesh-traditions__season {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--madhesh-gold-dark);
+}
+
+.madhesh-traditions__name {
+  margin: 0.5rem 0 0.6rem;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 1.35rem;
+  color: var(--madhesh-green-900);
+}
+
+.madhesh-traditions__text {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--madhesh-ink-soft);
+}
+
+.madhesh-traditions__food {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  overflow: hidden;
+  border-radius: 1.1rem;
+  background: var(--madhesh-green-900);
+  color: var(--madhesh-cream);
+}
+
+.madhesh-traditions__food-media {
+  position: relative;
+  min-height: 320px;
+  overflow: hidden;
+}
+
+.madhesh-traditions__food-image {
+  object-fit: cover;
+  transition: transform 0.9s var(--madhesh-ease);
+}
+
+.madhesh-traditions__food:hover .madhesh-traditions__food-image {
+  transform: scale(1.05);
+}
+
+.madhesh-traditions__food-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  padding: clamp(1.75rem, 4vw, 3.25rem);
+}
+
+.madhesh-traditions__food-title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+}
+
+.madhesh-traditions__food-desc {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(247, 245, 239, 0.75);
+}
+
+.madhesh-traditions__dishes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem 1.5rem;
+}
+
+.madhesh-traditions__dishes li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--madhesh-border-on-dark);
+}
+
+.madhesh-traditions__dish-name {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--madhesh-gold);
+}
+
+.madhesh-traditions__dish-text {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: rgba(247, 245, 239, 0.72);
+}
+
+@media (max-width: 1000px) {
+  .madhesh-traditions__festivals {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .madhesh-traditions__food {
+    grid-template-columns: 1fr;
+  }
+  .madhesh-traditions__food-media {
+    min-height: 240px;
+  }
+}
+
+@media (max-width: 600px) {
+  .madhesh-traditions__festivals,
+  .madhesh-traditions__dishes {
+    grid-template-columns: 1fr;
+  }
+}

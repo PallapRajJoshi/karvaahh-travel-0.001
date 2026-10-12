@@ -601,7 +601,7 @@ export const mainNav: MainNavItem[] = [
 
             {
               label: "Char Dham Heli Tour",
-              href: "/activities/helicopter-tours/upper-mustang",
+              href: "/activities/char-dham-yatra/helicopter",
             },
           ],
         },
@@ -670,47 +670,51 @@ export const mainNav: MainNavItem[] = [
         // },
 
         {
-          title: "Domestic Flights",
+          title: "Flights & Experiences",
           href: "/activities/domestic-flights",
           items: [
-            {
-              label: "Mountain Scenic Flights",
-              href: "/activities/domestic-flights/mountain-scenic",
+
+
+ {
+              label: "Everest Scenic Flights",
+              href: "/activities/domestic-flights/everest-scenic-flights",
             },
 
             {
-              label: "Kathmandu ↔ Pokhara",
-              href: "/activities/domestic-flights/kathmandu-pokhara",
+              label: "Annapurna Scenic Flights",
+              href: "/activities/domestic-flights/annapurna-scenic-flights",
             },
 
+           
+
             {
-              label: "Pokhara ↔ Jomsom",
+              label: "Kailash Mansarovar Scenic Flights",
               href: "/activities/domestic-flights/pokhara-jomsom",
             },
 
             {
-              label: "Kathmandu ↔ Bharatpur",
-              href: "/activities/domestic-flights/kathmandu-bharatpur",
+              label: "Lukla Scenic Flights",
+              href: "/activities/domestic-flights/lukla-scenic-flights",
             },
 
             {
-              label: "Kathmandu ↔ Nepalgunj",
-              href: "/activities/domestic-flights/kathmandu-nepalgunj",
+              label: "Leah & Ladkh Scenic Flights",
+              href: "/activities/domestic-flights/leh-ladakh-scenic-flights",
             },
 
             {
-              label: "Kathmandu ↔ Lukla",
-              href: "/activities/domestic-flights/kathmandu-lukla",
+              label: "Domestic Nepal Flights",
+              href: "/activities/domestic-flights/domestic-nepal-flights",
             },
 
             {
-              label: "Kathmandu ↔ Janakpur",
-              href: "/activities/domestic-flights/kathmandu-janakpur",
+              label: "Domestic India Flights",
+              href: "/activities/domestic-flights/domestic-india-flights",
             },
 
             {
-              label: "Kathmandu ↔ Bhairahawa",
-              href: "/activities/domestic-flights/kathmandu-bhairahawa",
+              label: "International Flights",
+              href: "/activities/domestic-flights/international-flights",
             },
           ],
         },
@@ -736,7 +740,7 @@ export const mainNav: MainNavItem[] = [
 
             {
               label: "Destination Weddings",
-              href: "/activities/educational-corporate/corporate-meetings",
+              href: "/experience/destination-weddings",
             },
 
             {

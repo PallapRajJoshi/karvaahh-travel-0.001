@@ -1,7 +1,7 @@
 .sp-hero {
   position: relative;
   height: var(--sp-section-height);
-  min-height: 560px;
+  min-height: 600px;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
@@ -18,27 +18,57 @@
 
 .sp-hero__image {
   object-fit: cover;
+  transform-origin: 60% 40%;
 }
 
 .sp-hero__scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(7, 16, 12, 0.35) 0%,
-    rgba(7, 16, 12, 0.55) 55%,
-    rgba(7, 16, 12, 0.92) 100%
-  );
+  background:
+    linear-gradient(90deg, rgba(8, 17, 31, 0.7) 0%, rgba(8, 17, 31, 0) 65%),
+    linear-gradient(
+      180deg,
+      rgba(8, 17, 31, 0.35) 0%,
+      rgba(13, 26, 46, 0.5) 55%,
+      rgba(8, 17, 31, 0.95) 100%
+    );
+}
+
+/* Slow cinematic push-in and staggered entrance; skipped for reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  .sp-hero__image {
+    animation: sp-hero-zoom 22s ease-out both;
+  }
+
+  .sp-hero__enter {
+    animation: sp-hero-rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(0.15s + var(--s, 0) * 0.12s);
+  }
+}
+
+@keyframes sp-hero-zoom {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes sp-hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
 }
 
 .sp-hero__content {
   position: relative;
   z-index: 1;
-  max-width: 760px;
 }
 
 .sp-hero__eyebrow {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--sp-gold);
@@ -48,9 +78,10 @@
 .sp-hero__title {
   font-family: var(--sp-font-display);
   font-weight: 600;
-  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  font-size: clamp(2.5rem, 6.4vw, 5rem);
+  letter-spacing: -0.01em;
   line-height: 1.02;
-  margin: 0 0 1.1rem;
+  margin: 0 0 1.25rem;
 }
 
 .sp-hero__title-line {
@@ -61,9 +92,14 @@
 
 .sp-hero__headline {
   font-family: var(--sp-font-display);
-  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  font-size: clamp(1.1rem, 1.8vw, 1.45rem);
+  font-style: italic;
   font-weight: 500;
-  margin: 0 0 1rem;
+  line-height: 1.4;
+  max-width: 34ch;
+  margin: 0 0 1.1rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--sp-gold);
   color: var(--sp-cream);
 }
 
@@ -72,34 +108,7 @@
   line-height: 1.7;
   max-width: 54ch;
   color: rgba(247, 245, 239, 0.82);
-  margin: 0 0 1.75rem;
-}
-
-.sp-hero__meta {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  font-size: 0.85rem;
-  letter-spacing: 0.05em;
-  margin-bottom: 2rem;
-}
-
-.sp-hero__location {
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--sp-cream);
-}
-
-.sp-hero__divider {
-  width: 1px;
-  height: 14px;
-  background: rgba(247, 245, 239, 0.4);
-}
-
-.sp-hero__tagline {
-  font-style: italic;
-  color: var(--sp-gold);
-  font-family: var(--sp-font-display);
+  margin: 0 0 2rem;
 }
 
 .sp-hero__actions {
@@ -109,7 +118,8 @@
 }
 
 .sp-hero__highlights {
-  position: relative;
+  position: absolute;
+  inset: auto 0 0 0;
   z-index: 1;
   list-style: none;
   margin: 0;
@@ -117,7 +127,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   border-top: 1px solid rgba(247, 245, 239, 0.18);
-  background: rgba(7, 16, 12, 0.55);
+  background: rgba(8, 17, 31, 0.55);
   backdrop-filter: blur(6px);
 }
 
@@ -155,29 +165,41 @@
   .sp-hero {
     height: auto;
     min-height: 100svh;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-end;
     padding-top: 7.5rem;
     padding-bottom: 0;
-    align-items: flex-start;
+  }
+
+  .sp-hero__content {
+    padding-bottom: 2.5rem;
   }
 
   .sp-hero__highlights {
     position: static;
-    grid-template-columns: 1fr;
   }
 
   .sp-hero__highlight {
-    border-left: none;
-    border-top: 1px solid rgba(247, 245, 239, 0.14);
-  }
-
-  .sp-hero__highlight:first-child {
-    border-top: none;
+    padding: 0.9rem 1rem;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 560px) {
+  .sp-hero {
+    padding-top: 6.5rem;
+  }
+
+  .sp-hero__highlight-detail {
+    display: none;
+  }
+
   .sp-hero__actions {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+  }
+
+  .sp-hero__actions .sp-btn {
+    justify-content: center;
   }
 }

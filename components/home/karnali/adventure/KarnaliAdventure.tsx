@@ -1,4 +1,4 @@
-import Image from "next/image";
+import SafeImage from "@/components/shared/SafeImage";
 import "./karnali-adventure.css";
 
 const activities = [
@@ -9,7 +9,7 @@ const activities = [
   "Mountain photography",
   "Mountain expeditions",
   "Mountain biking on suitable routes",
-  "River experiences",
+  "Karnali River rafting",
   "Wildlife observation",
   "Birdwatching",
   "Village homestays",
@@ -23,14 +23,14 @@ export default function KarnaliAdventure() {
       aria-label="Adventure in Karnali"
     >
       <div className="karnali-adventure-visual">
-        <Image
+        <SafeImage
           src="/karnali/adventure.jpg"
           alt="Expedition trekkers crossing remote terrain in Dolpo, Karnali"
           fill
           sizes="(max-width: 900px) 100vw, 50vw"
           className="karnali-adventure-image"
         />
-        <span className="karnali-num">04</span>
+        <span className="karnali-num">07</span>
       </div>
 
       <div className="karnali-adventure-content">
@@ -43,7 +43,7 @@ export default function KarnaliAdventure() {
         <p className="karnali-adventure-description">
           Dolpo, Shey Phoksundo and Phoksundo Lake. Humla and Limi Valley. Jumla
           and the Sinja Valley. Rara, Sisne Himal, Putha Himal, Patarasi Himal
-          and the Saipal landscapes — Karnali's terrain rewards those who
+          and the Saipal landscapes — Karnali&rsquo;s terrain rewards those who
           travel further and slower.
         </p>
 

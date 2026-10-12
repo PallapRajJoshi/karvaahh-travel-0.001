@@ -1,0 +1,235 @@
+.bagmati-traditions,
+.bagmati-plan {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 96px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.bagmati-traditions {
+  background: #efebe1;
+}
+
+.bagmati-plan {
+  background: #f7f5ef;
+}
+
+.bagmati-plan__subtitle {
+  margin: 0 0 20px;
+  font-family: "Playfair Display", serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: #0d1d16;
+}
+
+.bagmati-plan__note {
+  margin: 14px 0 0;
+  font-family: "Inter", sans-serif;
+  font-size: 0.78rem;
+  color: #6b766f;
+}
+
+/* ---------- Traditions ---------- */
+
+.bagmati-traditions__layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 56px;
+}
+
+.bagmati-traditions__flavours {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bagmati-traditions__flavours li {
+  padding: 22px 24px;
+  background: #fff;
+  border-radius: 16px;
+  border-left: 3px solid #c9a45c;
+}
+
+.bagmati-traditions__flavours h4,
+.bagmati-plan__seasons h4 {
+  margin: 0 0 6px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #0d1d16;
+}
+
+.bagmati-traditions__flavours p,
+.bagmati-plan__seasons p {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: #4a5750;
+}
+
+.bagmati-traditions__festivals {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid rgba(13, 29, 22, 0.12);
+}
+
+.bagmati-traditions__festivals li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(13, 29, 22, 0.12);
+}
+
+.bagmati-traditions__festival-name {
+  font-family: "Playfair Display", serif;
+  font-size: 1.05rem;
+  color: #0d1d16;
+}
+
+.bagmati-traditions__festival-meta {
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  color: #6b766f;
+}
+
+/* ---------- Plan ---------- */
+
+.bagmati-plan__seasons {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.bagmati-plan__seasons li {
+  padding: 22px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid #e7e4dd;
+}
+
+.bagmati-plan__seasons li.is-best {
+  border-color: #c9a45c;
+  background: linear-gradient(180deg, #fffaf0 0%, #fff 100%);
+}
+
+.bagmati-plan__months {
+  display: block;
+  margin-bottom: 10px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #b8954e;
+}
+
+.bagmati-plan__badge {
+  margin-left: 8px;
+  padding: 2px 8px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  vertical-align: middle;
+  color: #07100c;
+  background: #c9a45c;
+  border-radius: 999px;
+}
+
+.bagmati-plan__columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+}
+
+.bagmati-plan__access {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.bagmati-plan__access dt {
+  font-family: "Inter", sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #0d1d16;
+  margin-bottom: 4px;
+}
+
+.bagmati-plan__access dd,
+.bagmati-plan__list li,
+.bagmati-plan__tips li {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: #4a5750;
+}
+
+.bagmati-plan__list,
+.bagmati-plan__tips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.bagmati-plan__tips {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 40px;
+}
+
+.bagmati-plan__list li,
+.bagmati-plan__tips li {
+  position: relative;
+  padding-left: 22px;
+}
+
+.bagmati-plan__list li::before,
+.bagmati-plan__tips li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c9a45c;
+}
+
+@media (max-width: 1100px) {
+  .bagmati-traditions,
+  .bagmati-plan {
+    padding: 72px 32px;
+  }
+  .bagmati-traditions__layout,
+  .bagmati-plan__columns {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .bagmati-plan__seasons {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .bagmati-traditions,
+  .bagmati-plan {
+    padding: 56px 16px;
+    gap: 36px;
+  }
+  .bagmati-plan__seasons,
+  .bagmati-plan__tips {
+    grid-template-columns: 1fr;
+  }
+}

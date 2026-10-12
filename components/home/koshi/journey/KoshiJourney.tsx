@@ -83,7 +83,7 @@ export default function KoshiJourney() {
         {/* CTA */}
         <div className="koshi-journey__footer">
           <Link
-            href="/packages"
+            href="#circuits"
             className="koshi-journey__button"
           >
             <span>Plan your Koshi journey</span>

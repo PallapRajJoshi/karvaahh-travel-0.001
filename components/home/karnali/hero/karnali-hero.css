@@ -22,17 +22,25 @@
 
 .karnali-hero-image {
   object-fit: cover;
+  transform-origin: 60% 40%;
+  animation: karnali-hero-zoom 18s var(--k-ease) both;
+}
+
+@keyframes karnali-hero-zoom {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 .karnali-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(7, 16, 12, 0.55) 0%,
-    rgba(7, 16, 12, 0.35) 40%,
-    rgba(7, 16, 12, 0.85) 100%
-  );
+  background:
+    linear-gradient(90deg, rgba(6, 20, 38, 0.82) 0%, rgba(6, 20, 38, 0.35) 60%, rgba(6, 20, 38, 0.15) 100%),
+    linear-gradient(180deg, rgba(6, 20, 38, 0.45) 0%, rgba(6, 20, 38, 0.1) 40%, rgba(6, 20, 38, 0.9) 100%);
 }
 
 .karnali-hero-content {
@@ -78,57 +86,13 @@
   max-width: 46ch;
 }
 
-.karnali-hero-meta {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 2rem;
-  font-family: var(--k-font-sans);
-}
-
-.karnali-hero-location {
-  color: var(--k-gold);
-  font-size: 0.78rem;
-  letter-spacing: 0.2em;
-  font-weight: 600;
-}
-
-.karnali-hero-divider {
-  width: 1px;
-  height: 14px;
-  background: var(--k-line);
-}
-
-.karnali-hero-tagline {
-  color: var(--k-cream);
-  font-size: 0.85rem;
-  font-style: italic;
-  opacity: 0.85;
-}
-
 .karnali-hero-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
   margin-top: 2.25rem;
 }
 
-.karnali-hero-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-family: var(--k-font-sans);
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--k-forest-900);
-  background: var(--k-gold);
-  padding: 0.9rem 1.6rem;
-  border-radius: var(--k-radius);
-  text-decoration: none;
-  transition: background 0.3s var(--k-ease);
-}
-
-.karnali-hero-cta:hover {
-  background: var(--k-cream);
-}
 
 .karnali-hero-highlights {
   position: absolute;
@@ -138,8 +102,11 @@
   z-index: 2;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  margin: 0;
+  padding: 0;
+  list-style: none;
   border-top: 1px solid var(--k-line);
-  background: rgba(7, 16, 12, 0.55);
+  background: rgba(6, 20, 38, 0.55);
   backdrop-filter: blur(6px);
 }
 
@@ -182,8 +149,12 @@
   .karnali-hero {
     height: auto;
     min-height: 100svh;
-    padding-top: 6rem;
-    padding-bottom: 0;
+    padding: 6rem 1rem 0;
+  }
+
+  .karnali-hero-highlights {
+    margin-left: -1rem !important;
+    margin-right: -1rem !important;
   }
 
   .karnali-hero-highlights {
@@ -195,5 +166,18 @@
   .karnali-hero-highlight {
     border-right: none;
     border-bottom: 1px solid var(--k-line);
+  }
+}
+
+@media (max-width: 480px) {
+  .karnali-hero-cta-row .karnali-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .karnali-hero-image {
+    animation: none;
   }
 }

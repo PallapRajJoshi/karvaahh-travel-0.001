@@ -1,6 +1,5 @@
 .madhesh-culture {
-  height: var(--madhesh-section-h);
-  min-height: 560px;
+  min-height: max(var(--madhesh-section-h), 560px);
   display: grid;
   grid-template-columns: 1fr 1fr;
   background: var(--madhesh-green-900);

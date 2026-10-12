@@ -68,6 +68,41 @@
   margin: 0 0 1.75rem;
 }
 
+.sp-adventure__treks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0 0 1.75rem;
+}
+
+.sp-adventure__trek {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  padding: 0.55rem 1rem;
+  border: 1px solid rgba(201, 164, 92, 0.5);
+  color: var(--sp-gold);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.sp-adventure__trek:hover {
+  background: var(--sp-gold);
+  color: var(--sp-forest-900);
+}
+
+.sp-adventure__trek:hover .sp-arrow {
+  transform: translateX(4px);
+}
+
+.sp-adventure__trek:focus-visible {
+  outline: 2px solid var(--sp-gold);
+  outline-offset: 3px;
+}
+
 .sp-adventure__activities {
   list-style: none;
   margin: 0 0 2rem;

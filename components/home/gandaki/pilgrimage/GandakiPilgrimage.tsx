@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import "./gandaki-pilgrimage.css";
 
 const sites = [
@@ -14,11 +15,11 @@ const sites = [
 
 export default function GandakiPilgrimage() {
   return (
-    <section className="gandaki-pilgrimage" aria-label="Pilgrimage in Gandaki">
+    <section className="gandaki-pilgrimage" id="pilgrimage" aria-labelledby="gandaki-pilgrimage-title">
       <div className="gandaki-pilgrimage__media">
         <Image
-          src="/images/gandaki/poon-hill-sunrise-dhaulagiri-myagdi-gandaki-nepal.jpg"
-          alt="Pilgrims at the Muktinath temple complex in the Mustang highlands"
+          src="/images/home/muktinath-view.jpg"
+          alt="A Buddhist monastery near Muktinath with Dhaulagiri on the horizon"
           fill
           sizes="100vw"
           className="gandaki-pilgrimage__image"
@@ -26,16 +27,22 @@ export default function GandakiPilgrimage() {
         <div className="gandaki-pilgrimage__scrim" />
       </div>
 
-      <div className="gandaki-pilgrimage__content">
-        <span className="gandaki-pilgrimage__index">06</span>
+      <div className="gandaki-pilgrimage__content gandaki-reveal">
+        <span className="gandaki-pilgrimage__index" aria-hidden="true">
+          05
+        </span>
         <p className="gandaki-pilgrimage__eyebrow">FAITH IN THE HIGHLANDS</p>
-        <h2 className="gandaki-pilgrimage__title">
+        <h2 id="gandaki-pilgrimage-title" className="gandaki-pilgrimage__title">
           Sacred mountains,
           <em> timeless faith.</em>
         </h2>
         <p className="gandaki-pilgrimage__description">
           Across Gandaki, sacred temples, mountain shrines, monasteries and pilgrimage routes
           connect the valleys with some of Nepal&rsquo;s most dramatic Himalayan landscapes.
+          Muktinath is revered by Hindus and Buddhists alike, Manakamana draws devotees by cable
+          car, and Pokhara&rsquo;s Tal Barahi and Bindhyabasini temples anchor the lakeside city.
+          Devghat, where the Kali Gandaki meets the Trishuli, is a revered confluence for ritual
+          bathing.
         </p>
 
         <ul className="gandaki-pilgrimage__sites">
@@ -45,6 +52,10 @@ export default function GandakiPilgrimage() {
             </li>
           ))}
         </ul>
+
+        <Link href="/spiritual-journeys/pashupatinath" className="gandaki-pilgrimage__cta">
+          Pashupatinath &amp; Muktinath Yatra <span aria-hidden="true">↗</span>
+        </Link>
       </div>
     </section>
   );

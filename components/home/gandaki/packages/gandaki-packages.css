@@ -1,0 +1,179 @@
+.gandaki-packages {
+  box-sizing: border-box;
+  width: 100%;
+  padding: clamp(3.5rem, 7vw, 6rem) clamp(1rem, 5vw, 4.5rem);
+  background:
+    radial-gradient(ellipse at 10% 100%, rgba(201, 164, 92, 0.12) 0%, rgba(201, 164, 92, 0) 55%),
+    #0d1d16;
+  color: #f7f5ef;
+}
+
+.gandaki-packages__inner {
+  max-width: 92rem;
+  margin: 0 auto;
+}
+
+.gandaki-packages .gandaki-heading__eyebrow,
+.gandaki-packages .gandaki-heading__emphasis {
+  color: #c9a45c;
+}
+
+.gandaki-packages .gandaki-heading__title {
+  color: #f7f5ef;
+}
+
+.gandaki-packages .gandaki-heading__description {
+  color: rgba(247, 245, 239, 0.7);
+}
+
+.gandaki-packages__grid {
+  list-style: none;
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.gandaki-package-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background: #f7f5ef;
+  color: #0d1d16;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gandaki-package-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 50px -28px rgba(0, 0, 0, 0.85);
+}
+
+.gandaki-package-card__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.gandaki-package-card__image {
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.gandaki-package-card:hover .gandaki-package-card__image {
+  transform: scale(1.06);
+}
+
+.gandaki-package-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.25rem 1.3rem 1.4rem;
+}
+
+.gandaki-package-card__meta {
+  margin: 0 0 0.35rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #b8954e;
+}
+
+.gandaki-package-card__title {
+  margin: 0 0 0.6rem;
+  font-family: "Playfair Display", serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.gandaki-package-card__text {
+  margin: 0 0 1.1rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #55645b;
+}
+
+.gandaki-package-card__link {
+  margin-top: auto;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 44px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #0d1d16;
+  text-decoration: none;
+  border-bottom: 1px solid #c9a45c;
+  transition: color 0.25s ease, gap 0.25s ease;
+}
+
+.gandaki-package-card__link:hover {
+  color: #b8954e;
+  gap: 0.6rem;
+}
+
+.gandaki-package-card__link:focus-visible {
+  outline: 2px solid #c9a45c;
+  outline-offset: 3px;
+}
+
+.gandaki-package-card--custom {
+  background: linear-gradient(150deg, #c9a45c 0%, #b8954e 100%);
+  justify-content: flex-end;
+  min-height: 280px;
+}
+
+.gandaki-package-card--custom .gandaki-package-card__meta,
+.gandaki-package-card--custom .gandaki-package-card__text {
+  color: rgba(13, 29, 22, 0.78);
+}
+
+.gandaki-package-card--custom .gandaki-package-card__title {
+  font-size: 1.6rem;
+}
+
+.gandaki-package-card--custom .gandaki-package-card__link {
+  border-color: #0d1d16;
+}
+
+.gandaki-package-card--custom .gandaki-package-card__link:hover {
+  color: #f7f5ef;
+  border-color: #f7f5ef;
+}
+
+@media (max-width: 1100px) {
+  .gandaki-packages__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .gandaki-packages__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gandaki-package-card--custom {
+    min-height: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gandaki-package-card,
+  .gandaki-package-card__image,
+  .gandaki-package-card__link {
+    transition: none;
+  }
+
+  .gandaki-package-card:hover,
+  .gandaki-package-card:hover .gandaki-package-card__image {
+    transform: none;
+  }
+}

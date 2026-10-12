@@ -1,7 +1,7 @@
 "use client";
 
 import "@/app/navbar.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Fraunces } from "next/font/google";
 import { siteInfo, ctaLink } from "@/lib/navigation-data";
@@ -19,9 +19,15 @@ const fraunces = Fraunces({
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [spacerHeight, setSpacerHeight] = useState<number | null>(null);
+  const headerRef = useRef<HTMLElement>(null);
+  const isScrolledRef = useRef(false);
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 24);
+    const onScroll = () => {
+      isScrolledRef.current = window.scrollY > 24;
+      setIsScrolled(isScrolledRef.current);
+    };
 
     onScroll();
 
@@ -34,8 +40,35 @@ export default function Navbar() {
     };
   }, []);
 
+  // The header is position: fixed (not sticky) so it stays pinned even on pages
+  // whose wrappers set overflow: hidden. The spacer below reserves its
+  // unscrolled height so content never slides underneath or jumps when it
+  // compacts; --site-header-h exposes the live height for in-page sticky bars.
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+
+    const measure = () => {
+      const height = el.offsetHeight;
+      document.documentElement.style.setProperty("--site-header-h", `${height}px`);
+      if (!isScrolledRef.current) setSpacerHeight(height);
+    };
+
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(el);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 w-full">
+    <>
+    <div
+      aria-hidden="true"
+      className={spacerHeight === null ? "h-[77px] md:h-[125px]" : undefined}
+      style={spacerHeight === null ? undefined : { height: spacerHeight }}
+    />
+    <header ref={headerRef} className="fixed inset-x-0 top-0 z-50 w-full">
       
       {/* TOP CONTACT BAR */}
       <TopBar />
@@ -93,5 +126,6 @@ export default function Navbar() {
         </div>
       </div>
     </header>
+    </>
   );
 }

@@ -21,7 +21,7 @@ const heritageSites = [
 
 export default function BagmatiHeritage() {
   return (
-    <section className="bagmati-heritage" aria-label="Heritage of Bagmati">
+    <section className="bagmati-heritage" id="heritage" aria-label="Heritage of Bagmati">
       <div className="bagmati-heritage__media">
         <Image
           src="/images/bagmati/swayambhunath-stupa-kathmandu-valley-unesco-heritage-nepal.jpg"

@@ -4,11 +4,11 @@ import "./gandaki-cta.css";
 
 export default function GandakiCTA() {
   return (
-    <section className="gandaki-cta" aria-label="Plan your Gandaki journey">
+    <section className="gandaki-cta" aria-labelledby="gandaki-cta-title">
       <div className="gandaki-cta__media">
         <Image
           src="/images/gandaki/scenic-mountain-road-gandaki-nepal-travel-journey.jpg"
-          alt="Golden light over the Annapurna range at dusk"
+          alt="Mountain highway winding towards snow-capped Himalayan peaks"
           fill
           sizes="100vw"
           className="gandaki-cta__image"
@@ -16,21 +16,23 @@ export default function GandakiCTA() {
         <div className="gandaki-cta__scrim" />
       </div>
 
-      <div className="gandaki-cta__content">
-        <span className="gandaki-cta__index">11</span>
+      <div className="gandaki-cta__content gandaki-reveal">
+        <span className="gandaki-cta__index" aria-hidden="true">
+          14
+        </span>
         <p className="gandaki-cta__eyebrow">READY WHEN YOU ARE</p>
-        <h2 className="gandaki-cta__title">Plan your Gandaki journey</h2>
+        <h2 id="gandaki-cta-title" className="gandaki-cta__title">Plan your Gandaki journey</h2>
         <p className="gandaki-cta__description">
-          Pokhara International Airport connects Gandaki to the rest of Nepal, with road
-          routes linking Kathmandu, Chitwan, Lumbini, Mustang, Manang and Gorkha. Let us help
-          you build a route through the mountains and lakes at your own pace.
+          Lakeside stays, Muktinath darshan, a first teahouse trek or a high-pass expedition —
+          tell us how you like to travel and we will shape a Gandaki route around your dates,
+          permits and pace.
         </p>
         <div className="gandaki-cta__actions">
-          <Link href="/plan-your-trip" className="gandaki-cta__primary">
+          <Link href="/contact" className="gandaki-cta__primary">
             Start planning <span aria-hidden="true">↗</span>
           </Link>
-          <Link href="/contact" className="gandaki-cta__secondary">
-            Talk to a specialist
+          <Link href="#packages" className="gandaki-cta__secondary">
+            Browse featured tours
           </Link>
         </div>
       </div>

@@ -1,56 +1,82 @@
-export interface GandakiJourneyStop {
+export interface GandakiRoute {
   id: string;
   index: string;
   title: string;
+  theme: string;
+  /** Stops in travel order — no distances or durations are implied. */
+  stops: string[];
   description: string;
+  bestFor: string;
   image: string;
   alt: string;
+  link: { href: string; label: string };
 }
 
-export const gandakiJourney: GandakiJourneyStop[] = [
+/** Suggested routes; links point only at existing Karvaahh pages or the contact page. */
+export const gandakiRoutes: GandakiRoute[] = [
   {
-    id: "pokhara",
+    id: "pokhara-explorer",
     index: "01",
-    title: "Pokhara",
+    title: "Pokhara Explorer",
+    theme: "Lakes & viewpoints",
+    stops: ["Phewa Lake & Tal Barahi", "Sarangkot", "World Peace Pagoda", "Davis Falls & Gupteshwor Cave", "Begnas Lake"],
     description:
-      "Lakes, mountains, caves and temples set the tone — Gandaki's gateway city, and one of Nepal's principal adventure hubs.",
-    image: "/images/gandaki/pokhara-phewa-lake-annapurna-mountains-gandaki-Nepal.jpg",
-    alt: "Pokhara waterfront with the Annapurna range behind it",
+      "Row out to the island temple on Phewa, catch sunrise from Sarangkot, then link the Peace Pagoda ridge, the falls and caves south of the city and quieter Begnas Lake.",
+    bestFor: "First-time visitors, families, short stays",
+    image: "/images/gandaki/phewa-lake-annapurna-mountain-reflection-gandaki-nepal.jpg",
+    alt: "Still lake reflecting the Annapurna range above forested hills",
+    link: { href: "/activities/adventure/paragliding", label: "Add paragliding" },
   },
   {
-    id: "bandipur-ghandruk",
+    id: "annapurna-cultural-journey",
     index: "02",
-    title: "Bandipur & Ghandruk",
+    title: "Annapurna Cultural Journey",
+    theme: "Gurung villages & teahouse trails",
+    stops: ["Pokhara", "Nayapul", "Ghorepani & Poon Hill", "Tadapani", "Ghandruk"],
     description:
-      "Hill villages rich in heritage — Newar architecture in Bandipur, Gurung tradition in Ghandruk, both framed by sweeping mountain views.",
-    image: "/images/gandaki/bandipur-ghandruk-heritage-hill-villages-gandaki-Nepal.jpg",
-    alt: "Traditional houses along the streets of Bandipur",
+      "A short teahouse trek through rhododendron forest to the Poon Hill sunrise, then on to Ghandruk's Gurung stone houses — big mountain views without high altitude.",
+    bestFor: "Easy–moderate trekkers, families with older children",
+    image: "/images/gandaki/poon-hill-sunrise-dhaulagiri-myagdi-gandaki-nepal.jpg",
+    alt: "Lodges at Ghorepani with the Dhaulagiri range rising behind",
+    link: { href: "/contact", label: "Plan this trek" },
   },
   {
-    id: "annapurna",
+    id: "mustang-spiritual-journey",
     index: "03",
-    title: "Annapurna",
+    title: "Mustang Spiritual Journey",
+    theme: "Pilgrimage & high desert",
+    stops: ["Pokhara", "Jomsom", "Kagbeni", "Muktinath"],
     description:
-      "High trails, mountain passes and villages strung along some of the most celebrated trekking routes in the Himalaya.",
-    image: "/images/gandaki/annapurna-circuit-high-mountain-trail-pass-gandaki-Nepal.jpg",
-    alt: "Trekking trail winding through the Annapurna region",
+      "Fly or drive up the Kali Gandaki between Dhaulagiri and Annapurna, overnight in Jomsom or Kagbeni, then continue to Muktinath for darshan at the 108 water spouts.",
+    bestFor: "Pilgrims, families and senior travellers who pace the altitude",
+    image: "/images/gandaki/kagbeni-ancient-village-kali-gandaki-mustang-nepal.jpg",
+    alt: "Mud-brick houses of Kagbeni on the Kali Gandaki with Nilgiri behind",
+    link: { href: "/spiritual-journeys/pashupatinath", label: "Pashupatinath & Muktinath Yatra" },
   },
   {
-    id: "mustang",
+    id: "annapurna-circuit-adventure",
     index: "04",
-    title: "Mustang",
+    title: "Annapurna Circuit Adventure",
+    theme: "High valleys & a 5,416 m pass",
+    stops: ["Besisahar", "Chame", "Pisang", "Manang", "Thorong La", "Muktinath"],
     description:
-      "Muktinath, the Kali Gandaki gorge, Marpha and Kagbeni — a high desert landscape shaped by Tibetan-influenced culture.",
-    image: "/images/gandaki/kagbeni-ancient-village-kali-gandaki-mustang-Nepal.jpg",
-    alt: "Weathered cliffs and cave settlements in Mustang",
+      "Follow the Marsyangdi valley from the Lamjung hills into the rain-shadow villages of Manang, acclimatise, then cross Thorong La and descend to Muktinath and the Kali Gandaki.",
+    bestFor: "Fit trekkers prepared for high altitude",
+    image: "/images/gandaki/manang-village-annapurna-mountain-wall-gandaki-nepal.jpg",
+    alt: "Manang valley village beneath eroded cliffs on the Annapurna Circuit",
+    link: { href: "/packages/manang-circuit-trek", label: "Manang Circuit Trek" },
   },
   {
-    id: "manaslu-gorkha",
+    id: "heritage-and-hills",
     index: "05",
-    title: "Manaslu & Gorkha",
+    title: "Heritage & Hills",
+    theme: "Temples & hill towns",
+    stops: ["Manakamana", "Gorkha Durbar", "Bandipur", "Pokhara"],
     description:
-      "Historic heritage at Gorkha Durbar, mountain villages beyond the road, and remote trekking around the Manaslu massif.",
-    image: "/images/gandaki/manaslu-circuit-trekking-mountain-massif-gorkha-nepal.jpg",
-    alt: "Manaslu peak rising above a remote mountain village",
+      "Break the Kathmandu–Pokhara drive on the Prithvi Highway: ride the cable car to Manakamana, detour to the palace-fort at Gorkha, then spend a night in Bandipur's car-free bazaar.",
+    bestFor: "Culture lovers, road travellers, families",
+    image: "/images/gandaki/bandipur-heritage-hill-town-tanahun-gandaki-nepal.jpg",
+    alt: "Bandipur hill town at dusk with the Himalaya on the horizon",
+    link: { href: "/packages/nepal/spiritual-pilgrimage-tours#packages", label: "Manakamana & Pokhara tours" },
   },
 ];

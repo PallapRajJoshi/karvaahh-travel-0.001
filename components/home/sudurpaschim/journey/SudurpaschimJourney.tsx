@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { sudurpaschimJourney } from "@/data/sudurpaschim/journey";
@@ -13,14 +14,20 @@ export default function SudurpaschimJourney() {
     >
       <div className="sp-container sp-journey__inner">
         <SudurpaschimSectionHeading
+          id="sp-journey-heading"
           index="10"
           eyebrow="The Route"
           heading="From the plains to the high Himalayas."
         />
 
         <ol className="sp-journey__route">
-          {sudurpaschimJourney.map((stop) => (
-            <li className="sp-journey__stop" key={stop.number}>
+          {sudurpaschimJourney.map((stop, index) => (
+            <li
+              className="sp-journey__stop"
+              key={stop.number}
+              data-reveal
+              style={{ "--d": index } as CSSProperties}
+            >
               <div className="sp-journey__stop-media">
                 <Image
                   src={stop.image}
@@ -38,7 +45,7 @@ export default function SudurpaschimJourney() {
         </ol>
 
         <div className="sp-journey__cta">
-          <Link href="/plan-your-trip" className="sp-btn sp-btn--primary">
+          <Link href="/contact?province=sudurpaschim" className="sp-btn sp-btn--primary">
             Plan Your Sudurpaschim Journey <span className="sp-arrow">↗</span>
           </Link>
         </div>

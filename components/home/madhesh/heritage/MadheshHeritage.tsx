@@ -13,7 +13,7 @@ const heritageFocus = [
 
 export default function MadheshHeritage() {
   return (
-    <section className="madhesh-heritage" aria-label="Heritage and archaeology of Madhesh">
+    <section id="heritage" className="madhesh-heritage" aria-label="Heritage and archaeology of Madhesh">
       <div className="madhesh-heritage__media">
         <Image
           src="/images/madhesh/madhesh-ancient-stories-simraungadh-salhesh-heritage-janakpur.jpg"
@@ -32,7 +32,10 @@ export default function MadheshHeritage() {
           <span className="madhesh-gold-italic">still alive.</span>
         </h2>
         <p className="madhesh-heritage__desc">
-          From the lost capital of Simraungadh to the Salhesh heritage
+          This was the land of ancient Videha, and later of the Karnat
+          (Tirhut) kings who ruled Mithila from Simraungadh from the late 11th
+          century until the city fell in the 14th. From the lost capital of
+          Simraungadh to the Salhesh heritage
           circuit and the Pataura archaeological area, Madhesh preserves
           centuries of architecture, folklore and sacred sites — best
           explored on foot with time to look closely.

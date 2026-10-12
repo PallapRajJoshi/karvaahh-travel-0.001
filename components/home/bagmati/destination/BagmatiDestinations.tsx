@@ -14,7 +14,7 @@ export default function BagmatiDestinations() {
   return (
     <section className="bagmati-destinations" aria-label="Places to go in Bagmati">
       <BagmatiSectionHeading
-        eyebrow="Places to Go"
+        eyebrow="13 Districts at a Glance"
         heading={
           <>
             The many faces
@@ -22,6 +22,7 @@ export default function BagmatiDestinations() {
             of <em>Bagmati</em>
           </>
         }
+        description="Browse every district and the places travellers love within each — from valley heritage towns to remote Himalayan villages."
       />
 
       <div className="bagmati-destinations__layout">

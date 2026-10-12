@@ -14,7 +14,7 @@ export const bagmatiDistricts: BagmatiDistrict[] = [
   {
     id: "kathmandu",
     name: "Kathmandu",
-    image: "/images/bagmati/kathmandu-durbar-square-heritage-city-bagmati-Nepal.jpg",
+    image: "/images/bagmati/kathmandu-durbar-square-heritage-city-bagmati-nepal.jpg",
     summary: "The valley's ancient capital, dense with temples, courtyards and living heritage.",
     places: [
       { name: "Kathmandu Durbar Square" },
@@ -38,7 +38,7 @@ export const bagmatiDistricts: BagmatiDistrict[] = [
   {
     id: "lalitpur",
     name: "Lalitpur",
-    image: "/images/bagmati/lalitpur-patan-durbar-square-krishna-mandir-heritage-Nepal.jpg",
+    image: "/images/bagmati/lalitpur-patan-durbar-square-krishna-mandir-heritage-nepal.jpg",
     summary: "The city of fine arts, known for its Newar craftsmanship and courtyards.",
     places: [
       { name: "Patan Durbar Square" },
@@ -56,7 +56,7 @@ export const bagmatiDistricts: BagmatiDistrict[] = [
   {
     id: "bhaktapur",
     name: "Bhaktapur",
-    image: "/images/bagmati/bhaktapur-durbar-square-nyatapola-temple-heritage-Nepal.jpg",
+    image: "/images/bagmati/bhaktapur-durbar-square-nyatapola-temple-heritage-nepal.jpg",
     summary: "A living medieval city of red brick, pagodas and pottery squares.",
     places: [
       { name: "Bhaktapur Durbar Square" },
@@ -89,7 +89,7 @@ export const bagmatiDistricts: BagmatiDistrict[] = [
   {
     id: "sindhupalchok",
     name: "Sindhupalchok",
-    image: "/images/bagmati/panch-pokhari-sindhupalchok-high-altitude-lake-himalayan-Nepal.jpg",
+    image: "/images/bagmati/panch-pokhari-sindhupalchok-high-altitude-lake-himalayan-nepal.jpg",
     summary: "A rugged trekking corridor toward the Gaurishankar Himalaya.",
     places: [
       { name: "Helambu" },
@@ -124,7 +124,7 @@ export const bagmatiDistricts: BagmatiDistrict[] = [
   {
     id: "nuwakot",
     name: "Nuwakot",
-    image: "/images/bagmati/nuwakot-durbar-square-historic-palace-heritage-Nepal.jpg",
+    image: "/images/bagmati/nuwakot-durbar-square-historic-palace-heritage-nepal.jpg",
     summary: "A historic gateway district of old palaces and river valleys.",
     places: [
       { name: "Nuwakot Durbar" },
@@ -140,7 +140,7 @@ export const bagmatiDistricts: BagmatiDistrict[] = [
   {
     id: "dhading",
     name: "Dhading",
-    image: "/images/bagmati/ruby-valley-dhading-ganesh-himal-mountain-landscape-Nepal.jpg",
+    image: "/images/bagmati/ruby-valley-dhading-ganesh-himal-mountain-landscape-nepal.jpg",
     summary: "Remote ridgelines and river valleys beneath the Ganesh Himal range.",
     places: [
       { name: "Ganesh Himal" },
@@ -174,7 +174,7 @@ export const bagmatiDistricts: BagmatiDistrict[] = [
   {
     id: "chitwan",
     name: "Chitwan",
-    image: "/images/bagmati/one-horned-rhinoceros-chitwan-national-park-wildlife-Nepal.jpg",
+    image: "/images/bagmati/one-horned-rhinoceros-chitwan-national-park-wildlife-nepal.jpg",
     summary: "Subtropical lowlands and one of Nepal's great wildlife reserves.",
     places: [
       { name: "Chitwan National Park" },
@@ -191,7 +191,7 @@ export const bagmatiDistricts: BagmatiDistrict[] = [
   {
     id: "sindhuli",
     name: "Sindhuli",
-    image: "/images/bagmati/sindhuli-gadhi-historic-fort-green-hills-bagmati-Nepal.jpg",
+    image: "/images/bagmati/sindhuli-gadhi-historic-fort-green-hills-bagmati-nepal.jpg",
     summary: "Mid-hill landscapes along the highway linking the valley to the Terai.",
     places: [
       { name: "Sindhuli Gadhi" },
@@ -206,7 +206,7 @@ export const bagmatiDistricts: BagmatiDistrict[] = [
   {
     id: "ramechhap",
     name: "Ramechhap",
-    image: "/images/bagmati/thodung-danda-ramechhap-himalayan-mountain-panorama-Nepal.jpg",
+    image: "/images/bagmati/thodung-danda-ramechhap-himalayan-mountain-panorama-nepal.jpg",
     summary: "Tamang and Sherpa villages on the approach to the eastern Himalaya.",
     places: [
       { name: "Manthali" },
@@ -221,7 +221,7 @@ export const bagmatiDistricts: BagmatiDistrict[] = [
   {
     id: "dolakha",
     name: "Dolakha",
-    image: "/images/bagmati/kalinchowk-bhagwati-temple-dolakha-himalayan-mountains-Nepal.jpg",
+    image: "/images/bagmati/kalinchowk-bhagwati-temple-dolakha-himalayan-mountains-nepal.jpg",
     summary: "A remote Himalayan frontier of sacred peaks and glacial valleys.",
     places: [
       { name: "Dolakha Bhimsen Temple" },

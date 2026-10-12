@@ -34,7 +34,7 @@ export default function MadheshCTA() {
         </p>
 
         <div className="madhesh-cta__actions">
-          <Link href="#experiences" className="madhesh-btn madhesh-btn--gold">
+          <Link href="#explore-destinations" className="madhesh-btn madhesh-btn--gold">
             Explore Madhesh <span className="madhesh-arrow">↗</span>
           </Link>
           <Link href="/contact" className="madhesh-btn madhesh-btn--outline">

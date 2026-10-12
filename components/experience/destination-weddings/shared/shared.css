@@ -1,0 +1,231 @@
+/* ---------- Image + placeholder ---------- */
+
+.dw-img {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--dw-beige);
+}
+
+.dw-img__photo {
+  object-fit: cover;
+  transition: transform 1.4s var(--dw-ease);
+}
+
+.dw-img--placeholder {
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(0.9rem, 2vw, 1.4rem);
+  /* fine paper grain + soft vignette, no loud gradients */
+  background-image:
+    radial-gradient(120% 90% at 30% 20%, rgba(255, 255, 255, 0.35), transparent 60%),
+    repeating-linear-gradient(115deg, rgba(0, 0, 0, 0.025) 0 1px, transparent 1px 7px);
+  transition: transform 1.4s var(--dw-ease);
+}
+
+.dw-img--champagne { background-color: #e4d6bb; color: #4a3b22; }
+.dw-img--blush { background-color: #e6cbc4; color: #4d2128; }
+.dw-img--green { background-color: #2c4a3c; color: #efe7d6; }
+.dw-img--maroon { background-color: #5a1a28; color: #f3e6dc; }
+
+.dw-img__caption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  max-width: 30rem;
+}
+
+.dw-img__file {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.dw-img__alt {
+  font-family: var(--dw-serif);
+  font-style: italic;
+  font-size: clamp(0.85rem, 1.3vw, 1rem);
+  line-height: 1.4;
+  opacity: 0.85;
+}
+
+/* ---------- Section heading ---------- */
+
+.dw-heading {
+  display: grid;
+  gap: 1.1rem;
+  max-width: 52rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.dw-heading--center {
+  margin-inline: auto;
+  text-align: center;
+  justify-items: center;
+}
+
+.dw-heading--center .dw-eyebrow::after {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.7;
+}
+
+.dw-heading__intro {
+  margin-top: 0.25rem;
+}
+
+.dw-heading--center .dw-heading__intro {
+  margin-inline: auto;
+}
+
+/* ---------- Chapter mark ---------- */
+
+.dw-chapter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  color: var(--dw-gold-ink);
+}
+
+.dw-chapter--dark {
+  color: var(--dw-gold);
+}
+
+.dw-chapter__numeral {
+  font-family: var(--dw-serif);
+  font-style: italic;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.dw-chapter__line {
+  width: clamp(2.5rem, 8vw, 6rem);
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+.dw-chapter__label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+}
+
+/* ---------- Chapter rail (desktop) ---------- */
+
+.dw-rail {
+  position: fixed;
+  right: clamp(0.75rem, 1.6vw, 1.75rem);
+  top: 50%;
+  transform: translate(12px, -50%);
+  z-index: 40;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.6s var(--dw-ease),
+    transform 0.6s var(--dw-ease);
+  display: none;
+}
+
+.dw-rail.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(0, -50%);
+}
+
+@media (min-width: 1180px) {
+  .dw-rail {
+    display: block;
+  }
+}
+
+.dw-rail__list {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.6rem 0.45rem;
+  background: rgba(251, 248, 242, 0.86);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--dw-line);
+}
+
+.dw-rail__link {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 0.6rem;
+  padding: 0.35rem 0.4rem;
+  text-decoration: none;
+  color: var(--dw-ink-soft);
+}
+
+.dw-rail__numeral {
+  width: 1.6rem;
+  text-align: center;
+  font-family: var(--dw-serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+
+.dw-rail__label {
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: max-width 0.5s var(--dw-ease);
+}
+
+.dw-rail__list:hover .dw-rail__label,
+.dw-rail__link:focus-visible .dw-rail__label,
+.dw-rail__link.is-active .dw-rail__label {
+  max-width: 10rem;
+}
+
+.dw-rail__link.is-past .dw-rail__numeral {
+  color: var(--dw-gold-ink);
+}
+
+.dw-rail__link.is-active {
+  color: var(--dw-maroon);
+}
+
+.dw-rail__link.is-active .dw-rail__numeral {
+  color: var(--dw-maroon);
+}
+
+/* ---------- Sticky mobile CTA ---------- */
+
+.dw-mobile-cta {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 45;
+  padding: 0.7rem 1rem calc(0.7rem + env(safe-area-inset-bottom));
+  background: rgba(251, 248, 242, 0.94);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--dw-line);
+  transform: translateY(100%);
+  transition: transform 0.5s var(--dw-ease);
+}
+
+.dw-mobile-cta.is-visible {
+  transform: none;
+}
+
+.dw-mobile-cta__btn {
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .dw-mobile-cta {
+    display: none;
+  }
+}

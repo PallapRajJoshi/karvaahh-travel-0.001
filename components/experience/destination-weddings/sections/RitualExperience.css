@@ -1,0 +1,69 @@
+.dw-rituals__grid {
+  display: grid;
+  gap: clamp(3rem, 6vw, 5rem);
+}
+
+@media (min-width: 960px) {
+  .dw-rituals__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.dw-rituals__lead {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.dw-rituals__subhead {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--dw-maroon);
+  margin-bottom: 1rem;
+  font-family: var(--dw-sans);
+}
+
+.dw-rituals__traditions ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.dw-rituals__traditions li {
+  padding: 0.45rem 0.9rem;
+  border: 1px solid rgba(107, 30, 46, 0.25);
+  background: rgba(255, 253, 249, 0.55);
+  font-family: var(--dw-serif);
+  font-size: 1rem;
+}
+
+.dw-rituals__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid rgba(107, 30, 46, 0.22);
+  column-gap: 2rem;
+}
+
+.dw-rituals__list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  padding: 0.95rem 0;
+  border-bottom: 1px solid rgba(107, 30, 46, 0.22);
+}
+
+.dw-rituals__n {
+  font-family: var(--dw-serif);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--dw-maroon);
+  min-width: 1.6rem;
+}
+
+.dw-rituals__name {
+  font-family: var(--dw-serif);
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  line-height: 1.25;
+}

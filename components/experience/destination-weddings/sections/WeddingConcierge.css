@@ -1,0 +1,99 @@
+.dw-concierge {
+  padding-block: var(--dw-section);
+  position: relative;
+  overflow: hidden;
+}
+
+/* A single fine double rule frames the section like a wedding invitation */
+.dw-concierge::before {
+  content: "";
+  position: absolute;
+  inset: clamp(0.75rem, 2vw, 1.5rem);
+  border: 1px solid rgba(201, 164, 92, 0.35);
+  outline: 1px solid rgba(201, 164, 92, 0.15);
+  outline-offset: 5px;
+  pointer-events: none;
+}
+
+.dw-concierge__inner {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  position: relative;
+}
+
+@media (min-width: 1000px) {
+  .dw-concierge__inner {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: center;
+  }
+}
+
+.dw-concierge__card {
+  display: grid;
+  gap: 1.1rem;
+  justify-items: start;
+}
+
+.dw-concierge__seal {
+  display: grid;
+  place-items: center;
+  width: 4.25rem;
+  height: 4.25rem;
+  border: 1px solid var(--dw-gold);
+  border-radius: 50%;
+  outline: 1px solid rgba(201, 164, 92, 0.4);
+  outline-offset: 4px;
+  font-family: var(--dw-serif);
+  font-style: italic;
+  font-size: 1.7rem;
+  color: var(--dw-gold);
+  margin-bottom: 0.5rem;
+}
+
+.dw-concierge__title {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+}
+
+.dw-concierge__lede {
+  font-family: var(--dw-serif);
+  font-style: italic;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  color: var(--dw-champagne);
+}
+
+.dw-concierge__body {
+  color: rgba(251, 248, 242, 0.78);
+  max-width: 30rem;
+}
+
+.dw-concierge__services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: 1px;
+  background: rgba(201, 164, 92, 0.22);
+  border: 1px solid rgba(201, 164, 92, 0.22);
+}
+
+.dw-concierge__services li {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1.35rem 1.4rem;
+  background: var(--dw-maroon-deep);
+  transition: background-color 0.5s var(--dw-ease);
+}
+
+.dw-concierge__services li:hover {
+  background: #4b1422;
+}
+
+.dw-concierge__services h3 {
+  font-family: var(--dw-serif);
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: var(--dw-ivory);
+}
+
+.dw-concierge__services p {
+  font-size: 0.88rem;
+  color: rgba(251, 248, 242, 0.72);
+}

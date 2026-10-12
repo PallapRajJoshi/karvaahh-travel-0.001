@@ -114,6 +114,49 @@ button:hover .madhesh-arrow {
   color: var(--madhesh-cream);
 }
 
+/* Anchor targets clear the fixed site header. */
+.madhesh-page section[id] {
+  scroll-margin-top: 110px;
+}
+
+/* Lightweight, CSS-only scroll reveal for server-rendered sections.
+   Progressive enhancement: browsers without scroll-driven animations,
+   and users who prefer reduced motion, simply see the content. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .madhesh-reveal {
+      animation: madhesh-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+  }
+}
+
+@keyframes madhesh-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Shared inner container for the newer full-width sections. */
+.madhesh-container {
+  max-width: 92rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vh, 3rem);
+}
+
+.madhesh-page :focus-visible {
+  outline: 2px solid var(--madhesh-gold);
+  outline-offset: 3px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .madhesh-page *,
   .madhesh-page *::before,

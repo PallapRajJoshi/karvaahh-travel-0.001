@@ -6,6 +6,7 @@ interface MadheshSectionHeadingProps {
   description?: string;
   align?: "left" | "center";
   theme?: "light" | "dark";
+  titleId?: string;
 }
 
 export default function MadheshSectionHeading({
@@ -14,13 +15,16 @@ export default function MadheshSectionHeading({
   description,
   align = "left",
   theme = "light",
+  titleId,
 }: MadheshSectionHeadingProps) {
   return (
     <div
       className={`madhesh-section-heading madhesh-section-heading--${align} madhesh-section-heading--${theme}`}
     >
       <span className="madhesh-eyebrow">{eyebrow}</span>
-      <h2 className="madhesh-section-heading__title">{heading}</h2>
+      <h2 id={titleId} className="madhesh-section-heading__title">
+        {heading}
+      </h2>
       {description && (
         <p className="madhesh-section-heading__desc">{description}</p>
       )}

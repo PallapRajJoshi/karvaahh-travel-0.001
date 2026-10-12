@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import "./sudurpaschim-adventure.css";
 
 const activities = [
@@ -10,6 +11,12 @@ const activities = [
   "River & wetland activities",
   "Wildlife observation",
   "Village walks & homestays",
+];
+
+const trekPages = [
+  { label: "Api Nampa Base Camp", href: "/adventure/api-nampa-base-camp-trek" },
+  { label: "Saipal Base Camp", href: "/offbeat-unexplored/saipal-base-camp" },
+  { label: "Khaptad National Park", href: "/offbeat-unexplored/khaptad-national-park" },
 ];
 
 const waterways = [
@@ -34,7 +41,7 @@ export default function SudurpaschimAdventure() {
         </div>
 
         <div className="sp-adventure__content sp-container">
-          <span className="sp-adventure__index" aria-hidden="true">04</span>
+          <span className="sp-adventure__index" aria-hidden="true">05</span>
           <p className="sp-adventure__eyebrow">Beyond the Trail</p>
           <h2 id="sp-adventure-heading" className="sp-adventure__title">
             Go where
@@ -45,6 +52,14 @@ export default function SudurpaschimAdventure() {
             travelers toward Bajura, Bajhang and Darchula&rsquo;s remote
             Himalayan valleys — territory that still feels genuinely unmapped.
           </p>
+
+          <nav className="sp-adventure__treks" aria-label="Himalayan trek guides">
+            {trekPages.map((trek) => (
+              <Link key={trek.href} href={trek.href} className="sp-adventure__trek">
+                {trek.label} <span className="sp-arrow">→</span>
+              </Link>
+            ))}
+          </nav>
 
           <ul className="sp-adventure__activities">
             {activities.map((activity) => (

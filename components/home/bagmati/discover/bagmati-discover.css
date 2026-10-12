@@ -1,0 +1,247 @@
+.bagmati-discover {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 96px 64px;
+  background: linear-gradient(180deg, #f7f5ef 0%, #efebe1 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.bagmati-discover__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.bagmati-discover__filter {
+  min-height: 44px;
+  padding: 0 20px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #0d1d16;
+  background: transparent;
+  border: 1px solid rgba(13, 29, 22, 0.2);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.bagmati-discover__filter:hover {
+  border-color: #b8954e;
+}
+
+.bagmati-discover__filter[aria-pressed="true"] {
+  background: #0d1d16;
+  border-color: #0d1d16;
+  color: #f7f5ef;
+}
+
+.bagmati-discover__filter:focus-visible,
+.bagmati-discover-card__link:focus-visible {
+  outline: 2px solid #b8954e;
+  outline-offset: 3px;
+}
+
+.bagmati-discover__count {
+  margin: -12px 0 0;
+  font-family: "Inter", sans-serif;
+  font-size: 0.82rem;
+  color: #4a5750;
+}
+
+.bagmati-discover__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.bagmati-discover-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(13, 29, 22, 0.06), 0 12px 32px -18px rgba(13, 29, 22, 0.25);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.bagmati-discover-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 2px 4px rgba(13, 29, 22, 0.06), 0 24px 48px -20px rgba(13, 29, 22, 0.35);
+}
+
+.bagmati-discover-card__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #142019;
+}
+
+.bagmati-discover-card__image {
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bagmati-discover-card:hover .bagmati-discover-card__image {
+  transform: scale(1.07);
+}
+
+.bagmati-discover-card__fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(201, 164, 92, 0.35), transparent 55%),
+    linear-gradient(135deg, #142019 0%, #0d1d16 60%, #2a3a2f 100%);
+}
+
+.bagmati-discover-card__fallback span {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 1.8rem;
+  color: rgba(247, 245, 239, 0.85);
+  text-align: center;
+}
+
+.bagmati-discover-card__district {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  padding: 6px 12px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: #f7f5ef;
+  background: rgba(7, 16, 12, 0.6);
+  backdrop-filter: blur(6px);
+  border-radius: 999px;
+}
+
+.bagmati-discover-card__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+}
+
+.bagmati-discover-card__title {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: #0d1d16;
+}
+
+.bagmati-discover-card__text {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: #4a5750;
+}
+
+.bagmati-discover-card__tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.bagmati-discover-card__tags li {
+  padding: 5px 10px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.72rem;
+  color: #6b5426;
+  background: rgba(201, 164, 92, 0.14);
+  border-radius: 999px;
+}
+
+.bagmati-discover-card__link {
+  margin-top: auto;
+  padding-top: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #0d1d16;
+  text-decoration: none;
+  align-self: flex-start;
+  border-bottom: 1px solid #b8954e;
+}
+
+.bagmati-discover-card__link:hover {
+  color: #b8954e;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .bagmati-discover-card {
+    animation: bagmati-discover-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--i, 0) * 60ms);
+  }
+}
+
+@keyframes bagmati-discover-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bagmati-discover-card,
+  .bagmati-discover-card__image,
+  .bagmati-discover__filter {
+    transition: none;
+  }
+  .bagmati-discover-card:hover {
+    transform: none;
+  }
+  .bagmati-discover-card:hover .bagmati-discover-card__image {
+    transform: none;
+  }
+}
+
+@media (max-width: 1100px) {
+  .bagmati-discover {
+    padding: 72px 32px;
+  }
+  .bagmati-discover__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .bagmati-discover {
+    padding: 56px 16px;
+    gap: 24px;
+  }
+  /* Single swipeable row of filters keeps them thumb-reachable. */
+  .bagmati-discover__filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin: 0 -16px;
+    padding: 0 16px 4px;
+    scrollbar-width: none;
+  }
+  .bagmati-discover__filter {
+    flex: 0 0 auto;
+  }
+  .bagmati-discover__grid {
+    grid-template-columns: 1fr;
+  }
+}

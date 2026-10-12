@@ -1,0 +1,123 @@
+.dw-holiday__head {
+  display: grid;
+  gap: 1rem;
+  max-width: 52rem;
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.dw-holiday__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+  border-top: 1px solid var(--dw-line);
+}
+
+.dw-holiday__item {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 0.4rem;
+  padding: 1.8rem 1.5rem 2rem 0;
+  border-bottom: 1px solid var(--dw-line);
+}
+
+.dw-holiday__n {
+  font-family: var(--dw-serif);
+  font-style: italic;
+  color: var(--dw-gold-ink);
+}
+
+.dw-holiday__name {
+  font-family: var(--dw-serif);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  line-height: 1.05;
+}
+
+.dw-holiday__line {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dw-maroon);
+}
+
+.dw-holiday__text {
+  font-size: 0.94rem;
+  color: var(--dw-ink-soft);
+  margin-top: 0.3rem;
+}
+
+.dw-holiday__cta {
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+/* Honeymoon — full-bleed split */
+
+.dw-honeymoon {
+  display: grid;
+}
+
+@media (min-width: 960px) {
+  .dw-honeymoon {
+    grid-template-columns: 1fr 1fr;
+    min-height: 40rem;
+  }
+}
+
+.dw-honeymoon__media {
+  position: relative;
+  min-height: 22rem;
+}
+
+.dw-honeymoon__body {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: 1.4rem;
+  padding: clamp(3rem, 7vw, 6rem) var(--dw-gutter);
+}
+
+@media (min-width: 960px) {
+  .dw-honeymoon__body {
+    padding-inline: clamp(3rem, 6vw, 6rem);
+  }
+}
+
+.dw-honeymoon__title {
+  font-size: clamp(2.4rem, 5vw, 4rem);
+}
+
+.dw-honeymoon__regions {
+  display: grid;
+  width: 100%;
+  margin: 0.5rem 0 1rem;
+  border-top: 1px solid var(--dw-line-dark);
+}
+
+.dw-honeymoon__regions > div {
+  display: grid;
+  gap: 0.25rem 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--dw-line-dark);
+}
+
+@media (min-width: 600px) {
+  .dw-honeymoon__regions > div {
+    grid-template-columns: 9rem 1fr;
+    align-items: baseline;
+  }
+}
+
+.dw-honeymoon__regions dt {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--dw-gold);
+}
+
+.dw-honeymoon__regions dd {
+  margin: 0;
+  font-family: var(--dw-serif);
+  font-size: clamp(1.1rem, 1.7vw, 1.3rem);
+}

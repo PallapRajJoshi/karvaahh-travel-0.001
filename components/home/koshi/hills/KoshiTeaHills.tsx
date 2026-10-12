@@ -144,7 +144,7 @@ export default function KoshiTeaHills() {
           {/* CTA */}
 
           <Link
-            href="/destinations"
+            href="#destinations"
             className="koshi-tea__button"
           >
             <span>Explore the tea hills</span>

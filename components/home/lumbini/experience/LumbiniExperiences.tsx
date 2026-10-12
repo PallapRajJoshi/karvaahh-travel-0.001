@@ -1,9 +1,43 @@
+"use client";
+
+import { useMemo, useState } from "react";
 import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 import LumbiniSectionHeading from "../heading/LumbiniSectionHeading";
 import { lumbiniExperiences } from "@/data/lumbini/experiences";
 import "./lumbini-experiences.css";
 
+const experienceCategories = [
+  "All Experiences",
+  "Buddhist Pilgrimage",
+  "Spiritual",
+  "Heritage",
+  "Wildlife",
+  "Safari",
+  "Tharu Culture",
+  "Nature",
+  "Adventure",
+  "History",
+  "Meditation",
+  "Family",
+  "Photography",
+  "Road Trips",
+];
+
 export default function LumbiniExperiences() {
+  const [activeCategory, setActiveCategory] = useState("All Experiences");
+  const prefersReducedMotion = useReducedMotion();
+
+  const filteredExperiences = useMemo(() => {
+    if (activeCategory === "All Experiences") {
+      return lumbiniExperiences;
+    }
+
+    return lumbiniExperiences.filter((experience) =>
+      experience.tags.includes(activeCategory)
+    );
+  }, [activeCategory]);
+
   return (
     <section
       className="lumbini-experiences"
@@ -12,16 +46,46 @@ export default function LumbiniExperiences() {
     >
       <div className="lumbini-experiences__inner">
         <LumbiniSectionHeading
-          index="02"
-          eyebrow="Experience Lumbini"
-          heading="One province."
-          emphasis="Many journeys."
-          description="Six distinct ways to move through Lumbini — from sacred pilgrimage to wild frontier."
+          index="03"
+          eyebrow="Why Visit"
+          heading="Why visit"
+          emphasis="Lumbini Province?"
+          description="A province of sacred sites, ancient kingdoms, wildlife-rich plains and timeless hill communities."
         />
 
+        <div
+          className="lumbini-experiences__filters"
+          role="tablist"
+          aria-label="Filter experiences by interest"
+        >
+          {experienceCategories.map((category) => (
+            <button
+              key={category}
+              type="button"
+              role="tab"
+              aria-selected={activeCategory === category}
+              className={`lumbini-experiences__filter ${
+                activeCategory === category
+                  ? "lumbini-experiences__filter--active"
+                  : ""
+              }`}
+              onClick={() => setActiveCategory(category)}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
         <ul className="lumbini-experiences__grid">
-          {lumbiniExperiences.map((experience) => (
-            <li className="lumbini-experience-card" key={experience.number}>
+          {filteredExperiences.map((experience, index) => (
+            <motion.li
+              className="lumbini-experience-card"
+              key={experience.number}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 22 }}
+              whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.55, delay: index * 0.08, ease: "easeOut" }}
+            >
               <div className="lumbini-experience-card__media">
                 <Image
                   src={experience.image}
@@ -48,8 +112,15 @@ export default function LumbiniExperiences() {
                 <p className="lumbini-experience-card__description">
                   {experience.description}
                 </p>
+                <div className="lumbini-experience-card__tags" aria-label="Experience tags">
+                  {experience.tags.map((tag) => (
+                    <span key={`${experience.number}-${tag}`} className="lumbini-experience-card__tag">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </li>
+            </motion.li>
           ))}
         </ul>
       </div>

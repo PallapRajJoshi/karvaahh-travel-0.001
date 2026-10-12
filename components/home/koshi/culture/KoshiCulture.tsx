@@ -84,7 +84,7 @@ export default function KoshiCulture() {
           {/* CTA */}
 
           <Link
-            href="/about"
+            href="#culture-cuisine"
             className="koshi-culture__button"
           >
             <span>Explore culture</span>

@@ -8,6 +8,7 @@ interface LumbiniSectionHeadingProps {
   description?: string;
   align?: "left" | "center";
   theme?: "light" | "dark";
+  titleId?: string;
 }
 
 /**
@@ -22,6 +23,7 @@ export default function LumbiniSectionHeading({
   description,
   align = "left",
   theme = "light",
+  titleId,
 }: LumbiniSectionHeadingProps) {
   return (
     <header
@@ -34,7 +36,7 @@ export default function LumbiniSectionHeading({
       <div className="lumbini-heading__content">
         <p className="lumbini-heading__eyebrow">{eyebrow}</p>
 
-        <h2 className="lumbini-heading__title">
+        <h2 id={titleId} className="lumbini-heading__title">
           {heading}
           {emphasis ? (
             <span className="lumbini-heading__emphasis"> {emphasis}</span>

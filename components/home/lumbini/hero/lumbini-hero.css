@@ -1,10 +1,9 @@
 .lumbini-hero {
-  padding-top: 600px;
   position: relative;
   box-sizing: border-box;
   width: 100%;
-  height: var(--lumbini-section-height);
-  min-height: 560px;
+  /* The site header is sticky (≈145px), so the hero fills the rest of the viewport. */
+  min-height: clamp(560px, calc(100svh - 145px), 860px);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -21,18 +20,32 @@
 
 .lumbini-hero__image {
   object-fit: cover;
+  object-position: center 40%;
+  filter: saturate(0.95) contrast(1.05);
+  transform-origin: 60% 40%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .lumbini-hero__image {
+    animation: lumbini-hero-zoom 22s ease-out both;
+  }
+}
+
+@keyframes lumbini-hero-zoom {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 .lumbini-hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(7, 16, 12, 0.55) 0%,
-    rgba(7, 16, 12, 0.25) 35%,
-    rgba(7, 16, 12, 0.55) 72%,
-    rgba(7, 16, 12, 0.92) 100%
-  );
+  background:
+    linear-gradient(180deg, rgba(7, 16, 12, 0.15) 0%, rgba(7, 16, 12, 0.25) 35%, rgba(7, 16, 12, 0.78) 78%, rgba(7, 16, 12, 0.92) 100%),
+    linear-gradient(90deg, rgba(7, 16, 12, 0.65) 0%, rgba(7, 16, 12, 0.2) 55%, rgba(7, 16, 12, 0) 100%);
 }
 
 .lumbini-hero__content {
@@ -40,19 +53,19 @@
   z-index: 1;
   box-sizing: border-box;
   width: 100%;
-  max-width: 46rem;
-  padding: 0 clamp(1.5rem, 5vw, 5rem);
-  padding-bottom: clamp(2rem, 5vh, 3rem);
+  max-width: 64rem;
+  min-width: 0;
+  padding: clamp(3rem, 8vh, 6rem) clamp(1rem, 5vw, 5rem) clamp(1.75rem, 4vh, 2.75rem);
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
+  gap: clamp(0.9rem, 2vh, 1.25rem);
 }
 
 .lumbini-hero__eyebrow {
   font-family: var(--lumbini-font-sans);
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 600;
-  letter-spacing: 0.34em;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--lumbini-gold);
   margin: 0;
@@ -61,93 +74,85 @@
 .lumbini-hero__title {
   font-family: var(--lumbini-font-serif);
   font-weight: 500;
-  font-size: clamp(2.6rem, 7vw, 5.2rem);
-  line-height: 0.98;
+  font-size: clamp(2.5rem, 6.4vw, 5.75rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--lumbini-cream);
   margin: 0;
   display: flex;
   flex-direction: column;
+  gap: 0.4em;
+  text-shadow: 0 2px 24px rgba(7, 16, 12, 0.35);
+  overflow-wrap: break-word;
 }
 
 .lumbini-hero__title-emphasis {
   font-style: italic;
+  font-size: clamp(1.35rem, 0.45em, 2.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
   color: var(--lumbini-gold);
-}
-
-.lumbini-hero__headline {
-  font-family: var(--lumbini-font-serif);
-  font-style: italic;
-  font-size: clamp(1.1rem, 1.6vw, 1.4rem);
-  color: var(--lumbini-gold-2);
-  margin: 0;
+  max-width: 30ch;
 }
 
 .lumbini-hero__description {
   font-family: var(--lumbini-font-sans);
-  font-size: clamp(0.9rem, 1.1vw, 1rem);
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
   line-height: 1.65;
-  color: rgba(247, 245, 239, 0.82);
-  max-width: 34rem;
+  color: rgba(247, 245, 239, 0.85);
+  max-width: 38rem;
   margin: 0;
 }
 
-.lumbini-hero__meta {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  padding-top: 0.4rem;
-}
-
-.lumbini-hero__meta-block {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.lumbini-hero__meta-label {
-  font-family: var(--lumbini-font-sans);
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(247, 245, 239, 0.55);
-}
-
-.lumbini-hero__meta-value {
-  font-family: var(--lumbini-font-sans);
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--lumbini-cream);
-}
-
-.lumbini-hero__meta-divider {
-  width: 1px;
-  height: 2rem;
-  background: rgba(247, 245, 239, 0.25);
-}
-
 .lumbini-hero__actions {
-  padding-top: 0.75rem;
+  padding-top: 0.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
 }
 
 .lumbini-hero__cta {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.6rem;
+  min-height: 3.25rem;
+  box-sizing: border-box;
   font-family: var(--lumbini-font-sans);
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.78rem;
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--lumbini-forest);
-  background: var(--lumbini-gold);
-  padding: 0.85rem 1.6rem;
+  padding: 0.9rem 1.6rem;
   border-radius: 999px;
   text-decoration: none;
-  transition: transform 0.3s ease, background 0.3s ease;
+  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.lumbini-hero__cta:hover {
+.lumbini-hero__cta--primary {
+  color: var(--lumbini-forest);
+  background: var(--lumbini-gold);
+  box-shadow: 0 12px 24px rgba(201, 164, 92, 0.25);
+}
+
+.lumbini-hero__cta--secondary {
+  color: var(--lumbini-cream);
+  background: rgba(247, 245, 239, 0.08);
+  border: 1px solid rgba(247, 245, 239, 0.35);
+  backdrop-filter: blur(4px);
+}
+
+.lumbini-hero__cta:hover,
+.lumbini-hero__cta:focus-visible {
   background: var(--lumbini-cream);
+  color: var(--lumbini-forest);
   transform: translateY(-2px);
+  box-shadow: 0 12px 22px rgba(7, 16, 12, 0.2);
+}
+
+.lumbini-hero__cta:focus-visible {
+  outline: 2px solid var(--lumbini-gold);
+  outline-offset: 3px;
 }
 
 .lumbini-hero__cta span {
@@ -155,7 +160,7 @@
 }
 
 .lumbini-hero__cta:hover span {
-  transform: translate(2px, -2px);
+  transform: translateY(2px);
 }
 
 .lumbini-hero__highlights {
@@ -163,12 +168,12 @@
   z-index: 1;
   list-style: none;
   margin: 0;
-  padding: 1.25rem clamp(1.5rem, 5vw, 5rem);
+  padding: 1.1rem clamp(1rem, 5vw, 5rem) 1.25rem;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.5rem;
+  gap: 1rem 1.5rem;
   border-top: 1px solid rgba(247, 245, 239, 0.16);
-  background: rgba(7, 16, 12, 0.45);
+  background: rgba(7, 16, 12, 0.5);
   backdrop-filter: blur(6px);
   box-sizing: border-box;
 }
@@ -198,39 +203,60 @@
   font-family: var(--lumbini-font-sans);
   font-size: 0.82rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   color: var(--lumbini-cream);
 }
 
 .lumbini-hero__highlight-detail {
   font-family: var(--lumbini-font-sans);
   font-size: 0.76rem;
-  color: rgba(247, 245, 239, 0.62);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  color: rgba(247, 245, 239, 0.65);
 }
 
 @media (max-width: 768px) {
   .lumbini-hero {
-    height: auto;
-    min-height: 100svh;
-    padding-top: 6rem;
+    min-height: calc(100svh - 100px);
+  }
+
+  .lumbini-hero__overlay {
+    background: linear-gradient(180deg, rgba(7, 16, 12, 0.3) 0%, rgba(7, 16, 12, 0.55) 40%, rgba(7, 16, 12, 0.92) 100%);
   }
 
   .lumbini-hero__content {
-    max-width: none;
-    padding-bottom: 1.5rem;
+    padding: 3rem 1rem 1.5rem;
+  }
+
+  .lumbini-hero__eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+  }
+
+  .lumbini-hero__title {
+    font-size: clamp(2.3rem, 11vw, 3.5rem);
+    gap: 0.35em;
+  }
+
+  .lumbini-hero__title-emphasis {
+    font-size: clamp(1.2rem, 5.6vw, 1.6rem);
+  }
+
+  .lumbini-hero__description {
+    font-size: 0.93rem;
+  }
+
+  .lumbini-hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .lumbini-hero__cta {
+    width: 100%;
   }
 
   .lumbini-hero__highlights {
     grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 1.5rem;
-  }
-
-  .lumbini-hero__meta {
-    flex-wrap: wrap;
+    gap: 0.7rem;
+    padding: 1rem;
   }
 }
 
@@ -238,5 +264,10 @@
   .lumbini-hero__cta,
   .lumbini-hero__cta span {
     transition: none;
+  }
+
+  .lumbini-hero__cta:hover,
+  .lumbini-hero__cta:focus-visible {
+    transform: none;
   }
 }

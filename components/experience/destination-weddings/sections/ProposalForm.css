@@ -1,0 +1,190 @@
+.dw-plan {
+  scroll-margin-top: 4rem;
+}
+
+.dw-plan__grid {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 5rem);
+}
+
+@media (min-width: 1000px) {
+  .dw-plan__grid {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    align-items: start;
+  }
+}
+
+.dw-plan__lead {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.dw-plan__next {
+  display: grid;
+  gap: 0.2rem;
+  margin-top: 0.75rem;
+  border-top: 1px solid var(--dw-line);
+}
+
+.dw-plan__next li {
+  display: flex;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--dw-line);
+  font-family: var(--dw-serif);
+  font-size: 1.1rem;
+}
+
+.dw-plan__next span {
+  font-family: var(--dw-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--dw-gold-ink);
+  padding-top: 0.3rem;
+}
+
+.dw-plan__form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 1.25rem;
+  padding: clamp(1.5rem, 3vw, 2.75rem);
+  background: var(--dw-ivory);
+  border: 1px solid var(--dw-line);
+}
+
+.dw-field {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 0.45rem;
+  min-width: 0;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 640px) {
+  .dw-field--half {
+    grid-column: span 1;
+  }
+}
+
+.dw-field label,
+.dw-field legend {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dw-charcoal);
+  padding: 0;
+}
+
+.dw-field label > span[aria-hidden="true"] {
+  color: var(--dw-maroon);
+}
+
+.dw-field input,
+.dw-field select,
+.dw-field textarea {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid rgba(35, 33, 31, 0.28);
+  border-radius: 0;
+  background: var(--dw-white);
+  color: var(--dw-charcoal);
+  font: inherit;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.dw-field textarea {
+  resize: vertical;
+}
+
+.dw-field input::placeholder,
+.dw-field textarea::placeholder {
+  color: #8c857c;
+}
+
+.dw-field input:focus-visible,
+.dw-field select:focus-visible,
+.dw-field textarea:focus-visible {
+  outline: 2px solid var(--dw-gold-ink);
+  outline-offset: 0;
+  border-color: var(--dw-gold-ink);
+}
+
+.dw-plan__extras legend {
+  margin-bottom: 0.6rem;
+}
+
+.dw-plan__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.dw-chip {
+  position: relative;
+  cursor: pointer;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+}
+
+.dw-chip input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  min-height: 0;
+}
+
+.dw-chip span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.6rem;
+  padding: 0.5rem 0.95rem;
+  border: 1px solid rgba(35, 33, 31, 0.28);
+  background: var(--dw-white);
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    border-color 0.3s;
+}
+
+.dw-chip input:checked + span {
+  background: var(--dw-maroon);
+  border-color: var(--dw-maroon);
+  color: var(--dw-ivory);
+}
+
+.dw-chip input:focus-visible + span {
+  outline: 2px solid var(--dw-gold-ink);
+  outline-offset: 2px;
+}
+
+.dw-plan__submit {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.dw-plan__privacy {
+  flex: 1 1 16rem;
+  font-size: 0.82rem;
+  color: var(--dw-ink-soft);
+}
+
+.dw-plan__sent {
+  grid-column: 1 / -1;
+  padding: 0.9rem 1rem;
+  border-left: 2px solid var(--dw-green);
+  background: var(--dw-white);
+  font-size: 0.9rem;
+}

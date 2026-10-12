@@ -14,7 +14,7 @@ const wildlifeFocus = [
 
 export default function MadheshWildlife() {
   return (
-    <section className="madhesh-wildlife" aria-label="Wildlife and wetlands of Madhesh">
+    <section id="wildlife" className="madhesh-wildlife" aria-label="Wildlife and wetlands of Madhesh">
       <div className="madhesh-wildlife__media">
         <Image
           src="/images/madhesh/madhesh-nature-wild-life-koshi-tappu-parsa-national-park.jpg"

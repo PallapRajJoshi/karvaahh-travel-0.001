@@ -30,7 +30,7 @@ const adventureActivities = [
 
 export default function BagmatiAdventure() {
   return (
-    <section className="bagmati-adventure" aria-label="Adventure in Bagmati">
+    <section className="bagmati-adventure" id="adventure" aria-label="Adventure in Bagmati">
       <div className="bagmati-adventure__media">
         <Image
           src="/images/bagmati/rolwaling-valley-high-mountain-trekking-trail-bagmati-nepal.jpg"

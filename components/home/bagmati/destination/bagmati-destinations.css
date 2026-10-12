@@ -8,6 +8,10 @@
   gap: 56px;
 }
 
+.bagmati-destinations .bagmati-heading__description {
+  color: rgba(247, 245, 239, 0.72);
+}
+
 .bagmati-destinations .bagmati-heading__eyebrow {
   color: #c9a45c;
 }

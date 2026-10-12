@@ -12,8 +12,8 @@ export const gandakiDistricts: GandakiDistrict[] = [
     id: "kaski",
     name: "Kaski",
     tagline: "Lakes, caves and the gateway to Annapurna",
-    image: "/images/gandaki/sarangkot-sunrise-annapurna-mountain-view-kaski-Nepal.jpg",
-    alt: "Pokhara city and Phewa Lake beneath the Annapurna range",
+    image: "/images/gandaki/sarangkot-sunrise-annapurna-mountain-view-kaski-nepal.jpg",
+    alt: "Ridge trail near Sarangkot facing Machhapuchhre and the Annapurna range",
     places: [
       "Pokhara",
       "Phewa Lake",
@@ -56,8 +56,8 @@ export const gandakiDistricts: GandakiDistrict[] = [
     id: "manang",
     name: "Manang",
     tagline: "High desert villages beneath the Annapurna wall",
-    image: "/images/gandaki/manang-village-annapurna-mountain-wall-gandaki-Nepal.jpg",
-    alt: "Tilicho Lake surrounded by high Himalayan peaks",
+    image: "/images/gandaki/manang-village-annapurna-mountain-wall-gandaki-nepal.jpg",
+    alt: "Manang valley village beneath eroded cliffs on the Annapurna Circuit",
     places: [
       "Manang Village",
       "Braga",
@@ -76,8 +76,8 @@ export const gandakiDistricts: GandakiDistrict[] = [
     id: "mustang",
     name: "Mustang",
     tagline: "The walled kingdom beyond the Kali Gandaki",
-    image: "/images/gandaki/lo-manthang-walled-city-upper-mustang-gandaki-Nepal.jpg",
-    alt: "Arid cliffs and ancient settlements of Upper Mustang",
+    image: "/images/gandaki/lo-manthang-walled-city-upper-mustang-gandaki-nepal.jpg",
+    alt: "Whitewashed houses and chortens inside the walled town of Lo Manthang",
     places: [
       "Jomsom",
       "Marpha",
@@ -137,7 +137,7 @@ export const gandakiDistricts: GandakiDistrict[] = [
     id: "parbat",
     name: "Parbat",
     tagline: "River gorges and adventure on the Modi",
-    image: "/images/gandaki/kushma-suspension-bridge-modi-river-gorge-parbat-Nepal.jpg",
+    image: "/images/gandaki/kushma-suspension-bridge-modi-river-gorge-parbat-nepal.jpg",
     alt: "Suspension bridge over the Modi River in Parbat district",
     places: [
       "Kusma",
@@ -154,7 +154,7 @@ export const gandakiDistricts: GandakiDistrict[] = [
     id: "syangja",
     name: "Syangja",
     tagline: "Gurung villages along the mid-hills",
-    image: "/images/gandaki/sirubari-gurung-village-terraced-hills-syangja-Nepal.jpg",
+    image: "/images/gandaki/sirubari-gurung-village-terraced-hills-syangja-nepal.jpg",
     alt: "Hillside village and terraces in Syangja district",
     places: [
       "Syangja Bazaar",
@@ -172,7 +172,7 @@ export const gandakiDistricts: GandakiDistrict[] = [
     name: "Tanahun",
     tagline: "A heritage hill town above two rivers",
     image: "/images/gandaki/bandipur-heritage-hill-town-tanahun-gandaki-nepal.jpg",
-    alt: "Cobblestone streets of Bandipur hill town",
+    alt: "Bandipur hill town at dusk with the Himalaya on the horizon",
     places: [
       "Bandipur",
       "Damauli",
@@ -190,7 +190,7 @@ export const gandakiDistricts: GandakiDistrict[] = [
     name: "Gorkha",
     tagline: "The historic seat of the Shah dynasty",
     image: "/images/gandaki/gorkha-durbar-palace-hilltop-gorkha-gandaki-nepal.jpg",
-    alt: "Gorkha Durbar palace complex on a hilltop",
+    alt: "Aerial view of the Gorkha Durbar palace complex on its hilltop",
     places: [
       "Gorkha Durbar",
       "Gorkha Palace",
@@ -210,7 +210,7 @@ export const gandakiDistricts: GandakiDistrict[] = [
     name: "Nawalpur",
     tagline: "Where the hills meet the Narayani plains",
     image: "/images/gandaki/narayani-river-devchuli-hills-nawalpur-gandaki-nepal.jpg",
-    alt: "Narayani River landscape near Nawalpur district",
+    alt: "Sunset over the Narayani River in Nawalpur district",
     places: [
       "Devchuli",
       "Maulakalika Temple",

@@ -1,0 +1,152 @@
+// data/antarctica/destinations.ts
+// Destination cards. Wildlife lists are "possible encounters" and durations
+// are typical ranges; neither is a promise. Set `active: false` to hide a
+// destination without deleting it.
+
+import type { AntarcticaDestination, PolarRegion } from "./types";
+
+export const antarcticaDestinations: AntarcticaDestination[] = [
+  {
+    id: "antarctic-peninsula",
+    name: "Antarctic Peninsula",
+    region: "antarctic-peninsula",
+    area: "Antarctica",
+    image: "zodiac-arch",
+    tagline: "Into the heart of the White Continent",
+    description:
+      "Glaciated channels, towering icebergs and mountains that drop straight into the sea. The Peninsula is where most expeditions spend their Antarctic days, exploring by Zodiac and landing ashore where conditions and permits allow.",
+    experiences: ["Zodiac cruising among icebergs", "Shore landings where permitted", "Scenic channel cruising", "Photography", "Kayaking where offered"],
+    wildlife: ["Gentoo, Adélie and chinstrap penguins", "Humpback and minke whales", "Weddell, crabeater and leopard seals"],
+    recommendedSeason: "November to March",
+    duration: "Typically 10–13 days from Ushuaia",
+    expeditionType: "Classic expedition cruise",
+    coords: [-64.8, -62.9],
+    featured: true,
+    active: true,
+  },
+  {
+    id: "south-shetland-islands",
+    name: "South Shetland Islands",
+    region: "south-shetland-islands",
+    area: "Southern Ocean, off the Peninsula",
+    image: "fur-seal-chinstraps",
+    tagline: "The first Antarctic landfall",
+    description:
+      "A volcanic island chain that many voyages reach first after the Drake Passage. Expect stark black-and-white landscapes, research-station atmosphere and busy wildlife beaches.",
+    experiences: ["Zodiac excursions", "Wildlife beaches", "Volcanic landscapes", "Ice formations"],
+    wildlife: ["Chinstrap and gentoo penguins", "Fur and elephant seals", "Skuas, petrels and other seabirds"],
+    recommendedSeason: "November to March",
+    duration: "Usually part of a Peninsula voyage",
+    expeditionType: "Expedition extension",
+    coords: [-62.3, -59.4],
+    featured: true,
+    active: true,
+  },
+  {
+    id: "drake-passage",
+    name: "Drake Passage",
+    region: "drake-passage",
+    area: "Between South America and Antarctica",
+    image: "berg-open-ocean",
+    tagline: "The classic maritime gateway",
+    description:
+      "The open-ocean crossing that separates Antarctica from the rest of the world. Sea days are spent on deck with seabirds, in lectures, and preparing for landings.",
+    experiences: ["Seabird watching from deck", "Expedition lectures and briefings", "Open-ocean crossing"],
+    wildlife: ["Albatrosses and petrels", "Possible whales and dolphins"],
+    recommendedSeason: "Expedition season, November to March",
+    duration: "Typically ~2 days each way",
+    expeditionType: "Ocean crossing",
+    coords: [-58.6, -64.6],
+    active: true,
+  },
+  {
+    id: "antarctic-circle",
+    name: "Antarctic Circle",
+    region: "antarctic-circle",
+    area: "66°33′S, west of the Peninsula",
+    image: "tabular-berg",
+    tagline: "A deeper polar milestone",
+    description:
+      "Longer Peninsula voyages may attempt to sail south of the Antarctic Circle. Whether a crossing happens depends on ice, weather and sea conditions on the day.",
+    experiences: ["Southern Peninsula channels", "Sea-ice landscapes", "Crossing attempt where conditions allow"],
+    wildlife: ["Adélie penguins", "Seals on ice floes", "Possible whales"],
+    recommendedSeason: "Typically mid to late season",
+    duration: "Typically 12–14+ days",
+    expeditionType: "Extended expedition",
+    coords: [-66.56, -68.3],
+    active: true,
+  },
+  {
+    id: "south-georgia",
+    name: "South Georgia",
+    region: "south-georgia",
+    area: "Sub-Antarctic, South Atlantic",
+    image: "king-colony-sunset",
+    tagline: "The wildlife frontier",
+    description:
+      "Remote mountains, glaciers and beaches that can host very large king penguin colonies. South Georgia is also closely tied to the heroic age of polar exploration.",
+    experiences: ["King penguin colonies", "Wildlife photography", "Polar heritage sites", "Glacier landscapes"],
+    wildlife: ["King penguins", "Fur and elephant seals", "Albatrosses and petrels"],
+    recommendedSeason: "November to March",
+    duration: "Combination voyages often ~18–23 days",
+    expeditionType: "Advanced wildlife expedition",
+    coords: [-54.28, -36.5],
+    featured: true,
+    active: true,
+  },
+  {
+    id: "falkland-islands",
+    name: "Falkland Islands / Malvinas",
+    region: "falkland-islands",
+    area: "South Atlantic",
+    image: "rockhoppers",
+    tagline: "Wind, grassland and birdlife",
+    description:
+      "Open grassland, sea cliffs and white-sand beaches. Visited on selected combination voyages, the islands are especially known for their birdlife.",
+    experiences: ["Island landings", "Coastal walks", "Birdlife and penguin colonies", "Expedition cruising"],
+    wildlife: ["Rockhopper, gentoo and Magellanic penguins", "Black-browed albatrosses", "Seals and seabirds"],
+    recommendedSeason: "November to March",
+    duration: "Part of longer combination voyages",
+    expeditionType: "Combination voyage",
+    coords: [-51.7, -59.2],
+    active: true,
+  },
+  {
+    id: "ushuaia",
+    name: "Ushuaia",
+    region: "ushuaia",
+    area: "Tierra del Fuego, Argentina",
+    image: "ushuaia-bay",
+    tagline: "Where the journey begins",
+    description:
+      "Mountains, the Beagle Channel and a busy expedition port. Most Peninsula voyages embark and disembark here, so most travellers spend at least a night before and after.",
+    experiences: ["Pre- and post-expedition stays", "Beagle Channel excursions", "Tierra del Fuego National Park"],
+    wildlife: ["Sea lions and cormorants in the channel", "Seabirds"],
+    recommendedSeason: "Year-round gateway; voyages November to March",
+    duration: "1–3 nights",
+    expeditionType: "Expedition gateway",
+    coords: [-54.8, -68.3],
+    active: true,
+  },
+  {
+    id: "weddell-sea",
+    name: "Weddell Sea",
+    region: "weddell-sea",
+    area: "East of the Antarctic Peninsula",
+    image: "berg-wall",
+    tagline: "Kingdom of tabular icebergs",
+    description:
+      "A sea of pack ice and giant flat-topped icebergs. Reached on selected specialist departures, with routes that depend heavily on ice conditions.",
+    experiences: ["Tabular icebergs", "Pack-ice navigation", "Remote landings where possible"],
+    wildlife: ["Adélie penguins", "Seals on pack ice", "Possible emperor penguins on specialist voyages"],
+    recommendedSeason: "Selected departures",
+    duration: "Varies by voyage",
+    expeditionType: "Specialist expedition",
+    coords: [-68.5, -48],
+    active: true,
+  },
+];
+
+export const visibleAntarcticaDestinations = antarcticaDestinations.filter((d) => d.active);
+export const antarcticaDestinationById = (id: string) => antarcticaDestinations.find((d) => d.id === id);
+export const destinationsInRegion = (r: PolarRegion) => visibleAntarcticaDestinations.filter((d) => d.region === r);

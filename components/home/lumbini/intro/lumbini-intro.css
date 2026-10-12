@@ -1,0 +1,142 @@
+.lumbini-intro {
+  box-sizing: border-box;
+  width: 100%;
+  padding: clamp(3.5rem, 8vh, 6rem) clamp(1rem, 5vw, 5rem) clamp(2rem, 4vh, 3rem);
+  background: var(--lumbini-cream);
+}
+
+.lumbini-intro__inner {
+  max-width: 92rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vh, 3rem);
+}
+
+.lumbini-intro__lead {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: end;
+}
+
+.lumbini-intro__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.lumbini-intro__copy p {
+  font-family: var(--lumbini-font-sans);
+  font-size: clamp(0.95rem, 1.1vw, 1.04rem);
+  line-height: 1.75;
+  color: var(--lumbini-text-muted);
+  margin: 0;
+}
+
+.lumbini-intro__facts {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--lumbini-line);
+  border-bottom: 1px solid var(--lumbini-line);
+}
+
+.lumbini-intro__fact {
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.35rem;
+}
+
+.lumbini-intro__fact + .lumbini-intro__fact {
+  border-left: 1px solid var(--lumbini-line);
+}
+
+.lumbini-intro__fact dt {
+  font-family: var(--lumbini-font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--lumbini-saffron);
+}
+
+.lumbini-intro__fact dd {
+  margin: 0;
+  font-family: var(--lumbini-font-serif);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  color: var(--lumbini-forest);
+}
+
+.lumbini-intro__belts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.lumbini-intro__belt {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: linear-gradient(160deg, #fff 0%, rgba(201, 164, 92, 0.08) 100%);
+  border: 1px solid rgba(7, 16, 12, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.lumbini-intro__belt-index {
+  font-family: var(--lumbini-font-serif);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: var(--lumbini-gold-2);
+}
+
+.lumbini-intro__belt-title {
+  font-family: var(--lumbini-font-serif);
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--lumbini-forest);
+  margin: 0;
+}
+
+.lumbini-intro__belt-places {
+  font-family: var(--lumbini-font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--lumbini-earth);
+  margin: 0;
+}
+
+.lumbini-intro__belt-text {
+  font-family: var(--lumbini-font-sans);
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--lumbini-text-muted);
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .lumbini-intro__lead {
+    grid-template-columns: 1fr;
+  }
+
+  .lumbini-intro__facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lumbini-intro__fact:nth-child(3) {
+    border-left: none;
+  }
+
+  .lumbini-intro__fact:nth-child(n + 3) {
+    border-top: 1px solid var(--lumbini-line);
+  }
+
+  .lumbini-intro__belts {
+    grid-template-columns: 1fr;
+  }
+}

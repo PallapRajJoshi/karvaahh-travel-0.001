@@ -19,9 +19,20 @@ const sacredSites = [
   "Kamalamai Temple",
 ];
 
+const trails = [
+  {
+    title: "Hindu pilgrimage",
+    text: "Pashupatinath is one of the most sacred Shiva shrines in South Asia, drawing pilgrims for darshan, evening aarati and Maha Shivaratri. Many continue to Guhyeshwari, Budhanilkantha, Dakshinkali and Changu Narayan, while the Janai Purnima pilgrimage climbs to the holy lakes of Gosaikunda.",
+  },
+  {
+    title: "Buddhist heritage trail",
+    text: "Swayambhunath and Boudhanath anchor the valley's Buddhist world — one an ancient hilltop stupa, the other a vast mandala ringed by Tibetan monasteries. Further east, Namo Buddha near Dhulikhel is among the most revered Buddhist pilgrimage sites in Nepal.",
+  },
+];
+
 export default function BagmatiPilgrimage() {
   return (
-    <section className="bagmati-pilgrimage" aria-label="Pilgrimage in Bagmati">
+    <section className="bagmati-pilgrimage" id="pilgrimage" aria-label="Pilgrimage in Bagmati">
       <div className="bagmati-pilgrimage__inner">
         <BagmatiSectionHeading
           eyebrow="Sacred Bagmati"
@@ -36,6 +47,15 @@ export default function BagmatiPilgrimage() {
           light
         />
 
+        <div className="bagmati-pilgrimage__trails">
+          {trails.map((trail) => (
+            <div className="bagmati-pilgrimage__trail" key={trail.title}>
+              <h3 className="bagmati-pilgrimage__trail-title">{trail.title}</h3>
+              <p className="bagmati-pilgrimage__trail-text">{trail.text}</p>
+            </div>
+          ))}
+        </div>
+
         <div className="bagmati-pilgrimage__sites" role="list">
           {sacredSites.map((site) => (
             <span className="bagmati-pilgrimage__site" role="listitem" key={site}>
@@ -48,7 +68,7 @@ export default function BagmatiPilgrimage() {
       <div className="bagmati-pilgrimage__media">
         <Image
           src="/images/bagmati/pashupatinath-temple-bagmati-river-sacred-pilgrimage-nepal.jpg"
-          alt="Prayer flags and golden spire at Boudhanath Stupa, Bagmati Province"
+          alt="Pashupatinath Temple above the sacred Bagmati River in Kathmandu"
           fill
           sizes="(max-width: 1024px) 100vw, 40vw"
           className="bagmati-pilgrimage__image"

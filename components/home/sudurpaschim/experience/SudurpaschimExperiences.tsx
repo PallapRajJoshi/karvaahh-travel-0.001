@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import { sudurpaschimExperiences } from "@/data/sudurpaschim/experiences";
 import SudurpaschimSectionHeading from "../heading/SudurpaschimSectionHeading";
@@ -12,15 +13,21 @@ export default function SudurpaschimExperiences() {
     >
       <div className="sp-container sp-experiences__inner">
         <SudurpaschimSectionHeading
-          index="02"
-          eyebrow="Experience Sudurpaschim"
+          id="sp-experiences-heading"
+          index="03"
+          eyebrow="Why Visit Sudurpaschim"
           heading="One province. A world waiting to be explored."
           align="left"
         />
 
         <ul className="sp-experiences__grid">
-          {sudurpaschimExperiences.map((item) => (
-            <li className="sp-exp-card" key={item.number}>
+          {sudurpaschimExperiences.map((item, index) => (
+            <li
+              className="sp-exp-card"
+              key={item.number}
+              data-reveal
+              style={{ "--d": index } as CSSProperties}
+            >
               <div className="sp-exp-card__media">
                 <Image
                   src={item.image}

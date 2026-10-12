@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import "./sudurpaschim-hero.css";
@@ -16,19 +17,22 @@ const highlights = [
   {
     number: "03",
     title: "Culture",
-    detail: "Gaura · Doteli · Himalayan traditions",
+    detail: "Gaura · Deuda · Tharu traditions",
   },
 ];
 
+/** Entrance stagger step for the hero's CSS animation. */
+const step = (n: number) => ({ "--s": n }) as CSSProperties;
+
 export default function SudurpaschimHero() {
   return (
-    <section className="sp-hero" aria-label="Sudurpaschim Province introduction">
+    <section className="sp-hero" aria-labelledby="sp-hero-heading">
       <div className="sp-hero__media">
         <Image
           src="/sudurpaschim/hero.jpg"
           alt="Remote Himalayan valley in far-western Nepal at sunrise"
           fill
-          priority
+          preload
           sizes="100vw"
           className="sp-hero__image"
         />
@@ -36,35 +40,32 @@ export default function SudurpaschimHero() {
       </div>
 
       <div className="sp-hero__content sp-container">
-        <p className="sp-hero__eyebrow">Far Western Nepal</p>
+        <p className="sp-hero__eyebrow sp-hero__enter" style={step(0)}>
+          Far-Western Nepal · Sudurpashchim Province
+        </p>
 
-        <h1 className="sp-hero__title">
+        <h1 id="sp-hero-heading" className="sp-hero__title sp-hero__enter" style={step(1)}>
           Discover
-          <span className="sp-hero__title-line">Sudurpaschim</span>
+          <span className="sp-hero__title-line">Sudurpashchim</span>
         </h1>
 
-        <p className="sp-hero__headline">
-          Where sacred mountains meet the wild west.
+        <p className="sp-hero__headline sp-hero__enter" style={step(2)}>
+          Nepal&rsquo;s Wild West &mdash; Sacred Trails, Untamed Nature &amp;
+          Hidden Himalayas.
         </p>
 
-        <p className="sp-hero__desc">
-          Journey into Nepal&rsquo;s far west, where ancient temples, remote
-          Himalayan valleys, sacred lakes, dense forests, wild rivers and
-          living traditions remain wonderfully unexplored.
+        <p className="sp-hero__desc sp-hero__enter" style={step(3)}>
+          Nine districts stretching from the Tharu plains of Kailali and
+          Kanchanpur to the 7,000-metre peaks of Api and Saipal &mdash; sacred
+          lakes, temple towns and alpine meadows that few travelers have seen.
         </p>
 
-        <div className="sp-hero__meta">
-          <span className="sp-hero__location">Sudurpaschim Province</span>
-          <span className="sp-hero__divider" aria-hidden="true" />
-          <span className="sp-hero__tagline">Sacred. Remote. Untamed.</span>
-        </div>
-
-        <div className="sp-hero__actions">
-          <Link href="/plan-your-trip" className="sp-btn sp-btn--primary">
-            Plan Your Journey <span className="sp-arrow">↗</span>
+        <div className="sp-hero__actions sp-hero__enter" style={step(4)}>
+          <Link href="#sp-destinations" className="sp-btn sp-btn--primary">
+            Explore Destinations <span className="sp-arrow">→</span>
           </Link>
-          <Link href="#sp-experiences" className="sp-btn sp-btn--ghost">
-            Explore Experiences
+          <Link href="/contact?province=sudurpaschim" className="sp-btn sp-btn--ghost">
+            Plan Your Journey
           </Link>
         </div>
       </div>

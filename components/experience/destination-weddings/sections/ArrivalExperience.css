@@ -1,0 +1,133 @@
+.dw-arrival__top {
+  display: grid;
+  gap: clamp(3rem, 6vw, 5rem);
+}
+
+@media (min-width: 960px) {
+  .dw-arrival__top {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.dw-arrival__lead {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.dw-arrival__sequence {
+  display: grid;
+  border-top: 1px solid var(--dw-line);
+  margin-top: 0.5rem;
+}
+
+.dw-arrival__sequence li {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--dw-line);
+  font-family: var(--dw-serif);
+  font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+}
+
+.dw-arrival__sequence span {
+  font-family: var(--dw-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--dw-gold-ink);
+}
+
+.dw-arrival__hamper {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.dw-arrival__hamper-media {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+}
+
+.dw-arrival__hamper-body {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.dw-arrival__nepal {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.9rem 1rem;
+  background: var(--dw-ivory);
+  border-left: 2px solid var(--dw-gold-ink);
+  font-family: var(--dw-serif);
+  font-size: 1.05rem;
+}
+
+.dw-arrival__nepal span {
+  font-family: var(--dw-sans);
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dw-gold-ink);
+}
+
+.dw-arrival__transport {
+  margin-top: clamp(4rem, 8vw, 6.5rem);
+}
+
+.dw-arrival__transport-title {
+  font-family: var(--dw-serif);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 3.4vw, 2.7rem);
+  line-height: 1.1;
+  margin-bottom: 1.75rem;
+}
+
+.dw-arrival__transport-title em {
+  color: var(--dw-maroon);
+}
+
+.dw-arrival__fleet {
+  margin: 0;
+  border-top: 1px solid var(--dw-charcoal);
+}
+
+.dw-arrival__fleet-row {
+  display: grid;
+  gap: 0.35rem 2rem;
+  padding: 1.15rem 0;
+  border-bottom: 1px solid var(--dw-line);
+}
+
+@media (min-width: 720px) {
+  .dw-arrival__fleet-row {
+    grid-template-columns: 14rem 1fr;
+    align-items: baseline;
+  }
+}
+
+.dw-arrival__fleet-row dt {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dw-maroon);
+}
+
+.dw-arrival__fleet-row dd {
+  margin: 0;
+  font-family: var(--dw-serif);
+  font-size: clamp(1.1rem, 1.7vw, 1.35rem);
+}
+
+.dw-arrival__fleet-note {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: var(--dw-sans);
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--dw-ink-soft);
+}

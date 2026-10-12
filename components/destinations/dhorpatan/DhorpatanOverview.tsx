@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/shared/SafeImage";
 import { overviewContent } from "@/data/dhorpatan";
 import Reveal from "@/components/shared/Reveal";
 import "./DhorpatanOverview.css";

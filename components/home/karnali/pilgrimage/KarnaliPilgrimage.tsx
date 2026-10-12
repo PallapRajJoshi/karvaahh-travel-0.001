@@ -1,4 +1,4 @@
-import Image from "next/image";
+import SafeImage from "@/components/shared/SafeImage";
 import "./karnali-pilgrimage.css";
 
 export default function KarnaliPilgrimage() {
@@ -15,7 +15,7 @@ export default function KarnaliPilgrimage() {
         aria-label="Sacred lakes of Karnali"
       >
         <div className="karnali-lakes-media">
-          <Image
+          <SafeImage
             src="/karnali/rara-lake.jpg"
             alt="Rara Lake at sunrise, ringed by pine forest and mountains"
             fill
@@ -77,7 +77,7 @@ export default function KarnaliPilgrimage() {
           </ul>
         </div>
         <div className="karnali-pilgrimage-media">
-          <Image
+          <SafeImage
             src="/karnali/heritage.jpg"
             alt="Ancient temple in the high valleys of Karnali"
             fill

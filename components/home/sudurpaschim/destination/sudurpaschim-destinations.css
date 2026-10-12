@@ -7,142 +7,228 @@
 .sp-destinations__inner {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
 }
+
+/* ---- Filters ---- */
+
+.sp-dest-filters {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 0.25rem;
+  margin-inline: calc(clamp(1.25rem, 4vw, 3.5rem) * -1);
+  padding-inline: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+.sp-dest-filters::-webkit-scrollbar {
+  display: none;
+}
+
+.sp-dest-filter {
+  flex: none;
+  min-height: 44px;
+  padding: 0.6rem 1.15rem;
+  border: 1px solid #d9d0bd;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--sp-forest-800);
+  font-family: var(--sp-font-body);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.sp-dest-filter:hover {
+  border-color: var(--sp-gold);
+}
+
+.sp-dest-filter[aria-pressed="true"] {
+  background: var(--sp-forest-900);
+  border-color: var(--sp-forest-900);
+  color: var(--sp-cream);
+}
+
+.sp-dest-filter:focus-visible {
+  outline: 2px solid var(--sp-gold);
+  outline-offset: 2px;
+}
+
+.sp-dest-count {
+  margin: -0.75rem 0 0;
+  font-size: 0.8rem;
+  color: var(--sp-earth);
+}
+
+/* ---- Grid ---- */
 
 .sp-dest-grid {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-auto-rows: 260px;
-  gap: 1.25rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.75rem);
 }
 
 .sp-dest-card {
-  position: relative;
-  overflow: hidden;
-  color: var(--sp-cream);
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #ebe4d6;
+  overflow: hidden;
+  transition: box-shadow 0.4s ease, transform 0.4s ease, border-color 0.4s ease;
 }
 
-.sp-dest-card--lg {
-  grid-column: span 3;
-  grid-row: span 2;
+@media (prefers-reduced-motion: no-preference) {
+  .sp-dest-card {
+    animation: sp-dest-in 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(var(--i, 0) * 70ms);
+  }
 }
 
-.sp-dest-card--md {
-  grid-column: span 3;
-  grid-row: span 1;
+@keyframes sp-dest-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
 }
 
-.sp-dest-card--sm {
-  grid-column: span 2;
-  grid-row: span 1;
+.sp-dest-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(201, 164, 92, 0.6);
+  box-shadow: 0 18px 40px -22px rgba(11, 21, 36, 0.45);
 }
 
 .sp-dest-card__media {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  /* shown when a photo slot is still empty */
+  background: linear-gradient(140deg, var(--sp-forest-700), var(--sp-blue));
 }
 
 .sp-dest-card__image {
   object-fit: cover;
-  transition: transform 0.6s ease;
+  transition: transform 0.8s ease;
 }
 
 .sp-dest-card:hover .sp-dest-card__image {
   transform: scale(1.06);
 }
 
-.sp-dest-card__scrim {
+.sp-dest-card__kicker {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(7, 16, 12, 0) 35%,
-    rgba(7, 16, 12, 0.88) 100%
-  );
+  left: 1rem;
+  top: 1rem;
+  padding: 0.35rem 0.7rem;
+  background: rgba(11, 21, 36, 0.78);
+  backdrop-filter: blur(4px);
+  color: var(--sp-gold);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .sp-dest-card__body {
-  position: relative;
-  z-index: 1;
-  padding: 1.25rem 1.4rem;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.55rem;
+  padding: 1.35rem 1.4rem 1.5rem;
 }
 
-.sp-dest-card__category {
-  font-size: 0.7rem;
+.sp-dest-card__district {
+  margin: 0;
+  font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--sp-gold);
+  color: var(--sp-blue);
 }
 
 .sp-dest-card__title {
+  margin: 0;
   font-family: var(--sp-font-display);
-  font-size: 1.15rem;
+  font-size: 1.3rem;
   font-weight: 600;
-  margin: 0;
-}
-
-.sp-dest-card__location {
-  font-size: 0.75rem;
-  color: rgba(247, 245, 239, 0.75);
-  margin: 0;
+  line-height: 1.2;
+  color: var(--sp-forest-900);
 }
 
 .sp-dest-card__desc {
-  font-size: 0.82rem;
-  line-height: 1.55;
-  color: rgba(247, 245, 239, 0.85);
-  margin: 0.35rem 0 0;
-  max-width: 46ch;
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: #4a4238;
 }
 
-.sp-dest-card--sm .sp-dest-card__desc {
-  display: none;
+.sp-dest-card__tags {
+  list-style: none;
+  margin: 0.35rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.sp-dest-card__tags li {
+  padding: 0.25rem 0.6rem;
+  border: 1px solid #e4dccb;
+  font-size: 0.72rem;
+  color: var(--sp-earth);
+  background: #faf7f0;
+}
+
+.sp-dest-card__link {
+  margin-top: auto;
+  padding-top: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--sp-forest-800);
+  text-decoration: none;
+  border-top: 1px solid #efe9dc;
+}
+
+.sp-dest-card__link:hover {
+  color: var(--sp-gold-deep);
+}
+
+.sp-dest-card__link:hover .sp-arrow {
+  transform: translateX(4px);
+}
+
+.sp-dest-card__link:focus-visible {
+  outline: 2px solid var(--sp-gold);
+  outline-offset: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .sp-dest-card__image {
-    transition: none;
+  .sp-dest-card,
+  .sp-dest-card:hover,
+  .sp-dest-card:hover .sp-dest-card__image {
+    transform: none;
   }
 }
 
 @media (max-width: 1080px) {
   .sp-dest-grid {
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 240px;
-  }
-  .sp-dest-card--lg {
-    grid-column: span 4;
-    grid-row: span 2;
-  }
-  .sp-dest-card--md {
-    grid-column: span 2;
-  }
-  .sp-dest-card--sm {
-    grid-column: span 2;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 680px) {
   .sp-dest-grid {
     grid-template-columns: 1fr;
-    grid-auto-rows: auto;
   }
-  .sp-dest-card--lg,
-  .sp-dest-card--md,
-  .sp-dest-card--sm {
-    grid-column: span 1;
-    height: 340px;
-  }
-  .sp-dest-card--sm .sp-dest-card__desc {
-    display: block;
+
+  .sp-dest-card__media {
+    aspect-ratio: 16 / 10;
   }
 }

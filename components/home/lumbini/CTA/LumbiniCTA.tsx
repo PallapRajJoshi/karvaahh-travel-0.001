@@ -22,7 +22,7 @@ export default function LumbiniCTA() {
 
       <div className="lumbini-cta__content">
         <span className="lumbini-cta__index" aria-hidden="true">
-          10
+          15
         </span>
 
         <h2 className="lumbini-cta__title">
@@ -40,8 +40,8 @@ export default function LumbiniCTA() {
         </p>
 
         <div className="lumbini-cta__actions">
-          <Link href="/destinations/lumbini-province" className="lumbini-cta__button lumbini-cta__button--primary">
-            Explore Lumbini
+          <Link href="#explore-destinations" className="lumbini-cta__button lumbini-cta__button--primary">
+            Explore Destinations
           </Link>
           <Link href="/contact" className="lumbini-cta__button lumbini-cta__button--secondary">
             Plan Your Trip

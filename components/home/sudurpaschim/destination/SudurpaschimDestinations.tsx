@@ -1,6 +1,9 @@
-import Image from "next/image";
-import { sudurpaschimDestinations } from "@/data/sudurpaschim/destinations";
+import {
+  destinationCategories,
+  sudurpaschimDestinations,
+} from "@/data/sudurpaschim/destinations";
 import SudurpaschimSectionHeading from "../heading/SudurpaschimSectionHeading";
+import SudurpaschimDestinationGrid from "./SudurpaschimDestinationGrid";
 import "./sudurpaschim-destinations.css";
 
 export default function SudurpaschimDestinations() {
@@ -12,41 +15,17 @@ export default function SudurpaschimDestinations() {
     >
       <div className="sp-container sp-destinations__inner">
         <SudurpaschimSectionHeading
-          index="03"
+          id="sp-destinations-heading"
+          index="04"
           eyebrow="Places to Go"
-          heading="The far west, waiting to be discovered."
-          description="Nine districts, from the Tharu wetlands of the plains to the Himalayan valleys of Darchula."
+          heading="Explore Sudurpashchim destinations."
+          description="Sacred peaks, Ramsar wetlands, grassland parks and temple towns — from the Tharu plains of Kailali to the Himalayan valleys of Darchula."
         />
 
-        <ul className="sp-dest-grid">
-          {sudurpaschimDestinations.map((place) => (
-            <li
-              className={`sp-dest-card sp-dest-card--${place.size}`}
-              key={place.number}
-            >
-              <div className="sp-dest-card__media">
-                <Image
-                  src={place.image}
-                  alt={place.alt}
-                  fill
-                  sizes="(max-width: 720px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="sp-dest-card__image"
-                />
-                <div className="sp-dest-card__scrim" aria-hidden="true" />
-              </div>
-              <div className="sp-dest-card__body">
-                <span className="sp-dest-card__category">
-                  {place.category}
-                </span>
-                <h3 className="sp-dest-card__title">{place.name}</h3>
-                <p className="sp-dest-card__location">
-                  {place.district} &middot; {place.location}
-                </p>
-                <p className="sp-dest-card__desc">{place.description}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <SudurpaschimDestinationGrid
+          destinations={sudurpaschimDestinations}
+          categories={destinationCategories}
+        />
       </div>
     </section>
   );

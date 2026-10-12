@@ -13,11 +13,11 @@ const habitats = [
 
 export default function GandakiWildlife() {
   return (
-    <section className="gandaki-wildlife" aria-label="Wildlife and nature in Gandaki">
+    <section className="gandaki-wildlife" aria-labelledby="gandaki-wildlife-title">
       <div className="gandaki-wildlife__media">
         <Image
           src="/images/gandaki/dhorpatan-alpine-meadows-himalayan-wilderness-gandaki-nepal.jpg"
-          alt="Forested river valley and alpine ridgeline in Gandaki Province"
+          alt="Forested river gorge rising to snow-capped peaks in Gandaki Province"
           fill
           sizes="100vw"
           className="gandaki-wildlife__image"
@@ -25,10 +25,12 @@ export default function GandakiWildlife() {
         <div className="gandaki-wildlife__scrim" />
       </div>
 
-      <div className="gandaki-wildlife__content">
-        <span className="gandaki-wildlife__index">09</span>
+      <div className="gandaki-wildlife__content gandaki-reveal">
+        <span className="gandaki-wildlife__index" aria-hidden="true">
+          08
+        </span>
         <p className="gandaki-wildlife__eyebrow">NATURE & CONSERVATION</p>
-        <h2 className="gandaki-wildlife__title">
+        <h2 id="gandaki-wildlife-title" className="gandaki-wildlife__title">
           Where the wild
           <em> meets the mountains.</em>
         </h2>

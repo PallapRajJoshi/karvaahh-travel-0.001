@@ -32,6 +32,7 @@ export default function SudurpaschimWildlife() {
 
       <div className="sp-container sp-wildlife__content">
         <SudurpaschimSectionHeading
+          id="sp-wildlife-heading"
           index="09"
           eyebrow="Wilderness"
           heading="Where the wild still roams."

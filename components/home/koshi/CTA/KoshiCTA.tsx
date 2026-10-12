@@ -72,7 +72,7 @@ export default function KoshiCTA() {
 
             <Link
               className="koshi-cta__button koshi-cta__button--outline"
-              href="/packages"
+              href="/contact"
             >
               <span>Plan Your Trip</span>
               <span aria-hidden="true">↗</span>

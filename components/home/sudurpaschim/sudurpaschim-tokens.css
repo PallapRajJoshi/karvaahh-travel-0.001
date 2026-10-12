@@ -4,11 +4,12 @@
 */
 :root {
   --sp-cream: #f7f5ef;
-  --sp-forest-900: #07100c;
-  --sp-forest-800: #0b1711;
-  --sp-forest-700: #142019;
+  /* "forest" names kept for compatibility; values are deep Himalayan blues */
+  --sp-forest-900: #08111f;
+  --sp-forest-800: #0d1a2e;
+  --sp-forest-700: #162842;
   --sp-earth: #5a4a3a;
-  --sp-blue: #405b67;
+  --sp-blue: #3d5a7a;
   --sp-gold: #c9a45c;
   --sp-gold-deep: #b8954e;
   --sp-terracotta: #9a6448;
@@ -89,6 +90,33 @@
 
 .sp-btn:hover .sp-arrow {
   transform: translateX(4px);
+}
+
+/*
+  Scroll reveal. RevealController adds .is-in to [data-reveal] on first view.
+  The hidden state only applies with scripting on and motion allowed, and a
+  failsafe un-hides anything the observer never reaches.
+  --d = stagger index, set inline.
+*/
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .sudurpaschim-page [data-reveal] {
+    transition: opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+      transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: calc(var(--d, 0) * 90ms);
+  }
+
+  .sudurpaschim-page [data-reveal]:not(.is-in) {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+    animation: sp-reveal-failsafe 0.01s linear 3.5s forwards;
+  }
+}
+
+@keyframes sp-reveal-failsafe {
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

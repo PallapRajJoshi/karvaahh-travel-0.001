@@ -1,0 +1,200 @@
+.madhesh-plan {
+  width: 100%;
+  padding: clamp(3.5rem, 8vh, 6.5rem) clamp(1rem, 5vw, 5rem);
+  background: var(--madhesh-cream);
+}
+
+.madhesh-plan__block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.madhesh-plan__block-title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  color: var(--madhesh-ink);
+}
+
+.madhesh-plan__seasons {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+}
+
+.madhesh-plan__season {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.3rem;
+  background: #fff;
+  border: 1px solid var(--madhesh-border);
+  border-radius: 1rem;
+}
+
+.madhesh-plan__season:first-child {
+  background: var(--madhesh-green-900);
+  border-color: var(--madhesh-green-900);
+  color: var(--madhesh-cream);
+}
+
+.madhesh-plan__season-label {
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--madhesh-gold-dark);
+}
+
+.madhesh-plan__season:first-child .madhesh-plan__season-label {
+  color: var(--madhesh-gold);
+}
+
+.madhesh-plan__season-months {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+}
+
+.madhesh-plan__season-text {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--madhesh-ink-soft);
+}
+
+.madhesh-plan__season:first-child .madhesh-plan__season-text {
+  color: rgba(247, 245, 239, 0.75);
+}
+
+.madhesh-plan__reach {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) minmax(0, 1.3fr);
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+}
+
+.madhesh-plan__card {
+  padding: 1.4rem;
+  background: #fff;
+  border: 1px solid var(--madhesh-border);
+  border-radius: 1rem;
+}
+
+.madhesh-plan__card--border {
+  background: rgba(201, 164, 92, 0.1);
+  border-color: rgba(201, 164, 92, 0.4);
+}
+
+.madhesh-plan__card-title {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: var(--madhesh-green-900);
+}
+
+.madhesh-plan__points,
+.madhesh-plan__borders {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.madhesh-plan__points li {
+  position: relative;
+  padding-left: 1rem;
+  font-size: 0.87rem;
+  line-height: 1.6;
+  color: var(--madhesh-ink-soft);
+}
+
+.madhesh-plan__points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--madhesh-gold);
+}
+
+.madhesh-plan__border {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(201, 164, 92, 0.3);
+}
+
+.madhesh-plan__border-name {
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--madhesh-green-900);
+}
+
+.madhesh-plan__border-for {
+  font-size: 0.75rem;
+  color: var(--madhesh-gold-dark);
+}
+
+.madhesh-plan__border-note,
+.madhesh-plan__small {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--madhesh-ink-soft);
+}
+
+.madhesh-plan__small {
+  margin: 0.85rem 0 0;
+  font-style: italic;
+}
+
+.madhesh-plan__tips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem 2rem;
+}
+
+.madhesh-plan__tip {
+  display: flex;
+  gap: 0.7rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--madhesh-ink-soft);
+}
+
+.madhesh-plan__tip span {
+  color: var(--madhesh-gold-dark);
+  font-weight: 700;
+}
+
+@media (max-width: 1000px) {
+  .madhesh-plan__seasons {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .madhesh-plan__reach {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .madhesh-plan__card--border {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .madhesh-plan__seasons,
+  .madhesh-plan__reach,
+  .madhesh-plan__tips {
+    grid-template-columns: 1fr;
+  }
+}

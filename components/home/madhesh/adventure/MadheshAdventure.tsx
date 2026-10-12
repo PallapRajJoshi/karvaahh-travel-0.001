@@ -1,21 +1,25 @@
 import Image from "next/image";
 import "./madhesh-adventure.css";
 
-const borderPoints = [
-  { route: "Raxaul → Birgunj", note: "Main highway crossing, Parsa district" },
-  { route: "Jaynagar → Janakpur", note: "Rail-linked crossing into Dhanusha" },
+const activities = [
+  { route: "Village walks", note: "Mud-walled Mithila and Tharu villages, painted homes and farm life" },
+  { route: "Cycling the plains", note: "Quiet lanes through rice fields, mango groves and local markets" },
+  { route: "Jungle drives & birding", note: "Guided safaris in Parsa and wetland birding at Koshi Tappu" },
+  { route: "Pond boating", note: "Gentle boat rides on Janakpur's sacred ponds" },
+  { route: "Chure hill camping", note: "Nights under the stars on the first ridge north of the plains" },
 ];
 
 export default function MadheshAdventure() {
   return (
     <section
+      id="adventure"
       className="madhesh-adventure"
-      aria-label="Rural and border journeys in Madhesh"
+      aria-label="Village walks and nature activities in Madhesh"
     >
       <div className="madhesh-adventure__media">
         <Image
-          src="/madhesh/birgunj.jpg"
-          alt="Rural road and border town of Birgunj, Madhesh Province"
+          src="/images/madhesh/rural.jpg"
+          alt="Village of mud-walled houses and green fields on the Madhesh plains"
           fill
           sizes="(max-width: 900px) 100vw, 50vw"
           className="madhesh-adventure__image"
@@ -23,32 +27,28 @@ export default function MadheshAdventure() {
       </div>
 
       <div className="madhesh-adventure__content">
-        <span className="madhesh-eyebrow">Rural &amp; Border Journeys</span>
+        <span className="madhesh-eyebrow">Slow Adventures</span>
         <h2 className="madhesh-adventure__title">
-          Cycle the plains,
+          Walk the villages,
           <br />
-          <span className="madhesh-gold-italic">cross the border.</span>
+          <span className="madhesh-gold-italic">ride the plains.</span>
         </h2>
         <p className="madhesh-adventure__desc">
-          Madhesh is an easy, welcoming gateway between India and Nepal —
-          ideal for cycling through farmland, visiting local markets and
-          combining India–Nepal pilgrimage and cultural circuits.
+          Madhesh rewards travellers who slow down. Swap mountain trails for
+          village lanes, cycle between farms and temples, and head into the
+          forests and wetlands at the edges of the plains.
         </p>
 
         <ul className="madhesh-adventure__borders">
-          {borderPoints.map((b) => (
-            <li key={b.route}>
-              <span className="madhesh-adventure__border-route">
-                {b.route}
-              </span>
-              <span className="madhesh-adventure__border-note">
-                {b.note}
-              </span>
+          {activities.map((a) => (
+            <li key={a.route}>
+              <span className="madhesh-adventure__border-route">{a.route}</span>
+              <span className="madhesh-adventure__border-note">{a.note}</span>
             </li>
           ))}
         </ul>
         <p className="madhesh-adventure__note">
-          Always travel via authorized, official border points.
+          Activities are arranged with local guides and community hosts.
         </p>
       </div>
     </section>

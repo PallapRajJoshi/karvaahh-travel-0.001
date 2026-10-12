@@ -5,6 +5,7 @@ export interface LumbiniExperience {
   description: string;
   image: string;
   alt: string;
+  tags: string[];
 }
 
 export const lumbiniExperiences: LumbiniExperience[] = [
@@ -16,6 +17,7 @@ export const lumbiniExperiences: LumbiniExperience[] = [
       "Walk the sacred circuit connecting Lumbini, Maya Devi Temple, Kapilvastu and Ramgram — the landscape where Buddhism began.",
     image: "/images/lumbini/ramgram-stupa-buddhist-pilgrimage-lumbini-Nepal.jpg",
     alt: "Pilgrims walking near Maya Devi Temple in Lumbini",
+    tags: ["Buddhist Pilgrimage", "Spiritual", "History", "Meditation"],
   },
   {
     number: "02",
@@ -25,6 +27,7 @@ export const lumbiniExperiences: LumbiniExperience[] = [
       "Trace the excavated remains of Tilaurakot, Kudan, Nigrodharama, Gotihawa, Sagarhawa and Araurakot — the ancient kingdom of the Shakyas.",
     image: "/images/lumbini/kudan-ancient-buddhist-archaeological-site-Nepal.jpg",
     alt: "Excavated brick ruins at Tilaurakot",
+    tags: ["Heritage", "History", "Photography", "Road Trips"],
   },
   {
     number: "03",
@@ -34,6 +37,7 @@ export const lumbiniExperiences: LumbiniExperience[] = [
       "Slow down among international monasteries, sacred gardens and quiet meditation paths built for reflection.",
     image: "/images/lumbini/lumbini-sacred-garden-meditation-path-Nepal.jpg",
     alt: "Monk walking through the Lumbini Monastic Zone",
+    tags: ["Spiritual", "Meditation", "Family", "Pilgrimage"],
   },
   {
     number: "04",
@@ -43,6 +47,7 @@ export const lumbiniExperiences: LumbiniExperience[] = [
       "Head into the forests and rivers of Bardiya and Banke for jungle safaris, birdwatching and opportunities for tiger and rhinoceros sightings.",
     image: "/images/lumbini/birdwatching-bardiya-national-park-Nepal.jpg",
     alt: "Sal forest landscape in Bardiya National Park",
+    tags: ["Wildlife", "Safari", "Nature", "Photography"],
   },
   {
     number: "05",
@@ -52,6 +57,7 @@ export const lumbiniExperiences: LumbiniExperience[] = [
       "Climb into the western hills to explore Tansen, Rani Mahal and Srinagar Hill's traditional Newar settlements.",
     image: "/images/lumbini/srinagar-hill-tansen-palpa-nepal.jpg",
     alt: "Hillside town of Tansen at sunset",
+    tags: ["Heritage", "Adventure", "Road Trips", "History"],
   },
   {
     number: "06",
@@ -61,5 +67,6 @@ export const lumbiniExperiences: LumbiniExperience[] = [
       "Stay in Tharu villages for local food, crafts, farming traditions and community life across the Terai plains.",
     image: "/images/lumbini/traditional-tharu-houses-bardiya-Nepal.jpg",
     alt: "Traditional Tharu village life",
+    tags: ["Tharu Culture", "Nature", "Family", "Village Exploration"],
   },
 ];

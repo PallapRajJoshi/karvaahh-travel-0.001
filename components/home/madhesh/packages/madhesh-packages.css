@@ -1,0 +1,118 @@
+.madhesh-packages {
+  width: 100%;
+  padding: clamp(3.5rem, 8vh, 6.5rem) clamp(1rem, 5vw, 5rem);
+  background:
+    radial-gradient(ellipse at 85% 10%, rgba(201, 164, 92, 0.16), transparent 50%),
+    var(--madhesh-green-950);
+  color: var(--madhesh-cream);
+}
+
+.madhesh-packages__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.madhesh-package-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--madhesh-green-800);
+  border: 1px solid var(--madhesh-border-on-dark);
+  border-radius: 1.1rem;
+  transition: transform 0.4s var(--madhesh-ease), border-color 0.4s var(--madhesh-ease);
+}
+
+.madhesh-package-card:hover,
+.madhesh-package-card:focus-within {
+  transform: translateY(-4px);
+  border-color: var(--madhesh-gold);
+}
+
+.madhesh-package-card__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.madhesh-package-card__image {
+  object-fit: cover;
+  transition: transform 0.8s var(--madhesh-ease);
+}
+
+.madhesh-package-card:hover .madhesh-package-card__image {
+  transform: scale(1.06);
+}
+
+.madhesh-package-card__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 1.3rem;
+}
+
+.madhesh-package-card__meta {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--madhesh-gold);
+}
+
+.madhesh-package-card__title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.25;
+}
+
+.madhesh-package-card__text {
+  margin: 0;
+  font-size: 0.87rem;
+  line-height: 1.6;
+  color: rgba(247, 245, 239, 0.72);
+}
+
+.madhesh-package-card__link {
+  margin-top: auto;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--madhesh-cream);
+  text-decoration: none;
+  border-bottom: 1px solid var(--madhesh-gold);
+}
+
+.madhesh-package-card__link:hover {
+  color: var(--madhesh-gold);
+}
+
+.madhesh-package-card--custom {
+  justify-content: center;
+  background: linear-gradient(160deg, rgba(201, 164, 92, 0.22), rgba(201, 164, 92, 0.05));
+  border-style: dashed;
+}
+
+@media (max-width: 1100px) {
+  .madhesh-packages__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .madhesh-packages__grid {
+    grid-template-columns: 1fr;
+  }
+}

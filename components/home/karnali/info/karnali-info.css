@@ -1,0 +1,391 @@
+@import "../karnali-tokens.css";
+
+/* =========================================================
+   Shared styles for the Karnali planning sections:
+   Overview · Planning · Travel Tips · FAQ · Packages
+========================================================= */
+
+.karnali-info-light {
+  background: var(--k-cream);
+  scroll-margin-top: 80px;
+}
+
+.karnali-info-soft {
+  background: var(--k-blue-soft);
+  scroll-margin-top: 80px;
+}
+
+.karnali-info-dark {
+  background:
+    radial-gradient(ellipse at 85% 0%, rgba(47, 93, 134, 0.35), transparent 55%),
+    var(--k-forest-900);
+  scroll-margin-top: 80px;
+}
+
+.karnali-info-subheading {
+  font-family: var(--k-font-serif);
+  font-weight: 500;
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  color: var(--k-charcoal);
+  margin: 2.25rem 0 1.25rem;
+}
+
+.karnali-info-subheading-light {
+  color: var(--k-cream);
+}
+
+.karnali-prose p {
+  font-family: var(--k-font-sans);
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--k-stone);
+  margin: 0 0 1rem;
+  max-width: 62ch;
+}
+
+/* ---------- Overview ---------- */
+.karnali-overview-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+}
+
+.karnali-check-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.karnali-check-list li {
+  position: relative;
+  padding-left: 1.6rem;
+  font-family: var(--k-font-sans);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--k-charcoal);
+}
+
+.karnali-check-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--k-gold);
+  box-shadow: 0 0 0 4px rgba(201, 164, 92, 0.18);
+}
+
+.karnali-facts-card {
+  background: var(--k-forest-900);
+  color: var(--k-cream);
+  border-radius: 12px;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  box-shadow: 0 30px 60px -40px rgba(6, 20, 38, 0.8);
+}
+
+.karnali-facts-title {
+  font-family: var(--k-font-serif);
+  font-weight: 500;
+  font-size: 1.5rem;
+  color: var(--k-gold);
+  margin: 0 0 1.25rem;
+}
+
+.karnali-facts {
+  margin: 0;
+  display: grid;
+}
+
+.karnali-fact {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: 1rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(246, 247, 249, 0.1);
+  font-family: var(--k-font-sans);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.karnali-fact dt {
+  color: rgba(246, 247, 249, 0.55);
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  padding-top: 0.15rem;
+}
+
+.karnali-fact dd {
+  margin: 0;
+  color: var(--k-cream);
+}
+
+.karnali-facts-label {
+  font-family: var(--k-font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(246, 247, 249, 0.55);
+  margin: 1.4rem 0 0.75rem;
+}
+
+.karnali-district-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.karnali-district-list .karnali-chip {
+  color: rgba(246, 247, 249, 0.85);
+}
+
+/* ---------- Seasons ---------- */
+.karnali-season-grid,
+.karnali-access-list,
+.karnali-tips-grid,
+.karnali-package-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.karnali-season-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.karnali-season-card {
+  background: rgba(246, 247, 249, 0.04);
+  border: 1px solid rgba(246, 247, 249, 0.1);
+  border-radius: 10px;
+  padding: 1.4rem;
+}
+
+.karnali-season-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.karnali-season-name {
+  font-family: var(--k-font-serif);
+  font-size: 1.3rem;
+  color: var(--k-cream);
+}
+
+.karnali-season-rating {
+  font-family: var(--k-font-sans);
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+}
+
+.karnali-rating-best {
+  background: var(--k-gold);
+  color: var(--k-forest-900);
+}
+
+.karnali-rating-good {
+  background: rgba(246, 247, 249, 0.14);
+  color: var(--k-cream);
+}
+
+.karnali-rating-selective {
+  border: 1px solid rgba(246, 247, 249, 0.3);
+  color: rgba(246, 247, 249, 0.8);
+}
+
+.karnali-season-months {
+  font-family: var(--k-font-sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--k-gold);
+  margin: 0.4rem 0 0.75rem;
+}
+
+.karnali-season-text,
+.karnali-access-text {
+  font-family: var(--k-font-sans);
+  font-size: 0.86rem;
+  line-height: 1.65;
+  color: rgba(246, 247, 249, 0.74);
+  margin: 0;
+}
+
+/* ---------- Access ---------- */
+.karnali-access-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.karnali-access-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid rgba(246, 247, 249, 0.12);
+}
+
+.karnali-access-num {
+  font-family: var(--k-font-serif);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--k-gold);
+  line-height: 1;
+}
+
+.karnali-access-title {
+  font-family: var(--k-font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--k-cream);
+  margin: 0 0 0.4rem;
+}
+
+/* ---------- Tips ---------- */
+.karnali-tips-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.karnali-tip-card {
+  background: var(--k-white);
+  border: 1px solid rgba(16, 34, 56, 0.08);
+  border-radius: 10px;
+  padding: 1.5rem 1.6rem;
+}
+
+.karnali-tip-title {
+  font-family: var(--k-font-serif);
+  font-weight: 500;
+  font-size: 1.25rem;
+  color: var(--k-charcoal);
+  margin: 0 0 0.9rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--k-line);
+}
+
+.karnali-tip-points {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.karnali-tip-points li {
+  font-family: var(--k-font-sans);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--k-stone);
+}
+
+.karnali-tip-points li::marker {
+  color: var(--k-gold-deep);
+}
+
+/* ---------- FAQ (shared FAQAccordion in Karnali palette) ---------- */
+.karnali-info-soft .faq-accordion {
+  --dhorpatan-blue: var(--k-charcoal);
+  --dhorpatan-gold: var(--k-gold);
+  --dhorpatan-charcoal: var(--k-stone);
+  font-family: var(--k-font-sans);
+}
+
+/* ---------- Packages ---------- */
+.karnali-package-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.karnali-package-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.5rem;
+  border: 1px solid rgba(246, 247, 249, 0.12);
+  border-radius: 10px;
+  background: rgba(246, 247, 249, 0.03);
+  text-decoration: none;
+  transition: border-color 0.35s var(--k-ease), background 0.35s var(--k-ease),
+    transform 0.35s var(--k-ease);
+}
+
+.karnali-package-card:hover {
+  border-color: var(--k-gold);
+  background: rgba(201, 164, 92, 0.08);
+  transform: translateY(-3px);
+}
+
+.karnali-package-title {
+  font-family: var(--k-font-serif);
+  font-weight: 500;
+  font-size: 1.25rem;
+  color: var(--k-cream);
+  margin: 0 0 0.5rem;
+}
+
+.karnali-package-text {
+  font-family: var(--k-font-sans);
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: rgba(246, 247, 249, 0.7);
+  margin: 0 0 1.25rem;
+}
+
+.karnali-package-cta {
+  margin-top: auto;
+  font-family: var(--k-font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--k-gold);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .karnali-season-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .karnali-package-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .karnali-overview-grid,
+  .karnali-access-list,
+  .karnali-tips-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .karnali-season-grid,
+  .karnali-package-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .karnali-fact {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .karnali-package-card,
+  .karnali-package-card:hover {
+    transition: none;
+    transform: none;
+  }
+}

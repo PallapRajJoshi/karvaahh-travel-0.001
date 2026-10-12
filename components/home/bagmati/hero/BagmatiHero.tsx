@@ -37,6 +37,14 @@ export default function BagmatiHero() {
       </div>
 
       <div className="bagmati-hero__content">
+        <nav aria-label="Breadcrumb" className="bagmati-hero__breadcrumb">
+          <ol>
+            <li><Link href="/">Home</Link></li>
+            <li><Link href="/destinations">Destinations</Link></li>
+            <li aria-current="page">Bagmati Province</li>
+          </ol>
+        </nav>
+
         <div className="bagmati-hero__top">
           <span className="bagmati-hero__eyebrow">Central Nepal</span>
           <span className="bagmati-hero__location">Bagmati Province</span>
@@ -53,21 +61,24 @@ export default function BagmatiHero() {
         </p>
 
         <p className="bagmati-hero__description">
-          From the timeless streets of Kathmandu Valley to sacred mountains,
-          hidden villages, national parks and high-altitude lakes, Bagmati is
-          Nepal in extraordinary diversity.
+          Home to Kathmandu and seven UNESCO-listed monument zones, the
+          glaciers of Langtang, the sacred lakes of Gosaikunda and the jungles
+          of Chitwan — Bagmati is Nepal in extraordinary diversity.
         </p>
 
         <div className="bagmati-hero__actions">
-          <Link href="/packages?province=bagmati" className="bagmati-hero__cta">
-            Explore Bagmati journeys
+          <Link href="#discover" className="bagmati-hero__cta">
+            Explore destinations
+            <span className="bagmati-hero__cta-arrow" aria-hidden="true">
+              ↓
+            </span>
+          </Link>
+          <Link href="/contact?province=bagmati" className="bagmati-hero__cta bagmati-hero__cta--ghost">
+            Plan your journey
             <span className="bagmati-hero__cta-arrow" aria-hidden="true">
               ↗
             </span>
           </Link>
-          <span className="bagmati-hero__tagline">
-            Heritage. Himalayas. Adventure.
-          </span>
         </div>
       </div>
 

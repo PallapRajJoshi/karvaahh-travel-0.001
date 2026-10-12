@@ -1,0 +1,69 @@
+.dw-couple__split {
+  display: grid;
+}
+
+@media (min-width: 900px) {
+  .dw-couple__split {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.dw-couple__side {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(26rem, 56vw, 40rem);
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--dw-ivory);
+}
+
+.dw-couple__media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.dw-couple__side::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, transparent 40%, rgba(35, 15, 20, 0.85) 100%);
+}
+
+.dw-couple__body {
+  display: grid;
+  gap: 0.9rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+.dw-couple__title {
+  font-family: var(--dw-serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1;
+}
+
+.dw-couple__body .dw-dotlist {
+  color: rgba(251, 248, 242, 0.88);
+}
+
+.dw-couple__body .dw-dotlist li:not(:last-child)::after {
+  background: var(--dw-gold);
+}
+
+.dw-couple__statement {
+  padding-block: clamp(3rem, 6vw, 5rem);
+  text-align: center;
+}
+
+.dw-couple__statement .dw-container {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+}
+
+.dw-couple__statement .dw-h2 {
+  max-width: 50rem;
+}

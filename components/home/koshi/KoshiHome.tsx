@@ -1,11 +1,18 @@
 import KoshiHero from "./hero/KoshiHero";
+import KoshiIntro from "./guide/KoshiIntro";
 import KoshiExperiences from "./experience/KoshiExperiences";
 import KoshiDestinations from "./destination/KoshiDestinations";
 import KoshiHimalayanAdventure from "./adventure/KoshiHimalayanAdventure";
 import KoshiCulture from "./culture/KoshiCulture";
+import KoshiFlavours from "./guide/KoshiFlavours";
 import KoshiTeaHills from "./hills/KoshiTeaHills";
+import KoshiLandscapes from "./guide/KoshiLandscapes";
 import KoshiWildlife from "./wildlife/KoshiWildlife";
 import KoshiJourney from "./journey/KoshiJourney";
+import KoshiCircuits from "./guide/KoshiCircuits";
+import KoshiPlan from "./guide/KoshiPlan";
+import KoshiPackages from "./guide/KoshiPackages";
+import KoshiFaq from "./guide/KoshiFaq";
 import KoshiCTA from "./CTA/KoshiCTA";
 
 import Navbar from "@/components/layout/Navbar";
@@ -15,41 +22,64 @@ import "./koshi-home.css";
 
 export default function KoshiHome() {
   return (
-    <main className="koshi-home">
-
+    <>
       {/* Navigation */}
       <Navbar />
 
-      {/* Hero */}
-      <KoshiHero />
+      <main className="koshi-home">
 
-      {/* Experiences */}
-      <KoshiExperiences />
+        {/* Hero */}
+        <KoshiHero />
 
-      {/* Destinations */}
-      <KoshiDestinations />
+        {/* Province overview & why visit */}
+        <KoshiIntro />
 
-      {/* Himalayan Adventure */}
-      <KoshiHimalayanAdventure />
-      <KoshiSectionDivider />
-      {/* Culture & Heritage */}
-      <KoshiCulture />
-      <KoshiSectionDivider label="Tea Hills & Slow Travel" />
-      {/* Tea Hills & Slow Travel */}
-      <KoshiTeaHills />
- <KoshiSectionDivider label="WILDLIFE & NATURE" />
-      {/* Wildlife & Nature */}
-      <KoshiWildlife />
+        {/* Experiences */}
+        <KoshiExperiences />
 
-      {/* Travel Journey */}
-      <KoshiJourney />
+        {/* Destinations (filterable) */}
+        <KoshiDestinations />
 
-      {/* Call To Action */}
-      <KoshiCTA />
+        {/* Himalayan Adventure */}
+        <KoshiHimalayanAdventure />
+        <KoshiSectionDivider />
+        {/* Culture & Heritage */}
+        <KoshiCulture />
+
+        {/* Communities, festivals, cuisine & products */}
+        <KoshiFlavours />
+        <KoshiSectionDivider label="Tea Hills & Slow Travel" />
+        {/* Tea Hills & Slow Travel */}
+        <KoshiTeaHills />
+
+        {/* Lakes, waterfalls & viewpoints */}
+        <KoshiLandscapes />
+        <KoshiSectionDivider label="WILDLIFE & NATURE" />
+        {/* Wildlife & Nature */}
+        <KoshiWildlife />
+
+        {/* Travel Journey */}
+        <KoshiJourney />
+
+        {/* Suggested circuits */}
+        <KoshiCircuits />
+
+        {/* Best time, how to reach, altitude & responsible travel */}
+        <KoshiPlan />
+
+        {/* Existing tour packages */}
+        <KoshiPackages />
+
+        {/* FAQ */}
+        <KoshiFaq />
+
+        {/* Call To Action */}
+        <KoshiCTA />
+
+      </main>
 
       {/* Footer */}
       <Footer />
-
-    </main>
+    </>
   );
 }

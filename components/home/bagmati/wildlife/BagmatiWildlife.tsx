@@ -13,7 +13,7 @@ const wildlifeActivities = [
 
 export default function BagmatiWildlife() {
   return (
-    <section className="bagmati-wildlife" aria-label="Wildlife and nature in Bagmati">
+    <section className="bagmati-wildlife" id="wildlife" aria-label="Wildlife and nature in Bagmati">
       <div className="bagmati-wildlife__media">
         <Image
           src="/images/bagmati/one-horned-rhinoceros-chitwan-national-park-jungle-wildlife-nepal.jpg"

@@ -1,28 +1,44 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import "./lumbini-hero.css";
 
 const highlights = [
   {
     number: "01",
-    title: "Buddhist Heritage",
-    detail: "Lumbini · Kapilvastu · Ramgram",
+    title: "Birthplace of Buddha",
+    detail: "Lumbini · Maya Devi Temple",
   },
   {
     number: "02",
-    title: "Culture",
-    detail: "Tharu · Magar · Newar traditions",
+    title: "Ancient Buddhist Heritage",
+    detail: "Tilaurakot · Kapilvastu · Kudan",
   },
   {
     number: "03",
-    title: "Wilderness",
-    detail: "Bardiya · Banke · Western Hills",
+    title: "Wildlife & Culture",
+    detail: "Bardiya · Tharu villages · Tansen",
   },
 ];
 
+const container: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } },
+};
+
+const item: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+};
+
 export default function LumbiniHero() {
+  const prefersReducedMotion = useReducedMotion();
+  const initial = prefersReducedMotion ? false : "hidden";
+
   return (
-    <section className="lumbini-hero" aria-label="Lumbini Province introduction">
+    <section className="lumbini-hero" aria-labelledby="lumbini-hero-title">
       <div className="lumbini-hero__media">
         <Image
           src="/images/lumbini/lumbini-sacred-garden-maya-devi-temple-nepal.jpg"
@@ -35,64 +51,57 @@ export default function LumbiniHero() {
         <div className="lumbini-hero__overlay" aria-hidden="true" />
       </div>
 
-      <div className="lumbini-hero__content">
-        <p className="lumbini-hero__eyebrow">Western Nepal</p>
+      <motion.div
+        className="lumbini-hero__content"
+        variants={container}
+        initial={initial}
+        animate="show"
+      >
+        <motion.p className="lumbini-hero__eyebrow" variants={item}>
+          Explore Western Nepal
+        </motion.p>
 
-        <h1 className="lumbini-hero__title">
-          Discover
-          <span className="lumbini-hero__title-emphasis">Lumbini</span>
-        </h1>
+        <motion.h1 id="lumbini-hero-title" className="lumbini-hero__title" variants={item}>
+          Lumbini Province
+          <span className="lumbini-hero__title-emphasis">
+            Spiritual Heritage, Ancient History &amp; Wildlife
+          </span>
+        </motion.h1>
 
-        <p className="lumbini-hero__headline">
-          Where the journey begins with peace.
-        </p>
+        <motion.p className="lumbini-hero__description" variants={item}>
+          From the sacred birthplace of Lord Buddha to ancient Buddhist cities,
+          Tharu villages, wildlife-rich forests and historic hill towns —
+          a journey through spirituality, culture, nature and history.
+        </motion.p>
 
-        <p className="lumbini-hero__description">
-          From the sacred birthplace of Gautama Buddha to ancient
-          archaeological sites, peaceful monasteries, Tharu villages,
-          Himalayan foothills and wild landscapes, Lumbini Province is a
-          journey through faith, history and nature.
-        </p>
-
-        <div className="lumbini-hero__meta">
-          <div className="lumbini-hero__meta-block">
-            <span className="lumbini-hero__meta-label">Location</span>
-            <span className="lumbini-hero__meta-value">Lumbini Province</span>
-          </div>
-          <span className="lumbini-hero__meta-divider" aria-hidden="true" />
-          <div className="lumbini-hero__meta-block">
-            <span className="lumbini-hero__meta-label">Tagline</span>
-            <span className="lumbini-hero__meta-value">
-              Peace. Heritage. Discovery.
-            </span>
-          </div>
-        </div>
-
-        <div className="lumbini-hero__actions">
-          <Link href="/destinations/lumbini-province#experiences" className="lumbini-hero__cta">
-            Explore Lumbini
-            <span aria-hidden="true">↗</span>
+        <motion.div className="lumbini-hero__actions" variants={item}>
+          <Link href="#explore-destinations" className="lumbini-hero__cta lumbini-hero__cta--primary">
+            Explore Destinations
+            <span aria-hidden="true">↓</span>
           </Link>
-        </div>
-      </div>
+          <Link href="/contact" className="lumbini-hero__cta lumbini-hero__cta--secondary">
+            Plan Your Lumbini Journey
+          </Link>
+        </motion.div>
+      </motion.div>
 
-      <ul className="lumbini-hero__highlights" aria-label="Lumbini highlights">
-        {highlights.map((item) => (
-          <li className="lumbini-hero__highlight" key={item.number}>
-            <span className="lumbini-hero__highlight-number">
-              {item.number}
-            </span>
+      <motion.ul
+        className="lumbini-hero__highlights"
+        aria-label="Lumbini highlights"
+        variants={container}
+        initial={initial}
+        animate="show"
+      >
+        {highlights.map((highlight) => (
+          <motion.li className="lumbini-hero__highlight" key={highlight.number} variants={item}>
+            <span className="lumbini-hero__highlight-number">{highlight.number}</span>
             <div className="lumbini-hero__highlight-text">
-              <span className="lumbini-hero__highlight-title">
-                {item.title}
-              </span>
-              <span className="lumbini-hero__highlight-detail">
-                {item.detail}
-              </span>
+              <span className="lumbini-hero__highlight-title">{highlight.title}</span>
+              <span className="lumbini-hero__highlight-detail">{highlight.detail}</span>
             </div>
-          </li>
+          </motion.li>
         ))}
-      </ul>
+      </motion.ul>
     </section>
   );
 }

@@ -1,0 +1,163 @@
+.ab-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(580px, 94svh, 940px);
+  padding-block: clamp(120px, 16vw, 200px) clamp(88px, 11vw, 140px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* ---- background: parallax wrapper > slow scale ---- */
+.ab-hero__parallax {
+  position: absolute;
+  inset: -4% 0;
+  z-index: -2;
+  will-change: transform;
+}
+
+.ab-hero__media {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 40%;
+  animation: ab-hero-scale 26s var(--ab-ease) both;
+}
+
+/* subtle dark-blue overlay: readable text at the left/bottom, photo stays vivid top-right */
+.ab-hero__veil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(to top, rgb(11 27 43 / 0.92) 0%, rgb(11 27 43 / 0.55) 38%, rgb(11 27 43 / 0.1) 72%),
+    linear-gradient(to right, rgb(11 27 43 / 0.55) 0%, rgb(11 27 43 / 0) 62%);
+}
+
+/* ---- content ---- */
+.ab-hero__content {
+  display: grid;
+  gap: clamp(14px, 2vw, 22px);
+  max-width: var(--ab-max);
+}
+
+.ab-hero__eyebrow {
+  animation: ab-hero-rise 1s var(--ab-ease) 0.15s both;
+}
+
+.ab-hero__title {
+  font-family: var(--ab-font-display);
+  font-weight: 500;
+  font-size: clamp(2.7rem, 8.4vw, 6.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: var(--ab-white);
+  max-width: 14ch;
+  text-wrap: balance;
+}
+
+/* word mask: each word slides up out of an overflow clip */
+.ab-hero__mask {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+  vertical-align: top;
+}
+
+.ab-hero__word {
+  display: inline-block;
+  animation: ab-hero-word 1.15s var(--ab-ease) calc(0.3s + var(--i, 0) * 0.14s) both;
+}
+
+.ab-hero__word--accent {
+  font-style: italic;
+  color: var(--ab-gold-light);
+}
+
+.ab-hero__lead {
+  font-family: var(--ab-font-display);
+  font-size: clamp(1.15rem, 2.2vw, 1.6rem);
+  line-height: 1.4;
+  color: var(--ab-white);
+  max-width: 34rem;
+  animation: ab-hero-rise 1s var(--ab-ease) 0.85s both;
+}
+
+.ab-hero__text {
+  max-width: 38rem;
+  font-size: clamp(0.98rem, 1.3vw, 1.08rem);
+  color: rgb(255 255 255 / 0.84);
+  animation: ab-hero-rise 1s var(--ab-ease) 1s both;
+}
+
+.ab-hero__cta {
+  margin-top: clamp(8px, 1.5vw, 16px);
+  animation: ab-hero-rise 1s var(--ab-ease) 1.15s both;
+}
+
+/* ---- scroll cue (desktop only) ---- */
+.ab-hero__cue {
+  position: absolute;
+  right: var(--ab-gutter);
+  bottom: 36px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: rgb(255 255 255 / 0.8);
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  text-decoration: none;
+  writing-mode: vertical-rl;
+  animation: ab-hero-rise 1s var(--ab-ease) 1.6s both;
+}
+
+.ab-hero__cue-line {
+  width: 1px;
+  height: 56px;
+  background: linear-gradient(to bottom, var(--ab-gold-light), transparent);
+}
+
+@media (min-width: 900px) {
+  .ab-hero__cue {
+    display: flex;
+  }
+}
+
+/* ---- keyframes: "from" only, so reduced-motion (animation: none) lands on the final state ---- */
+@keyframes ab-hero-scale {
+  from {
+    transform: scale(1.12);
+  }
+}
+
+@keyframes ab-hero-word {
+  from {
+    transform: translate3d(0, 108%, 0);
+  }
+}
+
+@keyframes ab-hero-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0);
+  }
+}
+
+/* ---- parallax: pure CSS, no scroll listener. Browsers without support just get a static image ---- */
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .ab-hero__parallax {
+      animation: ab-hero-parallax linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 100vh;
+    }
+  }
+}
+
+@keyframes ab-hero-parallax {
+  to {
+    transform: translate3d(0, 7%, 0);
+  }
+}

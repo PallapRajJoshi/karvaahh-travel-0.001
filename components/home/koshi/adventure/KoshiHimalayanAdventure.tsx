@@ -124,7 +124,7 @@ export default function KoshiHimalayanAdventure() {
           {/* CTA */}
 
           <Link
-            href="/packages"
+            href="#packages"
             className="koshi-adventure__button"
           >
             <span>Find your adventure</span>

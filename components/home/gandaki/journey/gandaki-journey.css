@@ -1,82 +1,209 @@
 .gandaki-journey {
   box-sizing: border-box;
   width: 100%;
-  padding: clamp(3.5rem, 7vw, 6rem) clamp(1.5rem, 5vw, 4.5rem);
+  padding: clamp(3.5rem, 7vw, 6rem) clamp(1rem, 5vw, 4.5rem);
   background: #f7f5ef;
 }
 
-.gandaki-journey__route {
+.gandaki-journey__inner {
+  max-width: 92rem;
+  margin: 0 auto;
+}
+
+.gandaki-journey__routes {
   list-style: none;
   margin: clamp(2rem, 4vw, 3.5rem) 0 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 1.25rem;
-  counter-reset: journey;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 1.5rem;
 }
 
-.gandaki-journey-stop {
+/* 3 + 2 layout on desktop: the last two routes share the second row. */
+.gandaki-route-card {
+  grid-column: span 2;
   box-sizing: border-box;
-  position: relative;
   display: flex;
   flex-direction: column;
+  background: #ffffff;
+  border: 1px solid #e3ddcd;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
-.gandaki-journey-stop__media {
+.gandaki-route-card:nth-child(4),
+.gandaki-route-card:nth-child(5) {
+  grid-column: span 3;
+}
+
+.gandaki-route-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(201, 164, 92, 0.6);
+  box-shadow: 0 22px 48px -30px rgba(13, 29, 22, 0.45);
+}
+
+.gandaki-route-card__media {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
-  margin-bottom: 0.9rem;
 }
 
-.gandaki-journey-stop__image {
+.gandaki-route-card__image {
   object-fit: cover;
-  transition: transform 0.6s ease;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.gandaki-journey-stop:hover .gandaki-journey-stop__image {
+.gandaki-route-card:hover .gandaki-route-card__image {
   transform: scale(1.06);
 }
 
-.gandaki-journey-stop__index {
+.gandaki-route-card__index {
+  position: absolute;
+  top: 0.8rem;
+  left: 0.9rem;
+  padding: 0.2rem 0.6rem;
+  background: rgba(13, 29, 22, 0.7);
+  backdrop-filter: blur(4px);
   font-family: "Playfair Display", serif;
   font-style: italic;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  color: #e6c98a;
+}
+
+.gandaki-route-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.25rem 1.3rem 1.4rem;
+}
+
+.gandaki-route-card__theme {
+  margin: 0 0 0.3rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: #b8954e;
 }
 
-.gandaki-journey-stop__title {
-  margin: 0.2rem 0 0.35rem;
+.gandaki-route-card__title {
+  margin: 0 0 0.85rem;
   font-family: "Playfair Display", serif;
+  font-size: 1.35rem;
   font-weight: 600;
-  font-size: 1.05rem;
   color: #0d1d16;
 }
 
-.gandaki-journey-stop__description {
-  margin: 0;
+.gandaki-route-card__stops {
+  list-style: none;
+  margin: 0 0 0.9rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0;
   font-family: "Inter", sans-serif;
-  font-size: 0.84rem;
-  line-height: 1.55;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #0d1d16;
+}
+
+.gandaki-route-card__stops li {
+  display: inline-flex;
+  align-items: center;
+}
+
+.gandaki-route-card__stops li + li::before {
+  content: "→";
+  margin: 0 0.45rem;
+  color: #b8954e;
+  font-weight: 400;
+}
+
+.gandaki-route-card__description {
+  margin: 0 0 0.8rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
   color: #55645b;
 }
 
+.gandaki-route-card__best {
+  margin: 0 0 1.1rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #46564d;
+}
+
+.gandaki-route-card__best span {
+  font-weight: 600;
+  color: #0d1d16;
+}
+
+.gandaki-route-card__link {
+  margin-top: auto;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 44px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #0d1d16;
+  text-decoration: none;
+  border-bottom: 1px solid #c9a45c;
+  transition: color 0.25s ease, gap 0.25s ease;
+}
+
+.gandaki-route-card__link:hover {
+  color: #b8954e;
+  gap: 0.6rem;
+}
+
+.gandaki-route-card__link:focus-visible {
+  outline: 2px solid #c9a45c;
+  outline-offset: 3px;
+}
+
 @media (max-width: 1100px) {
-  .gandaki-journey__route {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .gandaki-journey__routes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gandaki-route-card,
+  .gandaki-route-card:nth-child(4),
+  .gandaki-route-card:nth-child(5) {
+    grid-column: auto;
+  }
+
+  .gandaki-route-card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .gandaki-route-card:last-child .gandaki-route-card__media {
+    aspect-ratio: 21 / 9;
   }
 }
 
 @media (max-width: 640px) {
-  .gandaki-journey__route {
+  .gandaki-journey__routes {
     grid-template-columns: 1fr;
-    gap: 1.75rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .gandaki-journey-stop__image {
+  .gandaki-route-card,
+  .gandaki-route-card__image,
+  .gandaki-route-card__link {
     transition: none;
+  }
+
+  .gandaki-route-card:hover,
+  .gandaki-route-card:hover .gandaki-route-card__image {
+    transform: none;
   }
 }

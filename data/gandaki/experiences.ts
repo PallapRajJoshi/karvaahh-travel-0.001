@@ -32,8 +32,8 @@ export const gandakiExperiences: GandakiExperience[] = [
     title: "Adventure",
     description:
       "Paragliding over Pokhara, whitewater rafting, canyoning, bungee jumping, ziplining, mountain biking and camping across Gandaki's varied terrain.",
-    image: "/images/gandaki/kushma-bungee-bridge-adventure-gandaki-Nepal.jpg",
-    alt: "Paraglider descending over the hills near Pokhara",
+    image: "/images/gandaki/kushma-bungee-bridge-adventure-gandaki-nepal.jpg",
+    alt: "Mountain biker on a dry trail in the Mustang highlands",
   },
   {
     id: "mountain-culture",
@@ -41,8 +41,8 @@ export const gandakiExperiences: GandakiExperience[] = [
     title: "Mountain Culture",
     description:
       "Gurung, Magar, Thakali and Tibetan-influenced communities — living traditions found in villages, monasteries and homestays across the highlands.",
-    image: "/images/gandaki/ghandruk-gurung-village-mountain-culture-gandaki-Nepal.jpg",
-    alt: "Traditional Gurung village in the Gandaki hills",
+    image: "/images/gandaki/ghale-gaun-gurung-heritage-village-gandaki-nepal.jpg",
+    alt: "Slate-roofed stone houses of a traditional Gurung village",
   },
   {
     id: "pilgrimage",
@@ -50,8 +50,8 @@ export const gandakiExperiences: GandakiExperience[] = [
     title: "Pilgrimage",
     description:
       "Muktinath, Manakamana, the Kalika temples, Bindhyabasini and Tal Barahi — sacred sites set against dramatic Himalayan landscapes.",
-    image: "/images/gandaki/muktinath-temple-mustang-himalayan-landscape-gandaki-Nepal.jpg",
-    alt: "Muktinath temple complex in the Mustang highlands",
+    image: "/images/gandaki/muktinath-temple-mustang-himalayan-landscape-gandaki-nepal.jpg",
+    alt: "Tal Barahi Temple on its island in Phewa Lake, Pokhara",
   },
   {
     id: "wildlife-and-nature",
@@ -60,6 +60,6 @@ export const gandakiExperiences: GandakiExperience[] = [
     description:
       "From Dhorpatan Hunting Reserve to the conservation areas of Annapurna and Manaslu, and the buffer-zone forests near Chitwan, Gandaki holds a wide range of habitats.",
     image: "/images/gandaki/dhorpatan-hunting-reserve-alpine-meadows-gandaki-nepal.jpg",
-    alt: "Forested river valley in the Gandaki foothills",
+    alt: "Wild mountain sheep on a rocky outcrop below a snow peak",
   },
 ];

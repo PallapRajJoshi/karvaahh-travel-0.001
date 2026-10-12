@@ -1,0 +1,161 @@
+.sp-plan {
+  background: #fbf9f4;
+  padding-block: clamp(4rem, 9vh, 6.5rem);
+  border-top: 1px solid #e4ddcf;
+}
+
+.sp-plan__inner {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.sp-plan__subtitle {
+  margin: 0 0 1.25rem;
+  font-family: var(--sp-font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--sp-forest-900);
+}
+
+/* ---- Seasons ---- */
+
+.sp-plan__seasons {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.sp-plan__season {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.4rem 1.3rem;
+  background: #fff;
+  border: 1px solid #ebe4d6;
+  border-top: 3px solid var(--sp-blue);
+}
+
+.sp-plan__season:first-child {
+  border-top-color: var(--sp-gold);
+}
+
+.sp-plan__season-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sp-gold-deep);
+}
+
+.sp-plan__season-months {
+  font-family: var(--sp-font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--sp-forest-800);
+}
+
+.sp-plan__season-note {
+  margin: 0.25rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #4a4238;
+}
+
+/* ---- Routes & tips ---- */
+
+.sp-plan__columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+}
+
+.sp-plan__routes {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sp-plan__route {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  gap: 1rem;
+  padding-block: 1rem;
+  border-top: 1px solid #e4ddcf;
+}
+
+.sp-plan__route dt {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sp-blue);
+  padding-top: 0.15rem;
+}
+
+.sp-plan__route dd {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: #4a4238;
+}
+
+.sp-plan__block--tips {
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  background: var(--sp-forest-900);
+  color: var(--sp-cream);
+}
+
+.sp-plan__block--tips .sp-plan__subtitle {
+  color: var(--sp-cream);
+}
+
+.sp-plan__tips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.sp-plan__tips li {
+  position: relative;
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(247, 245, 239, 0.85);
+}
+
+.sp-plan__tips li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 6px;
+  height: 6px;
+  background: var(--sp-gold);
+  transform: rotate(45deg);
+}
+
+@media (max-width: 1000px) {
+  .sp-plan__seasons {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sp-plan__columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .sp-plan__seasons {
+    grid-template-columns: 1fr;
+  }
+
+  .sp-plan__route {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+}

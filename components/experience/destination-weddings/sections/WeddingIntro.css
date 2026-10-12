@@ -1,0 +1,120 @@
+.dw-intro__grid {
+  display: grid;
+  gap: clamp(3rem, 6vw, 6rem);
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  .dw-intro__grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  }
+}
+
+.dw-intro__text {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.dw-intro__pull {
+  font-family: var(--dw-serif);
+  font-style: italic;
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  line-height: 1.45;
+  color: var(--dw-maroon);
+  padding-left: 1.4rem;
+  border-left: 1px solid var(--dw-gold-ink);
+  max-width: 34rem;
+}
+
+.dw-intro__body {
+  display: grid;
+  gap: 1rem;
+  color: var(--dw-ink-soft);
+  max-width: 36rem;
+}
+
+.dw-intro__figure {
+  position: relative;
+  padding: 0 0 3.5rem 0;
+}
+
+.dw-intro__img {
+  position: relative;
+  overflow: hidden;
+}
+
+.dw-intro__img--main {
+  aspect-ratio: 4 / 5;
+  width: 88%;
+  margin-left: auto;
+}
+
+.dw-intro__img--inset {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 42%;
+  aspect-ratio: 1;
+  border: 8px solid var(--dw-ivory);
+}
+
+.dw-intro__caption {
+  position: absolute;
+  right: 0;
+  bottom: 0.6rem;
+  width: 52%;
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--dw-ink-soft);
+  text-align: right;
+}
+
+.dw-intro__line {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: clamp(4rem, 8vw, 7rem);
+  border-top: 1px solid var(--dw-line);
+}
+
+@media (min-width: 720px) {
+  .dw-intro__line {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.dw-intro__line li {
+  position: relative;
+  display: grid;
+  gap: 0.4rem;
+  padding: 1.6rem 1rem 0 0;
+}
+
+.dw-intro__line li::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--dw-gold-ink);
+}
+
+.dw-intro__line-n {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--dw-gold-ink);
+}
+
+.dw-intro__line-word {
+  font-family: var(--dw-serif);
+  font-size: clamp(1.4rem, 2.6vw, 2.1rem);
+  line-height: 1.1;
+}
+
+.dw-intro__line li:not(:last-child) .dw-intro__line-word::after {
+  content: " →";
+  color: var(--dw-gold-ink);
+  font-size: 0.7em;
+}

@@ -128,7 +128,7 @@ export default function KoshiExperiences() {
                 </p>
 
                 <Link
-                  href="/destinations"
+                  href="#destinations"
                   className="koshi-experience__link"
                   aria-label={`Explore ${experience.title}`}
                 >

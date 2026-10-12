@@ -1,11 +1,11 @@
-import Image from "next/image";
+import SafeImage from "@/components/shared/SafeImage";
 import "./karnali-heritage.css";
 
 export default function KarnaliHeritage() {
   return (
     <section className="karnali-root karnali-heritage" aria-label="Heritage of Karnali">
       <div className="karnali-heritage-media">
-        <Image
+        <SafeImage
           src="/karnali/sinja.jpg"
           alt="Sinja Valley, historic centre of Khas civilization"
           fill

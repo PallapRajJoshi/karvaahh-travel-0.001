@@ -11,21 +11,23 @@ const landmarks = [
 
 export default function GandakiHeritage() {
   return (
-    <section className="gandaki-heritage" aria-label="Heritage of Gandaki">
+    <section className="gandaki-heritage" id="heritage" aria-labelledby="gandaki-heritage-title">
       <div className="gandaki-heritage__media">
         <Image
-          src="/images/gandaki/kagbeni-ancient-walled-settlement-mustang-gandaki-nepal.jpg"
-          alt="Historic Gorkha Durbar palace complex overlooking the valley"
+          src="/images/gandaki/gorkha-durbar-palace-hilltop-gorkha-gandaki-nepal.jpg"
+          alt="Aerial view of the Gorkha Durbar palace complex on its hilltop"
           fill
           sizes="(max-width: 900px) 100vw, 48vw"
           className="gandaki-heritage__image"
         />
       </div>
 
-      <div className="gandaki-heritage__content">
-        <span className="gandaki-heritage__index">08</span>
+      <div className="gandaki-heritage__content gandaki-reveal">
+        <span className="gandaki-heritage__index" aria-hidden="true">
+          07
+        </span>
         <p className="gandaki-heritage__eyebrow">HERITAGE & HISTORY</p>
-        <h2 className="gandaki-heritage__title">
+        <h2 id="gandaki-heritage-title" className="gandaki-heritage__title">
           Stories carved into
           <em> stone and time.</em>
         </h2>

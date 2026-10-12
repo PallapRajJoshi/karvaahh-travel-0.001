@@ -1,0 +1,239 @@
+.gandaki-plan {
+  box-sizing: border-box;
+  width: 100%;
+  padding: clamp(3.5rem, 7vw, 6rem) clamp(1rem, 5vw, 4.5rem);
+  background: linear-gradient(180deg, #efeadc 0%, #f7f5ef 100%);
+}
+
+.gandaki-plan__inner {
+  max-width: 92rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vw, 3rem);
+}
+
+.gandaki-plan__block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.gandaki-plan__block-title {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #b8954e;
+}
+
+.gandaki-plan__seasons {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.gandaki-plan__season {
+  box-sizing: border-box;
+  padding: 1.35rem;
+  background: #ffffff;
+  border: 1px solid #e3ddcd;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.gandaki-plan__season:first-child {
+  background: linear-gradient(160deg, #0d1d16 0%, #1a3326 100%);
+  border-color: #0d1d16;
+}
+
+.gandaki-plan__season-label {
+  font-family: "Inter", sans-serif;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #b8954e;
+}
+
+.gandaki-plan__season-months {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0d1d16;
+}
+
+.gandaki-plan__season:first-child .gandaki-plan__season-label {
+  color: #e6c98a;
+}
+
+.gandaki-plan__season:first-child .gandaki-plan__season-months {
+  color: #f7f5ef;
+}
+
+.gandaki-plan__season-regions {
+  margin: 0.6rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.gandaki-plan__season-regions dt {
+  font-family: "Inter", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #0d1d16;
+}
+
+.gandaki-plan__season-regions dd {
+  margin: 0.1rem 0 0;
+  font-family: "Inter", sans-serif;
+  font-size: 0.83rem;
+  line-height: 1.55;
+  color: #55645b;
+}
+
+.gandaki-plan__season:first-child .gandaki-plan__season-regions dt {
+  color: #f7f5ef;
+}
+
+.gandaki-plan__season:first-child .gandaki-plan__season-regions dd {
+  color: rgba(247, 245, 239, 0.72);
+}
+
+.gandaki-plan__reach {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.gandaki-plan__card {
+  box-sizing: border-box;
+  padding: 1.4rem;
+  background: #ffffff;
+  border: 1px solid #e3ddcd;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.gandaki-plan__card:last-child {
+  background: linear-gradient(160deg, #ffffff 0%, rgba(201, 164, 92, 0.12) 100%);
+}
+
+.gandaki-plan__card-title {
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #0d1d16;
+}
+
+.gandaki-plan__points {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.87rem;
+  line-height: 1.6;
+  color: #55645b;
+}
+
+.gandaki-plan__points li::marker {
+  color: #b8954e;
+}
+
+.gandaki-plan__small {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  font-style: italic;
+  line-height: 1.55;
+  color: #6b7a71;
+}
+
+.gandaki-plan__columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.gandaki-plan__block--panel {
+  box-sizing: border-box;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  background: #ffffff;
+  border: 1px solid #e3ddcd;
+}
+
+.gandaki-plan__tips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.gandaki-plan__tip {
+  display: flex;
+  gap: 0.7rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #0d1d16;
+}
+
+.gandaki-plan__tip span {
+  flex-shrink: 0;
+  color: #b8954e;
+  font-size: 0.8rem;
+  line-height: 1.9;
+}
+
+.gandaki-plan__help {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  color: #46564d;
+}
+
+.gandaki-plan__help a {
+  color: #0d1d16;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid #c9a45c;
+}
+
+.gandaki-plan__help a:hover {
+  color: #b8954e;
+}
+
+@media (max-width: 1100px) {
+  .gandaki-plan__seasons {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gandaki-plan__reach {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gandaki-plan__card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .gandaki-plan__seasons,
+  .gandaki-plan__reach,
+  .gandaki-plan__columns {
+    grid-template-columns: 1fr;
+  }
+}

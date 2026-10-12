@@ -5,19 +5,21 @@ import "./gandaki-experiences.css";
 
 export default function GandakiExperiences() {
   return (
-    <section className="gandaki-experiences" aria-label="Experiences in Gandaki">
+    <section className="gandaki-experiences" aria-labelledby="gandaki-experiences-title">
       <div className="gandaki-experiences__intro">
         <GandakiSectionHeading
-          index="02"
-          eyebrow="EXPERIENCE GANDAKI"
+          index="03"
+          eyebrow="WHY VISIT GANDAKI"
           heading="One province."
           emphasis="Endless mountain stories."
+          titleId="gandaki-experiences-title"
+          description="Few places on Earth rise from subtropical river valleys to 8,000 m summits in such a short distance — and every altitude band brings a different way to travel."
         />
       </div>
 
       <ul className="gandaki-experiences__grid">
         {gandakiExperiences.map((experience) => (
-          <li className="gandaki-experience-card" key={experience.id}>
+          <li className="gandaki-experience-card gandaki-reveal" key={experience.id}>
             <div className="gandaki-experience-card__media">
               <Image
                 src={experience.image}

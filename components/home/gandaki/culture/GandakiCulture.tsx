@@ -7,39 +7,40 @@ const communities = [
     index: "01",
     title: "Gurung Heritage",
     description: "Ghale Gaun, Ghanpokhara, Sirubari, Barpak and traditional mountain villages.",
-    image: "/images/gandaki/ghale-gaun-gurung-heritage-village-gandaki-Nepal.jpg",
+    image: "/images/gandaki/ghale-gaun-gurung-heritage-village-gandaki-nepal.jpg",
     alt: "Traditional Gurung stone houses in Ghale Gaun",
   },
   {
     index: "02",
     title: "Magar & Hill Culture",
     description: "Dhorpatan, Baglung and the surrounding hill communities.",
-    image: "/images/gandaki/dhorpatan-magar-village-hill-culture-baglung-Nepal.jpg",
-    alt: "Hill landscape near Dhorpatan in Baglung district",
+    image: "/images/gandaki/dhorpatan-magar-village-hill-culture-baglung-nepal.jpg",
+    alt: "Stone farmhouse on a hill trail in Baglung district",
   },
   {
     index: "03",
     title: "Thakali & Tibetan Influence",
     description: "Mustang's monasteries, architecture, food and mountain traditions.",
     image: "/images/gandaki/lo-manthang-thakali-tibetan-heritage-mustang-nepal.jpg",
-    alt: "Thakali village architecture in Marpha, Mustang",
+    alt: "Monastery on a desert ridge in Mustang beneath snow peaks",
   },
 ];
 
 export default function GandakiCulture() {
   return (
-    <section className="gandaki-culture" aria-label="Culture of Gandaki">
+    <section className="gandaki-culture" id="culture" aria-labelledby="gandaki-culture-title">
       <GandakiSectionHeading
-        index="07"
+        index="06"
         eyebrow="LIVING TRADITIONS"
         heading="Meet the people"
         emphasis="of the mountains."
+        titleId="gandaki-culture-title"
         description="Gurung, Magar, Thakali and Tibetan-influenced communities carry traditions of homestays, handicrafts, music, festivals and farming through Gandaki's villages and monasteries."
       />
 
       <ul className="gandaki-culture__grid">
         {communities.map((item) => (
-          <li className="gandaki-culture-card" key={item.title}>
+          <li className="gandaki-culture-card gandaki-reveal" key={item.title}>
             <div className="gandaki-culture-card__media">
               <Image
                 src={item.image}

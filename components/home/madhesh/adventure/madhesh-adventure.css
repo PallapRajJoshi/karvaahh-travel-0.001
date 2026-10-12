@@ -1,6 +1,5 @@
 .madhesh-adventure {
-  height: var(--madhesh-section-h);
-  min-height: 520px;
+  min-height: max(var(--madhesh-section-h), 520px);
   display: grid;
   grid-template-columns: 1fr 1fr;
   background: var(--madhesh-green-800);

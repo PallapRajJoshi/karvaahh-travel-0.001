@@ -11,9 +11,9 @@ export default function MadheshDestinations() {
       aria-label="Places to visit in Madhesh"
     >
       <MadheshSectionHeading
-        eyebrow="Places to Go"
-        heading="The highlights of Madhesh"
-        description="Eight districts, one living cultural landscape — from sacred cities to river wetlands."
+        eyebrow="District by District"
+        heading="Eight districts, one landscape"
+        description="From the Koshi wetlands of Saptari to the forests of Parsa — what each district of Madhesh has to offer."
       />
 
       <div className="madhesh-destinations__grid">

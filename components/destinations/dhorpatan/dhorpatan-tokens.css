@@ -49,3 +49,37 @@
     padding: 0 2.5rem;
   }
 }
+
+/* Section headings (shared SectionHeading component) */
+.dhorpatan-page .pp-section-heading {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+.dhorpatan-page .pp-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--dhorpatan-teal);
+}
+.dhorpatan-page .pp-eyebrow::before {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: var(--dhorpatan-gold);
+}
+.dhorpatan-page .pp-section-heading__title {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  line-height: 1.12;
+  color: var(--dhorpatan-blue);
+}
+.dhorpatan-page .pp-section-heading__description {
+  margin: 0;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--dhorpatan-charcoal) 75%, transparent);
+}

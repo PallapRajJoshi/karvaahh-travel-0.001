@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/shared/SafeImage";
 import { finalCta } from "@/data/dhorpatan";
 import CTAButton from "@/components/shared/CTAButton";
 import "./FinalCTA.css";
@@ -8,6 +8,7 @@ export default function FinalCTA() {
     <section className="final-cta" id="contact-plan" aria-label="Plan your Dhorpatan journey">
       <div className="final-cta__media">
         <Image
+          fallbackLabel=""
           src={finalCta.image.src}
           alt={finalCta.image.alt}
           fill

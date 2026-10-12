@@ -1,0 +1,115 @@
+.lumbini-traditions {
+  box-sizing: border-box;
+  width: 100%;
+  padding: clamp(3.5rem, 8vh, 6rem) clamp(1rem, 5vw, 5rem);
+  background: linear-gradient(180deg, var(--lumbini-cream-soft) 0%, var(--lumbini-cream) 100%);
+}
+
+.lumbini-traditions__inner {
+  max-width: 92rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vh, 3rem);
+}
+
+.lumbini-traditions__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: center;
+}
+
+.lumbini-traditions__visual {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: 1.1rem;
+  overflow: hidden;
+  background: var(--lumbini-forest-2);
+}
+
+.lumbini-traditions__image {
+  object-fit: cover;
+  transition: transform 0.9s ease;
+}
+
+.lumbini-traditions__visual:hover .lumbini-traditions__image {
+  transform: scale(1.05);
+}
+
+.lumbini-traditions__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.lumbini-traditions__group {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: #fff;
+  border: 1px solid rgba(7, 16, 12, 0.06);
+}
+
+.lumbini-traditions__group-title {
+  font-family: var(--lumbini-font-serif);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--lumbini-forest);
+  margin: 0 0 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--lumbini-line);
+}
+
+.lumbini-traditions__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.lumbini-traditions__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.lumbini-traditions__item-name {
+  font-family: var(--lumbini-font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--lumbini-forest);
+}
+
+.lumbini-traditions__item-note {
+  font-family: var(--lumbini-font-sans);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--lumbini-text-muted);
+}
+
+.lumbini-traditions__note {
+  font-family: var(--lumbini-font-sans);
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--lumbini-text-muted);
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .lumbini-traditions__head,
+  .lumbini-traditions__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lumbini-traditions__image {
+    transition: none;
+  }
+
+  .lumbini-traditions__visual:hover .lumbini-traditions__image {
+    transform: none;
+  }
+}

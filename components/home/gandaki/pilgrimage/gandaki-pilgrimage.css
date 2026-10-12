@@ -2,8 +2,8 @@
   position: relative;
   box-sizing: border-box;
   width: 100%;
-  height: calc(100svh - 170px);
-  min-height: 560px;
+  min-height: max(560px, calc(100svh - 170px));
+  padding: 3rem 0;
   overflow: hidden;
   color: #f7f5ef;
   display: flex;
@@ -114,5 +114,38 @@
       rgba(7, 16, 12, 0.75) 60%,
       rgba(7, 16, 12, 0.95) 100%
     );
+  }
+}
+
+.gandaki-pilgrimage__cta {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  margin-top: 0.5rem;
+  padding: 0.8rem 1.4rem;
+  border: 1px solid #c9a45c;
+  color: #f7f5ef;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.gandaki-pilgrimage__cta:hover {
+  background: #c9a45c;
+  color: #0d1d16;
+}
+
+.gandaki-pilgrimage__cta:focus-visible {
+  outline: 2px solid #f7f5ef;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gandaki-pilgrimage__cta {
+    transition: none;
   }
 }

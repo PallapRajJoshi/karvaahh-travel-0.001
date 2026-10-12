@@ -75,6 +75,52 @@
   border-radius: 999px;
 }
 
+.karnali-cuisine {
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--k-line);
+}
+
+.karnali-cuisine-title {
+  font-family: var(--k-font-serif);
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+  color: var(--k-cream);
+  margin: 0 0 1.25rem;
+}
+
+.karnali-cuisine-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+  gap: 1rem;
+}
+
+.karnali-cuisine-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.1rem 1.2rem;
+  background: rgba(246, 247, 249, 0.05);
+  border-left: 3px solid var(--k-gold);
+  border-radius: 6px;
+}
+
+.karnali-cuisine-dish {
+  font-family: var(--k-font-serif);
+  font-size: 1.05rem;
+  color: var(--k-cream);
+}
+
+.karnali-cuisine-note {
+  font-family: var(--k-font-sans);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: rgba(246, 247, 249, 0.72);
+}
+
 @media (max-width: 900px) {
   .karnali-culture-grid {
     grid-template-columns: 1fr;

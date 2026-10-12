@@ -31,10 +31,10 @@ export default function LumbiniDestinations() {
     >
       <div className="lumbini-destinations__inner">
         <LumbiniSectionHeading
-          index="03"
-          eyebrow="Places to Go"
-          heading="The many faces"
-          emphasis="of Lumbini."
+          index="10"
+          eyebrow="All Places to Go"
+          heading="District by district,"
+          emphasis="every corner of Lumbini."
           description="Twelve districts spanning sacred plains, ancient kingdoms, hill heritage towns and wild Terai frontiers."
         />
 

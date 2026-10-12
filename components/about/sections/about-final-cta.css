@@ -1,0 +1,76 @@
+.ab-cta {
+  position: relative;
+  display: grid;
+  align-items: center;
+  min-height: clamp(520px, 80svh, 760px);
+  padding-block: clamp(96px, 12vw, 160px) clamp(140px, 16vw, 220px);
+  overflow: hidden;
+  isolation: isolate;
+  text-align: center;
+}
+
+.ab-cta__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+
+/* slow, continuous drift – paused entirely under reduced motion (see base css) */
+.ab-cta__bg-inner {
+  position: absolute;
+  inset: -6%;
+  animation: ab-cta-drift 38s ease-in-out infinite alternate;
+}
+
+@keyframes ab-cta-drift {
+  from {
+    transform: scale(1.02) translate3d(-1.5%, 0, 0);
+  }
+  to {
+    transform: scale(1.1) translate3d(1.5%, -2%, 0);
+  }
+}
+
+.ab-cta__veil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to bottom, rgb(11 27 43 / 0.55), rgb(11 27 43 / 0.7) 60%, rgb(11 27 43 / 0.9));
+}
+
+.ab-cta__content {
+  display: grid;
+  justify-items: center;
+  gap: clamp(16px, 2.4vw, 24px);
+}
+
+.ab-cta__title {
+  font-family: var(--ab-font-display);
+  font-weight: 500;
+  font-size: clamp(2.3rem, 6.4vw, 4.8rem);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  max-width: 16ch;
+  color: var(--ab-white);
+  text-wrap: balance;
+}
+
+.ab-cta__text {
+  max-width: 36rem;
+  font-size: clamp(1.02rem, 1.5vw, 1.2rem);
+  color: rgb(255 255 255 / 0.88);
+}
+
+.ab-cta__buttons {
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.ab-cta__ridge {
+  position: absolute;
+  inset: auto 0 -1px 0;
+  width: 100%;
+  height: clamp(90px, 14vw, 200px);
+  pointer-events: none;
+}

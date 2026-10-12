@@ -4,7 +4,7 @@ import "./madhesh-pilgrimage.css";
 const pilgrimageSites = [
   "Janakpurdham",
   "Janaki Mandir",
-  "Vivah Mandap",
+  "Vivaha Mandap",
   "Ram Mandir",
   "Dhanushadham",
   "Jaleshwar Mahadev",
@@ -17,7 +17,7 @@ const pilgrimageSites = [
 
 export default function MadheshPilgrimage() {
   return (
-    <section className="madhesh-pilgrimage" aria-label="Pilgrimage in Madhesh">
+    <section id="pilgrimage" className="madhesh-pilgrimage" aria-label="Pilgrimage in Madhesh">
       <div className="madhesh-pilgrimage__media">
         <Image
           src="/images/madhesh/janaki-mandir-dron-view.jpg"
@@ -37,6 +37,13 @@ export default function MadheshPilgrimage() {
           Madhesh is one of Nepal&apos;s great spiritual landscapes, where
           ancient stories, sacred temples, pilgrimage traditions and living
           communities come together.
+        </p>
+        <p className="madhesh-pilgrimage__desc">
+          At its heart is Janakpurdham, revered as the city of King Janak and
+          the birthplace of Sita. Pilgrims follow the Ramayana story from Janaki
+          Mandir to Vivaha Mandap, Ram Mandir and the sacred ponds, then travel
+          on to Dhanushadham, Jaleshwar Mahadev and the Shakti shrines of the
+          eastern Terai.
         </p>
 
         <ul className="madhesh-pilgrimage__list">

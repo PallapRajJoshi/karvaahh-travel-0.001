@@ -1,0 +1,106 @@
+.dw-why__grid {
+  display: grid;
+  gap: clamp(3rem, 6vw, 6rem);
+}
+
+@media (min-width: 1000px) {
+  .dw-why__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    align-items: start;
+  }
+
+  .dw-why__lead {
+    position: sticky;
+    top: 6rem;
+  }
+}
+
+.dw-why__lead {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.dw-why__statement {
+  margin-top: 1rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--dw-line);
+  font-family: var(--dw-serif);
+  font-size: clamp(1.5rem, 2.8vw, 2.25rem);
+  line-height: 1.2;
+}
+
+.dw-why__statement em {
+  color: var(--dw-maroon);
+}
+
+.dw-why__eco {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 1px;
+  background: var(--dw-line);
+  border: 1px solid var(--dw-line);
+}
+
+.dw-why__cluster {
+  display: grid;
+  align-content: start;
+  gap: 0.7rem;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  background: var(--dw-ivory);
+}
+
+.dw-why__cluster-n {
+  font-family: var(--dw-serif);
+  font-style: italic;
+  color: var(--dw-gold-ink);
+}
+
+.dw-why__cluster-title {
+  font-family: var(--dw-serif);
+  font-weight: 400;
+  font-size: clamp(1.4rem, 2.2vw, 1.75rem);
+  margin-bottom: 0.4rem;
+}
+
+.dw-why__cluster ul {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.dw-why__cluster li {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: 0.94rem;
+  color: var(--dw-ink-soft);
+}
+
+.dw-why__cluster li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 0.45rem;
+  height: 1px;
+  background: var(--dw-gold-ink);
+}
+
+.dw-why__count {
+  grid-column: 1 / -1;
+  padding: 1.25rem clamp(1.5rem, 3vw, 2.25rem);
+  background: var(--dw-maroon-deep);
+  color: var(--dw-ivory);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.dw-why__count span {
+  font-family: var(--dw-serif);
+  font-style: italic;
+  font-size: 1.6rem;
+  letter-spacing: 0;
+  color: var(--dw-gold);
+  margin-right: 0.5rem;
+  vertical-align: -0.15em;
+}

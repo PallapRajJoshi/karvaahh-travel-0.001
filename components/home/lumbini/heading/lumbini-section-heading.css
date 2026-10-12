@@ -102,3 +102,32 @@
     gap: 0.75rem;
   }
 }
+
+/* Anchor targets clear the fixed site header. */
+section[class^="lumbini-"][id] {
+  scroll-margin-top: 110px;
+}
+
+/* Lightweight, CSS-only scroll reveal for server-rendered sections.
+   Progressive enhancement: browsers without scroll-driven animations,
+   and users who prefer reduced motion, simply see the content. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .lumbini-reveal {
+      animation: lumbini-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+  }
+}
+
+@keyframes lumbini-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

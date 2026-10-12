@@ -85,6 +85,119 @@
   color: var(--k-cream);
 }
 
+/* ---------- Suggested circuits ---------- */
+.karnali-journey {
+  scroll-margin-top: 80px;
+}
+
+.karnali-circuits-heading {
+  font-family: var(--k-font-serif);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  color: var(--k-charcoal);
+  margin: 1rem 0 1.5rem;
+}
+
+.karnali-circuits {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: 1.25rem;
+}
+
+.karnali-circuit {
+  display: flex;
+  flex-direction: column;
+  background: var(--k-white);
+  border: 1px solid rgba(16, 34, 56, 0.08);
+  border-top: 3px solid var(--k-gold);
+  border-radius: 8px;
+  padding: 1.4rem 1.4rem 1.5rem;
+  transition: transform 0.4s var(--k-ease), box-shadow 0.4s var(--k-ease);
+}
+
+.karnali-circuit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px -28px rgba(6, 20, 38, 0.45);
+}
+
+.karnali-circuit-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.karnali-circuit-name {
+  font-family: var(--k-font-serif);
+  font-weight: 500;
+  font-size: 1.15rem;
+  color: var(--k-charcoal);
+  margin: 0;
+}
+
+.karnali-circuit-duration {
+  flex-shrink: 0;
+  font-family: var(--k-font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--k-blue);
+  background: var(--k-blue-soft);
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+}
+
+.karnali-circuit-route {
+  font-family: var(--k-font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--k-gold-deep);
+  margin: 0.75rem 0 0.5rem;
+}
+
+.karnali-circuit-text {
+  font-family: var(--k-font-sans);
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--k-stone);
+  margin: 0 0 1rem;
+}
+
+.karnali-circuit-link {
+  margin-top: auto;
+  font-family: var(--k-font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--k-blue);
+  text-decoration: none;
+}
+
+.karnali-circuit-link:hover {
+  color: var(--k-gold-deep);
+}
+
+.karnali-circuits-note {
+  font-family: var(--k-font-sans);
+  font-size: 0.8rem;
+  color: var(--k-stone);
+  margin: 1.25rem 0 2.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .karnali-circuit,
+  .karnali-circuit:hover {
+    transition: none;
+    transform: none;
+  }
+}
+
 @media (max-width: 1024px) {
   .karnali-journey-route {
     grid-template-columns: repeat(3, 1fr);

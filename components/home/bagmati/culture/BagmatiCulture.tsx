@@ -9,21 +9,21 @@ const cultureGroups = [
     title: "Newar Heritage",
     description:
       "Ancient cities, courtyards, temples, architecture and festivals shaped over a thousand years.",
-    image: "/images/bagmati/bhaktapur-durbar-square-newar-heritage-temple-courtyard-Nepal.jpg",
+    image: "/images/bagmati/bhaktapur-durbar-square-newar-heritage-temple-courtyard-nepal.jpg",
   },
   {
     number: "02",
     title: "Tamang & Himalayan Cultures",
     description:
       "Mountain villages, monasteries, music, food and traditions of the high valleys.",
-    image: "/images/bagmati/tamang-village-langtang-himalayan-culture-bagmati-Nepal.jpg",
+    image: "/images/bagmati/tamang-village-langtang-himalayan-culture-bagmati-nepal.jpg",
   },
   {
     number: "03",
     title: "Living Villages",
     description:
       "Homestays, local cuisine, crafts, farming and community experiences across the province.",
-    image: "/images/bagmati/chitlang-village-homestay-rural-life-bagmati-Nepal.jpg",
+    image: "/images/bagmati/chitlang-village-homestay-rural-life-bagmati-nepal.jpg",
   },
 ];
 

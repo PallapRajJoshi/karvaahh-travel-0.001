@@ -39,7 +39,7 @@ export default function LumbiniAdventure() {
     >
       <div className="lumbini-adventure__content">
         <LumbiniSectionHeading
-          index="07"
+          index="09"
           eyebrow="Beyond Pilgrimage"
           heading="Beyond the sacred,"
           emphasis="the wild awaits."

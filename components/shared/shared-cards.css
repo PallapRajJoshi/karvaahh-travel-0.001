@@ -1,0 +1,381 @@
+/*
+ * Styles for the shared card components (CTAButton, AttractionCard,
+ * ExperienceCard, FAQAccordion, Gallery, ItineraryTimeline, SeasonCard).
+ * Colours follow the page's tokens when present (e.g. .dhorpatan-page)
+ * and fall back to the Karvaahh Himalayan palette elsewhere.
+ */
+@import "./safe-image.css";
+
+.cta-button,
+.attraction-card,
+.experience-card,
+.faq-accordion,
+.photo-grid,
+.itinerary-card,
+.season-card {
+  --sc-blue: var(--dhorpatan-blue, #123b5d);
+  --sc-teal: var(--dhorpatan-teal, #2a7f82);
+  --sc-gold: var(--dhorpatan-gold, #d8a64a);
+  --sc-ivory: var(--dhorpatan-ivory, #f8f6f0);
+  --sc-ink: var(--dhorpatan-charcoal, #252b32);
+  --sc-heading: var(--font-heading, var(--font-playfair, Georgia, serif));
+}
+
+/* ---------- CTA button ---------- */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+.cta-button:hover {
+  transform: translateY(-2px);
+}
+.cta-button:focus-visible {
+  outline: 2px solid var(--sc-gold);
+  outline-offset: 3px;
+}
+.cta-button--primary {
+  background: var(--sc-gold);
+  color: #1a1f24;
+}
+.cta-button--primary:hover {
+  background: #e6b55c;
+}
+.cta-button--secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.55);
+}
+.cta-button--secondary:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+.cta-button--ghost {
+  background: transparent;
+  color: var(--sc-blue);
+  border-color: color-mix(in srgb, var(--sc-blue) 35%, transparent);
+}
+.cta-button--ghost:hover {
+  border-color: var(--sc-blue);
+}
+
+/* ---------- Shared card surface ---------- */
+.attraction-card,
+.experience-card,
+.itinerary-card,
+.season-card {
+  height: 100%;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 1px 0 rgba(18, 59, 93, 0.06), 0 18px 40px -30px rgba(18, 59, 93, 0.45);
+  border: 1px solid rgba(18, 59, 93, 0.08);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.attraction-card:hover,
+.experience-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 50px -30px rgba(18, 59, 93, 0.6);
+}
+
+/* ---------- Attraction card ---------- */
+.attraction-card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.attraction-card__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+.attraction-card__img {
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+.attraction-card:hover .attraction-card__img {
+  transform: scale(1.05);
+}
+.attraction-card__badge {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: rgba(18, 59, 93, 0.82);
+  backdrop-filter: blur(4px);
+}
+.attraction-card__badge--nearby-village {
+  background: rgba(42, 127, 130, 0.88);
+}
+.attraction-card__body {
+  padding: 1.25rem 1.35rem 1.5rem;
+}
+.attraction-card__title {
+  font-family: var(--sc-heading);
+  font-size: 1.3rem;
+  color: var(--sc-blue);
+  margin: 0;
+}
+.attraction-card__text {
+  margin: 0.5rem 0 0;
+  font-size: 0.93rem;
+  line-height: 1.6;
+  color: var(--sc-ink);
+}
+.attraction-card__tags {
+  list-style: none;
+  padding: 0;
+  margin: 0.9rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.attraction-card__tags li {
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: var(--sc-ivory);
+  font-size: 0.75rem;
+  color: var(--sc-blue);
+}
+
+/* ---------- Experience card ---------- */
+.experience-card {
+  padding: 1.4rem;
+}
+.experience-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 14px;
+  background: var(--sc-blue);
+  color: var(--sc-gold);
+}
+.experience-card__icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.experience-card__title {
+  margin: 1rem 0 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--sc-blue);
+}
+.experience-card__text {
+  margin: 0.4rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--sc-ink);
+}
+
+/* ---------- FAQ accordion ---------- */
+.faq-accordion {
+  max-width: 860px;
+  margin: 2.5rem auto 0;
+  display: grid;
+  gap: 0.75rem;
+}
+.faq-accordion__item {
+  background: #fff;
+  border: 1px solid rgba(18, 59, 93, 0.1);
+  border-radius: 16px;
+  padding: 0 1.25rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.faq-accordion__item[open] {
+  border-color: color-mix(in srgb, var(--sc-gold) 55%, transparent);
+  box-shadow: 0 16px 36px -28px rgba(18, 59, 93, 0.5);
+}
+.faq-accordion__question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 0;
+  cursor: pointer;
+  list-style: none;
+  font-weight: 600;
+  color: var(--sc-blue);
+}
+.faq-accordion__question::-webkit-details-marker {
+  display: none;
+}
+.faq-accordion__question:focus-visible {
+  outline: 2px solid var(--sc-gold);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+.faq-accordion__chevron {
+  flex-shrink: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  transition: transform 0.3s ease;
+}
+.faq-accordion__item[open] .faq-accordion__chevron {
+  transform: rotate(180deg);
+}
+.faq-accordion__answer {
+  margin: 0;
+  padding: 0 0 1.2rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--sc-ink);
+}
+
+/* ---------- Photo grid ---------- */
+.photo-grid {
+  list-style: none;
+  padding: 0;
+  margin: 2.5rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+@media (min-width: 1024px) {
+  .photo-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .photo-grid__item--wide {
+    grid-column: span 2;
+  }
+}
+.photo-grid__item {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.photo-grid__img {
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+.photo-grid__item:hover .photo-grid__img {
+  transform: scale(1.05);
+}
+.photo-grid__item .pp-safe-image-fallback {
+  min-height: 0;
+}
+
+/* ---------- Itinerary card ---------- */
+.itinerary-card {
+  padding: 1.5rem;
+}
+.itinerary-card__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(18, 59, 93, 0.1);
+}
+.itinerary-card__title {
+  margin: 0;
+  font-family: var(--sc-heading);
+  font-size: 1.25rem;
+  color: var(--sc-blue);
+}
+.itinerary-card__duration {
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  background: var(--sc-ivory);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--sc-teal);
+}
+.itinerary-card__days {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  position: relative;
+}
+.itinerary-card__days::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 1px;
+  background: linear-gradient(var(--sc-gold), rgba(18, 59, 93, 0.12));
+}
+.itinerary-card__day {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.75rem;
+  padding: 0.45rem 0 0.45rem 1.4rem;
+}
+.itinerary-card__dot {
+  position: absolute;
+  left: 0;
+  top: 0.75rem;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--sc-gold);
+  box-shadow: 0 0 0 3px #fff;
+}
+.itinerary-card__label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--sc-teal);
+  white-space: nowrap;
+  padding-top: 0.12rem;
+}
+.itinerary-card__summary {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--sc-ink);
+}
+
+/* ---------- Season card ---------- */
+.season-card {
+  padding: 1.4rem;
+  border-top: 3px solid var(--sc-gold);
+}
+.season-card__title {
+  margin: 0;
+  font-family: var(--sc-heading);
+  font-size: 1.25rem;
+  color: var(--sc-blue);
+}
+.season-card__months {
+  margin: 0.25rem 0 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--sc-teal);
+}
+.season-card__points {
+  margin: 0.9rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--sc-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-button,
+  .attraction-card,
+  .experience-card,
+  .attraction-card__img,
+  .photo-grid__img,
+  .faq-accordion__chevron {
+    transition: none;
+  }
+}

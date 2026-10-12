@@ -1,0 +1,78 @@
+.dw-atelier__rows {
+  display: grid;
+  gap: clamp(4rem, 8vw, 7rem);
+}
+
+.dw-atelier__row {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 4.5rem);
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  .dw-atelier__row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .dw-atelier__row--flip .dw-atelier__media {
+    order: 2;
+  }
+}
+
+.dw-atelier__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.dw-atelier__body {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.dw-atelier__kicker {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--dw-gold-ink);
+}
+
+.dw-atelier__kicker span {
+  font-family: var(--dw-serif);
+  font-style: italic;
+  font-size: 1rem;
+  letter-spacing: 0;
+  margin-right: 0.5rem;
+}
+
+.dw-atelier__heading {
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  text-wrap: balance;
+}
+
+.dw-atelier__intro {
+  color: var(--dw-ink-soft);
+  max-width: 34rem;
+}
+
+.dw-atelier__groups {
+  display: grid;
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--dw-line);
+}
+
+.dw-atelier__group dt {
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--dw-maroon);
+  margin-bottom: 0.45rem;
+}
+
+.dw-atelier__group dd {
+  margin: 0;
+}

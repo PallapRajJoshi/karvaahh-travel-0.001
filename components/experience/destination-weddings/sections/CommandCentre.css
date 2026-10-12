@@ -1,0 +1,87 @@
+.dw-command__chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dw-command__node {
+  display: grid;
+  gap: 0.2rem;
+  min-width: min(100%, 18rem);
+  padding: 1.1rem 1.6rem;
+  border: 1px solid var(--dw-line);
+  background: var(--dw-ivory);
+  text-align: center;
+  font-family: var(--dw-serif);
+  font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+}
+
+.dw-command__node span {
+  font-family: var(--dw-sans);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--dw-gold-ink);
+}
+
+.dw-command__node--lead {
+  background: var(--dw-maroon-deep);
+  border-color: var(--dw-maroon-deep);
+  color: var(--dw-ivory);
+}
+
+.dw-command__node--lead span {
+  color: var(--dw-gold);
+}
+
+.dw-command__stem {
+  width: 1px;
+  height: 2.25rem;
+  background: var(--dw-gold-ink);
+}
+
+.dw-command__teams {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+  width: 100%;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--dw-gold-ink);
+}
+
+@media (min-width: 640px) {
+  .dw-command__teams {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1100px) {
+  .dw-command__teams {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+}
+
+.dw-command__teams li {
+  position: relative;
+  padding: 0.9rem 0.6rem;
+  border: 1px solid var(--dw-line);
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 1100px) {
+  .dw-command__teams li::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: calc(-1.5rem - 1px);
+    width: 1px;
+    height: 1.5rem;
+    background: var(--dw-gold-ink);
+  }
+}

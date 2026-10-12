@@ -25,6 +25,7 @@ export default function SudurpaschimHeritage() {
       <div className="sp-container sp-heritage__inner">
         <div className="sp-heritage__text">
           <SudurpaschimSectionHeading
+            id="sp-heritage-heading"
             index="08"
             eyebrow="Heritage & History"
             heading="Stories written across the hills."

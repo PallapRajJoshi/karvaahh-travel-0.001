@@ -14,15 +14,13 @@ const cultureTags = [
   "Traditional dress",
   "Food",
   "Community celebrations",
-  "Sama-Chakeva",
-  "Chhath",
-  "Vivah Panchami",
-  "Holi",
+  "Tharu traditions",
+  "Maithili language",
 ];
 
 export default function MadheshCulture() {
   return (
-    <section className="madhesh-culture" aria-label="Mithila culture in Madhesh">
+    <section id="culture" className="madhesh-culture" aria-label="Mithila culture in Madhesh">
       <div className="madhesh-culture__content">
         <span className="madhesh-eyebrow">Living Traditions</span>
         <h2 className="madhesh-culture__title">
@@ -34,6 +32,14 @@ export default function MadheshCulture() {
           Madhesh is a living cultural landscape shaped by Mithila traditions,
           Maithili and Bhojpuri communities, art, food, music, festivals,
           crafts and generations of village life.
+        </p>
+        <p className="madhesh-culture__desc">
+          Maithili is spoken across the eastern and central districts, while
+          Bhojpuri and Bajjika are common further west. Tharu communities, with
+          their own language, dances and harvest festivals, live in villages
+          across the province. Mithila painting — traditionally made by women
+          on walls and floors for weddings and rituals — is now practised on
+          paper and canvas, and visitors can learn directly from local artists.
         </p>
 
         <div className="madhesh-culture__highlights">

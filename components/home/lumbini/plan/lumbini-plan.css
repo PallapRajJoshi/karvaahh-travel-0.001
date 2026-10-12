@@ -1,0 +1,225 @@
+.lumbini-plan {
+  box-sizing: border-box;
+  width: 100%;
+  padding: clamp(3.5rem, 8vh, 6rem) clamp(1rem, 5vw, 5rem);
+  background: var(--lumbini-cream-soft);
+}
+
+.lumbini-plan__inner {
+  max-width: 92rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 5vh, 3.25rem);
+}
+
+.lumbini-plan__block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.lumbini-plan__block-title {
+  font-family: var(--lumbini-font-sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--lumbini-saffron);
+  margin: 0;
+}
+
+.lumbini-plan__seasons {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.lumbini-plan__season {
+  padding: 1.3rem;
+  border-radius: 1rem;
+  background: #fff;
+  border: 1px solid rgba(7, 16, 12, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.lumbini-plan__season:first-child {
+  background: var(--lumbini-forest);
+  border-color: var(--lumbini-forest);
+}
+
+.lumbini-plan__season-label {
+  font-family: var(--lumbini-font-sans);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lumbini-gold-2);
+}
+
+.lumbini-plan__season-months {
+  font-family: var(--lumbini-font-serif);
+  font-size: 1.5rem;
+  color: var(--lumbini-forest);
+}
+
+.lumbini-plan__season-text {
+  font-family: var(--lumbini-font-sans);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--lumbini-text-muted);
+  margin: 0;
+}
+
+.lumbini-plan__season:first-child .lumbini-plan__season-months {
+  color: var(--lumbini-cream);
+}
+
+.lumbini-plan__season:first-child .lumbini-plan__season-text {
+  color: var(--lumbini-text-muted-dark);
+}
+
+.lumbini-plan__reach {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) minmax(0, 1.5fr);
+  gap: 1rem;
+}
+
+.lumbini-plan__card {
+  padding: 1.4rem;
+  border-radius: 1rem;
+  background: #fff;
+  border: 1px solid rgba(7, 16, 12, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.lumbini-plan__card--border {
+  background: linear-gradient(160deg, #fff 0%, rgba(201, 164, 92, 0.1) 100%);
+  border-color: var(--lumbini-line);
+}
+
+.lumbini-plan__card-title {
+  font-family: var(--lumbini-font-serif);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--lumbini-forest);
+  margin: 0;
+}
+
+.lumbini-plan__points {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-family: var(--lumbini-font-sans);
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--lumbini-text-muted);
+}
+
+.lumbini-plan__points li::marker {
+  color: var(--lumbini-gold-2);
+}
+
+.lumbini-plan__borders {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.lumbini-plan__border {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--lumbini-line);
+}
+
+.lumbini-plan__border:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.lumbini-plan__border-name {
+  font-family: var(--lumbini-font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--lumbini-forest);
+}
+
+.lumbini-plan__border-for {
+  font-family: var(--lumbini-font-sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--lumbini-saffron);
+}
+
+.lumbini-plan__border-note,
+.lumbini-plan__small {
+  font-family: var(--lumbini-font-sans);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--lumbini-text-muted);
+  margin: 0;
+}
+
+.lumbini-plan__small {
+  font-size: 0.78rem;
+  font-style: italic;
+}
+
+.lumbini-plan__tips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem 2rem;
+}
+
+.lumbini-plan__tip {
+  display: flex;
+  gap: 0.7rem;
+  font-family: var(--lumbini-font-sans);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--lumbini-forest);
+}
+
+.lumbini-plan__tip span {
+  flex-shrink: 0;
+  color: var(--lumbini-gold-2);
+  font-weight: 700;
+}
+
+@media (max-width: 1100px) {
+  .lumbini-plan__seasons {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lumbini-plan__reach {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lumbini-plan__card--border {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .lumbini-plan__seasons,
+  .lumbini-plan__reach,
+  .lumbini-plan__tips {
+    grid-template-columns: 1fr;
+  }
+}

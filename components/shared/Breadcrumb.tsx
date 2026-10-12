@@ -7,7 +7,9 @@ export type BreadcrumbItem = {
 };
 
 type BreadcrumbProps = {
-  items: BreadcrumbItem[];
+  items?: BreadcrumbItem[];
+  /** Alias of `items` (used by some destination pages). */
+  trail?: BreadcrumbItem[];
   className?: string;
 };
 
@@ -16,7 +18,8 @@ type BreadcrumbProps = {
  * separately at the route level (app/offbeat-unexplored/panch-pokhari/page.tsx)
  * so the structured data always matches what a crawler can see rendered here.
  */
-export default function Breadcrumb({ items, className = "" }: BreadcrumbProps) {
+export default function Breadcrumb({ items: itemsProp, trail, className = "" }: BreadcrumbProps) {
+  const items = itemsProp ?? trail ?? [];
   return (
     <nav
       className={`pp-breadcrumb ${className}`.trim()}

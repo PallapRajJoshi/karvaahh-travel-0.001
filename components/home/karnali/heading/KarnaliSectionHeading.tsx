@@ -8,6 +8,8 @@ interface KarnaliSectionHeadingProps {
   align?: "left" | "center";
   sectionNumber?: string;
   light?: boolean;
+  /** id for the <h2>, so the section can reference it via aria-labelledby */
+  id?: string;
 }
 
 export default function KarnaliSectionHeading({
@@ -18,6 +20,7 @@ export default function KarnaliSectionHeading({
   align = "left",
   sectionNumber,
   light = false,
+  id,
 }: KarnaliSectionHeadingProps) {
   return (
     <div
@@ -31,7 +34,7 @@ export default function KarnaliSectionHeading({
         </span>
       )}
       <p className="karnali-eyebrow">{eyebrow}</p>
-      <h2 className="karnali-heading-title">
+      <h2 id={id} className="karnali-heading-title">
         {heading}
         {goldWord && <em className="karnali-heading-gold"> {goldWord}</em>}
       </h2>

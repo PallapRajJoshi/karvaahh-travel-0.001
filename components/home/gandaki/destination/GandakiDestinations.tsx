@@ -5,20 +5,21 @@ import "./gandaki-destinations.css";
 
 export default function GandakiDestinations() {
   return (
-    <section className="gandaki-destinations" aria-label="Places to go in Gandaki">
+    <section className="gandaki-destinations" id="districts" aria-labelledby="gandaki-districts-title">
       <div className="gandaki-destinations__intro">
         <GandakiSectionHeading
-          index="03"
-          eyebrow="PLACES TO GO"
+          index="09"
+          eyebrow="DISTRICT BY DISTRICT"
           heading="The many faces of"
           emphasis="Gandaki"
+          titleId="gandaki-districts-title"
           description="Eleven districts, from the lakeside city of Pokhara to the high desert of Mustang — each with its own landscape, culture and pace of travel."
         />
       </div>
 
       <ul className="gandaki-destinations__grid">
         {gandakiDistricts.map((district, idx) => (
-          <li className="gandaki-district-card" key={district.id}>
+          <li className="gandaki-district-card gandaki-reveal" key={district.id}>
             <div className="gandaki-district-card__media">
               <Image
                 src={district.image}

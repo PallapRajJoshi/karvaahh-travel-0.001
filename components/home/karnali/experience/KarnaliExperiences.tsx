@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import SafeImage from "@/components/shared/SafeImage";
 import { motion } from "framer-motion";
 import KarnaliSectionHeading from "../heading/KarnaliSectionHeading";
 import { karnaliExperiences } from "@/data/karnali/experiences";
@@ -13,13 +13,13 @@ export default function KarnaliExperiences() {
       className="karnali-root karnali-experiences"
       aria-label="Karnali experiences"
     >
-      <span className="karnali-num">02</span>
+      <span className="karnali-num">04</span>
 
       <KarnaliSectionHeading
         eyebrow="EXPERIENCE KARNALI"
         heading="One province."
         goldWord="A world apart."
-        sectionNumber="02 / EXPERIENCES"
+        sectionNumber="04 / WHY VISIT"
       />
 
       <div className="karnali-experiences-grid">
@@ -33,7 +33,7 @@ export default function KarnaliExperiences() {
             transition={{ duration: 0.6, delay: index * 0.06 }}
           >
             <div className="karnali-experience-image-wrap">
-              <Image
+              <SafeImage
                 src={item.image}
                 alt={item.alt}
                 fill

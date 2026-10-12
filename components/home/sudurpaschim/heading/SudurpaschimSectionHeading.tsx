@@ -1,6 +1,8 @@
 import "./sudurpaschim-section-heading.css";
 
 interface SudurpaschimSectionHeadingProps {
+  /** Rendered on the h2 so the section's aria-labelledby resolves. */
+  id?: string;
   index: string;
   eyebrow: string;
   heading: string;
@@ -10,6 +12,7 @@ interface SudurpaschimSectionHeadingProps {
 }
 
 export default function SudurpaschimSectionHeading({
+  id,
   index,
   eyebrow,
   heading,
@@ -20,12 +23,15 @@ export default function SudurpaschimSectionHeading({
   return (
     <div
       className={`sp-heading sp-heading--${align} sp-heading--${theme}`}
+      data-reveal
     >
       <span className="sp-heading__index" aria-hidden="true">
         {index}
       </span>
       <p className="sp-heading__eyebrow">{eyebrow}</p>
-      <h2 className="sp-heading__title">{heading}</h2>
+      <h2 id={id} className="sp-heading__title">
+        {heading}
+      </h2>
       {description && <p className="sp-heading__desc">{description}</p>}
       <span className="sp-heading__rule" aria-hidden="true" />
     </div>

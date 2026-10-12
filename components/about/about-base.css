@@ -1,0 +1,297 @@
+/* ==========================================================================
+   /about – base tokens, layout primitives, buttons, reveal system.
+   Everything is scoped under .ab-page so nothing leaks into other pages.
+   Convention: BEM with the "ab-" prefix (component-scoped CSS, no Tailwind).
+   ========================================================================== */
+
+.ab-page {
+  /* Brand tokens – "Deep Karvaahh Blue" maps to the existing navy */
+  --ab-navy: #0b1b2b;
+  --ab-blue: #123652;
+  --ab-blue-soft: #1d4a6b;
+  --ab-sky: #cfe2ef;
+  --ab-ice: #e9f2f8;
+  --ab-cream: #f7f5ef;
+  --ab-white: #ffffff;
+  --ab-gold: #c9a45c;
+  --ab-gold-light: #e3c98a;
+  --ab-gold-text: #7a5c22; /* gold darkened for AA contrast on light backgrounds */
+  --ab-gold-numeral: #946f2e; /* big decorative numerals: 4.6:1 on white, 4.2:1 on cream */
+  --ab-ink: #14202c;
+  --ab-ink-soft: #44556a;
+
+  --ab-font-display: var(--font-playfair), "Playfair Display", Georgia, "Times New Roman", serif;
+  --ab-font-body: var(--font-inter), "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --ab-ease: cubic-bezier(0.22, 0.8, 0.24, 1);
+  --ab-gutter: clamp(20px, 5vw, 64px);
+  --ab-max: 1240px;
+
+  position: relative;
+  background: var(--ab-cream);
+  color: var(--ab-ink);
+  font-family: var(--ab-font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  /* clip (not hidden): stops decorative overshoot causing horizontal scroll without breaking sticky */
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Resets are wrapped in :where() => ZERO specificity, so any component class overrides them
+   regardless of the order Next.js bundles the CSS files in. */
+:where(.ab-page, .ab-page *, .ab-page *::before, .ab-page *::after) {
+  box-sizing: border-box;
+}
+
+:where(.ab-page h1, .ab-page h2, .ab-page h3, .ab-page p, .ab-page ol, .ab-page ul, .ab-page figure, .ab-page blockquote) {
+  margin: 0;
+}
+
+:where(.ab-page ol, .ab-page ul) {
+  padding: 0;
+  list-style: none;
+}
+
+/* zero specificity: component classes (buttons, cards) always win over this reset */
+:where(.ab-page a) {
+  color: inherit;
+}
+
+/* visually hidden, still announced */
+.ab-page .sr-only-ab {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- Focus ---------- */
+.ab-page :focus-visible {
+  outline: 3px solid var(--ab-blue-soft);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.ab-on-dark :focus-visible {
+  outline-color: var(--ab-gold-light);
+}
+
+/* ---------- Layout ---------- */
+.ab-section {
+  position: relative;
+  padding-block: clamp(72px, 10vw, 144px);
+}
+
+.ab-container {
+  width: min(100% - 2 * var(--ab-gutter), var(--ab-max));
+  margin-inline: auto;
+}
+
+/* ---------- Typography ---------- */
+.ab-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ab-gold-text);
+}
+
+.ab-head {
+  display: grid;
+  gap: 14px;
+  max-width: 46rem;
+  margin-bottom: clamp(36px, 5vw, 64px);
+}
+
+.ab-head--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.ab-head__title {
+  font-family: var(--ab-font-display);
+  font-weight: 500;
+  font-size: clamp(2rem, 4.6vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ab-navy);
+  text-wrap: balance;
+}
+
+.ab-head__sub {
+  font-size: clamp(1.02rem, 1.4vw, 1.2rem);
+  color: var(--ab-ink-soft);
+  max-width: 38rem;
+}
+
+.ab-head--center .ab-head__sub {
+  margin-inline: auto;
+}
+
+.ab-head--dark .ab-eyebrow {
+  color: var(--ab-gold-light);
+}
+
+.ab-head--dark .ab-head__title {
+  color: var(--ab-white);
+}
+
+.ab-head--dark .ab-head__sub {
+  color: rgb(255 255 255 / 0.8);
+}
+
+.ab-on-dark {
+  background: var(--ab-navy);
+  color: var(--ab-white);
+}
+
+.ab-on-dark .ab-eyebrow {
+  color: var(--ab-gold-light);
+}
+
+/* ---------- Buttons ---------- */
+.ab-btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.ab-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px; /* touch-friendly */
+  padding: 0 28px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-family: var(--ab-font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition:
+    background-color 0.3s var(--ab-ease),
+    color 0.3s var(--ab-ease),
+    border-color 0.3s var(--ab-ease),
+    transform 0.3s var(--ab-ease);
+}
+
+.ab-btn__arrow {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s var(--ab-ease);
+}
+
+.ab-btn:hover .ab-btn__arrow {
+  transform: translateX(4px);
+}
+
+.ab-btn--primary {
+  background: var(--ab-gold);
+  color: var(--ab-navy);
+}
+
+.ab-btn--primary:hover {
+  background: var(--ab-gold-light);
+}
+
+.ab-btn--ghost-light {
+  border-color: rgb(255 255 255 / 0.6);
+  color: var(--ab-white);
+}
+
+.ab-btn--ghost-light:hover {
+  background: rgb(255 255 255 / 0.12);
+  border-color: var(--ab-white);
+}
+
+.ab-btn--ghost-dark {
+  border-color: var(--ab-navy);
+  color: var(--ab-navy);
+}
+
+.ab-btn--ghost-dark:hover {
+  background: var(--ab-navy);
+  color: var(--ab-white);
+}
+
+@media (max-width: 520px) {
+  .ab-btn-row {
+    flex-direction: column;
+  }
+  .ab-btn-row .ab-btn {
+    width: 100%;
+  }
+}
+
+/* ---------- Media frame helpers ---------- */
+/* :where() = zero specificity, so a section can set position:absolute etc. regardless of CSS bundle order */
+:where(.ab-page .ab-frame) {
+  position: relative;
+  overflow: hidden;
+  background: var(--ab-blue);
+}
+
+.ab-frame > img,
+.ab-frame > svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   Reveal system
+   [data-reveal] is observed by RevealController, which adds .is-in.
+   The hidden state exists ONLY when scripting is on and motion is allowed, and a
+   3.5 s CSS failsafe un-hides anything the observer never reached, so content can
+   never stay invisible.
+   --d  = stagger index (set inline), 90 ms per step.
+   ========================================================================== */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  .ab-page [data-reveal] {
+    transition:
+      opacity 0.9s var(--ab-ease),
+      transform 0.9s var(--ab-ease);
+    transition-delay: calc(var(--d, 0) * 90ms);
+  }
+
+  .ab-page [data-reveal]:not(.is-in) {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+    animation: ab-failsafe 0.01s linear 3.5s forwards;
+  }
+
+  /* line-draw variants keep their element visible and animate scale instead */
+  .ab-page [data-reveal="draw-x"]:not(.is-in) {
+    opacity: 1;
+    transform: scaleX(0);
+  }
+  .ab-page [data-reveal="draw-y"]:not(.is-in) {
+    opacity: 1;
+    transform: scaleY(0);
+  }
+}
+
+@keyframes ab-failsafe {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Reduced motion: everything static, fully visible ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .ab-page *,
+  .ab-page *::before,
+  .ab-page *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

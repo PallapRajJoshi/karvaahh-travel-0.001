@@ -1,8 +1,7 @@
 .bagmati-pilgrimage {
   box-sizing: border-box;
   width: 100%;
-  height: calc(100svh - 170px);
-  min-height: 560px;
+  min-height: max(560px, calc(100svh - 170px));
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   background: #142019;
@@ -15,7 +14,28 @@
   flex-direction: column;
   gap: 40px;
   justify-content: center;
-  overflow-y: auto;
+}
+
+.bagmati-pilgrimage__trails {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.bagmati-pilgrimage__trail-title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #c9a45c;
+  margin: 0 0 8px;
+}
+
+.bagmati-pilgrimage__trail-text {
+  font-family: "Inter", sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: #cfd8d1;
+  margin: 0;
 }
 
 .bagmati-pilgrimage__sites {
@@ -63,5 +83,9 @@
   }
   .bagmati-pilgrimage__sites {
     gap: 8px;
+  }
+  .bagmati-pilgrimage__trails {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 }

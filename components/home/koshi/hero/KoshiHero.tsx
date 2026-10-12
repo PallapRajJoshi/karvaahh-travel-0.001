@@ -14,11 +14,11 @@ export default function KoshiHero() {
 
       <Image
         src="/koshi/cholatse-peak.jpg"
-        alt="Himalayan mountains and clouds in Koshi Province, Nepal"
+        alt="Cholatse and Taboche peaks above a glacial valley in the Everest region of Koshi Province, Nepal"
         fill
         priority
         sizes="100vw"
-       className="hidden md:block koshi-hero-image"
+        className="koshi-hero-image"
       />
 
 
@@ -29,7 +29,10 @@ export default function KoshiHero() {
   muted
   loop
   playsInline
-  className="block md:hidden absolute inset-0 w-full h-full object-cover"
+  poster="/koshi/cholatse-peak.jpg"
+  preload="metadata"
+  aria-hidden="true"
+  className="block md:hidden motion-reduce:hidden absolute inset-0 w-full h-full object-cover"
 />
       {/* =====================================================
           CINEMATIC OVERLAY
@@ -62,7 +65,7 @@ export default function KoshiHero() {
             <span className="koshi-eyebrow-line" />
 
             <span className="koshi-eyebrow-text">
-              EASTERN NEPAL
+              KOSHI PROVINCE · EASTERN NEPAL
             </span>
 
           </div>
@@ -79,6 +82,7 @@ export default function KoshiHero() {
             <span>Discover</span>
 
             <em>Koshi</em>
+            <span className="sr-only"> Province, Nepal</span>
           </h1>
 
 
@@ -98,9 +102,9 @@ export default function KoshiHero() {
           ================================================== */}
 
           <p className="koshi-hero__description koshi-hero-reveal">
-            Journey from the world's highest mountains to misty tea
-            gardens, sacred landscapes, vibrant communities and
-            wildlife-rich wetlands.
+            Journey from Mount Everest and Kanchenjunga to Ilam&apos;s misty
+            tea gardens, sacred shrines like Pathibhara and Halesi, and
+            the wildlife-rich wetlands of Koshi Tappu.
           </p>
 
 
@@ -214,11 +218,11 @@ export default function KoshiHero() {
 
             <div>
               <h3>
-                Mountain
+                Everest
               </h3>
 
               <p>
-                Himalayan landscapes
+                8,849 m · Sagarmatha NP
               </p>
             </div>
 
@@ -235,11 +239,11 @@ export default function KoshiHero() {
 
             <div>
               <h3>
-                Culture
+                Ilam
               </h3>
 
               <p>
-                Living traditions
+                Nepal&apos;s tea country
               </p>
             </div>
 
@@ -256,11 +260,11 @@ export default function KoshiHero() {
 
             <div>
               <h3>
-                Adventure
+                Koshi Tappu
               </h3>
 
               <p>
-                Endless possibilities
+                Wetland wildlife
               </p>
             </div>
 
@@ -276,9 +280,9 @@ export default function KoshiHero() {
       ====================================================== */}
 
       <a
-        href="#experiences"
+        href="#overview"
         className="koshi-scroll"
-        aria-label="Scroll to experiences"
+        aria-label="Scroll to the province overview"
       >
 
         <span className="koshi-scroll-text">

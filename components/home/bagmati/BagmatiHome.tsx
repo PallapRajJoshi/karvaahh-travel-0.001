@@ -2,14 +2,19 @@ import React from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import BagmatiHero from "./hero/BagmatiHero";
+import BagmatiIntro from "./intro/BagmatiIntro";
+import BagmatiDiscover from "./discover/BagmatiDiscover";
 import BagmatiExperiences from "./experience/BagmatiExperiences";
-import BagmatiDestinations from "./destination/BagmatiDestinations";
-import BagmatiAdventure from "./adventure/BagmatiAdventure";
-import BagmatiPilgrimage from "./pilgrimage/BagmatiPilgrimage";
-import BagmatiCulture from "./culture/BagmatiCulture";
 import BagmatiHeritage from "./heritage/BagmatiHeritage";
+import BagmatiPilgrimage from "./pilgrimage/BagmatiPilgrimage";
+import BagmatiAdventure from "./adventure/BagmatiAdventure";
 import BagmatiWildlife from "./wildlife/BagmatiWildlife";
-import BagmatiJourney from "./journey/BagmatiJourney";
+import BagmatiCulture from "./culture/BagmatiCulture";
+import BagmatiPlan, { BagmatiTraditions } from "./plan/BagmatiPlan";
+import BagmatiDestinations from "./destination/BagmatiDestinations";
+import BagmatiRoutes from "./routes/BagmatiRoutes";
+import BagmatiPackages from "./packages/BagmatiPackages";
+import BagmatiFaq from "./faq/BagmatiFaq";
 import BagmatiCTA from "./CTA/BagmatiCTA";
 
 export default function BagmatiHome() {
@@ -18,14 +23,20 @@ export default function BagmatiHome() {
       <Navbar />
       <main>
         <BagmatiHero />
+        <BagmatiIntro />
+        <BagmatiDiscover />
         <BagmatiExperiences />
-        <BagmatiDestinations />
-        <BagmatiAdventure />
-        <BagmatiPilgrimage />
-        <BagmatiCulture />
         <BagmatiHeritage />
+        <BagmatiPilgrimage />
+        <BagmatiAdventure />
         <BagmatiWildlife />
-        <BagmatiJourney />
+        <BagmatiCulture />
+        <BagmatiTraditions />
+        <BagmatiDestinations />
+        <BagmatiRoutes />
+        <BagmatiPlan />
+        <BagmatiPackages />
+        <BagmatiFaq />
         <BagmatiCTA />
       </main>
       <Footer />

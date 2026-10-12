@@ -33,6 +33,7 @@ export default function SudurpaschimPilgrimage() {
 
       <div className="sp-container sp-pilgrimage__content">
         <SudurpaschimSectionHeading
+          id="sp-pilgrimage-heading"
           index="06"
           eyebrow="Sacred Himalayas"
           heading="Sacred peaks. Ancient faith."

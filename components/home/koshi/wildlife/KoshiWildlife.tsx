@@ -119,7 +119,7 @@ export default function KoshiWildlife() {
               CTA
               ================================================= */}
           <Link
-            href="/destinations"
+            href="/activities/wildlife-nature"
             className="koshi-wildlife__button"
           >
             <span>Discover wild Koshi</span>

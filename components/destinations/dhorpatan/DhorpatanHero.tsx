@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/shared/SafeImage";
 import { heroContent } from "@/data/dhorpatan";
 import CTAButton from "@/components/shared/CTAButton";
 import "./DhorpatanHero.css";
@@ -14,6 +14,7 @@ export default function DhorpatanHero() {
     <section className="dhorpatan-hero" aria-label="Dhorpatan Hunting Reserve introduction">
       <div className="dhorpatan-hero__media">
         <Image
+          fallbackLabel=""
           src={heroContent.image.src}
           alt={heroContent.image.alt}
           fill

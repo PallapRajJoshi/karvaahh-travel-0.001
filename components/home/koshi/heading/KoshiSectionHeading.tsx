@@ -7,6 +7,8 @@ type KoshiSectionHeadingProps = {
   description?: string;
   align?: "left" | "center";
   light?: boolean;
+  /** Lets the parent section reference the heading via aria-labelledby. */
+  titleId?: string;
 };
 
 export default function KoshiSectionHeading({
@@ -15,6 +17,7 @@ export default function KoshiSectionHeading({
   description,
   align = "left",
   light = false,
+  titleId,
 }: KoshiSectionHeadingProps) {
   return (
     <header
@@ -38,7 +41,7 @@ export default function KoshiSectionHeading({
 
       {/* Title */}
 
-      <h2 className="koshi-section-heading__title">
+      <h2 id={titleId} className="koshi-section-heading__title">
         {title}
       </h2>
 

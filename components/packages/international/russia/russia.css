@@ -1,0 +1,361 @@
+/* ============================================================
+   /packages/international/russia
+   Layered on packages.css + asia.css (the international page system).
+   This file only re-tones the palette and adds Russia-specific pieces.
+   Palette: midnight blue, burgundy, warm gold, ivory, snow white.
+   ============================================================ */
+
+.russia-page {
+  --asia-navy: #0d1730;
+  --asia-navy-2: #1a2950;
+  --asia-gold: #c9a24a;
+  --asia-gold-2: #e8cc85;
+  --asia-gold-ink: #7a5a12;
+  --asia-sand: #f8f4ec;
+  --ru-burgundy: #7a1f33;
+  --ru-burgundy-2: #9e2b45;
+  --ru-ivory: #fbf8f1;
+  --ru-ice: #dbe9f5;
+}
+
+/* subtle architectural texture on ivory sections */
+.russia-page .pkg-section--sand {
+  background:
+    radial-gradient(circle at 1px 1px, rgb(122 31 51 / 0.05) 1px, transparent 0) 0 0 / 22px 22px,
+    var(--asia-sand);
+}
+
+.russia-page .asia-dcard__styles,
+.russia-page .ru-dcard__region { color: var(--ru-burgundy); }
+
+/* ───────── hero ───────── */
+
+.ru-hero {
+  background:
+    radial-gradient(110% 80% at 85% 0%, rgb(122 31 51 / 0.55) 0%, transparent 55%),
+    radial-gradient(90% 70% at 0% 100%, #1b2f5a 0%, transparent 60%),
+    linear-gradient(180deg, #070d1f 0%, #0d1730 60%, #111f3e 100%);
+}
+.ru-hero .asia-hero__inner { padding-bottom: 96px; }
+.ru-glow--burgundy { background: var(--ru-burgundy-2) !important; opacity: 0.35 !important; }
+.ru-skyline { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 140px; }
+.ru-skyline path { fill: rgb(219 233 245 / 0.06); }
+
+.ru-hero__title { font-size: clamp(2.1rem, 1.2rem + 3.8vw, 4.1rem); }
+.ru-hero__title em { display: block; margin-top: 6px; font-size: 0.72em; line-height: 1.12; }
+.ru-hero__dash { display: none; }
+.ru-hero__links { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px 22px; }
+.ru-hero__links a {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: #fff; font-weight: 600; text-decoration: none;
+  border-bottom: 1px solid rgb(232 204 133 / 0.5);
+}
+.ru-hero__links a:hover { color: var(--asia-gold-2); }
+.ru-hero__links svg { color: var(--asia-gold-2); }
+.ru-ribbons { margin-top: 26px; display: grid; gap: 8px; max-width: 560px; }
+.ru-ribbons li {
+  padding: 10px 16px; border-radius: 14px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  background: rgb(255 255 255 / 0.06); border: 1px solid rgb(255 255 255 / 0.12); backdrop-filter: blur(8px);
+}
+.ru-ribbons li:first-child { color: var(--asia-gold-2); }
+@media (max-width: 519px) { .ru-ribbons li { font-size: 0.7rem; letter-spacing: 0.08em; } }
+
+/* text reveal */
+.ru-reveal { display: inline-block; animation: ru-rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; animation-delay: var(--d, 0s); }
+div.ru-reveal, p.ru-reveal, ul.ru-reveal { display: flex; }
+p.ru-reveal { display: inline-flex; }
+ul.ru-reveal { display: grid; }
+.asia-hero__lede.ru-reveal { display: block; }
+
+/* snowfall */
+.ru-snow { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.ru-snow span {
+  position: absolute; top: -10px; border-radius: 50%; background: #fff;
+  animation-name: ru-fall; animation-timing-function: linear; animation-iteration-count: infinite;
+  will-change: transform;
+}
+@media (max-width: 767px) { .ru-snow span:nth-child(2n) { display: none; } }
+.ru-snow--soft span { opacity: 0.3 !important; }
+
+/* ───────── filter bar ───────── */
+
+.ru-filters { position: relative; z-index: 4; margin-top: -48px; padding-bottom: 8px; }
+.ru-filters .pkg-container {
+  display: grid; gap: 10px; padding-top: 18px; padding-bottom: 16px; border-radius: 26px; background: #fff;
+  box-shadow: 0 30px 70px -30px rgb(13 23 48 / 0.45), 0 2px 6px rgb(13 23 48 / 0.06); border: 1px solid var(--asia-line);
+  max-width: calc(1320px - 32px); width: calc(100% - 32px);
+}
+@media (min-width: 768px) { .ru-filters .pkg-container { width: calc(100% - 64px); } }
+.ru-filters__row { display: grid; gap: 6px; min-width: 0; }
+.ru-filters__label { display: inline-flex; align-items: center; gap: 6px; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--asia-muted); }
+.ru-filters__label svg { color: var(--ru-burgundy); }
+.ru-filters .asia-styles__row { margin-inline: -16px; }
+@media (min-width: 1200px) { .ru-filters .asia-styles__row { margin-inline: 0; } }
+.ru-chip--exp.is-active { color: #fff; }
+.ru-chip--exp .asia-chip__bg { background: var(--ru-burgundy); }
+.ru-filters__jump { font-size: 0.82rem; color: var(--asia-muted); }
+.ru-filters__jump a { color: var(--asia-navy); font-weight: 600; }
+.ru-status { border-top: 1px solid var(--asia-line); }
+.ru-status--inline { border-top: 0; padding-top: 0; margin-bottom: 18px; }
+
+/* ───────── badges ───────── */
+
+.ru-badge {
+  position: absolute; z-index: 2; top: 12px; left: 12px; padding: 4px 10px; border-radius: 999px;
+  font-size: 0.7rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.ru-badge--limited { background: #fff3dc; color: #6b4a0c; border: 1px solid #f0d9a8; }
+.ru-badge--gold { top: auto; bottom: 12px; left: auto; right: 12px; background: linear-gradient(135deg, var(--asia-gold-2), var(--asia-gold)); color: var(--asia-navy); }
+
+/* ───────── cards ───────── */
+
+.ru-dcard__region { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: -4px; }
+.ru-dcard__foot { display: flex; flex-wrap: wrap; gap: 8px; }
+.ru-dcard__foot .pkg-btn { flex: 1 1 130px; }
+
+.ru-pgrid { grid-template-columns: 1fr; }
+@media (min-width: 640px) { .ru-pgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .ru-pgrid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.ru-pcard__cities { font-size: 0.82rem; font-weight: 700; color: var(--ru-burgundy); }
+.ru-pcard__facts { display: grid; gap: 6px; font-size: 0.84rem; color: var(--asia-navy); }
+.ru-pcard__facts > div { display: flex; gap: 8px; align-items: flex-start; }
+.ru-pcard__facts dt { flex: none; padding-top: 2px; color: var(--asia-gold-ink); }
+.ru-pcard__actions { display: flex; flex-wrap: wrap; gap: 8px; flex: 1 1 200px; justify-content: flex-end; }
+.ru-pcard__actions .pkg-btn { flex: 1 1 120px; }
+.asia-pcard .pkg-route__stop { min-width: 0; flex: 1 0 84px; }
+.asia-pcard .pkg-route__name { font-size: 0.8rem; }
+
+.ru-details { border-radius: 14px; background: var(--asia-sand); }
+.ru-details summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 44px; padding: 10px 14px; cursor: pointer;
+  list-style: none; font-weight: 700; font-size: 0.875rem; color: var(--asia-navy);
+}
+.ru-details summary::-webkit-details-marker { display: none; }
+.ru-details summary svg { transition: transform 0.3s var(--pkg-ease); }
+.ru-details[open] summary svg { transform: rotate(180deg); }
+.ru-details summary:focus-visible { outline: 3px solid var(--pkg-blue); outline-offset: 2px; border-radius: 14px; }
+.ru-details__body { padding: 0 14px 14px; display: grid; gap: 8px; font-size: 0.86rem; color: var(--asia-navy); animation: asia-reveal-down 0.3s var(--pkg-ease); }
+.ru-details__body ul { display: grid; gap: 4px; }
+.ru-details__body li { display: flex; gap: 6px; align-items: flex-start; }
+.ru-details__body li svg { flex: none; margin-top: 3px; color: #2f7d55; }
+.ru-details__fine { font-size: 0.76rem; color: var(--asia-muted); }
+
+/* ───────── map ───────── */
+
+.ru-map__other { fill: none; stroke: rgb(255 255 255 / 0.1); stroke-width: 4; stroke-linecap: round; stroke-dasharray: 0 10; }
+.ru-map__russia { fill: none; stroke: rgb(232 204 133 / 0.42); stroke-width: 5; stroke-linecap: round; stroke-dasharray: 0 10; }
+.ru-map__route--flight { stroke: rgb(232 204 133 / 0.8); }
+.ru-map__route--rail { stroke: #f0a3b3; stroke-width: 2.4; stroke-dasharray: 7 7; }
+.asia-marker.is-limited .asia-marker__dot { background: transparent; border: 2px solid var(--asia-gold-2); box-shadow: none; }
+.ru-dot-limited { width: 7px; height: 7px; border-radius: 50%; border: 1.5px solid currentColor; display: inline-block; opacity: 0.8; }
+@media (max-width: 767px) {
+  .ru-map__canvas { margin-inline: -8px; }
+}
+
+/* ───────── feature sections ───────── */
+
+.ru-feature { position: relative; overflow: hidden; }
+.ru-feature--sand { background: var(--asia-sand); }
+.ru-feature--dark { color: #fff; background: radial-gradient(70% 60% at 100% 0%, rgb(122 31 51 / 0.35), transparent 60%), linear-gradient(180deg, #0b1428 0%, #0d1730 100%); }
+.ru-feature--arctic { color: #fff; background: linear-gradient(180deg, #050b18 0%, #0a1830 55%, #0f2340 100%); }
+.ru-feature__sky { position: absolute; inset: 0; pointer-events: none; }
+.ru-aurora { position: absolute; width: 70%; height: 60%; border-radius: 50%; filter: blur(80px); opacity: 0.35; }
+.ru-aurora--a { left: -10%; top: -20%; background: #2fd1a0; animation: asia-drift 16s ease-in-out infinite alternate; }
+.ru-aurora--b { right: -15%; top: 0; background: #6a5cff; opacity: 0.22; animation: asia-drift 20s ease-in-out infinite alternate-reverse; }
+.ru-feature .pkg-container { position: relative; }
+
+.ru-feature__grid { display: grid; gap: 32px; align-items: center; }
+@media (min-width: 1024px) {
+  .ru-feature__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; }
+  .ru-feature--flagship .ru-feature__grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
+  .ru-feature:nth-of-type(even) .ru-feature__media { order: 2; }
+}
+.ru-feature__grid--noimg { grid-template-columns: 1fr !important; }
+.ru-feature__media { position: relative; display: grid; gap: 12px; grid-template-columns: 1fr 1fr; }
+.ru-feature__img { position: relative; overflow: hidden; border-radius: 22px; min-height: 160px; background: linear-gradient(150deg, var(--asia-navy), var(--ru-burgundy)); box-shadow: 0 24px 50px -28px rgb(13 23 48 / 0.6); }
+.ru-feature__img--1 { grid-column: 1 / -1; aspect-ratio: 16 / 10; }
+.ru-feature__media--1 .ru-feature__img--1 { aspect-ratio: 4 / 3; }
+.ru-feature__media--2 .ru-feature__img--2 { grid-column: 1 / -1; aspect-ratio: 21 / 9; }
+.ru-feature__img--2, .ru-feature__img--3 { aspect-ratio: 4 / 3; }
+.ru-feature--flagship .ru-feature__img--1 { aspect-ratio: 4 / 3; }
+@media (hover: hover) { .ru-feature__img:hover .asia-media__img { transform: scale(1.05); } }
+.ru-h2--xl { font-size: clamp(2rem, 1.3rem + 3vw, 3.4rem); }
+.ru-feature__h3 { margin-top: 24px; margin-bottom: 10px; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ru-burgundy); }
+.ru-feature--dark .ru-feature__h3, .ru-feature--arctic .ru-feature__h3 { color: var(--asia-gold-2); }
+.ru-highlights { display: flex; flex-wrap: wrap; gap: 8px; }
+.ru-highlights li {
+  display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px; font-size: 0.84rem; font-weight: 600;
+  background: #fff; border: 1px solid var(--asia-line); color: var(--asia-navy);
+}
+.ru-highlights svg { color: var(--asia-gold); }
+.ru-feature--dark .ru-highlights li, .ru-feature--arctic .ru-highlights li { background: rgb(255 255 255 / 0.07); border-color: rgb(255 255 255 / 0.16); color: #fff; }
+.ru-callout {
+  margin-top: 20px; padding: 18px 20px; border-radius: 18px; border-left: 4px solid var(--asia-gold);
+  background: rgb(201 162 74 / 0.12); color: inherit;
+}
+.ru-callout__title { font-family: var(--pkg-font-head); font-size: 1.2rem; font-weight: 600; margin-bottom: 6px; }
+.ru-feature--arctic .ru-callout { border-left-color: #2fd1a0; background: rgb(47 209 160 / 0.1); }
+.ru-note { margin-top: 12px; display: flex; gap: 8px; align-items: flex-start; font-size: 0.85rem; color: var(--asia-muted); }
+.ru-note svg { flex: none; margin-top: 3px; }
+.ru-feature--dark .ru-note, .ru-feature--arctic .ru-note { color: rgb(255 255 255 / 0.72); }
+.ru-note--strong { color: var(--asia-navy); font-weight: 600; }
+.ru-feature__packages { margin-top: clamp(32px, 4vw, 48px); }
+.ru-feature__pkgh { font-family: var(--pkg-font-head); font-size: 1.4rem; font-weight: 600; margin-bottom: -36px; max-width: calc(100% - 110px); }
+.ru-feature--dark .ru-feature__pkgh, .ru-feature--arctic .ru-feature__pkgh { color: #fff; }
+.ru-fpk__tabs { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; margin: 44px 0 6px; }
+.ru-fpk__tabs::-webkit-scrollbar { display: none; }
+.ru-tab--dark { color: rgb(255 255 255 / 0.75); }
+.ru-tab--dark:hover { color: #fff; }
+.ru-tab--dark.is-active { background: #fff; color: var(--asia-navy); }
+.ru-feature .pkg-carousel__track { padding-top: 4px; }
+
+/* ───────── other destinations ───────── */
+
+.ru-conditions { margin-top: 16px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; font-size: 0.86rem; color: var(--asia-navy); }
+.ru-conditions p { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; }
+.ru-conditions ul { display: flex; flex-wrap: wrap; gap: 6px; }
+.ru-conditions li { padding: 4px 10px; border-radius: 999px; background: #fff; border: 1px solid var(--asia-line); }
+.ru-fill { display: flex; flex-direction: column; height: 100%; }
+.ru-fill > .asia-dcard { flex: 1; }
+.ru-positioning { padding: 0 6px 10px; font-family: var(--pkg-font-head); font-size: 1.05rem; font-style: italic; color: var(--ru-burgundy); }
+
+/* ───────── experiences ───────── */
+
+.ru-expgrid { margin-top: 4px; }
+@media (min-width: 1024px) {
+  .ru-expgrid .asia-stylegrid__item--1, .ru-expgrid .asia-stylegrid__item--6,
+  .ru-expgrid .asia-stylegrid__item--7, .ru-expgrid .asia-stylegrid__item--8 { grid-column: auto; }
+}
+.ru-expcard { min-height: 260px; }
+.ru-expcard.is-active { box-shadow: 0 0 0 3px var(--asia-gold), 0 20px 40px -26px rgb(13 23 48 / 0.6); }
+.ru-expcard.is-active .asia-stylecard__go { background: var(--asia-gold-2); color: var(--asia-navy); }
+.ru-exp-jump { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+
+/* ───────── winter ───────── */
+
+.ru-winter { position: relative; isolation: isolate; overflow: hidden; color: #fff; background: #0d1730; padding-block: clamp(64px, 9vw, 120px); }
+.ru-winter__media { position: absolute; inset: 0; z-index: -2; }
+.ru-winter__img { object-fit: cover; animation: asia-kenburns 30s ease-in-out infinite alternate; }
+.ru-winter__scrim { position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgb(13 23 48 / 0.75) 0%, rgb(13 23 48 / 0.88) 100%); }
+.ru-winter__inner { position: relative; }
+.ru-winter__grid { display: grid; gap: 14px; }
+@media (min-width: 640px) { .ru-winter__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .ru-winter__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.ru-winter__grid > li { display: flex; }
+.ru-winter__grid .pkg-reveal { flex: 1; }
+.ru-winter__grid .pkg-reveal[data-reveal="done"] { transition-delay: calc(var(--i, 0) * 80ms); }
+.ru-wtile {
+  height: 100%; display: grid; gap: 6px; align-content: start; padding: 22px; border-radius: 20px;
+  background: rgb(255 255 255 / 0.08); border: 1px solid rgb(255 255 255 / 0.16); backdrop-filter: blur(10px);
+}
+.ru-wtile svg { color: var(--ru-ice); }
+.ru-wtile h3 { font-family: var(--pkg-font-head); font-size: 1.3rem; font-weight: 600; }
+.ru-wtile p { color: rgb(255 255 255 / 0.82); font-size: 0.92rem; }
+.ru-wtile__link { margin-top: 6px; color: var(--asia-gold-2); font-size: 0.85rem; font-weight: 600; text-underline-offset: 3px; }
+.ru-winter__cta { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* ───────── transport + Trans-Siberian ───────── */
+
+.ru-modes { display: grid; gap: 14px; }
+@media (min-width: 560px) { .ru-modes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .ru-modes { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.ru-modes > li { display: flex; }
+.ru-modes .pkg-reveal { flex: 1; }
+.ru-modes .pkg-reveal[data-reveal="done"] { transition-delay: calc(var(--i, 0) * 70ms); }
+
+.ru-rail {
+  margin-top: 28px; display: grid; gap: 22px; padding: 26px; border-radius: 24px; color: #fff;
+  background: radial-gradient(80% 100% at 100% 0%, rgb(122 31 51 / 0.45), transparent 60%), var(--asia-navy);
+}
+@media (min-width: 900px) { .ru-rail { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); align-items: center; padding: 36px; } }
+.ru-rail__track { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 12px; }
+.ru-rail__city { font-family: var(--pkg-font-head); font-size: 1.15rem; }
+.ru-rail__line { position: relative; height: 2px; background: repeating-linear-gradient(90deg, var(--asia-gold-2) 0 10px, transparent 10px 18px); }
+.ru-rail__train {
+  position: absolute; top: 50%; left: 0; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
+  background: var(--asia-gold-2); color: var(--asia-navy); transform: translate(-50%, -50%);
+  animation: ru-train 6s ease-in-out infinite alternate;
+}
+.ru-rail__title { font-family: var(--pkg-font-head); font-size: 1.5rem; font-weight: 600; margin-bottom: 8px; }
+.ru-rail p { color: rgb(255 255 255 / 0.85); }
+.ru-rail__points { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+.ru-rail__points li { padding: 5px 12px; border-radius: 999px; background: rgb(255 255 255 / 0.08); border: 1px solid rgb(255 255 255 / 0.18); font-size: 0.82rem; }
+
+.ru-tsr { margin-top: 36px; padding: 26px; border-radius: 24px; background: var(--asia-sand); border: 1px solid var(--asia-line); }
+@media (min-width: 900px) { .ru-tsr { padding: 36px; } }
+.ru-tsr__title { font-family: var(--pkg-font-head); font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem); font-weight: 600; color: var(--asia-navy); }
+.ru-tsr__head p { margin-top: 8px; max-width: 70ch; color: var(--asia-muted); }
+.ru-tsr__stops { position: relative; margin-top: 24px; display: grid; gap: 18px; padding-left: 28px; }
+.ru-tsr__stops::before {
+  content: ""; position: absolute; left: 8px; top: 8px; bottom: 8px; width: 2px; transform-origin: top;
+  background: repeating-linear-gradient(180deg, var(--ru-burgundy) 0 8px, transparent 8px 14px);
+}
+.ru-tsr__stop { position: relative; display: grid; gap: 2px; }
+.ru-tsr__stop strong { color: var(--asia-navy); }
+.ru-tsr__stop span { font-size: 0.86rem; color: var(--asia-muted); }
+.ru-tsr__dot { position: absolute; left: -26px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 3px solid var(--ru-burgundy); }
+.ru-tsr__limited { font-size: 0.75rem; font-style: normal; font-weight: 700; color: #6b4a0c; }
+@media (min-width: 1024px) {
+  .ru-tsr__stops { grid-template-columns: repeat(7, minmax(0, 1fr)); padding-left: 0; padding-top: 28px; gap: 12px; }
+  .ru-tsr__stops::before { left: 4%; right: 4%; top: 6px; bottom: auto; width: auto; height: 2px; transform-origin: left; background: repeating-linear-gradient(90deg, var(--ru-burgundy) 0 8px, transparent 8px 14px); }
+  .ru-tsr__dot { left: 0; top: -28px; }
+}
+.ru-tsr__wrap[data-reveal="armed"] .ru-tsr__stop { opacity: 0; transform: translateY(12px); }
+.ru-tsr__wrap[data-reveal="armed"] .ru-tsr__stops::before { transform: scaleY(0); }
+@media (min-width: 1024px) { .ru-tsr__wrap[data-reveal="armed"] .ru-tsr__stops::before { transform: scaleX(0); } }
+.ru-tsr__wrap[data-reveal="done"] .ru-tsr__stop { transition: opacity 0.5s var(--pkg-ease), transform 0.5s var(--pkg-ease); transition-delay: calc(var(--i) * 150ms + 200ms); }
+.ru-tsr__wrap[data-reveal="done"] .ru-tsr__stops::before { transition: transform 1.6s var(--pkg-ease); }
+.ru-tsr__notes { margin: 22px 0 18px; display: grid; gap: 6px; font-size: 0.86rem; color: var(--asia-navy); }
+.ru-tsr__notes li { display: flex; gap: 8px; align-items: flex-start; }
+.ru-tsr__notes svg { flex: none; margin-top: 3px; color: var(--ru-burgundy); }
+
+/* ───────── departures ───────── */
+
+.ru-departures { display: grid; gap: 10px; }
+.ru-departures__row {
+  display: grid; gap: 6px; padding: 16px 18px; border-radius: 18px; background: #fff; border: 1px solid var(--asia-line); font-size: 0.9rem; color: var(--asia-navy);
+}
+.ru-departures__row [role="cell"] { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.ru-departures__row [role="cell"][data-label]:not(:first-child)::before { content: attr(data-label) ": "; color: var(--asia-muted); font-size: 0.8rem; }
+.ru-departures__row--head { display: none; }
+.ru-departures__btn { min-height: 40px; padding: 8px 14px; font-size: 0.84rem; }
+@media (min-width: 1024px) {
+  .ru-departures { gap: 0; border-radius: 20px; overflow: hidden; border: 1px solid var(--asia-line); background: #fff; }
+  .ru-departures__row { grid-template-columns: 1.3fr 1.8fr 1fr 1fr 1fr auto; align-items: center; gap: 14px; border: 0; border-radius: 0; border-top: 1px solid var(--asia-line); }
+  .ru-departures__row--head { display: grid; border-top: 0; background: var(--asia-navy); color: #fff; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  .ru-departures__row [role="cell"][data-label]:not(:first-child)::before { content: none; }
+}
+.ru-avail { padding: 3px 10px; border-radius: 999px; font-size: 0.78rem; font-weight: 700; }
+.ru-avail--available { background: #e3f4ea; color: #1f6b43; }
+.ru-avail--on-request { background: #fff3dc; color: #6b4a0c; }
+.ru-avail--check { background: #eef1f5; color: var(--asia-navy); }
+
+/* ───────── essentials ───────── */
+
+.ru-depends { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.ru-depends li { padding: 5px 12px; border-radius: 999px; background: var(--asia-sand); font-size: 0.85rem; font-weight: 600; color: var(--asia-navy); }
+.ru-assist, .ru-warn { margin-top: 16px; display: flex; gap: 10px; align-items: flex-start; font-weight: 700; }
+.ru-assist { color: #1f6b43; }
+.ru-warn { color: var(--ru-burgundy); font-weight: 600; font-size: 0.95rem; }
+.ru-assist svg, .ru-warn svg { flex: none; margin-top: 2px; }
+
+/* ───────── builder extras ───────── */
+
+.ru-builder__two { display: grid; gap: 18px; }
+@media (min-width: 560px) { .ru-builder__two { grid-template-columns: 1fr 1fr; } }
+.ru-date { background-image: none; padding-right: 14px; color-scheme: dark; }
+.ru-textarea { background-image: none; min-height: 96px; resize: vertical; font-weight: 500; line-height: 1.5; padding-right: 14px; }
+.ru-textarea::placeholder { color: rgb(255 255 255 / 0.5); }
+
+/* ───────── keyframes ───────── */
+
+@keyframes ru-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes ru-fall {
+  from { transform: translate3d(0, -10px, 0); }
+  to { transform: translate3d(var(--drift, 0px), 105vh, 0); }
+}
+@keyframes ru-train { from { left: 0; } to { left: 100%; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ru-snow, .ru-aurora { display: none; }
+  .ru-reveal { animation: none !important; opacity: 1; transform: none; }
+}

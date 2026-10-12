@@ -1,9 +1,14 @@
 import Reveal from "./Reveal";
+import "./section-heading.css";
 
 type SectionHeadingProps = {
   eyebrow?: string;
-  title: string;
+  title?: string;
   description?: string;
+  /** Alias of `title` (used by some destination pages). */
+  heading?: string;
+  /** Alias of `description`. */
+  subheading?: string;
   align?: "left" | "center";
   /** Heading level — keep H2 for all in-page section titles (H1 lives only in the hero) */
   level?: 2 | 3;
@@ -12,13 +17,17 @@ type SectionHeadingProps = {
 
 export default function SectionHeading({
   eyebrow,
-  title,
-  description,
+  title: titleProp,
+  description: descriptionProp,
+  heading,
+  subheading,
   align = "center",
   level = 2,
   className = "",
 }: SectionHeadingProps) {
   const Heading = level === 2 ? "h2" : "h3";
+  const title = titleProp ?? heading;
+  const description = descriptionProp ?? subheading;
 
   return (
     <Reveal

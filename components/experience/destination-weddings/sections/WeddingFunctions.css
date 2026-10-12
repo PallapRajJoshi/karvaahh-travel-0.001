@@ -1,0 +1,126 @@
+.dw-functions__grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 900px) {
+  .dw-functions__grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .dw-fn--0,
+  .dw-fn--1 {
+    grid-column: span 3;
+  }
+
+  .dw-fn--2,
+  .dw-fn--3,
+  .dw-fn--4 {
+    grid-column: span 2;
+  }
+}
+
+.dw-fn__inner {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(24rem, 46vw, 34rem);
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--dw-ivory);
+}
+
+.dw-fn--2 .dw-fn__inner,
+.dw-fn--3 .dw-fn__inner,
+.dw-fn--4 .dw-fn__inner {
+  min-height: clamp(22rem, 38vw, 28rem);
+}
+
+.dw-fn__media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.dw-fn__media .dw-img > *,
+.dw-fn__media .dw-img--placeholder {
+  transition: transform 1.6s var(--dw-ease);
+}
+
+.dw-fn__inner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(35, 15, 20, 0) 30%, rgba(35, 15, 20, 0.86) 100%);
+}
+
+.dw-fn__body {
+  display: grid;
+  gap: 0.55rem;
+  padding: clamp(1.4rem, 3vw, 2.2rem);
+  width: 100%;
+}
+
+.dw-fn__n {
+  font-family: var(--dw-serif);
+  font-style: italic;
+  color: var(--dw-gold);
+}
+
+.dw-fn__title {
+  font-family: var(--dw-serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  line-height: 1;
+}
+
+.dw-fn__desc {
+  font-family: var(--dw-serif);
+  font-style: italic;
+  color: rgba(251, 248, 242, 0.85);
+  max-width: 28rem;
+}
+
+.dw-fn__reveal {
+  display: grid;
+  gap: 0.6rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--dw-line-dark);
+  margin-top: 0.35rem;
+}
+
+.dw-fn__reveal .dw-dotlist {
+  color: rgba(251, 248, 242, 0.85);
+  font-size: 0.84rem;
+}
+
+.dw-fn__reveal .dw-dotlist li:not(:last-child)::after {
+  background: var(--dw-gold);
+}
+
+.dw-fn__note {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dw-gold);
+}
+
+/* Details stay visible for every visitor (touch, keyboard, screen reader);
+   hover only adds a slow image zoom and lifts the detail block. */
+@media (hover: hover) {
+  .dw-fn__reveal {
+    transition: transform 0.6s var(--dw-ease);
+  }
+
+  .dw-fn__inner:hover .dw-fn__reveal {
+    transform: translateY(-4px);
+  }
+
+  .dw-fn__inner:hover .dw-fn__media .dw-img > *,
+  .dw-fn__inner:hover .dw-fn__media .dw-img--placeholder {
+    transform: scale(1.05);
+  }
+}

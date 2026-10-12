@@ -1,0 +1,89 @@
+/* Smooth expand/collapse for native <details> accordions (progressive:
+   browsers without ::details-content support simply open instantly). */
+.heli-details {
+  interpolate-size: allow-keywords;
+}
+
+.heli-details::details-content {
+  block-size: 0;
+  overflow: hidden;
+  transition:
+    block-size 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    content-visibility 0.4s allow-discrete;
+}
+
+.heli-details[open]::details-content {
+  block-size: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heli-details::details-content {
+    transition: none;
+  }
+}
+
+/* Slow "Ken Burns" drift for background images (CTA). */
+@keyframes heli-drift {
+  from {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.12) translate3d(-2%, -1%, 0);
+  }
+}
+
+.heli-drift {
+  animation: heli-drift 28s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heli-drift {
+    animation: none;
+  }
+}
+
+/* Keyframes referenced by Tailwind arbitrary animations in the tour sections. */
+@keyframes heliPop {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes heliPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+@keyframes heliFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes heliDash {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heli-motion,
+  .heli-motion * {
+    animation: none !important;
+  }
+}

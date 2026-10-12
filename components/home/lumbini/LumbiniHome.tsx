@@ -1,14 +1,20 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import LumbiniHero from "./hero/LumbiniHero";
+import LumbiniIntro from "./intro/LumbiniIntro";
+import LumbiniHighlights from "./highlights/LumbiniHighlights";
 import LumbiniExperiences from "./experience/LumbiniExperiences";
 import LumbiniDestinations from "./destination/LumbiniDestinations";
 import LumbiniPilgrimage from "./pilgrimage/LumbiniPilgrimage";
 import LumbiniHeritage from "./heritage/LumbiniHeritage";
 import LumbiniCulture from "./culture/LumbiniCulture";
+import LumbiniTraditions from "./traditions/LumbiniTraditions";
 import LumbiniAdventure from "./adventure/LumbiniAdventure";
 import LumbiniWildlife from "./wildlife/LumbiniWildlife";
 import LumbiniJourney from "./journey/LumbiniJourney";
+import LumbiniPlan from "./plan/LumbiniPlan";
+import LumbiniPackages from "./packages/LumbiniPackages";
+import LumbiniFaq from "./faq/LumbiniFaq";
 import LumbiniCTA from "./CTA/LumbiniCTA";
 
 /**
@@ -23,14 +29,20 @@ export default function LumbiniHome() {
       <Navbar />
       <main>
         <LumbiniHero />
+        <LumbiniIntro />
+        <LumbiniHighlights />
         <LumbiniExperiences />
-        <LumbiniDestinations />
         <LumbiniPilgrimage />
         <LumbiniHeritage />
         <LumbiniCulture />
-        <LumbiniAdventure />
+        <LumbiniTraditions />
         <LumbiniWildlife />
+        <LumbiniAdventure />
+        <LumbiniDestinations />
         <LumbiniJourney />
+        <LumbiniPlan />
+        <LumbiniPackages />
+        <LumbiniFaq />
         <LumbiniCTA />
       </main>
       <Footer />
