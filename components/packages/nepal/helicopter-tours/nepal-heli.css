@@ -1,0 +1,57 @@
+/* Nepal Helicopter Tours hub — one-shot hero motion (no loops). */
+
+@keyframes nh-zoom {
+  from {
+    transform: scale(1.14);
+  }
+  to {
+    transform: scale(1.02);
+  }
+}
+
+@keyframes nh-rise {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* The helicopter glides in from the left once and settles above the peaks. */
+@keyframes nh-glide {
+  from {
+    opacity: 0;
+    transform: translate3d(-40vw, 6vh, 0) rotate(-4deg);
+  }
+  60% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.nh-zoom {
+  animation: nh-zoom 14s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.nh-rise {
+  animation: nh-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--nh-delay, 0s);
+}
+
+.nh-glide {
+  animation: nh-glide 3.2s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nh-zoom,
+  .nh-rise,
+  .nh-glide {
+    animation: none;
+  }
+}

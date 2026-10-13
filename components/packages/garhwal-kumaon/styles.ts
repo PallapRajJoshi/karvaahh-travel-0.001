@@ -1,0 +1,6 @@
+/* Shared button styles for the Garhwal & Kumaon page (champagne gold on navy). */
+export const FOCUS = "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C9A96E]";
+export const BTN_GOLD = `inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-[#C9A96E] px-7 text-[15px] font-semibold text-[#071421] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#D8BC86] active:translate-y-0 ${FOCUS}`;
+export const BTN_LINE = `inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-white/35 px-7 text-[15px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-[#C9A96E] hover:text-[#E3CFA4] ${FOCUS}`;
+export const BTN_NAVY = `inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-[#0B2942] px-5 text-[14px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#123653] ${FOCUS}`;
+export const BTN_OUTLINE = `inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-[#0B2942]/20 px-5 text-[14px] font-semibold text-[#0B2942] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#C9A96E] ${FOCUS}`;

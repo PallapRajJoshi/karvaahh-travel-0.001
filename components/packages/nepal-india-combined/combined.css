@@ -1,0 +1,39 @@
+/* Nepal–India Combined Tours — scoped motion and small details. Everything else is Tailwind. */
+
+html:has(.nic-page) {
+  scroll-behavior: smooth;
+}
+
+@keyframes nic-nudge {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+/* Scroll cue: a short nudge that stops after a few cycles (no endless motion). */
+.nic-nudge {
+  animation: nic-nudge 1.6s ease-in-out 1.2s 4;
+}
+
+.nic-details > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Desktop timeline track: slim gold scrollbar inside the container. */
+.nic-timeline {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201, 162, 77, 0.5) transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:has(.nic-page) {
+    scroll-behavior: auto;
+  }
+  .nic-nudge {
+    animation: none;
+  }
+}

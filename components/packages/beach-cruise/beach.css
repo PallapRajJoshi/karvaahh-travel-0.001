@@ -1,0 +1,50 @@
+/* Beach & Cruise page — scoped decorative motion. Everything else is Tailwind. */
+
+@keyframes bc-drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes bc-sway {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+/* A wide, repeating wave strip that drifts slowly sideways. */
+.bc-wave-drift {
+  width: 200%;
+  animation: bc-drift 28s linear infinite;
+  will-change: transform;
+}
+
+.bc-wave-drift--slow {
+  animation-duration: 44s;
+  animation-direction: reverse;
+}
+
+.bc-sway {
+  animation: bc-sway 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bc-wave-drift,
+  .bc-sway {
+    animation: none;
+  }
+}
+
+/* Mobile: keep the hero light — no drifting layers on small screens. */
+@media (max-width: 639px) {
+  .bc-wave-drift--slow {
+    animation: none;
+  }
+}

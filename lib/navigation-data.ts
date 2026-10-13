@@ -383,7 +383,7 @@ export const mainNav: MainNavItem[] = [
             // Leh & Ladakh
             {
               label: "Jammu & Kashmir Tour Packages",
-              href: "/packages/leh-ladakh",
+              href: "/packages/jammu-kashmir",
             },
 
             // Uttarakhand
@@ -464,12 +464,12 @@ export const mainNav: MainNavItem[] = [
 
             {
               label: "Garhwal & Kumaon Circuit",
-              href: "/packages/char-dham-yatra",
+              href: "/packages/karvaahh-specials/garhwal-kumaon-circuit",
             },
 
             {
               label: "Exclusive Farwest Nepal Circuit",
-              href: "/packages/panch-kedar-yatra",
+              href: "/packages/exclusive-farwest-nepal-circuit",
             },
 
             {
@@ -479,7 +479,7 @@ export const mainNav: MainNavItem[] = [
 
             {
               label: "Leh Ladakh & Spiti Circuit",
-              href: "/packages/muktinath-yatra",
+              href: "/packages/leh-ladakh-spiti-circuit",
             },
 
             {
