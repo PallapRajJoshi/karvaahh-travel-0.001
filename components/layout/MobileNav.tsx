@@ -1,7 +1,7 @@
 "use client";
 
 // components/layout/MobileNav.tsx
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Phone, Mail } from "lucide-react";
@@ -10,6 +10,16 @@ import { mainNav, ctaLink, contactInfo, siteInfo } from "@/lib/navigation-data";
 export default function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
   const [openSection, setOpenSection] = useState<string | null>(null);
+  const openButtonRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const wasOpen = useRef(false);
+
+  // Move focus into the menu when it opens and back to the trigger when it closes.
+  useEffect(() => {
+    if (isOpen) closeButtonRef.current?.focus();
+    else if (wasOpen.current) openButtonRef.current?.focus();
+    wasOpen.current = isOpen;
+  }, [isOpen]);
 
   // Lock background scroll while the panel is open.
   useEffect(() => {
@@ -35,10 +45,11 @@ export default function MobileNav() {
   return (
     <div className="lg:hidden">
       <button
+        ref={openButtonRef}
         type="button"
         onClick={() => setIsOpen(true)}
         aria-label="Open menu"
-        aria-haspopup="true"
+        aria-haspopup="dialog"
         aria-expanded={isOpen}
         className="flex h-10 w-10 items-center justify-center rounded-full text-[#0A2540] transition-colors hover:bg-[#0A2540]/5"
       >
@@ -61,6 +72,7 @@ export default function MobileNav() {
             <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4">
               <span className="text-lg font-semibold text-[#0A2540]">{siteInfo.brand}</span>
               <button
+                ref={closeButtonRef}
                 type="button"
                 onClick={close}
                 aria-label="Close menu"

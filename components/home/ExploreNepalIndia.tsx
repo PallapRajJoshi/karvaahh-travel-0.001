@@ -57,7 +57,7 @@ const destinations: Destination[] = [
     description:
       "Where Everest meets Sherpa culture, ancient monasteries, and breathtaking Himalayan landscapes..",
     image: "/images/home/solukhumbu-everest-region-nepal.webp",
-    href: "/destinations/kathmandu",
+    href: "/destinations/bagmati-province",
     span: "col-span-2 md:col-span-2 md:row-span-2 lg:col-span-2 lg:row-span-2",
     desc: "always",
     featured: true,
@@ -68,7 +68,7 @@ const destinations: Destination[] = [
     description:
       "Himalayan sanctuary of ancient monasteries, Buddhist heritage.",
     image: "/images/home/upper-dolpo-nepal-himalayan.jpg",
-    href: "/destinations/pokhara",
+    href: "/destinations/gandaki-province",
     span: "",
     desc: "hover",
   },
@@ -77,7 +77,7 @@ const destinations: Destination[] = [
     country: "Nepal",
     description: "Jungle adventures, wildlife and a different side of Nepal.",
     image: "/images/home/chitwan-view.jpg",
-    href: "/destinations/chitwan",
+    href: "/activities/wildlife-nature",
     span: "",
     desc: "hover",
   },
@@ -89,7 +89,7 @@ const destinations: Destination[] = [
     country: "Nepal",
     description: "Jungle adventures, wildlife and a different side of Nepal.",
     image: "/images/home/chitwan-view.jpg",
-    href: "/destinations/chitwan",
+    href: "/activities/wildlife-nature",
     span: "",
     desc: "hover",
   },
@@ -100,7 +100,7 @@ const destinations: Destination[] = [
     description:
       "A sacred Himalayan destination surrounded by dramatic landscapes.",
     image: "/images/home/muktinath-view.jpg",
-    href: "/destinations/muktinath",
+    href: "/spiritual-journeys/pashupatinath",
     span: "",
     desc: "hover",
   },
@@ -109,7 +109,7 @@ const destinations: Destination[] = [
     country: "India",
     description: "History, culture and the vibrant energy of modern India.",
     image: "/images/home/delhi.jpg",
-    href: "/destinations/delhi",
+    href: "/packages/north-india",
     span: "",
     desc: "hover",
   },
@@ -122,7 +122,7 @@ const destinations: Destination[] = [
     country: "India",
     description: "Royal forts, desert landscapes and timeless heritage.",
     image: "/images/destinations/rajasthan-travel-tour-packages.webp", // ← file must exist in /public
-    href: "/destinations/rajasthan",
+    href: "/packages/historical-heritage",
     span: "col-span-2 md:col-span-2 lg:col-span-1",
     desc: "hoverLg",
   },
@@ -132,7 +132,7 @@ const destinations: Destination[] = [
     country: "India",
     description: "Royal forts, desert landscapes and timeless heritage.",
     image: "/images/destinations/rajasthan-travel-tour-packages.webp", // ← file must exist in /public
-    href: "/destinations/rajasthan",
+    href: "/packages/historical-heritage",
     span: "col-span-2 md:col-span-2 lg:col-span-1",
     desc: "hoverLg",
   },
@@ -142,7 +142,7 @@ const destinations: Destination[] = [
     description:
       "Sacred ghats, timeless rituals and the spiritual soul of India.",
     image: "/images/destinations/varanasi-best-places-to-visit.avif", // ← file must exist in /public
-    href: "/destinations/varanasi",
+    href: "/packages/spiritual-pilgrimage",
     span: "",
     desc: "hover",
   },
@@ -152,7 +152,7 @@ const destinations: Destination[] = [
     description:
       "Mountain landscapes, peaceful valleys and unforgettable escapes.",
     image: "/images/destinations/panchpokhari-sindhupalchok-nepal.jpg", // ← file must exist in /public
-    href: "/destinations/himalayan-escapes",
+    href: "/packages/nepal/trekking-hiking-packages",
     span: "lg:col-span-2",
     desc: "wideLg",
   },

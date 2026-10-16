@@ -1,16 +1,18 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { ArrowUpRight, MessageCircle } from 'lucide-react';
 
-const containerVariants = {
+const EASE = [0.22, 1, 0.36, 1] as const;
+
+const containerVariants: Variants = {
   hidden: {},
   visible: { transition: { delayChildren: 0.65, staggerChildren: 0.1 } },
 };
 
-const btnVariants = {
+const btnVariants: Variants = {
   hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
 };
 
 export default function HeroCTA() {
@@ -36,7 +38,7 @@ export default function HeroCTA() {
 
       <motion.a
         variants={btnVariants}
-        href="/plan-my-journey"
+        href="/contact"
         className="group inline-flex items-center gap-2 rounded-full border border-white/35 bg-white/[0.06] px-6 py-3.5 text-[15px] font-semibold text-white backdrop-blur-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-white/[0.14] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
       >
         Plan My Journey

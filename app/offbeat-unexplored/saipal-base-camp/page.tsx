@@ -5,7 +5,7 @@ import { faqItems } from "@/data/faq";
 const PAGE_URL = "https://karvaahh.in/offbeat-unexplored/saipal-base-camp";
 
 export const metadata: Metadata = {
-  title: "Saipal Base Camp Trek | Remote Himalayan Adventure in Nepal | Karvaahh",
+  title: { absolute: "Saipal Base Camp Trek | Remote Himalayan Adventure in Nepal | Karvaahh" },
   description:
     "Explore Saipal Base Camp in Bajhang, Nepal, with breathtaking views of Mount Saipal, remote Himalayan trekking, alpine wilderness, and customized expedition experiences with Karvaahh.",
   alternates: {

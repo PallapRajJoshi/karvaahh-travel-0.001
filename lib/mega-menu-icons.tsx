@@ -1,4 +1,5 @@
 // lib/mega-menu-icons.tsx
+import { createElement } from "react";
 import {
   Landmark,
   Mountain,
@@ -12,6 +13,7 @@ import {
   PlaneTakeoff,
   Briefcase,
   type LucideIcon,
+  type LucideProps,
 } from "lucide-react";
 
 // Keyed by exact MegaMenuColumn.title — falls back to Compass if a title isn't mapped,
@@ -34,4 +36,9 @@ const iconByColumnTitle: Record<string, LucideIcon> = {
 
 export function getColumnIcon(title: string): LucideIcon {
   return iconByColumnTitle[title] ?? Compass;
+}
+
+/** Renders the icon for a mega-menu column (stable component, safe to use in render). */
+export function ColumnIcon({ title, ...props }: { title: string } & LucideProps) {
+  return createElement(getColumnIcon(title), props);
 }

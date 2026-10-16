@@ -92,20 +92,28 @@ const emails = ["info@karvaahh.in", "karvaahofficial@gmail.com"];
 const companyLinks = [
   { label: "About Us", href: "/about" },
   { label: "Contact Us", href: "/contact" },
-  { label: "Travel Experiences", href: "/experiences" },
-  { label: "Travel Tips", href: "/blog" },
-  { label: "FAQs & Help", href: "/faqs" },
+  { label: "Tour Packages", href: "/packages" },
+  { label: "Travel Tips", href: "/#travel-tips" },
+  { label: "FAQs & Help", href: "/contact#faq" },
 ];
 
-const destinations = ["Kathmandu", "Pokhara", "Muktinath", "Chitwan", "Ghandruk", "Lumbini"];
+/** Each chip links to the existing page that covers that place. */
+const destinations = [
+  { label: "Kathmandu", href: "/destinations/bagmati-province" },
+  { label: "Pokhara", href: "/destinations/gandaki-province" },
+  { label: "Muktinath", href: "/spiritual-journeys/pashupatinath" },
+  { label: "Chitwan", href: "/activities/wildlife-nature" },
+  { label: "Ghandruk", href: "/destinations/gandaki-province" },
+  { label: "Lumbini", href: "/destinations/lumbini-province" },
+];
 
 const popularPackages = [
-  { label: "Nepal Tour Packages", href: "/packages/nepal-tour-packages" },
-  { label: "Kailash Mansarovar", href: "/packages/kailash-mansarovar" },
-  { label: "Char Dham Yatra", href: "/packages/char-dham-yatra" },
-  { label: "Kedarnath Yatra", href: "/packages/kedarnath-yatra" },
-  { label: "Muktinath Yatra", href: "/packages/muktinath-yatra" },
-  { label: "Himalayan Tours", href: "/packages/himalayan-tours" },
+  { label: "Nepal Tour Packages", href: "/packages/nepal/trekking-hiking-packages" },
+  { label: "Kailash Mansarovar", href: "/packages/kailash-mansarovar-yatra" },
+  { label: "Char Dham Yatra", href: "/spiritual-journeys/char-dham-yatra-uttarakhand" },
+  { label: "Kedarnath Yatra", href: "/activities/char-dham-yatra" },
+  { label: "Muktinath Yatra", href: "/spiritual-journeys/pashupatinath" },
+  { label: "Himalayan Tours", href: "/packages/nepal/base-camp-treks" },
 ];
 
 const certifications = [
@@ -583,8 +591,8 @@ export default function Footer() {
             <p className="mb-2.5 mt-6 text-[13px] font-semibold text-white/85">Destinations</p>
             <ul className="flex flex-wrap gap-2">
               {destinations.map((d) => (
-                <li key={d}>
-                  <Chip href={`/destinations/${d.toLowerCase().replace(/\s+/g, "-")}`}>{d}</Chip>
+                <li key={d.label}>
+                  <Chip href={d.href}>{d.label}</Chip>
                 </li>
               ))}
             </ul>

@@ -247,7 +247,7 @@ export default function JourneyCard({
             "
           >
             <Link
-              href={`/journeys/${journey.slug}`}
+              href={journey.href}
               className="
                 outline-none
                 focus-visible:rounded
@@ -462,7 +462,7 @@ export default function JourneyCard({
           </Link>
 
           <Link
-            href={`/journeys/${journey.slug}`}
+            href={journey.href}
             className="
               group/details
               flex

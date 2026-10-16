@@ -29,8 +29,8 @@ const JourneyPanel = forwardRef<HTMLElement, JourneyPanelProps>(function Journey
       className="jm-panel"
       id={`journey-${stop.id}`}
       aria-hidden={!isActive}
-      // `inert` is not in React 18's JSX types; spreading keeps it valid in both 18 and 19.
-      {...(isActive ? {} : { inert: '' })}
+      // Only the active panel is reachable by keyboard, pointer and assistive tech.
+      inert={!isActive}
     >
       <figure className="jm-panel__figure" data-empty={showImage ? undefined : ''}>
         <div className="jm-panel__frame" data-parallax>

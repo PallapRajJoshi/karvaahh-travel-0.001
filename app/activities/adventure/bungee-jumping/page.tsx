@@ -14,7 +14,7 @@ const DESCRIPTION =
   "Explore bungee jumping in Nepal, led by Kushma's ~228 m gorge jump. Compare Kushma, Pokhara and The Last Resort, including canyon swing, sky cycling and adventure combos.";
 
 export const metadata: Metadata = {
-  title: TITLE,
+  title: { absolute: TITLE },
   description: DESCRIPTION,
   keywords: [
     "bungee jumping Nepal",

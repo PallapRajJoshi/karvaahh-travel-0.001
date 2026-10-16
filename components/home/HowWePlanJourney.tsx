@@ -622,8 +622,8 @@ export default function HowWePlanJourney() {
           {/* CTA */}
 
           <Link
-            href="/plan-your-journey"
-            aria-label="Plan your journey with Karvaah"
+            href="/contact"
+            aria-label="Plan your journey with Karvaahh"
             className="
               group
               inline-flex

@@ -6,7 +6,7 @@ import { SEO, FAQS, BREADCRUMB } from "@/components/offbeat/shey-phoksundo/data"
 // (consistent with other Karvaahh destination pages). If not, set it there
 // rather than per-page. See README for details.
 export const metadata: Metadata = {
-  title: SEO.title,
+  title: { absolute: SEO.title },
   description: SEO.description,
   alternates: {
     canonical: SEO.canonicalPath,
@@ -75,7 +75,7 @@ export default function Page() {
         <script
           key={index}
           type="application/ld+json"
-          // eslint-disable-next-line react/no-danger
+           
           dangerouslySetInnerHTML={{ __html: JSON.stringify(block) }}
         />
       ))}

@@ -209,7 +209,9 @@ export type SectionKey =
   | "peaks"
   | "comparison"
   | "enquiry"
-  | `spotlight:${string}`;
+  | `spotlight:${string}`
+  /** Page-specific section passed to <ExperiencePage slots={...}>. */
+  | `slot:${string}`;
 
 /** One day of a multi-day itinerary, with at-a-glance details. */
 export type DayPlan = {
@@ -259,7 +261,25 @@ export type HelicopterProductTour = {
   comparison?: { title: string; intro: string; columns: [ComparisonColumn, ComparisonColumn] };
 
   /** Frontend-only enquiry form; submitting composes a WhatsApp message. */
-  enquiry?: { title: string; intro: string; options: { airlines: string[]; times: string[]; passengers: string[] } };
+  enquiry?: {
+    title: string;
+    intro: string;
+    hotelPlaceholder?: string;
+    options: {
+      airlines: string[];
+      times: string[];
+      passengers: string[];
+      currencies?: string[];
+      /** Turns the free-text nationality field into a passenger-category select. */
+      categories?: string[];
+    };
+    /** Adds a special-requirements field (mobility, infants, ...). */
+    specialRequirements?: boolean;
+    /** Makes email a required field. */
+    requireEmail?: boolean;
+    /** Flight-booking mode: adds From / To / return-date fields and drops the hotel field. */
+    routeFields?: boolean;
+  };
   title: string;
   slug: string;
   path: string;
@@ -290,6 +310,8 @@ export type HelicopterProductTour = {
 
   hero: {
     badge: string;
+    /** Icon in the badge (default helicopter). */
+    badgeIcon?: IconName;
     titleLead: string;
     titleAccent: string;
     description: string;
@@ -452,6 +474,8 @@ export type HelicopterProductTour = {
     groups: { title: string; items: string[] }[];
     eligibility: { title: string; text: string }[];
     note: string;
+    /** Official sources (immigration, embassy) shown under the note. */
+    links?: { label: string; href: string }[];
   };
 
   /** Registration process and booking terms (optional). */

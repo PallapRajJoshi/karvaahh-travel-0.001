@@ -49,10 +49,10 @@ export default function TravelPackages() {
               </p>
 
               <a
-                href={`/travel-packages/${pkg.slug}`}
+                href={`/contact?trip=${pkg.slug}`}
                 className="saipal-btn saipal-btn--dark saipal-packages__cta"
               >
-                Explore Package
+                Enquire About Package
               </a>
             </Reveal>
           ))}

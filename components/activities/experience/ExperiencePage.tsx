@@ -11,7 +11,7 @@ import type { HelicopterTour, SectionKey } from "./product-types";
 import { serializeJsonLd } from "./structured-data";
 import Altitude from "./product/Altitude";
 import BookingOptions from "./product/BookingOptions";
-import { ANCHOR, MIN_GALLERY_PHOTOS, TOUR_NAV } from "./product/constants";
+import { ANCHOR, MIN_GALLERY_PHOTOS, TOUR_NAV, type NavItem } from "./product/constants";
 import Comparison from "./product/Comparison";
 import DhamCards from "./product/DhamCards";
 import EnquiryForm from "./product/EnquiryForm";
@@ -106,7 +106,17 @@ const DEFAULT_LAYOUT: SectionKey[] = [
  * in the order given by the tour's `layout`, so each destination tells its
  * own story from data alone.
  */
-export default function ExperiencePage({ tour }: { tour: HelicopterTour }) {
+export default function ExperiencePage({
+  tour,
+  slots,
+  slotNav,
+}: {
+  tour: HelicopterTour;
+  /** Page-specific sections, placed with `slot:<name>` keys in the layout. */
+  slots?: Record<string, ReactNode>;
+  /** Tour-nav tabs for slot sections (`id` = the section's anchor id); inserted after `after`, before `before`, or before "Inclusions". */
+  slotNav?: (NavItem & { after?: string; before?: string })[];
+}) {
   const booking = resolveBooking(tour);
   const photoCount = tour.gallery.items.filter((g) => g.image.src).length;
   // Spotlights not placed explicitly in the layout go after the landscapes.
@@ -135,11 +145,17 @@ export default function ExperiencePage({ tour }: { tour: HelicopterTour }) {
     faqs: has("faq"),
     book: has("book") || (has("enquiry") && Boolean(tour.enquiry)),
   };
-  const navItems = TOUR_NAV.filter((n) => present[n.id] ?? true).map((n) => ({ ...n, label: tour.labels?.nav?.[n.id] ?? n.label }));
+  const baseNav = TOUR_NAV.filter((n) => present[n.id] ?? true).map((n) => ({ ...n, label: tour.labels?.nav?.[n.id] ?? n.label }));
+  // Slot sections join the nav right after the tab they follow, before the tab they precede (or before "Inclusions").
+  const navItems = (slotNav ?? []).reduce<NavItem[]>((items, extra) => {
+    const at = items.findIndex((n) => n.id === (extra.after ?? extra.before ?? "inclusions"));
+    const i = at === -1 ? items.length : extra.after ? at + 1 : at;
+    return [...items.slice(0, i), { id: extra.id, label: extra.label }, ...items.slice(i)];
+  }, baseNav);
   const photoWhy = tour.whyHelicopter.items.every((w) => w.image?.src);
   const hero = tour.hero.secondaryCta || !tour.journey ? tour.hero : { ...tour.hero, secondaryCta: { label: "Explore the Journey", href: "#journey" } };
 
-  const sections: Record<Exclude<SectionKey, `spotlight:${string}`>, () => ReactNode> = {
+  const sections: Record<Exclude<SectionKey, `spotlight:${string}` | `slot:${string}`>, () => ReactNode> = {
     hero: () => <HeliHero tour={{ ...tour, hero }} />,
     booking: () => <HeliBookingWidget />,
     nav: () => <TourNav items={navItems} />,
@@ -194,6 +210,10 @@ export default function ExperiencePage({ tour }: { tour: HelicopterTour }) {
     if (key.startsWith("spotlight:")) {
       const s = tour.spotlights?.find((sp) => `spotlight:${sp.id}` === key);
       return s ? <Spotlight key={key} spotlight={s} /> : null;
+    }
+    if (key.startsWith("slot:")) {
+      const slot = slots?.[key.slice("slot:".length)];
+      return slot ? <SectionSlot key={key}>{slot}</SectionSlot> : null;
     }
     const fn = sections[key as keyof typeof sections];
     return fn ? <SectionSlot key={key}>{fn()}</SectionSlot> : null;

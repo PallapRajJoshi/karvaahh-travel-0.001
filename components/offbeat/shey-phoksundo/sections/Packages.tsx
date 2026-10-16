@@ -34,8 +34,8 @@ export default function Packages() {
               </p>
 
               <div className="phoksundo-packages__actions">
-                <Link href={`/packages/${pkg.id}`} className="phoksundo-packages__button phoksundo-packages__button--primary">
-                  View Details
+                <Link href={`/contact?trip=${pkg.id}`} className="phoksundo-packages__button phoksundo-packages__button--primary">
+                  Request Itinerary
                 </Link>
                 <Link href="/contact" className="phoksundo-packages__button phoksundo-packages__button--secondary">
                   Customize Your Trip

@@ -8,7 +8,7 @@ const DESCRIPTION =
   "Discover Lumbini Province — birthplace of Buddha, ancient Kapilvastu and Tilaurakot, Tansen and Rani Mahal, Bardiya wildlife, Tharu culture, travel routes and India–Nepal border access.";
 
 export const metadata: Metadata = {
-  title: "Lumbini Province Tourism | Karvaahh",
+  title: { absolute: "Lumbini Province Tourism | Karvaahh" },
   description: DESCRIPTION,
   keywords: [
     "Lumbini Province",

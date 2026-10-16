@@ -114,7 +114,7 @@ export default function WhyTravelWithKarvaah() {
               className="h-px bg-[#C99016]"
             />
             <span className="text-[10px] font-semibold uppercase tracking-[0.26em] text-[#60748A] sm:tracking-[0.3em]">
-              Why Travel With Karvaah?
+              Why Travel With Karvaahh?
             </span>
             <span
               aria-hidden="true"
@@ -180,7 +180,7 @@ export default function WhyTravelWithKarvaah() {
               <div className="flex items-center gap-3">
                 <span aria-hidden="true" className="h-px w-7 bg-[#D39A17]" />
                 <span className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[#D7B15F]">
-                  The Karvaah Difference
+                  The Karvaahh Difference
                 </span>
               </div>
 
@@ -245,7 +245,7 @@ export default function WhyTravelWithKarvaah() {
 
               <motion.a
                 href="/about"
-                aria-label="Learn more about Karvaah travel services"
+                aria-label="Learn more about Karvaahh travel services"
                 initial={reduce ? false : { opacity: 0, y: 10 }}
                 whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -253,7 +253,7 @@ export default function WhyTravelWithKarvaah() {
                 className="group mt-5 inline-flex items-center gap-3 text-[12px] font-semibold text-white"
               >
                 <span className="border-b border-white/30 pb-1 transition-colors duration-300 group-hover:border-[#D39A17]">
-                  About Karvaah
+                  About Karvaahh
                 </span>
                 <span
                   aria-hidden="true"
@@ -305,7 +305,7 @@ export default function WhyTravelWithKarvaah() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
             variants={listVariants}
-            aria-label="Why choose Karvaah for Nepal and India travel"
+            aria-label="Why choose Karvaahh for Nepal and India travel"
             className="grid grid-cols-1 gap-px bg-[#E5E1D8] sm:grid-cols-2 lg:grid-rows-3"
           >
             {benefits.map((b) => {
@@ -366,7 +366,7 @@ export default function WhyTravelWithKarvaah() {
           whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.15, ease }}
-          aria-label="Karvaah travel strengths"
+          aria-label="Karvaahh travel strengths"
           className="mt-4 grid shrink-0 grid-cols-2 gap-y-1 border-b border-[#DDD8CE] pb-2 sm:grid-cols-4 lg:pb-3"
         >
           {trustPoints.map((point, i) => (

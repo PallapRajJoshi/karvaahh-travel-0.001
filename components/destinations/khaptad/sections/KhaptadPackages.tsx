@@ -27,8 +27,8 @@ function PackageCard({ pkg }: { pkg: (typeof khaptadPackages)[number] }) {
       </p>
 
       <div className="khaptad-package-card__actions">
-        <Link href={`/packages/${pkg.id}`} className="khaptad-btn khaptad-btn--outline">
-          View Details
+        <Link href={`/contact?trip=${pkg.id}`} className="khaptad-btn khaptad-btn--outline">
+          Request Itinerary
         </Link>
         <Link href="/contact" className="khaptad-btn khaptad-btn--primary">
           Customize Your Trip

@@ -1,25 +1,28 @@
 'use client';
 
 import { useId, useState, type FormEvent } from 'react';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Search } from 'lucide-react';
 import type { SearchSuggestion } from '@/types/hero';
 
 const SUGGESTIONS: SearchSuggestion[] = [
-  { label: 'Nepal', href: '/destinations/nepal' },
-  { label: 'India', href: '/destinations/india' },
-  { label: 'Kailash', href: '/destinations/kailash' },
-  { label: 'Himalayas', href: '/destinations/himalayas' },
+  { label: 'Nepal', href: '/destinations' },
+  { label: 'India', href: '/packages/north-india' },
+  { label: 'Kailash', href: '/packages/kailash-mansarovar-yatra' },
+  { label: 'Himalayas', href: '/packages/nepal/trekking-hiking-packages' },
 ];
 
 export default function HeroSearch() {
   const inputId = useId();
   const [query, setQuery] = useState('');
+  const router = useRouter();
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    // TODO: wire to real search / destinations route
-    console.log('Search submitted:', query);
+    // The packages hub reads ?q= and filters its results.
+    const q = query.trim();
+    router.push(q ? `/packages?q=${encodeURIComponent(q)}` : '/packages');
   };
 
   return (

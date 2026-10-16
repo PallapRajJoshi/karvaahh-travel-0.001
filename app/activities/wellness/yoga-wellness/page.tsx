@@ -13,7 +13,7 @@ const OG_IMAGE = "/images/activities/wellness/yoga-wellness/hero-sunrise-yoga.we
 
 // Relative canonical resolves against `metadataBase` in the root layout.
 export const metadata: Metadata = {
-  title: TITLE,
+  title: { absolute: TITLE },
   description: DESCRIPTION,
   alternates: { canonical: PAGE_PATH },
   openGraph: {

@@ -85,7 +85,7 @@ const reviews: Review[] = [
     trip: "Muktinath Pilgrimage",
     destination: "Pokhara · Muktinath",
     review:
-      "The arrangements were clear and dependable throughout. Karvaah made a spiritual journey feel comfortable and stress-free.",
+      "The arrangements were clear and dependable throughout. Karvaahh made a spiritual journey feel comfortable and stress-free.",
     image: "/images/guests/success-award-ceremony.jpg",
     imageAlt: "Traveller experiencing the Himalayan region near Muktinath",
   },
@@ -615,7 +615,7 @@ const prev = () => {
           </div>
 
           <Link
-            href="/reviews"
+            href="/about"
             className="group inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0B2942] transition-colors hover:text-[#C98F0A]"
           >
             <span className="border-b border-[#0B2942]/25 pb-0.5 transition-colors group-hover:border-[#D39A17]">

@@ -8,7 +8,7 @@ const CANONICAL_URL = `${SITE_URL}${PAGE_PATH}`;
 const OG_IMAGE = `${SITE_URL}/images/destinations/panch-pokhari/og/panch-pokhari-og.jpg`;
 
 export const metadata: Metadata = {
-  title: "Panch Pokhari Trek & Sacred Lakes | Karvaahh Tours & Travels",
+  title: { absolute: "Panch Pokhari Trek & Sacred Lakes | Karvaahh Tours & Travels" },
   description:
     "Discover Panch Pokhari in Sindhupalchok, Nepal. Explore five sacred alpine lakes, Himalayan trekking trails, spiritual heritage, and breathtaking Jugal Himal views with Karvaahh.",
   keywords: [

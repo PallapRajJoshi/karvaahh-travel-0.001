@@ -26,7 +26,7 @@ export default function RaraLakePackages() {
             </div>
             <div className="rara-packages__actions">
               <Link href={pkg.detailsHref} className="rara-packages__button rara-packages__button--primary">
-                View Details
+                Request Itinerary
               </Link>
               <Link href={pkg.customizeHref} className="rara-packages__button rara-packages__button--secondary">
                 Customize Your Trip

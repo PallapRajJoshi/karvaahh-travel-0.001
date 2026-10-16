@@ -6,7 +6,7 @@ const SITE = "https://karvaahh.in";
 const PATH = "/activities/adventure/boating";
 
 export const metadata: Metadata = {
-  title: "Boating & Canoeing in Nepal | Lakes, Rivers & Wildlife | Karvaahh",
+  title: { absolute: "Boating & Canoeing in Nepal | Lakes, Rivers & Wildlife | Karvaahh" },
   description:
     "Explore boating and canoeing in Nepal from Phewa and Rara lakes to Chitwan, Koshi Tappu and Bardiya. Compare destinations, experiences and indicative prices.",
   keywords: [

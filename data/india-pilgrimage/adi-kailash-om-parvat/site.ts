@@ -23,7 +23,7 @@ export const site = {
   enquiryTripParam: "adi-kailash-om-parvat",
 
   /** Category hub used by the breadcrumb and BreadcrumbList JSON-LD. */
-  categoryHref: "/india-pilgrimage",
+  categoryHref: "/packages/spiritual-pilgrimage",
   categoryName: "India Pilgrimage",
 } as const;
 

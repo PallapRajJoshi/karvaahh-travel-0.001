@@ -23,10 +23,14 @@ export default function NepalCampingMap({ regions, activeId, onSelect }: Props) 
   const map = useRef<L.Map | null>(null);
   const markers = useRef(new Map<string, L.Marker>());
   const selectRef = useRef(onSelect);
-  selectRef.current = onSelect;
+  // Keep the latest callback for Leaflet handlers without re-creating the map.
+  useEffect(() => {
+    selectRef.current = onSelect;
+  }, [onSelect]);
 
   useEffect(() => {
     if (!el.current || map.current) return;
+    const markerMap = markers.current;
     const m = L.map(el.current, {
       scrollWheelZoom: false,
       zoomSnap: 0.25,
@@ -53,11 +57,11 @@ export default function NepalCampingMap({ regions, activeId, onSelect }: Props) 
       const mk = L.marker(r.coords, { icon, keyboard: true, title: r.name, alt: r.name })
         .addTo(m)
         .on("click", () => selectRef.current(r.id));
-      markers.current.set(r.id, mk);
+      markerMap.set(r.id, mk);
     });
 
     map.current = m;
-    return () => { m.remove(); map.current = null; markers.current.clear(); };
+    return () => { m.remove(); map.current = null; markerMap.clear(); };
   }, [regions]);
 
   useEffect(() => {

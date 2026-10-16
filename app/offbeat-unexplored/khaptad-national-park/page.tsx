@@ -15,7 +15,7 @@ const PAGE_DESCRIPTION =
   "Explore Khaptad National Park in far-western Nepal. Discover alpine meadows, Khaptad Baba Ashram, sacred landmarks, wildlife, forest trails, and customizable Khaptad tour packages.";
 
 export const metadata: Metadata = {
-  title: PAGE_TITLE,
+  title: { absolute: PAGE_TITLE },
   description: PAGE_DESCRIPTION,
   alternates: {
     canonical: PAGE_PATH,
@@ -83,17 +83,17 @@ export default function KhaptadNationalParkRoute() {
     <>
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
+         
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
+         
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
+         
         dangerouslySetInnerHTML={{ __html: JSON.stringify(touristDestinationJsonLd) }}
       />
       <KhaptadPage />

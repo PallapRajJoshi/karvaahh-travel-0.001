@@ -49,13 +49,26 @@ export function parsePrefill(source: {
   return Object.keys(out).length > 0 ? out : null;
 }
 
+/** "langtang-valley-trek" → "Langtang Valley Trek" (for ?trip= / ?package= slugs). */
+function humanizeSlug(value: string | null): string | null {
+  if (!value) return null;
+  if (!/^[a-z0-9-]+$/i.test(value)) return value;
+  return value
+    .split("-")
+    .filter(Boolean)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+}
+
 function readUrlPrefill(): Prefill | null {
   const params = new URLSearchParams(window.location.search);
   return parsePrefill({
     type: params.get("type"),
     budget: params.get("budget"),
     method: params.get("method"),
-    destination: params.get("destination"),
+    // Package pages link here with ?trip=<slug>, ?package=<name> or ?journey=<name>.
+    destination:
+      params.get("destination") ?? params.get("journey") ?? humanizeSlug(params.get("trip") ?? params.get("package")),
   });
 }
 

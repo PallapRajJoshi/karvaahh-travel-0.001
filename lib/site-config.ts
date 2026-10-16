@@ -41,7 +41,7 @@ export const siteConfig: SiteConfig = {
   siteTitle: "Karvaahh – Live to Travel",
   legalEntityName: "",
   registrationNumber: "",
-  url: "https://www.karvaahh.in",
+  url: "https://karvaahh.in",
   email: "",
   phone: "",
   whatsapp: "",
@@ -49,3 +49,22 @@ export const siteConfig: SiteConfig = {
   contactPath: "/contact",
   governingLaw: "Nepal",
 };
+
+/** Site-wide SEO defaults. Page-level metadata overrides these. */
+export const SEO_DEFAULTS = {
+  organizationName: "Karvaahh Tours & Travels",
+  title: "Karvaahh Tours & Travels | Nepal & India Tour Packages",
+  description:
+    "Explore Nepal and India with Karvaahh Tours & Travels. Discover Himalayan adventures, pilgrimage tours, trekking, cultural journeys and customized holiday packages.",
+  keywords: [
+    "Nepal tour packages",
+    "India tour packages",
+    "Himalayan trekking",
+    "Kailash Mansarovar Yatra",
+    "Char Dham Yatra",
+    "pilgrimage tours",
+    "Karvaahh Tours & Travels",
+  ],
+  /** Brand logo in /public, used in structured data. Favicons: app/icon.png, app/apple-icon.png. */
+  logo: "/karvaahh-tours-travels-logo.webp",
+} as const;

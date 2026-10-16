@@ -9,7 +9,7 @@ const DESCRIPTION =
 
 // Relative canonical resolves against `metadataBase` set in the root layout.
 export const metadata: Metadata = {
-  title: TITLE,
+  title: { absolute: TITLE },
   description: DESCRIPTION,
   alternates: { canonical: ROUTE_PATH },
   openGraph: {

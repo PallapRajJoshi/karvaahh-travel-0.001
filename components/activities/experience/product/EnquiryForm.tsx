@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState, type FormEvent, type InputHTMLAttributes } from "react";
+import { useEffect, useId, useState, type FormEvent, type InputHTMLAttributes } from "react";
 import { motion } from "motion/react";
 import { MessageCircle, Phone, Send } from "lucide-react";
 import type { HelicopterTour } from "../product-types";
@@ -9,17 +9,25 @@ import { CONTAINER, SERIF, SectionHeading } from "../ui";
 import { ANCHOR } from "./constants";
 
 type Fields = {
+  origin: string;
+  destination: string;
   date: string;
+  returnDate: string;
   passengers: string;
   nationality: string;
+  currency: string;
   airline: string;
   time: string;
   hotel: string;
   name: string;
   phone: string;
   email: string;
+  requirements: string;
   message: string;
 };
+
+/** Digits with an optional leading +, spaces, dashes or brackets (escaped for the `v`-flag regex browsers use). */
+const PHONE_PATTERN = "\\+?[0-9][0-9 \\(\\)\\-]{6,19}";
 
 type Enquiry = NonNullable<HelicopterTour["enquiry"]>;
 
@@ -35,17 +43,31 @@ export default function EnquiryForm({ tour }: { tour: Pick<HelicopterTour, "enqu
 function Form({ enquiry, title }: { enquiry: Enquiry; title: string }) {
   const id = useId();
   const [f, setF] = useState<Fields>({
+    origin: "",
+    destination: "",
     date: "",
+    returnDate: "",
     passengers: enquiry.options.passengers[1] ?? enquiry.options.passengers[0] ?? "",
     nationality: "",
+    currency: enquiry.options.currencies?.[0] ?? "",
     airline: enquiry.options.airlines[0] ?? "",
     time: enquiry.options.times[0] ?? "",
     hotel: "",
     name: "",
     phone: "",
     email: "",
+    requirements: "",
     message: "",
   });
+  // Set after mount so server and client render the same markup.
+  const [minDate, setMinDate] = useState<string>();
+  const [opened, setOpened] = useState(false);
+  useEffect(() => {
+    const d = new Date();
+    const today = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    const id = requestAnimationFrame(() => setMinDate(today));
+    return () => cancelAnimationFrame(id);
+  }, []);
 
   const set = (k: keyof Fields) => (e: { target: { value: string } }) => setF((prev) => ({ ...prev, [k]: e.target.value }));
 
@@ -54,17 +76,23 @@ function Form({ enquiry, title }: { enquiry: Enquiry; title: string }) {
     const lines = [
       `Hello Karvaahh, I'd like to enquire about the ${title}.`,
       `Name: ${f.name}`,
+      enquiry.routeFields && `From: ${f.origin}`,
+      enquiry.routeFields && `To: ${f.destination}`,
       `Travel date: ${f.date || "Flexible"}`,
+      enquiry.routeFields && `Return date: ${f.returnDate || "One-way / not decided"}`,
       `Passengers: ${f.passengers}`,
-      f.nationality && `Nationality: ${f.nationality}`,
+      f.nationality && `${enquiry.options.categories ? "Passenger category" : "Nationality"}: ${f.nationality}`,
+      f.currency && `Preferred currency: ${f.currency}`,
       `Preferred airline: ${f.airline}`,
       `Preferred time: ${f.time}`,
       f.hotel && `Hotel / location: ${f.hotel}`,
       `Phone / WhatsApp: ${f.phone}`,
       f.email && `Email: ${f.email}`,
+      f.requirements && `Special requirements: ${f.requirements}`,
       f.message && `Message: ${f.message}`,
     ].filter(Boolean);
     window.open(CONTACT.whatsappHref(lines.join("\n")), "_blank", "noopener,noreferrer");
+    setOpened(true);
   };
 
   const input =
@@ -130,15 +158,51 @@ function Form({ enquiry, title }: { enquiry: Enquiry; title: string }) {
         >
           <h3 className={`${SERIF} text-[26px] font-medium text-[#0B2942]`}>Flight enquiry</h3>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
-            {field("date", "Travel date", { type: "date" })}
+            {enquiry.routeFields && (
+              <>
+                {field("origin", "Flying from", { required: true, placeholder: "City or airport, e.g. Delhi (DEL)" })}
+                {field("destination", "Flying to", { required: true, placeholder: "City or airport, e.g. Kathmandu (KTM)" })}
+              </>
+            )}
+            {field("date", enquiry.routeFields ? "Departure date" : "Travel date", { type: "date", min: minDate })}
+            {enquiry.routeFields && field("returnDate", "Return date (optional)", { type: "date", min: f.date || minDate })}
             {select("passengers", "Passengers", enquiry.options.passengers)}
-            {field("nationality", "Nationality", { placeholder: "e.g. Indian, Nepali, British" })}
+            {enquiry.options.categories ? (
+              <label className="block" htmlFor={`${id}-nationality`}>
+                <span className={label}>
+                  Passenger nationality<span className="text-[#C98500]"> *</span>
+                </span>
+                <select id={`${id}-nationality`} className={input} value={f.nationality} onChange={set("nationality")} required>
+                  <option value="" disabled>
+                    Select a category
+                  </option>
+                  {enquiry.options.categories.map((o) => (
+                    <option key={o}>{o}</option>
+                  ))}
+                </select>
+              </label>
+            ) : (
+              field("nationality", "Nationality", { placeholder: "e.g. Indian, Nepali, British" })
+            )}
             {select("airline", "Preferred airline", enquiry.options.airlines)}
             {select("time", "Preferred flight time", enquiry.options.times)}
-            {field("hotel", "Hotel / location", { placeholder: "Your Kathmandu hotel" })}
+            {enquiry.options.currencies && select("currency", "Preferred currency", enquiry.options.currencies)}
+            {!enquiry.routeFields && field("hotel", "Hotel / location", { placeholder: enquiry.hotelPlaceholder ?? "Your Kathmandu hotel" })}
             {field("name", "Full name", { required: true, autoComplete: "name" })}
-            {field("phone", "Phone / WhatsApp", { required: true, type: "tel", autoComplete: "tel" })}
-            <div className="sm:col-span-2">{field("email", "Email", { type: "email", autoComplete: "email" })}</div>
+            {field("phone", "Phone / WhatsApp", {
+              required: true,
+              type: "tel",
+              autoComplete: "tel",
+              placeholder: "With country code, e.g. +91",
+              pattern: PHONE_PATTERN,
+              title: "Phone number with country code, e.g. +91 98765 43210",
+            })}
+            <div className="sm:col-span-2">{field("email", "Email", { type: "email", autoComplete: "email", required: enquiry.requireEmail })}</div>
+            {enquiry.specialRequirements && (
+              <div className="sm:col-span-2">
+                {field("requirements", "Special requirements", { placeholder: "e.g. wheelchair assistance, infant, senior traveller" })}
+              </div>
+            )}
             <label className="block sm:col-span-2" htmlFor={`${id}-message`}>
               <span className={label}>Message</span>
               <textarea
@@ -158,6 +222,11 @@ function Form({ enquiry, title }: { enquiry: Enquiry; title: string }) {
             <Send className="h-4 w-4" aria-hidden="true" />
             Send Enquiry on WhatsApp
           </button>
+          <p role="status" className="mt-4 text-center text-[12.5px] leading-5 text-[#5B6B7B]">
+            {opened
+              ? "WhatsApp has opened with your details. Your enquiry reaches us only after you press send in WhatsApp."
+              : "An enquiry is not a reservation. Seats are confirmed only after we quote and you confirm."}
+          </p>
         </motion.form>
       </div>
     </section>

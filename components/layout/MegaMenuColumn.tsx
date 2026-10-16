@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 import type { MegaMenuColumn as MegaMenuColumnType } from "@/lib/navigation-data";
-import { getColumnIcon } from "@/lib/mega-menu-icons";
+import { ColumnIcon } from "@/lib/mega-menu-icons";
 
 const accentStyles = {
   emerald: {
@@ -27,7 +27,6 @@ export default function MegaMenuColumn({
   column: MegaMenuColumnType;
   onNavigate?: () => void;
 }) {
-  const Icon = getColumnIcon(column.title);
 
   const accent =
     accentStyles[column.accent ?? "emerald"];
@@ -126,7 +125,8 @@ export default function MegaMenuColumn({
               duration: 0.2,
             }}
           >
-            <Icon
+            <ColumnIcon
+              title={column.title}
               className="h-4 w-4"
               strokeWidth={2}
             />

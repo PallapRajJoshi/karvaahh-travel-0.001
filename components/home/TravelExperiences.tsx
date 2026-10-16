@@ -49,7 +49,7 @@ const experiences: Experience[] = [
     description:
       "Trek through dramatic landscapes, mountain villages and unforgettable Himalayan trails.",
     image: "/images/home/adventure.jpg",
-    href: "/experiences/himalayan-adventures",
+    href: "/packages/nepal/trekking-hiking-packages",
     icon: Mountain,
     span: "row-span-2 sm:col-span-2 lg:col-span-6",
     size: "hero",
@@ -60,7 +60,7 @@ const experiences: Experience[] = [
     description:
       "Sacred temples, pilgrimage routes and meaningful journeys across Nepal and India.",
     image: "/images/home/pashupatinath-aarati.jpg",
-    href: "/experiences/spiritual-journeys",
+    href: "/packages/spiritual-pilgrimage",
     icon: Sparkles,
     span: "lg:col-span-3",
     size: "wide",
@@ -71,7 +71,7 @@ const experiences: Experience[] = [
     description:
       "Discover living heritage, local traditions, architecture and authentic culture.",
     image: "/images/home/culture-kathmandu.jpg",
-    href: "/experiences/cultural-experiences",
+    href: "/activities/culture-festival-experiences",
     icon: Landmark,
     span: "lg:col-span-3",
     size: "wide",
@@ -82,7 +82,7 @@ const experiences: Experience[] = [
     description:
       "Discover jungles, wildlife, national parks and beautiful natural landscapes.",
     image: "/images/home/wild-life-tiger.jpg",
-    href: "/experiences/wildlife-nature",
+    href: "/activities/wildlife-nature",
     icon: Trees,
     span: "lg:col-span-2",
     size: "narrow",
@@ -93,7 +93,7 @@ const experiences: Experience[] = [
     description:
       "Refined stays, private experiences and comfortable journeys designed around you.",
     image: "/images/home/mountain-hotels.jpg",
-    href: "/experiences/luxury-escapes",
+    href: "/packages/nepal/couple-tour-packages",
     icon: Crown,
     span: "lg:col-span-2",
     size: "narrow",
@@ -104,7 +104,7 @@ const experiences: Experience[] = [
     description:
       "Easy-going holidays designed for families, shared moments and lasting memories.",
     image: "/images/home/family-tour.jpg",
-    href: "/experiences/family-holidays",
+    href: "/packages",
     icon: Users,
     span: "sm:col-span-2 lg:col-span-2",
     size: "narrow",
@@ -547,7 +547,7 @@ export default function TravelExperiences() {
           </span>
 
           <Link
-            href="/experiences"
+            href="/packages"
             className="group flex shrink-0 items-center gap-2 text-[12px] font-semibold text-white"
           >
             <span className="border-b border-white/25 pb-0.5 transition-colors group-hover:border-[#D39A17] group-hover:text-[#D39A17]">

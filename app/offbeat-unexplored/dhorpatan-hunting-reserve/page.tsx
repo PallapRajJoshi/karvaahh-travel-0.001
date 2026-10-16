@@ -16,7 +16,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://karvaahh.in";
  * `metadataBase: new URL(SITE_URL)` to the root layout's metadata export.
  */
 export const metadata: Metadata = {
-  title: seo.title,
+  title: { absolute: seo.title },
   description: seo.description,
   alternates: {
     canonical: seo.canonicalPath,
@@ -46,17 +46,17 @@ export default function DhorpatanHuntingReservePage() {
     <>
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
+         
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
+         
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
+         
         dangerouslySetInnerHTML={{ __html: JSON.stringify(touristAttractionJsonLd) }}
       />
       <DhorpatanAssembly />

@@ -6,8 +6,9 @@ const SITE = "https://karvaahh.in";
 const PATH = "/activities/adventure/rafting";
 
 export const metadata: Metadata = {
-  title:
-    "White-Water Rafting in Nepal | Rivers, Grades & Expeditions | Karvaahh",
+  title: {
+    absolute: "White-Water Rafting in Nepal | Rivers, Grades & Expeditions | Karvaahh",
+  },
   description:
     "Explore white-water rafting in Nepal from Trishuli day trips to Grade V Sun Koshi, Tamur and Karnali expeditions. Compare rivers, grades, seasons, routes and indicative prices.",
   keywords: [

@@ -30,6 +30,8 @@ type TravelArticle = {
   alt: string;
   location: string;
   readTime: string;
+  /** Existing page that covers this topic (until dedicated articles are published). */
+  href: string;
 };
 
 const articles: TravelArticle[] = [
@@ -43,6 +45,7 @@ const articles: TravelArticle[] = [
     alt: "Himalayan mountain landscape in Nepal during the best travel season",
     location: "Nepal",
     readTime: "7 min read",
+    href: "/destinations",
   },
   {
     id: "02",
@@ -54,6 +57,7 @@ const articles: TravelArticle[] = [
     alt: "Travel experience through Kathmandu and Himalayan destinations in Nepal",
     location: "Nepal",
     readTime: "9 min read",
+    href: "/destinations",
   },
   {
     id: "03",
@@ -65,6 +69,7 @@ const articles: TravelArticle[] = [
     alt: "India Nepal travel itinerary featuring cultural and Himalayan destinations",
     location: "India · Nepal",
     readTime: "8 min read",
+    href: "/packages/nepal-india-combined-tours",
   },
   {
     id: "04",
@@ -76,6 +81,7 @@ const articles: TravelArticle[] = [
     alt: "Essential travel gear and clothing for a Himalayan journey",
     location: "Himalayas",
     readTime: "6 min read",
+    href: "/packages/nepal/trekking-hiking-packages",
   },
   {
     id: "05",
@@ -87,6 +93,7 @@ const articles: TravelArticle[] = [
     alt: "Ancient temple and cultural heritage of Kathmandu Nepal",
     location: "Kathmandu",
     readTime: "6 min read",
+    href: "/destinations/bagmati-province",
   },
   {
     id: "06",
@@ -98,6 +105,7 @@ const articles: TravelArticle[] = [
     alt: "Muktinath temple and Himalayan landscape in Nepal",
     location: "Muktinath",
     readTime: "8 min read",
+    href: "/spiritual-journeys/pashupatinath",
   },
 ];
 
@@ -107,12 +115,6 @@ const GROUP_SIZE = 3;
 const DURATION = 7000;
 const EASE = [0.22, 1, 0.36, 1] as const;
 const TOTAL_GROUPS = Math.ceil(articles.length / GROUP_SIZE);
-
-const slugify = (title: string) =>
-  title
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
 
 export default function TravelTipsInspiration() {
   const reduce = !!useReducedMotion();
@@ -264,11 +266,11 @@ export default function TravelTipsInspiration() {
             className="shrink-0"
           >
             <Link
-              href="/blog"
+              href="/packages"
               className="group inline-flex items-center gap-2 border-b border-[#0B2942]/25 pb-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#0B2942] transition-colors duration-300 hover:border-[#D39A17] hover:text-[#C9910B] sm:text-[11px]"
             >
-              <span className="sm:hidden">All stories</span>
-              <span className="hidden sm:inline">Explore all stories</span>
+              <span className="sm:hidden">All journeys</span>
+              <span className="hidden sm:inline">Explore all journeys</span>
               <ArrowRight
                 size={13}
                 aria-hidden="true"
@@ -308,8 +310,8 @@ export default function TravelTipsInspiration() {
               {/* FEATURED */}
               <article className="group relative min-h-0 overflow-hidden bg-[#0B2942]">
                 <Link
-                  href={`/blog/${slugify(featured.title)}`}
-                  aria-label={`Read ${featured.title}`}
+                  href={featured.href}
+                  aria-label={`Explore: ${featured.title}`}
                   className="absolute inset-0 z-20"
                 />
 
@@ -434,8 +436,8 @@ export default function TravelTipsInspiration() {
                     className="group relative min-h-0 overflow-hidden bg-[#0B2942]"
                   >
                     <Link
-                      href={`/blog/${slugify(article.title)}`}
-                      aria-label={`Read ${article.title}`}
+                      href={article.href}
+                      aria-label={`Explore: ${article.title}`}
                       className="absolute inset-0 z-20"
                     />
 

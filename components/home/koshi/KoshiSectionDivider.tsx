@@ -5,7 +5,6 @@ type KoshiSectionDividerProps = {
 };
 
 export default function KoshiSectionDivider({
-  number = "03",
   label = "KOSHI CULTURE",
   dark = false,
 }: KoshiSectionDividerProps) {

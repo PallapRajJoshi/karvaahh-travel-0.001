@@ -1,4 +1,4 @@
-import { Check, Info } from "lucide-react";
+import { Check, ExternalLink, Info } from "lucide-react";
 import Reveal from "@/components/shared/Reveal";
 import type { HelicopterProductTour } from "../product-types";
 import { CONTAINER, PageIcon, SERIF, SectionHeading } from "../ui";
@@ -50,6 +50,24 @@ export default function Documents({ tour }: { tour: HelicopterProductTour }) {
               <Info className="mt-0.5 h-4 w-4 shrink-0 text-[#F4A300]" aria-hidden="true" />
               {documents.note}
             </p>
+            {documents.links && (
+              <ul className="mt-5 flex flex-wrap gap-x-4 gap-y-2 text-[13px]">
+                {documents.links.map((l) => (
+                  <li key={l.href}>
+                    <a
+                      href={l.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-white/85 underline decoration-[#F4A300] underline-offset-4 transition-colors hover:text-[#F4A300]"
+                    >
+                      {l.label}
+                      <ExternalLink className="h-3 w-3" aria-hidden="true" />
+                      <span className="sr-only">(opens in a new tab)</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
           </Reveal>
         </div>
       </div>

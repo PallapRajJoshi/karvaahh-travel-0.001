@@ -32,8 +32,8 @@ export default function TourPackages() {
               </p>
 
               <div className="package-card__actions">
-                <CTAButton href={`/packages/dhorpatan-hunting-reserve/${pkg.id}`} variant="ghost">
-                  View Details
+                <CTAButton href={`/contact?trip=${pkg.id}`} variant="ghost">
+                  Request Itinerary
                 </CTAButton>
                 <CTAButton
                   href={`/contact?type=customize&package=${pkg.id}&destination=dhorpatan-hunting-reserve`}

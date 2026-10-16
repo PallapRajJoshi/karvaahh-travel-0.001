@@ -156,85 +156,82 @@ export const REGIONS: RegionGroup[] = [
   },
 ];
 
-/* ---------- Suggested 28–30 day framework ---------- */
+/* ---------- Suggested 30-day itinerary ----------
+   Transfer times are deliberately not stated: domestic flights, remote
+   connections and mountain roads must be confirmed locally before travel. */
 
-export type Stage = { days: string; title: string; region: string; points: string[]; note?: string };
+export type TransportMode = "flight" | "road" | "local" | "rest";
+export type ItineraryDay = {
+  day: number;
+  title: string;
+  overnight: string;
+  text: string;
+  highlights: string[];
+  mode: TransportMode;
+  transport?: string;
+  image?: PageImage;
+};
 
-export const ITINERARY: Stage[] = [
-  {
-    days: "Days 1–3",
-    title: "Kathmandu Arrival & Heritage",
-    region: "Kathmandu Valley",
-    points: ["Arrival and transfer to your hotel.", "Rest and preparation for the journey ahead.", "Explore selected Kathmandu Valley heritage and cultural sites."],
-  },
-  {
-    days: "Days 4–8",
-    title: "Western Nepal & the Rara Region",
-    region: "Karnali",
-    points: [
-      "Travel toward the western Nepal gateway selected for your confirmed route.",
-      "Continue toward Jumla and/or the Rara region, depending on available connections.",
-      "Explore Rara Lake and the surrounding natural landscape.",
-    ],
-    note: "Flexibility is kept for transport delays and acclimatization.",
-  },
-  {
-    days: "Days 9–10",
-    title: "Pokhara",
-    region: "Gandaki",
-    points: ["Transfer to Pokhara on a confirmed transport connection.", "Enjoy Phewa Lake, mountain views and selected local attractions."],
-  },
-  {
-    days: "Days 11–12",
-    title: "Ghandruk",
-    region: "Annapurna foothills",
-    points: ["Travel to Ghandruk.", "Experience village culture, mountain scenery and easy walks suited to the group."],
-  },
-  {
-    days: "Days 13–16",
-    title: "Mustang & Muktinath",
-    region: "Mustang",
-    points: ["Travel toward Jomsom and the selected Mustang route.", "Explore Kagbeni or other suitable settlements.", "Visit Muktinath, subject to route and local conditions."],
-    note: "Weather and road conditions can change plans here — flexibility is built in.",
-  },
-  {
-    days: "Days 17–19",
-    title: "Manakamana & Kathmandu",
-    region: "Gorkha · Kathmandu",
-    points: ["Return toward Kathmandu on a confirmed route.", "Include Manakamana Temple if practical.", "Continue with cultural experiences or rest time."],
-  },
-  {
-    days: "Days 20–22",
-    title: "Chitwan",
-    region: "Southern Nepal",
-    points: ["Transfer to Chitwan.", "Take part in suitable guided nature and wildlife activities.", "Experience Tharu culture where available."],
-  },
-  {
-    days: "Days 23–24",
-    title: "Lumbini",
-    region: "Lumbini",
-    points: ["Travel to Lumbini.", "Explore the Sacred Garden and selected monastic areas."],
-  },
-  {
-    days: "Days 25–27",
-    title: "Return & Flexible Travel Days",
-    region: "Route-dependent",
-    points: ["Plan the return journey or a confirmed onward transfer.", "Keep contingency time for long-distance travel."],
-    note: "Long-distance transfers in Nepal are rarely short, and none are guaranteed.",
-  },
-  {
-    days: "Days 28–30",
-    title: "Buffer, Additional Experiences & Departure",
-    region: "Flexible",
-    points: [
-      "Use these days for route-dependent transfers, selected additional experiences, recovery time or departure.",
-      "The actual sequence is finalized only after transport and accommodation are checked.",
-    ],
-  },
+const FLIGHT_NOTE = "Domestic flights are subject to schedules, weather and availability — confirmed before travel.";
+
+export const ITINERARY_BADGES = ["30-Day Suggested Journey", "Himalayan Adventure", "Culture & Wildlife", "Customizable Route"];
+
+/** Journey chapters shown as dividers in the timeline, keyed by their first day. */
+export const PHASES: Record<number, string> = {
+  1: "Kathmandu Valley",
+  4: "Western Nepal & Rara Lake",
+  10: "Pokhara & Ghandruk",
+  16: "Mustang & Muktinath",
+  20: "Kathmandu & Manakamana",
+  23: "Chitwan",
+  26: "Lumbini & Departure",
+};
+
+export const ITINERARY: ItineraryDay[] = [
+  { day: 1, title: "Arrive in Kathmandu", overnight: "Kathmandu", mode: "local", image: IMAGES.kathmandu, text: "Airport pickup and hotel transfer, followed by time to rest and a briefing on the journey ahead.", highlights: ["Airport welcome", "Hotel check-in", "Trip briefing"] },
+  { day: 2, title: "Kathmandu Heritage", overnight: "Kathmandu", mode: "local", image: IMAGES.pashupatinath, text: "Explore Pashupatinath, Boudhanath and selected heritage sites of the valley.", highlights: ["Pashupatinath", "Boudhanath Stupa", "Heritage sites"] },
+  { day: 3, title: "Kathmandu Valley", overnight: "Kathmandu", mode: "local", image: IMAGES.swayambhu, text: "Visit Swayambhunath and Kathmandu Durbar Square, then prepare for the western Nepal journey.", highlights: ["Swayambhunath", "Kathmandu Durbar Square", "Western Nepal preparation"] },
+  { day: 4, title: "Kathmandu to Nepalgunj", overnight: "Nepalgunj", mode: "flight", text: "Fly to Nepalgunj on a suitable domestic service where available, and overnight for the onward connection.", highlights: ["Domestic flight west", "Terai gateway town"], transport: FLIGHT_NOTE },
+  { day: 5, title: "Nepalgunj to Talcha & the Rara Region", overnight: "Rara region", mode: "flight", image: FW.rara, text: "Take a confirmed flight connection toward Talcha, then continue to the Rara region with local transfers and some walking.", highlights: ["Mountain flight to Talcha", "Arrival in the Rara region"], transport: "Rara access via Nepalgunj and Talcha is flight-dependent. Overland access is a different route that needs additional days. Weather, local transfers and walking requirements are confirmed before departure." },
+  { day: 6, title: "Rara Lake", overnight: "Rara region", mode: "local", image: FW.rara, text: "Explore the lake, its surrounding forests and viewpoints at a comfortable pace.", highlights: ["Rara Lake shoreline", "Forest trails", "Lakeside viewpoints"], transport: "High-altitude region — the pace is kept gentle to allow for acclimatization." },
+  { day: 7, title: "Rara Lake Exploration", overnight: "Rara region", mode: "local", image: FW.rara, text: "A flexible day for nature walks, photography and outdoor activities.", highlights: ["Nature walks", "Photography", "Flexible activities"] },
+  { day: 8, title: "Rara Region to Talcha or Onward Gateway", overnight: "Talcha or agreed gateway", mode: "local", text: "Return toward the agreed departure point for the flight out of the region.", highlights: ["Return toward the airstrip"], transport: "The schedule stays flexible for weather and transport." },
+  { day: 9, title: "Western Gateway to Kathmandu", overnight: "Kathmandu", mode: "flight", image: IMAGES.kathmandu, text: "Fly back toward Kathmandu on a suitable confirmed connection.", highlights: ["Return to Kathmandu"], transport: `${FLIGHT_NOTE} Contingency time is retained for delays or changes.` },
+  { day: 10, title: "Kathmandu to Pokhara", overnight: "Pokhara", mode: "flight", image: IMAGES.pokhara, text: "Fly to Pokhara if an appropriate service is available, or use the full day for road travel.", highlights: ["Arrival in Pokhara", "Lakeside evening"], transport: "Flight or road, depending on availability. Road travel times vary with traffic and conditions." },
+  { day: 11, title: "Pokhara Sightseeing", overnight: "Pokhara", mode: "local", image: IMAGES.cta, text: "Explore Phewa Lake, the lakeside area and selected local attractions.", highlights: ["Phewa Lake", "Lakeside", "Local attractions"] },
+  { day: 12, title: "Pokhara Exploration", overnight: "Pokhara", mode: "local", image: IMAGES.pokhara, text: "Enjoy mountain viewpoints and relaxed sightseeing, then prepare for the Mustang journey.", highlights: ["Mountain viewpoints", "Relaxed sightseeing", "Mustang preparation"] },
+  { day: 13, title: "Pokhara to Ghandruk", overnight: "Ghandruk", mode: "road", image: IMAGES.ghandruk, text: "Travel toward Ghandruk using a vehicle suited to the prevailing road conditions.", highlights: ["Annapurna foothills drive", "Gurung village arrival"], transport: "Final road access and suitable vehicle arrangements to Ghandruk are confirmed before travel." },
+  { day: 14, title: "Ghandruk Village", overnight: "Ghandruk", mode: "local", image: IMAGES.foothills, text: "Experience Gurung culture, traditional settlements, village walks and Annapurna mountain views.", highlights: ["Gurung culture", "Village walks", "Annapurna views"] },
+  { day: 15, title: "Ghandruk to Pokhara", overnight: "Pokhara", mode: "road", image: IMAGES.pokhara, text: "Return to Pokhara and rest before the mountain-region transfer.", highlights: ["Return to Pokhara", "Rest and preparation"] },
+  { day: 16, title: "Pokhara to Beni to Jomsom", overnight: "Jomsom", mode: "road", image: IMAGES.jomsom, text: "Begin the Mustang journey along the Kali Gandaki valley. This is a full travel day.", highlights: ["Kali Gandaki valley", "Arrival in Jomsom"], transport: "Road surfaces beyond Beni vary and can be rough — a suitable vehicle is used. Allow substantial travel time; weather can affect the route." },
+  { day: 17, title: "Jomsom to Kagbeni to Muktinath", overnight: "Muktinath or Jomsom", mode: "road", image: IMAGES.muktinath, text: "Explore Kagbeni and continue toward Muktinath if road, weather and local conditions permit.", highlights: ["Kagbeni old village", "Muktinath Temple"], transport: "High altitude — pace and overnight stop are adjusted to conditions and how the group feels." },
+  { day: 18, title: "Mustang Exploration", overnight: "Jomsom", mode: "local", image: IMAGES.kagbeni, text: "Explore Jomsom and nearby settlements, keeping the day flexible.", highlights: ["Jomsom", "Nearby settlements", "Trans-Himalayan landscape"], transport: "Plans stay flexible for altitude, strong afternoon winds and road conditions." },
+  { day: 19, title: "Jomsom to Beni to Pokhara", overnight: "Pokhara", mode: "road", image: IMAGES.pokhara, text: "Return by road to Pokhara after a long mountain journey.", highlights: ["Kali Gandaki descent", "Return to Pokhara"], transport: "A long road day — tightly scheduled onward connections are avoided after it." },
+  { day: 20, title: "Pokhara to Kathmandu", overnight: "Kathmandu", mode: "flight", image: IMAGES.kathmandu, text: "Fly to Kathmandu if a suitable service is available, or reserve the day for road travel.", highlights: ["Return to Kathmandu"], transport: "Flight or road, depending on availability and conditions." },
+  { day: 21, title: "Kathmandu Rest & Flexibility", overnight: "Kathmandu", mode: "rest", image: IMAGES.swayambhu, text: "A relaxed day for additional sightseeing or simple recovery time.", highlights: ["Free time", "Optional sightseeing"] },
+  { day: 22, title: "Manakamana Temple Excursion", overnight: "Kathmandu", mode: "road", image: IMAGES.manakamana, text: "Visit Manakamana Temple if the route is practical on the day.", highlights: ["Manakamana Temple", "Hill views"], transport: "Cable-car operation is checked before travel." },
+  { day: 23, title: "Kathmandu to Chitwan", overnight: "Sauraha, Chitwan", mode: "road", image: IMAGES.tharu, text: "Travel through the Kathmandu–Mugling corridor toward Sauraha.", highlights: ["Trishuli river corridor", "Arrival in Sauraha"], transport: "Extra time is allowed for traffic, roadworks, landslides or other disruption along the highway." },
+  { day: 24, title: "Chitwan Wildlife Experiences", overnight: "Sauraha, Chitwan", mode: "local", image: IMAGES.chitwan, text: "Join suitable guided wildlife and nature activities.", highlights: ["Guided jungle activities", "Wildlife observation", "Birdwatching"], transport: "Activities are subject to national park rules and availability." },
+  { day: 25, title: "Chitwan Nature & Culture", overnight: "Sauraha, Chitwan", mode: "local", image: IMAGES.tharu, text: "Enjoy further wildlife activities or a Tharu cultural experience where available.", highlights: ["Nature activities", "Tharu culture"] },
+  { day: 26, title: "Chitwan to Lumbini", overnight: "Lumbini", mode: "road", image: IMAGES.lumbini, text: "Drive across the Terai toward Lumbini.", highlights: ["Terai plains", "Arrival in Lumbini"], transport: "Sufficient time is allowed for the transfer and current road conditions." },
+  { day: 27, title: "Lumbini Exploration", overnight: "Lumbini", mode: "local", image: IMAGES.lumbini, text: "Visit the Sacred Garden, the Maya Devi Temple area and selected monasteries.", highlights: ["Sacred Garden", "Maya Devi Temple", "Monastic zone"] },
+  { day: 28, title: "Lumbini to Bhairahawa or Departure Gateway", overnight: "Bhairahawa or gateway", mode: "road", text: "Flexible sightseeing, then preparation for your confirmed onward connection.", highlights: ["Flexible sightseeing", "Departure preparation"] },
+  { day: 29, title: "Departure or Contingency", overnight: "Gateway (if buffer used)", mode: "rest", text: "Depart through your confirmed airport or border route, or use the day as a buffer for delays.", highlights: ["Departure", "Buffer day"] },
+  { day: 30, title: "Additional Buffer & Onward Travel", overnight: "Flexible", mode: "rest", text: "A reserve day for remote-region transport delays, road disruptions or a more comfortable departure.", highlights: ["Reserve day", "Comfortable departure"] },
 ];
 
-export const ITINERARY_NOTE =
-  "The itinerary is customizable. Rara, deeper Dolpo, Badimalika and Api Himal may need separate extensions or alternative routing rather than being combined into one rushed trip.";
+export const ITINERARY_NOTICE =
+  "This is a suggested itinerary, not a guaranteed operational schedule. Remote-region transport, domestic flights, road conditions, permits, weather, and trekking logistics must be confirmed before departure. The final route may change to ensure a realistic and comfortable journey.";
+
+export const ROAD_NOTE =
+  "Journey times are not fixed: map estimates do not reflect mountain roads, weather or disruptions, and current local confirmation is needed before every transfer.";
+
+export const EXTENSIONS = [
+  { title: "Badimalika", duration: "Approx. 4–6+ days", image: FW.badimalika, text: "A remote pilgrimage and trekking extension in the Far West. Duration depends on the route chosen." },
+  { title: "Api Himal", duration: "Approx. 6–10+ days", image: FW.apiHimal, text: "A remote trekking extension for experienced adventurers. Duration depends on the route chosen." },
+  { title: "Shey Phoksundo & Dolpo", duration: "Additional days", image: IMAGES.phoksundo, text: "Remote Himalayan landscapes and trekking. Additional days and route-specific permits may be required." },
+  { title: "Eastern Nepal", duration: "Separate journey", image: IMAGES.ilam, text: "Janakpur, Ilam, Bhedetar or Pathibhara as an optional eastern journey." },
+];
 
 /* ---------- Alternative journey styles ---------- */
 

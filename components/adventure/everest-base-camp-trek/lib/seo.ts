@@ -11,7 +11,7 @@ export function buildMetadata(): Metadata {
   const { seo, route } = ebcSite;
   const url = abs(route);
   return {
-    title: seo.title,
+    title: { absolute: seo.title },
     description: seo.description,
     keywords: [...seo.keywords],
     alternates: { canonical: url },

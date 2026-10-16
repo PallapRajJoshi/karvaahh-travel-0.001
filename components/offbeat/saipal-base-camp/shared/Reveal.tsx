@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode, type ElementType } from "react";
+import { useClientValue } from "@/lib/useClientValue";
 import "./Reveal.css";
 
 interface RevealProps {
@@ -27,22 +28,20 @@ export default function Reveal({
   threshold = 0.2,
 }: RevealProps) {
   const ref = useRef<HTMLElement | null>(null);
-  const [visible, setVisible] = useState(false);
+  // Without IntersectionObserver the content is simply shown.
+  const noObserver = useClientValue(() => typeof IntersectionObserver === "undefined", false);
+  const [seen, setSeen] = useState(false);
+  const visible = seen || noObserver;
 
   useEffect(() => {
     const node = ref.current;
-    if (!node) return;
-
-    if (typeof IntersectionObserver === "undefined") {
-      setVisible(true);
-      return;
-    }
+    if (!node || noObserver) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setVisible(true);
+            setSeen(true);
             observer.disconnect();
           }
         });
@@ -52,7 +51,7 @@ export default function Reveal({
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, [threshold]);
+  }, [threshold, noObserver]);
 
   return (
     <Tag

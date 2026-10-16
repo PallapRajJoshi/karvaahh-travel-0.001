@@ -1,4 +1,4 @@
-import { packages } from "@/data/packages";
+import { packages } from "@/data/packages/packages";
 import type {
   Badge,
   Country,
@@ -9,7 +9,7 @@ import type {
   Transport,
   TravelPackage,
   TravelStyle,
-} from "@/data/package-types";
+} from "@/data/packages/package-types";
 import { showDraftPackages } from "./config";
 
 /* ───────────────────────── labels ───────────────────────── */

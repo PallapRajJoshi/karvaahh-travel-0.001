@@ -1,5 +1,5 @@
 // lib/navigation-data.ts
-// Central data source for the Karvaah navigation system.
+// Central data source for the Karvaahh navigation system.
 // Update links/labels here — no JSX changes required.
 
 export type NavLinkItem = {
@@ -36,7 +36,7 @@ export type MainNavItem = {
 };
 
 export const siteInfo = {
-  brand: "Karvaah",
+  brand: "Karvaahh",
   tagline: "Explore Nepal. Experience Adventure. Discover Spirituality.",
 };
 
@@ -689,17 +689,17 @@ export const mainNav: MainNavItem[] = [
 
             {
               label: "Kailash Mansarovar Scenic Flights",
-              href: "/activities/domestic-flights/pokhara-jomsom",
+              href: "/activities/flights/kailash-mansarovar-scenic-flights",
             },
 
             {
               label: "Lukla Scenic Flights",
-              href: "/activities/domestic-flights/lukla-scenic-flights",
+              href: "/activities/flights/lukla-scenic-flights",
             },
 
             {
-              label: "Leah & Ladkh Scenic Flights",
-              href: "/activities/domestic-flights/leh-ladakh-scenic-flights",
+              label: "Leh–Ladakh Scenic Flights",
+              href: "/activities/flights/leh-ladakh-scenic-flights",
             },
 
             {
@@ -709,12 +709,12 @@ export const mainNav: MainNavItem[] = [
 
             {
               label: "Domestic India Flights",
-              href: "/activities/domestic-flights/domestic-india-flights",
+              href: "/activities/flights/domestic-india-flights",
             },
 
             {
               label: "International Flights",
-              href: "/activities/domestic-flights/international-flights",
+              href: "/activities/flights/international-flights",
             },
           ],
         },

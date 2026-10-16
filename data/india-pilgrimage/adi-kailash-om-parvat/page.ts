@@ -7,7 +7,7 @@ import type { Cta, Highlight, QuickFact, SectionToggle } from "./types";
  * Collections (destinations, packages, route, FAQs…) live in their own files.
  */
 
-export const ROUTE_PATH = "/india-pilgrimage/adi-kailash-om-parvat";
+export const ROUTE_PATH = "/packages/india-pilgrimage/adi-kailash-om-parvat";
 
 /* ------------------------------------------------------------------ */
 /* Section order & visibility                                          */

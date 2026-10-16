@@ -20,7 +20,7 @@ import Footer from "@/components/layout/Footer";
 // app/activities/educational-corporate/corporate-tours-retreats/page.tsx
 
 export const metadata: Metadata = {
-  title: seo.title,
+  title: { absolute: seo.title },
   description: seo.description,
   alternates: { canonical: CANONICAL_URL },
   openGraph: {

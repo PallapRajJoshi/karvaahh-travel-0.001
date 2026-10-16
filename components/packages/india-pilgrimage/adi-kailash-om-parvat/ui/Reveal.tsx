@@ -1,6 +1,6 @@
 "use client";
 
-import { createElement, useEffect, useRef, type CSSProperties, type ReactNode } from "react";
+import { createElement, useCallback, type CSSProperties, type ReactNode } from "react";
 import { motion } from "@/data/india-pilgrimage/adi-kailash-om-parvat/theme";
 
 /**
@@ -45,10 +45,8 @@ interface RevealProps {
 }
 
 export function Reveal({ children, as = "div", className, index = 0, variant = "up", id }: RevealProps) {
-  const ref = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
+  // Callback ref: sets up observation when the element mounts, cleans up on unmount.
+  const attach = useCallback((el: HTMLElement | null) => {
     if (!el) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce || typeof IntersectionObserver === "undefined") {
@@ -67,5 +65,5 @@ export function Reveal({ children, as = "div", className, index = 0, variant = "
     .filter(Boolean)
     .join(" ");
 
-  return createElement(as, { ref, className: classes, style, id }, children);
+  return createElement(as, { ref: attach, className: classes, style, id }, children);
 }

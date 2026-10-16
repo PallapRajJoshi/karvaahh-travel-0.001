@@ -21,13 +21,16 @@ import {
   FAQS,
   GATEWAYS,
   IMAGES,
+  EXTENSIONS,
   ITINERARY,
-  ITINERARY_NOTE,
+  ITINERARY_BADGES,
+  ITINERARY_NOTICE,
   PAGE_PATH,
   PAGE_TITLE,
   PRACTICAL,
   REGIONS,
   RELATED,
+  ROAD_NOTE,
   SEASON_NOTE,
   SEASONS,
   SERVICES,
@@ -78,7 +81,7 @@ function structuredData() {
       provider: { "@type": "TravelAgency", name: BRAND_NAME, url: SITE_URL },
       itinerary: {
         "@type": "ItemList",
-        itemListElement: ITINERARY.map((s, i) => ({ "@type": "ListItem", position: i + 1, name: `${s.days}: ${s.title}` })),
+        itemListElement: ITINERARY.map((s, i) => ({ "@type": "ListItem", position: i + 1, name: `Day ${s.day}: ${s.title}` })),
       },
     },
     {
@@ -98,6 +101,7 @@ export default function AllNepalCircuitPage() {
   const dimensions = resolveImages(DIMENSIONS);
   const regions = resolveImages(REGIONS);
   const styles = resolveImages(STYLES);
+  const extensions = resolveImages(EXTENSIONS);
 
   return (
     <>
@@ -216,25 +220,100 @@ export default function AllNepalCircuitPage() {
             </section>
 
             {/* Itinerary */}
-            <section id="itinerary" aria-labelledby="itinerary-title" className={`${SECTION} bg-white`}>
-              <div className={`${CONTAINER} grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16`}>
-                <div className="lg:sticky lg:top-[180px] lg:self-start">
+            <section id="itinerary" aria-labelledby="itinerary-title" className={`${SECTION} bg-[linear-gradient(180deg,#FFFFFF_0%,#F3F7FA_100%)]`}>
+              <div className={CONTAINER}>
+                <Reveal>
+                  <SectionHeading
+                    id="itinerary-title"
+                    center
+                    eyebrow="Day-Wise Itinerary"
+                    title="Explore Your 30-Day Nepal Adventure"
+                    intro="From remote Himalayan lakes and mountain villages to sacred temples, historic cities, and wildlife-rich plains, discover Nepal through a carefully planned, customizable journey."
+                  />
+                </Reveal>
+                <ul className="mt-8 flex flex-wrap justify-center gap-2.5">
+                  {ITINERARY_BADGES.map((b, i) => (
+                    <li key={b}>
+                      <Reveal delay={i * 80}>
+                        <span className="inline-flex items-center gap-2 rounded-full border border-[#D9AD5B]/45 bg-white px-4 py-2 text-[12.5px] font-semibold text-[#102A43] shadow-[0_6px_16px_-12px_rgba(16,42,67,0.5)]">
+                          <span className="h-1.5 w-1.5 rounded-full bg-[#D9AD5B]" aria-hidden="true" />
+                          {b}
+                        </span>
+                      </Reveal>
+                    </li>
+                  ))}
+                </ul>
+                <Reveal delay={200}>
+                  <p className="mx-auto mt-6 flex max-w-[760px] items-start justify-center gap-2 text-center text-[13.5px] leading-6 text-[#5B6B7B]">
+                    <Info className="mt-1 h-4 w-4 shrink-0 text-[#1769AA]" aria-hidden="true" />
+                    {ROAD_NOTE}
+                  </p>
+                </Reveal>
+
+                <ItineraryTimeline days={resolveImages(ITINERARY)} />
+
+                <Reveal className="mx-auto mt-10 max-w-[980px]">
+                  <p role="note" className="flex items-start gap-3 rounded-2xl border border-[#D9AD5B]/40 bg-[#FBF6EC] p-5 text-[14.5px] leading-6 text-[#102A43] sm:p-6">
+                    <Info className="mt-0.5 h-5 w-5 shrink-0 text-[#A8803A]" aria-hidden="true" />
+                    {ITINERARY_NOTICE}
+                  </p>
+                </Reveal>
+
+                {/* Optional extensions — not part of the standard 30 days */}
+                <div className="mt-20">
                   <Reveal>
                     <SectionHeading
-                      id="itinerary-title"
-                      eyebrow="Suggested 28–30 Day Framework"
-                      title="The Journey, Stage by Stage"
-                      intro="A preliminary planning framework. Remote-region transport, flight connections, road conditions, permits and trekking logistics are confirmed before any fixed departure."
+                      id="extensions-title"
+                      center
+                      eyebrow="Optional Extensions"
+                      title="Extend Your Himalayan Adventure"
+                      intro="These are alternatives or extensions — not stops within the standard 30-day journey. Each needs separate planning, additional days and any applicable permits, so we never combine every remote region into one rushed trip."
                     />
                   </Reveal>
-                  <Reveal delay={120}>
-                    <p className="mt-8 flex items-start gap-3 rounded-2xl border border-[#D9AD5B]/40 bg-[#FBF6EC] p-5 text-[14.5px] leading-6 text-[#102A43]">
-                      <Info className="mt-0.5 h-5 w-5 shrink-0 text-[#A8803A]" aria-hidden="true" />
-                      {ITINERARY_NOTE}
-                    </p>
-                  </Reveal>
+                  <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                    {extensions.map((x, i) => (
+                      <li key={x.title}>
+                        <Reveal delay={i * 90} className="h-full">
+                          <article className="group h-full overflow-hidden rounded-2xl border border-[#102A43]/10 bg-white transition-all duration-500 hover:-translate-y-1 hover:border-[#D9AD5B]/60 hover:shadow-[0_30px_60px_-34px_rgba(16,42,67,0.55)] motion-reduce:hover:translate-y-0">
+                            <div className="relative aspect-[3/2] overflow-hidden">
+                              <div className={CARD_IMG}>
+                                <PageImageFill image={x.image} sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" />
+                              </div>
+                              <span className="absolute left-3 top-3 rounded-full bg-[#102A43]/85 px-3 py-1 text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#E8CB8E]">
+                                {x.duration}
+                              </span>
+                            </div>
+                            <div className="p-5">
+                              <h3 className={`${SERIF} text-[20px] font-medium leading-snug text-[#102A43]`}>{x.title}</h3>
+                              <p className="mt-1.5 text-[14px] leading-6 text-[#5B6B7B]">{x.text}</p>
+                            </div>
+                          </article>
+                        </Reveal>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ItineraryTimeline stages={ITINERARY} />
+
+                {/* Itinerary CTA */}
+                <Reveal className="mt-16">
+                  <div className="relative isolate overflow-hidden rounded-3xl bg-[#102A43] px-6 py-12 text-center text-white sm:px-12 sm:py-14">
+                    <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,rgba(23,105,170,0.55)_0%,transparent_60%),radial-gradient(ellipse_at_bottom_left,rgba(217,173,91,0.18)_0%,transparent_55%)]" />
+                    <h3 className={`${SERIF} text-[28px] font-medium leading-tight sm:text-[38px]`}>Ready to Plan Your Nepal Adventure?</h3>
+                    <p className="mx-auto mt-4 max-w-[560px] text-[15.5px] leading-7 text-white/75">
+                      Customize your travel dates, destinations, preferred transport, and travel style with Karvaahh.
+                    </p>
+                    <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+                      <OpenBookingButton prefill={{ tourType: PAGE_TITLE }} className={BTN_GOLD}>
+                        Customize This Itinerary
+                        <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                      </OpenBookingButton>
+                      <a href={CONTACT.whatsappHref(WHATSAPP_MESSAGE)} target="_blank" rel="noopener noreferrer" className={BTN_LINE}>
+                        <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                        Contact Karvaahh
+                      </a>
+                    </div>
+                  </div>
+                </Reveal>
               </div>
             </section>
 

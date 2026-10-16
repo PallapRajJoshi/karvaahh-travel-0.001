@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { localISODate, useClientValue } from "@/lib/useClientValue";
 import FormStatus from "./FormStatus";
 import { useEnquirySubmit } from "./useEnquirySubmit";
 import {
@@ -15,12 +16,11 @@ const SLUGS = DESTINATIONS.map((d) => d.slug) as string[];
 export default function AvailabilityForm() {
   const { state, error, onSubmit } = useEnquirySubmit("availability");
   const [destination, setDestination] = useState<DestinationSlug | "">("");
-  const [minDate, setMinDate] = useState<string>();
+  // Today, read on the client so a static build never ships a stale minimum date.
+  const minDate = useClientValue(localISODate, undefined);
   const dateRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    setMinDate(new Date().toISOString().slice(0, 10));
-
     // Destination-card CTAs link to "#enquire-<slug>": preselect + scroll here.
     const apply = (hash: string) => {
       const slug = hash.replace("#enquire-", "");

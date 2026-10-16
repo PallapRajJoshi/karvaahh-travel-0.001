@@ -185,7 +185,7 @@ export default function HeliHero({ tour }: { tour: HeroTour }) {
           animate="show"
           className="mt-6 inline-flex w-fit max-w-full items-center gap-2 rounded-full border border-[#F4A300]/40 bg-[#F4A300]/10 px-4 py-1.5 text-[10.5px] font-semibold uppercase tracking-[0.24em] text-[#F4A300] backdrop-blur-sm sm:text-xs sm:tracking-[0.28em]"
         >
-          <HelicopterIcon className="h-3.5 w-3.5 shrink-0" />
+          {hero.badgeIcon ? <PageIcon name={hero.badgeIcon} className="h-3.5 w-3.5 shrink-0" /> : <HelicopterIcon className="h-3.5 w-3.5 shrink-0" />}
           {hero.badge}
         </motion.p>
 

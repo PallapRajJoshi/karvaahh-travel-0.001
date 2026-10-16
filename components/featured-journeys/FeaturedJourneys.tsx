@@ -256,7 +256,7 @@ export default function FeaturedJourneys() {
             }}
           >
             <Link
-              href="/journeys"
+              href="/packages"
               className="
                 group
                 inline-flex

@@ -1,14 +1,15 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { useClientValue } from '@/lib/useClientValue';
 
 const VIDEO_SRC = '/videos/hero-nepal.mp4';
-const POSTER_SRC = '/images/hero-nepal-poster.webp';
+/** Shown on phones, reduced-motion and data-saver devices (and before the video plays). */
+const FALLBACK_SRC = '/images/home/annapurna-view.jpg';
 
 export default function HeroBackground() {
-  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
-
-  useEffect(() => {
+  // Skip the background video for reduced motion, phones and data-saver users.
+  const shouldLoadVideo = useClientValue(() => {
     const prefersReducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)'
     ).matches;
@@ -27,10 +28,8 @@ export default function HeroBackground() {
 
     const saveData = connection?.saveData ?? false;
 
-    if (!prefersReducedMotion && !isNarrowViewport && !saveData) {
-      setShouldLoadVideo(true);
-    }
-  }, []);
+    return !prefersReducedMotion && !isNarrowViewport && !saveData;
+  }, false);
 
   return (
     <div className="absolute inset-0 overflow-hidden bg-[#081422]">
@@ -52,7 +51,6 @@ export default function HeroBackground() {
                 loop
                 playsInline
                 preload="none"
-                poster={POSTER_SRC}
                 aria-hidden="true"
                 className="block h-full w-full object-cover"
               />
@@ -60,12 +58,15 @@ export default function HeroBackground() {
           </div>
         </div>
       ) : (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={POSTER_SRC}
+        <Image
+          src={FALLBACK_SRC}
           alt=""
           aria-hidden="true"
-          className="absolute left-1/2 top-1/2 h-[100vw] w-[100vh] -translate-x-1/2 -translate-y-1/2 rotate-90 object-cover"
+          fill
+          preload
+          fetchPriority="high"
+          sizes="100vw"
+          className="object-cover"
         />
       )}
 

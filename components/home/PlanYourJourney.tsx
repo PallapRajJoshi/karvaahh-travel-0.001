@@ -1,12 +1,12 @@
 "use client";
 
 import {
-  useEffect,
   useState,
   type ElementType,
   type FormEvent,
   type ReactNode,
 } from "react";
+import { localISODate, useClientValue } from "@/lib/useClientValue";
 import Image from "next/image";
 import { motion, useReducedMotion, type Variants } from "motion/react";
 import {
@@ -146,15 +146,9 @@ export default function PlanYourJourney() {
   const [travelDate, setTravelDate] = useState("");
   const [travelers, setTravelers] = useState(2);
   const [sent, setSent] = useState(false);
-  const [today, setToday] = useState("");
+  // Prevents picking a past date; read on the client to avoid a hydration mismatch.
+  const today = useClientValue(localISODate, "");
   const [imageFailed, setImageFailed] = useState(false);
-
-  /* prevents picking a past date; set after mount to avoid hydration mismatch */
-  useEffect(() => {
-    const d = new Date();
-    const pad = (n: number) => String(n).padStart(2, "0");
-    setToday(`${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`);
-  }, []);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

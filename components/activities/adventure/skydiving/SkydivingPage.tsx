@@ -18,7 +18,7 @@ import SkydivingComparison from "./SkydivingComparison";
 import SkydivingSiteCards from "./SkydivingSiteCards";
 import UpcomingDates from "./UpcomingDates";
 import WhoIsItFor from "./WhoIsItFor";
-import { aerialComparison, brandFooter } from "./data/skydivingData";
+import { aerialComparison } from "./data/skydivingData";
 import "./skydiving.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";

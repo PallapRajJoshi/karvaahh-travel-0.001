@@ -11,7 +11,7 @@ const PAGE_DESCRIPTION =
 const OG_IMAGE = `${SITE_URL}/images/home/upper-dolpo-nepal-himalayan.jpg`;
 
 export const metadata: Metadata = {
-  title: PAGE_TITLE,
+  title: { absolute: PAGE_TITLE },
   description: PAGE_DESCRIPTION,
   alternates: {
     canonical: PAGE_URL,

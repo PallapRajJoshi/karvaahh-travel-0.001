@@ -13,7 +13,7 @@ const DESCRIPTION =
   "Experience zip flying in Nepal. Explore Pokhara's ~1.8 km ZipFlyer with a ~600 m vertical drop and speeds near 120 km/h, plus zipline destinations across Nepal.";
 
 export const metadata: Metadata = {
-  title: TITLE,
+  title: { absolute: TITLE },
   description: DESCRIPTION,
   keywords: [
     "zip flying Nepal",

@@ -24,6 +24,8 @@ export const CATEGORIES: Category[] = [
 
 export type Journey = {
   slug: string;
+  /** Existing page with this journey's details (closest collection until a dedicated page exists). */
+  href: string;
   /** Full product name. Used for the link's accessible name and image alt. */
   title: string;
   /** The headline place shown large on the card. */
@@ -43,6 +45,7 @@ export type Journey = {
 export const JOURNEYS: Journey[] = [
   {
     slug: "nepal-himalayan-escape",
+    href: "/packages/nepal/trekking-hiking-packages",
     title: "Nepal Himalayan Escape",
     destination: "Ghandruk",
     descriptor: "Mountain villages & Annapurna views",
@@ -56,6 +59,7 @@ export const JOURNEYS: Journey[] = [
   },
   {
     slug: "nepal-spiritual-journey",
+    href: "/packages/nepal/spiritual-pilgrimage-tours",
     title: "Nepal Spiritual Journey",
     destination: "Muktinath",
     descriptor: "Sacred Himalayan pilgrimage",
@@ -68,6 +72,7 @@ export const JOURNEYS: Journey[] = [
   },
   {
     slug: "kathmandu-pokhara-escape",
+    href: "/destinations/gandaki-province",
     title: "Kathmandu & Pokhara Escape",
     destination: "Pokhara",
     descriptor: "Lakeside escapes & mountain views",
@@ -80,6 +85,7 @@ export const JOURNEYS: Journey[] = [
   },
   {
     slug: "grand-nepal-experience",
+    href: "/activities/wildlife-nature",
     title: "Grand Nepal Experience",
     destination: "Chitwan",
     descriptor: "Wildlife & jungle adventure",

@@ -1,4 +1,4 @@
-import type { TravelPackage } from "@/data/package-types";
+import type { TravelPackage } from "@/data/packages/package-types";
 
 export const SITE_URL = "https://karvaahh.in";
 export const PACKAGES_PATH = "/packages";

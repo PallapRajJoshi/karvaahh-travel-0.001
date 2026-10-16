@@ -8,7 +8,7 @@ const DESCRIPTION =
   "Discover Madhesh Province — Janakpurdham and Ramayana heritage, Janaki Mandir, Mithila painting, Simraungadh, Jaleshwar, Gadhimai, Parsa National Park, festivals, travel routes and India–Nepal border access.";
 
 export const metadata: Metadata = {
-  title: "Madhesh Province Tourism | Karvaahh",
+  title: { absolute: "Madhesh Province Tourism | Karvaahh" },
   description: DESCRIPTION,
   keywords: [
     "Madhesh Province",

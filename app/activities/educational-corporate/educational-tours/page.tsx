@@ -6,7 +6,7 @@ import { FAQS } from "@/components/activities/educational-corporate/educational-
 const OG_IMAGE = "/images/educational-tours/og-educational-tours.jpg"; // 1200×630 — add before launch
 
 export const metadata: Metadata = {
-  title: PAGE.title,
+  title: { absolute: PAGE.title },
   description: PAGE.description,
   keywords: [...PAGE.keywords],
   alternates: { canonical: PAGE.url },

@@ -10,7 +10,7 @@ const JOURNEY: FeaturedJourney = {
   duration: '9 Nights / 10 Days',
   route: 'Kathmandu · Pokhara · Ghandruk · Muktinath',
   ctaLabel: 'View Journey',
-  href: '/packages/nepal-himalayan-escape',
+  href: '/packages/nepal/trekking-hiking-packages',
   images: [
     { src: '/images/destinations/pokhara.webp', alt: 'Boats on Phewa Lake, Pokhara', label: 'Pokhara' },
     { src: '/images/destinations/ghandruk.webp', alt: 'Terraced hillside village of Ghandruk', label: 'Ghandruk' },

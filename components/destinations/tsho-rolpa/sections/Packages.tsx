@@ -44,10 +44,10 @@ export default function Packages() {
 
               <div className="tsho-packages__actions">
                 <a
-                  href={`/packages/${pkg.id}`}
+                  href={`/contact?trip=${pkg.id}`}
                   className="tsho-btn tsho-btn--outline tsho-packages__btn"
                 >
-                  View Details
+                  Request Itinerary
                 </a>
                 <a
                   href="/contact?package=tsho-rolpa"

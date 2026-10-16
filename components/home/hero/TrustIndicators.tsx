@@ -1,7 +1,9 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { BadgeCheck, MapPinned, Compass, ShieldCheck } from 'lucide-react';
+
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 const INDICATORS: { label: string; Icon: typeof BadgeCheck }[] = [
   { label: 'Nepal & India Operations', Icon: MapPinned },
@@ -10,12 +12,12 @@ const INDICATORS: { label: string; Icon: typeof BadgeCheck }[] = [
   { label: 'Trusted Travel Partner', Icon: ShieldCheck },
 ];
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 8 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: 0.5 + i * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+    transition: { delay: 0.5 + i * 0.08, duration: 0.5, ease: EASE },
   }),
 };
 

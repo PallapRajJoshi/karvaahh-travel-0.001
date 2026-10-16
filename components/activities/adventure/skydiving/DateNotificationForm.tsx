@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState, type FormEvent } from "react";
+import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
+import { useClientValue } from "@/lib/useClientValue";
 import {
   NOTIFY_EVENT,
   NOTIFY_INTERESTS,
@@ -23,17 +24,13 @@ const isInterest = (v: unknown): v is NotifyInterest =>
 
 export default function DateNotificationForm() {
   const [interest, setInterest] = useState<NotifyInterest>("Everest Skydive");
-  const [years, setYears] = useState<number[]>([]);
+  // Years are computed on the client so a static build never goes stale.
+  const thisYear = useClientValue(() => new Date().getFullYear(), 0);
+  const years = useMemo(() => (thisYear ? [thisYear, thisYear + 1, thisYear + 2] : []), [thisYear]);
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Errors>({});
   const [sentFor, setSentFor] = useState<NotifyInterest | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
-
-  // Years are computed on the client so a static build never goes stale.
-  useEffect(() => {
-    const y = new Date().getFullYear();
-    setYears([y, y + 1, y + 2]);
-  }, []);
 
   // Preselect interest when a CTA elsewhere on the page is used.
   useEffect(() => {

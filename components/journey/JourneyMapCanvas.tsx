@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, type JSX } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
@@ -51,7 +51,10 @@ export default function JourneyMapCanvas({
 }: JourneyMapCanvasProps): JSX.Element {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const onReadyRef = useRef(onReady);
-  onReadyRef.current = onReady;
+  // Keep the latest callback without re-initialising the map.
+  useEffect(() => {
+    onReadyRef.current = onReady;
+  }, [onReady]);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -71,7 +74,6 @@ export default function JourneyMapCanvas({
       touchZoom: false,
       boxZoom: false,
       keyboard: false,
-      tap: false,
       fadeAnimation: true,
       zoomAnimation: false,
       renderer: L.svg({ padding: 0.8 }),
@@ -91,7 +93,7 @@ export default function JourneyMapCanvas({
 
     // Two lines: the whole itinerary sitting quiet underneath, and the
     // travelled portion drawn over it.
-    const baseLine = L.polyline(route.path, {
+    L.polyline(route.path, {
       className: 'jm-route jm-route--base',
       interactive: false,
     }).addTo(map);

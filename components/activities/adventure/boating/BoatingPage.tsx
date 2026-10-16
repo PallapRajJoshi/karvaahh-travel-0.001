@@ -1,4 +1,3 @@
-import Link from "next/link";
 import ActivityHero from "@/components/activities/shared/ActivityHero";
 import ActivityGallery from "@/components/activities/shared/ActivityGallery";
 import ActivityCTA from "@/components/activities/shared/ActivityCTA";

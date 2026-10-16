@@ -11,7 +11,7 @@ import { MEDIA, MEDIA_BASE } from "@/components/activities/culture-festival-expe
 const ogImage = MEDIA.hero.ready ? [{ url: `${MEDIA_BASE}/${MEDIA.hero.file}`, alt: MEDIA.hero.alt }] : undefined;
 
 export const metadata: Metadata = {
-  title: SEO.title,
+  title: { absolute: SEO.title },
   description: SEO.description,
   keywords: SEO.keywords,
   alternates: { canonical: PAGE_PATH },

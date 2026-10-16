@@ -17,7 +17,7 @@ const PAGE_DESCRIPTION =
 const OG_IMAGE = "/images/destinations/rara-lake/hero-rara-lake.jpg";
 
 export const metadata: Metadata = {
-  title: PAGE_TITLE,
+  title: { absolute: PAGE_TITLE },
   description: PAGE_DESCRIPTION,
   alternates: {
     canonical: PAGE_PATH,
@@ -72,7 +72,7 @@ function TouristAttractionJsonLd() {
   return (
     <script
       type="application/ld+json"
-      // eslint-disable-next-line react/no-danger
+       
       dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
     />
   );
@@ -95,7 +95,7 @@ function FaqJsonLd() {
   return (
     <script
       type="application/ld+json"
-      // eslint-disable-next-line react/no-danger
+       
       dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
     />
   );
@@ -115,7 +115,7 @@ function BreadcrumbJsonLd() {
   return (
     <script
       type="application/ld+json"
-      // eslint-disable-next-line react/no-danger
+       
       dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
     />
   );

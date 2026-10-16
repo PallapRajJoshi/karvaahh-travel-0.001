@@ -15,7 +15,7 @@ const OG_IMAGE = "https://karvaahh.in/images/tsho-rolpa/og/tsho-rolpa-og.jpg";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://karvaahh.in"),
-  title: "Tsho Rolpa Lake Nepal – Rolwaling Valley Trek & Tour Packages | Karvaahh",
+  title: { absolute: "Tsho Rolpa Lake Nepal – Rolwaling Valley Trek & Tour Packages | Karvaahh" },
   description:
     "Explore Tsho Rolpa Lake in Nepal's Rolwaling Valley. Discover turquoise glacial waters, Sherpa villages, Himalayan trekking, Tashi Lapcha Pass, and customizable Rolwaling adventure packages.",
   alternates: {
@@ -92,17 +92,17 @@ const touristDestinationJsonLd = {
 export default function Page() {
   return (
     <>
-      {/* eslint-disable-next-line react/no-danger */}
+      { }
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      {/* eslint-disable-next-line react/no-danger */}
+      { }
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      {/* eslint-disable-next-line react/no-danger */}
+      { }
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(touristDestinationJsonLd) }}

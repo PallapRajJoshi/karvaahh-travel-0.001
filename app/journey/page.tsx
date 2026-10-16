@@ -8,7 +8,7 @@ const PAGE_PATH = '/journey';
 const SITE_URL = 'https://karvaahh.in';
 
 export const metadata: Metadata = {
-  title: 'The Nepal journey, stop by stop | Karvaahh',
+  title: { absolute: 'The Nepal journey, stop by stop | Karvaahh' },
   description:
     'Follow the classic Nepal route on an interactive map — Kathmandu, Nagarkot, Bandipur, Pokhara, Ghandruk, Chitwan and Lumbini, with what to do at each stop.',
   alternates: {

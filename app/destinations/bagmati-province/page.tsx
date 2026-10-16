@@ -8,7 +8,7 @@ const DESCRIPTION =
   "Explore Bagmati Province, Nepal — Kathmandu Valley UNESCO heritage, Pashupatinath and Boudhanath, Langtang and Gosaikunda treks, Chitwan wildlife, travel routes and India–Nepal border access.";
 
 export const metadata: Metadata = {
-  title: "Bagmati Province Tourism | Karvaahh",
+  title: { absolute: "Bagmati Province Tourism | Karvaahh" },
   description: DESCRIPTION,
   keywords: [
     "Bagmati Province",

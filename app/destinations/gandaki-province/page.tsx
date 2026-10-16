@@ -8,7 +8,7 @@ const DESCRIPTION =
   "Discover Gandaki Province — Pokhara's lakes, the Annapurna and Manaslu ranges, Muktinath, Mustang's high desert, Gurung villages, best time to visit, travel routes and Nepal's premier trekking and adventure.";
 
 export const metadata: Metadata = {
-  title: "Gandaki Province Tourism | Mountains, Lakes & Adventure | Karvaahh",
+  title: { absolute: "Gandaki Province Tourism | Mountains, Lakes & Adventure | Karvaahh" },
   description: DESCRIPTION,
   keywords: [
     "Gandaki Province",
